@@ -4,12 +4,16 @@
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.bimserver.cobie.plugins.COBieSerializerPlugin</implementationClass>
 	</PluginImplementation>
+
 		<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.bimserver.cobie.plugins.COBieLiteSerializerPlugin</implementationClass>
 	</PluginImplementation>
+
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.deserializers.DeserializerPlugin</interfaceClass>
 		<implementationClass>org.bimserver.cobie.plugins.COBieDeserializerPlugin</implementationClass>
 	</PluginImplementation>
+
+	
 </PluginDescriptor>
