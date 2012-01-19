@@ -9,10 +9,10 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.cobielite.DocumentType;
 import org.bimserver.cobie.utils.COBieUtility;
 
-import cobieLite.COBIEType;
-import cobieLite.DocumentType;
 
 public class SpreadsheetToDocuments
 {
@@ -101,7 +101,7 @@ public class SpreadsheetToDocuments
 		idxReference = columnDictionary.get(DocumentColumnNameLiterals.Reference
 				.toString());
 		int rowIdx;
-		int firstRowIdx = sheet.firstRow;
+		int firstRowIdx = Worksheet.firstRow;
 		for (Row rowData : sheet.getRows())
 		{
 			rowIdx = rowData.getIndex();

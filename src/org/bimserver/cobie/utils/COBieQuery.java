@@ -17,11 +17,11 @@ package org.bimserver.cobie.utils;
  *****************************************************************************/
 import java.util.ArrayList;
 
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.cobielite.ComponentType;
+import org.bimserver.cobie.cobielite.DocumentType;
 import org.bimserver.models.ifc2x3.IfcProduct;
 
-import cobieLite.COBIEType;
-import cobieLite.ComponentType;
-import cobieLite.DocumentType;
 
 public class COBieQuery
 {

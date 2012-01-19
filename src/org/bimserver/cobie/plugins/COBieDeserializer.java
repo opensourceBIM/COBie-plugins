@@ -25,7 +25,9 @@ import nl.fountain.xelem.XFactory;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.lex.ExcelReader;
 
-import org.bimserver.cobie.utils.Deserializer.FromCOBieToIfc;
+import org.bimserver.cobie.cobielite.COBIEDocument;
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.utils.deserializer.FromCOBieToIfc;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadSheetToComponents;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToAttributes;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToContacts;
@@ -43,8 +45,6 @@ import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import cobieLite.COBIEDocument;
-import cobieLite.COBIEType;
 
 public class COBieDeserializer extends EmfDeserializer 
 {	

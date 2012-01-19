@@ -24,10 +24,10 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.cobielite.FacilityType;
 import org.bimserver.cobie.utils.COBieUtility;
 
-import cobieLite.COBIEType;
-import cobieLite.FacilityType;
 
 public class SpreadsheetToFacilities 
 {
@@ -163,7 +163,7 @@ public class SpreadsheetToFacilities
 	   	idxSiteDescription=columnDictionary.get(FacilityColumnNameLiterals.SiteDescription.toString());
 	   	idxPhase=columnDictionary.get(FacilityColumnNameLiterals.Phase.toString());
 	    int rowIdx;
-	    int firstRowIdx = sheet.firstRow;
+	    int firstRowIdx = Worksheet.firstRow;
 	   	for (Row rowData : sheet.getRows())
 	   	{
 	   		rowIdx = rowData.getIndex();

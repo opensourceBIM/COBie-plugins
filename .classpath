@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="sources"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/xbean.jar"/>
+	<classpathentry kind="lib" path="lib/xelem_src.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/xelem.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Ifc"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Utils"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BimServerClientLib"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BimServer"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BimWebServer"/>
+	<classpathentry kind="lib" path="lib/COBieLite.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

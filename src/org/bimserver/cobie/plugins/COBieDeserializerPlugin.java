@@ -46,7 +46,7 @@ public class COBieDeserializerPlugin implements DeserializerPlugin {
 
 	@Override
 	public void init(PluginManager pluginManager) throws SchemaException, PluginException {
-		configurationFile = ConfigUtil.prepareXelemConfigFile(pluginManager, "COBieDeserializer", this,localConfigFilePath);
+		configurationFile = ConfigUtil.prepareSerializerConfigFile(pluginManager, "COBieDeserializer", this,localConfigFilePath);
 		initialized = true;
 	}
 

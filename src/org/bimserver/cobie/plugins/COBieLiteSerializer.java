@@ -21,25 +21,25 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
-import org.bimserver.cobie.utils.COBieWriters.IfcToAssembly;
-import org.bimserver.cobie.utils.COBieWriters.IfcToAttribute;
-import org.bimserver.cobie.utils.COBieWriters.IfcToComponent;
-import org.bimserver.cobie.utils.COBieWriters.IfcToConnection;
-import org.bimserver.cobie.utils.COBieWriters.IfcToContact;
-import org.bimserver.cobie.utils.COBieWriters.IfcToDocument;
-import org.bimserver.cobie.utils.COBieWriters.IfcToFacility;
-import org.bimserver.cobie.utils.COBieWriters.IfcToFloor;
-import org.bimserver.cobie.utils.COBieWriters.IfcToJob;
-import org.bimserver.cobie.utils.COBieWriters.IfcToResource;
-import org.bimserver.cobie.utils.COBieWriters.IfcToSpace;
-import org.bimserver.cobie.utils.COBieWriters.IfcToSpare;
-import org.bimserver.cobie.utils.COBieWriters.IfcToSystem;
-import org.bimserver.cobie.utils.COBieWriters.IfcToType;
-import org.bimserver.cobie.utils.COBieWriters.IfcToZone;
+import org.bimserver.cobie.cobielite.COBIEDocument;
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.utils.cobiewriters.IfcToAssembly;
+import org.bimserver.cobie.utils.cobiewriters.IfcToAttribute;
+import org.bimserver.cobie.utils.cobiewriters.IfcToComponent;
+import org.bimserver.cobie.utils.cobiewriters.IfcToConnection;
+import org.bimserver.cobie.utils.cobiewriters.IfcToContact;
+import org.bimserver.cobie.utils.cobiewriters.IfcToDocument;
+import org.bimserver.cobie.utils.cobiewriters.IfcToFacility;
+import org.bimserver.cobie.utils.cobiewriters.IfcToFloor;
+import org.bimserver.cobie.utils.cobiewriters.IfcToJob;
+import org.bimserver.cobie.utils.cobiewriters.IfcToResource;
+import org.bimserver.cobie.utils.cobiewriters.IfcToSpace;
+import org.bimserver.cobie.utils.cobiewriters.IfcToSpare;
+import org.bimserver.cobie.utils.cobiewriters.IfcToSystem;
+import org.bimserver.cobie.utils.cobiewriters.IfcToType;
+import org.bimserver.cobie.utils.cobiewriters.IfcToZone;
 import org.bimserver.models.ifc2x3.IfcObjectDefinition;
 import org.bimserver.models.ifc2x3.IfcRelAssociates;
 import org.bimserver.models.ifc2x3.IfcRoot;
@@ -53,8 +53,6 @@ import org.bimserver.utils.UTF8PrintWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cobieLite.COBIEDocument;
-import cobieLite.COBIEType;
 
 /**
  * @author chrisbogen

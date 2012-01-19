@@ -40,7 +40,7 @@ public class COBieSerializerPlugin implements SerializerPlugin {
 	@Override
 	public void init(PluginManager pluginManager) throws PluginException {
 		pluginManager.requireSchemaDefinition();
-		configurationFile = ConfigUtil.prepareXelemConfigFile(pluginManager, "COBieSerializer", this,localConfigFilePath);
+		configurationFile = ConfigUtil.prepareSerializerConfigFile(pluginManager, "COBieSerializer", this,localConfigFilePath);
 		initialized = true;
 	}
 	

@@ -24,10 +24,10 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.cobielite.SpaceType;
 import org.bimserver.cobie.utils.COBieUtility;
 
-import cobieLite.COBIEType;
-import cobieLite.SpaceType;
 
 public class SpreadsheetToSpaces 
 {
@@ -55,7 +55,7 @@ public class SpreadsheetToSpaces
 				cobie.addNewSpaces();
 		Worksheet sheet = workbook.getWorksheet
 				(COBieUtility.CobieSheetName.Space.toString());
-		int firstRowIdx = sheet.firstRow;
+		int firstRowIdx = Worksheet.firstRow;
 		Map<String,Integer> columnDictionary =
 	   			COBieUtility.GetWorksheetColumnDictionary(sheet,
 	   					getSpaceColumnNames());

@@ -19,12 +19,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bimserver.cobie.cobielite.ComponentType;
 import org.bimserver.cobie.utils.COBieUtility;
-import org.bimserver.cobie.utils.COBieWriters.IfcToFacility;
-import org.bimserver.cobie.utils.COBieWriters.IfcToFloor;
-import org.bimserver.cobie.utils.COBieWriters.IfcToSpace;
-import org.bimserver.cobie.utils.Deserializer.IfcCommonHandler;
-import org.bimserver.cobie.utils.StringWriters.DeserializerStaticStrings;
+import org.bimserver.cobie.utils.cobiewriters.IfcToFacility;
+import org.bimserver.cobie.utils.cobiewriters.IfcToFloor;
+import org.bimserver.cobie.utils.cobiewriters.IfcToSpace;
+import org.bimserver.cobie.utils.deserializer.IfcCommonHandler;
+import org.bimserver.cobie.utils.stringwriters.DeserializerStaticStrings;
 import org.bimserver.emf.IdEObject;
 import org.bimserver.ifc.IfcModel;
 import org.bimserver.models.ifc2x3.Ifc2x3Factory;
@@ -41,7 +42,6 @@ import org.bimserver.models.ifc2x3.IfcSpace;
 import org.bimserver.models.ifc2x3.IfcTypeObject;
 import org.bimserver.plugins.serializers.OidProvider;
 
-import cobieLite.ComponentType;
 
 import com.google.common.collect.BiMap;
 

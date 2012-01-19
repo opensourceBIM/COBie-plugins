@@ -24,10 +24,10 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.cobielite.ComponentType;
 import org.bimserver.cobie.utils.COBieUtility;
 
-import cobieLite.COBIEType;
-import cobieLite.ComponentType;
 
 public class SpreadSheetToComponents
 {
@@ -98,7 +98,7 @@ public class SpreadSheetToComponents
 		idxTagNumber=columnDictionary.get(ComponentColumnNameLiterals.TagNumber.toString());
 		idxBarCode=columnDictionary.get(ComponentColumnNameLiterals.BarCode.toString());
 		idxAssetIdentifier=columnDictionary.get(ComponentColumnNameLiterals.AssetIdentifier.toString());int rowIdx;
-		int firstRowIdx = sheet.firstRow;
+		int firstRowIdx = Worksheet.firstRow;
 		for (Row rowData : sheet.getRows())
 		{
 			rowIdx = rowData.getIndex();

@@ -24,10 +24,10 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
+import org.bimserver.cobie.cobielite.AssemblyType;
+import org.bimserver.cobie.cobielite.COBIEType;
 import org.bimserver.cobie.utils.COBieUtility;
 
-import cobieLite.AssemblyType;
-import cobieLite.COBIEType;
 
 public class SpreadsheetToAssemblies 
 {
@@ -102,7 +102,7 @@ public class SpreadsheetToAssemblies
 	   	idxDescription=columnDictionary.get(AssemblyColumnNameLiterals.Description.toString());
 	    
 	   	int rowIdx;
-	    int firstRowIdx = sheet.firstRow;
+	    int firstRowIdx = Worksheet.firstRow;
 	   	for (Row rowData : sheet.getRows())
 	   	{
 	   		rowIdx = rowData.getIndex();

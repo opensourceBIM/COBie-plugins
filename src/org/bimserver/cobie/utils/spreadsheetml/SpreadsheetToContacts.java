@@ -24,10 +24,10 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.cobielite.ContactType;
 import org.bimserver.cobie.utils.COBieUtility;
 
-import cobieLite.COBIEType;
-import cobieLite.ContactType;
 
 public class SpreadsheetToContacts {
 	public static ArrayList<String> ContactColumnNames = new ArrayList<String>
@@ -145,7 +145,7 @@ public class SpreadsheetToContacts {
 	
 	
 	    int rowIdx;
-	    int firstRowIdx = sheet.firstRow;
+	    int firstRowIdx = Worksheet.firstRow;
 	   	for (Row rowData : sheet.getRows())
 	   	{
 	   		rowIdx = rowData.getIndex();

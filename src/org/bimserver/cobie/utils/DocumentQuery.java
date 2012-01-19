@@ -17,8 +17,9 @@ package org.bimserver.cobie.utils;
  *****************************************************************************/
 import java.util.ArrayList;
 
-import cobieLite.COBIEType;
-import cobieLite.DocumentType;
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.cobielite.DocumentType;
+
 
 public class DocumentQuery
 {

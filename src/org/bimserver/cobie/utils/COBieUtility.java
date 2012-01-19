@@ -26,7 +26,6 @@ import javax.xml.stream.XMLStreamReader;
 
 import nl.fountain.xelem.excel.Cell;
 import nl.fountain.xelem.excel.Row;
-import nl.fountain.xelem.excel.Table;
 import nl.fountain.xelem.excel.Worksheet;
 
 import org.apache.xmlbeans.SchemaStringEnumEntry;
@@ -34,9 +33,9 @@ import org.apache.xmlbeans.XmlCalendar;
 import org.apache.xmlbeans.XmlDateTime;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlString;
-import org.bimserver.cobie.utils.StringWriters.IfcPropertyToCOBieString;
-import org.bimserver.cobie.utils.StringWriters.IfcRelationshipsToCOBie;
-import org.bimserver.cobie.utils.StringWriters.IfcSingleValueToCOBieString;
+import org.bimserver.cobie.utils.stringwriters.IfcPropertyToCOBieString;
+import org.bimserver.cobie.utils.stringwriters.IfcRelationshipsToCOBie;
+import org.bimserver.cobie.utils.stringwriters.IfcSingleValueToCOBieString;
 import org.bimserver.models.ifc2x3.IfcAddress;
 import org.bimserver.models.ifc2x3.IfcApplication;
 import org.bimserver.models.ifc2x3.IfcClassification;
@@ -107,7 +106,6 @@ public class COBieUtility
 				XmlDateTime xDateTime = (XmlDateTime) selectedObj;
 				@SuppressWarnings("unused")
 				String formattedDateTime = String.format(COBieDateFormatString, xDateTime.getCalendarValue());
-				String noop = "";
 			}
 		}
 		return isADateTime;
@@ -547,11 +545,11 @@ public class COBieUtility
 		for(int idx=0; idx<columnNames.size();idx++)
 			upperCaseColumnNames.add(columnNames.get(idx).toUpperCase());
 		Map<String,Integer> colMap = new HashMap<String,Integer>();
-		int firstRowIndex = sheet.firstRow;
+		int firstRowIndex = Worksheet.firstRow;
 		Row firstRow = sheet.getRowAt(firstRowIndex);
 		int tmpColIndex;
 		String tmpColName;
-		Table workSheetTable = sheet.getTable();
+		sheet.getTable();
 		
 		for(Cell tmpCell : firstRow.getCells())
 		{

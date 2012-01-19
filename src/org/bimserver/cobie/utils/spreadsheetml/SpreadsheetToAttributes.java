@@ -9,10 +9,10 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
+import org.bimserver.cobie.cobielite.AttributeType;
+import org.bimserver.cobie.cobielite.COBIEType;
 import org.bimserver.cobie.utils.COBieUtility;
 
-import cobieLite.AttributeType;
-import cobieLite.COBIEType;
 
 public class SpreadsheetToAttributes {
 	public static ArrayList<String> AttributeColumnNames = new ArrayList<String>(
@@ -90,7 +90,7 @@ public class SpreadsheetToAttributes {
 		idxAllowedValues = columnDictionary
 				.get(AttributeColumnNameLiterals.AllowedValues.toString());
 		int rowIdx;
-		int firstRowIdx = sheet.firstRow;
+		int firstRowIdx = Worksheet.firstRow;
 		for (Row rowData : sheet.getRows()) {
 			rowIdx = rowData.getIndex();
 			if (rowIdx > firstRowIdx) {

@@ -79,7 +79,7 @@ public class COBieSpreadSheet {
   
 	// map will contain all sheet tab names mapped to string array containing
 	// column headings
-	public HashMap templateMap = new HashMap<String, String[]>();
+	public HashMap<String, String[]> templateMap = new HashMap<String, String[]>();
 
 	// filename for the new file to be created
 	private String fileName = "cobie.xml";
@@ -288,14 +288,7 @@ public class COBieSpreadSheet {
 		XSerializer xs = new XSerializer(XSerializer.US_ASCII);
 		try
 		{
-			Runtime beforeRT = Runtime.getRuntime ();
-			long Used_memory1 = beforeRT.totalMemory () - beforeRT.freeMemory ();
-			
-			xs.serialize(this.xlWorkbook,wrt);
-			
-			Runtime afterRT = Runtime.getRuntime ();
-			long Used_memory2 = afterRT.totalMemory () - afterRT.freeMemory ();	
-			int dd = 1; 
+			xs.serialize(this.xlWorkbook,wrt); 
 		}
 		catch(XelemException e)
 		{
@@ -309,20 +302,7 @@ public class COBieSpreadSheet {
 		{
 			
 			myDoc = xlWorkbook.createDocument();
-			Runtime beforeRT = Runtime.getRuntime ();
-			long Used_memory1 = beforeRT.totalMemory () - beforeRT.freeMemory ();
-			
-				
 			writeNodeDeep(myDoc,wrt);
-			
-			Runtime afterRT = Runtime.getRuntime ();
-			long Used_memory2 = afterRT.totalMemory () - afterRT.freeMemory ();	
-			int dd = 1;
-			/*NodeList nList = myDoc.getChildNodes();
-			for(int i=0; i < nList.getLength();i++)
-			{
-				writeNodeDeep(nList.item(i),wrt);
-			}*/
 		}
 		catch (Exception e) {
 			LOGGER.error("", e);
@@ -331,25 +311,14 @@ public class COBieSpreadSheet {
 	
 	public void writeNodeDeep(Node node, PrintWriter wrt)
 	{
-		 Runtime beforeRT = Runtime.getRuntime ();
-			long Used_memory1 = beforeRT.totalMemory () - beforeRT.freeMemory ();
-		
-		nodeToStream(node,wrt);
-		
-		Runtime afterRT = Runtime.getRuntime ();
-		long Used_memory2 = afterRT.totalMemory () - afterRT.freeMemory ();	
-		int dd = 1;
+		 nodeToStream(node,wrt);
 	}
 	
 	
 
 	   public void nodeToStream(Node node,PrintWriter out)
 	   {
-		   Runtime beforeRT = Runtime.getRuntime ();
-			long Used_memory1 = beforeRT.totalMemory () - beforeRT.freeMemory ();
-			
-			String workSheetName="";
-		   boolean prettyprint = true;
+		   String workSheetName="";
 		   boolean canonical = false;
 	      // is there anything to do?
 	      if (node == null)
@@ -504,10 +473,6 @@ public class COBieSpreadSheet {
 	      }
 
 	      out.flush();
-	      
-			Runtime afterRT = Runtime.getRuntime ();
-			long Used_memory2 = afterRT.totalMemory () - afterRT.freeMemory ();	
-			int dd = 1;
 
 	   } // print(Node)
 	   
@@ -629,10 +594,8 @@ public class COBieSpreadSheet {
 	// end file creation functions
 
 	 //populate the sheet data stored in the java classes into the newly created template file 
+	@SuppressWarnings("rawtypes")
 	public void populateSheetData() {
-		Runtime beforeRT = Runtime.getRuntime ();
-		long Used_memory1 = beforeRT.totalMemory () - beforeRT.freeMemory ();
-				
 		// sheetData is the data that is stored in the java classes and will be
 		// used to populate data
 		// into the template file before the new file is created
@@ -734,13 +697,6 @@ public class COBieSpreadSheet {
 				}
 			}
 		}
-
-		
-	
-		
-		Runtime afterRT = Runtime.getRuntime ();
-		long Used_memory2 = afterRT.totalMemory () - afterRT.freeMemory ();	
-		int dd = 1;
 	}
 
 
@@ -756,10 +712,6 @@ public class COBieSpreadSheet {
 	// function is responsible for populating the map that contains all the
 	// sheet names and column headings
 	private void populateMap() {
-		Runtime beforeRT = Runtime.getRuntime ();
-		long Used_memory1 = beforeRT.totalMemory () - beforeRT.freeMemory ();
-		
-				
 		// get the names for each of the sheets in the workbook
 		List<String> sNames = xlWorkbook.getSheetNames();
 
@@ -787,11 +739,7 @@ public class COBieSpreadSheet {
 			// populate the map with SheetName as key and columns headings as an
 			// String array
 			templateMap.put(name, colHead);
-		}
-		
-		Runtime afterRT = Runtime.getRuntime ();
-		long Used_memory2 = afterRT.totalMemory () - afterRT.freeMemory ();	
-		int dd = 1; 		
+		} 		
 	}
 
 

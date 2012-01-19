@@ -24,10 +24,10 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.cobielite.FloorType;
 import org.bimserver.cobie.utils.COBieUtility;
 
-import cobieLite.COBIEType;
-import cobieLite.FloorType;
 
 public class SpreadsheetToFloors {
 	public static ArrayList<String> FloorColumnNames = new ArrayList<String>(
@@ -94,7 +94,7 @@ public class SpreadsheetToFloors {
 		idxHeight = columnDictionary.get(FloorColumnNameLiterals.Height
 				.toString());
 		int rowIdx;
-		int firstRowIdx = sheet.firstRow;
+		int firstRowIdx = Worksheet.firstRow;
 		for (Row rowData : sheet.getRows()) {
 			rowIdx = rowData.getIndex();
 			if (rowIdx > firstRowIdx) {

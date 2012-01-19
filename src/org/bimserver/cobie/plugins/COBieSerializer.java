@@ -26,6 +26,22 @@ import java.util.Map;
 
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
+import org.bimserver.cobie.cobielite.AssemblyType;
+import org.bimserver.cobie.cobielite.AttributeType;
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.cobielite.ComponentType;
+import org.bimserver.cobie.cobielite.ConnectionType;
+import org.bimserver.cobie.cobielite.ContactType;
+import org.bimserver.cobie.cobielite.DocumentType;
+import org.bimserver.cobie.cobielite.FacilityType;
+import org.bimserver.cobie.cobielite.FloorType;
+import org.bimserver.cobie.cobielite.JobType;
+import org.bimserver.cobie.cobielite.ResourceType;
+import org.bimserver.cobie.cobielite.SpaceType;
+import org.bimserver.cobie.cobielite.SpareType;
+import org.bimserver.cobie.cobielite.SystemType;
+import org.bimserver.cobie.cobielite.TypeType;
+import org.bimserver.cobie.cobielite.ZoneType;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.spreadsheetml.COBieSpreadSheet;
 import org.bimserver.plugins.PluginManager;
@@ -36,22 +52,6 @@ import org.bimserver.utils.UTF8PrintWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cobieLite.AssemblyType;
-import cobieLite.AttributeType;
-import cobieLite.COBIEType;
-import cobieLite.ComponentType;
-import cobieLite.ConnectionType;
-import cobieLite.ContactType;
-import cobieLite.DocumentType;
-import cobieLite.FacilityType;
-import cobieLite.FloorType;
-import cobieLite.JobType;
-import cobieLite.ResourceType;
-import cobieLite.SpaceType;
-import cobieLite.SpareType;
-import cobieLite.SystemType;
-import cobieLite.TypeType;
-import cobieLite.ZoneType;
 /**
  * @author chrisbogen
  * This class is a sub-class of COBieLiteSerializer and its purpose is
