@@ -150,15 +150,6 @@ public class COBieDeserializer extends EmfDeserializer
 	
 	}
 
-
-	@Override
-	public IfcModelInterface read(File file, boolean setOids)
-			throws DeserializeException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 	@Override
 	public IfcModelInterface read(InputStream in, String filename,
 			boolean setOids, long fileSize) throws DeserializeException {
@@ -175,7 +166,5 @@ public class COBieDeserializer extends EmfDeserializer
 				new FromCOBieToIfc(this.GetCobie());
 		COBieIfcModel cobieModel = cobieTransform.getModelFromCOBie();
 		return cobieModel;
-	}
-	
-	
+	}	
 }
