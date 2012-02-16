@@ -75,12 +75,14 @@ public class ComponentDeserializer
 					}
 				} catch (Exception e)
 				{
+					
 				}
 				
 			}
 			try
 			{
 				model.setSpaceAggregates(ifcCommonHandler);
+				model.setFacilityComponentAggregates(ifcCommonHandler);
 			}
 			catch(Exception e)
 			{

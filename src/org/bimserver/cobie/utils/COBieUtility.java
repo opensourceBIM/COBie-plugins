@@ -16,6 +16,7 @@ package org.bimserver.cobie.utils;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -33,6 +34,7 @@ import org.apache.xmlbeans.XmlCalendar;
 import org.apache.xmlbeans.XmlDateTime;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlString;
+import org.bimserver.cobie.cobielite.COBIEType;
 import org.bimserver.cobie.utils.stringwriters.IfcPropertyToCOBieString;
 import org.bimserver.cobie.utils.stringwriters.IfcRelationshipsToCOBie;
 import org.bimserver.cobie.utils.stringwriters.IfcSingleValueToCOBieString;
@@ -74,6 +76,7 @@ public class COBieUtility
 	public enum CobieSheetName {Assembly, Attribute, Component,
 		Connection,Contact,Document,Facility,Floor,Job,Resource,Space,
 		Spare,System,Type,Zone,Impact,Coordinate,Issue};
+	public static HashMap<CobieSheetName,String> pluralCobieSheetName = createPluralCobieSheetMap();
 	protected static enum ClassificationLiterals
 	{Assembly_Code,Assembly_Description,OmniClass_Number,OmniClass_Title,
 		Uniclass_Code,Uniclass_Description,Category_Code,Category_Description,
@@ -82,6 +85,33 @@ public class COBieUtility
 	public static final String COBieNA = "n/a";
 	protected static final String COBieDelim = ",";
 	protected static final String COBieUnkown = "unkown";
+	
+	private static HashMap<CobieSheetName,String> createPluralCobieSheetMap()
+	{
+		HashMap<CobieSheetName,String> pluralNameMap =
+				new HashMap<CobieSheetName,String>();
+		pluralNameMap.put(CobieSheetName.Assembly,"Assemblies");
+		pluralNameMap.put(CobieSheetName. Attribute," Attributes");
+		pluralNameMap.put(CobieSheetName. Component," Components");
+		pluralNameMap.put(CobieSheetName.Connection,"Connections");
+		pluralNameMap.put(CobieSheetName.Contact,"Contacts");
+		pluralNameMap.put(CobieSheetName.Document,"Documents");
+		pluralNameMap.put(CobieSheetName.Facility,"Facilities");
+		pluralNameMap.put(CobieSheetName.Floor,"Floors");
+		pluralNameMap.put(CobieSheetName.Job,"Jobs");
+		pluralNameMap.put(CobieSheetName.Resource,"Resources");
+		pluralNameMap.put(CobieSheetName.Space,"Spaces");
+		pluralNameMap.put(CobieSheetName.Spare,"Spares");
+		pluralNameMap.put(CobieSheetName.System,"Systems");
+		pluralNameMap.put(CobieSheetName.Type,"Types");
+		pluralNameMap.put(CobieSheetName.Zone,"Zones");
+		pluralNameMap.put(CobieSheetName.Impact,"Impacts");
+		pluralNameMap.put(CobieSheetName.Coordinate,"Coordinates");
+		pluralNameMap.put(CobieSheetName.Issue,"Issues");
+
+		return pluralNameMap;
+	}
+	
 	public static String getEmailFromOwnerHistory(IfcOwnerHistory oh)
 	{
 		IfcPersonAndOrganization personOrg = oh.getOwningUser();
@@ -227,6 +257,20 @@ public class COBieUtility
 				cobieCaseString += charString.toLowerCase();
 		}
 		return cobieCaseString;
+	}
+	
+	public static ArrayList<String> arrayListFromDelimString(String delimString)
+	{
+		ArrayList<String> splitStrings = new ArrayList<String>();
+		if (delimString.contains(COBieUtility.getCOBieDelim()))
+		{
+			String[] splitStrArray = delimString.split(COBieUtility.getCOBieDelim());
+			for(String splitStr : splitStrArray)
+				splitStrings.add(splitStr);
+		}
+		else
+			splitStrings.add(delimString);
+		return splitStrings;
 	}
 	
 	public static String delimittedStringFromArrayList(ArrayList<String> stringList)
@@ -805,5 +849,75 @@ public class COBieUtility
 	        }
 	        return values;
 	}
+	
+	public static int getCOBieSheetCount(CobieSheetName sheetName,COBIEType cobie)
+	{
+		int count = 0;
+		try
+		{
+			switch (sheetName) {
+			case Assembly:
+				count = cobie.getAssemblies().sizeOfAssemblyArray();
+				break;
+			case Attribute:
+				count = cobie.getAttributes().sizeOfAttributeArray();
+				break;
+			case Component:
+				count = cobie.getComponents().sizeOfComponentArray();
+				break;
+			case Connection:
+				count = cobie.getConnections().sizeOfConnectionArray();
+				break;
+			case Contact:
+				count = cobie.getContacts().sizeOfContactArray();
+				break;
+			case Document:
+				count = cobie.getDocuments().sizeOfDocumentArray();
+				break;
+			case Facility:
+				count = cobie.getFacilities().sizeOfFacilityArray();
+				break;
+			case Floor:
+				count = cobie.getFloors().sizeOfFloorArray();
+				break;
+			case Job:
+				count = cobie.getJobs().sizeOfJobArray();
+				break;
+			case Resource:
+				count = cobie.getResources().sizeOfResourceArray();
+				break;
+			case Space:
+				count = cobie.getSpaces().sizeOfSpaceArray();
+				break;
+			case Spare:
+				count = cobie.getSpares().sizeOfSpareArray();
+				break;
+			case System:
+				count = cobie.getSystems().sizeOfSystemArray();
+				break;
+			case Type:
+				count = cobie.getTypes().sizeOfTypeArray();
+				break;
+			case Zone:
+				count = cobie.getZones().sizeOfZoneArray();
+				break;
+			case Impact:
+				count = cobie.getImpacts().sizeOfImpactArray();
+				break;
+			case Coordinate:
+				count = cobie.getCoordinates().sizeOfCoordinateArray();
+				break;
+			case Issue:
+				count = cobie.getIssues().sizeOfIssueArray();
+				break;
+		}
+		}
+		catch(Exception e)
+		{
+			
+		}
+		return count;
+	}
+	
 	
 }

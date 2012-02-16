@@ -62,8 +62,11 @@ import org.slf4j.LoggerFactory;
  *  portions of the COBie document are not yet implemented.
  */
 public class COBieLiteSerializer extends EmfSerializer{
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(COBieSerializer.class);
+	private static final String LOGGER_MESSAGE_EXCEPTION = "An exception was encountered while deriving COBie from the model:  ";
+	private static final String LOGGER_MESSAGE_DONE = "End Extracting COBie from model server...";
+	private static final String LOGGER_MESSAGE_BEGIN = "Begin Extracting COBie from model server...";
+	protected String projectName;
+	private static final Logger LOGGER = LoggerFactory.getLogger(COBieLiteSerializer.class);
 	private COBIEDocument COBie;
 	private PrintWriter out;
 	//private final File configurationFile;
@@ -71,6 +74,11 @@ public class COBieLiteSerializer extends EmfSerializer{
 	/*public COBieLiteSerializer(File configurationFile) {
 		this.configurationFile = configurationFile;
 	}*/
+	
+	protected String getLoggerPrefix()
+	{
+		return projectName+":  ";
+	}
 	
 	public COBieLiteSerializer()
 	{
@@ -88,6 +96,7 @@ public class COBieLiteSerializer extends EmfSerializer{
 	//}
 	public void init(IfcModelInterface model, ProjectInfo projectInfo, PluginManager pluginManager, IfcEngine ifcEngine) throws SerializerException {
 		super.init(model, projectInfo, pluginManager, ifcEngine);
+		projectName = projectInfo.getName();
 		init(model,projectInfo,pluginManager);
 	}
 	
@@ -154,7 +163,7 @@ public class COBieLiteSerializer extends EmfSerializer{
 	 * Parses the IFC model and populates a corresponding COBieLite XML Document
 	 */
 	public void modelToCOBie() {
-		LOGGER.info("Begin Extracting COBie from model server...");
+		LOGGER.info(getLoggerPrefix()+ LOGGER_MESSAGE_BEGIN);
 		this.writeContacts();
 		this.writeFacilities();
 		this.writeFloors();
@@ -170,7 +179,7 @@ public class COBieLiteSerializer extends EmfSerializer{
 		this.writeConnections();
 		this.writeDocuments();
 		this.writeAttributes();
-		LOGGER.info("End Extracting COBie from model server...");
+		LOGGER.info(getLoggerPrefix()+LOGGER_MESSAGE_DONE);
 	}
 	
 	
@@ -246,7 +255,7 @@ public class COBieLiteSerializer extends EmfSerializer{
 	private void writeSystems()
 	{
 		COBIEType cType = this.GetCobie();
-		cType = IfcToSystem.writeSystemsToCOBie(cType, model);
+		cType = IfcToSystem.writeSystemsToCOBieComponentPerRow(cType, model);
 	}
 	
 	/**
@@ -352,7 +361,7 @@ public class COBieLiteSerializer extends EmfSerializer{
 			{
 				this.out.flush();
 				setMode(Mode.FINISHED);
-				LOGGER.error(e.getMessage());
+				LOGGER.error(getLoggerPrefix()+LOGGER_MESSAGE_EXCEPTION+e.getMessage());
 				return false;
 			}
 

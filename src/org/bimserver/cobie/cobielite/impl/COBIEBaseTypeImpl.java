@@ -45,13 +45,13 @@ public class COBIEBaseTypeImpl extends org.apache.xmlbeans.impl.values.XmlComple
     /**
      * Gets (as xml) the "Name" attribute
      */
-    public org.apache.xmlbeans.XmlNMTOKEN xgetName()
+    public org.apache.xmlbeans.XmlString xgetName()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            org.apache.xmlbeans.XmlNMTOKEN target = null;
-            target = (org.apache.xmlbeans.XmlNMTOKEN)get_store().find_attribute_user(NAME$0);
+            org.apache.xmlbeans.XmlString target = null;
+            target = (org.apache.xmlbeans.XmlString)get_store().find_attribute_user(NAME$0);
             return target;
         }
     }
@@ -77,16 +77,16 @@ public class COBIEBaseTypeImpl extends org.apache.xmlbeans.impl.values.XmlComple
     /**
      * Sets (as xml) the "Name" attribute
      */
-    public void xsetName(org.apache.xmlbeans.XmlNMTOKEN name)
+    public void xsetName(org.apache.xmlbeans.XmlString name)
     {
         synchronized (monitor())
         {
             check_orphaned();
-            org.apache.xmlbeans.XmlNMTOKEN target = null;
-            target = (org.apache.xmlbeans.XmlNMTOKEN)get_store().find_attribute_user(NAME$0);
+            org.apache.xmlbeans.XmlString target = null;
+            target = (org.apache.xmlbeans.XmlString)get_store().find_attribute_user(NAME$0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.XmlNMTOKEN)get_store().add_attribute_user(NAME$0);
+                target = (org.apache.xmlbeans.XmlString)get_store().add_attribute_user(NAME$0);
             }
             target.set(name);
         }

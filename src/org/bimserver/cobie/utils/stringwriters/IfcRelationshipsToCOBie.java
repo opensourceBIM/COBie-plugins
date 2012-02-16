@@ -41,7 +41,7 @@ import org.bimserver.models.ifc2x3.IfcRoot;
 import org.bimserver.models.ifc2x3.IfcSimpleProperty;
 import org.bimserver.models.ifc2x3.IfcTypeObject;
 import org.eclipse.emf.common.util.EList;
-@SuppressWarnings("unchecked")
+
 public class IfcRelationshipsToCOBie 
 {
 	private static enum ComparisonType{StartsWith,EndsWith,Contains,Equals};

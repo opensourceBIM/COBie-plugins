@@ -16,7 +16,7 @@ package org.bimserver.cobie.cobielite;
 public interface ComponentType extends org.bimserver.cobie.cobielite.COBIEBaseType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ComponentType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("componenttype2263type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ComponentType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("componenttype2263type");
     
     /**
      * Gets the "CreatedBy" element

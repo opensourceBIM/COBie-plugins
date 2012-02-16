@@ -21,6 +21,7 @@ import java.util.Calendar;
 
 import org.bimserver.cobie.cobielite.AssemblyType;
 import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.utils.COBieQuery;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.COBieUtility.CobieSheetName;
 import org.bimserver.models.ifc2x3.IfcBuilding;
@@ -78,18 +79,7 @@ public class IfcToAssembly
 		LogHandler loggerStrings =
 				new LogHandler(SheetName,LOGGER);
 		loggerStrings.sheetWriteBegin();
-		String name;
-		String createdBy;
-		Calendar createdOn;
-		String sheetName;
-		String parentName;
-		String childNames;
-		String assemblyType;
-		String extSystem;
-		String extObject = IfcMaterialLayerSet.class.getSimpleName();
-		String description;
-		AssemblyType tmpAssembly;
-		IfcOwnerHistory oh = COBieUtility.firstOwnerHistoryFromModel(model);
+		
 		COBIEType.Assemblies assemblies;
 		try
 		{
@@ -102,6 +92,175 @@ public class IfcToAssembly
 			assemblies = cobie.addNewAssemblies();
 		}
 		
+		serializeMaterialLayerAssembliesOneRelationPairPerRow(model, loggerStrings,
+				cobie);
+		ArrayList<IfcRelationship> relationships = assemblyRelationshipsFromModel(model);
+		IfcOwnerHistory oh = COBieUtility.firstOwnerHistoryFromModel(model);
+		serializeRelationshipAssembliesOneRelationPairPerRow(loggerStrings, oh,cobie,
+				relationships);
+		loggerStrings.sheetWritten();
+		
+	}
+
+	private static void serializeRelationshipAssemblies(
+			LogHandler loggerStrings, IfcOwnerHistory oh,
+			COBIEType.Assemblies assemblies,
+			ArrayList<IfcRelationship> relationships)
+	{
+		String name;
+		String createdBy;
+		Calendar createdOn;
+		String sheetName;
+		String parentName;
+		String childNames;
+		String assemblyType;
+		String extSystem;
+		String extObject;
+		String description;
+		AssemblyType tmpAssembly;
+		for (IfcRelationship relationship : relationships)
+		{
+			try
+			{
+				tmpAssembly = assemblies.addNewAssembly();
+				name = IfcToAssembly.nameFromRelationship(relationship);
+				createdBy = COBieUtility.getEmailFromOwnerHistory(oh);
+				createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
+				sheetName = IfcToAssembly.sheetNameFromRelationship(relationship);
+				parentName = IfcToAssembly.parentNameFromRelationship(relationship);
+				childNames = IfcToAssembly.childNamesFromRelationship(relationship);
+				assemblyType = IfcToAssembly.assemblyTypeFromRelationship(relationship);
+				extSystem = COBieUtility.getApplicationName(oh);
+				extObject = COBieUtility.extObjectFromRelationship(relationship);
+				description = IfcToAssembly.descriptionFromRelationship(relationship);	
+				
+				tmpAssembly.setName(name);
+				tmpAssembly.setCreatedBy(createdBy);
+				tmpAssembly.setCreatedOn(createdOn);
+				tmpAssembly.setSheetName(sheetName);
+				tmpAssembly.setParentName(parentName);
+				tmpAssembly.setChildNames(childNames);
+				tmpAssembly.setAssemblyType(assemblyType);
+				tmpAssembly.setExtSystem(extSystem);
+				tmpAssembly.setExtObject(extObject);
+				tmpAssembly.setExtIdentifier(relationship.getGlobalId().getWrappedValue());
+				tmpAssembly.setDescription(description);
+				loggerStrings.rowWritten();
+			}
+			catch(Exception ex)
+			{
+				loggerStrings.error(ex);
+			}
+		}
+	}
+	
+	private static boolean parentIntegrityValid(String parentName, COBIEType cobie,String sheetName)
+	{
+		boolean isValid = false;
+		if (sheetName.toLowerCase().equals(COBieUtility.CobieSheetName.Component.toString().toLowerCase()))
+		{
+			isValid = COBieQuery.isNameInComponent(parentName, cobie);
+		}
+		else if (sheetName.toLowerCase().equals(COBieUtility.CobieSheetName.Type.toString().toLowerCase()))
+		{
+			isValid = COBieQuery.isNameInType(parentName, cobie);
+		}
+		return isValid;
+	}
+	
+	private static void serializeRelationshipAssembliesOneRelationPairPerRow(
+			LogHandler loggerStrings, IfcOwnerHistory oh,
+			COBIEType cobie,
+			ArrayList<IfcRelationship> relationships)
+	{
+		COBIEType.Assemblies assemblies = cobie.getAssemblies();
+		String name;
+		String createdBy;
+		Calendar createdOn;
+		String sheetName;
+		String parentName;
+		String childNames;
+		String assemblyType;
+		String extSystem;
+		String extObject;
+		String description;
+		AssemblyType tmpAssembly;
+		for (IfcRelationship relationship : relationships)
+		{
+			try
+			{
+				ArrayList<String> children = IfcToAssembly.childNameArrayFromRelationship(relationship);
+				sheetName = IfcToAssembly.sheetNameFromRelationship(relationship);
+				parentName = IfcToAssembly.parentNameFromRelationship(relationship);
+				if (parentIntegrityValid(parentName,cobie,sheetName))
+				{
+					for(String child : children)
+					{
+						tmpAssembly = assemblies.addNewAssembly();
+						name = IfcToAssembly.nameFromRelationship(relationship);
+						createdBy = COBieUtility.getEmailFromOwnerHistory(oh);
+						createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
+						assemblyType = IfcToAssembly.assemblyTypeFromRelationship(relationship);
+						extSystem = COBieUtility.getApplicationName(oh);
+						extObject = COBieUtility.extObjectFromRelationship(relationship);
+						description = IfcToAssembly.descriptionFromRelationship(relationship);	
+						
+						tmpAssembly.setName(name);
+						tmpAssembly.setCreatedBy(createdBy);
+						tmpAssembly.setCreatedOn(createdOn);
+						tmpAssembly.setSheetName(sheetName);
+						tmpAssembly.setParentName(parentName);
+						tmpAssembly.setChildNames(child);
+						tmpAssembly.setAssemblyType(assemblyType);
+						tmpAssembly.setExtSystem(extSystem);
+						tmpAssembly.setExtObject(extObject);
+						tmpAssembly.setExtIdentifier(relationship.getGlobalId().getWrappedValue());
+						tmpAssembly.setDescription(description);
+						loggerStrings.rowWritten();
+					}
+				}
+				
+				
+			}
+			catch(Exception ex)
+			{
+				loggerStrings.error(ex);
+			}
+		}
+	}
+
+
+	private static ArrayList<IfcRelationship> assemblyRelationshipsFromModel(
+			IfcModelInterface model)
+	{
+		ArrayList<IfcRelationship> relationships = 
+				new ArrayList<IfcRelationship>();
+		for(IfcRelAggregates relAgg : model.getAll(IfcRelAggregates.class))
+			if (IfcToAssembly.relationIsAssembly(relAgg))
+				relationships.add(relAgg);
+				
+		for(IfcRelNests relNest : model.getAll(IfcRelNests.class))
+			if (IfcToAssembly.relationIsAssembly(relNest))
+				relationships.add(relNest);
+		return relationships;
+	}
+
+	private static void serializeMaterialLayerAssemblies(
+			IfcModelInterface model, LogHandler loggerStrings,
+			COBIEType.Assemblies assemblies)
+	{
+		String name;
+		String createdBy;
+		Calendar createdOn;
+		String sheetName;
+		String parentName;
+		String childNames;
+		String assemblyType;
+		String extSystem;
+		String description;
+		String extObject = IfcMaterialLayerSet.class.getSimpleName();
+		AssemblyType tmpAssembly;
+		IfcOwnerHistory oh = COBieUtility.firstOwnerHistoryFromModel(model);
 		for(IfcMaterialLayerSet layerSet : model.getAll(IfcMaterialLayerSet.class))
 		{
 			try
@@ -137,52 +296,70 @@ public class IfcToAssembly
 			
 			
 		}
-		ArrayList<IfcRelationship> relationships = 
-				new ArrayList<IfcRelationship>();
-		for(IfcRelAggregates relAgg : model.getAll(IfcRelAggregates.class))
-			if (IfcToAssembly.relationIsAssembly(relAgg))
-				relationships.add(relAgg);
-				
-		for(IfcRelNests relNest : model.getAll(IfcRelNests.class))
-			if (IfcToAssembly.relationIsAssembly(relNest))
-				relationships.add(relNest);
-				
-		for (IfcRelationship relationship : relationships)
+	}
+	
+	private static void serializeMaterialLayerAssembliesOneRelationPairPerRow(
+			IfcModelInterface model, LogHandler loggerStrings,
+			COBIEType cobie)
+	{
+		COBIEType.Assemblies assemblies = cobie.getAssemblies();
+		String name;
+		String createdBy;
+		Calendar createdOn;
+		String sheetName;
+		String parentName;
+		String childNames;
+		String assemblyType;
+		String extSystem;
+		String description;
+		String extObject = IfcMaterialLayerSet.class.getSimpleName();
+		AssemblyType tmpAssembly;
+		IfcOwnerHistory oh = COBieUtility.firstOwnerHistoryFromModel(model);
+		for(IfcMaterialLayerSet layerSet : model.getAll(IfcMaterialLayerSet.class))
 		{
 			try
 			{
-				tmpAssembly = assemblies.addNewAssembly();
-				name = IfcToAssembly.nameFromRelationship(relationship);
-				createdBy = COBieUtility.getEmailFromOwnerHistory(oh);
-				createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
-				sheetName = IfcToAssembly.sheetNameFromRelationship(relationship);
-				parentName = IfcToAssembly.parentNameFromRelationship(relationship);
-				childNames = IfcToAssembly.childNamesFromRelationship(relationship);
-				assemblyType = IfcToAssembly.assemblyTypeFromRelationship(relationship);
-				extSystem = COBieUtility.getApplicationName(oh);
-				extObject = COBieUtility.extObjectFromRelationship(relationship);
-				description = IfcToAssembly.descriptionFromRelationship(relationship);	
+				ArrayList<String> children = IfcToAssembly.childNameArrayFromMaterialLayerSet(layerSet);
+				sheetName = IfcToAssembly.sheetNameFromMaterialLayerSet(layerSet);
+				parentName = IfcToAssembly.parenetNameFromMaterialLayerSet(layerSet);
+				if (IfcToAssembly.parentIntegrityValid(parentName, cobie, sheetName))
+				{
+					for(String child : children)
+					{
+						tmpAssembly = assemblies.addNewAssembly();
+						name = IfcToAssembly.nameFromMaterialLayerSet(layerSet);
+						createdBy = COBieUtility.getEmailFromOwnerHistory(oh);
+						createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
+						sheetName = IfcToAssembly.sheetNameFromMaterialLayerSet(layerSet);
+						parentName = IfcToAssembly.parenetNameFromMaterialLayerSet(layerSet);
+						assemblyType = IfcToAssembly.assemblyTypeFromMaterialLayerSet(layerSet);
+						extSystem = COBieUtility.getApplicationName(oh);
+						description = IfcToAssembly.descriptionFromMaterialLayerSet(layerSet);
+						
+						tmpAssembly.setName(name);
+						tmpAssembly.setCreatedBy(createdBy);
+						tmpAssembly.setCreatedOn(createdOn);
+						tmpAssembly.setSheetName(sheetName);
+						tmpAssembly.setParentName(parentName);
+						tmpAssembly.setChildNames(child);
+						tmpAssembly.setAssemblyType(assemblyType);
+						tmpAssembly.setExtSystem(extSystem);
+						tmpAssembly.setExtObject(extObject);
+						tmpAssembly.setExtIdentifier(COBieUtility.COBieNA);
+						tmpAssembly.setDescription(description);
+						loggerStrings.rowWritten();
+					}
+				}
 				
-				tmpAssembly.setName(name);
-				tmpAssembly.setCreatedBy(createdBy);
-				tmpAssembly.setCreatedOn(createdOn);
-				tmpAssembly.setSheetName(sheetName);
-				tmpAssembly.setParentName(parentName);
-				tmpAssembly.setChildNames(childNames);
-				tmpAssembly.setAssemblyType(assemblyType);
-				tmpAssembly.setExtSystem(extSystem);
-				tmpAssembly.setExtObject(extObject);
-				tmpAssembly.setExtIdentifier(relationship.getGlobalId().getWrappedValue());
-				tmpAssembly.setDescription(description);
-				loggerStrings.rowWritten();
+				
 			}
 			catch(Exception ex)
 			{
 				loggerStrings.error(ex);
 			}
+			
+			
 		}
-		loggerStrings.sheetWritten();
-		
 	}
 	
 	protected static String namePrefixFromRelationship(IfcRelationship relation)
@@ -281,6 +458,20 @@ public class IfcToAssembly
 		return COBieUtility.getCOBieString(strChildren);
 	}
 	
+	protected static ArrayList<String> childNameArrayFromMaterialLayerSet(IfcMaterialLayerSet layerSet)
+	{
+		ArrayList<String> children = new ArrayList<String>();
+		for(IfcMaterialLayer layer : layerSet.getMaterialLayers())
+		{
+			IfcMaterial material =
+					layer.getMaterial();
+			String materialName = material.getName();
+			if (!children.contains(materialName))
+				children.add(materialName);
+		}
+		return children;
+	}
+	
 	protected static String childNamesFromRelationship(IfcRelationship relationship)
 	{
 		String strChildren = "";
@@ -306,6 +497,31 @@ public class IfcToAssembly
 		}
 		strChildren = COBieUtility.delimittedStringFromArrayList(children);
 		return COBieUtility.getCOBieString(strChildren);
+	}
+	
+	protected static ArrayList<String> childNameArrayFromRelationship(IfcRelationship relationship)
+	{
+		ArrayList<String> children = new ArrayList<String>();
+		if (relationship instanceof IfcRelAggregates)
+		{
+			IfcRelAggregates relAgg = (IfcRelAggregates) relationship;
+			for(IfcObjectDefinition objDef : relAgg.getRelatedObjects())
+			{
+				if (IfcToComponent.isAssetComponent(objDef)|| objDef instanceof IfcSpace)
+					children.add(objDef.getName());
+			}
+
+		}
+		else if (relationship instanceof IfcRelNests)
+		{
+			IfcRelNests relNests = (IfcRelNests) relationship;
+			for(IfcObjectDefinition objDef : relNests.getRelatedObjects())
+			{
+				if (IfcToComponent.isAssetComponent(objDef) || objDef instanceof IfcSpace)
+					children.add(objDef.getName());
+			}
+		}
+		return children;
 	}
 	
 	protected static String assemblyTypeFromRelationship(IfcRelationship relationship)

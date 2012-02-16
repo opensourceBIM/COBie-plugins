@@ -139,8 +139,7 @@ public class FacilityDeserializer
 								.buildingFromFacility(facility);
 						bldg.setGlobalId(buildingGuid);
 						bldg.setOwnerHistory(ownerHistory);
-						IfcClassificationReference classification = FacilityDeserializer
-								.classificationReferenceFromFacility(facility);
+						IfcClassificationReference classification = classificationReferenceFromFacility(facility);
 						tmpOid = model.add(bldg, this.CobieOidProvider);
 						this.setFacilityAggregates(project, site, bldg);
 						if (classification != null)
@@ -208,9 +207,9 @@ public class FacilityDeserializer
 			return null;
 	}
 	
-	protected static IfcClassificationReference classificationReferenceFromFacility(FacilityType facility)
+	protected  IfcClassificationReference classificationReferenceFromFacility(FacilityType facility)
 	{
-		return ClassificationHandler.classificationReferenceFromString(facility.getCategory());
+		return this.classificationHandler.classificationReferenceFromString(facility.getCategory());
 	}
 	
 	protected static IfcSite siteFromFacility(FacilityType facility)

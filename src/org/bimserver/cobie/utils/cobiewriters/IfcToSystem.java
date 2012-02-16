@@ -23,6 +23,7 @@ import org.bimserver.cobie.cobielite.COBIEType;
 import org.bimserver.cobie.cobielite.SystemType;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.COBieUtility.CobieSheetName;
+import org.bimserver.cobie.utils.deserializer.SystemDeserializer;
 import org.bimserver.cobie.utils.stringwriters.IfcSingleValueToCOBieString;
 import org.bimserver.models.ifc2x3.IfcGroup;
 import org.bimserver.models.ifc2x3.IfcObjectDefinition;
@@ -35,6 +36,7 @@ import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
 import org.bimserver.models.ifc2x3.IfcRelAssignsToGroup;
 import org.bimserver.models.ifc2x3.IfcRelDefines;
 import org.bimserver.models.ifc2x3.IfcRelDefinesByProperties;
+import org.bimserver.models.ifc2x3.IfcSystem;
 import org.bimserver.plugins.serializers.IfcModelInterface;
 import org.eclipse.emf.common.util.EList;
 import org.slf4j.Logger;
@@ -62,7 +64,72 @@ public class IfcToSystem
 	{
 		return systemIfcPropertySingleValueNames;
 	}
-	public static COBIEType writeSystemsToCOBie(COBIEType cType, IfcModelInterface model)
+	public static COBIEType writeSystemsToCOBieComponentPerRow(COBIEType cType, IfcModelInterface model)
+	{
+		LogHandler loggerHandler = new LogHandler(sheetName,LOGGER);
+		loggerHandler.sheetWriteBegin();
+		COBIEType.Systems systems =
+				cType.addNewSystems();
+		String name = "";
+		String createdBy = "";
+		Calendar createdOn;
+		String category = "";
+		ArrayList<String> componentNames = new ArrayList<String>();
+		String extSystem = "";
+		String extObject = "";
+		String extIdentifier = "";
+		String description = "";
+		IfcOwnerHistory oh;
+		ArrayList<String> existingSystems = new ArrayList<String>();
+		for (IfcSystem ifcGroup : model.getAllWithSubTypes(IfcSystem.class))
+		{
+			try
+			{
+				name = IfcToSystem.nameFromGroup(ifcGroup);
+				String systemKey = SystemDeserializer.systemKeyFromSystem(ifcGroup);
+				extObject = IfcToSystem.extObjectFromGroup(ifcGroup);
+				if (!existingSystems.contains(systemKey) && 
+						IfcToSystem.getSystemIfcClassNames().contains(extObject))
+				{
+					existingSystems.add(systemKey);
+					oh = ifcGroup.getOwnerHistory();
+					createdBy = COBieUtility.getEmailFromOwnerHistory(oh);
+					createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
+					category = IfcToSystem.categoryFromGroup(ifcGroup);
+					componentNames = IfcToSystem.componentNameArrayFromGroup(ifcGroup);
+					
+					extSystem = COBieUtility.getApplicationName(oh);
+					extIdentifier = COBieUtility.identifierFromObjectDefinition(ifcGroup);
+					description = IfcToSystem.descriptionFromGroup(ifcGroup);
+					for(String componentName : componentNames)
+					{
+						SystemType newSystem =
+								systems.addNewSystem();
+						newSystem.setName(name);
+						newSystem.setCreatedBy(createdBy);
+						newSystem.setCreatedOn(createdOn);
+						newSystem.setCategory(category);
+						newSystem.setComponentNames(componentName);
+						newSystem.setExtSystem(extSystem);
+						newSystem.setExtObject(extObject);
+						newSystem.setExtIdentifier(extIdentifier);
+						newSystem.setDescription(description);
+						loggerHandler.rowWritten();
+					}
+				}		
+			}
+			catch(Exception ex)
+			{
+				loggerHandler.error(ex);
+			}
+			
+		}
+		cType = revitWriteSystemsToCOBieComponentPerRow(cType,model,loggerHandler);
+		loggerHandler.sheetWritten();
+		return cType;			
+	}
+	
+	public static COBIEType writeSystemsToCOBieComponentDelimComponents(COBIEType cType, IfcModelInterface model)
 	{
 		LogHandler loggerHandler = new LogHandler(sheetName,LOGGER);
 		loggerHandler.sheetWriteBegin();
@@ -79,21 +146,23 @@ public class IfcToSystem
 		String description = "";
 		IfcOwnerHistory oh;
 		ArrayList<String> existingSystems = new ArrayList<String>();
-		for (IfcGroup ifcGroup : model.getAll(IfcGroup.class))
+		for (IfcSystem ifcGroup : model.getAllWithSubTypes(IfcSystem.class))
 		{
 			try
 			{
 				name = IfcToSystem.nameFromGroup(ifcGroup);
+				String systemKey = SystemDeserializer.systemKeyFromSystem(ifcGroup);
 				extObject = IfcToSystem.extObjectFromGroup(ifcGroup);
-				if (!existingSystems.contains(name) && 
+				if (!existingSystems.contains(systemKey) && 
 						IfcToSystem.getSystemIfcClassNames().contains(extObject))
 				{
-					existingSystems.add(name);
+					existingSystems.add(systemKey);
 					oh = ifcGroup.getOwnerHistory();
 					createdBy = COBieUtility.getEmailFromOwnerHistory(oh);
 					createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
 					category = IfcToSystem.categoryFromGroup(ifcGroup);
 					componentNames = IfcToSystem.componentsFromGroup(ifcGroup);
+					
 					extSystem = COBieUtility.getApplicationName(oh);
 					extIdentifier = COBieUtility.identifierFromObjectDefinition(ifcGroup);
 					description = IfcToSystem.descriptionFromGroup(ifcGroup);
@@ -110,6 +179,7 @@ public class IfcToSystem
 					newSystem.setExtIdentifier(extIdentifier);
 					newSystem.setDescription(description);
 					loggerHandler.rowWritten();
+
 				}		
 			}
 			catch(Exception ex)
@@ -118,12 +188,12 @@ public class IfcToSystem
 			}
 			
 		}
-		cType = altWriteSystemsToCOBie(cType,model,loggerHandler);
+		cType = revitWriteSystemsToCOBieDelimComponents(cType,model,loggerHandler);
 		loggerHandler.sheetWritten();
 		return cType;			
 	}
 	
-	private static COBIEType altWriteSystemsToCOBie(COBIEType cType, IfcModelInterface model,LogHandler loggerHandler)
+	private static COBIEType revitWriteSystemsToCOBieDelimComponents(COBIEType cType, IfcModelInterface model,LogHandler loggerHandler)
 	{
 		COBIEType.Systems systems =
 				cType.getSystems();
@@ -214,6 +284,100 @@ public class IfcToSystem
 		return cType;			
 	}
 	
+	private static COBIEType revitWriteSystemsToCOBieComponentPerRow(COBIEType cType, IfcModelInterface model,LogHandler loggerHandler)
+	{
+		COBIEType.Systems systems =
+				cType.getSystems();
+		String name = "";
+		String createdBy = "";
+		Calendar createdOn;
+		String category = "";
+		ArrayList<String> componentNames;
+		String extSystem = "";
+		String extObject = "";
+		String extIdentifier = "";
+		String description = "";
+		IfcOwnerHistory oh;
+		IfcSingleValueToCOBieString vStr;
+		String propertyName = "";
+		ArrayList<String> existingSystems = new ArrayList<String>();
+		ArrayList<IfcProduct> componentProducts =
+				IfcToComponent.getComponentProducts(cType, model);
+		ArrayList<String> compProdNames =
+				new ArrayList<String>();
+		for (IfcProduct product : componentProducts)
+			compProdNames.add(product.getName());
+		for (IfcProduct component : componentProducts)
+		{
+			for (IfcRelDefines relDefines : component.getIsDefinedBy())
+			{
+				if (relDefines instanceof IfcRelDefinesByProperties)
+				{
+					IfcRelDefinesByProperties relDefByProp =
+							(IfcRelDefinesByProperties) relDefines;
+					IfcPropertySetDefinition propertySetDef  =
+							relDefByProp.getRelatingPropertyDefinition();
+					if (propertySetDef instanceof IfcPropertySet)
+					{
+						IfcPropertySet pSet =
+								(IfcPropertySet) propertySetDef;
+						for (IfcProperty property : pSet.getHasProperties())
+						{
+							propertyName = property.getName();
+							if (property instanceof IfcPropertySingleValue
+									&& IfcToSystem.getSystemIfcPropertySingleValueNames().contains(propertyName))
+							{
+								IfcPropertySingleValue val =
+										(IfcPropertySingleValue) property;
+								vStr = new IfcSingleValueToCOBieString(val);
+								name = vStr.getValueString();
+								category = IfcToSystem.categoryFromPropertySingleValue(val, pSet.getHasProperties());
+								String systemKey = SystemDeserializer.systemKeyFromNameCategory(name, category);
+								if (!existingSystems.contains(systemKey))
+								{
+									
+									try {
+										existingSystems.add(systemKey);
+										extObject = IfcToSystem.extObjectFromPropertySingleValue(val);
+										oh = IfcToContact.getFirstOwnerHistory(model);
+										createdBy = COBieUtility.getEmailFromOwnerHistory(oh);
+										createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
+										componentNames = IfcToSystem.componentArrayFromRelDefinesByProperties(relDefByProp,compProdNames);
+										extSystem = COBieUtility.getApplicationName(oh);
+										extIdentifier = COBieUtility.COBieNA;
+										description = IfcToSystem.descriptionFromPropertySingleValue(val);
+										for(String componentName : componentNames)
+										{
+											SystemType newSystem =
+													systems.addNewSystem();
+											newSystem.setName(name);
+											newSystem.setCreatedBy(createdBy);
+											newSystem.setCreatedOn(createdOn);
+											newSystem.setCategory(category);
+											newSystem.setComponentNames(componentName);
+											newSystem.setExtSystem(extSystem);
+											newSystem.setExtObject(extObject);
+											newSystem.setExtIdentifier(extIdentifier);
+											newSystem.setDescription(description);
+											loggerHandler.rowWritten();
+										}
+									} 
+									catch (Exception e) 
+									{
+										// TODO Auto-generated catch block
+										loggerHandler.error(e);
+									}
+								}
+							}
+						}
+						
+					}
+				}
+			}
+		}
+		return cType;			
+	}
+	
 	protected static String nameFromGroup(IfcGroup system)
 	{
 		String name = system.getName();
@@ -222,19 +386,23 @@ public class IfcToSystem
 	
 	protected static String componentsFromGroup(IfcGroup system)
 	{
-		String components = "";
+		ArrayList<String> components = componentNameArrayFromGroup(system);
+		return COBieUtility.delimittedStringFromArrayList(components);
+	}
+	
+	protected static ArrayList<String> componentNameArrayFromGroup(IfcGroup system)
+	{
+		ArrayList<String> components = new ArrayList<String>();
 		IfcRelAssignsToGroup relGroup =
 				system.getIsGroupedBy();
 		for(IfcObjectDefinition def : relGroup.getRelatedObjects())
 		{
 			if(IfcToComponent.isAssetComponent(def))
 			{
-				components += def.getName() + ",";
+				components.add(COBieUtility.getCOBieString(def.getName() + COBieUtility.getCOBieDelim()));
 			}
 		}
-		if (components.endsWith(","))
-			components = components.substring(0,components.length()-1);
-		return COBieUtility.getCOBieString(components);
+		return components;
 	}
 	
 	protected static String componentsFromPropertySingleValue(IfcPropertySingleValue val)
@@ -246,7 +414,13 @@ public class IfcToSystem
 	protected static String componentsFromRelDefinesByProperties
 	(IfcRelDefinesByProperties rel,ArrayList<String> componentNames)
 	{
-		String components = "";
+		ArrayList<String> components = componentArrayFromRelDefinesByProperties(rel,componentNames);
+		return COBieUtility.delimittedStringFromArrayList(components);
+	}
+	
+	protected static ArrayList<String> componentArrayFromRelDefinesByProperties
+	(IfcRelDefinesByProperties rel,ArrayList<String> componentNames)
+	{
 		String name = "";
 		ArrayList<String> addedComponents = new ArrayList<String>();
 		for (IfcObjectDefinition obj : rel.getRelatedObjects())
@@ -256,12 +430,10 @@ public class IfcToSystem
 					!addedComponents.contains(name))
 			{
 				addedComponents.add(name);
-				components += name + ",";
 			}
 		}
-		if (components.endsWith(","))
-			components = components.substring(0,components.length()-1);
-		return COBieUtility.getCOBieString(components);
+
+		return addedComponents;
 	}
 	
 	protected static String nameFromPropertySingleValue(IfcPropertySingleValue val)

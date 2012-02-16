@@ -29,13 +29,17 @@ import org.bimserver.cobie.cobielite.COBIEDocument;
 import org.bimserver.cobie.cobielite.COBIEType;
 import org.bimserver.cobie.utils.deserializer.FromCOBieToIfc;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadSheetToComponents;
+import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToAssemblies;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToAttributes;
+import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToConnections;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToContacts;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToDocuments;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToFacilities;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToFloors;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToSpaces;
+import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToSystems;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToTypes;
+import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToZones;
 import org.bimserver.plugins.deserializers.DeserializeException;
 import org.bimserver.plugins.deserializers.EmfDeserializer;
 import org.bimserver.plugins.schema.SchemaDefinition;
@@ -54,7 +58,8 @@ public class COBieDeserializer extends EmfDeserializer
 	private Workbook xlWorkbook = null;
 	private COBIEDocument COBie;
 	private final File configurationFile;
-	
+	private static final String LOGGER_STATUS_SPREADSHEET_BEGIN_MSG = "Deserializing COBie SpreadsheetML to COBieLite XML.";
+	private static final String LOGGER_STATUS_SPREADSHEET_END_MSG = "COBie SpreadsheetML converted to COBieLite XML.";
 	public COBieDeserializer(File configurationFile) 
 	{
 		this.configurationFile = configurationFile;
@@ -122,15 +127,23 @@ public class COBieDeserializer extends EmfDeserializer
 	 * 		 3:	Parallelize this function
 	 */
 	private void populateCobieDocument() {
+		LOGGER.info(LOGGER_STATUS_SPREADSHEET_BEGIN_MSG);
 		 	SpreadsheetToContacts.writeContactsToCOBie(this.GetCobie(), this.xlWorkbook);
 		 	SpreadsheetToFacilities.writeFacilitiesToCOBie(this.GetCobie(),this.xlWorkbook);
 		 	SpreadsheetToFloors.writeFloorsToCOBie(this.GetCobie(),this.xlWorkbook);
 		 	SpreadsheetToSpaces.writeSpacesToCOBie(this.GetCobie(),this.xlWorkbook);
+		 	SpreadsheetToZones.writeZonesToCOBie(this.GetCobie(), this.xlWorkbook);
 		 	SpreadsheetToTypes.writeTypesToCOBie(this.GetCobie(), this.xlWorkbook);
 		 	SpreadSheetToComponents.writeComponentsToCOBie
 		 		(this.GetCobie(), this.xlWorkbook);
-		 	SpreadsheetToDocuments.writeDocumentsToCOBie(this.GetCobie(), this.xlWorkbook);
+		 	SpreadsheetToSystems.writeSystemsToCOBie(this.GetCobie(), this.xlWorkbook);
+		 	SpreadsheetToAssemblies.writeAssembliesToCOBie(this.GetCobie(),this.xlWorkbook);
 		 	SpreadsheetToAttributes.writeAttributesToCOBie(this.GetCobie(), this.xlWorkbook);
+		 	SpreadsheetToConnections.writeConnectionsToCOBie(this.GetCobie(), this.xlWorkbook);
+		 	SpreadsheetToDocuments.writeDocumentsToCOBie(this.GetCobie(), this.xlWorkbook);
+
+
+		 LOGGER.info(LOGGER_STATUS_SPREADSHEET_END_MSG);
 	}
 	
 	

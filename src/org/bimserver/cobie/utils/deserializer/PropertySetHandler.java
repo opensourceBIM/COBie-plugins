@@ -97,49 +97,6 @@ public class PropertySetHandler
 
 	}
 	
-	public void addPropertiesAndPropertySetToObject(IfcObject object,
-			IfcPropertySetDefinition propertySetDefinition, boolean isCOBiePset,
-			String guid)
-	{
-		propertySetDefinition.setGlobalId(guidProvider.guidFromExternalIdentifier(guid));
-		IfcOwnerHistory ownerHistory = this.ownerHistoryProvider.DefaultOwnerHistory();
-		propertySetDefinition.setOwnerHistory(ownerHistory);
-		IfcRelDefinesByProperties relDefByProperties = Ifc2x3Factory.eINSTANCE
-				.createIfcRelDefinesByProperties();
-		relDefByProperties.setOwnerHistory(ownerHistory);
-		relDefByProperties.setGlobalId(this.guidProvider.newGuid());
-		if (isCOBiePset)
-		{
-			relDefByProperties
-					.setName(getRelDefByproPertiesCobieNameDescription());
-			relDefByProperties
-					.setDescription(getRelDefByproPertiesCobieNameDescription());
-		}
-
-		if (propertySetDefinition instanceof IfcPropertySet)
-		{
-			IfcPropertySet propertySet = (IfcPropertySet) propertySetDefinition;
-			for (IfcProperty property : propertySet.getHasProperties())
-			{
-				addPropertyContentsToModel(property);
-				model.add(property, this.CobieOidProvider);
-			}
-
-			model.add(propertySet, CobieOidProvider);
-		} else if (propertySetDefinition instanceof IfcElementQuantity)
-		{
-			IfcElementQuantity elementQuantity = (IfcElementQuantity) propertySetDefinition;
-			for (IfcPhysicalQuantity physicalQuantity : elementQuantity
-					.getQuantities())
-				model.add(physicalQuantity, CobieOidProvider);
-			model.add(elementQuantity, CobieOidProvider);
-		}
-
-		relDefByProperties.setRelatingPropertyDefinition(propertySetDefinition);
-		model.add(relDefByProperties, CobieOidProvider);
-		object.getIsDefinedBy().add(relDefByProperties);
-	}
-
 	public void addPropertiesAndPropertySetToTypeObject(IfcTypeObject object,
 			IfcPropertySetDefinition propertySetDefinition, boolean isCOBiePset)
 	{
@@ -220,10 +177,13 @@ public class PropertySetHandler
 		try
 		{
 			String guid = propertySetDefinition.getGlobalId().getWrappedValue();
-			if (IfcGuidHandler.isValidGuid(guid))
+			/*if (IfcGuidHandler.isValidGuid(guid))
 			{
+				model.indexGuids();
 				isInModel = model.contains(guid);
-			}
+			}*/
+			if (guidProvider.guidInModelAndIsAttachedToPropertySet(guid))
+				isInModel = true;
 		} catch (Exception e)
 		{
 

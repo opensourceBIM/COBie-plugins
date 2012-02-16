@@ -20,8 +20,9 @@ import java.util.ArrayList;
 import org.bimserver.cobie.cobielite.COBIEType;
 import org.bimserver.cobie.cobielite.ComponentType;
 import org.bimserver.cobie.cobielite.DocumentType;
+import org.bimserver.cobie.cobielite.SpaceType;
 import org.bimserver.models.ifc2x3.IfcProduct;
-
+import org.bimserver.cobie.cobielite.TypeType;
 
 public class COBieQuery
 {
@@ -59,5 +60,50 @@ public class COBieQuery
 				isInCOBie = true;
 		}
 		return isInCOBie;
+	}
+	
+	public static boolean isNameInComponent(String name, COBIEType cobie)
+	{
+		boolean isInComponent = false;
+		try
+		{
+			COBIEType.Components components = cobie.getComponents();
+			for(ComponentType component : components.getComponentArray())
+				if (component.getName().equals(name))
+					isInComponent=true;
+		}
+		catch(Exception e)
+		{
+			
+		}
+		return isInComponent;
+	}
+	
+	public static boolean isNameInType(String name, COBIEType cobie)
+	{
+		boolean isInType = false;
+		try
+		{
+			COBIEType.Types types = cobie.getTypes();
+			for(TypeType type: types.getTypeArray())
+				if (type.getName().equals(name))
+					isInType=true;
+		}
+		catch(Exception e)
+		{
+			
+		}
+		return isInType;
+	}
+	
+	public static String spaceNameFromGuid(String guid, COBIEType.Spaces spaces)
+	{
+		String name = "";
+		for(SpaceType space : spaces.getSpaceArray())
+		{
+			if (space.getExtIdentifier().equals(guid) && name.length()==0)
+				name = space.getName();
+		}
+		return COBieUtility.getCOBieString(name);
 	}
 }

@@ -16,6 +16,7 @@ import org.bimserver.models.ifc2x3.IfcObject;
 import org.bimserver.models.ifc2x3.IfcOwnerHistory;
 import org.bimserver.models.ifc2x3.IfcProperty;
 import org.bimserver.models.ifc2x3.IfcPropertySet;
+import org.bimserver.models.ifc2x3.IfcTypeObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,12 +62,12 @@ public class AttributeDeserializer
 					attribute.getExtSystem();
 					attribute.getExtObject();
 					externalId = attribute.getExtIdentifier();
-					IfcGloballyUniqueId guid = ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(externalId);
+					IfcGloballyUniqueId guid = ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(externalId,true);
 					attribute.getDescription();
 					attribute.getAllowedValues();
-					if (ifcCommonHandler.getGuidHandler().guidInModelAndIsPropertySet(externalId))
+					if (ifcCommonHandler.getGuidHandler().guidInModelAndIsAttachedToPropertySet(externalId))
 					{
-						pSet = (IfcPropertySet) model.get(externalId);
+						pSet = ifcCommonHandler.getGuidHandler().getPropertySetFromGuid(externalId);
 						IfcProperty property = AttributeDeserializer
 								.propertyFromAttribute(attribute);
 						if (!ifcCommonHandler.getPropertySetHandler().isPropertyInPropertySet(property, pSet))
@@ -88,6 +89,11 @@ public class AttributeDeserializer
 						{
 							IfcObject ifcObj = (IfcObject) ideObj;
 							this.ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToObject(ifcObj, pSet, false);
+						}
+						else if (ideObj instanceof IfcTypeObject)
+						{
+							IfcTypeObject ifcType = (IfcTypeObject) ideObj;
+							this.ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToTypeObject(ifcType, pSet, false);
 						}
 					}
 
@@ -194,9 +200,9 @@ public class AttributeDeserializer
 		}
 	}
 	
-	public static IfcClassificationReference classificationReferenceFromAttribute(AttributeType attribute)
+	public  IfcClassificationReference classificationReferenceFromAttribute(AttributeType attribute)
 	{
-		return ClassificationHandler.classificationReferenceFromString(attribute.getCategory());
+		return ifcCommonHandler.getClassificationHandler().classificationReferenceFromString(attribute.getCategory());
 	}
 	
 	public static IfcProperty propertyFromAttribute(AttributeType attribute) throws Exception

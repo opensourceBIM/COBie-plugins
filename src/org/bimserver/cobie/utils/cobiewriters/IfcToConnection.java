@@ -23,6 +23,7 @@ import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.COBieUtility.CobieSheetName;
 import org.bimserver.models.ifc2x3.IfcElement;
 import org.bimserver.models.ifc2x3.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3.IfcPort;
 import org.bimserver.models.ifc2x3.IfcRelConnects;
 import org.bimserver.models.ifc2x3.IfcRelConnectsElements;
 import org.bimserver.models.ifc2x3.IfcRelConnectsPorts;
@@ -45,8 +46,11 @@ public class IfcToConnection
 		Calendar createdOn;
 		String connectionType = "";
 		String sheetName = "";
+		String realizingElement="";
 		String rowName1 = "";
 		String rowName2 = "";
+		String portName1 = "";
+		String portName2 = "";
 		String extSystem = "";
 		String extObject = "";
 		String extIdentifier = "";
@@ -63,10 +67,9 @@ public class IfcToConnection
 		{
 			connections = cType.addNewConnections();
 		}
-		for(IfcRelConnects rel : model.getAll(IfcRelConnects.class))
+		for(IfcRelConnects rel : model.getAllWithSubTypes(IfcRelConnects.class))
 		{
-			if (rel instanceof IfcRelConnectsElements || 
-					rel instanceof IfcRelConnectsPorts)
+			if (rel instanceof IfcRelConnectsPorts)
 			{
 				try
 				{
@@ -79,9 +82,9 @@ public class IfcToConnection
 					sheetName = IfcToConnection.sheetNameFromRelConnects(rel);
 					rowName1 = IfcToConnection.rowName1FromRelConnects(rel);
 					rowName2 = IfcToConnection.rowName2FromRelConnects(rel);
-					IfcToConnection.realizingElementFromRelConnects(rel);
-					IfcToConnection.portName1FromRelConnects(rel);
-					IfcToConnection.portName2FromRelConnects(rel);
+					realizingElement = IfcToConnection.realizingElementFromRelConnects(rel);
+					portName1 = IfcToConnection.portName1FromRelConnects(rel);
+					portName2 = IfcToConnection.portName2FromRelConnects(rel);
 					extSystem = COBieUtility.getApplicationName(oh);
 					extObject = COBieUtility.extObjectFromRelationship(rel);
 					extIdentifier = COBieUtility.identifierFromRelationship(rel);
@@ -91,9 +94,12 @@ public class IfcToConnection
 					tempConnection.setCreatedBy(createdBy);
 					tempConnection.setCreatedOn(createdOn);
 					tempConnection.setConnectionType(connectionType);
-					tempConnection.setSheetNames(sheetName);
+					tempConnection.setSheetName(sheetName);
 					tempConnection.setRowName1(rowName1);
 					tempConnection.setRowName2(rowName2);
+					tempConnection.setRealizingElement(realizingElement);
+					tempConnection.setPortName1(portName1);
+					tempConnection.setPortName2(portName2);	
 					tempConnection.setExtSystem(extSystem);
 					tempConnection.setExtObject(extObject);
 					tempConnection.setExtIdentifier(extIdentifier);
@@ -139,15 +145,15 @@ public class IfcToConnection
 			predefinedType = COBieUtility.valueOfAttribute(relatingElement, "PredefinedType");
 			if (predefinedType != null && predefinedType.length()>0)
 			{
-				sheetName = IfcToAssembly.typeSheetName;
+				sheetName = COBieUtility.CobieSheetName.Type.toString();
 			}
 			else
-				sheetName = IfcToAssembly.componentSheetName;
+				sheetName = COBieUtility.CobieSheetName.Component.toString();
 
 		}
 		else if (connects instanceof IfcRelConnectsPorts)
 		{
-			sheetName = IfcToAssembly.componentSheetName;
+			sheetName = COBieUtility.CobieSheetName.Component.toString();
 		}
 		return COBieUtility.getCOBieString(sheetName);
 	}
@@ -165,7 +171,8 @@ public class IfcToConnection
 		{
 			IfcRelConnectsPorts relConnPorts =
 					(IfcRelConnectsPorts) connects;
-			rowName1 = relConnPorts.getRelatingPort().getName();
+			rowName1 = relatingElementNameFromRelConnectsPorts(relConnPorts);
+			
 		}
 		return COBieUtility.getCOBieString(rowName1);
 	}
@@ -183,9 +190,29 @@ public class IfcToConnection
 		{
 			IfcRelConnectsPorts relConnPorts =
 					(IfcRelConnectsPorts) connects;
-			rowName2 = relConnPorts.getRelatedPort().getName();
+			rowName2 = relatedElementNameFromRelConnectsPorts(relConnPorts);
+			
+			
 		}
 		return COBieUtility.getCOBieString(rowName2);
+	}
+	
+	protected static String relatingElementNameFromRelConnectsPorts(IfcRelConnectsPorts relPorts)
+	{
+		String name = "";
+		IfcPort relatingPort = relPorts.getRelatingPort();
+		if(relatingPort.getContainedIn() != null && relatingPort.getContainedIn().getRelatedElement() != null)
+			name = relatingPort.getContainedIn().getRelatedElement().getName();
+		return name;
+	}
+	
+	protected static String relatedElementNameFromRelConnectsPorts(IfcRelConnectsPorts relPorts)
+	{
+		String name = "";
+		IfcPort relatedPort = relPorts.getRelatedPort();
+		if(relatedPort!=null && relatedPort.getContainedIn() != null && relatedPort.getContainedIn().getRelatedElement() != null)
+			name = relatedPort.getContainedIn().getRelatedElement().getName();
+		return name;
 	}
 	
 	protected static String realizingElementFromRelConnects(IfcRelConnects connects)
@@ -195,7 +222,10 @@ public class IfcToConnection
 		{
 			IfcRelConnectsPorts relConnPorts =
 					(IfcRelConnectsPorts) connects;
-			realizingElement = relConnPorts.getRealizingElement().getName();
+			if (relConnPorts.getRealizingElement()!=null)
+				realizingElement = relConnPorts.getRealizingElement().getName();
+			else
+				realizingElement = null;
 		}
 		return COBieUtility.getCOBieString(realizingElement);
 	}
@@ -203,18 +233,28 @@ public class IfcToConnection
 	protected static String portName1FromRelConnects(IfcRelConnects connects)
 	{
 		String portName1 = "";
-		/*if (connects instanceof IfcRelConnectsPorts)
+		if (connects instanceof IfcRelConnectsPorts)
 		{
 			IfcRelConnectsPorts relConnPorts =
 					(IfcRelConnectsPorts) connects;
-			portName1 = relConnPorts.getRelatingPort().getName();
-		}*/
+			if (relConnPorts.getRelatingPort()!=null)
+				portName1 = relConnPorts.getRelatingPort().getName();
+			else portName1 = null;
+		}
 		return COBieUtility.getCOBieString(portName1);
 	}
 	
 	protected static String portName2FromRelConnects(IfcRelConnects connects)
 	{
 		String portName2 = "";
+		if (connects instanceof IfcRelConnectsPorts)
+		{
+			IfcRelConnectsPorts relConnPorts =
+					(IfcRelConnectsPorts) connects;
+			if (relConnPorts.getRelatedPort()!=null)
+				portName2 = relConnPorts.getRelatedPort().getName();
+			else portName2 = null;
+		}
 		return COBieUtility.getCOBieString(portName2);
 	}
 	

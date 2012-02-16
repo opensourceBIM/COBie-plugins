@@ -58,6 +58,10 @@ import org.slf4j.LoggerFactory;
  * to provide standard COBie SpreadsheetML serialization capabilities.  
  */
 public class COBieSerializer extends COBieLiteSerializer {
+	private static final String LOGGER_MESSAGE_RESPONSE_DONE_SUFFIX = "Done writing COBie to response stream.";
+	private static final String LOGGER_MESSAGE_RESPONSE_BEGIN_SUFFIX = "Begin writing COBie to response stream.";
+	private static final String LOGGER_MESSAGE_END_SUFFIX = "End Serializing COBie data to spreadsheetML";
+	private static final String LOGGER_MESSAGE_BEGIN_SUFFIX = "Begin Serializing COBie data to spreadsheetML";
 	private static final Logger LOGGER = LoggerFactory.getLogger(COBieSerializer.class);
 	private COBieSpreadSheet cobieS;
 	private PrintWriter out;
@@ -88,9 +92,9 @@ public class COBieSerializer extends COBieLiteSerializer {
 	private void writeCOBIE()
 	{
 		super.modelToCOBie();
-		LOGGER.info("Begin Serializing COBie data to spreadsheetML");
+		LOGGER.info(getLoggerMessageBegin());
 		this.writeCOBieToSpreadsheet();
-		LOGGER.info("End Serializing COBie data to spreadsheetML");
+		LOGGER.info(getLoggerMessageDone());
 		super.GetCobie().setNil();
 		System.gc();
 		Runtime.getRuntime().gc();
@@ -109,6 +113,12 @@ public class COBieSerializer extends COBieLiteSerializer {
 					LOGGER.error("", e);
 		}*/
 		//this.out.print(COBie.xmlText());
+	}
+	private String getLoggerMessageDone() {
+		return getLoggerPrefix()+LOGGER_MESSAGE_END_SUFFIX;
+	}
+	private String getLoggerMessageBegin() {
+		return getLoggerPrefix()+LOGGER_MESSAGE_BEGIN_SUFFIX;
 	}
 	/**
 	 * @param templatePath the path of the Excel template file (spreadsheetML only, no XLS or XLSX)
@@ -120,9 +130,9 @@ public class COBieSerializer extends COBieLiteSerializer {
 	private void writeCOBIE(String templatePath)
 	{
 		super.modelToCOBie();
-		LOGGER.info("Begin Serializing COBie data to spreadsheetML");
+		LOGGER.info(getLoggerMessageBegin());
 		this.writeCobieToSpreadsheet(templatePath);
-		LOGGER.info("End Serializing COBie data to spreadsheetML");
+		LOGGER.info(getLoggerMessageDone());
 		super.GetCobie().setNil();
 		System.gc();
 		Runtime.getRuntime().gc();
@@ -130,8 +140,10 @@ public class COBieSerializer extends COBieLiteSerializer {
 		try {
 			//StreamResult result = this.cobieS.getStreamResult();
 			//result.setWriter(this.out);
+			LOGGER.info(getResponseBeginMessage());
 			this.cobieS.gc();
 			this.cobieS.writeToOutputStreamB(this.out);
+			LOGGER.info(getResponseDoneMessage());
 			//this.out.print(this.cobieS.getXMLText());
 		} catch (TransformerFactoryConfigurationError e) {
 			// TODO Auto-generated catch block
@@ -142,6 +154,12 @@ public class COBieSerializer extends COBieLiteSerializer {
 		}*/
 		//this.out.print(COBie.xmlText());
 	}
+	private String getResponseDoneMessage() {
+		return getLoggerPrefix()+LOGGER_MESSAGE_RESPONSE_DONE_SUFFIX;
+	}
+	private String getResponseBeginMessage() {
+		return getLoggerPrefix()+LOGGER_MESSAGE_RESPONSE_BEGIN_SUFFIX;
+	}
 	
 	
 	/**
@@ -149,7 +167,7 @@ public class COBieSerializer extends COBieLiteSerializer {
 	 * Arraylist of Column Name, String Value maps (i.e. the rows and their column values).
 	 * This data structure is required by the COBieSpreadsheet class when it writes to a spreadsheet template.
 	 */
-	@SuppressWarnings("unchecked")
+
 	private Map <String,ArrayList<Map<String,String>>> cobieDocumentToStringMap()
 	{
 		 //if there is no data available then the try catch will handle the NullPointer exception 
@@ -365,7 +383,7 @@ public class COBieSerializer extends COBieLiteSerializer {
 			{
 				this.out.flush();
 				setMode(Mode.FINISHED);
-				LOGGER.error(e.getMessage());
+				LOGGER.error(getLoggerPrefix()+e.getMessage());
 				return false;
 			}
 
@@ -400,7 +418,7 @@ public class COBieSerializer extends COBieLiteSerializer {
 			{
 				this.out.flush();
 				setMode(Mode.FINISHED);
-				LOGGER.error(e.getMessage());
+				LOGGER.error(getLoggerPrefix()+e.getMessage());
 				return false;
 			}
 

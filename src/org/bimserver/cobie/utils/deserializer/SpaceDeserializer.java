@@ -86,8 +86,7 @@ public class SpaceDeserializer
 								createdBy, createdOn);
 						newSpace.setGlobalId(guid);
 						newSpace.setOwnerHistory(ownerHistory);
-						IfcClassificationReference classification = SpaceDeserializer
-								.classificationReferenceFromSpace(space);
+						IfcClassificationReference classification = classificationReferenceFromSpace(space);
 						IfcPropertySet psetSpaceCommon = SpaceDeserializer
 								.spaceCommonPropertySetFromSpace(space);
 						IfcElementQuantity psetBaseQuantities = SpaceDeserializer
@@ -198,9 +197,9 @@ public class SpaceDeserializer
 		return classification;
 	}
 	
-	public static IfcClassificationReference classificationReferenceFromSpace(SpaceType cobieSpace)
+	public  IfcClassificationReference classificationReferenceFromSpace(SpaceType cobieSpace)
 	{
-		return ClassificationHandler.classificationReferenceFromString(cobieSpace.getCategory());
+		return ifcCommonHandler.getClassificationHandler().classificationReferenceFromString(cobieSpace.getCategory());
 	}
 	
 	public static IfcPropertySet spaceCommonPropertySetFromSpace(SpaceType cobieSpace)

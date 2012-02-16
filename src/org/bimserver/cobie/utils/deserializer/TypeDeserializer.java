@@ -68,8 +68,7 @@ public class TypeDeserializer
 					IfcTypeObject newTypeObject = TypeDeserializer.typeObjectFromType(type);
 					if (newTypeObject != null && !model.containsType(name))
 					{
-						IfcClassificationReference classification = TypeDeserializer
-								.classificationReferenceFromType(type);
+						IfcClassificationReference classification = classificationReferenceFromType(type);
 						createdBy = type.getCreatedBy();
 						externalId = type.getExtIdentifier();
 						createdOn = type.getCreatedOn();
@@ -164,9 +163,9 @@ public class TypeDeserializer
 		return defaultTypeObj;
 	}
 	
-	public static IfcClassificationReference classificationReferenceFromType
+	public  IfcClassificationReference classificationReferenceFromType
 	(TypeType cobieType)
 	{
-		return ClassificationHandler.classificationReferenceFromString(cobieType.getCategory());
+		return ifcCommonHandler.getClassificationHandler().classificationReferenceFromString(cobieType.getCategory());
 	}
 }

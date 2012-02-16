@@ -11,7 +11,6 @@ package org.bimserver.cobie.cobielite.impl;
  *
  * This is a complex type.
  */
-@SuppressWarnings({"rawtypes","unchecked"})
 public class COBIETypeImpl extends org.apache.xmlbeans.impl.values.XmlComplexContentImpl implements org.bimserver.cobie.cobielite.COBIEType
 {
     private static final long serialVersionUID = 1L;
@@ -930,8 +929,7 @@ public class COBIETypeImpl extends org.apache.xmlbeans.impl.values.XmlComplexCon
         /**
          * Gets array of all "Facility" elements
          */
-        
-		public org.bimserver.cobie.cobielite.FacilityType[] getFacilityArray()
+        public org.bimserver.cobie.cobielite.FacilityType[] getFacilityArray()
         {
             synchronized (monitor())
             {

@@ -24,18 +24,18 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         new javax.xml.namespace.QName("", "CreatedBy");
     private static final javax.xml.namespace.QName CREATEDON$2 = 
         new javax.xml.namespace.QName("", "CreatedOn");
-    private static final javax.xml.namespace.QName CATEGORY$4 = 
-        new javax.xml.namespace.QName("", "Category");
-    private static final javax.xml.namespace.QName CONNECTIONTYPE$6 = 
+    private static final javax.xml.namespace.QName CONNECTIONTYPE$4 = 
         new javax.xml.namespace.QName("", "ConnectionType");
-    private static final javax.xml.namespace.QName SHEETNAMES$8 = 
-        new javax.xml.namespace.QName("", "SheetNames");
-    private static final javax.xml.namespace.QName ROWNAME1$10 = 
+    private static final javax.xml.namespace.QName SHEETNAME$6 = 
+        new javax.xml.namespace.QName("", "SheetName");
+    private static final javax.xml.namespace.QName ROWNAME1$8 = 
         new javax.xml.namespace.QName("", "RowName1");
-    private static final javax.xml.namespace.QName PORTNAME1$12 = 
-        new javax.xml.namespace.QName("", "PortName1");
-    private static final javax.xml.namespace.QName ROWNAME2$14 = 
+    private static final javax.xml.namespace.QName ROWNAME2$10 = 
         new javax.xml.namespace.QName("", "RowName2");
+    private static final javax.xml.namespace.QName REALIZINGELEMENT$12 = 
+        new javax.xml.namespace.QName("", "RealizingElement");
+    private static final javax.xml.namespace.QName PORTNAME1$14 = 
+        new javax.xml.namespace.QName("", "PortName1");
     private static final javax.xml.namespace.QName PORTNAME2$16 = 
         new javax.xml.namespace.QName("", "PortName2");
     private static final javax.xml.namespace.QName EXTSYSTEM$18 = 
@@ -185,74 +185,6 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
     }
     
     /**
-     * Gets the "Category" element
-     */
-    public java.lang.String getCategory()
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(CATEGORY$4, 0);
-            if (target == null)
-            {
-                return null;
-            }
-            return target.getStringValue();
-        }
-    }
-    
-    /**
-     * Gets (as xml) the "Category" element
-     */
-    public org.apache.xmlbeans.XmlString xgetCategory()
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(CATEGORY$4, 0);
-            return target;
-        }
-    }
-    
-    /**
-     * Sets the "Category" element
-     */
-    public void setCategory(java.lang.String category)
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(CATEGORY$4, 0);
-            if (target == null)
-            {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(CATEGORY$4);
-            }
-            target.setStringValue(category);
-        }
-    }
-    
-    /**
-     * Sets (as xml) the "Category" element
-     */
-    public void xsetCategory(org.apache.xmlbeans.XmlString category)
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(CATEGORY$4, 0);
-            if (target == null)
-            {
-                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(CATEGORY$4);
-            }
-            target.set(category);
-        }
-    }
-    
-    /**
      * Gets the "ConnectionType" element
      */
     public java.lang.String getConnectionType()
@@ -261,7 +193,7 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(CONNECTIONTYPE$6, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(CONNECTIONTYPE$4, 0);
             if (target == null)
             {
                 return null;
@@ -279,7 +211,7 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(CONNECTIONTYPE$6, 0);
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(CONNECTIONTYPE$4, 0);
             return target;
         }
     }
@@ -293,10 +225,10 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(CONNECTIONTYPE$6, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(CONNECTIONTYPE$4, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(CONNECTIONTYPE$6);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(CONNECTIONTYPE$4);
             }
             target.setStringValue(connectionType);
         }
@@ -311,25 +243,25 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(CONNECTIONTYPE$6, 0);
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(CONNECTIONTYPE$4, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(CONNECTIONTYPE$6);
+                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(CONNECTIONTYPE$4);
             }
             target.set(connectionType);
         }
     }
     
     /**
-     * Gets the "SheetNames" element
+     * Gets the "SheetName" element
      */
-    public java.lang.String getSheetNames()
+    public java.lang.String getSheetName()
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(SHEETNAMES$8, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(SHEETNAME$6, 0);
             if (target == null)
             {
                 return null;
@@ -339,52 +271,52 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
     }
     
     /**
-     * Gets (as xml) the "SheetNames" element
+     * Gets (as xml) the "SheetName" element
      */
-    public org.apache.xmlbeans.XmlString xgetSheetNames()
+    public org.apache.xmlbeans.XmlString xgetSheetName()
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(SHEETNAMES$8, 0);
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(SHEETNAME$6, 0);
             return target;
         }
     }
     
     /**
-     * Sets the "SheetNames" element
+     * Sets the "SheetName" element
      */
-    public void setSheetNames(java.lang.String sheetNames)
+    public void setSheetName(java.lang.String sheetName)
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(SHEETNAMES$8, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(SHEETNAME$6, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(SHEETNAMES$8);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(SHEETNAME$6);
             }
-            target.setStringValue(sheetNames);
+            target.setStringValue(sheetName);
         }
     }
     
     /**
-     * Sets (as xml) the "SheetNames" element
+     * Sets (as xml) the "SheetName" element
      */
-    public void xsetSheetNames(org.apache.xmlbeans.XmlString sheetNames)
+    public void xsetSheetName(org.apache.xmlbeans.XmlString sheetName)
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(SHEETNAMES$8, 0);
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(SHEETNAME$6, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(SHEETNAMES$8);
+                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(SHEETNAME$6);
             }
-            target.set(sheetNames);
+            target.set(sheetName);
         }
     }
     
@@ -397,7 +329,7 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ROWNAME1$10, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ROWNAME1$8, 0);
             if (target == null)
             {
                 return null;
@@ -415,7 +347,7 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(ROWNAME1$10, 0);
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(ROWNAME1$8, 0);
             return target;
         }
     }
@@ -429,10 +361,10 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ROWNAME1$10, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ROWNAME1$8, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ROWNAME1$10);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ROWNAME1$8);
             }
             target.setStringValue(rowName1);
         }
@@ -447,80 +379,12 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(ROWNAME1$10, 0);
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(ROWNAME1$8, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(ROWNAME1$10);
+                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(ROWNAME1$8);
             }
             target.set(rowName1);
-        }
-    }
-    
-    /**
-     * Gets the "PortName1" element
-     */
-    public java.lang.String getPortName1()
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(PORTNAME1$12, 0);
-            if (target == null)
-            {
-                return null;
-            }
-            return target.getStringValue();
-        }
-    }
-    
-    /**
-     * Gets (as xml) the "PortName1" element
-     */
-    public org.apache.xmlbeans.XmlString xgetPortName1()
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(PORTNAME1$12, 0);
-            return target;
-        }
-    }
-    
-    /**
-     * Sets the "PortName1" element
-     */
-    public void setPortName1(java.lang.String portName1)
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(PORTNAME1$12, 0);
-            if (target == null)
-            {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(PORTNAME1$12);
-            }
-            target.setStringValue(portName1);
-        }
-    }
-    
-    /**
-     * Sets (as xml) the "PortName1" element
-     */
-    public void xsetPortName1(org.apache.xmlbeans.XmlString portName1)
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(PORTNAME1$12, 0);
-            if (target == null)
-            {
-                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(PORTNAME1$12);
-            }
-            target.set(portName1);
         }
     }
     
@@ -533,7 +397,7 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ROWNAME2$14, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ROWNAME2$10, 0);
             if (target == null)
             {
                 return null;
@@ -551,7 +415,7 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(ROWNAME2$14, 0);
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(ROWNAME2$10, 0);
             return target;
         }
     }
@@ -565,10 +429,10 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ROWNAME2$14, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ROWNAME2$10, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ROWNAME2$14);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ROWNAME2$10);
             }
             target.setStringValue(rowName2);
         }
@@ -583,12 +447,148 @@ public class ConnectionTypeImpl extends org.bimserver.cobie.cobielite.impl.COBIE
         {
             check_orphaned();
             org.apache.xmlbeans.XmlString target = null;
-            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(ROWNAME2$14, 0);
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(ROWNAME2$10, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(ROWNAME2$14);
+                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(ROWNAME2$10);
             }
             target.set(rowName2);
+        }
+    }
+    
+    /**
+     * Gets the "RealizingElement" element
+     */
+    public java.lang.String getRealizingElement()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.apache.xmlbeans.SimpleValue target = null;
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(REALIZINGELEMENT$12, 0);
+            if (target == null)
+            {
+                return null;
+            }
+            return target.getStringValue();
+        }
+    }
+    
+    /**
+     * Gets (as xml) the "RealizingElement" element
+     */
+    public org.apache.xmlbeans.XmlString xgetRealizingElement()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.apache.xmlbeans.XmlString target = null;
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(REALIZINGELEMENT$12, 0);
+            return target;
+        }
+    }
+    
+    /**
+     * Sets the "RealizingElement" element
+     */
+    public void setRealizingElement(java.lang.String realizingElement)
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.apache.xmlbeans.SimpleValue target = null;
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(REALIZINGELEMENT$12, 0);
+            if (target == null)
+            {
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(REALIZINGELEMENT$12);
+            }
+            target.setStringValue(realizingElement);
+        }
+    }
+    
+    /**
+     * Sets (as xml) the "RealizingElement" element
+     */
+    public void xsetRealizingElement(org.apache.xmlbeans.XmlString realizingElement)
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.apache.xmlbeans.XmlString target = null;
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(REALIZINGELEMENT$12, 0);
+            if (target == null)
+            {
+                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(REALIZINGELEMENT$12);
+            }
+            target.set(realizingElement);
+        }
+    }
+    
+    /**
+     * Gets the "PortName1" element
+     */
+    public java.lang.String getPortName1()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.apache.xmlbeans.SimpleValue target = null;
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(PORTNAME1$14, 0);
+            if (target == null)
+            {
+                return null;
+            }
+            return target.getStringValue();
+        }
+    }
+    
+    /**
+     * Gets (as xml) the "PortName1" element
+     */
+    public org.apache.xmlbeans.XmlString xgetPortName1()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.apache.xmlbeans.XmlString target = null;
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(PORTNAME1$14, 0);
+            return target;
+        }
+    }
+    
+    /**
+     * Sets the "PortName1" element
+     */
+    public void setPortName1(java.lang.String portName1)
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.apache.xmlbeans.SimpleValue target = null;
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(PORTNAME1$14, 0);
+            if (target == null)
+            {
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(PORTNAME1$14);
+            }
+            target.setStringValue(portName1);
+        }
+    }
+    
+    /**
+     * Sets (as xml) the "PortName1" element
+     */
+    public void xsetPortName1(org.apache.xmlbeans.XmlString portName1)
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.apache.xmlbeans.XmlString target = null;
+            target = (org.apache.xmlbeans.XmlString)get_store().find_element_user(PORTNAME1$14, 0);
+            if (target == null)
+            {
+                target = (org.apache.xmlbeans.XmlString)get_store().add_element_user(PORTNAME1$14);
+            }
+            target.set(portName1);
         }
     }
     

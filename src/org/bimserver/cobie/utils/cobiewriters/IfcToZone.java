@@ -24,6 +24,7 @@ import org.bimserver.cobie.cobielite.COBIEType;
 import org.bimserver.cobie.cobielite.ZoneType;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.COBieUtility.CobieSheetName;
+import org.bimserver.cobie.utils.deserializer.ZoneDeserializer;
 import org.bimserver.cobie.utils.stringwriters.IfcSingleValueToCOBieString;
 import org.bimserver.models.ifc2x3.IfcObjectDefinition;
 import org.bimserver.models.ifc2x3.IfcOwnerHistory;
@@ -57,159 +58,357 @@ public class IfcToZone
 		ArrayList<IfcZone> zones = (ArrayList<IfcZone>) model
 				.getAll(IfcZone.class);
 		COBIEType.Zones cZones = cType.addNewZones();
-		ArrayList<String> zoneNamesAdded = new ArrayList<String>();
-		IfcOwnerHistory oh;
-		String name = "";
-		String createdBy = "";
-		Calendar createdOn;
-		String category = "";
-		String spaceNames = "";
-		String extSystem = "";
-		String extObject = "";
-		String extIdentifier = "";
-		String description = "";
 		if (!zones.isEmpty()) 
 		{
-			for (IfcZone zone : zones) 
+			zonesToCOBieZonesSpacePerRow(loggerHandler, zones,
+					cZones);
+		} else 
+		{
+			revitZonesToCOBieZonesSpacePerRow(model, loggerHandler, cZones);
+		}
+		loggerHandler.sheetWritten();
+		return cType;
+	}
+
+	private static String zoneKeyFromZone(IfcZone zone)
+	{
+		return ZoneDeserializer.getZoneKeyFromZone(zone);
+	}
+	
+	private static void zonesToCOBieZonesSpacesCommaDelimmited(
+			LogHandler loggerHandler, ArrayList<IfcZone> zones,
+			COBIEType.Zones cZones) {
+		IfcOwnerHistory oh;
+		String name;
+		String createdBy;
+		Calendar createdOn;
+		String category;
+		String spaceNames;
+		String extSystem;
+		String extObject;
+		String extIdentifier;
+		String description;
+		ArrayList<String> zoneNamesAdded = new ArrayList<String>();
+		for (IfcZone zone : zones) 
+		{
+			name = IfcToZone.nameFromZone(zone);
+			if (!zoneNamesAdded.contains(name)) 
 			{
-				name = IfcToZone.nameFromZone(zone);
-				if (!zoneNamesAdded.contains(name)) 
+				try
 				{
-					try
+					zoneNamesAdded.add(name);
+					ZoneType cZone = cZones.addNewZone();
+					oh = zone.getOwnerHistory();
+
+					createdBy = COBieUtility.getEmailFromOwnerHistory(oh);
+					createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
+					category = IfcToZone.categoryFromZone(zone);
+					spaceNames = IfcToZone.spaceNamesCommaDelimFromZone(zone);
+					extSystem = COBieUtility.getApplicationName(oh);
+					extObject = IfcToZone.extObject;
+					extIdentifier = COBieUtility.identifierFromObject(zone);
+					description = IfcToZone.descriptionFromZone(zone);
+
+					cZone.setName(name);
+					cZone.setCreatedBy(createdBy);
+					cZone.setCreatedOn(createdOn);
+					cZone.setCategory(category);
+					cZone.setSpaceNames(spaceNames);
+					cZone.setExtSystem(extSystem);
+					cZone.setExtObject(extObject);
+					cZone.setExtIdentifier(extIdentifier);
+					cZone.setDescription(description);
+					loggerHandler.rowWritten();
+				}
+				catch(Exception ex)
+				{
+					loggerHandler.error(ex);
+				}
+				
+			}
+		}
+	}
+	
+	private static void zonesToCOBieZonesSpacePerRow(
+			LogHandler loggerHandler, ArrayList<IfcZone> zones,
+			COBIEType.Zones cZones) {
+		IfcOwnerHistory oh;
+		String name;
+		String createdBy;
+		Calendar createdOn;
+		String category;
+		ArrayList<String> spaceNames;
+		String extSystem;
+		String extObject;
+		String extIdentifier;
+		String zoneKey;
+		String description;
+		ArrayList<String> zoneNamesAdded = new ArrayList<String>();
+		for (IfcZone zone : zones) 
+		{
+			name = IfcToZone.nameFromZone(zone);
+			zoneKey = IfcToZone.zoneKeyFromZone(zone);
+			if (!zoneNamesAdded.contains(zoneKey))
+			{
+				zoneNamesAdded.add(zoneKey);
+				try
+				{
+					spaceNames = IfcToZone.spaceNameArrayFromZone(zone);
+					oh = zone.getOwnerHistory();
+					createdBy = COBieUtility.getEmailFromOwnerHistory(oh);
+					createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
+					category = IfcToZone.categoryFromZone(zone);
+					
+					extSystem = COBieUtility.getApplicationName(oh);
+					extObject = IfcToZone.extObject;
+					extIdentifier = COBieUtility.identifierFromObject(zone);
+					description = IfcToZone.descriptionFromZone(zone);
+					for(String spaceName : spaceNames)
 					{
-						zoneNamesAdded.add(name);
 						ZoneType cZone = cZones.addNewZone();
-						oh = zone.getOwnerHistory();
-
-						createdBy = COBieUtility.getEmailFromOwnerHistory(oh);
-						createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
-						category = IfcToZone.categoryFromZone(zone);
-						spaceNames = IfcToZone.spaceNamesFromZone(zone);
-						extSystem = COBieUtility.getApplicationName(oh);
-						extObject = IfcToZone.extObject;
-						extIdentifier = COBieUtility.identifierFromObject(zone);
-						description = IfcToZone.descriptionFromZone(zone);
-
 						cZone.setName(name);
 						cZone.setCreatedBy(createdBy);
 						cZone.setCreatedOn(createdOn);
 						cZone.setCategory(category);
-						cZone.setSpaceNames(spaceNames);
+						cZone.setSpaceNames(spaceName);
 						cZone.setExtSystem(extSystem);
 						cZone.setExtObject(extObject);
 						cZone.setExtIdentifier(extIdentifier);
 						cZone.setDescription(description);
 						loggerHandler.rowWritten();
 					}
-					catch(Exception ex)
-					{
-						loggerHandler.error(ex);
-					}
-					
 				}
-			}
-		} else 
-		{
-			Map<String,ArrayList<String>> zoneSpaces = new 
-					HashMap<String,ArrayList<String>>();
-			// look for IfcPropertySingleValue instances...
-			try
-			{
-				 zoneSpaces =
-						IfcToZone.zoneSpacesFromModel(model);
-					
-			}
-			catch(Exception e)
-			{
-				loggerHandler.error(e);
-			}
-
-			for (IfcSpace space : model.getAll(IfcSpace.class)) 
-			{
-				for (IfcRelDefines relDefines : space.getIsDefinedBy()) 
+				catch(Exception ex)
 				{
-					try
+					loggerHandler.error(ex);
+				}
+				
+			}	
+		}
+	}
+	
+	
+
+	private static void revitZonesToCOBieZonesCommaDelim(IfcModelInterface model,
+			LogHandler loggerHandler, COBIEType.Zones cZones) {
+		IfcOwnerHistory oh;
+		String name;
+		String createdBy;
+		Calendar createdOn;
+		String category;
+		String spaceNames;
+		String extSystem;
+		String extObject;
+		String extIdentifier;
+		String description;
+		Map<String,ArrayList<String>> zoneSpaces = new 
+				HashMap<String,ArrayList<String>>();
+		ArrayList<String> zoneNamesAdded = new ArrayList<String>();
+ 		// look for IfcPropertySingleValue instances...
+		try
+		{
+			 zoneSpaces =
+					IfcToZone.revitZoneSpacesFromModel(model);
+				
+		}
+		catch(Exception e)
+		{
+			loggerHandler.error(e);
+		}
+
+		for (IfcSpace space : model.getAll(IfcSpace.class)) 
+		{
+			for (IfcRelDefines relDefines : space.getIsDefinedBy()) 
+			{
+				try
+				{
+					if (relDefines instanceof IfcRelDefinesByProperties) 
 					{
-						if (relDefines instanceof IfcRelDefinesByProperties) 
+						IfcRelDefinesByProperties rP = (IfcRelDefinesByProperties) relDefines;
+						IfcPropertySetDefinition pSetDef = rP
+								.getRelatingPropertyDefinition();
+						if (pSetDef instanceof IfcPropertySet) 
 						{
-							IfcRelDefinesByProperties rP = (IfcRelDefinesByProperties) relDefines;
-							IfcPropertySetDefinition pSetDef = rP
-									.getRelatingPropertyDefinition();
-							if (pSetDef instanceof IfcPropertySet) 
+							IfcPropertySet pSet = (IfcPropertySet) pSetDef;
+							for (IfcProperty property : pSet.getHasProperties()) 
 							{
-								IfcPropertySet pSet = (IfcPropertySet) pSetDef;
-								for (IfcProperty property : pSet.getHasProperties()) 
+								if (property instanceof IfcPropertySingleValue) 
 								{
-									if (property instanceof IfcPropertySingleValue) 
+									IfcPropertySingleValue val = (IfcPropertySingleValue) property;
+									if (IfcToZone.isPropertySingleValueZone(val)) 
 									{
-										IfcPropertySingleValue val = (IfcPropertySingleValue) property;
-										if (IfcToZone.isPropertySingleValueZone(val)) 
+										name = IfcToZone
+												.nameFromSingleValueZone(val);
+										if (!zoneNamesAdded.contains(name)) 
 										{
-											name = IfcToZone
-													.nameFromSingleValueZone(val);
-											if (!zoneNamesAdded.contains(name)) 
+											zoneNamesAdded.add(name);
+											oh = IfcToContact
+													.getFirstOwnerHistory(model);
+											ZoneType cZone = cZones
+													.addNewZone();
+
+											if (oh != null) 
 											{
-												zoneNamesAdded.add(name);
-												oh = IfcToContact
-														.getFirstOwnerHistory(model);
-												ZoneType cZone = cZones
-														.addNewZone();
-
-												if (oh != null) 
-												{
-													createdBy = COBieUtility
-															.getEmailFromOwnerHistory(oh);
-													createdOn = IfcToContact
-															.getCreatedOn(oh
-																	.getCreationDate());
-												} 
-												else 
-												{
-													createdBy = COBieUtility.COBieNA;
-													createdOn = COBieUtility.getDefaultCalendar();															
-												}
-												category = IfcToZone
-														.categoryFromSingleValueZone(val);
-												if (zoneSpaces.isEmpty() || !zoneSpaces.keySet().contains(name))
-														spaceNames = IfcToSpace
-															.nameFromSpace(space);
-												else
-													spaceNames =
-														COBieUtility.delimittedStringFromArrayList(zoneSpaces.get(name));
-												
-												extSystem = COBieUtility
-														.getApplicationName(oh);
-												extObject = IfcToZone.extObjectAlt;
-												extIdentifier = COBieUtility.COBieNA;
-												description = IfcToZone
-														.descriptionFromSingleValueZone(val);
-
-												cZone.setName(name);
-												cZone.setCreatedBy(createdBy);
-												cZone.setCreatedOn(createdOn);
-												cZone.setCategory(category);
-												cZone.setSpaceNames(spaceNames);
-												cZone.setExtSystem(extSystem);
-												cZone.setExtObject(extObject);
-												cZone.setExtIdentifier(extIdentifier);
-												cZone.setDescription(description);
-												loggerHandler.rowWritten();
+												createdBy = COBieUtility
+														.getEmailFromOwnerHistory(oh);
+												createdOn = IfcToContact
+														.getCreatedOn(oh
+																.getCreationDate());
+											} 
+											else 
+											{
+												createdBy = COBieUtility.COBieNA;
+												createdOn = COBieUtility.getDefaultCalendar();															
 											}
+											category = IfcToZone
+													.categoryFromSingleValueZone(val);
+											if (zoneSpaces.isEmpty() || !zoneSpaces.keySet().contains(name))
+													spaceNames = IfcToSpace
+														.nameFromSpace(space);
+											else
+												spaceNames =
+													COBieUtility.delimittedStringFromArrayList(zoneSpaces.get(name));
+											
+											extSystem = COBieUtility
+													.getApplicationName(oh);
+											extObject = IfcToZone.extObjectAlt;
+											extIdentifier = COBieUtility.COBieNA;
+											description = IfcToZone
+													.descriptionFromSingleValueZone(val);
+
+											cZone.setName(name);
+											cZone.setCreatedBy(createdBy);
+											cZone.setCreatedOn(createdOn);
+											cZone.setCategory(category);
+											cZone.setSpaceNames(spaceNames);
+											cZone.setExtSystem(extSystem);
+											cZone.setExtObject(extObject);
+											cZone.setExtIdentifier(extIdentifier);
+											cZone.setDescription(description);
+											loggerHandler.rowWritten();
 										}
 									}
 								}
 							}
 						}
 					}
-					catch(Exception ex)
-					{
-						loggerHandler.error(ex);
-					}
+				}
+				catch(Exception ex)
+				{
+					loggerHandler.error(ex);
 				}
 			}
 		}
-		loggerHandler.sheetWritten();
-		return cType;
+	}
+	
+	private static void revitZonesToCOBieZonesSpacePerRow(IfcModelInterface model,
+			LogHandler loggerHandler, COBIEType.Zones cZones) {
+		IfcOwnerHistory oh;
+		String name;
+		String createdBy;
+		Calendar createdOn;
+		String category;
+		String extSystem;
+		String extObject;
+		String extIdentifier;
+		String description;
+
+		Map<String,ArrayList<String>> zoneSpacesAdded = new 
+				HashMap<String,ArrayList<String>>();
+		for (IfcSpace space : model.getAll(IfcSpace.class)) 
+		{
+			for (IfcRelDefines relDefines : space.getIsDefinedBy()) 
+			{
+				try
+				{
+					if (relDefines instanceof IfcRelDefinesByProperties) 
+					{
+						IfcRelDefinesByProperties rP = (IfcRelDefinesByProperties) relDefines;
+						IfcPropertySetDefinition pSetDef = rP
+								.getRelatingPropertyDefinition();
+						if (pSetDef instanceof IfcPropertySet) 
+						{
+							IfcPropertySet pSet = (IfcPropertySet) pSetDef;
+							for (IfcProperty property : pSet.getHasProperties()) 
+							{
+								if (property instanceof IfcPropertySingleValue) 
+								{
+									IfcPropertySingleValue val = (IfcPropertySingleValue) property;
+									if (IfcToZone.isPropertySingleValueZone(val)) 
+									{
+										name = IfcToZone
+												.nameFromSingleValueZone(val);
+										String spaceName = COBieUtility.getCOBieString(space.getName());
+										category = IfcToZone
+												.categoryFromSingleValueZone(val);
+										String zoneKey = zoneKeyFromNameAndCategory(name,
+												category);
+										if (!zoneSpacesAdded.containsKey(zoneKey)) 
+										{
+											ArrayList<String> newSpaceList = new ArrayList<String>();
+											newSpaceList.add(spaceName);
+											zoneSpacesAdded.put(zoneKey, newSpaceList);
+										}
+										else if (!zoneSpacesAdded.get(zoneKey).contains(spaceName))
+										{
+											ArrayList<String> existingSpaceList = zoneSpacesAdded.get(zoneKey);
+											existingSpaceList.add(spaceName);
+											zoneSpacesAdded.put(zoneKey,existingSpaceList);
+											oh = IfcToContact
+													.getFirstOwnerHistory(model);
+											ZoneType cZone = cZones
+													.addNewZone();
+
+											if (oh != null) 
+											{
+												createdBy = COBieUtility
+														.getEmailFromOwnerHistory(oh);
+												createdOn = IfcToContact
+														.getCreatedOn(oh
+																.getCreationDate());
+											} 
+											else 
+											{
+												createdBy = COBieUtility.COBieNA;
+												createdOn = COBieUtility.getDefaultCalendar();															
+											}
+
+											
+											extSystem = COBieUtility
+													.getApplicationName(oh);
+											extObject = IfcToZone.extObjectAlt;
+											extIdentifier = COBieUtility.COBieNA;
+											description = IfcToZone
+													.descriptionFromSingleValueZone(val);
+
+											cZone.setName(name);
+											cZone.setCreatedBy(createdBy);
+											cZone.setCreatedOn(createdOn);
+											cZone.setCategory(category);
+											cZone.setSpaceNames(spaceName);
+											cZone.setExtSystem(extSystem);
+											cZone.setExtObject(extObject);
+											cZone.setExtIdentifier(extIdentifier);
+											cZone.setDescription(description);
+											loggerHandler.rowWritten();
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				catch(Exception ex)
+				{
+					loggerHandler.error(ex);
+				}
+			}
+		}
+	}
+
+	private static String zoneKeyFromNameAndCategory(String name,
+			String category) {
+		return name+COBieUtility.getCOBieDelim()+category;
 	}
 	
 	protected static String nameFromZone(IfcZone zone)
@@ -220,7 +419,7 @@ public class IfcToZone
 	}
 	
 	
-	protected static Map<String,ArrayList<String>> zoneSpacesFromModel(IfcModelInterface model) throws Exception
+	protected static Map<String,ArrayList<String>> revitZoneSpacesFromModel(IfcModelInterface model) throws Exception
 	{
 		Map<String,ArrayList<String>> zoneSpaces = new HashMap<String,ArrayList<String>>();
 		String name;
@@ -302,7 +501,7 @@ public class IfcToZone
 		category = COBieUtility.getObjectClassification(zone);
 		return category;
 	}
-	protected static String spaceNamesFromZone(IfcZone zone)
+	protected static String spaceNamesCommaDelimFromZone(IfcZone zone)
 	{
 		String spaceNames = "";
 		IfcRelAssignsToGroup rGroup = zone.getIsGroupedBy();
@@ -319,6 +518,23 @@ public class IfcToZone
 		if (spaceNames.endsWith(COBieUtility.getCOBieDelim()))
 			spaceNames = spaceNames.substring(0,spaceNames.length()-1);
 		return COBieUtility.getCOBieString(spaceNames);
+	}
+	
+	protected static ArrayList<String> spaceNameArrayFromZone(IfcZone zone)
+	{
+		ArrayList<String> spaceNames = new ArrayList<String>();
+		IfcRelAssignsToGroup rGroup = zone.getIsGroupedBy();
+		for(IfcObjectDefinition objDef : rGroup.getRelatedObjects())
+		{
+				if (objDef instanceof IfcSpace)
+				{
+					IfcSpace tmpSpace = (IfcSpace) objDef;
+					String tmpName = tmpSpace.getName();
+					if (tmpName.length()>0)
+						spaceNames.add(tmpName);
+				}
+		}
+		return spaceNames;
 	}
 	protected static String spaceNamesFromSingleValueZone(IfcPropertySingleValue val)
 	{

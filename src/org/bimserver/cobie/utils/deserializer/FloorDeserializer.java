@@ -130,9 +130,9 @@ public class FloorDeserializer
 			return null;
 	}
 	
-	public static IfcClassificationReference classificationReferenceFromFloor(FloorType floor)
+	public  IfcClassificationReference classificationReferenceFromFloor(FloorType floor)
 	{
-		return ClassificationHandler.classificationReferenceFromString(floor.getCategory());
+		return ifcCommonHandler.getClassificationHandler().classificationReferenceFromString(floor.getCategory());
 	}
 	
 	public static IfcQuantityLength quantityLengthFromFloor(FloorType floor) throws Exception

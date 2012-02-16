@@ -16,7 +16,7 @@ package org.bimserver.cobie.cobielite;
 public interface SpaceTypeFloorNameEnumerationType extends org.apache.xmlbeans.XmlString
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SpaceTypeFloorNameEnumerationType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("spacetypefloornameenumerationtype91b6type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SpaceTypeFloorNameEnumerationType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("spacetypefloornameenumerationtype91b6type");
     
     org.apache.xmlbeans.StringEnumAbstractBase enumValue();
     void set(org.apache.xmlbeans.StringEnumAbstractBase e);

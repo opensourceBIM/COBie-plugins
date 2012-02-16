@@ -16,7 +16,7 @@ package org.bimserver.cobie.cobielite;
 public interface COBIEType extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(COBIEType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("cobietype44b8type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(COBIEType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("cobietype44b8type");
     
     /**
      * Gets the "Contacts" element
@@ -296,7 +296,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Contacts extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Contacts.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("contactsdcf7elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Contacts.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("contactsdcf7elemtype");
         
         /**
          * Gets array of all "Contact" elements
@@ -363,7 +363,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Facilities extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Facilities.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("facilities7ba5elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Facilities.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("facilities7ba5elemtype");
         
         /**
          * Gets array of all "Facility" elements
@@ -430,7 +430,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Floors extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Floors.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("floorsab8belemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Floors.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("floorsab8belemtype");
         
         /**
          * Gets array of all "Floor" elements
@@ -497,7 +497,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Spaces extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Spaces.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("spaces4651elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Spaces.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("spaces4651elemtype");
         
         /**
          * Gets array of all "Space" elements
@@ -564,7 +564,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Zones extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Zones.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("zones759belemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Zones.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("zones759belemtype");
         
         /**
          * Gets array of all "Zone" elements
@@ -631,7 +631,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Types extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Types.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("types9d4delemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Types.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("types9d4delemtype");
         
         /**
          * Gets array of all "Type" elements
@@ -698,7 +698,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Components extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Components.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("components51faelemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Components.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("components51faelemtype");
         
         /**
          * Gets array of all "Component" elements
@@ -765,7 +765,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Systems extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Systems.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("systems9d38elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Systems.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("systems9d38elemtype");
         
         /**
          * Gets array of all "System" elements
@@ -832,7 +832,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Assemblies extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Assemblies.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("assembliesb268elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Assemblies.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("assembliesb268elemtype");
         
         /**
          * Gets array of all "Assembly" elements
@@ -899,7 +899,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Connections extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Connections.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("connections2d29elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Connections.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("connections2d29elemtype");
         
         /**
          * Gets array of all "Connection" elements
@@ -966,7 +966,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Spares extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Spares.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("sparesabe0elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Spares.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("sparesabe0elemtype");
         
         /**
          * Gets array of all "Spare" elements
@@ -1033,7 +1033,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Resources extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Resources.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("resources3ff9elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Resources.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("resources3ff9elemtype");
         
         /**
          * Gets array of all "Resource" elements
@@ -1100,7 +1100,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Jobs extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Jobs.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("jobs393aelemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Jobs.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("jobs393aelemtype");
         
         /**
          * Gets array of all "Job" elements
@@ -1167,7 +1167,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Impacts extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Impacts.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("impacts69c1elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Impacts.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("impacts69c1elemtype");
         
         /**
          * Gets array of all "Impact" elements
@@ -1234,7 +1234,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Documents extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Documents.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("documents6cccelemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Documents.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("documents6cccelemtype");
         
         /**
          * Gets array of all "Document" elements
@@ -1301,7 +1301,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Attributes extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Attributes.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("attributes16fbelemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Attributes.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("attributes16fbelemtype");
         
         /**
          * Gets array of all "Attribute" elements
@@ -1368,7 +1368,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Coordinates extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Coordinates.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("coordinatesda4felemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Coordinates.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("coordinatesda4felemtype");
         
         /**
          * Gets array of all "Coordinate" elements
@@ -1435,7 +1435,7 @@ public interface COBIEType extends org.apache.xmlbeans.XmlObject
     public interface Issues extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Issues.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("issues089eelemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Issues.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("issues089eelemtype");
         
         /**
          * Gets array of all "Issue" elements

@@ -90,7 +90,7 @@ public class ContactDeserializer
 	{
 		try
 		{
-			if (contacts != null)
+			if (contacts != null && contacts.getContactArray()!=null)
 			{
 				for (ContactType contact : contacts.getContactArray())
 				{

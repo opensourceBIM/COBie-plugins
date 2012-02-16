@@ -62,7 +62,7 @@ public class SpreadsheetToAssemblies
 	public static void writeAssembliesToCOBie(COBIEType cobie,Workbook workbook)
 	{
 		COBIEType.Assemblies assemblies =  cobie.addNewAssemblies();   	      	    
-	   	Worksheet sheet = workbook.getWorksheet(COBieUtility.CobieSheetName.Contact.toString());
+	   	Worksheet sheet = workbook.getWorksheet(COBieUtility.CobieSheetName.Assembly.toString());
 	   	Map<String,Integer> columnDictionary =
 	   			COBieUtility.GetWorksheetColumnDictionary(sheet, getAssemblyColumnNames());
 	   	String assemblyName="";

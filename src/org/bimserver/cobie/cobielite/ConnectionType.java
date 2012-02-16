@@ -16,7 +16,7 @@ package org.bimserver.cobie.cobielite;
 public interface ConnectionType extends org.bimserver.cobie.cobielite.COBIEBaseType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ConnectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s4FC858A9ECDE249DFE14025D19A8BA2D").resolveHandle("connectiontype5b36type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ConnectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s9940D605A2AF1A0035EAACACA75B5274").resolveHandle("connectiontype5b36type");
     
     /**
      * Gets the "CreatedBy" element
@@ -59,26 +59,6 @@ public interface ConnectionType extends org.bimserver.cobie.cobielite.COBIEBaseT
     void xsetCreatedOn(org.apache.xmlbeans.XmlDateTime createdOn);
     
     /**
-     * Gets the "Category" element
-     */
-    java.lang.String getCategory();
-    
-    /**
-     * Gets (as xml) the "Category" element
-     */
-    org.apache.xmlbeans.XmlString xgetCategory();
-    
-    /**
-     * Sets the "Category" element
-     */
-    void setCategory(java.lang.String category);
-    
-    /**
-     * Sets (as xml) the "Category" element
-     */
-    void xsetCategory(org.apache.xmlbeans.XmlString category);
-    
-    /**
      * Gets the "ConnectionType" element
      */
     java.lang.String getConnectionType();
@@ -99,24 +79,24 @@ public interface ConnectionType extends org.bimserver.cobie.cobielite.COBIEBaseT
     void xsetConnectionType(org.apache.xmlbeans.XmlString connectionType);
     
     /**
-     * Gets the "SheetNames" element
+     * Gets the "SheetName" element
      */
-    java.lang.String getSheetNames();
+    java.lang.String getSheetName();
     
     /**
-     * Gets (as xml) the "SheetNames" element
+     * Gets (as xml) the "SheetName" element
      */
-    org.apache.xmlbeans.XmlString xgetSheetNames();
+    org.apache.xmlbeans.XmlString xgetSheetName();
     
     /**
-     * Sets the "SheetNames" element
+     * Sets the "SheetName" element
      */
-    void setSheetNames(java.lang.String sheetNames);
+    void setSheetName(java.lang.String sheetName);
     
     /**
-     * Sets (as xml) the "SheetNames" element
+     * Sets (as xml) the "SheetName" element
      */
-    void xsetSheetNames(org.apache.xmlbeans.XmlString sheetNames);
+    void xsetSheetName(org.apache.xmlbeans.XmlString sheetName);
     
     /**
      * Gets the "RowName1" element
@@ -139,26 +119,6 @@ public interface ConnectionType extends org.bimserver.cobie.cobielite.COBIEBaseT
     void xsetRowName1(org.apache.xmlbeans.XmlString rowName1);
     
     /**
-     * Gets the "PortName1" element
-     */
-    java.lang.String getPortName1();
-    
-    /**
-     * Gets (as xml) the "PortName1" element
-     */
-    org.apache.xmlbeans.XmlString xgetPortName1();
-    
-    /**
-     * Sets the "PortName1" element
-     */
-    void setPortName1(java.lang.String portName1);
-    
-    /**
-     * Sets (as xml) the "PortName1" element
-     */
-    void xsetPortName1(org.apache.xmlbeans.XmlString portName1);
-    
-    /**
      * Gets the "RowName2" element
      */
     java.lang.String getRowName2();
@@ -177,6 +137,46 @@ public interface ConnectionType extends org.bimserver.cobie.cobielite.COBIEBaseT
      * Sets (as xml) the "RowName2" element
      */
     void xsetRowName2(org.apache.xmlbeans.XmlString rowName2);
+    
+    /**
+     * Gets the "RealizingElement" element
+     */
+    java.lang.String getRealizingElement();
+    
+    /**
+     * Gets (as xml) the "RealizingElement" element
+     */
+    org.apache.xmlbeans.XmlString xgetRealizingElement();
+    
+    /**
+     * Sets the "RealizingElement" element
+     */
+    void setRealizingElement(java.lang.String realizingElement);
+    
+    /**
+     * Sets (as xml) the "RealizingElement" element
+     */
+    void xsetRealizingElement(org.apache.xmlbeans.XmlString realizingElement);
+    
+    /**
+     * Gets the "PortName1" element
+     */
+    java.lang.String getPortName1();
+    
+    /**
+     * Gets (as xml) the "PortName1" element
+     */
+    org.apache.xmlbeans.XmlString xgetPortName1();
+    
+    /**
+     * Sets the "PortName1" element
+     */
+    void setPortName1(java.lang.String portName1);
+    
+    /**
+     * Sets (as xml) the "PortName1" element
+     */
+    void xsetPortName1(org.apache.xmlbeans.XmlString portName1);
     
     /**
      * Gets the "PortName2" element

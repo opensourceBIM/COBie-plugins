@@ -25,6 +25,8 @@ import org.bimserver.cobie.utils.cobiewriters.IfcToFacility;
 import org.bimserver.cobie.utils.cobiewriters.IfcToFloor;
 import org.bimserver.cobie.utils.cobiewriters.IfcToSpace;
 import org.bimserver.cobie.utils.deserializer.IfcCommonHandler;
+import org.bimserver.cobie.utils.deserializer.SystemDeserializer;
+import org.bimserver.cobie.utils.deserializer.ZoneDeserializer;
 import org.bimserver.cobie.utils.stringwriters.DeserializerStaticStrings;
 import org.bimserver.emf.IdEObject;
 import org.bimserver.ifc.IfcModel;
@@ -39,7 +41,9 @@ import org.bimserver.models.ifc2x3.IfcRelAggregates;
 import org.bimserver.models.ifc2x3.IfcRelContainedInSpatialStructure;
 import org.bimserver.models.ifc2x3.IfcRelDefinesByType;
 import org.bimserver.models.ifc2x3.IfcSpace;
+import org.bimserver.models.ifc2x3.IfcSystem;
 import org.bimserver.models.ifc2x3.IfcTypeObject;
+import org.bimserver.models.ifc2x3.IfcZone;
 import org.bimserver.plugins.serializers.OidProvider;
 
 
@@ -57,7 +61,7 @@ public class COBieIfcModel extends IfcModel {
 	
 	private Map<String, Long> FacilityNameToOid;
 	
-
+	private Map<String, Long> zoneNameCategoryToOid;
 	
 	private Map<String, Long> FloorNameToOid;
 	
@@ -65,9 +69,11 @@ public class COBieIfcModel extends IfcModel {
 	
 	private Map<String, ArrayList<String>> spaceNameToComponentNames;
 	
+	private ArrayList<String> componentNamesNotInSpaces;
+	
 	private Map<String, Long> SpaceNameToOid;
 
-	
+	private Map<String,Long> systemNameCategoryToOid;
 	private Map<String, ArrayList<String>> typeNameToComponentNames;
 
 	private Map<String, Long> TypeNameToOid;
@@ -126,6 +132,10 @@ public class COBieIfcModel extends IfcModel {
 				spaceNameToComponentNames.put(spaceName, spaceComponents);
 			}
 		}
+		else
+		{
+			this.componentNamesNotInSpaces.add(component.getName());
+		}
 	}
 
 	public void setSpaceAggregates(IfcCommonHandler ifcCommonHandler)
@@ -164,6 +174,36 @@ public class COBieIfcModel extends IfcModel {
 				this.add(aggregatesSpace, ifcCommonHandler.getOidProvider());
 			}
 		}
+	}
+	
+	public void setFacilityComponentAggregates(IfcCommonHandler ifcCommonHandler) {
+		long ComponentOid;
+		long FacilityOid = this.firstFacilityOid;
+
+		IfcBuilding facility = (IfcBuilding) this.get(FacilityOid);
+		IfcRelContainedInSpatialStructure aggregatesFacility = Ifc2x3Factory.eINSTANCE
+				.createIfcRelContainedInSpatialStructure();
+		// IfcRelAggregates aggregatesSpace =
+		// Ifc2x3Factory.eINSTANCE.createIfcRelAggregates();
+		aggregatesFacility.setName(DeserializerStaticStrings
+				.getStoreyRelAggregatesName());
+		aggregatesFacility.setDescription(DeserializerStaticStrings
+				.getStoreyRelAggregatesDescription());
+		aggregatesFacility.setOwnerHistory(ifcCommonHandler
+				.getOwnerHistoryHandler().DefaultOwnerHistory());
+		aggregatesFacility.setGlobalId(ifcCommonHandler.getGuidHandler()
+				.newGuid());
+		aggregatesFacility.setRelatingStructure(facility);
+		// aggregatesSpace.setRelatingObject(Space);
+		if (this.componentNamesNotInSpaces != null) {
+			for (String ComponentName : componentNamesNotInSpaces) {
+				ComponentOid = componentNameToOid.get(ComponentName);
+				IfcProduct component = (IfcProduct) this.get(ComponentOid);
+				// aggregatesSpace.getRelatedObjects().add(component);
+				aggregatesFacility.getRelatedElements().add(component);
+			}
+		}
+		this.add(aggregatesFacility, ifcCommonHandler.getOidProvider());
 	}
 	
 	public void setComponentTypeRelations(IfcCommonHandler ifcCommonHandler)
@@ -420,8 +460,15 @@ public class COBieIfcModel extends IfcModel {
 		setComponentNameToOid(new HashMap<String, Long>());
 		setSpaceNameToComponentNames(new HashMap<String, ArrayList<String>>());
 		setTypeNameToComponentNames(new HashMap<String, ArrayList<String>>());
+		setZoneNameToOid(new HashMap<String,Long>());
+		setSystemNameCategoryToOid(new  HashMap<String,Long>());
+		componentNamesNotInSpaces = new ArrayList<String>();
 	}
 	
+	public void setZoneNameToOid(Map<String,Long> zoneNameMap)
+	{
+		this.zoneNameCategoryToOid = zoneNameMap;
+	}
 	private void objectAdded(IdEObject eObject,Long oid)
 	{
 		if(eObject instanceof IfcPersonAndOrganization)
@@ -438,6 +485,30 @@ public class COBieIfcModel extends IfcModel {
 			relAggregatesAdded((IfcRelAggregates)eObject);
 		else if (eObject instanceof IfcTypeObject)
 			typeAdded((IfcTypeObject)eObject,oid);
+		else if (eObject instanceof IfcZone)
+			zoneAdded((IfcZone)eObject,oid);
+		else if (eObject instanceof IfcSystem)
+			systemAdded((IfcSystem)eObject,oid);
+	}
+	
+	private void systemAdded(IfcSystem eObject, Long oid) 
+	{
+		String systemKey = SystemDeserializer.systemKeyFromSystem(eObject);
+		if (!this.systemNameCategoryToOid.containsKey(systemKey))
+			this.systemNameCategoryToOid.put(systemKey, oid);
+		
+	}
+	
+	public boolean containsSystem(String systemKey)
+	{
+		return systemNameCategoryToOid.containsKey(systemKey);
+	}
+
+	private void zoneAdded(IfcZone zone, Long oid)
+	{
+		String zoneKey = ZoneDeserializer.getZoneKeyFromZone(zone);
+		if (!this.zoneNameCategoryToOid.containsKey(zoneKey))
+			this.zoneNameCategoryToOid.put(zoneKey, oid);
 	}
 	
 	private void relAggregatesAdded(IfcRelAggregates relAggregates)
@@ -493,6 +564,16 @@ public class COBieIfcModel extends IfcModel {
 	public boolean containsFloor(String floorName)
 	{
 		return this.FloorNameToOid.containsKey(floorName);
+	}
+	
+	public boolean containsZone(String zoneName)
+	{
+		return (this.zoneNameCategoryToOid.containsKey(zoneName));
+	}
+	
+	public long getZoneOid(String zoneName)
+	{
+		return (this.zoneNameCategoryToOid.get(zoneName));
 	}
 	
 	public IfcBuildingStorey getFloorByName(String floorName)
@@ -571,6 +652,10 @@ public class COBieIfcModel extends IfcModel {
 	private void setUnitNameToOid(Map<String, Long> unitNameToOid)
 	{
 		this.unitNameToOid = unitNameToOid;
+	}
+	private void setSystemNameCategoryToOid(Map<String,Long> systemNameCategoryToOid)
+	{
+		this.systemNameCategoryToOid = systemNameCategoryToOid;
 	}
 
 }
