@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
+<PackageDefinition>
+	<ClassDefinition name="IfcBeamType"/>
+	<ClassDefinition name="IfcColumnType"/>
+	<ClassDefinition name="IfcCurtainWallType"/>
+	<ClassDefinition name="IfcMemberType"/>
+	<ClassDefinition name="IfcPlateType"/>
+	<ClassDefinition name="IfcRailingType"/>
+	<ClassDefinition name="IfcRampFlightType"/>
+	<ClassDefinition name="IfcRampType"/>
+	<ClassDefinition name="IfcSlabType"/>
+	<ClassDefinition name="IfcStairFlightType"/>
+	<ClassDefinition name="IfcStairType"/>
+	<ClassDefinition name="IfcWallType"/>
+	<ClassDefinition name="IfcDuctFittingType"/>
+	<ClassDefinition name="IfcJunctionBoxType"/>
+	<ClassDefinition name="IfcPipeFittingType"/>
+	<ClassDefinition name="IfcCableCarrierSegmentType"/>
+	<ClassDefinition name="IfcCableSegmentType"/>
+	<ClassDefinition name="IfcDuctSegmentType"/>
+	<ClassDefinition name="IfcPipeSegmentType"/>
+	<ClassDefinition name="IfcFastenerType"/>
+	<ClassDefinition name="IfcSpaceType"/>
+</PackageDefinition>
