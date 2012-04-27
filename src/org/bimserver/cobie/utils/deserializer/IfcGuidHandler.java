@@ -4,11 +4,11 @@ import java.util.HashMap;
 
 import org.bimserver.cobie.plugins.COBieIfcModel;
 import org.bimserver.emf.IdEObject;
-import org.eclipse.emf.ecore.EObject;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcGloballyUniqueId;
-import org.bimserver.models.ifc2x3.IfcPropertySet;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcGloballyUniqueId;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySet;
 import org.bimserver.plugins.serializers.OidProvider;
+import org.eclipse.emf.ecore.EObject;
 import org.openifc.guidcompressor.GuidCompressor;
 
 public class IfcGuidHandler
@@ -26,7 +26,7 @@ public class IfcGuidHandler
 	public IfcGloballyUniqueId newGuid()
 	{
 		//model.indexGuids();
-		IfcGloballyUniqueId guid = Ifc2x3Factory.eINSTANCE
+		IfcGloballyUniqueId guid = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcGloballyUniqueId();
 		String wrappedValue = GuidCompressor.getNewIfcGloballyUniqueId();
 		guid.setWrappedValue(wrappedValue);
@@ -64,7 +64,7 @@ public class IfcGuidHandler
 				guid = (IfcGloballyUniqueId) model.get(guidToOid.get(externalIdentifier));
 			else if (isValidGuid(externalIdentifier) )//!model.contains(externalIdentifier))
 			{
-				guid = Ifc2x3Factory.eINSTANCE.createIfcGloballyUniqueId();
+				guid = Ifc2x3tc1Factory.eINSTANCE.createIfcGloballyUniqueId();
 				guid.setWrappedValue(externalIdentifier);
 				Long tmpOid = model.add(guid, this.CobieOidProvider);
 				guidToOid.put(externalIdentifier, tmpOid);
@@ -97,7 +97,7 @@ public class IfcGuidHandler
 				}
 				else if (isValidGuid(externalIdentifier) )//!model.contains(externalIdentifier))
 				{
-					guid = Ifc2x3Factory.eINSTANCE.createIfcGloballyUniqueId();
+					guid = Ifc2x3tc1Factory.eINSTANCE.createIfcGloballyUniqueId();
 					guid.setWrappedValue(externalIdentifier);
 					Long tmpOid = model.add(guid, this.CobieOidProvider);
 					guidToOid.put(externalIdentifier, tmpOid);

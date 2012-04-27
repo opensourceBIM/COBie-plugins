@@ -9,8 +9,8 @@ import org.bimserver.cobie.plugins.COBieOidProviderImpl;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.COBieUtility.CobieSheetName;
 import org.bimserver.emf.IdEObject;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.Ifc2x3Package;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Package;
 import org.bimserver.plugins.serializers.IfcModelInterface;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -69,8 +69,8 @@ public class FromCOBieToIfc
 	private static Map<String, EClassifier> initClasses()
 	{
 		HashMap<String, EClassifier> classes = new HashMap<String, EClassifier>(
-				Ifc2x3Package.eINSTANCE.getEClassifiers().size());
-		for (EClassifier classifier : Ifc2x3Package.eINSTANCE.getEClassifiers())
+				Ifc2x3tc1Package.eINSTANCE.getEClassifiers().size());
+		for (EClassifier classifier : Ifc2x3tc1Package.eINSTANCE.getEClassifiers())
 		{
 			classes.put(classifier.getName().toUpperCase(), classifier);
 		}
@@ -177,7 +177,7 @@ public class FromCOBieToIfc
 		IdEObject object = null;
 		EClass classifier = (EClass) E_CLASSIFIERS.get(name.toUpperCase());
 		if (classifier != null)
-			object = (IdEObject) Ifc2x3Factory.eINSTANCE.create(classifier);
+			object = (IdEObject) Ifc2x3tc1Factory.eINSTANCE.create(classifier);
 		return object;
 	}
 }

@@ -8,11 +8,11 @@ import org.bimserver.cobie.cobielite.SystemType;
 import org.bimserver.cobie.plugins.COBieIfcModel;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.emf.IdEObject;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcClassificationReference;
-import org.bimserver.models.ifc2x3.IfcProduct;
-import org.bimserver.models.ifc2x3.IfcRelAssignsToGroup;
-import org.bimserver.models.ifc2x3.IfcSystem;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcClassificationReference;
+import org.bimserver.models.ifc2x3tc1.IfcProduct;
+import org.bimserver.models.ifc2x3tc1.IfcRelAssignsToGroup;
+import org.bimserver.models.ifc2x3tc1.IfcSystem;
 
 public class SystemDeserializer 
 {
@@ -80,7 +80,7 @@ public class SystemDeserializer
 			groupAssignment = (IfcRelAssignsToGroup) model.get(systemNameToGroupRelationOid.get(systemKey));
 		else
 		{
-			groupAssignment = Ifc2x3Factory.eINSTANCE.createIfcRelAssignsToGroup();
+			groupAssignment = Ifc2x3tc1Factory.eINSTANCE.createIfcRelAssignsToGroup();
 			groupAssignment.setRelatingGroup(system);
 			groupAssignment.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
 			groupAssignment.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().DefaultOwnerHistory());
@@ -122,7 +122,7 @@ public class SystemDeserializer
 	private IfcSystem ifcSystemFromCOBieSystem(SystemType system)
 	{
 		IfcSystem ifcSystem =
-				Ifc2x3Factory.eINSTANCE.createIfcSystem();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcSystem();
 		String externalObject =
 				system.getExtObject();
 		
@@ -135,7 +135,7 @@ public class SystemDeserializer
 		catch(Exception e)
 		{
 			ifcSystem =
-					Ifc2x3Factory.eINSTANCE.createIfcSystem();
+					Ifc2x3tc1Factory.eINSTANCE.createIfcSystem();
 		}
 		String Name=COBieUtility.getCOBieString(system.getName());
 		String Description=COBieUtility.getCOBieString(system.getDescription());

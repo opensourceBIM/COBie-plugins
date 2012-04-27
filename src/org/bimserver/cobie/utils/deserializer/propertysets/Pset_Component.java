@@ -19,10 +19,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bimserver.cobie.cobielite.ComponentType;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcLabel;
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3.impl.IfcPropertySetImpl;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcLabel;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.impl.IfcPropertySetImpl;
 
 
 public class Pset_Component extends IfcPropertySetImpl
@@ -125,7 +125,7 @@ public class Pset_Component extends IfcPropertySetImpl
 		for (ComponentField field : ComponentField.values())
 		{
 			IfcPropertySingleValue sVal =
-					Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+					Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 			sVal.setName(field.toString());
 			sVal.setDescription(PropertyDescriptions.get(field));
 			this.getHasProperties().add(sVal);

@@ -11,7 +11,7 @@ import javax.xml.bind.Unmarshaller;
 import org.bimserver.cobie.ignoreSchema.ClassDefinition;
 import org.bimserver.cobie.ignoreSchema.PackageDefinition;
 import org.bimserver.cobie.utils.COBieUtility;
-import org.bimserver.models.ifc2x3.Ifc2x3Package;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Package;
 import org.bimserver.plugins.PluginContext;
 import org.bimserver.plugins.objectidms.ObjectIDM;
 import org.bimserver.plugins.objectidms.ObjectIDMPlugin;
@@ -32,7 +32,7 @@ public class COBieIDM implements ObjectIDM
 		ignoreClassNames = new ArrayList<String>();
 	}
 	
-	public COBieIDM(File ignoreFile,Set<Ifc2x3Package> set, PluginContext pluginContext,ObjectIDMPlugin fileBasedIDM)
+	public COBieIDM(File ignoreFile,Set<Ifc2x3tc1Package> set, PluginContext pluginContext,ObjectIDMPlugin fileBasedIDM)
 	{
 		this();
 		this.cobieIgnoreFile = ignoreFile;
@@ -63,23 +63,19 @@ public class COBieIDM implements ObjectIDM
 	}
 	
 	@Override
-	public boolean shouldIgnoreField(EClass originalClass, EClass eClass,
+	public boolean shouldFollowReference(EClass originalClass, EClass eClass,
 			EStructuralFeature eStructuralFeature)
 	{
 		if (ignoreClassNames.contains(eClass.getName()))
-			return true;
+			return false;
 		else
-			return defaultIDM.getObjectIDM().shouldIgnoreField(originalClass, eClass, eStructuralFeature);
+			return defaultIDM.getObjectIDM().shouldFollowReference(originalClass, eClass, eStructuralFeature);
 
 	}
 
 	@Override
-	public boolean shouldIgnoreClass(EClass eClass)
+	public boolean shouldIncludeClass(EClass originalClass, EClass eClass)
 	{
-		// TODO Auto-generated method stub
 		return (ignoreClassNames.contains(eClass.getName()));
 	}
-
-
-
 }

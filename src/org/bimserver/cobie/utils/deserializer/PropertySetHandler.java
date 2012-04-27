@@ -1,7 +1,5 @@
 package org.bimserver.cobie.utils.deserializer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,23 +9,23 @@ import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.deserializer.propertysets.PropertyUtility;
 import org.bimserver.cobie.utils.stringwriters.DeserializerStaticStrings;
 import org.bimserver.cobie.utils.stringwriters.IfcUnitToCOBieString;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcElementQuantity;
-import org.bimserver.models.ifc2x3.IfcLengthMeasure;
-import org.bimserver.models.ifc2x3.IfcObject;
-import org.bimserver.models.ifc2x3.IfcOwnerHistory;
-import org.bimserver.models.ifc2x3.IfcPhysicalQuantity;
-import org.bimserver.models.ifc2x3.IfcProperty;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeratedValue;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeration;
-import org.bimserver.models.ifc2x3.IfcPropertySet;
-import org.bimserver.models.ifc2x3.IfcPropertySetDefinition;
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3.IfcRelDefines;
-import org.bimserver.models.ifc2x3.IfcRelDefinesByProperties;
-import org.bimserver.models.ifc2x3.IfcTypeObject;
-import org.bimserver.models.ifc2x3.IfcUnit;
-import org.bimserver.models.ifc2x3.IfcValue;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcElementQuantity;
+import org.bimserver.models.ifc2x3tc1.IfcLengthMeasure;
+import org.bimserver.models.ifc2x3tc1.IfcObject;
+import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3tc1.IfcPhysicalQuantity;
+import org.bimserver.models.ifc2x3tc1.IfcProperty;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeratedValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeration;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySet;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySetDefinition;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.IfcRelDefines;
+import org.bimserver.models.ifc2x3tc1.IfcRelDefinesByProperties;
+import org.bimserver.models.ifc2x3tc1.IfcTypeObject;
+import org.bimserver.models.ifc2x3tc1.IfcUnit;
+import org.bimserver.models.ifc2x3tc1.IfcValue;
 import org.bimserver.plugins.serializers.OidProvider;
 
 
@@ -157,7 +155,7 @@ public class PropertySetHandler
 			IfcPropertySetDefinition propertySetDefinition, IfcObject object,
 			boolean isCOBiePset)
 	{
-		IfcRelDefinesByProperties relDefByProperties = Ifc2x3Factory.eINSTANCE
+		IfcRelDefinesByProperties relDefByProperties = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcRelDefinesByProperties();
 		IfcOwnerHistory ownerHistory = this.ownerHistoryProvider.DefaultOwnerHistory();
 		relDefByProperties.setOwnerHistory(ownerHistory);
@@ -228,7 +226,7 @@ public class PropertySetHandler
 	public  IfcPropertyEnumeration enumerationFromNameAndValues(String enumName, String delimittedAllowedValues,String unit)
 	{
 		IfcPropertyEnumeration enumeration = 
-				Ifc2x3Factory.eINSTANCE.createIfcPropertyEnumeration();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertyEnumeration();
 		enumeration.setName(enumName);
 		if(this.model.containsEnumeration(enumName))
 		{
@@ -322,13 +320,13 @@ public class PropertySetHandler
 		IfcLengthMeasure heightMeasure =
 				FloorDeserializer.storeyHeightFromFloor(floor);
 		IfcPropertySet propertySetHeight =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySet();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySet();
 		propertySetHeight.setName
 			(String.format(fs_COBiePropertySetName, COBieUtility.CobieSheetName.Floor.toString()));
 		propertySetHeight.setDescription
 			(String.format(fs_COBiePropertySetDescription, COBieUtility.CobieSheetName.Floor.toString()));
 		IfcPropertySingleValue heightVal =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		heightVal.setName(DeserializerStaticStrings.getFloorHeightPropertyName());
 		heightVal.setDescription(DeserializerStaticStrings.getFloorHeightPropertyDescription());
 		heightVal.setNominalValue(heightMeasure);

@@ -17,9 +17,9 @@ package org.bimserver.cobie.utils.stringwriters;
  *****************************************************************************/
 import java.util.ArrayList;
 
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeratedValue;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeration;
-import org.bimserver.models.ifc2x3.IfcValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeratedValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeration;
+import org.bimserver.models.ifc2x3tc1.IfcValue;
 import org.eclipse.emf.common.util.EList;
 public class IfcEnumeratedValueToCOBieString extends IfcPropertyToCOBieString 
 {

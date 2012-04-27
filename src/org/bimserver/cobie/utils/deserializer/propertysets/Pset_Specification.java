@@ -16,9 +16,9 @@ package org.bimserver.cobie.utils.deserializer.propertysets;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
 import org.bimserver.cobie.cobielite.TypeType;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3.impl.IfcPropertySetImpl;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.impl.IfcPropertySetImpl;
 
 
 public class Pset_Specification extends IfcPropertySetImpl
@@ -105,7 +105,7 @@ public class Pset_Specification extends IfcPropertySetImpl
 		for (SpecificationTypeField field : SpecificationTypeField.values())
 		{
 			IfcPropertySingleValue sVal =
-					Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+					Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 			sVal.setName(field.toString());
 			sVal.setDescription(propertyDescriptionPrefix + sVal.getName());
 			this.getHasProperties().add(sVal);

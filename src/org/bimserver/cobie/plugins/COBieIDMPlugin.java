@@ -3,7 +3,7 @@ package org.bimserver.cobie.plugins;
 import java.io.File;
 import java.util.ArrayList;
 
-import org.bimserver.models.ifc2x3.Ifc2x3Package;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Package;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.objectidms.ObjectIDM;
@@ -29,7 +29,7 @@ public class COBieIDMPlugin implements ObjectIDMPlugin
 			if (plugin.getDefaultObjectIDMName()==FILE_BASED_OBJECT_IDM_PLUGIN_NAME)
 				fbPlugin = plugin;
 		}
-		cobieObjectIDM = new COBieIDM(ignoreFile,CollectionUtils.singleSet(Ifc2x3Package.eINSTANCE), pluginManager.getPluginContext(this),fbPlugin);
+		cobieObjectIDM = new COBieIDM(ignoreFile,CollectionUtils.singleSet(Ifc2x3tc1Package.eINSTANCE), pluginManager.getPluginContext(this),fbPlugin);
 		initialized = true;
 		
 	}

@@ -20,17 +20,17 @@ import java.util.Map;
 
 import org.bimserver.cobie.cobielite.TypeType;
 import org.bimserver.cobie.utils.COBieUtility;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcCurrencyEnum;
-import org.bimserver.models.ifc2x3.IfcLabel;
-import org.bimserver.models.ifc2x3.IfcMonetaryUnit;
-import org.bimserver.models.ifc2x3.IfcProperty;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeratedValue;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeration;
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3.IfcReal;
-import org.bimserver.models.ifc2x3.IfcText;
-import org.bimserver.models.ifc2x3.impl.IfcPropertySetImpl;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcCurrencyEnum;
+import org.bimserver.models.ifc2x3tc1.IfcLabel;
+import org.bimserver.models.ifc2x3tc1.IfcMonetaryUnit;
+import org.bimserver.models.ifc2x3tc1.IfcProperty;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeratedValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeration;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.IfcReal;
+import org.bimserver.models.ifc2x3tc1.IfcText;
+import org.bimserver.models.ifc2x3tc1.impl.IfcPropertySetImpl;
 
 
 public class Pset_EconomicImpactValues extends IfcPropertySetImpl
@@ -142,7 +142,7 @@ public class Pset_EconomicImpactValues extends IfcPropertySetImpl
 				IfcPropertySingleValue sVal =
 						(IfcPropertySingleValue) property;
 				IfcMonetaryUnit mUnit =
-						Ifc2x3Factory.eINSTANCE.createIfcMonetaryUnit();
+						Ifc2x3tc1Factory.eINSTANCE.createIfcMonetaryUnit();
 				mUnit.setCurrency(IfcCurrencyEnum.USD);
 				sVal.setUnit(mUnit);
 			}
@@ -158,7 +158,7 @@ public class Pset_EconomicImpactValues extends IfcPropertySetImpl
 				String pName = literal.toString();
 				String pDesc = PropertyDescriptions.get(literal);
 				IfcPropertySingleValue val =
-						Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+						Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 				val.setName(pName);
 				val.setDescription(pDesc);
 				super.getHasProperties().add(val);
@@ -169,11 +169,11 @@ public class Pset_EconomicImpactValues extends IfcPropertySetImpl
 	private void initializeEnumeratedValueProperties()
 	{
 		IfcPropertyEnumeratedValue lifeCycle =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertyEnumeratedValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertyEnumeratedValue();
 		lifeCycle.setName(EconomicImpactProperty.LifeCyclePhase.toString());
 		lifeCycle.setDescription(PropertyDescriptions.get(EconomicImpactProperty.LifeCyclePhase));
 		IfcPropertyEnumeration lifeCycleEnum =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertyEnumeration();		
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertyEnumeration();		
 		for(CyclePhase literal : CyclePhase.values())
 		{
 			IfcLabel lbl = PropertyUtility.initializeLabel(literal.toString());

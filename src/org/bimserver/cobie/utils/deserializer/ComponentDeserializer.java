@@ -23,9 +23,9 @@ import org.bimserver.cobie.plugins.COBieIfcModel;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.deserializer.propertysets.Pset_Component;
 import org.bimserver.emf.IdEObject;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcOwnerHistory;
-import org.bimserver.models.ifc2x3.IfcProduct;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3tc1.IfcProduct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -108,7 +108,7 @@ public class ComponentDeserializer
 	public static IfcProduct productFromComponent(ComponentType component)
 	{
 		IfcProduct product =
-				Ifc2x3Factory.eINSTANCE.createIfcProduct();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcProduct();
 		String externalObject =
 				component.getExtObject();
 		

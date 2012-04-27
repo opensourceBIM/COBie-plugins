@@ -1,7 +1,5 @@
 package org.bimserver.cobie.plugins;
 
-import java.io.File;
-
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.EmfSerializer;

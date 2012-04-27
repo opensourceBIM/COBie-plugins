@@ -16,7 +16,7 @@ package org.bimserver.cobie.utils.stringwriters;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
 
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
 
 
 public class IfcSingleValueToCOBieString extends IfcPropertyToCOBieString 

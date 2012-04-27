@@ -2,18 +2,19 @@ package org.bimserver.cobie.utils.deserializer;
 
 
 import java.util.Calendar;
+
 import org.bimserver.cobie.cobielite.COBIEType;
 import org.bimserver.cobie.cobielite.ConnectionType;
 import org.bimserver.cobie.plugins.COBieIfcModel;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.COBieUtility.CobieSheetName;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcDistributionElement;
-import org.bimserver.models.ifc2x3.IfcDistributionPort;
-import org.bimserver.models.ifc2x3.IfcOwnerHistory;
-import org.bimserver.models.ifc2x3.IfcPort;
-import org.bimserver.models.ifc2x3.IfcRelConnectsPortToElement;
-import org.bimserver.models.ifc2x3.IfcRelConnectsPorts;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcDistributionElement;
+import org.bimserver.models.ifc2x3tc1.IfcDistributionPort;
+import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3tc1.IfcPort;
+import org.bimserver.models.ifc2x3tc1.IfcRelConnectsPortToElement;
+import org.bimserver.models.ifc2x3tc1.IfcRelConnectsPorts;
 
 public class ConnectionDeserializer 
 {
@@ -87,7 +88,7 @@ public class ConnectionDeserializer
 	
 	private  IfcRelConnectsPorts relConnectsPortsFromConnection(ConnectionType connection)
 	{
-		IfcRelConnectsPorts relConnectsPorts = Ifc2x3Factory.eINSTANCE.createIfcRelConnectsPorts();
+		IfcRelConnectsPorts relConnectsPorts = Ifc2x3tc1Factory.eINSTANCE.createIfcRelConnectsPorts();
 		relConnectsPorts.setName(connection.getName());
 		relConnectsPorts.setDescription(connection.getDescription());
 		relConnectsPorts.setOwnerHistory(ownerHistoryFromConnection(connection));
@@ -104,7 +105,7 @@ public class ConnectionDeserializer
 	
 	private IfcDistributionPort distributionPortByName(String name,IfcDistributionElement product,String createdBy,Calendar createdOn)
 	{
-		IfcDistributionPort distPort = Ifc2x3Factory.eINSTANCE.createIfcDistributionPort();
+		IfcDistributionPort distPort = Ifc2x3tc1Factory.eINSTANCE.createIfcDistributionPort();
 		distPort.setName(name);
 		distPort.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailAndTimestamp(createdBy, createdOn));
 		distPort.setGlobalId(this.ifcCommonHandler.getGuidHandler().newGuid());
@@ -115,7 +116,7 @@ public class ConnectionDeserializer
 	
 	private IfcRelConnectsPortToElement relConnectsPortFromPortAndElement(IfcPort port, IfcDistributionElement product)
 	{
-		IfcRelConnectsPortToElement portToComponent = Ifc2x3Factory.eINSTANCE.createIfcRelConnectsPortToElement();
+		IfcRelConnectsPortToElement portToComponent = Ifc2x3tc1Factory.eINSTANCE.createIfcRelConnectsPortToElement();
 		String portToElementName = port.getName() + " PortToElement";
 		portToComponent.setName(portToElementName);
 		portToComponent.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());

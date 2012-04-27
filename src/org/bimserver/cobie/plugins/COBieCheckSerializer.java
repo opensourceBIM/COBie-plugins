@@ -13,7 +13,6 @@ import javax.xml.transform.Templates;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 
-
 import org.bimserver.cobie.utils.XSLUtils;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.IfcModelInterface;

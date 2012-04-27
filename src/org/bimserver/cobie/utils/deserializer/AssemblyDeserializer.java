@@ -8,11 +8,11 @@ import org.bimserver.cobie.cobielite.AssemblyType;
 import org.bimserver.cobie.cobielite.COBIEType;
 import org.bimserver.cobie.plugins.COBieIfcModel;
 import org.bimserver.cobie.utils.COBieUtility;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcObjectDefinition;
-import org.bimserver.models.ifc2x3.IfcRelAggregates;
-import org.bimserver.models.ifc2x3.IfcRelNests;
-import org.bimserver.models.ifc2x3.IfcRelationship;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcObjectDefinition;
+import org.bimserver.models.ifc2x3tc1.IfcRelAggregates;
+import org.bimserver.models.ifc2x3tc1.IfcRelNests;
+import org.bimserver.models.ifc2x3tc1.IfcRelationship;
 
 public class AssemblyDeserializer
 {
@@ -152,12 +152,12 @@ public class AssemblyDeserializer
 
 		if (extObject.toLowerCase().equals("ifcrelnests"))
 		{
-			IfcRelNests relNests = Ifc2x3Factory.eINSTANCE.createIfcRelNests();
+			IfcRelNests relNests = Ifc2x3tc1Factory.eINSTANCE.createIfcRelNests();
 			return relNests;
 		}
 		else
 		{
-			IfcRelAggregates relAggregates = Ifc2x3Factory.eINSTANCE.createIfcRelAggregates();
+			IfcRelAggregates relAggregates = Ifc2x3tc1Factory.eINSTANCE.createIfcRelAggregates();
 			return relAggregates;
 		}
 	}

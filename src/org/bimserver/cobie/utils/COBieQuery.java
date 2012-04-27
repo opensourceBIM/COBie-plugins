@@ -24,9 +24,9 @@ import org.bimserver.cobie.cobielite.CategoryPickLists;
 import org.bimserver.cobie.cobielite.ComponentType;
 import org.bimserver.cobie.cobielite.DocumentType;
 import org.bimserver.cobie.cobielite.SpaceType;
-import org.bimserver.models.ifc2x3.IfcProduct;
 import org.bimserver.cobie.cobielite.TypeType;
 import org.bimserver.cobie.utils.COBieUtility.CobieSheetName;
+import org.bimserver.models.ifc2x3tc1.IfcProduct;
 
 public class COBieQuery
 {

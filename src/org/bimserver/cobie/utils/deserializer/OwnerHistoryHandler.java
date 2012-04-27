@@ -6,15 +6,15 @@ import java.util.Date;
 import org.bimserver.cobie.cobielite.ContactType;
 import org.bimserver.cobie.plugins.COBieIfcModel;
 import org.bimserver.cobie.utils.stringwriters.DeserializerStaticStrings;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcActorRole;
-import org.bimserver.models.ifc2x3.IfcApplication;
-import org.bimserver.models.ifc2x3.IfcOrganization;
-import org.bimserver.models.ifc2x3.IfcOwnerHistory;
-import org.bimserver.models.ifc2x3.IfcPerson;
-import org.bimserver.models.ifc2x3.IfcPersonAndOrganization;
-import org.bimserver.models.ifc2x3.IfcPostalAddress;
-import org.bimserver.models.ifc2x3.IfcTelecomAddress;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcActorRole;
+import org.bimserver.models.ifc2x3tc1.IfcApplication;
+import org.bimserver.models.ifc2x3tc1.IfcOrganization;
+import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3tc1.IfcPerson;
+import org.bimserver.models.ifc2x3tc1.IfcPersonAndOrganization;
+import org.bimserver.models.ifc2x3tc1.IfcPostalAddress;
+import org.bimserver.models.ifc2x3tc1.IfcTelecomAddress;
 import org.bimserver.plugins.serializers.OidProvider;
 
 
@@ -71,7 +71,7 @@ public class OwnerHistoryHandler
 				ownerHistory = DefaultOwnerHistory();
 			else
 			{
-				ownerHistory = Ifc2x3Factory.eINSTANCE
+				ownerHistory = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcOwnerHistory();
 				ownerHistory.setOwningApplication((IfcApplication) model
 						.get(this.ApplicationOid));
@@ -97,7 +97,7 @@ public class OwnerHistoryHandler
 			IfcTelecomAddress telecommAddress = ContactDeserializer
 					.telecommAddressFromContact(contact);
 			org.getAddresses().add(telecommAddress);
-			IfcPersonAndOrganization personOrg = Ifc2x3Factory.eINSTANCE
+			IfcPersonAndOrganization personOrg = Ifc2x3tc1Factory.eINSTANCE
 					.createIfcPersonAndOrganization();
 			IfcActorRole actorRole = ContactDeserializer
 					.actorRoleFromContact(contact);
@@ -130,7 +130,7 @@ public class OwnerHistoryHandler
 	
 	private IfcOrganization getDefaultApplicationOrganization()
 	{
-		IfcOrganization organization = Ifc2x3Factory.eINSTANCE
+		IfcOrganization organization = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcOrganization();
 		organization.setName(getCOBieOrganizationName());
 		organization.setId(getCOBieOrganizationId());
@@ -149,13 +149,13 @@ public class OwnerHistoryHandler
 
 	private void initializeApplicationAndOrganization()
 	{
-		IfcApplication application = Ifc2x3Factory.eINSTANCE
+		IfcApplication application = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcApplication();
 		application.setApplicationFullName(DeserializerStaticStrings
 				.getDefaultApplicationName());
 		IfcOrganization tmpOrg = this.getDefaultApplicationOrganization();
 		application.setApplicationDeveloper(tmpOrg);
-		IfcTelecomAddress emailAndPhone = Ifc2x3Factory.eINSTANCE
+		IfcTelecomAddress emailAndPhone = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcTelecomAddress();
 		emailAndPhone.getElectronicMailAddresses().add(
 				DeserializerStaticStrings.getDefaultEmail());
@@ -165,7 +165,7 @@ public class OwnerHistoryHandler
 				.setWWWHomePageURL(DeserializerStaticStrings.getDefaultWWW());
 		model.add(emailAndPhone, CobieOidProvider);
 		tmpOrg.getAddresses().add(emailAndPhone);
-		IfcPostalAddress postalAddress = Ifc2x3Factory.eINSTANCE
+		IfcPostalAddress postalAddress = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcPostalAddress();
 		postalAddress
 				.setCountry(DeserializerStaticStrings.getDefaultOrgCountry());
@@ -183,14 +183,14 @@ public class OwnerHistoryHandler
 	private void initializeDefaultOwnerHistory()
 	{
 		long tmpOid;
-		IfcOwnerHistory ownerHistory = Ifc2x3Factory.eINSTANCE
+		IfcOwnerHistory ownerHistory = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcOwnerHistory();
 		IfcOrganization theOrg = (IfcOrganization) model.get(OrganizationOid);
 		IfcApplication theApplication = (IfcApplication) model
 				.get(ApplicationOid);
-		IfcPersonAndOrganization personOrg = Ifc2x3Factory.eINSTANCE
+		IfcPersonAndOrganization personOrg = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcPersonAndOrganization();
-		IfcPerson person = Ifc2x3Factory.eINSTANCE.createIfcPerson();
+		IfcPerson person = Ifc2x3tc1Factory.eINSTANCE.createIfcPerson();
 		person.setFamilyName(theOrg.getName());
 		person.setGivenName(theOrg.getName());
 		tmpOid = model.add(person, CobieOidProvider);

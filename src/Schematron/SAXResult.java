@@ -31,25 +31,22 @@
 package Schematron;
 
 // TrAX classes
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.Properties;
+
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMResult;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerConfigurationException;
 
-// Java classes
-import java.io.PrintWriter;
-import java.io.Writer;
-import java.io.StringWriter;
-import java.util.Properties;
-
-import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
-
-// JAXP classes
-import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.NodeList;
 
 /**
  * An object representing the result of a Schematron based validation.

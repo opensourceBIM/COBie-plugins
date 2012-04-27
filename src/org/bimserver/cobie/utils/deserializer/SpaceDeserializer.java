@@ -25,20 +25,20 @@ import org.bimserver.cobie.cobielite.SpaceType;
 import org.bimserver.cobie.plugins.COBieIfcModel;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.stringwriters.DeserializerStaticStrings;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcBuildingStorey;
-import org.bimserver.models.ifc2x3.IfcClassification;
-import org.bimserver.models.ifc2x3.IfcClassificationReference;
-import org.bimserver.models.ifc2x3.IfcElementQuantity;
-import org.bimserver.models.ifc2x3.IfcGloballyUniqueId;
-import org.bimserver.models.ifc2x3.IfcLabel;
-import org.bimserver.models.ifc2x3.IfcLengthMeasure;
-import org.bimserver.models.ifc2x3.IfcOwnerHistory;
-import org.bimserver.models.ifc2x3.IfcPropertySet;
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3.IfcQuantityArea;
-import org.bimserver.models.ifc2x3.IfcRelAggregates;
-import org.bimserver.models.ifc2x3.IfcSpace;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcBuildingStorey;
+import org.bimserver.models.ifc2x3tc1.IfcClassification;
+import org.bimserver.models.ifc2x3tc1.IfcClassificationReference;
+import org.bimserver.models.ifc2x3tc1.IfcElementQuantity;
+import org.bimserver.models.ifc2x3tc1.IfcGloballyUniqueId;
+import org.bimserver.models.ifc2x3tc1.IfcLabel;
+import org.bimserver.models.ifc2x3tc1.IfcLengthMeasure;
+import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySet;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.IfcQuantityArea;
+import org.bimserver.models.ifc2x3tc1.IfcRelAggregates;
+import org.bimserver.models.ifc2x3tc1.IfcSpace;
 
 
 public class SpaceDeserializer 
@@ -153,7 +153,7 @@ public class SpaceDeserializer
 			floorOid =  model.getFloorOid(floorName);
 			IfcBuildingStorey floor = (IfcBuildingStorey) model.get(floorOid);
 			spaceNames = FloorNameSpaceNames.get(floorName);
-			IfcRelAggregates aggregatesFloor = Ifc2x3Factory.eINSTANCE
+			IfcRelAggregates aggregatesFloor = Ifc2x3tc1Factory.eINSTANCE
 					.createIfcRelAggregates();
 			aggregatesFloor.setName(DeserializerStaticStrings
 					.getStoreyRelAggregatesName());
@@ -180,7 +180,7 @@ public class SpaceDeserializer
 	public static IfcSpace spaceFromCOBieSpace(SpaceType cobieSpace)
 	{
 		IfcSpace ifcSpace =
-				Ifc2x3Factory.eINSTANCE.createIfcSpace();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcSpace();
 		ifcSpace.setName(cobieSpace.getName());
 		ifcSpace.setDescription(cobieSpace.getDescription());
 		return ifcSpace;
@@ -189,7 +189,7 @@ public class SpaceDeserializer
 	public static IfcClassification classificationFromSpace(SpaceType cobieSpace)
 	{
 		IfcClassification classification =
-				Ifc2x3Factory.eINSTANCE.createIfcClassification();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcClassification();
 		String category = cobieSpace.getCategory();
 		if (!COBieUtility.isNA(category))
 			classification.setName(category);
@@ -206,7 +206,7 @@ public class SpaceDeserializer
 	public static IfcPropertySet spaceCommonPropertySetFromSpace(SpaceType cobieSpace)
 	{
 		IfcPropertySet propertySet =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySet();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySet();
 		propertySet.setName(getSpaceCommonPsetName());
 		propertySet.setDescription(getSpaceCommonPsetDescription());
 		IfcPropertySingleValue roomTag =
@@ -221,7 +221,7 @@ public class SpaceDeserializer
 	public static IfcElementQuantity baseQuantitiesPropertySetFromSpace(SpaceType cobieSpace)
 	{		
 			IfcElementQuantity elementQuantity =
-					Ifc2x3Factory.eINSTANCE.createIfcElementQuantity();
+					Ifc2x3tc1Factory.eINSTANCE.createIfcElementQuantity();
 			elementQuantity.setName(getBaseQuantitiesPsetName());
 			elementQuantity.setDescription(getBaseQuantitiesPsetDescription());
 			elementQuantity.setMethodOfMeasurement(getBaseQuantitiesMethodOfMeasurement());
@@ -233,7 +233,7 @@ public class SpaceDeserializer
 	public static IfcQuantityArea netFloorAreaFromSpace(SpaceType cobieSpace)
 	{
 		IfcQuantityArea qArea =
-				Ifc2x3Factory.eINSTANCE.createIfcQuantityArea();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcQuantityArea();
 		qArea.setName(getNetAreaPropertyName());
 		qArea.setDescription(getNetAreaPropertyDescription());
 		float areaVal;
@@ -252,7 +252,7 @@ public class SpaceDeserializer
 	public static IfcQuantityArea grossFloorAreaFromSpace(SpaceType cobieSpace)
 	{
 		IfcQuantityArea qArea =
-				Ifc2x3Factory.eINSTANCE.createIfcQuantityArea();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcQuantityArea();
 		qArea.setName(getGrossAreaPropertyName());
 		qArea.setDescription(getGrossAreaPropertyDescription());
 		float areaVal;
@@ -271,11 +271,11 @@ public class SpaceDeserializer
 	private static IfcPropertySingleValue roomTagPropertyFromSpace(SpaceType cobieSpace)
 	{
 		IfcPropertySingleValue roomTag =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		roomTag.setName(getRoomTagPropertyName());
 		roomTag.setDescription(getRoomTagPropertyDescription());
 		String spaceRoomTag = cobieSpace.getRoomTag();
-		IfcLabel lblRoomTag = Ifc2x3Factory.eINSTANCE.createIfcLabel();
+		IfcLabel lblRoomTag = Ifc2x3tc1Factory.eINSTANCE.createIfcLabel();
 		lblRoomTag.setWrappedValue(spaceRoomTag);
 		roomTag.setNominalValue(lblRoomTag);
 		return roomTag;
@@ -297,11 +297,11 @@ public class SpaceDeserializer
 			usableHeightVal = 0;
 		}
 		IfcPropertySingleValue usableHeight =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		usableHeight.setName(getUsableHeightPropertyName());
 		usableHeight.setDescription(getUsableHeightPropertyDescription());
 		IfcLengthMeasure lengthMeasure =
-				Ifc2x3Factory.eINSTANCE.createIfcLengthMeasure();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcLengthMeasure();
 		lengthMeasure.setWrappedValue(usableHeightVal);
 		usableHeight.setNominalValue(lengthMeasure);
 		return usableHeight;

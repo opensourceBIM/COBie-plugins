@@ -27,16 +27,16 @@ import org.bimserver.cobie.utils.deserializer.propertysets.Pset_ServiceLife;
 import org.bimserver.cobie.utils.deserializer.propertysets.Pset_Specification;
 import org.bimserver.cobie.utils.deserializer.propertysets.Pset_Warranty;
 import org.bimserver.emf.IdEObject;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcClassificationReference;
-import org.bimserver.models.ifc2x3.IfcDoorStyle;
-import org.bimserver.models.ifc2x3.IfcElementType;
-import org.bimserver.models.ifc2x3.IfcMaterial;
-import org.bimserver.models.ifc2x3.IfcMaterialLayer;
-import org.bimserver.models.ifc2x3.IfcMaterialLayerSet;
-import org.bimserver.models.ifc2x3.IfcOwnerHistory;
-import org.bimserver.models.ifc2x3.IfcTypeObject;
-import org.bimserver.models.ifc2x3.IfcWindowStyle;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcClassificationReference;
+import org.bimserver.models.ifc2x3tc1.IfcDoorStyle;
+import org.bimserver.models.ifc2x3tc1.IfcElementType;
+import org.bimserver.models.ifc2x3tc1.IfcMaterial;
+import org.bimserver.models.ifc2x3tc1.IfcMaterialLayer;
+import org.bimserver.models.ifc2x3tc1.IfcMaterialLayerSet;
+import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3tc1.IfcTypeObject;
+import org.bimserver.models.ifc2x3tc1.IfcWindowStyle;
 
 
 public class TypeDeserializer 
@@ -120,7 +120,7 @@ public class TypeDeserializer
 	{
 		boolean isLegal = false;
 		IfcTypeObject defaultTypeObj =
-				Ifc2x3Factory.eINSTANCE.createIfcTypeObject();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcTypeObject();
 		String externalObject =
 				cobieType.getExtObject();
 		IdEObject genericType =
@@ -129,7 +129,7 @@ public class TypeDeserializer
 		
 		if (genericType instanceof IfcMaterial || genericType instanceof IfcMaterialLayer ||
 				genericType instanceof IfcMaterialLayerSet)
-			genericType = Ifc2x3Factory.eINSTANCE.createIfcFurnishingElementType();
+			genericType = Ifc2x3tc1Factory.eINSTANCE.createIfcFurnishingElementType();
 
 		if (genericType != null && genericType instanceof 
 				IfcTypeObject)

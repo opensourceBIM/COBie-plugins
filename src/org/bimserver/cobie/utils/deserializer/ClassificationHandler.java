@@ -5,10 +5,10 @@ import java.util.Map;
 
 import org.bimserver.cobie.plugins.COBieIfcModel;
 import org.bimserver.cobie.utils.COBieUtility;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcClassificationReference;
-import org.bimserver.models.ifc2x3.IfcObjectDefinition;
-import org.bimserver.models.ifc2x3.IfcRelAssociatesClassification;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcClassificationReference;
+import org.bimserver.models.ifc2x3tc1.IfcObjectDefinition;
+import org.bimserver.models.ifc2x3tc1.IfcRelAssociatesClassification;
 import org.bimserver.plugins.serializers.OidProvider;
 
 public class ClassificationHandler
@@ -41,7 +41,7 @@ public class ClassificationHandler
 				(IfcRelAssociatesClassification) model.get(classificationReferenceNameToRelAssociatesOid.get(classificationRefName));
 		else
 		{
-			classificationAssociation = Ifc2x3Factory.eINSTANCE
+			classificationAssociation = Ifc2x3tc1Factory.eINSTANCE
 					.createIfcRelAssociatesClassification();
 			classificationAssociation.setGlobalId(this.guidProvider.newGuid());
 			classificationAssociation
@@ -81,7 +81,7 @@ public class ClassificationHandler
 				classification = (IfcClassificationReference) model.get(classificationReferenceNameToOid.get(category));
 			else
 			{
-				classification = Ifc2x3Factory.eINSTANCE
+				classification = Ifc2x3tc1Factory.eINSTANCE
 					.createIfcClassificationReference();
 				classification.setName(category);
 				classification.setItemReference(category);

@@ -52,8 +52,6 @@ import nl.fountain.xelem.excel.WorksheetOptions;
 import nl.fountain.xelem.excel.ss.SSRow;
 import nl.fountain.xelem.lex.ExcelReader;
 
-import org.apache.xmlbeans.SchemaParticle;
-import org.bimserver.cobie.cobielite.CategoryPickLists;
 import org.bimserver.cobie.utils.COBieQuery;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.COBieUtility.CobieSheetName;

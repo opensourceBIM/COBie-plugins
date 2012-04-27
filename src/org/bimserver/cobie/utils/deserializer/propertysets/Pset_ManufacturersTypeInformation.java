@@ -17,10 +17,10 @@ package org.bimserver.cobie.utils.deserializer.propertysets;
  *****************************************************************************/
 import org.bimserver.cobie.cobielite.TypeType;
 import org.bimserver.cobie.utils.COBieUtility;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcLabel;
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3.impl.IfcPropertySetImpl;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcLabel;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.impl.IfcPropertySetImpl;
 
 
 
@@ -65,13 +65,13 @@ public class Pset_ManufacturersTypeInformation extends IfcPropertySetImpl
 	public void initializeSingleValueProperties()
 	{
 		IfcPropertySingleValue manufacturerProperty =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		manufacturerProperty.setName(manufacturerPropertyName);
 		IfcPropertySingleValue modelReferenceProperty =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		modelReferenceProperty.setName(modelLabelPropertyName);
 		IfcPropertySingleValue modelLabelProperty =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		modelLabelProperty.setName(modelLabelPropertyName);
 		super.getHasProperties().add(manufacturerProperty);
 		super.getHasProperties().add(modelReferenceProperty);
@@ -87,7 +87,7 @@ public class Pset_ManufacturersTypeInformation extends IfcPropertySetImpl
 	public void setManufacturer(String manufacturer) 
 	{
 		IfcLabel manufacturerLbl =
-				Ifc2x3Factory.eINSTANCE.createIfcLabel();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcLabel();
 		manufacturerLbl.setWrappedValue(manufacturer);
 		PropertySetUtility.setPropertySetPropertyValueOfName(manufacturerPropertyName, this,manufacturerLbl);
 	}
@@ -100,7 +100,7 @@ public class Pset_ManufacturersTypeInformation extends IfcPropertySetImpl
 	public void setModelReference(String modelReference) 
 	{
 		IfcLabel referenceLabel =
-				Ifc2x3Factory.eINSTANCE.createIfcLabel();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcLabel();
 		referenceLabel.setWrappedValue(modelReference);
 		PropertySetUtility.setPropertySetPropertyValueOfName(modelReferencePropertyName, 
 				this,referenceLabel);
@@ -114,7 +114,7 @@ public class Pset_ManufacturersTypeInformation extends IfcPropertySetImpl
 	public void setModelLabel(String modelLabel) 
 	{
 		IfcLabel lblModelLabel =
-				Ifc2x3Factory.eINSTANCE.createIfcLabel();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcLabel();
 		lblModelLabel.setWrappedValue(modelLabel);
 		PropertySetUtility.setPropertySetPropertyValueOfName(modelLabelPropertyName, 
 				this,lblModelLabel);

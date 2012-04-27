@@ -9,17 +9,17 @@ import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.COBieUtility.CobieSheetName;
 import org.bimserver.cobie.utils.deserializer.propertysets.PropertyUtility;
 import org.bimserver.emf.IdEObject;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcClassificationReference;
-import org.bimserver.models.ifc2x3.IfcGloballyUniqueId;
-import org.bimserver.models.ifc2x3.IfcObject;
-import org.bimserver.models.ifc2x3.IfcOwnerHistory;
-import org.bimserver.models.ifc2x3.IfcProperty;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeratedValue;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeration;
-import org.bimserver.models.ifc2x3.IfcPropertySet;
-import org.bimserver.models.ifc2x3.IfcTypeObject;
-import org.bimserver.models.ifc2x3.IfcValue;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcClassificationReference;
+import org.bimserver.models.ifc2x3tc1.IfcGloballyUniqueId;
+import org.bimserver.models.ifc2x3tc1.IfcObject;
+import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3tc1.IfcProperty;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeratedValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeration;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySet;
+import org.bimserver.models.ifc2x3tc1.IfcTypeObject;
+import org.bimserver.models.ifc2x3tc1.IfcValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -204,7 +204,7 @@ public class AttributeDeserializer
 	}
 	public  IfcPropertySet newPropertySetFromAttribute(AttributeType attribute)
 	{
-		IfcPropertySet pSet = Ifc2x3Factory.eINSTANCE.createIfcPropertySet();
+		IfcPropertySet pSet = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySet();
 		pSet.setName(attribute.getExtObject());
 		IfcProperty property = AttributeDeserializer.addNewPropertyToPropertySet(attribute, pSet);
 		if (property instanceof IfcPropertyEnumeratedValue)

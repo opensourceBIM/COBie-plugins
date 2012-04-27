@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
 import org.bimserver.cobie.cobielite.COBIEDocument;
@@ -40,9 +41,9 @@ import org.bimserver.cobie.utils.cobiewriters.IfcToSpare;
 import org.bimserver.cobie.utils.cobiewriters.IfcToSystem;
 import org.bimserver.cobie.utils.cobiewriters.IfcToType;
 import org.bimserver.cobie.utils.cobiewriters.IfcToZone;
-import org.bimserver.models.ifc2x3.IfcObjectDefinition;
-import org.bimserver.models.ifc2x3.IfcRelAssociates;
-import org.bimserver.models.ifc2x3.IfcRoot;
+import org.bimserver.models.ifc2x3tc1.IfcObjectDefinition;
+import org.bimserver.models.ifc2x3tc1.IfcRelAssociates;
+import org.bimserver.models.ifc2x3tc1.IfcRoot;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.ifcengine.IfcEngine;
 import org.bimserver.plugins.serializers.EmfSerializer;

@@ -19,15 +19,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bimserver.cobie.cobielite.TypeType;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcLabel;
-import org.bimserver.models.ifc2x3.IfcProperty;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeratedValue;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeration;
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3.IfcReal;
-import org.bimserver.models.ifc2x3.IfcValue;
-import org.bimserver.models.ifc2x3.impl.IfcPropertySetImpl;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcLabel;
+import org.bimserver.models.ifc2x3tc1.IfcProperty;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeratedValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeration;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.IfcReal;
+import org.bimserver.models.ifc2x3tc1.IfcValue;
+import org.bimserver.models.ifc2x3tc1.impl.IfcPropertySetImpl;
 
 
 public class Pset_ServiceLife extends IfcPropertySetImpl
@@ -110,17 +110,17 @@ public class Pset_ServiceLife extends IfcPropertySetImpl
 	private void initializeProperties()
 	{
 		IfcPropertySingleValue serviceLifeDuration =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		serviceLifeDuration.setName(ServiceLifeProperty.ServiceLifeDuration.toString());
 		serviceLifeDuration.setDescription(PropertyDescriptions.get(ServiceLifeProperty.ServiceLifeDuration));
 		this.getHasProperties().add(serviceLifeDuration);
 		
 		IfcPropertyEnumeratedValue serviceLifeType =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertyEnumeratedValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertyEnumeratedValue();
 		serviceLifeType.setName(ServiceLifeProperty.ServiceLifeType.toString());
 		serviceLifeType.setDescription(PropertyDescriptions.get(ServiceLifeProperty.ServiceLifeType));
 		IfcPropertyEnumeration svcEnum =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertyEnumeration();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertyEnumeration();
 		for(ServiceLifeType svcType : ServiceLifeType.values())
 		{
 			IfcLabel lbl =

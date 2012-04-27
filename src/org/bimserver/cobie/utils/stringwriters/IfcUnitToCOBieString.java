@@ -17,17 +17,17 @@ package org.bimserver.cobie.utils.stringwriters;
  *****************************************************************************/
 import java.util.ArrayList;
 
-import org.bimserver.models.ifc2x3.IfcContextDependentUnit;
-import org.bimserver.models.ifc2x3.IfcConversionBasedUnit;
-import org.bimserver.models.ifc2x3.IfcDerivedUnit;
-import org.bimserver.models.ifc2x3.IfcDerivedUnitElement;
-import org.bimserver.models.ifc2x3.IfcMonetaryUnit;
-import org.bimserver.models.ifc2x3.IfcNamedUnit;
-import org.bimserver.models.ifc2x3.IfcSIPrefix;
-import org.bimserver.models.ifc2x3.IfcSIUnit;
-import org.bimserver.models.ifc2x3.IfcSIUnitName;
-import org.bimserver.models.ifc2x3.IfcUnit;
-import org.bimserver.models.ifc2x3.IfcUnitEnum;
+import org.bimserver.models.ifc2x3tc1.IfcContextDependentUnit;
+import org.bimserver.models.ifc2x3tc1.IfcConversionBasedUnit;
+import org.bimserver.models.ifc2x3tc1.IfcDerivedUnit;
+import org.bimserver.models.ifc2x3tc1.IfcDerivedUnitElement;
+import org.bimserver.models.ifc2x3tc1.IfcMonetaryUnit;
+import org.bimserver.models.ifc2x3tc1.IfcNamedUnit;
+import org.bimserver.models.ifc2x3tc1.IfcSIPrefix;
+import org.bimserver.models.ifc2x3tc1.IfcSIUnit;
+import org.bimserver.models.ifc2x3tc1.IfcSIUnitName;
+import org.bimserver.models.ifc2x3tc1.IfcUnit;
+import org.bimserver.models.ifc2x3tc1.IfcUnitEnum;
 
 public class IfcUnitToCOBieString 
 {

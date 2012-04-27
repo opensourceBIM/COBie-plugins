@@ -16,10 +16,10 @@ package org.bimserver.cobie.utils.deserializer.propertysets;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
 import org.bimserver.cobie.cobielite.TypeType;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcLabel;
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3.impl.IfcPropertySetImpl;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcLabel;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.impl.IfcPropertySetImpl;
 
 
 public class Pset_Asset extends IfcPropertySetImpl
@@ -45,7 +45,7 @@ public class Pset_Asset extends IfcPropertySetImpl
 	private void initializeSingleValueProperties()
 	{
 		IfcPropertySingleValue assetProperty =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		assetProperty.setName(getAssetAccountingTypePropertyName());
 		assetProperty.setDescription(getAssetAccountingTypePropertyDescription());
 		super.getHasProperties().add(assetProperty);
@@ -78,7 +78,7 @@ public class Pset_Asset extends IfcPropertySetImpl
 			else
 				assetAccountingTypeDerived = "NonFixed";
 		IfcLabel assetType =
-				Ifc2x3Factory.eINSTANCE.createIfcLabel();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcLabel();
 		assetType.setWrappedValue(assetAccountingTypeDerived);
 		PropertySetUtility.
 		setPropertySetPropertyValueOfName

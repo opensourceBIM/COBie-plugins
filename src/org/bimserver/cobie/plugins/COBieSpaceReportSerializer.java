@@ -7,7 +7,6 @@ import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.IfcModelInterface;
 import org.bimserver.plugins.serializers.ProjectInfo;
 import org.bimserver.plugins.serializers.SerializerException;
-import org.bimserver.utils.UTF8PrintWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

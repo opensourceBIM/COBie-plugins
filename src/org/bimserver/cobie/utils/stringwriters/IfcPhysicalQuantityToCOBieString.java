@@ -15,7 +15,7 @@ package org.bimserver.cobie.utils.stringwriters;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
-import org.bimserver.models.ifc2x3.IfcPhysicalSimpleQuantity;
+import org.bimserver.models.ifc2x3tc1.IfcPhysicalSimpleQuantity;
 
 public class IfcPhysicalQuantityToCOBieString extends IfcPropertyToCOBieString
 {

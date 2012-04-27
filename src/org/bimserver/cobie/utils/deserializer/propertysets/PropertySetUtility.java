@@ -17,14 +17,14 @@ package org.bimserver.cobie.utils.deserializer.propertysets;
  *****************************************************************************/
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.stringwriters.IfcPropertyToCOBieString;
-import org.bimserver.models.ifc2x3.IfcPhysicalSimpleQuantity;
-import org.bimserver.models.ifc2x3.IfcProperty;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeratedValue;
-import org.bimserver.models.ifc2x3.IfcPropertySet;
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3.IfcReal;
-import org.bimserver.models.ifc2x3.IfcSimpleProperty;
-import org.bimserver.models.ifc2x3.IfcValue;
+import org.bimserver.models.ifc2x3tc1.IfcPhysicalSimpleQuantity;
+import org.bimserver.models.ifc2x3tc1.IfcProperty;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeratedValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySet;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.IfcReal;
+import org.bimserver.models.ifc2x3tc1.IfcSimpleProperty;
+import org.bimserver.models.ifc2x3tc1.IfcValue;
 
 public class PropertySetUtility 
 {

@@ -31,23 +31,19 @@
 package Schematron;
 
 // TrAX classes
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.Vector;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMResult;
 import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.Source;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerConfigurationException;
 
-// JAXP classes
-import javax.xml.parsers.ParserConfigurationException;
-
-// java classes
-import java.util.Properties;
-import java.util.Enumeration;
-import java.util.Vector;
-
-// DOM classes
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 

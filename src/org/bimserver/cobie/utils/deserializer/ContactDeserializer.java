@@ -21,14 +21,14 @@ import java.util.Calendar;
 import org.bimserver.cobie.cobielite.COBIEType;
 import org.bimserver.cobie.cobielite.ContactType;
 import org.bimserver.cobie.plugins.COBieIfcModel;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcActorRole;
-import org.bimserver.models.ifc2x3.IfcOrganization;
-import org.bimserver.models.ifc2x3.IfcPerson;
-import org.bimserver.models.ifc2x3.IfcPersonAndOrganization;
-import org.bimserver.models.ifc2x3.IfcPostalAddress;
-import org.bimserver.models.ifc2x3.IfcRoleEnum;
-import org.bimserver.models.ifc2x3.IfcTelecomAddress;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcActorRole;
+import org.bimserver.models.ifc2x3tc1.IfcOrganization;
+import org.bimserver.models.ifc2x3tc1.IfcPerson;
+import org.bimserver.models.ifc2x3tc1.IfcPersonAndOrganization;
+import org.bimserver.models.ifc2x3tc1.IfcPostalAddress;
+import org.bimserver.models.ifc2x3tc1.IfcRoleEnum;
+import org.bimserver.models.ifc2x3tc1.IfcTelecomAddress;
 import org.bimserver.plugins.serializers.OidProvider;
 
 
@@ -65,7 +65,7 @@ public class ContactDeserializer
 			IfcTelecomAddress telecommAddress = ContactDeserializer
 					.telecommAddressFromContact(contact);
 			org.getAddresses().add(telecommAddress);
-			IfcPersonAndOrganization personOrg = Ifc2x3Factory.eINSTANCE
+			IfcPersonAndOrganization personOrg = Ifc2x3tc1Factory.eINSTANCE
 					.createIfcPersonAndOrganization();
 			IfcActorRole actorRole = ContactDeserializer
 					.actorRoleFromContact(contact);
@@ -105,7 +105,7 @@ public class ContactDeserializer
 	public static IfcPerson personFromContact(ContactType contact)
 	{
 		IfcPerson tmpPerson =
-				Ifc2x3Factory.eINSTANCE.createIfcPerson();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPerson();
 		String GivenName=contact.getGivenName();
 		String FamilyName=contact.getFamilyName();
 		tmpPerson.setFamilyName(FamilyName);
@@ -117,7 +117,7 @@ public class ContactDeserializer
 	public static IfcOrganization organizationFromContact(ContactType contact)
 	{
 		IfcOrganization tmpOrg =
-				Ifc2x3Factory.eINSTANCE.createIfcOrganization();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcOrganization();
 		String Company=contact.getCompany();
 		String Department=contact.getDepartment();
 		String OrganizationCode=contact.getOrganizationCode();
@@ -130,7 +130,7 @@ public class ContactDeserializer
 	public static IfcTelecomAddress telecommAddressFromContact(ContactType contact)
 	{
 		IfcTelecomAddress telecommAddress = 
-				Ifc2x3Factory.eINSTANCE.createIfcTelecomAddress();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcTelecomAddress();
 		telecommAddress.getElectronicMailAddresses().add(contact.getEmail());
 		telecommAddress.getTelephoneNumbers().add(contact.getPhone());
 		//telecommAddress.
@@ -140,7 +140,7 @@ public class ContactDeserializer
 	public static IfcPostalAddress postalAddressFromContact(ContactType contact)
 	{
 		IfcPostalAddress postalAddress =
-				Ifc2x3Factory.eINSTANCE.createIfcPostalAddress();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPostalAddress();
 		postalAddress.getAddressLines().add(contact.getStreet());
 		postalAddress.setPostalBox(contact.getPostalBox());
 		postalAddress.setTown(contact.getTown());
@@ -154,7 +154,7 @@ public class ContactDeserializer
 	public static IfcActorRole actorRoleFromContact(ContactType contact)
 	{
 		IfcActorRole role =
-				Ifc2x3Factory.eINSTANCE.createIfcActorRole();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcActorRole();
 		role.setRole(IfcRoleEnum.USERDEFINED);
 		role.setUserDefinedRole(contact.getCategory());
 		return role;

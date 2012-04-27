@@ -30,23 +30,22 @@ import org.bimserver.cobie.utils.deserializer.ZoneDeserializer;
 import org.bimserver.cobie.utils.stringwriters.DeserializerStaticStrings;
 import org.bimserver.emf.IdEObject;
 import org.bimserver.ifc.IfcModel;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcBuilding;
-import org.bimserver.models.ifc2x3.IfcBuildingStorey;
-import org.bimserver.models.ifc2x3.IfcObjectDefinition;
-import org.bimserver.models.ifc2x3.IfcOwnerHistory;
-import org.bimserver.models.ifc2x3.IfcPersonAndOrganization;
-import org.bimserver.models.ifc2x3.IfcProduct;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeration;
-import org.bimserver.models.ifc2x3.IfcRelAggregates;
-import org.bimserver.models.ifc2x3.IfcRelContainedInSpatialStructure;
-import org.bimserver.models.ifc2x3.IfcRelDefinesByType;
-import org.bimserver.models.ifc2x3.IfcSpace;
-import org.bimserver.models.ifc2x3.IfcSystem;
-import org.bimserver.models.ifc2x3.IfcTypeObject;
-import org.bimserver.models.ifc2x3.IfcZone;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcBuilding;
+import org.bimserver.models.ifc2x3tc1.IfcBuildingStorey;
+import org.bimserver.models.ifc2x3tc1.IfcObjectDefinition;
+import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3tc1.IfcPersonAndOrganization;
+import org.bimserver.models.ifc2x3tc1.IfcProduct;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeration;
+import org.bimserver.models.ifc2x3tc1.IfcRelAggregates;
+import org.bimserver.models.ifc2x3tc1.IfcRelContainedInSpatialStructure;
+import org.bimserver.models.ifc2x3tc1.IfcRelDefinesByType;
+import org.bimserver.models.ifc2x3tc1.IfcSpace;
+import org.bimserver.models.ifc2x3tc1.IfcSystem;
+import org.bimserver.models.ifc2x3tc1.IfcTypeObject;
+import org.bimserver.models.ifc2x3tc1.IfcZone;
 import org.bimserver.plugins.serializers.OidProvider;
-
 
 import com.google.common.collect.BiMap;
 
@@ -202,10 +201,10 @@ public class COBieIfcModel extends IfcModel {
 				SpaceOid = SpaceNameToOid.get(SpaceName);
 				IfcSpace Space = (IfcSpace) this.get(SpaceOid);
 				ComponentNames = spaceNameToComponentNames.get(SpaceName);
-				IfcRelContainedInSpatialStructure aggregatesSpace = Ifc2x3Factory.eINSTANCE
+				IfcRelContainedInSpatialStructure aggregatesSpace = Ifc2x3tc1Factory.eINSTANCE
 						.createIfcRelContainedInSpatialStructure();
 				// IfcRelAggregates aggregatesSpace =
-				// Ifc2x3Factory.eINSTANCE.createIfcRelAggregates();
+				// Ifc2x3tc1Factory.eINSTANCE.createIfcRelAggregates();
 				aggregatesSpace.setName(DeserializerStaticStrings
 						.getStoreyRelAggregatesName());
 				aggregatesSpace.setDescription(DeserializerStaticStrings
@@ -234,10 +233,10 @@ public class COBieIfcModel extends IfcModel {
 		long FacilityOid = this.firstFacilityOid;
 
 		IfcBuilding facility = (IfcBuilding) this.get(FacilityOid);
-		IfcRelContainedInSpatialStructure aggregatesFacility = Ifc2x3Factory.eINSTANCE
+		IfcRelContainedInSpatialStructure aggregatesFacility = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcRelContainedInSpatialStructure();
 		// IfcRelAggregates aggregatesSpace =
-		// Ifc2x3Factory.eINSTANCE.createIfcRelAggregates();
+		// Ifc2x3tc1Factory.eINSTANCE.createIfcRelAggregates();
 		aggregatesFacility.setName(DeserializerStaticStrings
 				.getStoreyRelAggregatesName());
 		aggregatesFacility.setDescription(DeserializerStaticStrings
@@ -268,7 +267,7 @@ public class COBieIfcModel extends IfcModel {
 			TypeOid = TypeNameToOid.get(TypeName);
 			IfcTypeObject typeObject = (IfcTypeObject) this.get(TypeOid);
 			ComponentNames = typeNameToComponentNames.get(TypeName);
-			IfcRelDefinesByType defByType = Ifc2x3Factory.eINSTANCE
+			IfcRelDefinesByType defByType = Ifc2x3tc1Factory.eINSTANCE
 					.createIfcRelDefinesByType();
 			defByType.setName(DeserializerStaticStrings
 					.getComponentRelDefinesByTypeName());

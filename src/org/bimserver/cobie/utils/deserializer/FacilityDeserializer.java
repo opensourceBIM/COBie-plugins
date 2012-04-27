@@ -22,23 +22,23 @@ import org.bimserver.cobie.cobielite.FacilityType;
 import org.bimserver.cobie.plugins.COBieIfcModel;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.stringwriters.DeserializerStaticStrings;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcBuilding;
-import org.bimserver.models.ifc2x3.IfcClassification;
-import org.bimserver.models.ifc2x3.IfcClassificationReference;
-import org.bimserver.models.ifc2x3.IfcCurrencyEnum;
-import org.bimserver.models.ifc2x3.IfcGloballyUniqueId;
-import org.bimserver.models.ifc2x3.IfcMonetaryUnit;
-import org.bimserver.models.ifc2x3.IfcOwnerHistory;
-import org.bimserver.models.ifc2x3.IfcProject;
-import org.bimserver.models.ifc2x3.IfcRelAggregates;
-import org.bimserver.models.ifc2x3.IfcSIPrefix;
-import org.bimserver.models.ifc2x3.IfcSIUnit;
-import org.bimserver.models.ifc2x3.IfcSIUnitName;
-import org.bimserver.models.ifc2x3.IfcSite;
-import org.bimserver.models.ifc2x3.IfcUnit;
-import org.bimserver.models.ifc2x3.IfcUnitAssignment;
-import org.bimserver.models.ifc2x3.IfcUnitEnum;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcBuilding;
+import org.bimserver.models.ifc2x3tc1.IfcClassification;
+import org.bimserver.models.ifc2x3tc1.IfcClassificationReference;
+import org.bimserver.models.ifc2x3tc1.IfcCurrencyEnum;
+import org.bimserver.models.ifc2x3tc1.IfcGloballyUniqueId;
+import org.bimserver.models.ifc2x3tc1.IfcMonetaryUnit;
+import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3tc1.IfcProject;
+import org.bimserver.models.ifc2x3tc1.IfcRelAggregates;
+import org.bimserver.models.ifc2x3tc1.IfcSIPrefix;
+import org.bimserver.models.ifc2x3tc1.IfcSIUnit;
+import org.bimserver.models.ifc2x3tc1.IfcSIUnitName;
+import org.bimserver.models.ifc2x3tc1.IfcSite;
+import org.bimserver.models.ifc2x3tc1.IfcUnit;
+import org.bimserver.models.ifc2x3tc1.IfcUnitAssignment;
+import org.bimserver.models.ifc2x3tc1.IfcUnitEnum;
 import org.bimserver.plugins.serializers.OidProvider;
 
 
@@ -111,7 +111,7 @@ public class FacilityDeserializer
 						monetaryUnit = (IfcUnit) model.get(tmpOid);
 						// model.add(monetaryUnit, CobieOidProvider);
 
-						IfcUnitAssignment unitAssignment = Ifc2x3Factory.eINSTANCE
+						IfcUnitAssignment unitAssignment = Ifc2x3tc1Factory.eINSTANCE
 								.createIfcUnitAssignment();
 						unitAssignment.getUnits().add(linearUnit);
 						unitAssignment.getUnits().add(areaUnit);
@@ -158,7 +158,7 @@ public class FacilityDeserializer
 	private void setFacilityAggregates(IfcProject project, IfcSite site,
 			IfcBuilding building)
 	{
-		IfcRelAggregates aggregatesProj = Ifc2x3Factory.eINSTANCE
+		IfcRelAggregates aggregatesProj = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcRelAggregates();
 		aggregatesProj.setGlobalId(this.guidProvider.newGuid());
 		aggregatesProj.setOwnerHistory(ownerHistoryProvider.DefaultOwnerHistory());
@@ -170,7 +170,7 @@ public class FacilityDeserializer
 		aggregatesProj.getRelatedObjects().add(site);
 		model.add(aggregatesProj, this.CobieOidProvider);
 
-		IfcRelAggregates aggregatesSite = Ifc2x3Factory.eINSTANCE
+		IfcRelAggregates aggregatesSite = Ifc2x3tc1Factory.eINSTANCE
 				.createIfcRelAggregates();
 		aggregatesSite.setGlobalId(this.guidProvider.newGuid());
 		aggregatesSite.setOwnerHistory(this.ownerHistoryProvider.DefaultOwnerHistory());
@@ -186,7 +186,7 @@ public class FacilityDeserializer
 	
 	protected static IfcProject projectFromFacility(FacilityType facility)
 	{
-		IfcProject project = Ifc2x3Factory.eINSTANCE.createIfcProject();
+		IfcProject project = Ifc2x3tc1Factory.eINSTANCE.createIfcProject();
 		project.setName(facility.getProjectName());
 		project.setDescription(facility.getProjectDescription());
 		project.setPhase(facility.getPhase());
@@ -196,7 +196,7 @@ public class FacilityDeserializer
 	protected static IfcClassification classificationFromFacility(FacilityType facility)
 	{
 		IfcClassification classification =
-				Ifc2x3Factory.eINSTANCE.createIfcClassification();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcClassification();
 		String category = facility.getCategory();
 		if (!COBieUtility.isNA(category))
 		{
@@ -214,7 +214,7 @@ public class FacilityDeserializer
 	
 	protected static IfcSite siteFromFacility(FacilityType facility)
 	{
-		IfcSite site = Ifc2x3Factory.eINSTANCE.createIfcSite();
+		IfcSite site = Ifc2x3tc1Factory.eINSTANCE.createIfcSite();
 		site.setName(facility.getSiteName());
 		site.setDescription(facility.getDescription());
 		return site;
@@ -223,7 +223,7 @@ public class FacilityDeserializer
 	protected static IfcBuilding buildingFromFacility(FacilityType facility)
 	{
 		IfcBuilding building =
-				Ifc2x3Factory.eINSTANCE.createIfcBuilding();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcBuilding();
 		building.setName(facility.getName());
 		building.setDescription(facility.getDescription());
 		return building;
@@ -233,7 +233,7 @@ public class FacilityDeserializer
 	{
 
 		IfcSIUnit siUnit =
-				Ifc2x3Factory.eINSTANCE.createIfcSIUnit();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcSIUnit();
 		siUnit.setName(IfcSIUnitName.METRE);
 		siUnit.setPrefix(IfcSIPrefix.MILLI);
 		siUnit.setUnitType(IfcUnitEnum.LENGTHUNIT);
@@ -243,7 +243,7 @@ public class FacilityDeserializer
 	protected static IfcUnit areaUnitsFromFacility(FacilityType facility)
 	{
 		IfcSIUnit siUnit =
-				Ifc2x3Factory.eINSTANCE.createIfcSIUnit();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcSIUnit();
 		siUnit.setName(IfcSIUnitName.SQUARE_METRE);
 		siUnit.setUnitType(IfcUnitEnum.AREAUNIT);
 		return siUnit;
@@ -252,7 +252,7 @@ public class FacilityDeserializer
 	protected static IfcUnit volumeUnitsFromFacility(FacilityType facility)
 	{
 		IfcSIUnit siUnit =
-				Ifc2x3Factory.eINSTANCE.createIfcSIUnit();	
+				Ifc2x3tc1Factory.eINSTANCE.createIfcSIUnit();	
 		siUnit.setName(IfcSIUnitName.CUBIC_METRE);
 		siUnit.setUnitType(IfcUnitEnum.VOLUMEUNIT);
 		return siUnit;
@@ -261,7 +261,7 @@ public class FacilityDeserializer
 	protected static IfcUnit monetaryUnitFromFacility(FacilityType facility)
 	{
 		IfcMonetaryUnit monetaryUnit =
-				Ifc2x3Factory.eINSTANCE.createIfcMonetaryUnit();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcMonetaryUnit();
 		String facilityMonetary = facility.getCurrencyUnits();
 		try
 		{

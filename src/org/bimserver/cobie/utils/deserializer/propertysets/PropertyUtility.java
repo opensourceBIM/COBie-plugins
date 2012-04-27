@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.bimserver.cobie.utils.COBieUtility;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcLabel;
-import org.bimserver.models.ifc2x3.IfcPhysicalSimpleQuantity;
-import org.bimserver.models.ifc2x3.IfcProperty;
-import org.bimserver.models.ifc2x3.IfcPropertyBoundedValue;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeratedValue;
-import org.bimserver.models.ifc2x3.IfcPropertyEnumeration;
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3.IfcQuantityArea;
-import org.bimserver.models.ifc2x3.IfcQuantityCount;
-import org.bimserver.models.ifc2x3.IfcQuantityLength;
-import org.bimserver.models.ifc2x3.IfcQuantityTime;
-import org.bimserver.models.ifc2x3.IfcQuantityVolume;
-import org.bimserver.models.ifc2x3.IfcQuantityWeight;
-import org.bimserver.models.ifc2x3.IfcReal;
-import org.bimserver.models.ifc2x3.IfcText;
-import org.bimserver.models.ifc2x3.IfcValue;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcLabel;
+import org.bimserver.models.ifc2x3tc1.IfcPhysicalSimpleQuantity;
+import org.bimserver.models.ifc2x3tc1.IfcProperty;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyBoundedValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeratedValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeration;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.IfcQuantityArea;
+import org.bimserver.models.ifc2x3tc1.IfcQuantityCount;
+import org.bimserver.models.ifc2x3tc1.IfcQuantityLength;
+import org.bimserver.models.ifc2x3tc1.IfcQuantityTime;
+import org.bimserver.models.ifc2x3tc1.IfcQuantityVolume;
+import org.bimserver.models.ifc2x3tc1.IfcQuantityWeight;
+import org.bimserver.models.ifc2x3tc1.IfcReal;
+import org.bimserver.models.ifc2x3tc1.IfcText;
+import org.bimserver.models.ifc2x3tc1.IfcValue;
 
 public class PropertyUtility 
 {
@@ -45,7 +45,7 @@ public class PropertyUtility
 		try
 		{
 			Double.parseDouble(cobieString);
-			IfcPropertySingleValue singVal =Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+			IfcPropertySingleValue singVal =Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 			singVal.setName(propertyName);
 			singVal.setDescription(propertyDescription);
 			singVal.setNominalValue(initializeRealToStringVal(cobieString));
@@ -71,7 +71,7 @@ public class PropertyUtility
 			}
 			if (isBoundedVal)
 			{
-				IfcPropertyBoundedValue boundVal = Ifc2x3Factory.eINSTANCE.createIfcPropertyBoundedValue();
+				IfcPropertyBoundedValue boundVal = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertyBoundedValue();
 				boundVal.setName(propertyName);
 				boundVal.setDescription(propertyDescription);
 				boundVal.setLowerBoundValue(initializeRealToStringVal(splitStrings[BoundedValueLowerBoundIdx]));
@@ -80,7 +80,7 @@ public class PropertyUtility
 			}
 
 		}
-		IfcPropertySingleValue singValTxt = Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+		IfcPropertySingleValue singValTxt = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		singValTxt.setName(propertyName);
 		singValTxt.setDescription(propertyDescription);
 		singValTxt.setNominalValue(initializeText(cobieString));
@@ -90,7 +90,7 @@ public class PropertyUtility
 	public static IfcReal initializeRealToStringVal(String valString)
 	{
 		IfcReal valReal =
-				Ifc2x3Factory.eINSTANCE.createIfcReal();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcReal();
 		float valFloat = 0;
 		try
 		{
@@ -108,7 +108,7 @@ public class PropertyUtility
 	public static IfcLabel initializeLabel(String text)
 	{
 		IfcLabel newLabel =
-				Ifc2x3Factory.eINSTANCE.createIfcLabel();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcLabel();
 		newLabel.setWrappedValue(text);
 		return newLabel;
 	}
@@ -144,8 +144,8 @@ public class PropertyUtility
 	{
 		String exceptionMsg = getAllowedValueExceptionMessage();
 		Exception exception = new Exception(exceptionMsg);
-		IfcPropertyEnumeratedValue enumeratedValue = Ifc2x3Factory.eINSTANCE.createIfcPropertyEnumeratedValue();
-		IfcPropertyEnumeration enumeration = Ifc2x3Factory.eINSTANCE.createIfcPropertyEnumeration();
+		IfcPropertyEnumeratedValue enumeratedValue = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertyEnumeratedValue();
+		IfcPropertyEnumeration enumeration = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertyEnumeration();
 		enumeratedValue.setName(propertyName);
 		enumeratedValue.setDescription(propertyDescription);
 		enumeration.setName(propertyName + getEnumerationNameSuffix());
@@ -286,7 +286,7 @@ public class PropertyUtility
 	public static IfcText initializeText(String text)
 	{
 		IfcText newText =
-				Ifc2x3Factory.eINSTANCE.createIfcText();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcText();
 		newText.setWrappedValue(text);
 		return newText;
 	}

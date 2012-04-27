@@ -17,11 +17,11 @@ package org.bimserver.cobie.utils.deserializer.propertysets;
  *****************************************************************************/
 import org.bimserver.cobie.cobielite.TypeType;
 import org.bimserver.cobie.utils.spreadsheetml.SpreadsheetToTypes;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcLabel;
-import org.bimserver.models.ifc2x3.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3.IfcReal;
-import org.bimserver.models.ifc2x3.impl.IfcPropertySetImpl;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcLabel;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.IfcReal;
+import org.bimserver.models.ifc2x3tc1.impl.IfcPropertySetImpl;
 
 
 public class Pset_Warranty extends IfcPropertySetImpl
@@ -69,37 +69,37 @@ public class Pset_Warranty extends IfcPropertySetImpl
 	private void initializeSingleValueProperties()
 	{
 		IfcPropertySingleValue warrantyName =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		warrantyName.setName(getPName_WarrantyName());
 		warrantyName.setDescription(getPDescribe_Warrantyname());
 		super.getHasProperties().add(warrantyName);
 		
 		IfcPropertySingleValue warrantyDescription =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		warrantyDescription.setName(getPName_WarrantyDescription());
 		warrantyDescription.setDescription(getPdescribeWarrantydescription());
 		super.getHasProperties().add(warrantyDescription);
 		
 		IfcPropertySingleValue warrantyGParts =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		warrantyGParts.setName(getPnameWarrantyguarantorparts());
 		warrantyGParts.setDescription(getPdescribeWarrantyguarantorparts());
 		super.getHasProperties().add(warrantyGParts);
 		
 		IfcPropertySingleValue warrantyDParts =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		warrantyDParts.setName(getPnameWarrantydurationparts());
 		warrantyDParts.setDescription(getPdescribeWarrantydurationparts());
 		super.getHasProperties().add(warrantyDParts);
 		
 		IfcPropertySingleValue warrantyGLabor =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		warrantyGLabor.setName(getPnameWarrantyguarantorlabor());
 		warrantyGLabor.setDescription(getPdescribeWarrantyguarantorlabor());
 		super.getHasProperties().add(warrantyGLabor);
 		
 		IfcPropertySingleValue warrantyDLabor =
-				Ifc2x3Factory.eINSTANCE.createIfcPropertySingleValue();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
 		warrantyDLabor.setName(getPnameWarrantydurationlabor());
 		warrantyDLabor.setDescription(getPdescribeWarrantydurationlabor());
 		super.getHasProperties().add(warrantyDLabor);

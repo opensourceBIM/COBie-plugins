@@ -8,11 +8,11 @@ import org.bimserver.cobie.cobielite.COBIEType;
 import org.bimserver.cobie.cobielite.ZoneType;
 import org.bimserver.cobie.plugins.COBieIfcModel;
 import org.bimserver.cobie.utils.COBieUtility;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcClassificationReference;
-import org.bimserver.models.ifc2x3.IfcRelAssignsToGroup;
-import org.bimserver.models.ifc2x3.IfcSpace;
-import org.bimserver.models.ifc2x3.IfcZone;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcClassificationReference;
+import org.bimserver.models.ifc2x3tc1.IfcRelAssignsToGroup;
+import org.bimserver.models.ifc2x3tc1.IfcSpace;
+import org.bimserver.models.ifc2x3tc1.IfcZone;
 
 public class ZoneDeserializer 
 {
@@ -81,7 +81,7 @@ public class ZoneDeserializer
 			groupAssignment = (IfcRelAssignsToGroup) model.get(zoneNameToGroupRelationOid.get(zoneKey));
 		else
 		{
-			groupAssignment = Ifc2x3Factory.eINSTANCE.createIfcRelAssignsToGroup();
+			groupAssignment = Ifc2x3tc1Factory.eINSTANCE.createIfcRelAssignsToGroup();
 			groupAssignment.setRelatingGroup(zone);
 			groupAssignment.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
 			groupAssignment.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().DefaultOwnerHistory());
@@ -95,7 +95,7 @@ public class ZoneDeserializer
 	
 	public IfcZone ifcZoneFromCOBieZone(ZoneType zone)
 	{
-		IfcZone ifcZone = Ifc2x3Factory.eINSTANCE.createIfcZone();
+		IfcZone ifcZone = Ifc2x3tc1Factory.eINSTANCE.createIfcZone();
 		String name = zone.getName();
 		String category = zone.getCategory();
 		String createdBy = zone.getCreatedBy();

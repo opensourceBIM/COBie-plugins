@@ -23,17 +23,17 @@ import org.bimserver.cobie.cobielite.FloorType;
 import org.bimserver.cobie.plugins.COBieIfcModel;
 import org.bimserver.cobie.utils.COBieUtility;
 import org.bimserver.cobie.utils.stringwriters.DeserializerStaticStrings;
-import org.bimserver.models.ifc2x3.Ifc2x3Factory;
-import org.bimserver.models.ifc2x3.IfcBuilding;
-import org.bimserver.models.ifc2x3.IfcBuildingStorey;
-import org.bimserver.models.ifc2x3.IfcClassification;
-import org.bimserver.models.ifc2x3.IfcClassificationReference;
-import org.bimserver.models.ifc2x3.IfcGloballyUniqueId;
-import org.bimserver.models.ifc2x3.IfcLengthMeasure;
-import org.bimserver.models.ifc2x3.IfcOwnerHistory;
-import org.bimserver.models.ifc2x3.IfcPropertySet;
-import org.bimserver.models.ifc2x3.IfcQuantityLength;
-import org.bimserver.models.ifc2x3.IfcRelAggregates;
+import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcBuilding;
+import org.bimserver.models.ifc2x3tc1.IfcBuildingStorey;
+import org.bimserver.models.ifc2x3tc1.IfcClassification;
+import org.bimserver.models.ifc2x3tc1.IfcClassificationReference;
+import org.bimserver.models.ifc2x3tc1.IfcGloballyUniqueId;
+import org.bimserver.models.ifc2x3tc1.IfcLengthMeasure;
+import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySet;
+import org.bimserver.models.ifc2x3tc1.IfcQuantityLength;
+import org.bimserver.models.ifc2x3tc1.IfcRelAggregates;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -111,7 +111,7 @@ public class FloorDeserializer
 	public static IfcBuildingStorey buildingStoreyFromFloor(FloorType floor)
 	{
 		IfcBuildingStorey buildingStorey =
-				Ifc2x3Factory.eINSTANCE.createIfcBuildingStorey();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcBuildingStorey();
 		buildingStorey.setName(floor.getName());
 		buildingStorey.setDescription(floor.getDescription());
 		try
@@ -129,7 +129,7 @@ public class FloorDeserializer
 	public static IfcClassification classificationFromFloor(FloorType floor)
 	{
 		IfcClassification classification = 
-				Ifc2x3Factory.eINSTANCE.createIfcClassification();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcClassification();
 		String category = floor.getCategory();
 		if (!COBieUtility.isNA(category))
 		{
@@ -148,7 +148,7 @@ public class FloorDeserializer
 	public static IfcQuantityLength quantityLengthFromFloor(FloorType floor) throws Exception
 	{
 		IfcQuantityLength quanLength =
-				Ifc2x3Factory.eINSTANCE.createIfcQuantityLength();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcQuantityLength();
 		try
 		{
 			quanLength.setLengthValue(Float.parseFloat(floor.getHeight()));
@@ -163,7 +163,7 @@ public class FloorDeserializer
 	public static IfcLengthMeasure storeyHeightFromFloor(FloorType floor) 
 	{
 		IfcLengthMeasure lMeasure =
-				Ifc2x3Factory.eINSTANCE.createIfcLengthMeasure();
+				Ifc2x3tc1Factory.eINSTANCE.createIfcLengthMeasure();
 		float height;
 		try
 		{
@@ -199,7 +199,7 @@ public class FloorDeserializer
 			ArrayList<IfcBuildingStorey> storeys = new ArrayList<IfcBuildingStorey>();
 			for (String floorName : model.getFloorNames())
 				storeys.add(model.getFloorByName(floorName));
-			IfcRelAggregates aggregatesBuilding = Ifc2x3Factory.eINSTANCE
+			IfcRelAggregates aggregatesBuilding = Ifc2x3tc1Factory.eINSTANCE
 					.createIfcRelAggregates();
 			aggregatesBuilding.setName(DeserializerStaticStrings
 					.getBuildingRelAggregatesName());
