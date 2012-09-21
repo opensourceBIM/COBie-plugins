@@ -1,0 +1,850 @@
+package org.bimserver.shared.cobie;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.apache.xmlbeans.XmlCalendar;
+import org.apache.xmlbeans.XmlDateTime;
+import org.apache.xmlbeans.XmlObject;
+import org.bimserver.cobie.cobielite.AssemblyType;
+import org.bimserver.cobie.cobielite.AttributeType;
+import org.bimserver.cobie.cobielite.COBIEDocument;
+import org.bimserver.cobie.cobielite.COBIEType;
+import org.bimserver.cobie.cobielite.ComponentType;
+import org.bimserver.cobie.cobielite.ConnectionType;
+import org.bimserver.cobie.cobielite.ContactType;
+import org.bimserver.cobie.cobielite.DocumentType;
+import org.bimserver.cobie.cobielite.FacilityType;
+import org.bimserver.cobie.cobielite.FloorType;
+import org.bimserver.cobie.cobielite.JobType;
+import org.bimserver.cobie.cobielite.ResourceType;
+import org.bimserver.cobie.cobielite.SpaceType;
+import org.bimserver.cobie.cobielite.SpareType;
+import org.bimserver.cobie.cobielite.SystemType;
+import org.bimserver.cobie.cobielite.TypeType;
+import org.bimserver.cobie.cobielite.ZoneType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+
+public class COBIESheetDictionary extends
+		HashMap<String, COBIESheetCollection>
+{
+	protected static final Logger LOGGER = LoggerFactory.getLogger(COBIESheetDictionary.class);
+	protected static final String COBIE_DATE_FORMATSTRING = "%1$tY-%1$tm-%1$teT%1$tH:%1$tM:%1$tS";
+	private HashMap<String,String> guidToSheetName;
+	
+	public boolean hasGuid(String guid)
+	{
+		return guidToSheetName.containsKey(guid);
+	}
+	
+	public String getSheetNameFromGuid(String guid)
+	{
+		if (hasGuid(guid))
+			return guidToSheetName.get(guid);
+		else
+			return null;
+	}
+	public COBIESheetDictionary(COBIEDocument cobieDocument)
+	{
+		this.setSheetNameColumnValMap(cobieDocument);
+		guidToSheetName = new HashMap<String,String>();
+	}
+	
+	
+	private static Map <String,ArrayList<Map<String,String>>> cobieDocumentToStringMap(COBIEDocument cobieDocument)
+	{
+		 //if there is no data available then the try catch will handle the NullPointer exception 
+		 //and will return a null value to the caller
+		try {
+			Map<String, ArrayList<Map<String, String>>> cobieDocMap = 
+					new HashMap<String, ArrayList<Map<String, String>>>();
+			COBIEType cType = cobieDocument.getCOBIE();
+			COBIEType.Contacts contacts = cType.getContacts();
+			COBIEType.Facilities facilities = cType.getFacilities();
+			COBIEType.Spaces spaces = cType.getSpaces();
+			COBIEType.Zones zones = cType.getZones();
+			COBIEType.Types types = cType.getTypes();
+			COBIEType.Floors floors = cType.getFloors();
+			COBIEType.Components components = cType.getComponents();
+			COBIEType.Systems systems = cType.getSystems();
+			COBIEType.Assemblies assemblies = cType.getAssemblies();
+			COBIEType.Spares spares = cType.getSpares();
+			COBIEType.Resources resources = cType.getResources();
+			COBIEType.Jobs jobs = cType.getJobs();
+			COBIEType.Connections connections = cType.getConnections();
+			COBIEType.Documents documents = cType.getDocuments();
+			COBIEType.Attributes attributes = cType.getAttributes();
+			String tempMasterKey = "Contact";
+			ArrayList<Map<String, String>> tmpArray = new ArrayList<Map<String, String>>();
+			Map<String, String> tmpElementMap = new HashMap<String, String>();
+			if (contacts != null && !contacts.isNil()) {
+				for (ContactType contact : contacts.getContactArray()) {
+					tmpElementMap = elementMapFromXMLObject(contact);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());
+			}
+			if (facilities !=null && !facilities.isNil())
+			{
+				tmpArray.clear();
+				tempMasterKey = "Facility";
+				for (FacilityType facility : facilities.getFacilityArray()) {
+					tmpElementMap = elementMapFromXMLObject(facility);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());
+			}
+
+			if (floors != null && !floors.isNil()) {
+				tmpArray.clear();
+				tempMasterKey = "Floor";
+				for (FloorType floor : floors.getFloorArray()) {
+					tmpElementMap = elementMapFromXMLObject(floor);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());
+			}
+
+			if (spaces != null && !spaces.isNil()) {
+				tmpArray.clear();
+				tempMasterKey = "Space";
+				for (SpaceType space : spaces.getSpaceArray()) {
+					tmpElementMap = elementMapFromXMLObject(space);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());
+			}
+
+			if (zones != null && !zones.isNil()) {
+				tmpArray.clear();
+				tempMasterKey = "Zone";
+				for (ZoneType zone : zones.getZoneArray()) {
+					tmpElementMap = elementMapFromXMLObject(zone);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());
+			}
+
+			if (types != null && !types.isNil()) {
+				tmpArray.clear();
+				tempMasterKey = "Type";
+				for (TypeType type : types.getTypeArray()) {
+					tmpElementMap = elementMapFromXMLObject(type);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());
+			}
+			
+			if (components != null && !components.isNil()) {
+				tmpArray.clear();
+				tempMasterKey = "Component";
+				for (ComponentType component : components.getComponentArray()) {
+					tmpElementMap = elementMapFromXMLObject(component);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());
+			}
+			
+			if (systems != null && !systems.isNil()) {
+				tmpArray.clear();
+				tempMasterKey = "System";
+				for (SystemType system : systems.getSystemArray()) {
+					tmpElementMap = elementMapFromXMLObject(system);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());
+			}
+			if (assemblies !=null && !assemblies.isNil())
+			{
+				tmpArray.clear();
+				tempMasterKey = "Assembly";
+				for (AssemblyType assembly : assemblies.getAssemblyArray()) {
+					tmpElementMap = elementMapFromXMLObject(assembly);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());
+				
+			}
+			
+			if (spares !=null && !spares.isNil())
+			{
+				tmpArray.clear();
+				tempMasterKey = "Spare";
+				for(SpareType spare : spares.getSpareArray())
+				{
+					tmpElementMap = elementMapFromXMLObject(spare);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String,String>>) tmpArray.clone());
+			}
+			
+			if (resources !=null && !resources.isNil())
+			{
+				tmpArray.clear();
+				tempMasterKey = "Resource";
+				for(ResourceType resource : resources.getResourceArray())
+				{
+					tmpElementMap = elementMapFromXMLObject(resource);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String,String>>) tmpArray.clone());
+			}
+			
+			if (jobs !=null && !jobs.isNil())
+			{
+				tmpArray.clear();
+				tempMasterKey = "Job";
+				for(JobType job : jobs.getJobArray())
+				{
+					tmpElementMap = elementMapFromXMLObject(job);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String,String>>) tmpArray.clone());
+			}
+			
+			if (connections !=null && !connections.isNil())
+			{
+				tmpArray.clear();
+				tempMasterKey = "Connection";
+				for (ConnectionType connection: connections.getConnectionArray()) {
+					tmpElementMap = elementMapFromXMLObject(connection);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());		
+			}
+			
+			if (documents !=null && !documents.isNil())
+			{
+				tmpArray.clear();
+				tempMasterKey = "Document";
+				for (DocumentType document: documents.getDocumentArray()) {
+					tmpElementMap = elementMapFromXMLObject(document);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());		
+			}
+			
+			if (attributes !=null && !attributes.isNil())
+			{
+				tmpArray.clear();
+				tempMasterKey = "Attribute";
+				for (AttributeType attribute: attributes.getAttributeArray()) {
+					tmpElementMap = elementMapFromXMLObject(attribute);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (ArrayList<Map<String, String>>) tmpArray.clone());		
+			}
+			
+			
+			return cobieDocMap;
+		}
+		catch(NullPointerException e){
+			return null;
+		}
+	
+	}	
+	
+	private static Map <String,COBIESheetCollection> cobieDocumentToStringColumnValMap(COBIEDocument cobieDocument)
+	{
+		 //if there is no data available then the try catch will handle the NullPointer exception 
+		 //and will return a null value to the caller
+		try {
+			Map<String, COBIESheetCollection>cobieDocMap = 
+					new HashMap<String, COBIESheetCollection>();
+			
+			COBIEType cType = cobieDocument.getCOBIE();
+			COBIEType.Contacts contacts = cType.getContacts();
+			COBIEType.Facilities facilities = cType.getFacilities();
+			COBIEType.Spaces spaces = cType.getSpaces();
+			COBIEType.Zones zones = cType.getZones();
+			COBIEType.Types types = cType.getTypes();
+			COBIEType.Floors floors = cType.getFloors();
+			COBIEType.Components components = cType.getComponents();
+			COBIEType.Systems systems = cType.getSystems();
+			COBIEType.Assemblies assemblies = cType.getAssemblies();
+			COBIEType.Spares spares = cType.getSpares();
+			COBIEType.Resources resources = cType.getResources();
+			COBIEType.Jobs jobs = cType.getJobs();
+			COBIEType.Connections connections = cType.getConnections();
+			COBIEType.Documents documents = cType.getDocuments();
+			COBIEType.Attributes attributes = cType.getAttributes();
+			String tempMasterKey = "Contact";
+			COBIESheetCollection tmpArray = new COBIESheetCollection();
+			COBIERowDictionary tmpElementMap = new COBIERowDictionary();
+			if (contacts != null && !contacts.isNil()) {
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (ContactType contact : contacts.getContactArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,contact);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			if (facilities !=null && !facilities.isNil())
+			{
+				tempMasterKey = "Facility";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (FacilityType facility : facilities.getFacilityArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,facility);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+
+			if (floors != null && !floors.isNil()) {
+				tempMasterKey = "Floor";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (FloorType floor : floors.getFloorArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,floor);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+
+			if (spaces != null && !spaces.isNil()) {
+				tempMasterKey = "Space";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (SpaceType space : spaces.getSpaceArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,space);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+
+			if (zones != null && !zones.isNil()) {
+				tempMasterKey = "Zone";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (ZoneType zone : zones.getZoneArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,zone);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+
+			if (types != null && !types.isNil()) {
+				tempMasterKey = "Type";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (TypeType type : types.getTypeArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,type);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (components != null && !components.isNil()) {
+				tempMasterKey = "Component";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (ComponentType component : components.getComponentArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,component);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (systems != null && !systems.isNil()) {
+				tempMasterKey = "System";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (SystemType system : systems.getSystemArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,system);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			if (assemblies !=null && !assemblies.isNil())
+			{
+				tempMasterKey = "Assembly";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (AssemblyType assembly: assemblies.getAssemblyArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,assembly);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+				
+			}
+			
+			if (spares !=null && !spares.isNil())
+			{
+				tempMasterKey = "Spare";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (SpareType spare : spares.getSpareArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,spare);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (resources !=null && !resources.isNil())
+			{
+				tempMasterKey = "Resource";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (ResourceType resource : resources.getResourceArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,resource);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (jobs !=null && !jobs.isNil())
+			{
+				tempMasterKey = "Job";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (JobType job : jobs.getJobArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,job);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (connections !=null && !connections.isNil())
+			{
+				tempMasterKey = "Connection";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (ConnectionType connection : connections.getConnectionArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,connection);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (documents !=null && !documents.isNil())
+			{
+				tempMasterKey = "Document";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (DocumentType document : documents.getDocumentArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,document);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (attributes !=null && !attributes.isNil())
+			{
+				tmpArray.clear();
+				tempMasterKey = "Attribute";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (AttributeType attribute : attributes.getAttributeArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,attribute);
+					tmpArray.add(tmpElementMap);
+				}
+				cobieDocMap.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());	
+			}
+			
+			
+			return cobieDocMap;
+		}
+		catch(NullPointerException e){
+			return null;
+		}
+	
+	}	
+	
+	private void setSheetNameColumnValMap(COBIEDocument cobieDocument) throws NullPointerException
+	{
+		 //if there is no data available then the try catch will handle the NullPointer exception 
+		 //and will return a null value to the caller
+		try {
+			
+			COBIEType cType = cobieDocument.getCOBIE();
+			COBIEType.Contacts contacts = cType.getContacts();
+			COBIEType.Facilities facilities = cType.getFacilities();
+			COBIEType.Spaces spaces = cType.getSpaces();
+			COBIEType.Zones zones = cType.getZones();
+			COBIEType.Types types = cType.getTypes();
+			COBIEType.Floors floors = cType.getFloors();
+			COBIEType.Components components = cType.getComponents();
+			COBIEType.Systems systems = cType.getSystems();
+			COBIEType.Assemblies assemblies = cType.getAssemblies();
+			COBIEType.Spares spares = cType.getSpares();
+			COBIEType.Resources resources = cType.getResources();
+			COBIEType.Jobs jobs = cType.getJobs();
+			COBIEType.Connections connections = cType.getConnections();
+			COBIEType.Documents documents = cType.getDocuments();
+			COBIEType.Attributes attributes = cType.getAttributes();
+			String tempMasterKey = "Contact";
+			COBIESheetCollection tmpArray = new COBIESheetCollection();
+			COBIERowDictionary tmpElementMap = new COBIERowDictionary();
+			int rowCounter;
+			if (contacts != null && !contacts.isNil()) {
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter=0;
+				for (ContactType contact : contacts.getContactArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,contact);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			if (facilities !=null && !facilities.isNil())
+			{
+				tempMasterKey = "Facility";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter = 0;
+				for (FacilityType facility : facilities.getFacilityArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,facility);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+
+			if (floors != null && !floors.isNil()) {
+				tempMasterKey = "Floor";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter = 0;
+				for (FloorType floor : floors.getFloorArray()) {
+					
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,floor);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+
+			if (spaces != null && !spaces.isNil()) {
+				tempMasterKey = "Space";
+				rowCounter = 0;
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (SpaceType space : spaces.getSpaceArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,space);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+
+			if (zones != null && !zones.isNil()) {
+				tempMasterKey = "Zone";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter = 0;
+				for (ZoneType zone : zones.getZoneArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,zone);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+
+			if (types != null && !types.isNil()) {
+				tempMasterKey = "Type";
+				rowCounter = 0;
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (TypeType type : types.getTypeArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,type);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (components != null && !components.isNil()) {
+				tempMasterKey = "Component";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter = 0;
+				for (ComponentType component : components.getComponentArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,component);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (systems != null && !systems.isNil()) {
+				tempMasterKey = "System";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter = 0;
+				for (SystemType system : systems.getSystemArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,system);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			if (assemblies !=null && !assemblies.isNil())
+			{
+				tempMasterKey = "Assembly";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter = 0;
+				for (AssemblyType assembly: assemblies.getAssemblyArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,assembly);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+				
+			}
+			
+			if (spares !=null && !spares.isNil())
+			{
+				tempMasterKey = "Spare";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter = 0;
+				for (SpareType spare : spares.getSpareArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,spare);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (resources !=null && !resources.isNil())
+			{
+				tempMasterKey = "Resource";
+				rowCounter = 0;
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				for (ResourceType resource : resources.getResourceArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,resource);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (jobs !=null && !jobs.isNil())
+			{
+				tempMasterKey = "Job";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter = 0;
+				for (JobType job : jobs.getJobArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,job);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (connections !=null && !connections.isNil())
+			{
+				tempMasterKey = "Connection";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter = 0;
+				for (ConnectionType connection : connections.getConnectionArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,connection);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (documents !=null && !documents.isNil())
+			{
+				tempMasterKey = "Document";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter = 0;
+				for (DocumentType document : documents.getDocumentArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,document);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());
+			}
+			
+			if (attributes !=null && !attributes.isNil())
+			{
+				tmpArray.clear();
+				tempMasterKey = "Attribute";
+				tmpArray = new COBIESheetCollection(tempMasterKey);
+				rowCounter = 0;
+				for (AttributeType attribute : attributes.getAttributeArray()) {
+					tmpElementMap = cobieRowColumnNameValuesFromXMLObject(tempMasterKey,attribute);
+					rowCounter++;
+					tmpElementMap.setCobieDocumentRowNumber(rowCounter);
+					handleAddNewCOBieRow(tempMasterKey, tmpArray, tmpElementMap);
+				}
+				this.put(tempMasterKey, (COBIESheetCollection) tmpArray.clone());	
+			}
+			
+		}
+		catch(NullPointerException e)
+		{
+			throw e;
+		}
+	
+	}
+
+
+	private void handleAddNewCOBieRow(String tempMasterKey,
+			COBIESheetCollection tmpArray,
+			COBIERowDictionary tmpElementMap)
+	{
+		tmpElementMap.setSheetName(tempMasterKey);
+		tmpArray.add(tmpElementMap);
+		if(!tmpElementMap.isGuidEmpty())
+			this.guidToSheetName.put(tmpElementMap.getGuid(), tempMasterKey);
+	}	
+	static public Map<String,String> elementMapFromXMLObject(XmlObject xml)
+	{	
+		Map<String,String> elementMap = new HashMap<String,String>();
+		XMLStreamReader rdr = xml.newXMLStreamReader();
+		String keyName = "";
+		String keyVal = "";
+		boolean lastWasStartElement = false;
+		int attCount = 0;
+		try {
+			
+			while(rdr.hasNext())
+			{
+				try
+				{
+					attCount = rdr.getAttributeCount();
+				}
+				catch(Exception ex)
+				{
+					attCount = 0;
+				}
+				if (attCount>0)
+				{
+					for (int i=0; i < attCount; i++)
+					{
+						keyName = rdr.getAttributeLocalName(i);
+						keyVal = rdr.getAttributeValue(i);
+						if (!elementMap.containsKey(keyName))
+							elementMap.put(keyName, keyVal);
+						lastWasStartElement = false;
+					}
+				}
+				if (rdr.isStartElement())
+				{
+					keyName = rdr.getLocalName();
+					lastWasStartElement = true;
+					
+				}
+				else if (rdr.isCharacters() && lastWasStartElement)
+				{	
+					if (isElementADateTime(xml,keyName))
+					{
+						keyVal = stringFromXmlDateTime(xml, keyName);
+						
+					}
+					else
+						keyVal = rdr.getText();
+					if (!elementMap.containsKey(keyName))
+						elementMap.put(keyName, keyVal);
+					lastWasStartElement = false;
+				}
+				else
+					lastWasStartElement = false;
+				
+				rdr.next();
+			}
+		} catch (XMLStreamException e) {
+			LOGGER.error("", e);
+		}
+		return elementMap;
+	}
+	
+	static public COBIERowDictionary cobieRowColumnNameValuesFromXMLObject(String sheetName, XmlObject xml)
+	{	
+		COBIERowDictionary elementMap = new COBIERowDictionary(sheetName);
+		XMLStreamReader rdr = xml.newXMLStreamReader();
+		String keyName = "";
+		String keyVal = "";
+		boolean lastWasStartElement = false;
+		int attCount = 0;
+		try {
+			
+			while(rdr.hasNext())
+			{
+				try
+				{
+					attCount = rdr.getAttributeCount();
+				}
+				catch(Exception ex)
+				{
+					attCount = 0;
+				}
+				if (attCount>0)
+				{
+					for (int i=0; i < attCount; i++)
+					{
+						keyName = rdr.getAttributeLocalName(i);
+						keyVal = rdr.getAttributeValue(i);
+						if (!elementMap.containsKey(keyName))
+							elementMap.put(keyName, keyVal);
+						lastWasStartElement = false;
+					}
+				}
+				if (rdr.isStartElement())
+				{
+					keyName = rdr.getLocalName();
+					lastWasStartElement = true;
+					
+				}
+				else if (rdr.isCharacters() && lastWasStartElement)
+				{	
+					if (isElementADateTime(xml,keyName))
+					{
+						keyVal = stringFromXmlDateTime(xml, keyName);
+						
+					}
+					else
+						keyVal = rdr.getText();
+					if (!elementMap.containsKey(keyName))
+						elementMap.put(keyName, keyVal);
+					lastWasStartElement = false;
+				}
+				else
+					lastWasStartElement = false;
+				
+				rdr.next();
+			}
+		} catch (XMLStreamException e) {
+			LOGGER.error("", e);
+		}
+		return elementMap;
+	}
+	
+	static public boolean isElementADateTime(XmlObject xml, String elementName)
+	{
+		boolean isADateTime = false;
+		XmlObject[] selectedObjs = xml.selectPath(elementName);
+		if (selectedObjs.length==1)
+		{
+			XmlObject selectedObj = selectedObjs[0];
+			if (selectedObj instanceof Calendar || selectedObj instanceof XmlCalendar || selectedObj instanceof XmlDateTime)
+			{
+				isADateTime=true;
+				XmlDateTime xDateTime = (XmlDateTime) selectedObj;
+				@SuppressWarnings("unused")
+				String formattedDateTime = String.format(COBIE_DATE_FORMATSTRING, xDateTime.getCalendarValue());
+			}
+		}
+		return isADateTime;
+	}
+	
+	static public String stringFromXmlDateTime(XmlObject xml, String elementName)
+	{
+		XmlObject[] selectedObjs = xml.selectPath(elementName);
+		String formattedDate = "";
+		if (selectedObjs.length==1)
+		{
+			XmlObject selectedObj = selectedObjs[0];
+			if (selectedObj instanceof Calendar || selectedObj instanceof XmlCalendar || selectedObj instanceof XmlDateTime)
+			{
+				XmlDateTime xDateTime = (XmlDateTime) selectedObj;
+				formattedDate = String.format(COBIE_DATE_FORMATSTRING, xDateTime.getCalendarValue());
+			}
+		}
+		return formattedDate;
+	}
+}

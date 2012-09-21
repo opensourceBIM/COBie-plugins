@@ -1,0 +1,204 @@
+package org.bimserver.shared.cobie;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
+
+public class COBIERowDictionary extends HashMap<String, String>
+{
+
+	private String sheetName;
+	private String guid;
+	private final String EXTERNALID_COL_NAME = "Extlindentifier";
+	private HashMap<String,String> cobieKeyValues;
+	private ArrayList<String> uniqueIdColumnNames;
+	/**
+	 * A comma delimmited list of strings in format KeyColumnName:KeyColumnValue
+	 */
+	private String cobieRowIdString;
+	
+	/***
+	 * An MD5 hash of the cobieRowIdString
+	 */
+	private String cobieRowHash;
+	
+	private int cobieDocumentRowNumber;
+	public String getCOBieRowIdString()
+	{
+
+		if (this.cobieRowIdString==null || this.cobieRowIdString.length()==0)
+			return getConcatenatedRowIdString();
+		else
+			return cobieRowIdString;
+	}
+	
+	public String getCOBieRowIdHash()
+	{
+		return cobieRowHash;
+	}
+	
+	private String computeRowValuesHash() throws NoSuchAlgorithmException
+	{
+		String rowValuesHash = "";
+		for(String key:this.keySet())
+		{
+			String colValStr = key+":"+this.get(key)+",";
+			rowValuesHash += colValStr;
+		}
+		if (rowValuesHash.endsWith(","))
+			rowValuesHash = rowValuesHash.substring(0,rowValuesHash.length()-1);
+		rowValuesHash = COBieSharedUtilities.hashFromString(rowValuesHash);
+		return rowValuesHash;
+		
+	}
+	
+	public String getRowValuesHash()
+	{
+		String rowValuesHash = "";
+		try
+		{
+			rowValuesHash = computeRowValuesHash();
+		}
+		catch(NoSuchAlgorithmException e)
+		{
+			
+		}
+		return rowValuesHash;
+	}
+	public COBIERowDictionary()
+	{
+		super();
+		uniqueIdColumnNames = new ArrayList<String>();
+		cobieKeyValues = new HashMap<String,String>();
+		
+	}
+	
+	public HashMap<String,String> getCOBieUniqueIds()
+	{
+		
+		if(allKeyColumnsInitialized())
+		{
+			return cobieKeyValues;
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	private boolean allKeyColumnsInitialized()
+	{
+		boolean hasAllKeys = true;
+		for(String key: uniqueIdColumnNames)
+			if(!cobieKeyValues.containsKey(key))
+				hasAllKeys = false;
+		return hasAllKeys;
+	}
+	
+	private void setRowId() throws NoSuchAlgorithmException
+	{
+
+	}
+	
+	private String getConcatenatedRowIdString()
+	{
+		String concatenatedKey="";
+		for(String key: this.cobieKeyValues.keySet())
+		{
+			concatenatedKey+=key+":"+cobieKeyValues.get(key)+",";
+		}
+		if(concatenatedKey.endsWith(","))
+			concatenatedKey = concatenatedKey.substring(0,concatenatedKey.length()-1);
+		return concatenatedKey;
+	}
+	
+	private String getConcatenatedRowValuesString()
+	{
+		String concatenatedKey="";
+		for(String key: this.keySet())
+		{
+			concatenatedKey+=key+":"+this.get(key)+",";
+		}
+		if(concatenatedKey.endsWith(","))
+			concatenatedKey = concatenatedKey.substring(0,concatenatedKey.length()-1);
+		return concatenatedKey;
+	}
+	public COBIERowDictionary(String ownerSheetName,ArrayList<String> uniqueIdColumnNames)
+	{
+		super();
+		cobieKeyValues = new HashMap<String,String>();
+		this.setSheetName(ownerSheetName);
+		this.uniqueIdColumnNames = uniqueIdColumnNames;
+	}
+	
+	public COBIERowDictionary(String ownerSheetName)
+	{
+		super();
+		uniqueIdColumnNames = new ArrayList<String>();
+		cobieKeyValues = new HashMap<String,String>();
+		this.setSheetName(ownerSheetName);
+	}
+	
+	@Override
+	public String put(String key,String value)
+	{
+		String returnVal = super.put(key, value);
+		if (key.equals(EXTERNALID_COL_NAME))
+			guid = value;
+		if (uniqueIdColumnNames.contains(key))
+			cobieKeyValues.put(key, value);
+		if((cobieRowIdString==null || cobieRowIdString.length()==0) && allKeyColumnsInitialized())
+		{
+			this.cobieRowIdString = getConcatenatedRowIdString();
+			
+		}
+		try
+		{
+
+			this.cobieRowHash = COBieSharedUtilities.hashFromString(getConcatenatedRowIdString());
+		}
+		catch (NoSuchAlgorithmException e)
+		{
+
+		}
+		return returnVal;
+	}
+	
+	
+	public String getGuid()
+	{
+		return guid;
+	}
+	
+	public boolean isGuidEmpty()
+	{
+		boolean isEmpty = 
+				(guid==null || guid.length()>0 || guid.equalsIgnoreCase("n/a"));
+		return isEmpty;
+	}
+
+	public String getSheetName()
+	{
+		return sheetName;
+	}
+
+	public void setSheetName(String sheetName)
+	{
+		this.sheetName = sheetName;
+		this.uniqueIdColumnNames =
+				COBIESheetCollection.getKeyColumnNamesFromSheetName(sheetName);
+	}
+
+	public int getCobieDocumentRowNumber()
+	{
+		return cobieDocumentRowNumber;
+	}
+
+	public void setCobieDocumentRowNumber(int cobieDocumentRowNumber)
+	{
+		this.cobieDocumentRowNumber = cobieDocumentRowNumber;
+	}
+	
+	
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idm:COBieMergeIDM IDMRulesetName="Construtcion Documents Stage Model Merge Precedence Rules:  Architecture Model Objects" 
+IDMRulesetDisplayName="Architecture Model Objects" 
+xmlns:idm="merge.generated.cobie.shared.bimserver.org" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<LifeCycleMetadata>
+		<DocumentPhaseID>Construction</DocumentPhaseID>
+		<Description/>
+		<ModelDomain>Architectural</ModelDomain>
+	</LifeCycleMetadata>
+	<IDMRuleset RuleOperation="exclude" RulesetName="Types and Components ignored in an architecture model merge">
+		<COBieXQuery RuleName="Exclude all Types of IfcActuatorType">for $t in //Types/Type where lower-case($t//ExtObject)='ifcactuatortype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Types of IfcAlarmType">for $t in //Types/Type where lower-case($t//ExtObject)='ifcalarmtype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Types of IfcBoilerType">for $t in //Types/Type where lower-case($t//ExtObject)='ifcboilertype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Types of IfcChillerType">for $t in //Types/Type where lower-case($t//ExtObject)='ifcchillertype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Types of IfcCoilType">for $t in //Types/Type where lower-case($t//ExtObject)='ifccoiltype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Types of IfcCompressorType">for $t in //Types/Type where lower-case($t//ExtObject)='ifccompressortype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Types of IfcCondenserType">for $t in //Types/Type where lower-case($t//ExtObject)='ifccondensertype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Types of IfcControllerType">for $t in //Types/Type where lower-case($t//ExtObject)='ifccontrollertype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Types of IfcCoolingTowerType">for $t in //Types/Type where lower-case($t//ExtObject)='ifccoolingtowertype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Types of IfcDamperType">for $t in //Types/Type where lower-case($t//ExtObject)='ifcdampertype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Types of IfcElectricalApplianceType">for $t in //Types/Type where lower-case($t//ExtObject)='ifcelectricalappliancetype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Components where extObject is IfcFlowTerminal">for $c in //Components/Component where lower-case($c//ExtObject)='ifcflowterminal' return $c</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Components where extObject is IfcElectricalDistributionPoint">for $c in //Components/Component where lower-case($c//ExtObject)='ifcelectricaldistributionpoint' return $c</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Types of IfcFlowStorageDeviceType">for $t in //Types/Type where lower-case($t//ExtObject)='ifcflowstoragedevicetype' return $t</COBieXQuery>
+		<COBieXQuery RuleName="Exclude all Components where extObject is IfcFlowStorageDevice">for $c in //Components/Component where lower-case($c//ExtObject)='ifcflowstoragedevice' return $c</COBieXQuery>
+	</IDMRuleset>
+	<ModificationPrecedence  AddRulesetDefault="Allow" ModifyRulesetDefault="Allow">
+	</ModificationPrecedence>
+</idm:COBieMergeIDM>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginDescriptor>
+<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.objectidms.ObjectIDMPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieIDMPlugin</implementationClass>
+	</PluginImplementation>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.objectidms.ObjectIDMPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.BPieIDMPlugin</implementationClass>
+	</PluginImplementation>
+		<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.objectidms.ObjectIDMPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.BAMieIDMPlugin</implementationClass>
+	</PluginImplementation>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieSerializerPlugin</implementationClass>
+	</PluginImplementation>
+	
+		<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieLiteSerializerPlugin</implementationClass>
+	</PluginImplementation>
+			
+
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieCheckSerializerPlugin</implementationClass>
+	</PluginImplementation>
+		<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieCheckDesignSerializerPlugin</implementationClass>
+	</PluginImplementation>
+	<PluginImplementation>
+	<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieSpaceTypeComponentReportPlugin</implementationClass>
+	</PluginImplementation>
+		<PluginImplementation>
+	<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieSpatialDecompReportPlugin</implementationClass>
+	</PluginImplementation>
+			<PluginImplementation>
+	<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.SystemReportPlugin</implementationClass>
+	</PluginImplementation>
+				<PluginImplementation>
+	<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieZoneReportPlugin</implementationClass>
+	</PluginImplementation>
+		
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.deserializers.DeserializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieDeserializerPlugin</implementationClass>
+	</PluginImplementation>
+
+
+	
+</PluginDescriptor>

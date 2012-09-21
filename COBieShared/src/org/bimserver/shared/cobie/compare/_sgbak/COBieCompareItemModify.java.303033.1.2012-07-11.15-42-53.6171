@@ -1,0 +1,90 @@
+package org.bimserver.shared.cobie.compare;
+
+import java.util.ArrayList;
+import org.bimserver.shared.cobie.COBIERowDictionary;
+import org.bimserver.shared.cobie.COBIESheetCollection;
+import org.bimserver.shared.cobie.COBIESheetDictionary;
+
+public class COBieCompareItemModify extends COBieCompareItem
+{
+	private COBIERowDictionary cobie1Row;
+	private COBIERowDictionary cobie2Row;
+	private ArrayList<String> modifiedColumns;
+	private int cobie1RowNumber,cobie2RowNumber;
+	public COBieCompareItemModify(COBIESheetDictionary cobie1, COBIESheetDictionary cobie2,String rowHash,
+		String sheetName)
+	{
+		super(sheetName,rowHash, cobie1.get(sheetName).getByRowHash(rowHash).getCOBieRowIdString(),
+				cobie1.get(sheetName).getByRowHash(rowHash).getCOBieUniqueIds());
+		modifiedColumns = new ArrayList<String>();
+		try
+		{
+			COBIESheetCollection cobie1Sheet =
+				cobie1.get(sheetName);
+			COBIESheetCollection cobie2Sheet =
+					cobie2.get(sheetName);
+			 cobie1Row =
+					cobie1Sheet.getByRowHash(rowHash);
+			 setCobie1RowNumber(cobie1Row.getCobieDocumentRowNumber());
+			 cobie2Row =
+					 cobie2Sheet.getByRowHash(rowHash);
+			 setCobie2RowNumber(cobie2Row.getCobieDocumentRowNumber());
+		
+			setCOBieKeyValues(
+					cobie1Row.getCOBieUniqueIds());
+			initializeModifiedItems();
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
+	public ArrayList<String> getModifiedColumns()
+	{
+		return modifiedColumns;
+	}
+	
+	private void initializeModifiedItems()
+	{
+		for(String colName: cobie1Row.keySet())
+		{
+			String cobie1Val = cobie1Row.get(colName);
+			String cobie2Val = cobie2Row.get(colName);
+			if(!cobie1Val.equals(cobie2Val))
+				modifiedColumns.add(colName);
+		}
+	}
+
+	public COBIERowDictionary getCobie1ModifiedValues()
+	{
+		return cobie1Row;
+	}
+
+
+	public COBIERowDictionary getCobie2ModifiedValues()
+	{
+		return cobie2Row;
+	}
+
+	public int getCobie1RowNumber()
+	{
+		return cobie1RowNumber;
+	}
+
+	public void setCobie1RowNumber(int cobie1RowNumber)
+	{
+		this.cobie1RowNumber = cobie1RowNumber;
+	}
+
+	public int getCobie2RowNumber()
+	{
+		return cobie2RowNumber;
+	}
+
+	public void setCobie2RowNumber(int cobie2RowNumber)
+	{
+		this.cobie2RowNumber = cobie2RowNumber;
+	}
+
+}

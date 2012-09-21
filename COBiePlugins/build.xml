@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="COBiePlugins">
+    <property environment="env"/>
+    <property name="BimServer.location" value="../BimServer"/>
+    <property name="COBieSatelliteServer.location" value="../COBieSatelliteServer"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../eclipse_Indigo"/>
+    <property name="Emf.location" value="../Emf"/>
+    <property name="Utils.location" value="../Utils"/>
+    <property name="Plugins.location" value="../Plugins"/>
+    <property name="Shared.location" value="../Shared"/>
+    <property name="Ifc.location" value="../Ifc"/>
+    <property name="COBieShared.location" value="../COBieShared"/>
+    <property name="FileBasedObjectIDM.location" value="../FileBasedObjectIDM"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="Emf.classpath">
+        <pathelement location="${Emf.location}/bin"/>
+        <pathelement location="${BimServer.location}/lib/emf/org.eclipse.emf_2.6.0.v20110606-0949.jar"/>
+        <pathelement location="${BimServer.location}/lib/emf/org.eclipse.emf.codegen_2.6.0.v20110606-0949.jar"/>
+        <pathelement location="${BimServer.location}/lib/emf/org.eclipse.emf.codegen.ecore_2.7.0.v20110606-0949.jar"/>
+        <pathelement location="${BimServer.location}/lib/emf/org.eclipse.emf.common_2.7.0.v20110605-0747.jar"/>
+        <pathelement location="${BimServer.location}/lib/emf/org.eclipse.emf.ecore_2.7.0.v20110605-0747.jar"/>
+        <pathelement location="${BimServer.location}/lib/emf/org.eclipse.emf.ecore.xmi_2.7.0.v20110520-1406.jar"/>
+        <pathelement location="${BimServer.location}/lib/emf/org.eclipse.emf.compare.diff_1.2.0.v20110607-2028.jar"/>
+        <pathelement location="${BimServer.location}/lib/emf/org.eclipse.emf.compare.match_1.2.0.v20110607-2028.jar"/>
+    </path>
+    <path id="Utils.classpath">
+        <pathelement location="${Utils.location}/bin"/>
+        <pathelement location="${BimServer.location}/lib/joda-time-1.6.jar"/>
+        <pathelement location="${BimServer.location}/lib/logging/log4j-1.2.16.jar"/>
+        <pathelement location="${BimServer.location}/lib/commons/commons-codec-1.3.jar"/>
+        <pathelement location="${BimServer.location}/lib/commons/commons-io-1.4.jar"/>
+        <pathelement location="${BimServer.location}/lib/logging/slf4j-api-1.6.2.jar"/>
+        <pathelement location="${BimServer.location}/lib/logging/slf4j-log4j12-1.6.2.jar"/>
+        <pathelement location="${BimServer.location}/lib/guava-11.0.1.jar"/>
+    </path>
+    <path id="Plugins.classpath">
+        <pathelement location="${Plugins.location}/bin"/>
+        <path refid="Emf.classpath"/>
+        <path refid="Utils.classpath"/>
+    </path>
+    <path id="Shared.classpath">
+        <pathelement location="${Shared.location}/bin"/>
+        <pathelement location="${BimServer.location}/lib/cxf/antlr-2.7.7.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/aopalliance-1.0.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/commons-collections-3.2.1.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/cxf-manifest.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/geronimo-annotation_1.0_spec-1.1.1.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/geronimo-jms_1.1_spec-1.1.1.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/geronimo-stax-api_1.0_spec-1.0.1.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/jra-1.0-alpha-4.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/serializer-2.7.1.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/wsdl4j-1.6.2.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/xalan-2.7.1.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/xml-resolver-1.2.jar"/>
+        <pathelement location="${BimServer.location}/lib/logging/log4j-1.2.16.jar"/>
+        <path refid="Plugins.classpath"/>
+        <pathelement location="${BimServer.location}/lib/commons/commons-io-1.4.jar"/>
+        <path refid="Utils.classpath"/>
+        <pathelement location="${BimServer.location}/lib/guava-11.0.1.jar"/>
+        <pathelement location="${BimServer.location}/lib/BimServerExportBatch.jar"/>
+        <pathelement location="${BimServer.location}/lib/COBieLite.jar"/>
+        <pathelement location="${BimServer.location}/lib/COBieCompare.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/xmlbeans-2.4.0.jar"/>
+    </path>
+    <path id="Ifc.classpath">
+        <pathelement location="${Ifc.location}/bin"/>
+        <path refid="Emf.classpath"/>
+        <path refid="Plugins.classpath"/>
+        <path refid="Shared.classpath"/>
+        <path refid="Utils.classpath"/>
+        <pathelement location="${BimServer.location}/lib/commons/commons-lang-2.4.jar"/>
+    </path>
+    <path id="COBieShared.classpath">
+        <pathelement location="${COBieShared.location}/bin"/>
+        <path refid="Shared.classpath"/>
+        <path refid="Ifc.classpath"/>
+        <pathelement location="${BimServer.location}/lib/logging/log4j-1.2.16.jar"/>
+        <pathelement location="${COBieShared.location}/lib/COBieCompare.jar"/>
+        <pathelement location="${COBieShared.location}/lib/COBieLite.jar"/>
+        <pathelement location="${COBieShared.location}/lib/xbean.jar"/>
+        <pathelement location="${BimServer.location}/lib/cxf/xmlbeans-2.4.0.jar"/>
+        <pathelement location="${COBieShared.location}/lib/xelem_src.3.0.jar"/>
+        <pathelement location="${COBieShared.location}/lib/xelem.jar"/>
+    </path>
+    <path id="FileBasedObjectIDM.classpath">
+        <pathelement location="${FileBasedObjectIDM.location}/bin"/>
+        <path refid="Emf.classpath"/>
+        <path refid="Plugins.classpath"/>
+        <path refid="Utils.classpath"/>
+    </path>
+    <path id="COBiePlugins.classpath">
+        <pathelement location="bin"/>
+        <path refid="Ifc.classpath"/>
+        <path refid="COBieShared.classpath"/>
+        <path refid="FileBasedObjectIDM.classpath"/>
+        <pathelement location="lib/jdom.jar"/>
+        <pathelement location="lib/xbean.jar"/>
+        <pathelement location="lib/org.apache.batik.dom_1.6.0.v201011041432.jar"/>
+        <pathelement location="lib/org.apache.batik.dom.svg_1.6.0.v201011041432.jar"/>
+        <pathelement location="lib/org.apache.batik.transcoder_1.6.0.v201011041432.jar"/>
+        <pathelement location="lib/org.apache.batik.xml_1.6.0.v201011041432.jar"/>
+        <pathelement location="lib/org.w3c.dom.svg_1.1.0.v201011041433.jar"/>
+        <pathelement location="lib/saxon9he.jar"/>
+        <pathelement location="lib/itextpdf-5.1.2.jar"/>
+        <pathelement location="lib/dom4j-1.6.1.jar"/>
+        <pathelement location="lib/xerces_2_5_0.jar"/>
+        <pathelement location="lib/xelem_src.3.0.jar"/>
+        <pathelement location="lib/xelem.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build.xml" dir="${Emf.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${Utils.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${Plugins.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${Shared.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${Ifc.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${COBieShared.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${FileBasedObjectIDM.location}" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+        <ant antfile="build.xml" dir="${Emf.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${Utils.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${Plugins.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${Shared.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${Ifc.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${COBieShared.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${FileBasedObjectIDM.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="COBiePlugins.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects">
+        <ant antfile="build.xml" dir="${COBieSatelliteServer.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${COBieSatelliteServer.location}" inheritAll="false" target="build">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+</project>

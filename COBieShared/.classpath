@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Shared"/>
+	<classpathentry exported="true" kind="src" path="/Ifc"/>
+	<classpathentry exported="true" kind="lib" path="/BimServer/lib/logging/log4j-1.2.16.jar" sourcepath="/BimServer/libsrc/log4j.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/COBieLite.jar" sourcepath="src/org/bimserver/cobie"/>
+	<classpathentry kind="lib" path="lib/xelem_src.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/xelem.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/COBieCompare.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xbean.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jdom.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/saxon9he.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/COBieMergeIDM.jar"/>
+	<classpathentry kind="lib" path="/BimServer/lib/guava-11.0.1.jar" sourcepath="/BimServer/libsrc/guava-11.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/poi-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="lib/poi-ooxml-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="lib/poi-ooxml-schemas-3.8-20120326.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
