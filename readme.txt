@@ -1,4 +1,5 @@
-3-15-2013
+3-15-2013 
+
 WHAT’S NEW?
 NEW FEATURES
 •	New COBieLite XML RC2 Export.  For more information about COBieLite XML visit: http://buildingsmartalliance.org/index.php/projects/cobielite/
