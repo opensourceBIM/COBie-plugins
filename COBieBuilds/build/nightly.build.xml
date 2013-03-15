@@ -1,0 +1,50 @@
+<project name="BIMserver Nightly Build">
+	<tstamp>
+		<format property="builddate" pattern="yyyy-MM-dd" />
+	</tstamp>
+
+	<property name="majorversion" value="1"/>
+	<property name="minorversion" value="1"/>
+	<property name="revisionversion" value="0"/>
+	<property name="revisiondate" value="${builddate}"/>
+	<property name="version" value="${builddate}"/>
+
+	<target name="nightlybuild">
+		<ftp server="tools.bimtoolset.org" userid="${ftp_user}" password="${ftp_pass}" action="mkdir" remotedir="/httpdocs/tools/BIMserver/nightly builds/${version}" />
+		<ftp server="tools.bimtoolset.org" userid="${ftp_user}" password="${ftp_pass}" remotedir="/httpdocs/tools/BIMserver/nightly builds/${version}">
+			<fileset file="README.txt" />
+		</ftp>
+
+		<ant antfile="bimserver.build.xml" target="Build War"/>
+		<ftp server="tools.bimtoolset.org" userid="${ftp_user}" password="${ftp_pass}" remotedir="/httpdocs/tools/BIMserver/nightly builds/${version}">
+			<fileset file="builds/bimserver-${version}.war" />
+		</ftp>
+		
+		<ant antfile="bimserver.build.xml" target="Build Jar"/>
+		<ftp server="tools.bimtoolset.org" userid="${ftp_user}" password="${ftp_pass}" remotedir="/httpdocs/tools/BIMserver/nightly builds/${version}">
+			<fileset file="builds/bimserver-${version}.jar" />
+		</ftp>
+		
+		<ant antfile="clientlib.build.xml" target="Build ClientLib"/>
+		<ftp server="tools.bimtoolset.org" userid="${ftp_user}" password="${ftp_pass}" remotedir="/httpdocs/tools/BIMserver/nightly builds/${version}">
+			<fileset file="builds/bimserver-client-lib-${version}.zip" />
+		</ftp>
+
+		<ant antfile="bimserverlib.build.xml" target="Build ServerLib"/>
+		<ftp server="tools.bimtoolset.org" userid="${ftp_user}" password="${ftp_pass}" remotedir="/httpdocs/tools/BIMserver/nightly builds/${version}">
+			<fileset file="builds/bimserver-lib-${version}.zip" />
+		</ftp>
+
+		<ant antfile="source.build.xml" target="Build Source">
+		</ant>
+		<ftp server="tools.bimtoolset.org" userid="${ftp_user}" password="${ftp_pass}" remotedir="/httpdocs/tools/BIMserver/nightly builds/${version}">
+			<fileset file="builds/bimserver-source-${version}.zip" />
+		</ftp>
+
+		<ant antfile="javadoc.build.xml" target="Build JavaDoc"/>
+
+		<ftp server="tools.bimtoolset.org" userid="${ftp_user}" password="${ftp_pass}" remotedir="/httpdocs/tools/BIMserver/nightly build javadoc">
+			<fileset dir="builds/bimserver-javadoc-${version}" />
+		</ftp>
+	</target>
+</project>

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/1921/trunk/Builds/defaultsettings/war/templates
+END
+self_registration_email_body.template
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/1229/trunk/Builds/defaultsettings/war/templates/self_registration_email_body.template
+END
+self_registration_email_subject.template
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/1229/trunk/Builds/defaultsettings/war/templates/self_registration_email_subject.template
+END
+password_reset_email_subject.template
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/1229/trunk/Builds/defaultsettings/war/templates/password_reset_email_subject.template
+END
+admin_registration_email_subject.template
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/1229/trunk/Builds/defaultsettings/war/templates/admin_registration_email_subject.template
+END
+admin_registration_email_body.template
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/1229/trunk/Builds/defaultsettings/war/templates/admin_registration_email_body.template
+END
+password_reset_email_body.template
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/1229/trunk/Builds/defaultsettings/war/templates/password_reset_email_body.template
+END

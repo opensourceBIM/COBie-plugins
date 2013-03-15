@@ -1,0 +1,30 @@
+<project name="COBie Plugins Redistributable">
+	<import file="common.build.xml"/>
+	<target name="Build COBiePlugins">
+		<property name="target" value="cobiepluginjar"/>
+		<delete dir="builds"/>
+		<mkdir dir="builds" />
+		<copy todir="builds/BuildJar">
+			<fileset file="${buildtargets}/shared/license.txt" />
+		</copy>
+		<mkdir dir="builds/lib" />
+		<mkdir dir="builds/pluginlibs" />
+		<antcall target="Utils"/>
+		<antcall target="Emf"/>
+		<antcall target="Shared"/>
+		<antcall target="Ifc"/>
+		<antcall target="BimServerClientLib"/>
+		<antcall target="BimServer"/>
+		<antcall target="buildingSMARTLibraryLib"/>
+		<antcall target="IfcPluginsLib"/>
+		<antcall target="COBiePlugins_Public_PluginLib"/>	
+		
+		
+		<jar jarfile="builds/bimserver-cobieplugins-${version}.jar" manifest="${buildtargets}/${target}/MANIFEST.MF">
+			<fileset dir="builds/cobieplugins_public">
+				<exclude name="*.svn" />
+			</fileset>
+		</jar>
+		<delete dir="builds/BuildJar" failonerror="false" />
+	</target>
+</project>

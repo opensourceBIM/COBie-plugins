@@ -1,0 +1,34 @@
+10
+
+dir
+2327
+http://bimserver.googlecode.com/svn/trunk/Builds/build/targets/cloud
+http://bimserver.googlecode.com/svn
+
+
+
+2012-10-19T08:13:41.304068Z
+2111
+ruben@logic-labs.nl
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+22d71240-4879-e6bd-ac50-c68132091b5d
+
+images
+dir
+
+jsp
+dir
+

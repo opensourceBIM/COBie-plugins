@@ -1,0 +1,34 @@
+<project name="COBieserver">
+	<tstamp>
+		<format property="builddate" pattern="yyyy-MM-dd" />
+	</tstamp>
+
+	<property name="majorversion" value="1"/>
+	<property name="minorversion" value="2"/>
+	<property name="revisionversion" value="0"/>
+	<property name="revisiondate" value="${builddate}"/>
+	<property name="version" value="${majorversion}.${minorversion}.${revisionversion}-${builddate}"/>
+	
+	<target name="jar">
+		<ant antfile="bimserver.build.xml" target="Build Jar"></ant>
+	</target>
+	
+	<target name="war">
+		<ant antfile="bimserver.build.xml" target="Build War"></ant>
+	</target>
+	<target name="clientlib">
+		<ant antfile="clientlib.build.xml" target="Build ClientLib"></ant>
+	</target>
+	<target name="cobietoolkit">
+		<ant antfile="cobietoolkit.build.xml" target="Build COBieToolkitJar"></ant>
+	</target>
+	<target name="cobieplugins">
+		<ant antfile="cobieplugins.build.xml" target="Build COBiePlugins"></ant>
+	</target>
+	<target name="serverlib">
+		<ant antfile="bimserverlib.build.xml" target="Build ServerLib"></ant>
+	</target>
+	<target name="source" description="Create an eclipse workspace zipfile">
+		<ant antfile="source.build.xml" target="Build Source"></ant>
+	</target>
+</project>
