@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginDescriptor>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieSerializerPlugin</implementationClass>
+	</PluginImplementation>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieTypeSelectionFormSerializerPlugin</implementationClass>
+	</PluginImplementation>
+		<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieLiteSerializerPlugin</implementationClass>
+	</PluginImplementation>
+			<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieTypeSelectionSerializerPlugin</implementationClass>
+	</PluginImplementation>
+				<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieComponentInstallationSerializerPlugin</implementationClass>
+	</PluginImplementation>
+
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieCheckSerializerPlugin</implementationClass>
+	</PluginImplementation>
+		<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.IfcFloorMapSerializerPlugin</implementationClass>
+	</PluginImplementation>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.deserializers.DeserializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieDeserializerPlugin</implementationClass>
+	</PluginImplementation>
+		<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.deserializers.DeserializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugins.COBieTypeSelectionFormDeserializerPlugin</implementationClass>
+	</PluginImplementation>
+	
+</PluginDescriptor>
