@@ -35,7 +35,7 @@ public class UnitSearchToCOBieLiteUnits
         UnitTextMatcher textMatcher = areaUnitSearch.getBestUnitTextMatcher();
         if(textMatcher instanceof SquareCentimetersTextMatcher)
         {
-            //unit = AreaUnitSimpleType.
+            unit = AreaUnitSimpleType.SQUARE_CENTIMETERS;
         }
         else if (textMatcher instanceof SquareFeetTextMatcher)
         {
@@ -43,12 +43,14 @@ public class UnitSearchToCOBieLiteUnits
         }
         else if (textMatcher instanceof SquareInchesTextMatcher)
         {
-           //
+           unit = AreaUnitSimpleType.SQUARE_INCHES;
         }
         else if (textMatcher instanceof SquareKilometersTextMatcher)
             unit = AreaUnitSimpleType.SQUARE_KILOMETERS;
         else if (textMatcher instanceof SquareMetersTextMatcher)
             unit = AreaUnitSimpleType.SQUARE_METERS;
+        else if (textMatcher instanceof SquareMillimetersTextMatcher)
+            unit = AreaUnitSimpleType.SQUARE_MILLIMETERS;
         return unit;
     }
 
@@ -58,8 +60,7 @@ public class UnitSearchToCOBieLiteUnits
         UnitTextMatcher textMatcher = unitSearch.getBestUnitTextMatcher();
         if(textMatcher instanceof CentimeterTextMatcher)
         {
-           // unit = FacilityLinearUnitsEnumerationType.
-           // unit = LinearUnitSimpleType.
+            unit = LinearUnitSimpleType.CENTIMETERS;
         }
         else if (textMatcher instanceof FeetTextMatcher)
         {
@@ -87,7 +88,7 @@ public class UnitSearchToCOBieLiteUnits
         }
         else if (textMatcher instanceof YardTextMatcher)
         {
-            //unit = LinearUnitSimpleType.
+            unit = LinearUnitSimpleType.YARDS;
         }
         return unit;
     }
@@ -96,18 +97,16 @@ public class UnitSearchToCOBieLiteUnits
     {
         VolumeUnitSimpleType.Enum unit = null;
         UnitTextMatcher textMatcher = volumeUnitSearch.getBestUnitTextMatcher();
-        //if(textMatcher instanceof CubicCentimetersTextMatcher)
-           // unit = VolumeUnitSimpleType.
+        if(textMatcher instanceof CubicCentimetersTextMatcher)
+            unit = VolumeUnitSimpleType.CUBIC_CENTIMETERS;
         if (textMatcher instanceof CubicFeetTextMatcher)
             unit = VolumeUnitSimpleType.CUBIC_FEET;
-      //  else if (textMatcher instanceof CubicInchesTextMatcher)
-           // unit = VolumeUnitSimpleType.
-      //  else if (textMatcher instanceof CubicKilometersTextMatcher)
-           // unit = VolumeUnitSimpleType.
+        else if (textMatcher instanceof CubicInchesTextMatcher)
+            unit = VolumeUnitSimpleType.CUBIC_INCHES;
         else if (textMatcher instanceof CubicMetersTextMatcher)
             unit = VolumeUnitSimpleType.CUBIC_METERS;
-        //else if (textMatcher instanceof CubicMillimetersTextMatcher)
-         //   unit = VolumeUnitSimpleType.
+        else if (textMatcher instanceof CubicMillimetersTextMatcher)
+            unit = VolumeUnitSimpleType.CUBIC_MILLIMETERS;
         return unit;
     }
     

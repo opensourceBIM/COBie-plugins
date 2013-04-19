@@ -16,24 +16,37 @@ package org.erdc.cobie.utils.deserializer.propertysets;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
+import java.util.List;
+
 import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
 import org.bimserver.models.ifc2x3tc1.IfcLabel;
-import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeratedValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeration;
 import org.bimserver.models.ifc2x3tc1.impl.IfcPropertySetImpl;
+import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.TypeType;
 
 public class Pset_Asset extends IfcPropertySetImpl
 {
-    private static final String CAMEL_CASE_NONFIXED_ASSET = "NonFixed";
-    private static final String CAMEL_CASE_FIXED_ASSET = "Fixed";
-    private static final String LOWER_CASE_FIXED_ASSET = "fixed";
-    private static final String pSetName = "COBie_Pset_Asset";
+    private static final String PENUM_ASSET_ACCOUNTING_TYPE_ALLOWEDVALUES = "Fixed,NonFixed,Other,NotKnown,Unset";
+    private static final String P_ENUM_ASSET_ACCOUNTING_TYPE = "PEnum_AssetAccountingType";
+    private static final String pSetName = "Pset_Asset";
     private static final String pSetDescription = "An asset is a uniquely identifiable element which has a financial "
             + "value and against which maintenance actions are recorded.";
 
     private static final String assetAccountingTypePropertyName = "AssetAccountingType";
     private static final String assetAccountingTypePropertyDescription = "Identifies the predefined types of asset from "
             + "which the type required may be set.";
+
+    public static String getAssetAccountingTypeAllowedValues()
+    {
+        return PENUM_ASSET_ACCOUNTING_TYPE_ALLOWEDVALUES;
+    }
+
+    public static String getAssetAccountingTypeEnumName()
+    {
+        return P_ENUM_ASSET_ACCOUNTING_TYPE;
+    }
 
     private static String getAssetAccountingTypePropertyDescription()
     {
@@ -55,18 +68,26 @@ public class Pset_Asset extends IfcPropertySetImpl
         return pSetName;
     }
 
+    private IfcPropertyEnumeration assetTypeEnumeration;
+
+    private IfcPropertyEnumeratedValue assetTypeEnumerationValue;
+
     public Pset_Asset()
     {
         super();
-        initializeSingleValueProperties();
         setDirectAttributes();
+        assetTypeEnumeration = null;
+
     }
 
-    public Pset_Asset(TypeType cobieType)
+    public Pset_Asset(TypeType cobieType, IfcPropertyEnumeration assetTypeEnumeration)
     {
         this();
+        this.assetTypeEnumeration = assetTypeEnumeration;
+        initializeEnumeratedValueProperties();
         String assetType = cobieType.getAssetType();
         setAssetAccountingType(assetType);
+        
     }
 
     public String getAssetAccountingType()
@@ -74,28 +95,34 @@ public class Pset_Asset extends IfcPropertySetImpl
         return PropertySetUtility.getPropertySetPropertyValueOfName(getAssetAccountingTypePropertyName(), this);
     }
 
-    private void initializeSingleValueProperties()
+    private void initializeEnumeratedValueProperties()
     {
-        IfcPropertySingleValue assetProperty = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
-        assetProperty.setName(getAssetAccountingTypePropertyName());
-        assetProperty.setDescription(getAssetAccountingTypePropertyDescription());
-        super.getHasProperties().add(assetProperty);
-
+        IfcPropertyEnumeratedValue enumeratedValue = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertyEnumeratedValue();
+        enumeratedValue.setName(getAssetAccountingTypePropertyName());
+        enumeratedValue.setDescription(getAssetAccountingTypePropertyDescription());
+        enumeratedValue.setEnumerationReference(assetTypeEnumeration);
+        assetTypeEnumerationValue = enumeratedValue;
+        super.getHasProperties().add(enumeratedValue);
     }
 
     private void setAssetAccountingType(String assetAccountingType)
     {
         String assetAccountingTypeDerived = assetAccountingType;
-        if (assetAccountingTypeDerived.equalsIgnoreCase(LOWER_CASE_FIXED_ASSET))
+        List<String> allowedValues = COBieUtility.arrayListFromDelimString(getAssetAccountingTypeAllowedValues());
+        allowedValueLoop: for (String allowedValue : allowedValues)
         {
-            assetAccountingTypeDerived = CAMEL_CASE_FIXED_ASSET;
-        } else
-        {
-            assetAccountingTypeDerived = CAMEL_CASE_NONFIXED_ASSET;
+            if (allowedValue.equalsIgnoreCase(assetAccountingType))
+            {
+                assetAccountingTypeDerived = allowedValue;
+                break allowedValueLoop;
+            }
         }
+
         IfcLabel assetType = Ifc2x3tc1Factory.eINSTANCE.createIfcLabel();
+
         assetType.setWrappedValue(assetAccountingTypeDerived);
         PropertySetUtility.setPropertySetPropertyValueOfName(getAssetAccountingTypePropertyName(), this, assetType);
+        assetTypeEnumerationValue.getEnumerationValues().add(assetType);
     }
 
     public void setDirectAttributes()

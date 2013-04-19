@@ -33,6 +33,7 @@ import org.bimserver.models.ifc2x3tc1.IfcMaterial;
 import org.bimserver.models.ifc2x3tc1.IfcMaterialLayer;
 import org.bimserver.models.ifc2x3tc1.IfcMaterialLayerSet;
 import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeration;
 import org.bimserver.models.ifc2x3tc1.IfcSensorType;
 import org.bimserver.models.ifc2x3tc1.IfcSensorTypeEnum;
 import org.bimserver.models.ifc2x3tc1.IfcTypeObject;
@@ -55,7 +56,7 @@ import org.erdc.cobie.utils.deserializer.propertysets.Pset_EconomicImpactValues;
 import org.erdc.cobie.utils.deserializer.propertysets.Pset_ManufacturersTypeInformation;
 import org.erdc.cobie.utils.deserializer.propertysets.Pset_ServiceLife;
 import org.erdc.cobie.utils.deserializer.propertysets.Pset_Specification;
-import org.erdc.cobie.utils.deserializer.propertysets.Pset_Warranty;
+import org.erdc.cobie.utils.deserializer.propertysets.COBie_Warranty;
 
 public class TypeDeserializer
 {
@@ -217,6 +218,7 @@ public class TypeDeserializer
         String createdBy;
         String externalId;
         Calendar createdOn;
+        IfcPropertyEnumeration assetTypeEnumeration = null;
         if (types != null)
         {
             for (TypeType type : types.getTypeArray())
@@ -248,12 +250,18 @@ public class TypeDeserializer
                         Pset_ManufacturersTypeInformation psetManufacturerType = new Pset_ManufacturersTypeInformation(type);
                         ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToTypeObject(newTypeObject, psetManufacturerType, false);
 
-                        Pset_Warranty psetWarranty = new Pset_Warranty(type);
+                        COBie_Warranty psetWarranty = new COBie_Warranty(type);
                         ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToTypeObject
-
                         (newTypeObject, psetWarranty, false);
 
-                        Pset_Asset psetAsset = new Pset_Asset(type);
+                        
+                        if(assetTypeEnumeration==null)
+                        {
+                            assetTypeEnumeration = createAssetTypeEnumeration();
+                            if(!model.contains(assetTypeEnumeration))
+                                model.add(assetTypeEnumeration);
+                        }
+                        Pset_Asset psetAsset = new Pset_Asset(type, assetTypeEnumeration);
                         ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToTypeObject(newTypeObject, psetAsset, false);
 
                         Pset_ServiceLife svcLife = new Pset_ServiceLife(type);
@@ -275,6 +283,13 @@ public class TypeDeserializer
             }
         }
 
+    }
+
+    private IfcPropertyEnumeration createAssetTypeEnumeration()
+    {
+        
+        return ifcCommonHandler.getPropertySetHandler().enumerationFromNameAndValues(
+                Pset_Asset.getAssetAccountingTypeEnumName(), Pset_Asset.getAssetAccountingTypeAllowedValues(), "");
     }
 
     private void tryToAssignBAMieEnumValueToType(String category, IfcTypeObject type)

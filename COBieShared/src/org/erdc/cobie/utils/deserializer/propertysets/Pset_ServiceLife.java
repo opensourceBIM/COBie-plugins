@@ -45,7 +45,7 @@ public class Pset_ServiceLife extends IfcPropertySetImpl
     }
 
     private static final String ENUMERATION_NAME_PREFIX = "PEnum_";
-    public static final String pSetName = "COBie_Pset_ServiceLife";;
+    public static final String pSetName = "Pset_ServiceLife";;
 
     public static final String pSetDescription = "A typical service life that is quoted for an artifact under reference operating conditions.";
 

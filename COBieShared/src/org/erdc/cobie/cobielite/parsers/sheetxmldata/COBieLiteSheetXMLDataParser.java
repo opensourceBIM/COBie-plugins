@@ -28,8 +28,7 @@ public abstract class COBieLiteSheetXMLDataParser<COBIE_SHEET_XML_DATA_TYPE exte
 extends Parser<COBIE_SHEET_XML_DATA_TYPE, COBIE_LITE_DATA_TYPE> implements
         COBieLiteParsable 
 {
-    protected COBIE_SHEET_XML_DATA_TYPE sourceCOBie;
-    protected COBIE_LITE_DATA_TYPE targetCOBie;
+
     protected CobieSheetName cobieSpreadsheetName;
     protected final AttributesDocumentsIssues descriptiveData;
     protected final IndexedCOBie indexedCOBie;

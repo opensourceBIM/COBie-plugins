@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
+import org.bimserver.models.ifc2x3tc1.IfcIdentifier;
 import org.bimserver.models.ifc2x3tc1.IfcInteger;
 import org.bimserver.models.ifc2x3tc1.IfcLabel;
 import org.bimserver.models.ifc2x3tc1.IfcNamedUnit;
@@ -128,6 +129,13 @@ public class PropertyUtility
         IfcLabel newLabel = Ifc2x3tc1Factory.eINSTANCE.createIfcLabel();
         newLabel.setWrappedValue(text);
         return newLabel;
+    }
+    
+    public static IfcIdentifier initializeIdentifier(String text)
+    {
+        IfcIdentifier newIdentifier = Ifc2x3tc1Factory.eINSTANCE.createIfcIdentifier();
+        newIdentifier.setWrappedValue(text);
+        return newIdentifier;
     }
 
     public static IfcReal initializeRealToStringVal(String valString)

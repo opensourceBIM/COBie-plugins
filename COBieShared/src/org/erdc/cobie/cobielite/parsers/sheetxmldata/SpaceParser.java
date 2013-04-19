@@ -55,6 +55,7 @@ public class SpaceParser extends TypicalParser<SpaceType, org.erdc.cobie.cobieli
             {
                 ZoneKeyType zoneAssignment = zoneAssignments.addNewZoneAssignment();
                 zoneAssignment.setZoneName(zone.getName());
+                zoneAssignment.setZoneCategory(zone.getCategory());
             }
         }
 

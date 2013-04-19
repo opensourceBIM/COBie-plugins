@@ -1,243 +1,210 @@
 package org.erdc.cobie.utils.deserializer.propertysets;
 
-/******************************************************************************
- * Copyright (C) 2011  ERDC
- * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- * 
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *****************************************************************************/
-import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
-import org.bimserver.models.ifc2x3tc1.IfcLabel;
+import java.util.HashMap;
+
+import org.bimserver.models.ifc2x3tc1.IfcProperty;
+import org.bimserver.models.ifc2x3tc1.IfcPropertyReferenceValue;
+import org.bimserver.models.ifc2x3tc1.IfcPropertySet;
 import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3tc1.IfcReal;
-import org.bimserver.models.ifc2x3tc1.IfcUnit;
 import org.bimserver.models.ifc2x3tc1.impl.IfcPropertySetImpl;
-import org.erdc.cobie.shared.COBieTokenUtility.TypeColumnNameLiterals;
-import org.erdc.cobie.shared.COBieUtility;
-import org.erdc.cobie.shared.targetunits.time.TimeUnitSearch;
-import org.erdc.cobie.sheetxmldata.TypeType;
+import org.erdc.cobie.shared.collections.NonCaseSensitiveHashMap;
+import org.erdc.cobie.shared.enums.Pset_Warranty_Field;
 
 public class Pset_Warranty extends IfcPropertySetImpl
 {
-    private static final String pSetName = "COBie_Pset_Warranty";
-    private static final String pSetDescription = "Warranty Information.";
-    private static final String pName_WarrantyName = "WarrantyName";
-    private static final String pDescribe_WarrantyName = "The name of the warranty";
-    private static final String pName_WarrantyDescription = "WarrantyDescription";
-    private static final String pDescribe_WarrantyDescription = "Description of the Warranty";
-    private static final String pName_WarrantyGuarantorParts = TypeColumnNameLiterals.WarrantyGuarantorParts.toString();
-    private static final String pDescribe_WarrantyGuarantorParts = "Organization acting as guarantor of parts warranty";
-    private static final String pName_WarrantyDurationParts = TypeColumnNameLiterals.WarrantyDurationParts.toString();
-    private static final String pDescribe_WarrantyDurationParts = "Duration of parts warranty (years)";
-    private static final String pName_WarrantyGuarantorLabor = TypeColumnNameLiterals.WarrantyGuarantorLabor.toString();
-    private static final String pDescribe_WarrantyGuarantorLabor = "Organization acting as guarantor of labor warranty";
-    private static final String pName_WarrantyDurationLabor = TypeColumnNameLiterals.WarrantyDurationLabor.toString();
-    private static final String pDescribe_WarrantyDurationLabor = "Duration of labor warranty (years)";
-
-    public static String getPDescribe_Warrantyname()
+    public IfcPropertySingleValue getWarrantyIdentifier()
     {
-        return pDescribe_WarrantyName;
+        return WarrantyIdentifier;
     }
 
-    public static String getPdescribeWarrantydescription()
+    public void setWarrantyIdentifier(IfcPropertySingleValue warrantyIdentifier)
     {
-        return pDescribe_WarrantyDescription;
+        WarrantyIdentifier = warrantyIdentifier;
     }
 
-    public static String getPdescribeWarrantydurationlabor()
+    public IfcPropertyReferenceValue getWarrantyStartDate()
     {
-        return pDescribe_WarrantyDurationLabor;
+        return WarrantyStartDate;
     }
 
-    public static String getPdescribeWarrantydurationparts()
+    public void setWarrantyStartDate(IfcPropertyReferenceValue warrantyStartDate)
     {
-        return pDescribe_WarrantyDurationParts;
+        WarrantyStartDate = warrantyStartDate;
     }
 
-    public static String getPdescribeWarrantyguarantorlabor()
+    public IfcPropertyReferenceValue getWarrantyEndDate()
     {
-        return pDescribe_WarrantyGuarantorLabor;
+        return WarrantyEndDate;
     }
 
-    public static String getPdescribeWarrantyguarantorparts()
+    public void setWarrantyEndDate(IfcPropertyReferenceValue warrantyEndDate)
     {
-        return pDescribe_WarrantyGuarantorParts;
+        WarrantyEndDate = warrantyEndDate;
     }
 
-    public static String getPName_WarrantyDescription()
+    public IfcPropertySingleValue getIsExtendedWarranty()
     {
-        return pName_WarrantyDescription;
+        return IsExtendedWarranty;
     }
 
-    public static String getPName_WarrantyName()
+    public void setIsExtendedWarranty(IfcPropertySingleValue isExtendedWarranty)
     {
-        return pName_WarrantyName;
+        IsExtendedWarranty = isExtendedWarranty;
     }
 
-    public static String getPnameWarrantydurationlabor()
+    public IfcPropertySingleValue getWarrantyPeriod()
     {
-        return pName_WarrantyDurationLabor;
+        return WarrantyPeriod;
     }
 
-    public static String getPnameWarrantydurationparts()
+    public void setWarrantyPeriod(IfcPropertySingleValue warrantyPeriod)
     {
-        return pName_WarrantyDurationParts;
+        WarrantyPeriod = warrantyPeriod;
     }
 
-    public static String getPnameWarrantyguarantorlabor()
+    public IfcPropertyReferenceValue getPointOfContact()
     {
-        return pName_WarrantyGuarantorLabor;
+        return PointOfContact;
     }
 
-    public static String getPnameWarrantyguarantorparts()
+    public void setPointOfContact(IfcPropertyReferenceValue pointOfContact)
     {
-        return pName_WarrantyGuarantorParts;
+        PointOfContact = pointOfContact;
     }
 
-    private static String getPsetDescription()
+    public IfcPropertySingleValue getWarrantyContent()
     {
-        return pSetDescription;
+        return WarrantyContent;
     }
 
-    public static String getPsetName()
+    public void setWarrantyContent(IfcPropertySingleValue warrantyContent)
     {
-        return pSetName;
+        WarrantyContent = warrantyContent;
     }
 
-    public Pset_Warranty()
+    public IfcPropertySingleValue getExclusions()
     {
-        super();
-        initializeSingleValueProperties();
-        setDirectAttributes();
+        return Exclusions;
     }
 
-    public Pset_Warranty(TypeType cobieType)
+    public void setExclusions(IfcPropertySingleValue exclusions)
     {
-        this();
-        setWarrantyName(cobieType.getWarrantyDescription());
-        setWarrantyDescription(cobieType.getWarrantyDescription());
-        setWarrantyGuarantorParts(cobieType.getWarrantyGuarantorParts());
-        setWarrantyGuarantorLabor(cobieType.getWarrantyGuarantorLabor());
-        setWarrantyDurationParts(cobieType.getWarrantyDurationParts(), cobieType.getWarrantyDurationUnit());
-        setWarrantyDurationLabor(cobieType.getWarrantyDurationLabor(), cobieType.getWarrantyDurationUnit());
+        Exclusions = exclusions;
     }
 
-    private IfcUnit durationUnitsFromString(String durationUnits)
+    /*WarrantyIdentifier  IfcPropertySingleValue  IfcIdentifier   The identifier assigned to a warranty.
+    WarrantyStartDate   IfcPropertyReferenceValue   IfcCalendarDate The date on which the warranty commences
+    WarrantyEndDate IfcPropertyReferenceValue   IfcCalendarDate The date on which the warranty expires.
+    IsExtendedWarranty  IfcPropertySingleValue  IfcBoolean  Indication of whether this is an extended warranty whose duration is greater than that normally assigned to an artefact (=TRUE) or not (= FALSE)
+    WarrantyPeriod  IfcPropertySingleValue  IfcTimeMeasure / TIMEUNIT   The time duration during which a manufacturer or supplier guarantees or warrants the performance of an artefact.
+    PointOfContact  IfcPropertyReferenceValue   IfcOrganization The organization that should be contacted for action under the terms of the warranty. Note that the role of the organization (manufacturer, supplier, installer etc.) is determined by the IfcActorRole attribute of IfcOrganization.
+    WarrantyContent IfcPropertySingleValue  IfcText The content of the warranty
+    Exclusions IfcPropertySingleValue   IfcText Items, conditions or actions that may be excluded from the warranty or that may cause the warranty to become void.*/
+    private IfcPropertySingleValue  WarrantyIdentifier;
+    private IfcPropertyReferenceValue  WarrantyStartDate;
+    private IfcPropertyReferenceValue  WarrantyEndDate;
+    private IfcPropertySingleValue  IsExtendedWarranty;
+    private IfcPropertySingleValue  WarrantyPeriod;
+    private IfcPropertyReferenceValue  PointOfContact;
+    private IfcPropertySingleValue  WarrantyContent;
+    private IfcPropertySingleValue  Exclusions;
+    public static String PROPERTY_SET_NAME = "Pset_Warranty";
+    public static String PROPERTY_SET_DESCRIPTION = "Definition from IAI: An assurance given by the seller or provider of an artefact that the artefact is without defects and will operate as described for a defined period of time without failure and that if a defect does arise during that time, that it will be corrected by the seller or provider.";
+    public Pset_Warranty(IfcPropertySet propertySet) throws UnsupportedOperationException
     {
-        TimeUnitSearch timeUnits = new TimeUnitSearch(durationUnits);
-        return timeUnits.getMatchedUnit();
-    }
-
-    public String getWarrantyDurationLabor()
-    {
-        return PropertySetUtility.getPropertySetPropertyValueOfName(pName_WarrantyDurationLabor, this);
-    }
-
-    private void initializeSingleValueProperties()
-    {
-        IfcPropertySingleValue warrantyName = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
-        warrantyName.setName(getPName_WarrantyName());
-        warrantyName.setDescription(getPDescribe_Warrantyname());
-        super.getHasProperties().add(warrantyName);
-
-        IfcPropertySingleValue warrantyDescription = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
-        warrantyDescription.setName(getPName_WarrantyDescription());
-        warrantyDescription.setDescription(getPdescribeWarrantydescription());
-        super.getHasProperties().add(warrantyDescription);
-
-        IfcPropertySingleValue warrantyGParts = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
-        warrantyGParts.setName(getPnameWarrantyguarantorparts());
-        warrantyGParts.setDescription(getPdescribeWarrantyguarantorparts());
-        super.getHasProperties().add(warrantyGParts);
-
-        IfcPropertySingleValue warrantyDParts = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
-        warrantyDParts.setName(getPnameWarrantydurationparts());
-        warrantyDParts.setDescription(getPdescribeWarrantydurationparts());
-        super.getHasProperties().add(warrantyDParts);
-
-        IfcPropertySingleValue warrantyGLabor = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
-        warrantyGLabor.setName(getPnameWarrantyguarantorlabor());
-        warrantyGLabor.setDescription(getPdescribeWarrantyguarantorlabor());
-        super.getHasProperties().add(warrantyGLabor);
-
-        IfcPropertySingleValue warrantyDLabor = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySingleValue();
-        warrantyDLabor.setName(getPnameWarrantydurationlabor());
-        warrantyDLabor.setDescription(getPdescribeWarrantydurationlabor());
-        super.getHasProperties().add(warrantyDLabor);
-
-    }
-
-    public void setDirectAttributes()
-    {
-        setName(getPsetName());
-        setDescription(getPsetDescription());
-    }
-
-    private void setWarrantyDescription(String description)
-    {
-        IfcLabel descriptionLabel = PropertyUtility.initializeLabel(description);
-        PropertySetUtility.setPropertySetPropertyValueOfName(pName_WarrantyDescription, this, descriptionLabel);
-    }
-
-    private void setWarrantyDurationLabor(String duration, String durationUnits)
-    {
-        IfcReal durationReal = PropertyUtility.initializeRealToStringVal(duration);
-        IfcUnit durationUnit;
-        if (!COBieUtility.isNA(durationUnits))
+             
+        if(isInstanceOfPsetWarranty(propertySet))
         {
-            durationUnit = durationUnitsFromString(durationUnits);
-            PropertySetUtility.setPropertySetPropertyUnitNameOf(pName_WarrantyDurationLabor, this, durationUnit);
-
+            this.setName(PROPERTY_SET_NAME);
+            initializeProperties(propertySet);
         }
-        if (!COBieUtility.isValueSetAsStringNA(durationReal))
+        else
+            throw new UnsupportedOperationException("propertySet is not an instanceof Pset_Warranty");
+       
+    }
+
+    private boolean isInstanceOfPsetWarranty(IfcPropertySet propertySet)
+    {
+        boolean nameMatches = propertySet.getName().equalsIgnoreCase(PROPERTY_SET_NAME);
+        boolean noUnsupportedFields = hasUnsupportedFields(propertySet);
+        return nameMatches && noUnsupportedFields;
+    }
+
+    private boolean hasUnsupportedFields(IfcPropertySet propertySet)
+    {
+        boolean allFieldsSupported = true;
+        for(IfcProperty property : propertySet.getHasProperties())
         {
-            PropertySetUtility.setPropertySetPropertyValueOfName(pName_WarrantyDurationLabor, this, durationReal);
+            try
+            {
+                Pset_Warranty_Field field = Pset_Warranty_Field.nonCaseSensitiveValueOf(property.getName());
+            }
+            catch(Exception ex)
+            {
+                allFieldsSupported = false;
+            }
+        }
+        return allFieldsSupported;
+    }
+
+    private void initializeProperties(IfcPropertySet propertySet)
+    {
+        HashMap<String, IfcProperty> indexedProperties = indexPropertySetByName(propertySet);       
+        for(Pset_Warranty_Field psetWarrantyField : Pset_Warranty_Field.values())
+        {
+            try
+            {
+                handleField(psetWarrantyField, indexedProperties);
+            }
+            catch(Exception ex)
+            {
+                
+            }
         }
     }
 
-    private void setWarrantyDurationParts(String duration, String durationUnits)
+    private void handleField(Pset_Warranty_Field psetWarrantyField, HashMap<String, IfcProperty> indexedProperties)
     {
-        IfcReal durationReal = PropertyUtility.initializeRealToStringVal(duration);
-        IfcUnit durationUnit;
-        if (!COBieUtility.isNA(durationUnits))
+        IfcProperty property = indexedProperties.get(psetWarrantyField.name());
+        switch(psetWarrantyField)
         {
-            durationUnit = durationUnitsFromString(durationUnits);
-            PropertySetUtility.setPropertySetPropertyUnitNameOf(pName_WarrantyDurationParts, this, durationUnit);
-
+            case Exclusions:
+                this.Exclusions = (IfcPropertySingleValue)property;
+                break;
+            case IsExtendedWarranty:
+                this.IsExtendedWarranty = (IfcPropertySingleValue)property;
+                break;
+            case PointOfContact:
+                this.PointOfContact = (IfcPropertyReferenceValue)property;
+                break;
+            case WarrantyContent:
+                this.WarrantyContent = (IfcPropertySingleValue)property;
+                break;
+            case WarrantyEndDate:
+                this.WarrantyEndDate = (IfcPropertyReferenceValue) property;
+                break;
+            case WarrantyIdentifier:
+                this.WarrantyIdentifier = (IfcPropertySingleValue)property;
+                break;
+            case WarrantyPeriod:
+                this.WarrantyPeriod = (IfcPropertySingleValue)property;
+                break;
+            case WarrantyStartDate:
+                this.WarrantyStartDate = (IfcPropertyReferenceValue)property;
+                break;
+            default:
+                break;           
         }
-        if (!COBieUtility.isValueSetAsStringNA(durationReal))
+    }
+
+    private HashMap<String, IfcProperty>  indexPropertySetByName(IfcPropertySet propertySet)
+    {
+        NonCaseSensitiveHashMap<IfcProperty> propertyNameProperty = new NonCaseSensitiveHashMap<IfcProperty>();
+        for(IfcProperty property : propertySet.getHasProperties())
         {
-            PropertySetUtility.setPropertySetPropertyValueOfName(pName_WarrantyDurationParts, this, durationReal);
+            propertyNameProperty.put(property.getName(), property);
         }
-
-    }
-
-    private void setWarrantyGuarantorLabor(String guarantor)
-    {
-        IfcLabel guarantorLabel = PropertyUtility.initializeLabel(guarantor);
-        PropertySetUtility.setPropertySetPropertyValueOfName(pName_WarrantyGuarantorLabor, this, guarantorLabel);
-    }
-
-    private void setWarrantyGuarantorParts(String guarantor)
-    {
-        IfcLabel guarantorLabel = PropertyUtility.initializeLabel(guarantor);
-        PropertySetUtility.setPropertySetPropertyValueOfName(pName_WarrantyGuarantorParts, this, guarantorLabel);
-    }
-
-    private void setWarrantyName(String name)
-    {
-        IfcLabel nameLabel = PropertyUtility.initializeLabel(name);
-        PropertySetUtility.setPropertySetPropertyValueOfName(pName_WarrantyName, this, nameLabel);
+        return propertyNameProperty;
     }
 
 }

@@ -384,32 +384,7 @@ public class COBieDeserializer extends EmfDeserializer implements COBieSheetXMLD
 		 	
 		 LOGGER.info(LOGGER_STATUS_SPREADSHEET_END_MSG);
 	}
-	
-	public static void populateCobieDocument(COBIEType cobie,Workbook workbook) {
-		LOGGER.info(LOGGER_STATUS_SPREADSHEET_BEGIN_MSG);
-		 	SpreadsheetToContacts.writeContactsToCOBie(cobie, workbook);
-		 	SpreadsheetToFacilities.writeFacilitiesToCOBie(cobie,workbook);
-		 	SpreadsheetToFloors.writeFloorsToCOBie(cobie,workbook);
-		 	SpreadsheetToSpaces.writeSpacesToCOBie(cobie,workbook);
-		 	SpreadsheetToZones.writeZonesToCOBie(cobie, workbook);
-		 	SpreadsheetToTypes.writeTypesToCOBie(cobie, workbook);
-		 	SpreadSheetToComponents.writeComponentsToCOBie
-		 		(cobie, workbook);
-		 	SpreadsheetToSystems.writeSystemsToCOBie(cobie, workbook);
-		 	SpreadsheetToAssemblies.writeAssembliesToCOBie(cobie,workbook);
-		 	SpreadsheetToAttributes.writeAttributesToCOBie(cobie, workbook);
-		 	SpreadsheetToConnections.writeConnectionsToCOBie(cobie, workbook);
-		 	SpreadsheetToDocuments.writeDocumentsToCOBie(cobie, workbook);
-		 	SpreadsheetToCoordinates.writeCoordinatesToCOBie(cobie, workbook);
-		 	SpreadsheetToImpacts.writeImpactsToCOBie(cobie, workbook);
-		 	SpreadsheetToIssues.writeIssuesToCOBie(cobie, workbook);
-		 	SpreadsheetToJobs.writeJobsToCOBie(cobie, workbook);
-		 	SpreadsheetToResources.writeResourcesToCOBie(cobie, workbook);
-		 	SpreadSheetToSpares.writeSparesToCOBie(cobie, workbook);
-		 LOGGER.info(LOGGER_STATUS_SPREADSHEET_END_MSG);
-	}
-	
-	
+
 
 	private COBIEType GetCobie()
 	{

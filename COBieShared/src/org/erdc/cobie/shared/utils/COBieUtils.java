@@ -6,6 +6,7 @@ import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.models.ifc2x3tc1.IfcProduct;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.COBIEBaseType;
+import org.erdc.cobie.sheetxmldata.ComponentType;
 import org.erdc.cobie.sheetxmldata.FloorType;
 import org.erdc.cobie.sheetxmldata.SpaceType;
 import org.erdc.cobie.sheetxmldata.ZoneType;
@@ -13,8 +14,7 @@ import org.erdc.cobie.sheetxmldata.ZoneType;
 public class COBieUtils
 {
     // TODO There might be a better way to do this some day. As of now, this
-    // method only supports
-    // SpaceTypes, FloorTypes, and ZoneTypes.
+    // method only supports SpaceTypes, FloorTypes, and ZoneTypes.
     public static IfcProduct getMatchingProduct(List<? extends IfcProduct> products, COBIEBaseType type)
     {
         IfcProduct matchingProduct = null;
@@ -30,9 +30,15 @@ public class COBieUtils
         return matchingProduct;
     }
 
+    public static IfcProduct getProduct(IfcModelInterface model, COBIEBaseType type, Class<? extends IfcProduct> ifcClass)
+    {
+        List<? extends IfcProduct> ifcProducts = model.getAllWithSubTypes(ifcClass);
+        return COBieUtils.getMatchingProduct(ifcProducts, type);
+    }
+
     /**
      * Tests whether the supplied IfcProduct matches the supplied COBIEBaseType.
-     * As of now, this method only works for FloorType, SpaceType, and
+     * As of now, this method only works for FloorType, SpaceType, ComponentType, and
      * ZoneTypes.
      * 
      * @param product
@@ -65,10 +71,16 @@ public class COBieUtils
             globalId = product.getGlobalId().getWrappedValue();
             extId = ((ZoneType)type).getExtIdentifier();
         }
+        
+        else if (type instanceof ComponentType)
+        {
+            globalId = product.getGlobalId().getWrappedValue();
+            extId = ((ComponentType)type).getExtIdentifier();
+        }
 
         else
         {
-            throw new IllegalArgumentException("This method only supports the following COBIEBaseTypes: FloorType, SpaceType, ZoneType");
+            throw new IllegalArgumentException("This method only supports the following COBIEBaseTypes: FloorType, SpaceType, ZoneType, ComponentType");
         }
 
         if (!COBieUtility.isNullOrEmpty(globalId) && !COBieUtility.isNullOrEmpty(extId))
@@ -77,11 +89,5 @@ public class COBieUtils
         }
 
         return matches;
-    }
-
-    public static IfcProduct getProduct(IfcModelInterface model, COBIEBaseType type, Class<? extends IfcProduct> ifcClass)
-    {
-        List<? extends IfcProduct> ifcProducts = model.getAll(ifcClass);
-        return COBieUtils.getMatchingProduct(ifcProducts, type);
     }
 }

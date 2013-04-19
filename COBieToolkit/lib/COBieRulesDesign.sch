@@ -16,7 +16,7 @@
 	<xsl:key name="AssemblyKey" match="//Assemblies/Assembly" use="concat(@Name,',',SheetName,',',ParentName,',',ChildNames)"/>
 	<xsl:key name="AssemblyKeyLite" match="//Assemblies/Assembly" use="@Name"/>
 	<xsl:key name="ConnectionKey" match="//Connections/Connection" use="concat(@Name,',',ConnectionType,',',SheetName,',',RowName1,',',RowName2)"/>
-	<xsl:key name="SpareKey" match="//Spares/Spare" use="@Name"/>
+	<xsl:key name="SpareKey" match="//Spares/Spare" use="concat(@Name,',',Category,',',TypeName)"/>
 	<xsl:key name="ResourceKey" match="//Resources/Resource" use="@Name"/>
 	<xsl:key name="JobKey" match="//Jobs/Job" use="concat(@Name,',',TypeName,',',TaskNumber)"/>
 	<xsl:key name="DocumentKey" match="//Documents/Document" use="concat(@Name,',',Stage,',',SheetName,',',RowName)"/>
@@ -27,162 +27,157 @@
 	<xsl:function name="iso:WorksheetErrorRole">
 		<xsl:value-of>WorksheetErrors</xsl:value-of>
 	</xsl:function>
-
 	<xsl:function name="iso:getKeyValue" as="xs:string">
 		<xsl:param name="Context"/>
 		<xsl:param name="SheetName"/>
 		<xsl:variable name="LowerSheetName" select="lower-case($SheetName)"/>
-			<xsl:choose>
-				<xsl:when test="$LowerSheetName='contact'">
-					<xsl:value-of select="$Context/Email"/>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:choose>
+		<xsl:choose>
+			<xsl:when test="$LowerSheetName='contact'">
+				<xsl:value-of select="$Context/Email"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:choose>
 					<xsl:when test="$LowerSheetName='facility'">
-							<xsl:value-of select="$Context/@Name"/>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:choose>
-								<xsl:when test="$LowerSheetName='floor'">
-									<xsl:value-of select="$Context/@Name"/>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:choose>
-										<xsl:when test="$LowerSheetName='space'">
-											<xsl:value-of select="$Context/@Name"/>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:choose>
-												<xsl:when test="$LowerSheetName='zone'">
-													<xsl:value-of select="concat($Context/@Name,',',$Context/Category,',',$Context/SpaceNames)"/>
-												</xsl:when>
-												<xsl:otherwise>
-													<xsl:choose>
-														<xsl:when test="$LowerSheetName='type'">
-															<xsl:value-of select="$Context/@Name"/>
-														</xsl:when>
-														<xsl:otherwise>
-															<xsl:choose>
-																<xsl:when test="$LowerSheetName='component'">
-																	<xsl:value-of select="$Context/@Name"/>
-																</xsl:when>
-																<xsl:otherwise>
-																	<xsl:choose>
-																		<xsl:when test="$LowerSheetName='system'">
-																			<xsl:value-of select="concat($Context/@Name,',',$Context/Category,',',$Context/ComponentNames)"/>
-																		</xsl:when>
-																		<xsl:otherwise>
-																			<xsl:choose>
-																				<xsl:when test="$LowerSheetName='assembly'">
-																					<xsl:value-of select="concat($Context/@Name,',',$Context/SheetName,',',$Context/ParentName,',',$Context/ChildNames)"/>
-																				</xsl:when>
-																				<xsl:otherwise>
-																					<xsl:choose>
-																						<xsl:when test="$LowerSheetName='connection'">
-																							<xsl:value-of select="concat($Context/@Name,',',$Context/ConnectionType,',',$Context/SheetName,',',$Context/RowName1,',',$Context/RowName2)"/>
-																						</xsl:when>
-																						<xsl:otherwise>
-																							<xsl:choose>
-																								<xsl:when test="$LowerSheetName='spare'">
-																									<xsl:value-of select="$Context/@Name"/>
-																								</xsl:when>
-																								<xsl:otherwise>
-																									<xsl:choose>
-																										<xsl:when test="$LowerSheetName='resource'">
-																											<xsl:value-of select="$Context/@Name"/>
-																										</xsl:when>
-																										<xsl:otherwise>
-																											<xsl:choose>
-																												<xsl:when test="$LowerSheetName='job'">
-																													<xsl:value-of select="concat($Context/@Name,',',$Context/TypeName,',',$Context/TaskNumber)"/>
-																												</xsl:when>
-																												<xsl:otherwise>
+						<xsl:value-of select="$Context/@Name"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:choose>
+							<xsl:when test="$LowerSheetName='floor'">
+								<xsl:value-of select="$Context/@Name"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:choose>
+									<xsl:when test="$LowerSheetName='space'">
+										<xsl:value-of select="$Context/@Name"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:choose>
+											<xsl:when test="$LowerSheetName='zone'">
+												<xsl:value-of select="concat($Context/@Name,',',$Context/Category,',',$Context/SpaceNames)"/>
+											</xsl:when>
+											<xsl:otherwise>
+												<xsl:choose>
+													<xsl:when test="$LowerSheetName='type'">
+														<xsl:value-of select="$Context/@Name"/>
+													</xsl:when>
+													<xsl:otherwise>
+														<xsl:choose>
+															<xsl:when test="$LowerSheetName='component'">
+																<xsl:value-of select="$Context/@Name"/>
+															</xsl:when>
+															<xsl:otherwise>
+																<xsl:choose>
+																	<xsl:when test="$LowerSheetName='system'">
+																		<xsl:value-of select="concat($Context/@Name,',',$Context/Category,',',$Context/ComponentNames)"/>
+																	</xsl:when>
+																	<xsl:otherwise>
+																		<xsl:choose>
+																			<xsl:when test="$LowerSheetName='assembly'">
+																				<xsl:value-of select="concat($Context/@Name,',',$Context/SheetName,',',$Context/ParentName,',',$Context/ChildNames)"/>
+																			</xsl:when>
+																			<xsl:otherwise>
+																				<xsl:choose>
+																					<xsl:when test="$LowerSheetName='connection'">
+																						<xsl:value-of select="concat($Context/@Name,',',$Context/ConnectionType,',',$Context/SheetName,',',$Context/RowName1,',',$Context/RowName2)"/>
+																					</xsl:when>
+																					<xsl:otherwise>
+																						<xsl:choose>
+																							<xsl:when test="$LowerSheetName='spare'">
+																								<xsl:value-of select="concat($Context/@Name,',',$Context/Category,',',$Context/TypeName)"/>
+																							</xsl:when>
+																							<xsl:otherwise>
+																								<xsl:choose>
+																									<xsl:when test="$LowerSheetName='resource'">
+																										<xsl:value-of select="$Context/@Name"/>
+																									</xsl:when>
+																									<xsl:otherwise>
+																										<xsl:choose>
+																											<xsl:when test="$LowerSheetName='job'">
+																												<xsl:value-of select="concat($Context/@Name,',',$Context/TypeName,',',$Context/TaskNumber)"/>
+																											</xsl:when>
+																											<xsl:otherwise>
 																												<xsl:choose>
-																												<xsl:when test="$LowerSheetName='document'">
+																													<xsl:when test="$LowerSheetName='document'">
 																														<xsl:value-of select="concat($Context/@Name,',',$Context/Stage,',',$Context/SheetName,',',$Context/RowName)"/>
 																													</xsl:when>
 																													<xsl:otherwise>
-																													<xsl:choose>
-																													<xsl:when test="$LowerSheetName='attribute'">
-																															<xsl:value-of select="concat($Context/@Name,',',$Context/SheetName,',',$Context/RowName)"/>
-																														</xsl:when>
-																														<xsl:otherwise>
-																															<xsl:value-of select="generate-id($Context)"/>
-																														</xsl:otherwise>
-																													</xsl:choose>
+																														<xsl:choose>
+																															<xsl:when test="$LowerSheetName='attribute'">
+																																<xsl:value-of select="concat($Context/@Name,',',$Context/SheetName,',',$Context/RowName)"/>
+																															</xsl:when>
+																															<xsl:otherwise>
+																																<xsl:value-of select="generate-id($Context)"/>
+																															</xsl:otherwise>
+																														</xsl:choose>
 																													</xsl:otherwise>
 																												</xsl:choose>
-																													
-																												</xsl:otherwise>
-																											</xsl:choose>
-																										</xsl:otherwise>
-																									</xsl:choose>
-																								</xsl:otherwise>
-																							</xsl:choose>
-																						</xsl:otherwise>
-																					</xsl:choose>
-																				</xsl:otherwise>
-																			</xsl:choose>
-																		</xsl:otherwise>
-																	</xsl:choose>
-																</xsl:otherwise>
-															</xsl:choose>
-														</xsl:otherwise>
-													</xsl:choose>
-												</xsl:otherwise>
-											</xsl:choose>
-										</xsl:otherwise>
-									</xsl:choose>
-								</xsl:otherwise>
-							</xsl:choose>
-						</xsl:otherwise>
-					</xsl:choose>		
-				</xsl:otherwise>
-			</xsl:choose>
+																											</xsl:otherwise>
+																										</xsl:choose>
+																									</xsl:otherwise>
+																								</xsl:choose>
+																							</xsl:otherwise>
+																						</xsl:choose>
+																					</xsl:otherwise>
+																				</xsl:choose>
+																			</xsl:otherwise>
+																		</xsl:choose>
+																	</xsl:otherwise>
+																</xsl:choose>
+															</xsl:otherwise>
+														</xsl:choose>
+													</xsl:otherwise>
+												</xsl:choose>
+											</xsl:otherwise>
+										</xsl:choose>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:function>
 	<xsl:function name="iso:getKeyLiteValue" as="xs:string">
 		<xsl:param name="Context"/>
 		<xsl:param name="SheetName"/>
 		<xsl:variable name="LowerSheetName" select="lower-case($SheetName)"/>
-			<xsl:choose>
-				
-										<xsl:when test="$LowerSheetName='space'">
-											<xsl:value-of select="concat($Context/@Name,',',$Context/FloorName)"/>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:choose>
-												<xsl:when test="$LowerSheetName='zone'">
-													<xsl:value-of select="$Context/@Name"/>
-												</xsl:when>
-												<xsl:otherwise>
-													
-															<xsl:choose>
-																<xsl:when test="$LowerSheetName='component'">
-																	<xsl:value-of select="concat($Context/@Name,',',$Context/Space)"/>
-																</xsl:when>
-																<xsl:otherwise>
-																	<xsl:choose>
-																		<xsl:when test="$LowerSheetName='system'">
-																			<xsl:value-of select="$Context/@Name"/>
-																		</xsl:when>
-																		<xsl:otherwise>
-																			<xsl:choose>
-																				<xsl:when test="$LowerSheetName='assembly'">
-																					<xsl:value-of select="$Context/@Name"/>
-																				</xsl:when>
-																				<xsl:otherwise>
-																					<xsl:value-of select="generate-id($Context)"/>
-																				</xsl:otherwise>
-																			</xsl:choose>
-																		</xsl:otherwise>
-																	</xsl:choose>
-																</xsl:otherwise>
-															</xsl:choose>
-														</xsl:otherwise>
-													</xsl:choose>
-												</xsl:otherwise>
-											</xsl:choose>
-										
+		<xsl:choose>
+			<xsl:when test="$LowerSheetName='space'">
+				<xsl:value-of select="concat($Context/@Name,',',$Context/FloorName)"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:choose>
+					<xsl:when test="$LowerSheetName='zone'">
+						<xsl:value-of select="$Context/@Name"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:choose>
+							<xsl:when test="$LowerSheetName='component'">
+								<xsl:value-of select="concat($Context/@Name,',',$Context/Space)"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:choose>
+									<xsl:when test="$LowerSheetName='system'">
+										<xsl:value-of select="$Context/@Name"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:choose>
+											<xsl:when test="$LowerSheetName='assembly'">
+												<xsl:value-of select="$Context/@Name"/>
+											</xsl:when>
+											<xsl:otherwise>
+												<xsl:value-of select="generate-id($Context)"/>
+											</xsl:otherwise>
+										</xsl:choose>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:function>
 	<xsl:function name="iso:isFirstRepeatedFieldValue" as="xs:boolean">
 		<xsl:param name="context"/>
@@ -201,7 +196,7 @@
 		</xsl:choose>
 	</xsl:function>
 	<xsl:function name="iso:isFirstRepeatedKeyValue" as="xs:boolean">
-		<xsl:param name="SheetName"/>		
+		<xsl:param name="SheetName"/>
 		<xsl:param name="Context"/>
 		<xsl:variable name="KeyValue" select="iso:getKeyValue($Context,$SheetName)"/>
 		<xsl:variable name="MatchingSiblings" select="$Context/preceding-sibling::*[iso:getKeyValue(.,$SheetName)=$KeyValue]"/>
@@ -214,8 +209,8 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:function>
-		<xsl:function name="iso:isFirstRepeatedKeyLiteValue" as="xs:boolean">
-		<xsl:param name="SheetName"/>		
+	<xsl:function name="iso:isFirstRepeatedKeyLiteValue" as="xs:boolean">
+		<xsl:param name="SheetName"/>
 		<xsl:param name="Context"/>
 		<xsl:variable name="KeyValue" select="iso:getKeyLiteValue($Context,$SheetName)"/>
 		<xsl:variable name="MatchingSiblings" select="$Context/preceding-sibling::*[iso:getKeyLiteValue(.,$SheetName)=$KeyValue]"/>
@@ -236,7 +231,7 @@
 		<xsl:variable name="KeyMatchCount" select="count(key($KeyName,$KeyValue,$Context/parent::*))"/>
 		<xsl:value-of select="$KeyMatchCount=1 or not(iso:isFirstRepeatedKeyValue($SheetName,$Context))"/>
 	</xsl:function>
-		<xsl:function name="iso:isKeyLiteUnique" as="xs:boolean">
+	<xsl:function name="iso:isKeyLiteUnique" as="xs:boolean">
 		<xsl:param name="Context"/>
 		<xsl:variable name="SheetName" select="name($Context)"/>
 		<xsl:variable name="KeyValue" select="iso:getKeyLiteValue($Context,$SheetName)"/>
@@ -244,7 +239,7 @@
 		<xsl:variable name="KeyMatchCount" select="count(key($KeyName,$KeyValue,$Context/parent::*))"/>
 		<xsl:value-of select="$KeyMatchCount=1 or not(iso:isFirstRepeatedKeyLiteValue($SheetName,$Context))"/>
 	</xsl:function>
-<xsl:function name="iso:canComponentBeInTwoSpaces" as="xs:boolean">
+	<xsl:function name="iso:canComponentBeInTwoSpaces" as="xs:boolean">
 		<xsl:param name="extObject" as="xs:string"/>
 		<xsl:choose>
 			<xsl:when test="(lower-case($extObject)='ifcwindow' or lower-case($extObject)='ifcdoor') or lower-case($extObject)='autodesk.revit.db.familyinstance:ost_windows'  or lower-case($extObject)='autodesk.revit.db.familyinstance:ost_doors' or not(iso:validString($extObject))">
@@ -410,7 +405,7 @@
 		<xsl:variable name="MsgPrefix" as="xs:string" select="iso:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat($MsgPrefix,' must be unique')"/>
 	</xsl:function>
-		<xsl:function name="iso:uniqueNameWarningMessage" as="xs:string">
+	<xsl:function name="iso:uniqueNameWarningMessage" as="xs:string">
 		<xsl:param name="SheetName" as="xs:string"/>
 		<xsl:param name="RowKey" as="xs:string"/>
 		<xsl:param name="FieldName" as="xs:string"/>
@@ -418,7 +413,7 @@
 		<xsl:variable name="MsgPrefix" as="xs:string" select="iso:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat('Warning:  ',$MsgPrefix,' must be unique, but ',$AltKey,' is acceptable')"/>
 	</xsl:function>
-		<xsl:function name="iso:foreignKeyMessageWarning" as="xs:string">
+	<xsl:function name="iso:foreignKeyMessageWarning" as="xs:string">
 		<xsl:param name="SheetName" as="xs:string"/>
 		<xsl:param name="RowKey" as="xs:string"/>
 		<xsl:param name="FieldName" as="xs:string"/>
@@ -498,7 +493,7 @@
 		<xsl:variable name="MsgPrefix" as="xs:string" select="iso:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat($MsgPrefix,' must be provided (n/a should be used if value is unknown, further restrictions may apply to some fields, e.g. lengths>=0)')"/>
 	</xsl:function>
-		<xsl:function name="iso:notEmptyNumberMessageWarning" as="xs:string">
+	<xsl:function name="iso:notEmptyNumberMessageWarning" as="xs:string">
 		<xsl:param name="SheetName" as="xs:string"/>
 		<xsl:param name="RowKey" as="xs:string"/>
 		<xsl:param name="FieldName" as="xs:string"/>
@@ -557,7 +552,7 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 		</xsl:choose>
 	</xsl:function>
 	<xsl:function name="iso:validString" as="xs:boolean">
-		<xsl:param name="text" as="xs:string"/>
+		<xsl:param name="text"/>
 		<xsl:choose>
 			<xsl:when test="string-length(normalize-space($text))=0 or lower-case(normalize-space($text))='n/a'">
 				<xsl:value-of select="false()"/>
@@ -567,7 +562,7 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:function>
-<xsl:function name="iso:validNumber" as="xs:boolean">
+	<xsl:function name="iso:validNumber" as="xs:boolean">
 		<xsl:param name="text"/>
 		<xsl:choose>
 			<xsl:when test="($text castable as xs:decimal) or ($text castable as xs:float) or (lower-case($text)='n/a')">
@@ -775,7 +770,7 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 			<iso:assert id="Common.Name.NotNull" test="iso:validString(@Name)" flag="Name">
 				<value-of select="iso:notNullMessage(name(.),@Name,'Name')"/>
 			</iso:assert>
-			<iso:assert id="Common.Name.Unique" test="iso:isKeyUnique(.)" flag="Name">  
+			<iso:assert id="Common.Name.Unique" test="iso:isKeyUnique(.)" flag="Name">
 				<value-of select="iso:uniqueNameMessage(name(.),@Name,'Name')"/>
 			</iso:assert>
 		</iso:rule>
@@ -1065,13 +1060,13 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 			</iso:report>
 			<iso:assert id="Common.Name.NotNull" test="iso:validString(@Name)" flag="Name">
 				<value-of select="iso:notNullMessage(name(.),@Name,'Name')"/>
-				</iso:assert>
+			</iso:assert>
 			<iso:assert id="Space.PrimaryKey.Unique.Error" test="iso:isKeyLiteUnique(.)" flag="Name">
 				<value-of select="iso:uniqueNameMessage(name(.),@Name,'Name, FloorName')"/>
 			</iso:assert>
-			<iso:assert id="Space.PrimaryKey.Unique.Warning"  test="iso:isKeyUnique(.) or not(iso:isKeyLiteUnique(.))" flag="Name">
-					<value-of select="iso:uniqueNameWarningMessage(name(.),@Name,'Name','Name and Space.FloorName')"/>
-				</iso:assert>
+			<iso:assert id="Space.PrimaryKey.Unique.Warning" test="iso:isKeyUnique(.) or not(iso:isKeyLiteUnique(.))" flag="Name">
+				<value-of select="iso:uniqueNameWarningMessage(name(.),@Name,'Name','Name and Space.FloorName')"/>
+			</iso:assert>
 			<!--<iso:assert id="Space.PrimaryKey.Unique.Error" test="count(key('SpaceKeyLite',concat(@Name,',',FloorName)))=1" flag="Name">
 				<value-of select="iso:uniqueNameMessage(name(.),@Name,'Name, FloorName')"/>
 			</iso:assert>
@@ -1168,7 +1163,6 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 			</iso:assert>
 			<iso:report id="Type.WarrantyGuarantorParts.Check" test="true()" flag="WarrantyGuarantorParts">WarrantyGuarantorParts.CrossReferenceOrNA (Contact Sheet)
 			</iso:report>
-
 			<iso:assert id="Type.WarrantyGuarantorParts.CrossReferenceOrNA" test="key('ContactKey',WarrantyGuarantorParts) or WarrantyGuarantorParts='n/a'" flag="WarrantyGuarantorParts">
 				<value-of select="iso:foreignKeyMessage(name(.),WarrantyGuarantorParts,'WarrantyGuarantorParts','Contact','Email')"/>
 			</iso:assert>
@@ -1177,10 +1171,8 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 			<iso:assert id="Type.WarrantyDurationParts.validNumberZeroOrGreaterOrNA" test="iso:validNumberZeroOrGreater(WarrantyDurationParts)" flag="WarrantyDurationParts">
 				<value-of select="iso:notEmptyNumberMessage(name(.),@Name,'WarrantyDurationParts')"/>
 			</iso:assert>
-
 			<iso:report id="Type.WarrantyGuarantorLabor.Check" test="true()" flag="WarrantyGuarantorLabor">WarrantyGuarantorLabor.CrossReferenceOrNA (Contact Sheet)
 			</iso:report>
-
 			<iso:assert id="Type.WarrantyGuarantorLabor.CrossReferenceOrNA" test="key('ContactKey',WarrantyGuarantorLabor) or WarrantyGuarantorLabor='n/a'" flag="WarrantyGuarantorLabor">
 				<value-of select="iso:foreignKeyMessage(name(.),@Name,'WarrantyGuarantorLabor,','Contact','Email')"/>
 			</iso:assert>
@@ -1189,7 +1181,6 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 			<iso:assert id="Type.WarrantyDurationLabor.ZeroOrGreaterOrNA" test="iso:validNumberZeroOrGreater(WarrantyDurationLabor)" flag="WarrantyDurationLabor">
 				<value-of select="iso:notEmptyNumberMessage(name(.),@Name,'WarrantyDurationLabor')"/>
 			</iso:assert>
-
 			<iso:report id="Type.WarrantyDurationUnit.Check" test="true()" flag="WarrantyDurationUnit">WarrantyDurationUnit.NotEmpty
 			</iso:report>
 			<iso:assert id="Type.WarrantyDurationUnit.NotEmpty" test="iso:validStringOrNA(WarrantyDurationUnit)" flag="WarrantyDurationUnit">
@@ -1200,13 +1191,11 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 			<iso:assert id="Type.ReplacementCost.ZeroOrGreaterOrNA" test="iso:validNumberZeroOrGreater(ReplacementCost)" flag="ReplacementCost">
 				<value-of select="iso:notEmptyNumberMessage(name(.),@Name,'ReplacementCost')"/>
 			</iso:assert>
-
 			<iso:report id="Type.ExpectedLife.Check" test="true()" flag="ExpectedLife">ExpectedLife.ZeroOrGreaterOrNA
 			</iso:report>
 			<iso:assert id="Type.ExpectedLife.ZeroOrGreaterOrNA" test="iso:validNumberZeroOrGreater(ExpectedLife)" flag="ExpectedLife">
 				<value-of select="iso:notEmptyNumberMessage(name(.),@Name,'ExpectedLife')"/>
 			</iso:assert>
-
 			<iso:report id="Type.DurationUnit.Check" test="true()" flag="DurationUnit">DurationUnit.NotNull
 			</iso:report>
 			<iso:assert id="Type.DurationUnit.NotEmpty" test="iso:validStringOrNA(DurationUnit)" flag="DurationUnit">
@@ -1222,19 +1211,16 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 			<iso:assert id="Type.NominalLength.ZeroOrGreaterOrNA" test="iso:validNumberZeroOrGreater(NominalLength)" flag="NominalLength">
 				<value-of select="iso:notEmptyNumberMessage(name(.),@Name,'NominalLength')"/>
 			</iso:assert>
-
 			<iso:report id="Type.NominalWidth.Check" test="true()" flag="NominalWidth">NominalWidth.ZeroOrGreaterOrNA"
 			</iso:report>
 			<iso:assert id="Type.NominalWidth.ZeroOrGreaterOrNA" test="iso:validNumberZeroOrGreater(NominalWidth)" flag="NominalWidth">
 				<value-of select="iso:notEmptyNumberMessage(name(.),@Name,'NominalWidth')"/>
 			</iso:assert>
-
 			<iso:report id="Type.NominalHeight.Check" test="true()" flag="NominalHeight">NominalHeight.ZeroOrGreater
 			</iso:report>
 			<iso:assert id="Type.NominalHeight.ZeroOrGreaterOrNA" test="iso:validNumberZeroOrGreater(NominalHeight)" flag="NominalHeight">
 				<value-of select="iso:notEmptyNumberMessage(name(.),@Name,'NominalHeight')"/>
 			</iso:assert>
-
 			<iso:report id="Type.ModelReference.Check" test="true()" flag="ModelReference">ModelReference.NotEmpty
 			</iso:report>
 			<iso:assert id="Type.ModelReference.NotEmpty" test="iso:validStringOrNA(ModelReference)" flag="ModelReference">
@@ -1309,13 +1295,13 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 			</iso:report>
 			<iso:assert id="Common.Name.NotNull" test="iso:validString(@Name)" flag="Name">
 				<value-of select="iso:notNullMessage(name(.),@Name,'Name')"/>
-				</iso:assert>
+			</iso:assert>
 			<iso:assert id="Component.PrimaryKey.Unique.Error" test="iso:isKeyLiteUnique(.)" flag="Name">
 				<value-of select="iso:uniqueNameMessage(name(.),@Name,'Name,Space')"/>
 			</iso:assert>
-			<iso:assert id="Component.PrimaryKey.Unique.Warning"  test="iso:isKeyUnique(.) or not(iso:isKeyLiteUnique(.))" flag="Name">
-					<value-of select="iso:uniqueNameWarningMessage(name(.),@Name,'Name','Name,Space')"/>
-				</iso:assert>
+			<iso:assert id="Component.PrimaryKey.Unique.Warning" test="iso:isKeyUnique(.) or not(iso:isKeyLiteUnique(.))" flag="Name">
+				<value-of select="iso:uniqueNameWarningMessage(name(.),@Name,'Name','Name,Space')"/>
+			</iso:assert>
 			<!--<iso:assert id="Component.PrimaryKey.Unique.Error" test="count(key('ComponentKeyLite',concat(@Name,',',Space)))=1" flag="Name">
 				<value-of select="iso:uniqueNameMessage(name(.),@Name,'Name,Space')"/>
 			</iso:assert>
@@ -1502,33 +1488,42 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 			<iso:extends rule="COBie.Abstract.Created"/>
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
-			<iso:extends rule="COBie.Abstract.Name"/>
+			<!--<iso:extends rule="COBie.Abstract.Name"/>-->
 			<iso:extends rule="COBie.Abstract.Category"/>
+			<iso:report id="Spare.Name.Check" test="true()" flag="Name">Name.NotNull</iso:report>
+			<iso:assert id="Spare.Name.NotNull" test="iso:validString(@Name)" flag="Name">
+				<value-of select="iso:notNullMessage(name(.),@Name,'Name')"/>
+			</iso:assert>
+			<iso:report id="Spare.PrimaryKey.Check" test="true()" flag="PrimaryKey">PrimaryKey.Unique (Name, Category, TypeName)
+			</iso:report>
+			<iso:assert id="Spare.PrimaryKey.Unique" test="iso:isKeyUnique(.)" flag="SpareKey">
+				<value-of select="iso:uniqueNameMessage(name(.),concat(@Name,',',Category,',',TypeName),'Name,Category,TypeName')"/>
+			</iso:assert>
 			<iso:report id="Spare.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference
 			</iso:report>
 			<iso:assert id="Spare.TypeName.NotNull" test="iso:validString(TypeName)" flag="TypeName">
-				<value-of select="iso:notNullMessage(name(.),@Name,'TypeName')"/>
+				<value-of select="iso:notNullMessage(name(.),concat(@Name,',',Category,',',TypeName),'TypeName')"/>
 			</iso:assert>
 			<iso:assert id="Spare.TypeName.CrossReference" test="key('TypeKey',TypeName)" flag="TypeName">
-				<value-of select="iso:foreignKeyMessage(name(.),@Name,'TypeName','Type','Name')"/>
+				<value-of select="iso:foreignKeyMessage(name(.),concat(@Name,',',Category,',',TypeName),'TypeName','Type','Name')"/>
 			</iso:assert>
 			<iso:report id="Spare.Suppliers.Check" test="true()" flag="Suppliers">Suppliers.NotNull, Suppliers.CrossReference (Contact Sheet)
 			</iso:report>
 			<iso:assert id="Spare.Suppliers.NotNull" test="iso:validString(Suppliers)" flag="Suppliers">
-				<value-of select="iso:notNullMessage(name(.),@Name,'Suppliers')"/>
+				<value-of select="iso:notNullMessage(name(.),concat(@Name,',',Category,',',TypeName),'Suppliers')"/>
 			</iso:assert>
 			<iso:assert id="Spare.Suppliers.CrossReference" test="iso:delimListInKeys(Suppliers,'Contact',/)" flag="Suppliers">
-				<value-of select="iso:foreignKeyMessage(name(.),@Name,'Suppliers','Contact','Email')"/>
+				<value-of select="iso:foreignKeyMessage(name(.),concat(@Name,',',Category,',',TypeName),'Suppliers','Contact','Email')"/>
 			</iso:assert>
 			<iso:report id="Spare.SetNumber.Check" test="true()" flag="SetNumber">SetNumber.NotEmpty
 			</iso:report>
 			<iso:assert id="Spare.SetNumber.NotEmpty" test="iso:validStringOrNA(SetNumber)" flag="SetNumber">
-				<value-of select="iso:notEmptyMessage(name(.),@Name,'SetNumber')"/>
+				<value-of select="iso:notEmptyMessage(name(.),concat(@Name,',',Category,',',TypeName),'SetNumber')"/>
 			</iso:assert>
 			<iso:report id="Spare.PartNumber.Check" test="true()" flag="PartNumber">PartNumber.NotEmpty
 			</iso:report>
 			<iso:assert id="Spare.PartNumber.NotEmpty" test="iso:validStringOrNA(PartNumber)" flag="PartNumber">
-				<value-of select="iso:notEmptyMessage(name(.),@Name,'PartNumber')"/>
+				<value-of select="iso:notEmptyMessage(name(.),concat(@Name,',',Category,',',TypeName),'PartNumber')"/>
 			</iso:assert>
 		</iso:rule>
 		<iso:rule context="//Resources/Resource" id="COBie.Resources.Resource" role="WorksheetErrors">

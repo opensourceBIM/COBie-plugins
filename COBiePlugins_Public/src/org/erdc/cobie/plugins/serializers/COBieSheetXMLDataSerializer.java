@@ -45,6 +45,7 @@ import org.erdc.cobie.utils.serializer.sheetserializers.IfcToSpare;
 import org.erdc.cobie.utils.serializer.sheetserializers.IfcToSystem;
 import org.erdc.cobie.utils.serializer.sheetserializers.IfcToType;
 import org.erdc.cobie.utils.serializer.sheetserializers.IfcToZone;
+import org.erdc.cobie.utils.serializer.sheetserializers.IfcTypeToCOBieTypeSerializer;
 import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.ifc.IfcModel;
 import org.bimserver.models.ifc2x3tc1.IfcObjectDefinition;
@@ -287,9 +288,10 @@ public class COBieSheetXMLDataSerializer extends BIMServerCOBieSheetXMLDataSeria
 	 */
 	private void writeTypes()
 	{
-		COBIEType cType = this.GetCobie();
-		//cType = IfcToType.writeTypesToCOBie(cType, model);
-		cType = IfcToType.writeAllTypesToCOBie(cType, model);
+		COBIEType cobie = this.GetCobie();
+		IfcTypeToCOBieTypeSerializer typeSerializer =
+				new IfcTypeToCOBieTypeSerializer(cobie.addNewTypes(), getModel());
+		typeSerializer.serializeIfc();
 	}
 	
 	/**

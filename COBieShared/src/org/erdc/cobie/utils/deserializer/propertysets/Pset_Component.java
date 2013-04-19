@@ -33,10 +33,10 @@ public class Pset_Component extends IfcPropertySetImpl
 {
     public static enum ComponentField
     {
-        SerialNumber, InstallationDate, WarrantyStartDate, TagNumber, BarCode, AssetIdentifier
+        InstallationDate, WarrantyStartDate, TagNumber, AssetIdentifier
     }
 
-    public static final String pSetName = "COBie_Pset_Component";
+    public static final String pSetName = "COBie_Component";
     public static final String pSetDescription = "Properties for Component found in COBie";
     private static final Map<ComponentField, String> PropertyDescriptions = new HashMap<ComponentField, String>()
     {
@@ -46,11 +46,11 @@ public class Pset_Component extends IfcPropertySetImpl
         private static final long serialVersionUID = 1L;
 
         {
-            put(ComponentField.SerialNumber, "The manufacturers unique component identifier");
+           // put(ComponentField.SerialNumber, "The manufacturers unique component identifier");
             put(ComponentField.InstallationDate, "Date of installation");
             put(ComponentField.WarrantyStartDate, "Date of warranty start");
             put(ComponentField.TagNumber, "Occupiers unique tag");
-            put(ComponentField.BarCode, "Identifying barcode or rfid");
+            //put(ComponentField.BarCode, "Identifying barcode or rfid");
             put(ComponentField.AssetIdentifier, "Asset identification label");
 
         }
@@ -66,11 +66,11 @@ public class Pset_Component extends IfcPropertySetImpl
     public Pset_Component(ComponentType component)
     {
         this();
-        setSerialNumber(component);
+       // setSerialNumber(component);
         setInstallationDate(component);
         setWarrantyStartDate(component);
         setTagNumber(component);
-        setBarCode(component);
+      //  setBarCode(component);
         setAssetIdentifier(component);
     }
 
@@ -95,11 +95,7 @@ public class Pset_Component extends IfcPropertySetImpl
         PropertySetUtility.setPropertySetPropertyValueOfName(ComponentField.AssetIdentifier.toString(), this, assetidentifierLbl);
     }
 
-    private void setBarCode(ComponentType component)
-    {
-        IfcLabel barcodeLbl = PropertyUtility.initializeLabel(component.getBarCode());
-        PropertySetUtility.setPropertySetPropertyValueOfName(ComponentField.BarCode.toString(), this, barcodeLbl);
-    }
+
 
     public void setDirectAttributes()
     {
@@ -112,11 +108,7 @@ public class Pset_Component extends IfcPropertySetImpl
         setDateFieldAsDateOrText(component.getInstallationDate(), ComponentField.InstallationDate);
     }
 
-    private void setSerialNumber(ComponentType component)
-    {
-        IfcLabel serialLbl = PropertyUtility.initializeLabel(component.getSerialNumber());
-        PropertySetUtility.setPropertySetPropertyValueOfName(ComponentField.SerialNumber.toString(), this, serialLbl);
-    }
+
 
     private void setTagNumber(ComponentType component)
     {

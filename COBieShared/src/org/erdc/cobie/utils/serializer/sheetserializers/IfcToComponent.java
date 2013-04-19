@@ -68,8 +68,8 @@ public class IfcToComponent
             "IfcSpace", "IfcBuildingStorey", "IfcBuilding", "IfcSite", "IfcVirtualElement", "IfcBeam", "IfcBuildingElementPart", "IfcColumn",
             "IfcCurtainWall", "IfcElementAssembly", "IfcFastener", "IfcFeatureElement", "IfcFlowFitting", "IfcFlowSegment", "IfcFooting",
             "IfcMechanicalFastener", "IfcMember", "IfcPile", "IfcPlate", "IfcRailing", "IfcRamp", "IfcRampFlight", "IfcReinforcingBar",
-            "IfcReinforcingMesh", "IfcRoof", "IfcSlab", "IfcStair", "IfcStairFlight", "IfcTendon", "IfcTendonAnchor", "IfcWall",
-            "IfcWallStandardCase", "IfcCovering"));
+            "IfcReinforcingMesh", "IfcRoof", "IfcSlab", "IfcStair", "IfcStairFlight", "IfcTendon", "IfcTendonAnchor", "IfcWall","IfcWallStandardCase",
+             "IfcCovering"));
 
     protected static String assetIdentifierFromProduct(IfcProduct product)
     {

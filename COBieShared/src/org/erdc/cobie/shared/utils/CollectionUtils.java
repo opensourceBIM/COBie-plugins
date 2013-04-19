@@ -1,21 +1,16 @@
 package org.erdc.cobie.shared.utils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class CollectionUtils
 {
-    public static <K, T> List<T> getHashMapValues(HashMap<K, T> hashMap)
+    public static <T> void appendList(List<T> list, T... items)
     {
-        ArrayList<T> values = new ArrayList<T>(hashMap.size());
-
-        for (K key : hashMap.keySet())
+        for (T item : items)
         {
-            values.add(hashMap.get(key));
+            list.add(item);
         }
-
-        return values;
     }
 
     /**
@@ -27,48 +22,35 @@ public class CollectionUtils
      *            The class of the array to be instantiated.
      * @param array
      *            The array to be instantiated.
+     * @throws IllegalAccessException 
+     * @throws InstantiationException 
      */
-    // *** THIS SHOULD PROBABLY HANDLE EXCEPTIONS IN A MORE ROBUST WAY ***
-    public static <T> void instantiateArray(Class<T> elementClass, T[] array)
+    public static <T> void instantiateArray(Class<T> elementClass, T[] array) throws InstantiationException, IllegalAccessException
     {
         for (int i = 0; i < array.length; i++)
         {
-            try
-            {
-                array[i] = elementClass.newInstance();
-            }
-
-            catch (InstantiationException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            catch (IllegalAccessException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            array[i] = elementClass.newInstance();
         }
     }
     
+    public static <T> void addAllIgnoreDuplicates(List<T> collection, List<T> newEntities)
+    {
+        for(T newEntity : newEntities)
+        {
+            if(!collection.contains(newEntity))
+                collection.add(newEntity);
+        }
+    }
+
     public static <T> List<T> makeList(T... items)
     {
-		List<T> list = new ArrayList<T>();
-	
-		for (T item : items)
-		{
-		    list.add(item);
-		}
-	
-		return list;
-    }
-    
-    public static <T> void appendList(List<T> list, T... items)
-    {
-		for (T item : items)
-		{
-		    list.add(item);
-		}
+        List<T> list = new ArrayList<T>();
+
+        for (T item : items)
+        {
+            list.add(item);
+        }
+
+        return list;
     }
 }

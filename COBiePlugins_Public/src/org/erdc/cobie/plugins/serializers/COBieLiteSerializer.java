@@ -44,6 +44,7 @@ public class COBieLiteSerializer extends COBieSheetXMLDataSerializer implements 
 		catch(Exception ex)
 		{
 			LOGGER.error("Error parsing COBieSheetXMLData..." + ex.getMessage());
+			ex.printStackTrace();
 		}
 		LOGGER.info(getLoggerMessageDone());
 
@@ -52,7 +53,7 @@ public class COBieLiteSerializer extends COBieSheetXMLDataSerializer implements 
 		
 		try 
 		{
-			facilityDocument.save(printWriter);
+			facilityDocument.save(printWriter, org.erdc.cobie.cobielite.Settings.XML_Beans_Settings.getSaveSettings());
 
 
 		} 

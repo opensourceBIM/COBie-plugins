@@ -18,7 +18,7 @@
 	<classpathentry kind="lib" path="lib/poi-ooxml-3.8-20120326.jar"/>
 	<classpathentry kind="lib" path="lib/poi-ooxml-schemas-3.8-20120326.jar"/>
 	<classpathentry exported="true" kind="lib" path="/BimServer/lib/guava-13.0.1.jar" sourcepath="/BimServer/libsrc/guava-11.0.1-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/COBieLite.jar"/>
 	<classpathentry kind="lib" path="lib/COBieSerializerSettings.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/COBieLiteRC2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -89,7 +89,7 @@ public abstract class COBieLiteCOBIEBaseTypeParser<COBIE_SHEET_XML_DATA_TYPE ext
         }
         try
         {
-            parseIssues();
+          parseIssues();
         } catch (Exception ex)
         {
             // TODO: log mapping errors

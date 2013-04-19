@@ -279,7 +279,9 @@ public class IfcPropertyToCOBieString
         {
             IfcLabel label = (IfcLabel)value;
             valString = label.getWrappedValue();
-        } else if (value instanceof IfcReal)
+        } 
+
+        else if (value instanceof IfcReal)
         {
             IfcReal rl = (IfcReal)value;
             valString = getCOBieFloatString(rl.getWrappedValue());

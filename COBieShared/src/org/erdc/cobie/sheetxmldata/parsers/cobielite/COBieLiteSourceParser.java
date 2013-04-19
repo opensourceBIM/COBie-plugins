@@ -13,7 +13,8 @@ import org.erdc.cobie.cobielite.DocumentType;
 import org.erdc.cobie.cobielite.FacilityType;
 import org.erdc.cobie.cobielite.FloorType;
 import org.erdc.cobie.cobielite.IssueType;
-import org.erdc.cobie.cobielite.PerimeterType;
+import org.erdc.cobie.cobielite.PolygonCollectionType;
+import org.erdc.cobie.cobielite.PolygonType;
 import org.erdc.cobie.cobielite.ResourceType;
 import org.erdc.cobie.cobielite.SpaceType;
 import org.erdc.cobie.cobielite.SpareType;
@@ -128,7 +129,7 @@ public abstract class COBieLiteSourceParser<SOURCE extends CobieBaseType, TARGET
         } else if (sourceCOBie instanceof ResourceType)
         {
             sheetName = CobieSheetName.Resource;
-        } else if (sourceCOBie instanceof PerimeterType)
+        } else if (sourceCOBie instanceof PolygonType || sourceCOBie instanceof PolygonCollectionType)
         {
             sheetName = CobieSheetName.Coordinate;
         }

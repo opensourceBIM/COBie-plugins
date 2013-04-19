@@ -65,10 +65,10 @@ public class IfcToType
     private static final ArrayList<String> modelNumberStrings = new ArrayList<String>(Arrays.asList("ModelNumber", "ArticleNumber", "ModelLabel"));
     private static final ArrayList<String> warrantyGuarantorPartsStrings = new ArrayList<String>(Arrays.asList("WarrantyGuarantorParts",
             "PointOfContact"));
-    private static final ArrayList<String> warrantyDurationPartsStrings = new ArrayList<String>(Arrays.asList("WarrantyDurationParts"));
+    private static final ArrayList<String> warrantyDurationPartsStrings = new ArrayList<String>(Arrays.asList("WarrantyDurationParts","WarrantyPeriod"));
     private static final ArrayList<String> warrantyGuarantorLaborStrings = new ArrayList<String>(Arrays.asList("WarrantyGuarantorLabor",
             "PointOfContact"));
-    private static final ArrayList<String> warrantyDurationLaborStrings = new ArrayList<String>(Arrays.asList("WarrantyDurationLabor"));
+    private static final ArrayList<String> warrantyDurationLaborStrings = new ArrayList<String>(Arrays.asList("WarrantyDurationLabor","WarrantyPeriod"));
     private static final ArrayList<String> replacementCostStrings = new ArrayList<String>(Arrays.asList("ReplacementCost", "Replacement Cost",
             "Cost", "Replacement"));
     private static final ArrayList<String> expectedLifeStrings = new ArrayList<String>(Arrays.asList("ExpectedLife", "Expected Life",
@@ -788,114 +788,5 @@ public class IfcToType
 
         return COBieUtility.getCOBieString(pString);
     }
-
-    public static COBIEType writeAllTypesToCOBie(COBIEType cType, IfcModelInterface model)
-    {
-        LogHandler loggerHandler = new LogHandler(sheetName, LOGGER);
-        loggerHandler.sheetWriteBegin();
-        ArrayList<String> writtenTypes = new ArrayList<String>();
-        COBIEType.Types cTypes = cType.addNewTypes();
-        String name;
-        String category;
-        String description;
-        String extSystem;
-        String extObj;
-        String extIdentifier;
-
-        String assetType;
-        String manufacturer;
-        String modelNumber;
-        String warrantyGuarantorParts;
-        String warrantyDurationParts;
-        String warrantyGuarantorLabor;
-        String warrantyDurationLabor;
-        String warrantyDurationUnit;
-        String replacementCost;
-        String expectedLife;
-        String warrantyDescription;
-        String nominalLength;
-        String nominalWidth;
-        String nominalHeight;
-        String modelReference;
-        String shape;
-        String size;
-        String color;
-        String finish;
-        String grade;
-        String material;
-        String constituents;
-        String features;
-        String accessibilityPerformance;
-        String codePerformance;
-        String sustainabilityPerformance;
-        String durationUnit = "";
-
-        for (IfcTypeObject type : model.getAllWithSubTypes(IfcTypeObject.class))
-        {
-            try
-            {
-                // IfcTypeObject type =
-                // defByType.getRelatingType();
-
-                IfcOwnerHistory oh = type.getOwnerHistory();
-                if (type != null)
-                {
-                    name = IfcToType.nameFromTypeObject(type);
-                    if (shouldWriteType(writtenTypes, name, type))
-                    {
-
-                        String createdBy = COBieUtility.getEmailFromOwnerHistory(oh);
-                        Calendar createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
-                        category = IfcToType.categoryFromTypeObject(type);
-                        description = IfcToType.descriptionFromTypeObject(type);
-                        extSystem = COBieUtility.getApplicationName(oh);
-                        extObj = IfcToType.extObjectFromTypeObject(type);
-                        extIdentifier = COBieUtility.identifierFromObjectDefinition(type);
-
-                        assetType = IfcToType.assetTypeFromTypeObject(type);
-                        manufacturer = IfcToType.manufacturerFromTypeObject(type);
-                        modelNumber = IfcToType.modelNumberFromTypeObject(type);
-                        warrantyGuarantorParts = IfcToType.warrantyGuarantorPartsFromTypeObject(type);
-                        warrantyDurationParts = IfcToType.warrantyDurationPartsFromTypeObject(type);
-                        warrantyGuarantorLabor = IfcToType.warrantyGuarantorLaborFromTypeObject(type);
-                        warrantyDurationLabor = IfcToType.warrantyDurationLaborFromTypeObject(type);
-                        warrantyDurationUnit = IfcToType.warrantyDurationUnitsFromTypeObject(type, model);
-                        replacementCost = IfcToType.replacementCostFromTypeObject(type);
-                        expectedLife = IfcToType.expectedLifeFromTypeObject(type);
-                        durationUnit = IfcToType.durationUnitsFromTypeObject(type, model);
-                        warrantyDescription = IfcToType.warrantyDescriptionFromTypeObject(type);
-                        nominalLength = IfcToType.nominalLengthFromTypeObject(type);
-                        nominalWidth = IfcToType.nominalWidthFromTypeObject(type);
-                        nominalHeight = IfcToType.nominalHeightFromTypeObject(type);
-                        modelReference = IfcToType.modelReferenceFromTypeObject(type);
-                        shape = IfcToType.shapeFromTypeObject(type);
-                        size = IfcToType.sizeFromTypeObject(type);
-                        color = IfcToType.colorFromTypeObject(type);
-                        finish = IfcToType.finishFromTypeObject(type);
-                        grade = IfcToType.gradeFromTypeObject(type);
-                        material = IfcToType.materialFromTypeObject(type);
-                        constituents = IfcToType.constituentsStringFromTypeObject(type);
-                        features = IfcToType.featuresFromTypeObject(type);
-                        accessibilityPerformance = IfcToType.accessibilityPerformanceFromTypeObject(type);
-                        codePerformance = IfcToType.codePerformanceFromTypeObject(type);
-                        sustainabilityPerformance = IfcToType.sustainabilityPerformanceFromTypeObject(type);
-                        addNewType(writtenTypes, cTypes, name, category, description, extSystem, extObj, extIdentifier, assetType, manufacturer,
-                                modelNumber, warrantyGuarantorParts, warrantyDurationParts, warrantyGuarantorLabor, warrantyDurationLabor,
-                                warrantyDurationUnit, replacementCost, expectedLife, warrantyDescription, nominalLength, nominalWidth, nominalHeight,
-                                modelReference, shape, size, color, finish, grade, material, constituents, features, accessibilityPerformance,
-                                codePerformance, sustainabilityPerformance, createdBy, createdOn, durationUnit);
-                        loggerHandler.rowWritten();
-                    }
-                }
-
-            } catch (Exception ex)
-            {
-                loggerHandler.error(ex);
-            }
-        }
-        loggerHandler.sheetWritten();
-        return cType;
-    }
-
    
 }

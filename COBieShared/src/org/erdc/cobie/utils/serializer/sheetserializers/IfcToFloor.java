@@ -40,6 +40,8 @@ import org.slf4j.LoggerFactory;
 
 public class IfcToFloor
 {
+    private static final String SITE = "Site";
+    private static final String IFC_SITE = "IfcSite";
     protected static final String extObject = IfcBuildingStorey.class.getSimpleName();
     private static final Logger LOGGER = LoggerFactory.getLogger(IfcToFloor.class);
     private static final CobieSheetName sheetName = CobieSheetName.Floor;
@@ -148,7 +150,7 @@ public class IfcToFloor
                     createdOn = IfcToContact.getCreatedOn(ownerHistory.getCreationDate());
                     category = COBieUtility.getObjectClassificationCategoryString(storey);
                     extSystem = COBieUtility.getApplicationName(ownerHistory);
-                    extObject = IfcToFloor.extObject;
+                    extObject = extObjectFromBuildingStorey(storey);
                     extIdentifier = COBieUtility.identifierFromObject(storey);
                     description = IfcToFacility.descriptionFromSpatialStructureElement(storey);
                     elevation = COBieUtility.getCOBieString(IfcToFloor.elevationFromStorey(storey));
@@ -175,5 +177,18 @@ public class IfcToFloor
         }
         loggerHandler.sheetWritten();
         return cType;
+    }
+
+    private static String extObjectFromBuildingStorey(IfcBuildingStorey storey)
+    {
+        String extObject = IfcToFloor.extObject;
+        if(!COBieUtility.isNA(storey.getObjectType()))
+        {
+            String objectType = storey.getObjectType();
+            if(objectType.equalsIgnoreCase(SITE) || objectType.equalsIgnoreCase(IFC_SITE))
+                extObject = IFC_SITE;
+                
+        }
+        return extObject;
     }
 }

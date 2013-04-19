@@ -18,7 +18,10 @@ package org.erdc.cobie.shared;
  *****************************************************************************/
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -84,7 +87,7 @@ import com.google.common.base.CharMatcher;
 public class COBieUtility
 {
     private static final String SPACE = " ";
-
+    private static final List<String> DATE_FORMATS = new ArrayList<String>(Arrays.asList("yyyy-MM-dd", "MM-dd-yyyy", "MMM. d, yyyy", "MMMM d, yyyy"));
     protected static enum ClassificationLiterals
     {
         Category, Assembly_Code, Assembly_Description, OmniClass_Number, OmniClass_Title, Uniclass_Code, Uniclass_Description, Category_Code, Category_Description, Classification_Code, Classification_Description
@@ -156,9 +159,29 @@ public class COBieUtility
             cal = new XmlCalendar(tmpDateTimeString);
         } catch (Exception e)
         {
-            cal = currentTimeAsCalendar();
+            cal = tryParsingCalendar(dateTimeString);
+            if(cal==null)
+                cal = currentTimeAsCalendar();
         }
         return cal;
+    }
+
+    private static Calendar tryParsingCalendar(String dateTimeString)
+    {
+        Calendar calendar = null;
+        dateFormatLoop:
+        for(String formatString : DATE_FORMATS)
+        {
+            SimpleDateFormat format = new SimpleDateFormat(formatString);
+            try
+            {
+                calendar = new XmlCalendar(format.parse(dateTimeString));
+                break dateFormatLoop;
+            } catch (ParseException e)
+            {
+            }
+        }
+        return calendar;
     }
 
     public static Calendar calendarFromStringWithException(String dateTimeString) throws Exception
@@ -835,6 +858,14 @@ public class COBieUtility
         return getCOBieString(getEmailFromPersonAndOrganization(personOrg));
     }
 
+    public static String getEmailFromOrganization(IfcOrganization org)
+    {
+        String strEmail = "";
+        EList<IfcAddress> organizationAddresses = org.getAddresses();
+        String organizationEmail = getEmailsFromAddresses(organizationAddresses);
+        strEmail = organizationEmail;
+        return getCOBieString(strEmail);
+    }
     public static String getEmailFromPersonAndOrganization(IfcPersonAndOrganization personOrg)
     {
         String strEmail = "";

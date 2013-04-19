@@ -40,7 +40,7 @@ public class AssemblyParser extends TypicalParser<org.erdc.cobie.sheetxmldata.As
 
     @Override
     protected void parseSimpleElements()
-    {
+    {        
         targetCOBie.setAssemblyCategory(sourceCOBie.getAssemblyType());
         targetCOBie.setAssemblyDescription(sourceCOBie.getDescription());
         targetCOBie.setAssemblyName(sourceCOBie.getName());
