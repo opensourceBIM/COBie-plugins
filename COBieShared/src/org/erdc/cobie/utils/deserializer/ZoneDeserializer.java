@@ -120,7 +120,7 @@ public class ZoneDeserializer
 
         ifcZone.setName(name);
         ifcZone.setDescription(description);
-        ifcZone.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(extIdentifier));
+        ifcZone.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(extIdentifier).getWrappedValue());
         ifcZone.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(createdBy, createdOn,
                 zone.getExtSystem()));
         String objectType = ClassificationHandler.objectTypeFromCategoryString(category);
@@ -241,7 +241,7 @@ public class ZoneDeserializer
         {
             groupAssignment = Ifc2x3tc1Factory.eINSTANCE.createIfcRelAssignsToGroup();
             groupAssignment.setRelatingGroup(zone);
-            groupAssignment.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+            groupAssignment.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
             groupAssignment.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().DefaultOwnerHistory());
             groupAssignment.setName(zone.getName() + " to " + space.getName() + " relation");
             long relOid = model.add(groupAssignment, ifcCommonHandler.getOidProvider());

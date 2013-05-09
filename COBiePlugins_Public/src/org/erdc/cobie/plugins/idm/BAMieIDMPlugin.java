@@ -6,12 +6,13 @@ import java.util.ArrayList;
 
 import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Package;
 import org.bimserver.models.store.ObjectDefinition;
+import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.objectidms.ObjectIDM;
 import org.bimserver.plugins.objectidms.ObjectIDMPlugin;
 import org.bimserver.utils.CollectionUtils;
-import org.erdc.cobie.plugins.utils.ConfigUtil;
+import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
 import org.erdc.cobie.shared.enums.COBieIDMPluginName;
 
 public class BAMieIDMPlugin implements ObjectIDMPlugin
@@ -27,7 +28,7 @@ public class BAMieIDMPlugin implements ObjectIDMPlugin
 		// TODO Auto-generated method stub
 		try
 		{
-			ignoreFile = ConfigUtil.prepareSerializerConfigFile(pluginManager, "BAMieIDM", this,ignoreFilePath);
+			ignoreFile = PluginRuntimeFileHelper.prepareSerializerConfigFile(pluginManager, "BAMieIDM", this,ignoreFilePath);
 		}
 		catch (FileNotFoundException e)
 		{
@@ -67,11 +68,11 @@ public class BAMieIDMPlugin implements ObjectIDMPlugin
 		return initialized;
 	}
 
-	@Override
+
 	public ObjectIDM getObjectIDM()
 	{
-		// TODO Auto-generated method stub
-		return cobieObjectIDM;
+		return this.getObjectIDM(null);
+		
 	}
 
 	@Override
@@ -86,5 +87,11 @@ public class BAMieIDMPlugin implements ObjectIDMPlugin
 	{
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ObjectIDM getObjectIDM(PluginConfiguration pluginConfiguration)
+	{
+		return cobieObjectIDM;
 	}
 }

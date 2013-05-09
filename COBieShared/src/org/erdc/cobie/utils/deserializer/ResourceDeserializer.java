@@ -26,7 +26,7 @@ public class ResourceDeserializer
         constructionEquipmentResource.setDescription(resource.getDescription());
         constructionEquipmentResource.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(
                 resource.getCreatedBy(), resource.getCreatedOn(), resource.getExtSystem()));
-        constructionEquipmentResource.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(resource.getExtIdentifier()));
+        constructionEquipmentResource.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(resource.getExtIdentifier()).getWrappedValue());
         constructionEquipmentResource.setObjectType(resource.getCategory());
         return constructionEquipmentResource;
     }

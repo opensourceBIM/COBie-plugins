@@ -279,7 +279,7 @@ public class IfcToFacility
                 siteName = site.getLongName();
             } else
             {
-                siteName = COBieUtility.getCOBieString(site.getGlobalId().getWrappedValue());
+                siteName = COBieUtility.getCOBieString(site.getGlobalId());
             }
         } else
         {
@@ -345,7 +345,7 @@ public class IfcToFacility
             }
             if ((name == null) || (name.length() == 0))
             {
-                name = bldg.getGlobalId().getWrappedValue();
+                name = bldg.getGlobalId();
             }
         }
 

@@ -180,7 +180,7 @@ public class IfcPropertySetToCOBieString
     {
         Map<String, IfcPropertyToCOBieString> clonePsetStrings = IfcPropertySetToCOBieString.clonePsetStringMap(psetStrings);
         String pSetName = pSetDef.getName();
-        String guid = pSetDef.getGlobalId().getWrappedValue();
+        String guid = pSetDef.getGlobalId();
         for (String key : clonePsetStrings.keySet())
         {
             IfcPropertyToCOBieString tmpPsetStr = clonePsetStrings.get(key);

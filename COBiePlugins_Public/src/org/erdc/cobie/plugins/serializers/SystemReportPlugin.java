@@ -9,15 +9,18 @@ import java.util.Set;
 
 import org.bimserver.models.store.ObjectDefinition;
 import org.bimserver.plugins.Plugin;
+import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.schema.SchemaPlugin;
+import org.bimserver.plugins.serializers.AbstractSerializerPlugin;
 import org.bimserver.plugins.serializers.EmfSerializer;
+import org.bimserver.plugins.serializers.Serializer;
 import org.bimserver.plugins.serializers.SerializerPlugin;
-import org.erdc.cobie.plugins.utils.ConfigUtil;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginName;
+import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
+import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
 
-public class SystemReportPlugin implements SerializerPlugin
+public class SystemReportPlugin extends AbstractSerializerPlugin
 {
 	private boolean initialized = false;
 	private static final String SYSTEM_REPORT_CSS_PATH =
@@ -27,7 +30,7 @@ public class SystemReportPlugin implements SerializerPlugin
 	private HashMap<String,File> configFiles;
 		@Override
 		public String getDescription() {
-			return "Produces a report of systems and their corresponding components.";
+			return COBieSerializerPluginInfo.REPORT_SYSTEM.getDescription();
 		}
 
 		
@@ -49,7 +52,7 @@ public class SystemReportPlugin implements SerializerPlugin
 			pluginManager.requireSchemaDefinition();
 			try
 			{
-				this.configFiles = ConfigUtil.prepareSerializerConfigFiles(pluginManager, getDefaultName(), this, configFilePaths);
+				this.configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, getDefaultName(), this, configFilePaths);
 			}
 			catch (FileNotFoundException e)
 			{
@@ -67,17 +70,16 @@ public class SystemReportPlugin implements SerializerPlugin
 			return set;
 		}
 
-		@Override
+
 		public EmfSerializer createSerializer() {
-			return new org.erdc.cobie.plugins.serializers.COBieHTMLReportSerializer(this.configFiles.get(SYSTEM_REPORT_XSLT_PATH).getAbsolutePath(),
-					this.configFiles.get(SYSTEM_REPORT_CSS_PATH).getAbsolutePath());
+			return (EmfSerializer) this.createSerializer(null);
 
 		}
 		
 		@Override
 		public String getDefaultName() {
 			//return "COBIE";
-			return COBieSerializerPluginName.COBIE_SYSTEM_REPORT.toString();
+			return COBieSerializerPluginInfo.REPORT_SYSTEM.toString();
 		}
 
 		///////////////////////////////
@@ -91,7 +93,7 @@ public class SystemReportPlugin implements SerializerPlugin
 		@Override
 		public String getDefaultExtension() {
 			//return "xml";//Change this to proper extension
-			return "html";
+			return COBieSerializerPluginInfo.REPORT_SYSTEM.getFileExtension();
 		}
 	 /////////////////////////////////////////////////
 		@Override
@@ -103,7 +105,6 @@ public class SystemReportPlugin implements SerializerPlugin
 	@Override
 	public ObjectDefinition getSettingsDefinition()
 	{
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -111,8 +112,15 @@ public class SystemReportPlugin implements SerializerPlugin
 	@Override
 	public boolean needsGeometry()
 	{
-		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	public Serializer createSerializer(PluginConfiguration plugin)
+	{
+		return new org.erdc.cobie.plugins.serializers.COBieHTMLReportSerializer(this.configFiles.get(SYSTEM_REPORT_XSLT_PATH).getAbsolutePath(),
+				this.configFiles.get(SYSTEM_REPORT_CSS_PATH).getAbsolutePath());
 	}
 
 }

@@ -56,25 +56,25 @@ public class COBieUtils
 
         if (type instanceof SpaceType)
         {
-            globalId = product.getGlobalId().getWrappedValue();
+            globalId = product.getGlobalId();
             extId = ((SpaceType)type).getExtIdentifier();
         }
 
         else if (type instanceof FloorType)
         {
-            globalId = product.getGlobalId().getWrappedValue();
+            globalId = product.getGlobalId();
             extId = ((FloorType)type).getExtIdentifier();
         }
 
         else if (type instanceof ZoneType)
         {
-            globalId = product.getGlobalId().getWrappedValue();
+            globalId = product.getGlobalId();
             extId = ((ZoneType)type).getExtIdentifier();
         }
         
         else if (type instanceof ComponentType)
         {
-            globalId = product.getGlobalId().getWrappedValue();
+            globalId = product.getGlobalId();
             extId = ((ComponentType)type).getExtIdentifier();
         }
 

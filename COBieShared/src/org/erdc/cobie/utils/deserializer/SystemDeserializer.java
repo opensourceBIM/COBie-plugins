@@ -128,7 +128,7 @@ public class SystemDeserializer
         }
         String Name = COBieUtility.getCOBieString(system.getName());
         String Description = COBieUtility.getCOBieString(system.getDescription());
-        ifcSystem.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(system.getExtIdentifier(), false));
+        ifcSystem.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(system.getExtIdentifier(), false).getWrappedValue());
         ifcSystem.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(system.getCreatedBy(),
                 system.getCreatedOn(), system.getExtSystem()));
         ifcSystem.setName(Name);
@@ -218,7 +218,7 @@ public class SystemDeserializer
         {
             groupAssignment = Ifc2x3tc1Factory.eINSTANCE.createIfcRelAssignsToGroup();
 
-            groupAssignment.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+            groupAssignment.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
             groupAssignment.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(
                     cobieSystem.getCreatedBy(), cobieSystem.getCreatedOn(), cobieSystem.getExtSystem()));
             groupAssignment.setName(system.getName() + " to " + component.getName() + " relation");

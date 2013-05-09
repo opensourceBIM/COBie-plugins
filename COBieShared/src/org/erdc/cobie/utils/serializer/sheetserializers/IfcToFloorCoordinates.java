@@ -88,7 +88,7 @@ public class IfcToFloorCoordinates extends IfcCOBieSerializer<CoordinateType, CO
         }
         String extSystem = COBieUtility.getApplicationName(ifcBuildingStorey.getOwnerHistory());
         String extObject = COBieUtility.extObjectFromObjectDef(ifcBuildingStorey);
-        String extId = COBieUtility.getCOBieString(ifcBuildingStorey.getGlobalId().getWrappedValue());
+        String extId = COBieUtility.getCOBieString(ifcBuildingStorey.getGlobalId());
         String clockWiseRotation = COBieUtility.COBieNA;
         String elevationRotation = COBieUtility.COBieNA;
         String yawRotation = COBieUtility.COBieNA;

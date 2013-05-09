@@ -122,7 +122,7 @@ public class IfcToConnection
         name = connects.getName();
         if ((name == null) || (name.length() == 0))
         {
-            name = connects.getGlobalId().getWrappedValue();
+            name = connects.getGlobalId();
         }
         return COBieUtility.getCOBieString(name);
     }

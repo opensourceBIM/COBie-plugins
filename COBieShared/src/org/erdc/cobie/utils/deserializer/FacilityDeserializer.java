@@ -254,7 +254,7 @@ public class FacilityDeserializer
                         String objectType = ClassificationHandler.objectTypeFromCategoryString(category);
 
                         IfcProject project = projectFromFacility(facility);
-                        project.setGlobalId(projGuid);
+                        project.setGlobalId(projGuid.getWrappedValue());
                         project.setUnitsInContext(unitAssignment);
                         project.setOwnerHistory(ownerHistory);
 
@@ -265,7 +265,7 @@ public class FacilityDeserializer
                         model.add(project, CobieOidProvider);
 
                         IfcSite site = siteFromFacility(facility);
-                        site.setGlobalId(siteGuid);
+                        site.setGlobalId(siteGuid.getWrappedValue());
                         site.setOwnerHistory(ownerHistory);
                         if (!COBieUtility.isNA(objectType))
                         {
@@ -274,7 +274,7 @@ public class FacilityDeserializer
                         model.add(site, CobieOidProvider);
 
                         IfcBuilding bldg = buildingFromFacility(facility);
-                        bldg.setGlobalId(buildingGuid);
+                        bldg.setGlobalId(buildingGuid.getWrappedValue());
                         bldg.setOwnerHistory(ownerHistory);
                         if (!COBieUtility.isNA(objectType))
                         {
@@ -371,7 +371,7 @@ public class FacilityDeserializer
     private void setFacilityAggregates(IfcProject project, IfcSite site, IfcBuilding building)
     {
         IfcRelAggregates aggregatesProj = Ifc2x3tc1Factory.eINSTANCE.createIfcRelAggregates();
-        aggregatesProj.setGlobalId(guidProvider.newGuid());
+        aggregatesProj.setGlobalId(guidProvider.newGuid().getWrappedValue());
         aggregatesProj.setOwnerHistory(ownerHistoryProvider.DefaultOwnerHistory());
         aggregatesProj.setName(DeserializerStaticStrings.getProjectRelAggregatesName());
         aggregatesProj.setDescription(DeserializerStaticStrings.getProjectRelAggregatesDescription());
@@ -380,7 +380,7 @@ public class FacilityDeserializer
         model.add(aggregatesProj, CobieOidProvider);
 
         IfcRelAggregates aggregatesSite = Ifc2x3tc1Factory.eINSTANCE.createIfcRelAggregates();
-        aggregatesSite.setGlobalId(guidProvider.newGuid());
+        aggregatesSite.setGlobalId(guidProvider.newGuid().getWrappedValue());
         aggregatesSite.setOwnerHistory(ownerHistoryProvider.DefaultOwnerHistory());
         aggregatesSite.setName(DeserializerStaticStrings.getSiteRelAggregatesName());
         aggregatesSite.setDescription(DeserializerStaticStrings.getSiteRelAggregatesDescription());

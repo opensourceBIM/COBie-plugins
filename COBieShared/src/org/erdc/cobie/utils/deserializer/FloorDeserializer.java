@@ -164,7 +164,7 @@ public class FloorDeserializer
                         IfcBuildingStorey buildingStorey = buildingStoreyFromFloor(floor);
                         buildingStorey.setOwnerHistory(ownerHistory);
                         IfcGloballyUniqueId guid = ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(externalId);
-                        buildingStorey.setGlobalId(guid);
+                        buildingStorey.setGlobalId(guid.getWrappedValue());
                         String objectType = ClassificationHandler.objectTypeFromCategoryString(category);
                         if (!COBieUtility.isNA(objectType))
                         {
@@ -208,7 +208,7 @@ public class FloorDeserializer
             aggregatesBuilding.setName(DeserializerStaticStrings.getBuildingRelAggregatesName());
             aggregatesBuilding.setDescription(DeserializerStaticStrings.getBuildingRelAggregatesDescription());
             aggregatesBuilding.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().DefaultOwnerHistory());
-            aggregatesBuilding.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+            aggregatesBuilding.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
             aggregatesBuilding.setRelatingObject(building);
             for (IfcBuildingStorey floor : storeys)
             {

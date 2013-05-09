@@ -6,14 +6,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
+import org.bimserver.emf.IfcModelInterface;
+import org.bimserver.plugins.PluginManager;
+import org.bimserver.plugins.serializers.ProjectInfo;
+import org.bimserver.plugins.serializers.SerializerException;
 import org.erdc.cobie.report.ReportSerializer;
 import org.erdc.cobie.shared.COBieSheetXMLDataTransformable;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
-import org.bimserver.emf.IfcModelInterface;
-import org.bimserver.plugins.PluginManager;
-import org.bimserver.plugins.ifcengine.IfcEnginePlugin;
-import org.bimserver.plugins.serializers.ProjectInfo;
-import org.bimserver.plugins.serializers.SerializerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,17 +72,17 @@ extends COBieSheetXMLDataSerializer implements COBieSheetXMLDataTransformable
 			e.printStackTrace();
 		}
 	}
-    @Override
-    public void init(IfcModelInterface model, ProjectInfo projectInfo, PluginManager pluginManager,IfcEnginePlugin ifcEnginePlugin, boolean normalizeOids) throws SerializerException 
-	{
-		try {
-
-			super.init(model, this.getProjectInfo(), pluginManager,ifcEnginePlugin,normalizeOids);
-		} catch (SerializerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//    @Override
+//    public void init(IfcModelInterface model, ProjectInfo projectInfo, PluginManager pluginManager,IfcEnginePlugin ifcEnginePlugin, boolean normalizeOids) throws SerializerException 
+//	{
+//		try {
+//
+//			super.init(model, this.getProjectInfo(), pluginManager,ifcEnginePlugin,normalizeOids);
+//		} catch (SerializerException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 	protected void executeTransform(OutputStream outputStream)
 	{

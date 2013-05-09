@@ -60,7 +60,7 @@ public class AssemblyDeserializer
                     {
                         assemblyRelation = relationshipFromExtObject(assembly.getExtObject());
                         assemblyRelation.setName(name);
-                        assemblyRelation.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(assembly.getExtIdentifier()));
+                        assemblyRelation.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(assembly.getExtIdentifier()).getWrappedValue());
                         assemblyRelation.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(
                                 assembly.getCreatedBy(), assembly.getCreatedOn(), assembly.getExtSystem()));
                         assemblyRelation.setDescription(assembly.getDescription());

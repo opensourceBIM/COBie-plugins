@@ -172,7 +172,7 @@ public class IfcToDocument
                             rowName = IfcToDocument.bamieRowNameFromDistributionElement(element);
                             extSystem = COBieUtility.getApplicationName(oh);
                             extObject = IfcToComponent.extObjectFromProduct(element);
-                            extIdentifier = element.getGlobalId().getWrappedValue();
+                            extIdentifier = element.getGlobalId();
                             description = COBieUtility.getCOBieString(element.getName());
                             reference = IfcToDocument.Reference;
 
@@ -332,7 +332,7 @@ public class IfcToDocument
                             file = IfcToDocument.File;
                             extSystem = COBieUtility.getApplicationName(oh);
                             extObject = IfcToType.extObjectFromTypeObject(type);
-                            extIdentifier = type.getGlobalId().getWrappedValue();
+                            extIdentifier = type.getGlobalId();
                             description = IfcToDocument.descriptionFromTypeObject(type);
                             reference = IfcToDocument.Reference;
 
@@ -370,7 +370,7 @@ public class IfcToDocument
         String extId = "";
         if ((relAssociatesDocument.getRelatedObjects() != null) && (relAssociatesDocument.getRelatedObjects().size() > 0))
         {
-            extId = relAssociatesDocument.getRelatedObjects().get(0).getGlobalId().getWrappedValue();
+            extId = relAssociatesDocument.getRelatedObjects().get(0).getGlobalId();
         }
         return COBieUtility.getCOBieString(extId);
     }

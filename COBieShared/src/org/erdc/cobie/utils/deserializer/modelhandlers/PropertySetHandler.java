@@ -133,7 +133,7 @@ public class PropertySetHandler
         long propertySetOid = -1;
         if (propertySetDefinition.getGlobalId() == null)
         {
-            propertySetDefinition.setGlobalId(guidProvider.newGuid());
+            propertySetDefinition.setGlobalId(guidProvider.newGuid().getWrappedValue());
         }
         if (propertySetDefinition.getOwnerHistory() == null)
         {
@@ -226,9 +226,9 @@ public class PropertySetHandler
     public long addPropertySetToModel(IfcPropertySetDefinition propertySetDefinition)
     {
         long propertySetOid = -1;
-        if ((propertySetDefinition.getGlobalId() == null) || (propertySetDefinition.getGlobalId().getWrappedValue().length() == 0))
+        if ((propertySetDefinition.getGlobalId() == null) || (propertySetDefinition.getGlobalId().length() == 0))
         {
-            propertySetDefinition.setGlobalId(guidProvider.newGuid());
+            propertySetDefinition.setGlobalId(guidProvider.newGuid().getWrappedValue());
         }
         if (propertySetDefinition.getOwnerHistory() == null)
         {
@@ -334,7 +334,7 @@ public class PropertySetHandler
             propertySetOid = addPropertySetToModel(propertySetDefinition);
         } else
         {
-            propertySetOid = model.getGuidToOid().get(propertySetDefinition.getGlobalId().getWrappedValue());
+            propertySetOid = model.getGuidToOid().get(propertySetDefinition.getGlobalId());
         }
         return propertySetOid;
     }
@@ -401,7 +401,7 @@ public class PropertySetHandler
         boolean isInModel = false;
         try
         {
-            String guid = propertySetDefinition.getGlobalId().getWrappedValue();
+            String guid = propertySetDefinition.getGlobalId();
             /*
              * if (IfcGuidHandler.isValidGuid(guid)) { model.indexGuids();
              * isInModel = model.contains(guid); }
@@ -425,7 +425,7 @@ public class PropertySetHandler
             if (definesRelation instanceof IfcRelDefinesByProperties)
             {
                 IfcRelDefinesByProperties defByProp = (IfcRelDefinesByProperties)definesRelation;
-                if (defByProp.getRelatingPropertyDefinition().getGlobalId().getWrappedValue().equals(propertySet.getGlobalId().getWrappedValue()))
+                if (defByProp.getRelatingPropertyDefinition().getGlobalId().equals(propertySet.getGlobalId()))
                 {
                     isRelatedToObject = true;
                 }
@@ -439,7 +439,7 @@ public class PropertySetHandler
         IfcRelDefinesByProperties relDefByProperties = Ifc2x3tc1Factory.eINSTANCE.createIfcRelDefinesByProperties();
         IfcOwnerHistory ownerHistory = ownerHistoryProvider.DefaultOwnerHistory();
         relDefByProperties.setOwnerHistory(ownerHistory);
-        relDefByProperties.setGlobalId(guidProvider.newGuid());
+        relDefByProperties.setGlobalId(guidProvider.newGuid().getWrappedValue());
         if (isCOBiePset)
         {
             relDefByProperties.setName(getRelDefByproPertiesCobieNameDescription());

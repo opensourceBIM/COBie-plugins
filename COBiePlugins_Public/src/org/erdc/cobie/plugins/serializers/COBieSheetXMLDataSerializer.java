@@ -24,10 +24,18 @@ import java.io.PrintWriter;
 
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
+import org.bimserver.emf.IfcModelInterface;
+import org.bimserver.ifc.IfcModel;
+import org.bimserver.models.ifc2x3tc1.IfcObjectDefinition;
+import org.bimserver.models.ifc2x3tc1.IfcRelAssociates;
+import org.bimserver.models.ifc2x3tc1.IfcRoot;
+import org.bimserver.plugins.PluginManager;
+import org.bimserver.plugins.serializers.ProjectInfo;
+import org.bimserver.plugins.serializers.SerializerException;
+import org.bimserver.utils.UTF8PrintWriter;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.utils.serializer.BIMServerCOBieSheetXMLDataSerializer;
-import org.erdc.cobie.utils.serializer.COBieSheetXMLDataSerializable;
 import org.erdc.cobie.utils.serializer.sheetserializers.IfcPersonOrganizationContactsSerializer;
 import org.erdc.cobie.utils.serializer.sheetserializers.IfcProductToComponentsSerializer;
 import org.erdc.cobie.utils.serializer.sheetserializers.IfcToAssembly;
@@ -43,21 +51,8 @@ import org.erdc.cobie.utils.serializer.sheetserializers.IfcToSpace;
 import org.erdc.cobie.utils.serializer.sheetserializers.IfcToSpaceCoordinatesSerializer;
 import org.erdc.cobie.utils.serializer.sheetserializers.IfcToSpare;
 import org.erdc.cobie.utils.serializer.sheetserializers.IfcToSystem;
-import org.erdc.cobie.utils.serializer.sheetserializers.IfcToType;
 import org.erdc.cobie.utils.serializer.sheetserializers.IfcToZone;
 import org.erdc.cobie.utils.serializer.sheetserializers.IfcTypeToCOBieTypeSerializer;
-import org.bimserver.emf.IfcModelInterface;
-import org.bimserver.ifc.IfcModel;
-import org.bimserver.models.ifc2x3tc1.IfcObjectDefinition;
-import org.bimserver.models.ifc2x3tc1.IfcRelAssociates;
-import org.bimserver.models.ifc2x3tc1.IfcRoot;
-import org.bimserver.plugins.PluginManager;
-import org.bimserver.plugins.ifcengine.IfcEngine;
-import org.bimserver.plugins.ifcengine.IfcEnginePlugin;
-import org.bimserver.plugins.serializers.EmfSerializer;
-import org.bimserver.plugins.serializers.ProjectInfo;
-import org.bimserver.plugins.serializers.SerializerException;
-import org.bimserver.utils.UTF8PrintWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -102,16 +97,16 @@ public class COBieSheetXMLDataSerializer extends BIMServerCOBieSheetXMLDataSeria
 	//}
 
 	
-	@Override
-	public void init(IfcModelInterface model, ProjectInfo projectInfo,
-			PluginManager pluginManager, IfcEnginePlugin ifcEnginePlugin,
-			boolean normalizeOids) throws SerializerException
-	{
-		super.init(model, null, pluginManager, ifcEnginePlugin,normalizeOids);	
-		COBie = COBIEDocument.Factory.newInstance();
-		initializeModelInverseSlots();
-		setCOBieSheetXMLDataLoaded(false);
-	}
+//	@Override
+//	public void init(IfcModelInterface model, ProjectInfo projectInfo,
+//			PluginManager pluginManager, IfcEnginePlugin ifcEnginePlugin,
+//			boolean normalizeOids) throws SerializerException
+//	{
+//		super.init(model, null, pluginManager, ifcEnginePlugin,normalizeOids);	
+//		COBie = COBIEDocument.Factory.newInstance();
+//		initializeModelInverseSlots();
+//		setCOBieSheetXMLDataLoaded(false);
+//	}
 
 	public void init(IfcModelInterface model, ProjectInfo projectInfo, 
 			PluginManager pluginManager) throws SerializerException 

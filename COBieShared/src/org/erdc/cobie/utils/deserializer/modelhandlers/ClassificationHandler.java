@@ -166,7 +166,7 @@ public class ClassificationHandler
             {
                 classificationAssociation.setOwnerHistory(ownerHistoryHandler.DefaultOwnerHistory());
             }
-            classificationAssociation.setGlobalId(guidProvider.newGuid());
+            classificationAssociation.setGlobalId(guidProvider.newGuid().getWrappedValue());
             classificationAssociation.setRelatingClassification(classificationReference);
             classificationAssociation.setName(getClassificationAssociationName(classificationReference, targetObject));
             long tmpOid = model.add(classificationAssociation, CobieOidProvider);

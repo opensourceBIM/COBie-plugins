@@ -10,7 +10,6 @@ import org.apache.commons.io.FileUtils;
 
 public class Zipper
 {
-    private boolean deleteOriginalFile;
     private ZipOutputStream zip;
     
 //    public Zipper(String archiveName) throws FileNotFoundException
@@ -25,16 +24,10 @@ public class Zipper
     
     public Zipper(OutputStream outputStream)
     {
-        this(outputStream, false);
-    }
-    
-    public Zipper(OutputStream outputStream, boolean deleteOriginalFiles)
-    {
         this.zip = new ZipOutputStream(outputStream);
-        setDeleteOriginalFile(deleteOriginalFiles);
     }
-    
-    public void addEntry(File file) throws IOException
+     
+    public void addEntry(File file, boolean deleteOriginalFile) throws IOException
     {
         ZipEntry entry = new ZipEntry(file.getPath());
         
@@ -42,25 +35,49 @@ public class Zipper
         this.getZipOutputStream().write(FileUtils.readFileToByteArray(file));
         this.getZipOutputStream().closeEntry();
         
-        if (this.getDeleteOriginalFile())
+        if (deleteOriginalFile)
+        {
+            file.delete();
+        }
+    }
+       
+    public void addEntry(File file, String relativePath, boolean deleteOriginalFile) throws IOException
+    {
+        ZipEntry entry = new ZipEntry(relativePath);
+        
+        this.getZipOutputStream().putNextEntry(entry);              
+        this.getZipOutputStream().write(FileUtils.readFileToByteArray(file));
+        this.getZipOutputStream().closeEntry();
+        
+        if (deleteOriginalFile)
         {
             file.delete();
         }
     }
     
-    public boolean getDeleteOriginalFile()
+    public void addEntry(byte[] data, String relativePath) throws IOException
     {
-        return this.deleteOriginalFile;
+        ZipEntry entry = new ZipEntry(relativePath);
+        
+        this.getZipOutputStream().putNextEntry(entry);              
+        this.getZipOutputStream().write(data);
+        this.getZipOutputStream().closeEntry();
+
+    }
+       
+    public void addEntry(File file) throws IOException
+    {
+        addEntry(file, true);
     }
     
+    public void addEntry(File file, String relativePath) throws IOException
+    {
+        addEntry(file, relativePath, true);
+    }
+
     public final ZipOutputStream getZipOutputStream()
     {
         return this.zip;
-    }
-    
-    public void setDeleteOriginalFile(boolean deleteOriginalFile)
-    {
-        this.deleteOriginalFile = deleteOriginalFile;
     }
     
     public void writeZipArchive() throws IOException

@@ -20,19 +20,20 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
-import org.erdc.cobie.plugins.utils.spreadsheetml.COBieSpreadSheet;
-import org.erdc.cobie.shared.COBieSheetXMLDataTransformable;
-import org.erdc.cobie.sheetxmldata.COBIEDocument;
 import org.bimserver.cobie.cobieserializersettings.COBieExportOptionsDocument;
 import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.plugins.PluginManager;
-import org.bimserver.plugins.ifcengine.IfcEnginePlugin;
 import org.bimserver.plugins.serializers.ProjectInfo;
 import org.bimserver.plugins.serializers.SerializerException;
 import org.bimserver.utils.UTF8PrintWriter;
+import org.erdc.cobie.plugins.utils.CP1252Printwriter;
+import org.erdc.cobie.plugins.utils.spreadsheetml.COBieSpreadSheet;
+import org.erdc.cobie.shared.COBieSheetXMLDataTransformable;
+import org.erdc.cobie.sheetxmldata.COBIEDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -85,14 +86,14 @@ public class COBieSerializer extends COBieSheetXMLDataSerializer implements COBi
 		super.init(pluginManager, cobie);
 		cobieSpreadsheet = new COBieSpreadSheet(getConfigurationFile(),exportOptions);
 	}
-	@Override
-	public void init(IfcModelInterface model, ProjectInfo projectInfo,
-			PluginManager pluginManager, IfcEnginePlugin ifcEnginePlugin,
-			boolean normalizeOids) throws SerializerException
-	{
-		super.init(model, projectInfo, pluginManager, ifcEnginePlugin, normalizeOids);
-		cobieSpreadsheet = new COBieSpreadSheet(getConfigurationFile(),exportOptions);
-	}
+//	@Override
+//	public void init(IfcModelInterface model, ProjectInfo projectInfo,
+//			PluginManager pluginManager, IfcEnginePlugin ifcEnginePlugin,
+//			boolean normalizeOids) throws SerializerException
+//	{
+//		super.init(model, projectInfo, pluginManager, ifcEnginePlugin, normalizeOids);
+//		cobieSpreadsheet = new COBieSpreadSheet(getConfigurationFile(),exportOptions);
+//	}
 	/**
 	 * Reads the IFC model into a COBieSheetXMLData document and then transforms the COBie data
 	 * to SpreadsheetML according to the default template in lib/COBieExcelTemplate.xml.
@@ -112,7 +113,7 @@ public class COBieSerializer extends COBieSheetXMLDataSerializer implements COBi
 			//StreamResult result = this.cobieS.getStreamResult();
 			//result.setWriter(this.out);
 			this.cobieSpreadsheet.gc();
-			this.cobieSpreadsheet.writeToOutputStreamB(this.printWriter);
+			this.cobieSpreadsheet.writeToOutputStream(this.printWriter);
 			//this.out.print(this.cobieS.getXMLText());
 		} catch (TransformerFactoryConfigurationError e) {
 			// TODO Auto-generated catch block
@@ -151,7 +152,7 @@ public class COBieSerializer extends COBieSheetXMLDataSerializer implements COBi
 			//result.setWriter(this.out);
 			LOGGER.info(getResponseBeginMessage());
 			this.cobieSpreadsheet.gc();
-			this.cobieSpreadsheet.writeToOutputStreamB(this.printWriter);
+			this.cobieSpreadsheet.writeToOutputStream(this.printWriter);
 			LOGGER.info(getResponseDoneMessage());
 			//this.out.print(this.cobieS.getXMLText());
 		} catch (TransformerFactoryConfigurationError e) {
@@ -162,6 +163,24 @@ public class COBieSerializer extends COBieSheetXMLDataSerializer implements COBi
 					LOGGER.error("", e);
 		}*/
 		//this.out.print(COBie.xmlText());
+	}
+	@Override
+	public void writeToOutputStream(OutputStream outputStream)
+			throws SerializerException
+			{
+		this.write(outputStream);
+	}
+	@Override
+	public void writeToFile(File file) throws SerializerException
+	{
+		try
+		{
+			this.write(file);
+		}
+		catch (FileNotFoundException e)
+		{
+			throw new SerializerException(e);
+		}
 	}
 	private String getResponseDoneMessage() {
 		return getLoggerPrefix()+LOGGER_MESSAGE_RESPONSE_DONE_SUFFIX;
@@ -174,7 +193,7 @@ public class COBieSerializer extends COBieSheetXMLDataSerializer implements COBi
 	public boolean write(OutputStream outputStream) throws SerializerException {
 		if (printWriter == null) 
 		{
-			this.printWriter = new UTF8PrintWriter(outputStream);
+			this.printWriter = createPrintWriter(outputStream);
 		}
 		
 		if (getMode() == Mode.BODY) 
@@ -207,10 +226,10 @@ public class COBieSerializer extends COBieSheetXMLDataSerializer implements COBi
 		
 	}
 	
-	public boolean write(OutputStream outputStream,String templatePath) throws SerializerException {
+	public boolean write(OutputStream outputStream, String templatePath) throws SerializerException {
 		if (printWriter == null) 
 		{
-			this.printWriter = new UTF8PrintWriter(outputStream);
+			this.printWriter = createPrintWriter(outputStream);
 		}
 		
 		if (getMode() == Mode.BODY) 
@@ -240,6 +259,17 @@ public class COBieSerializer extends COBieSheetXMLDataSerializer implements COBi
 		}
 		return false;
 		
+	}
+	private PrintWriter createPrintWriter(OutputStream outputStream)
+	{
+		try
+		{
+			return new CP1252Printwriter(outputStream);
+		}
+		catch (UnsupportedEncodingException e)
+		{
+			return new UTF8PrintWriter(outputStream);
+		}
 	}
 	
 	
@@ -280,12 +310,13 @@ public class COBieSerializer extends COBieSheetXMLDataSerializer implements COBi
 	}
 	
 	@Override
-	public void transformCOBieSheetXMLData(COBIEDocument cobieDocument,File targetSaveFile)
+	public void transformCOBieSheetXMLData(COBIEDocument cobieDocument, File targetSaveFile)
 			throws Exception
 	{
 		cobieSpreadsheet = new COBieSpreadSheet(getConfigurationFile(),exportOptions);
 		cobieSpreadsheet.loadCOBie(cobieDocument);
-		cobieSpreadsheet.saveToFile(targetSaveFile);
+		PrintWriter printWriter = new PrintWriter(new FileOutputStream(targetSaveFile));
+		cobieSpreadsheet.writeToOutputStream(printWriter);
 
 	}
 		

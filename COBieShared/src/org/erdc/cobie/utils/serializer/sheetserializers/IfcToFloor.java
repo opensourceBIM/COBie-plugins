@@ -70,7 +70,7 @@ public class IfcToFloor
                 if (objDef.getClass() == IfcBuildingStoreyImpl.class)
                 {
                     IfcBuildingStorey storey = (IfcBuildingStorey)objDef;
-                    String guid = storey.getGlobalId().getWrappedValue();
+                    String guid = storey.getGlobalId();
                     if (!floorGuids.contains(guid))
                     {
                         floors.add(storey);

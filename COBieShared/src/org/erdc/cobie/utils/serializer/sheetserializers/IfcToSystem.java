@@ -119,7 +119,7 @@ public class IfcToSystem
         {
             for (IfcRelAssignsToGroup assignsToGroup : model.getAllWithSubTypes(IfcRelAssignsToGroup.class))
             {
-                if (assignsToGroup.getRelatingGroup().getGlobalId().getWrappedValue().equals(system.getGlobalId().getWrappedValue()))
+                if (assignsToGroup.getRelatingGroup().getGlobalId().equals(system.getGlobalId()))
                 {
                     for (IfcObjectDefinition def : assignsToGroup.getRelatedObjects())
                     {

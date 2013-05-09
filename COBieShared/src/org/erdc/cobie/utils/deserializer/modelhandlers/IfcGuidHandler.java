@@ -47,14 +47,14 @@ public class IfcGuidHandler
 
     public IfcGloballyUniqueId guidFromExternalIdentifier(String externalIdentifier)
     {
-        IfcGloballyUniqueId guid;
+        IfcGloballyUniqueId guid = Ifc2x3tc1Factory.eINSTANCE.createIfcGloballyUniqueId();
         // model.indexGuids();
         try
         {
             if (guidIsInModel(externalIdentifier))
             {
                 IfcRoot rootObject = (IfcRoot)model.get(guidToOid.get(externalIdentifier));
-                guid = rootObject.getGlobalId();
+                guid.setWrappedValue(rootObject.getGlobalId());
             } else if (isValidGuid(externalIdentifier))// !model.contains(externalIdentifier))
             {
                 guid = Ifc2x3tc1Factory.eINSTANCE.createIfcGloballyUniqueId();
@@ -87,7 +87,8 @@ public class IfcGuidHandler
                     {
 
                         IfcPropertySet pSet = (IfcPropertySet)candidatePropertySet;
-                        guid = pSet.getGlobalId();
+                        guid = Ifc2x3tc1Factory.eINSTANCE.createIfcGloballyUniqueId();
+                        guid.setWrappedValue(pSet.getGlobalId());
                     } else
                     {
                         guid = newGuid();

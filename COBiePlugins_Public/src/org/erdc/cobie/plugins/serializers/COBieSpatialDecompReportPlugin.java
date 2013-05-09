@@ -9,15 +9,18 @@ import java.util.Set;
 
 import org.bimserver.models.store.ObjectDefinition;
 import org.bimserver.plugins.Plugin;
+import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.schema.SchemaPlugin;
+import org.bimserver.plugins.serializers.AbstractSerializerPlugin;
 import org.bimserver.plugins.serializers.EmfSerializer;
+import org.bimserver.plugins.serializers.Serializer;
 import org.bimserver.plugins.serializers.SerializerPlugin;
-import org.erdc.cobie.plugins.utils.ConfigUtil;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginName;
+import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
+import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
 
-public class COBieSpatialDecompReportPlugin implements SerializerPlugin 
+public class COBieSpatialDecompReportPlugin extends AbstractSerializerPlugin 
 {
 private boolean initialized = false;
 private static final String SPACE_REPORT_CSS_PATH =
@@ -27,7 +30,7 @@ private ArrayList<String> configFilePaths;
 private HashMap<String,File> configFiles;
 	@Override
 	public String getDescription() {
-		return "Produces a report of spaces by floors.";
+		return COBieSerializerPluginInfo.REPORT_SPATIAL_DECOMPOSITION.getDescription();
 	}
 
 	
@@ -49,7 +52,7 @@ private HashMap<String,File> configFiles;
 		pluginManager.requireSchemaDefinition();
 		try
 		{
-			this.configFiles = ConfigUtil.prepareSerializerConfigFiles(pluginManager, getDefaultName(), this, configFilePaths);
+			this.configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, getDefaultName(), this, configFilePaths);
 		}
 		catch (FileNotFoundException e)
 		{
@@ -67,16 +70,15 @@ private HashMap<String,File> configFiles;
 		return set;
 	}
 
-	@Override
+
 	public EmfSerializer createSerializer() {
-		return new org.erdc.cobie.plugins.serializers.COBieHTMLReportSerializer(this.configFiles.get(SPACE_REPORT_XSLT_PATH).getAbsolutePath(),
-				this.configFiles.get(SPACE_REPORT_CSS_PATH).getAbsolutePath());
+		return (EmfSerializer) this.createSerializer(null);
 
 	}
 	
 	@Override
 	public String getDefaultName() {
-		return COBieSerializerPluginName.COBIE_SPATIAL_DECOMPOSITION_REPORT.toString();
+		return COBieSerializerPluginInfo.REPORT_SPATIAL_DECOMPOSITION.toString();
 	}
 
 	///////////////////////////////
@@ -90,7 +92,7 @@ private HashMap<String,File> configFiles;
 	@Override
 	public String getDefaultExtension() {
 		//return "xml";//Change this to proper extension
-		return "html";
+		return COBieSerializerPluginInfo.REPORT_SPATIAL_DECOMPOSITION.getFileExtension();
 	}
  /////////////////////////////////////////////////
 	@Override
@@ -102,7 +104,6 @@ private HashMap<String,File> configFiles;
 	@Override
 	public ObjectDefinition getSettingsDefinition()
 	{
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -110,7 +111,14 @@ private HashMap<String,File> configFiles;
 	@Override
 	public boolean needsGeometry()
 	{
-		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	public Serializer createSerializer(PluginConfiguration plugin)
+	{
+		return new org.erdc.cobie.plugins.serializers.COBieHTMLReportSerializer(this.configFiles.get(SPACE_REPORT_XSLT_PATH).getAbsolutePath(),
+				this.configFiles.get(SPACE_REPORT_CSS_PATH).getAbsolutePath());
 	}
 }

@@ -170,7 +170,7 @@ public class ComponentDeserializer
                         IfcOwnerHistory ownerHistory = ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(
                                 createdBy, createdOn, component.getExtSystem());
                         newProduct.setOwnerHistory(ownerHistory);
-                        newProduct.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(externalId));
+                        newProduct.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(externalId).getWrappedValue());
                         Pset_Component psetComponent = new Pset_Component(component);
                         ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToObject(newProduct, psetComponent, true);
                         model.addComponent(newProduct, component, ifcCommonHandler);

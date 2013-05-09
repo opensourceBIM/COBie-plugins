@@ -90,7 +90,7 @@ public class COBieQuery
         String guid = "";
         try
         {
-            guid = product.getGlobalId().getWrappedValue();
+            guid = product.getGlobalId();
         } catch (Exception e)
         {
 

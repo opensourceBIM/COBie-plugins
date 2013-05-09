@@ -1,5 +1,13 @@
 package org.erdc.cobie.cobielite;
 
+
+import java.io.File;
+import java.io.IOException;
+
+import net.sf.json.JSONArray;
+import net.sf.json.xml.XMLSerializer;
+
+import org.apache.xmlbeans.XmlException;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.FacilityParser;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.shared.utils.XMLUtils;
@@ -21,6 +29,13 @@ public class FacilityFactory
         facilityParser.parse();
         XMLUtils.removeEmptyChildElements((Element)facilityDocument.getFacility().getDomNode());
         return facilityDocument;
+    }
+    
+
+    
+    public FacilityDocument parse(File file) throws XmlException, IOException
+    {
+        return FacilityDocument.Factory.parse(file, Settings.XML_Beans_Settings.getSaveSettings());
     }
 
 }

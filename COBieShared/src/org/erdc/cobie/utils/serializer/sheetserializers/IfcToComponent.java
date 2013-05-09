@@ -102,7 +102,7 @@ public class IfcToComponent
 
     static protected String extIdentifierFromProduct(IfcProduct product)
     {
-        return product.getGlobalId().getWrappedValue();
+        return product.getGlobalId();
     }
 
     static protected String extObjectFromProduct(IfcProduct product)
@@ -214,7 +214,7 @@ public class IfcToComponent
 
         for (IfcProduct product : model.getAllWithSubTypes(IfcProduct.class))
         {
-            tmpGuid = product.getGlobalId().getWrappedValue();
+            tmpGuid = product.getGlobalId();
             if (componentGuids.contains(tmpGuid))
             {
                 ;
@@ -567,7 +567,7 @@ public class IfcToComponent
         String key;
         try
         {
-            key = product.getGlobalId().getWrappedValue();
+            key = product.getGlobalId();
             if (COBieUtility.isNA(key))
             {
                 key = product.getName();

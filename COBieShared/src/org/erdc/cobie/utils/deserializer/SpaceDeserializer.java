@@ -350,7 +350,7 @@ public class SpaceDeserializer
                         createdOn = space.getCreatedOn();
                         IfcOwnerHistory ownerHistory = ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(
                                 createdBy, createdOn, space.getExtSystem());
-                        newSpace.setGlobalId(guid);
+                        newSpace.setGlobalId(guid.getWrappedValue());
                         String objectType = ClassificationHandler.objectTypeFromCategoryString(category);
                         if (!COBieUtility.isNA(objectType))
                         {
@@ -419,7 +419,7 @@ public class SpaceDeserializer
                 aggregatesFloor.setName(DeserializerStaticStrings.getStoreyRelAggregatesName());
                 aggregatesFloor.setDescription(DeserializerStaticStrings.getStoreyRelAggregatesDescription());
                 aggregatesFloor.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().DefaultOwnerHistory());
-                aggregatesFloor.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+                aggregatesFloor.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
                 aggregatesFloor.setRelatingObject(floor);
                 for (String spaceName : spaceNames)
                 {

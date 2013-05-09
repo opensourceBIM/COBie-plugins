@@ -280,7 +280,7 @@ public class AttributeDeserializer
         {
             pSet = newPropertySetFromAttribute(attribute);
             pSet.setOwnerHistory(ownerHistory);
-            pSet.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+            pSet.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
         }
 
         return pSet;
@@ -316,7 +316,7 @@ public class AttributeDeserializer
         {
             pSet = newPropertySetFromAttribute(attribute);
             pSet.setOwnerHistory(ownerHistory);
-            pSet.setGlobalId(guid);
+            pSet.setGlobalId(guid.getWrappedValue());
         }
 
         return pSet;

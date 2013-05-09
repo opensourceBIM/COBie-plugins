@@ -415,29 +415,6 @@ public class COBieDeserializer extends EmfDeserializer implements COBieSheetXMLD
 		return cobieModel;
 
 	}
-	
-	private IfcModelInterface returnTestModel()
-	{
-		IfcModel model = new IfcModel();
-		IfcBuilding bldg = Ifc2x3tc1Factory.eINSTANCE.createIfcBuilding();
-		IfcGloballyUniqueId guid = Ifc2x3tc1Factory.eINSTANCE.createIfcGloballyUniqueId();
-		guid.setWrappedValue("3eM8WbY_59RR5TDWry5aRT");
-		//model.add(guid);
-		bldg.setName("A Building");
-		bldg.setGlobalId(guid);
-		try
-		{
-			model.add(bldg);
-		}
-		catch (IfcModelInterfaceException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		IfcRoot rootObj = model.getByGuid("3eM8WbY_59RR5TDWry5aRT");
-		return model;
-	}
-
 
 	@Override
 	public COBIEDocument toCOBieSheetXMLData(File incomingFile) throws Exception

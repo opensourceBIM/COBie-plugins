@@ -57,7 +57,7 @@ public class SpareDeserializer
             newResource.setOwnerHistory(ownerHistory);
 
             IfcGloballyUniqueId guid = ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(spare.getExtIdentifier());
-            newResource.setGlobalId(guid);
+            newResource.setGlobalId(guid.getWrappedValue());
             newResource.setDescription(spare.getDescription());
             newResource.setResourceGroup(spare.getSetNumber());
             newResource.setResourceIdentifier(spare.getPartNumber());
@@ -187,7 +187,7 @@ public class SpareDeserializer
 
             }
             spareAssignsRelation.setRelatingResource(ifcResource);
-            spareAssignsRelation.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+            spareAssignsRelation.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
             spareAssignsRelation.setOwnerHistory(ifcResource.getOwnerHistory());
         }
         return spareAssignsRelation;

@@ -146,11 +146,6 @@ public class COBieIfcModel extends IfcModel
         // TODO Auto-generated constructor stub
     }
 
-    public COBieIfcModel(BiMap<Long, IdEObject> objects)
-    {
-        super(objects);
-        // TODO Auto-generated constructor stub
-    }
 
     public COBieIfcModel(int size)
     {
@@ -949,8 +944,7 @@ public class COBieIfcModel extends IfcModel
 
     private void ifcRootAdded(IfcRoot eObject, Long oid)
     {
-        IfcGloballyUniqueId guid = eObject.getGlobalId();
-        String guidString = guid.getWrappedValue();
+        String guidString = eObject.getGlobalId();
         if (!guidToOid.containsKey(guidString))
         {
             guidToOid.put(guidString, oid);
@@ -1052,7 +1046,7 @@ public class COBieIfcModel extends IfcModel
             defByType.setName(DeserializerStaticStrings.getComponentRelDefinesByTypeName());
             defByType.setDescription(DeserializerStaticStrings.getComponentRelDefinesByTypeDescription());
             defByType.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().DefaultOwnerHistory());
-            defByType.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+            defByType.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
             defByType.setRelatingType(typeObject);
             String category = IfcToType.categoryFromTypeObject(typeObject);
             String objectType = ClassificationHandler.objectTypeFromCategoryString(category);
@@ -1116,7 +1110,7 @@ public class COBieIfcModel extends IfcModel
             aggregatesFacility.setName("Component in facility");
             aggregatesFacility.setDescription("Component in facility");
             aggregatesFacility.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().DefaultOwnerHistory());
-            aggregatesFacility.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+            aggregatesFacility.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
             aggregatesFacility.setRelatingStructure(facility);
             // aggregatesSpace.setRelatingObject(Space);
 
@@ -1187,7 +1181,7 @@ public class COBieIfcModel extends IfcModel
                     aggregatesSpace.setName(DeserializerStaticStrings.getStoreyRelAggregatesName() + " for components");
                     aggregatesSpace.setDescription(DeserializerStaticStrings.getStoreyRelAggregatesDescription());
                     aggregatesSpace.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().DefaultOwnerHistory());
-                    aggregatesSpace.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+                    aggregatesSpace.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
                     aggregatesSpace.setRelatingStructure(Space);
                     // aggregatesSpace.setRelatingObject(Space);
 

@@ -10,7 +10,6 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import org.bimserver.cobie.cobieserializersettings.COBieExportOptionsDocument;
 import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.plugins.PluginManager;
-import org.bimserver.plugins.ifcengine.IfcEnginePlugin;
 import org.bimserver.plugins.serializers.ProjectInfo;
 import org.bimserver.plugins.serializers.SerializerException;
 import org.bimserver.utils.UTF8PrintWriter;
@@ -24,15 +23,15 @@ import org.slf4j.LoggerFactory;
 
 public class COBieLiteSerializer extends COBieSheetXMLDataSerializer implements COBieSheetXMLDataTransformable
 {
-	private static final String LOGGER_MESSAGE_RESPONSE_DONE_SUFFIX = "Done writing COBieLite XML to response stream.";
-	private static final String LOGGER_MESSAGE_RESPONSE_BEGIN_SUFFIX = "Begin writing COBieLite XML to response stream.";
-	private static final String LOGGER_MESSAGE_END_SUFFIX = "End Serializing COBieLite XML data to spreadsheetML";
-	private static final String LOGGER_MESSAGE_BEGIN_SUFFIX = "Begin Serializing COBieLite XML data to spreadsheetML";
+	private static final String LOGGER_MESSAGE_RESPONSE_DONE_SUFFIX = "Done writing COBieLite to response stream.";
+	private static final String LOGGER_MESSAGE_RESPONSE_BEGIN_SUFFIX = "Begin writing COBieLite to response stream.";
+	private static final String LOGGER_MESSAGE_END_SUFFIX = "End Serializing COBieLite";
+	private static final String LOGGER_MESSAGE_BEGIN_SUFFIX = "Begin Serializing COBieLite";
 	private static final Logger LOGGER = LoggerFactory.getLogger(COBieLiteSerializer.class);
-	private PrintWriter printWriter;
-	private FacilityDocument facilityDocument;
+	protected PrintWriter printWriter;
+	protected FacilityDocument facilityDocument;
 	
-	private void writeCOBieLite()
+	protected void writeCOBieLite()
 	{
 		super.modelToCOBie();
 		LOGGER.info(getLoggerMessageBegin());
@@ -77,14 +76,14 @@ public class COBieLiteSerializer extends COBieSheetXMLDataSerializer implements 
 		super.init(pluginManager, cobie);
 		setFacilityDocument(FacilityDocument.Factory.newInstance());
 	}
-	@Override
-	public void init(IfcModelInterface model, ProjectInfo projectInfo,
-			PluginManager pluginManager, IfcEnginePlugin ifcEnginePlugin,
-			boolean normalizeOids) throws SerializerException
-	{
-		super.init(model, projectInfo, pluginManager, ifcEnginePlugin, normalizeOids);
-		setFacilityDocument(FacilityDocument.Factory.newInstance());
-	}
+//	@Override
+//	public void init(IfcModelInterface model, ProjectInfo projectInfo,
+//			PluginManager pluginManager, IfcEnginePlugin ifcEnginePlugin,
+//			boolean normalizeOids) throws SerializerException
+//	{
+//		super.init(model, projectInfo, pluginManager, ifcEnginePlugin, normalizeOids);
+//		setFacilityDocument(FacilityDocument.Factory.newInstance());
+//	}
 	
 	@Override
 	public void transformCOBieSheetXMLData(COBIEDocument cobieDocument, File out)
@@ -135,10 +134,10 @@ public class COBieLiteSerializer extends COBieSheetXMLDataSerializer implements 
 	private String getResponseBeginMessage() {
 		return getLoggerPrefix()+LOGGER_MESSAGE_RESPONSE_BEGIN_SUFFIX;
 	}
-	private String getLoggerMessageDone() {
+	protected String getLoggerMessageDone() {
 		return getLoggerPrefix()+LOGGER_MESSAGE_END_SUFFIX;
 	}
-	private String getLoggerMessageBegin() {
+	protected String getLoggerMessageBegin() {
 		return getLoggerPrefix()+LOGGER_MESSAGE_BEGIN_SUFFIX;
 	}
 

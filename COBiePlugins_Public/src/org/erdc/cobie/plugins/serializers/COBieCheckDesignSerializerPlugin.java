@@ -9,18 +9,21 @@ import java.util.Set;
 
 import org.bimserver.models.store.ObjectDefinition;
 import org.bimserver.plugins.Plugin;
+import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.schema.SchemaPlugin;
+import org.bimserver.plugins.serializers.AbstractSerializerPlugin;
 import org.bimserver.plugins.serializers.EmfSerializer;
+import org.bimserver.plugins.serializers.Serializer;
 import org.bimserver.plugins.serializers.SerializerPlugin;
-import org.erdc.cobie.plugins.utils.ConfigUtil;
-import org.erdc.cobie.shared.COBieSharedUtilities;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginName;
+import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
+import org.erdc.cobie.shared.PluginUtilities;
+import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
 
-public class COBieCheckDesignSerializerPlugin implements SerializerPlugin
+public class COBieCheckDesignSerializerPlugin extends AbstractSerializerPlugin
 {
-	public static final String DEFAULT_SERIALIZER_NAME = COBieSerializerPluginName.COBIE_DESIGNQC.toString();
+	public static final String DEFAULT_SERIALIZER_NAME = COBieSerializerPluginInfo.REPORT_QC_DESIGN.toString();
 	private boolean initialized = false;
 	private static final String SCHEMATRON_RULEPATH =
 	"lib/COBieRulesDesign.sch";
@@ -37,7 +40,7 @@ public class COBieCheckDesignSerializerPlugin implements SerializerPlugin
 	private HashMap<String,File> configFiles;
 		@Override
 		public String getDescription() {
-			return "Produces a report of compliance to a COBie ruleset for the Design phase.";
+			return COBieSerializerPluginInfo.REPORT_QC_DESIGN.getDescription();
 		}
 
 		
@@ -64,7 +67,7 @@ public class COBieCheckDesignSerializerPlugin implements SerializerPlugin
 			pluginManager.requireSchemaDefinition();
 			try
 			{
-				this.configFiles = ConfigUtil.prepareSerializerConfigFiles(pluginManager, getDefaultName(), this, configFilePaths);
+				this.configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, getDefaultName(), this, configFilePaths);
 			}
 			catch (FileNotFoundException e)
 			{
@@ -80,7 +83,7 @@ public class COBieCheckDesignSerializerPlugin implements SerializerPlugin
 			return set;
 		}
 
-		@Override
+
 		public EmfSerializer createSerializer() {
 			return new org.erdc.cobie.plugins.serializers.COBieCheckSerializer
 					(this.configFiles.get(SCHEMATRON_RULEPATH).getAbsolutePath(),
@@ -104,7 +107,7 @@ public class COBieCheckDesignSerializerPlugin implements SerializerPlugin
 
 		@Override
 		public String getDefaultExtension() {
-			return "html";
+			return COBieSerializerPluginInfo.REPORT_QC_DESIGN.getFileExtension();
 		}
 	 /////////////////////////////////////////////////
 		@Override
@@ -116,7 +119,6 @@ public class COBieCheckDesignSerializerPlugin implements SerializerPlugin
 	@Override
 	public ObjectDefinition getSettingsDefinition()
 	{
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -124,7 +126,19 @@ public class COBieCheckDesignSerializerPlugin implements SerializerPlugin
 	@Override
 	public boolean needsGeometry()
 	{
-		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	public Serializer createSerializer(PluginConfiguration plugin)
+	{
+		return new org.erdc.cobie.plugins.serializers.COBieCheckSerializer
+				(this.configFiles.get(SCHEMATRON_RULEPATH).getAbsolutePath(),
+						this.configFiles.get(PRE_PROCESSOR_PATH).getAbsolutePath(),
+						this.configFiles.get(SVRL_XSD_PATH).getAbsolutePath(),
+						this.configFiles.get(SVRL_HTML_XSLT_PATH).getAbsolutePath(),
+						this.configFiles.get(CSS_PATH).getAbsolutePath()
+						);
 	}
 }

@@ -258,7 +258,7 @@ public class DocumentDeserializer
         {
             relAssociatesDocument.getRelatedObjects().add((IfcRoot)relatedObject);
         }
-        relAssociatesDocument.setGlobalId(ifcGuidHandler.newGuid());
+        relAssociatesDocument.setGlobalId(ifcGuidHandler.newGuid().getWrappedValue());
         relAssociatesDocument.setOwnerHistory(ownerHistoryProvider.ownerHistoryFromEmailTimestampAndApplication(document.getCreatedBy(),
                 document.getCreatedOn(), document.getExtSystem()));
         String relAssociatesName = getDocumentAssociationName(document);

@@ -114,7 +114,7 @@ public class JobDeserializer extends COBieSheetXMLDataSectionDeserializer<COBIET
         predecessorRelation.setRelatedProcess(task);
         predecessorRelation.setRelatingProcess(priorTask);
         predecessorRelation.setName(getRelatesSequenceName(priorTask, task, matchingType));
-        predecessorRelation.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+        predecessorRelation.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
         predecessorRelation.setOwnerHistory(task.getOwnerHistory());
         model.add(predecessorRelation, ifcCommonHandler.getOidProvider());
     }
@@ -253,7 +253,7 @@ public class JobDeserializer extends COBieSheetXMLDataSectionDeserializer<COBIET
         IfcPropertySet jobProperties = Ifc2x3tc1Factory.eINSTANCE.createIfcPropertySet();
         jobProperties.setName(JOB_PROPERTY_SET_NAME);
         jobProperties.setDescription(JOB_PROPERTY_SET_NAME);
-        jobProperties.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+        jobProperties.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
         jobProperties.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(
                 cobieSheetXMLDataElement.getCreatedBy(), cobieSheetXMLDataElement.getCreatedOn(), cobieSheetXMLDataElement.getExtSystem()));
         IfcProperty durationProperty = durationPropertyFromTask(cobieSheetXMLDataElement);
@@ -273,7 +273,7 @@ public class JobDeserializer extends COBieSheetXMLDataSectionDeserializer<COBIET
         IfcTask task = Ifc2x3tc1Factory.eINSTANCE.createIfcTask();
         task.setName(job.getName());
         task.setDescription(job.getDescription());
-        task.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(job.getExtIdentifier()));
+        task.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(job.getExtIdentifier()).getWrappedValue());
         task.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(job.getCreatedBy(),
                 job.getCreatedOn(), cobieElement.getExtSystem()));
         task.setObjectType(job.getCategory());
@@ -291,7 +291,7 @@ public class JobDeserializer extends COBieSheetXMLDataSectionDeserializer<COBIET
             String relationshipName = getRelAssignsToProcessName(ifcObject);
             relAssignsToProcess.setName(relationshipName);
             relAssignsToProcess.setDescription(relationshipName);
-            relAssignsToProcess.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+            relAssignsToProcess.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
             relAssignsToProcess.setOwnerHistory(ifcObject.getOwnerHistory());
             relAssignsToProcess.setRelatingProcess(ifcObject);
             relAssignsToProcess.setRelatedObjectsType(DEFAULT_RELASSIGNSTOPROCESS_RELATEDOBJECTTYPE);

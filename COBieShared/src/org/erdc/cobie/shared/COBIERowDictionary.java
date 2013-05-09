@@ -97,7 +97,7 @@ public class COBIERowDictionary extends HashMap<String, String>
         {
             rowValuesHash = rowValuesHash.substring(0, rowValuesHash.length() - 1);
         }
-        rowValuesHash = COBieSharedUtilities.hashFromString(rowValuesHash);
+        rowValuesHash = COBieUtility.hashFromString(rowValuesHash);
         return rowValuesHash;
 
     }
@@ -261,7 +261,7 @@ public class COBIERowDictionary extends HashMap<String, String>
         try
         {
 
-            cobieRowHash = COBieSharedUtilities.hashFromString(getConcatenatedRowIdString());
+            cobieRowHash = COBieUtility.hashFromString(getConcatenatedRowIdString());
         } catch (NoSuchAlgorithmException e)
         {
 

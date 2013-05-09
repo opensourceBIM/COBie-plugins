@@ -21,20 +21,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.bimserver.models.store.ObjectDefinition;
+import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.objectidms.ObjectIDMException;
+import org.bimserver.plugins.serializers.AbstractSerializerPlugin;
 import org.bimserver.plugins.serializers.EmfSerializer;
+import org.bimserver.plugins.serializers.Serializer;
 import org.bimserver.plugins.serializers.SerializerPlugin;
-import org.erdc.cobie.plugins.utils.ConfigUtil;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginName;
+import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
+import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
 
-public class COBieSerializerPlugin implements SerializerPlugin {
+public class COBieSerializerPlugin extends AbstractSerializerPlugin {
 
 	private static final String CONFIGURATION_FILE_ERROR = "Could not find configuration files";
 	private static final String DEFAULT_CONTENT_TYPE = "application/COBIE";
-	private static final String DEFAULT_EXTENSION = "xml";
-	private static final String DEFAULT_NAME = COBieSerializerPluginName.COBIE_SPREADSHEET.toString();
+	private static final String DEFAULT_EXTENSION = COBieSerializerPluginInfo.SPREADSHEET.getFileExtension();
+	private static final String DEFAULT_NAME = COBieSerializerPluginInfo.SPREADSHEET.toString();
 	private static final String REPORT_FILES_TMP_DIRECTORY_NAME = "COBieReportFiles";
 	private static final String TMP_FOLDER_NAME = "COBieSerializer";
 	private boolean initialized = false;
@@ -45,7 +48,7 @@ public class COBieSerializerPlugin implements SerializerPlugin {
 	private  COBieSerializerSettingsWrapper cobieSerializerSettingsWrapper;
 	@Override
 	public String getDescription() {
-		return "Construction Operators Building information exchange spreadsheetML format.";
+		return COBieSerializerPluginInfo.SPREADSHEET.getDescription();
 	}
 	
 	@Override
@@ -69,7 +72,7 @@ public class COBieSerializerPlugin implements SerializerPlugin {
 		HashMap<String, File> configFiles;
 		try
 		{
-			configFiles = ConfigUtil.prepareSerializerConfigFiles(pluginManager, TMP_FOLDER_NAME,this,getConfigFilePaths());
+			configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, TMP_FOLDER_NAME,this,getConfigFilePaths());
 		}
 		catch (FileNotFoundException e)
 		{
@@ -80,7 +83,7 @@ public class COBieSerializerPlugin implements SerializerPlugin {
 		settingsFile = configFiles.get(COBIE_EXPORT_SETTINGS_PATH);
 		try
 		{
-			ConfigUtil.prepareSerializerConfigFile(pluginManager, REPORT_FILES_TMP_DIRECTORY_NAME, this,COBIE_COMPARE_XSLT_PATH);
+			PluginRuntimeFileHelper.prepareSerializerConfigFile(pluginManager, REPORT_FILES_TMP_DIRECTORY_NAME, this,COBIE_COMPARE_XSLT_PATH);
 		}
 		catch (FileNotFoundException e)
 		{
@@ -99,9 +102,9 @@ public class COBieSerializerPlugin implements SerializerPlugin {
 		return configFilePaths;
 	}
 	
-	@Override
+
 	public EmfSerializer createSerializer() {
-		return new COBieSerializer(spreadSheetTemplate, settingsFile);
+		return (EmfSerializer) this.createSerializer(null);
 	}
 	
 	@Override
@@ -134,6 +137,12 @@ public ObjectDefinition getSettingsDefinition()
 @Override
 public boolean needsGeometry()
 {
-	return false;
+	return true;
+}
+
+@Override
+public Serializer createSerializer(PluginConfiguration plugin)
+{
+	return new COBieSerializer(spreadSheetTemplate, settingsFile);
 }
 }

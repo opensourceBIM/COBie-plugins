@@ -9,7 +9,6 @@ import java.io.OutputStream;
 import org.apache.xmlbeans.XmlException;
 import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.plugins.PluginManager;
-import org.bimserver.plugins.ifcengine.IfcEnginePlugin;
 import org.bimserver.plugins.serializers.ProjectInfo;
 import org.bimserver.plugins.serializers.SerializerException;
 import org.erdc.cobie.shared.COBieSheetXMLDataTransformable;
@@ -88,24 +87,24 @@ public class COBieCheckSerializer extends COBieSheetXMLDataSerializer implements
 		}
 	}
 
-	@Override
-	public void init(IfcModelInterface model, ProjectInfo projectInfo,
-			PluginManager pluginManager, IfcEnginePlugin ifcEnginePlugin,
-			boolean normalizeOids) throws SerializerException
-	{
-		try
-		{
-
-			super.init(model, getProjectInfo(), pluginManager, ifcEnginePlugin,
-					normalizeOids);
-			checker.setCOBie(getCOBieDocument());
-		}
-		catch (SerializerException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	@Override
+//	public void init(IfcModelInterface model, ProjectInfo projectInfo,
+//			PluginManager pluginManager, IfcEnginePlugin ifcEnginePlugin,
+//			boolean normalizeOids) throws SerializerException
+//	{
+//		try
+//		{
+//
+//			super.init(model, getProjectInfo(), pluginManager, ifcEnginePlugin,
+//					normalizeOids);
+//			checker.setCOBie(getCOBieDocument());
+//		}
+//		catch (SerializerException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 
 	public void init(InputStream cobieSheetXMLData) throws SerializerException,
 			XmlException, IOException

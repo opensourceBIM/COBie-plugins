@@ -105,7 +105,7 @@ public class COBieIDM implements ObjectIDM, COBieFilterable
 		if (ignoreClassNames.contains(eClass.getName()))
 			return false;
 		else if (defaultIDM!=null)
-			return defaultIDM.getObjectIDM().shouldFollowReference(originalClass, eClass, eStructuralFeature);
+			return defaultIDM.getObjectIDM(null).shouldFollowReference(originalClass, eClass, eStructuralFeature);
 		else
 			return true;
 

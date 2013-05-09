@@ -28,13 +28,12 @@ import org.erdc.cobie.sheetxmldata.TypeType;
 
 public class Pset_Asset extends IfcPropertySetImpl
 {
-    private static final String PENUM_ASSET_ACCOUNTING_TYPE_ALLOWEDVALUES = "Fixed,NonFixed,Other,NotKnown,Unset";
-    private static final String P_ENUM_ASSET_ACCOUNTING_TYPE = "PEnum_AssetAccountingType";
-    private static final String pSetName = "Pset_Asset";
-    private static final String pSetDescription = "An asset is a uniquely identifiable element which has a financial "
-            + "value and against which maintenance actions are recorded.";
+    private static final String PENUM_ASSET_ACCOUNTING_TYPE_ALLOWEDVALUES = "Fixed,Moveable";
+    private static final String P_ENUM_ASSET_ACCOUNTING_TYPE = "COBie_Enum_AssetType";
+    private static final String pSetName = "COBie_Asset";
+    private static final String pSetDescription = "Definition from IAI:  An asset is a uniquely identifiable element which has a financial value and against which maintenance actions are recorded.";
 
-    private static final String assetAccountingTypePropertyName = "AssetAccountingType";
+    private static final String assetAccountingTypePropertyName = "AssetType";
     private static final String assetAccountingTypePropertyDescription = "Identifies the predefined types of asset from "
             + "which the type required may be set.";
 

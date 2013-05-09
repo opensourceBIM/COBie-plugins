@@ -165,7 +165,7 @@ public class IfcToSpare
                 suppliers = IfcToSpare.suppliersFromConstructionProductResource(productResource);
                 extSystem = COBieUtility.getApplicationName(oh);
                 extObject = COBieUtility.extObjectFromObjectDef(productResource);
-                extIdentifier = productResource.getGlobalId().getWrappedValue();
+                extIdentifier = productResource.getGlobalId();
                 description = IfcToSpare.descriptionFromConstructionProductResource(productResource);
                 setNumber = IfcToSpare.setNumberFromConstructionProductResource(productResource);
                 partNumber = IfcToSpare.partNumberFromConstructionProductResource(productResource);

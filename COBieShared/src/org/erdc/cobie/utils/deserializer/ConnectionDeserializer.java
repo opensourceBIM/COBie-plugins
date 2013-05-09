@@ -24,7 +24,7 @@ import org.bimserver.models.ifc2x3tc1.IfcRelDefinesByType;
 import org.bimserver.models.ifc2x3tc1.IfcSensorType;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
-import org.erdc.cobie.shared.ConnectionBetweenSensorAndControllerType;
+import org.erdc.cobie.shared.SensorControllerConnection;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.ConnectionType;
 import org.erdc.cobie.sheetxmldata.DocumentType;
@@ -78,10 +78,10 @@ public class ConnectionDeserializer
 
     private static boolean portIsInEitherElement(IfcElement element1, IfcElement element2, IfcElement port1Element)
     {
-        return (element1.getGlobalId().isSetWrappedValue() && port1Element.getGlobalId().isSetWrappedValue() && element1.getGlobalId()
-                .getWrappedValue().equals(port1Element.getGlobalId().getWrappedValue()))
-                || (element2.getGlobalId().isSetWrappedValue() && port1Element.getGlobalId().isSetWrappedValue() && element2.getGlobalId()
-                        .getWrappedValue().equals(port1Element.getGlobalId().getWrappedValue()));
+        return (element1.getGlobalId()!=null) && port1Element.getGlobalId()!=null && 
+                element1.getGlobalId().equals(port1Element.getGlobalId())
+                || (element2.getGlobalId()!=null && port1Element.getGlobalId()!=null && element2.getGlobalId()
+                       .equals(port1Element.getGlobalId()));
     }
 
     public static IfcRelConnectsPorts relConnectsPortsBetweenTwoElements(IfcElement element1, IfcElement element2, COBieIfcModel cobieModel)
@@ -131,7 +131,7 @@ public class ConnectionDeserializer
         IfcRelAggregates aggregatesRelationship = COBieUtility.ifcFactory.createIfcRelAggregates();
         String name = getRelAggregatesControllersName(controller, childController);
         aggregatesRelationship.setName(name);
-        aggregatesRelationship.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+        aggregatesRelationship.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
         aggregatesRelationship.setRelatingObject(controller);
         aggregatesRelationship.getRelatedObjects().add(childController);
         aggregatesRelationship.setOwnerHistory(ownerHistory);
@@ -143,12 +143,12 @@ public class ConnectionDeserializer
         return connectsControllerAndSensor(connection, model);
     }
 
-    private IfcDistributionElement createVirtualController(ConnectionBetweenSensorAndControllerType sensorControllerConnection)
+    private IfcDistributionElement createVirtualController(SensorControllerConnection sensorControllerConnection)
     {
         IfcDistributionElement virtualController = COBieUtility.ifcFactory.createIfcDistributionElement();
         String controllerName = getVirtualControllerName(sensorControllerConnection);
         virtualController.setName(controllerName);
-        virtualController.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+        virtualController.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
         virtualController.setOwnerHistory(sensorControllerConnection.getController().getOwnerHistory());
         IfcRelDefinesByType definesByType = getVirtualControllerTypeRelationship(sensorControllerConnection, virtualController, controllerName);
         virtualController.setObjectType(VIRTUAL_CONTROLLER_OBJECT_TYPE);
@@ -163,7 +163,7 @@ public class ConnectionDeserializer
 
         IfcOwnerHistory ownerHistory = ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(
                 bamieConnection.getCreatedBy(), bamieConnection.getCreatedOn(), bamieConnection.getExtSystem());
-        ConnectionBetweenSensorAndControllerType sensorControllerConnection = new ConnectionBetweenSensorAndControllerType(
+        SensorControllerConnection sensorControllerConnection = new SensorControllerConnection(
                 bamieConnection.schemaType(), bamieConnection, model);
         IfcProduct controller = sensorControllerConnection.getController();
         IfcDistributionElement virtualController = createVirtualController(sensorControllerConnection);
@@ -225,7 +225,7 @@ public class ConnectionDeserializer
         IfcOwnerHistory ownerHistory = ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(createdBy, createdOn,
                 extSystem);
         distPort.setOwnerHistory(ownerHistory);
-        distPort.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+        distPort.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
         long distPortOid = model.add(distPort, ifcCommonHandler.getOidProvider());
         IfcRelConnectsPortToElement connectsPortToElement = relConnectsPortFromPortAndElement(distPort, product, ownerHistory, distPortOid);
         distPort.setContainedIn(connectsPortToElement);
@@ -269,7 +269,7 @@ public class ConnectionDeserializer
                 + REL_AGGREGATES_CONTROLLERS_NAME_MIDDLE + childController.getName();
     }
 
-    private String getVirtualControllerName(ConnectionBetweenSensorAndControllerType sensorControllerConnection)
+    private String getVirtualControllerName(SensorControllerConnection sensorControllerConnection)
     {
         String name = TypeDeserializer.BAMIE_TYPE_CATEGORY_PREFIX + VIRTUAL_CONTROLLER_NAME_PREFIX + sensorControllerConnection.getSensor().getName();
         return name;
@@ -277,7 +277,7 @@ public class ConnectionDeserializer
 
     private IfcControllerType getVirtualControllerType(
             IfcDistributionElement virtualController,
-            ConnectionBetweenSensorAndControllerType sensorControllerConnection)
+            SensorControllerConnection sensorControllerConnection)
     {
         IfcControllerType controllerType = COBieUtility.ifcFactory.createIfcControllerType();
         String name = VIRTUAL_CONTROLLER_TYPE_PREFIX + VIRTUAL_CONTROLLER_TYPE_MIDDLE_NAME + virtualController.getName();
@@ -285,14 +285,14 @@ public class ConnectionDeserializer
         controllerType.setOwnerHistory(virtualController.getOwnerHistory());
         controllerType.setPredefinedType(IfcControllerTypeEnum.FLOATING);
         controllerType.setElementType(BAMIE_VIRTUAL_CONTROLLER_TYPE_RELATION_PREFIX);
-        controllerType.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+        controllerType.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
         model.add(controllerType, ifcCommonHandler.getOidProvider());
         return controllerType;
 
     }
 
     private IfcRelDefinesByType getVirtualControllerTypeRelationship(
-            ConnectionBetweenSensorAndControllerType sensorControllerConnection,
+            SensorControllerConnection sensorControllerConnection,
             IfcDistributionElement virtualController,
             String controllerName)
     {
@@ -301,7 +301,7 @@ public class ConnectionDeserializer
         String typeRelationshipName = VIRTUAL_CONTROLLER_NAME_PREFIX + " " + controllerName + BAMIE_DEFINES_BY_TYPE_RELATION_SUFFIX;
         definesByType.setName(typeRelationshipName);
         definesByType.setOwnerHistory(virtualController.getOwnerHistory());
-        definesByType.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+        definesByType.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
         definesByType.setDescription(typeRelationshipName);
         definesByType.setRelatingType(controllerType);
         model.add(definesByType, ifcCommonHandler.getOidProvider());
@@ -491,7 +491,7 @@ public class ConnectionDeserializer
         relConnects.setName(connection.getName());
         relConnects.setDescription(connection.getDescription());
         relConnects.setOwnerHistory(ownerHistoryFromConnection(connection));
-        relConnects.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(connection.getExtIdentifier()));
+        relConnects.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(connection.getExtIdentifier()).getWrappedValue());
         return relConnects;
     }
 
@@ -500,7 +500,7 @@ public class ConnectionDeserializer
         IfcRelConnectsPortToElement portToComponent = Ifc2x3tc1Factory.eINSTANCE.createIfcRelConnectsPortToElement();
         String portToElementName = port.getName() + " PortToElement";
         portToComponent.setName(portToElementName);
-        portToComponent.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid());
+        portToComponent.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
         portToComponent.setRelatedElement(product);
         portToComponent.setRelatingPort(port);
         portToComponent.setOwnerHistory(ownerHistory);

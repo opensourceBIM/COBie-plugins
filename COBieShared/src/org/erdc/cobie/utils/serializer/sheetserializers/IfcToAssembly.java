@@ -414,7 +414,7 @@ public class IfcToAssembly
                         tmpAssembly.setAssemblyType(assemblyType);
                         tmpAssembly.setExtSystem(extSystem);
                         tmpAssembly.setExtObject(extObject);
-                        tmpAssembly.setExtIdentifier(relationship.getGlobalId().getWrappedValue());
+                        tmpAssembly.setExtIdentifier(relationship.getGlobalId());
                         tmpAssembly.setDescription(description);
                         loggerStrings.rowWritten();
                     }

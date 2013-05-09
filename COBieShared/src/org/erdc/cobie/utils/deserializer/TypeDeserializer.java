@@ -245,7 +245,7 @@ public class TypeDeserializer
                         IfcOwnerHistory ownerHistory = ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(
                                 createdBy, createdOn, type.getExtSystem());
                         newTypeObject.setOwnerHistory(ownerHistory);
-                        newTypeObject.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(externalId));
+                        newTypeObject.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(externalId).getWrappedValue());
 
                         Pset_ManufacturersTypeInformation psetManufacturerType = new Pset_ManufacturersTypeInformation(type);
                         ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToTypeObject(newTypeObject, psetManufacturerType, false);
@@ -259,7 +259,7 @@ public class TypeDeserializer
                         {
                             assetTypeEnumeration = createAssetTypeEnumeration();
                             if(!model.contains(assetTypeEnumeration))
-                                model.add(assetTypeEnumeration);
+                                model.add(assetTypeEnumeration, this.ifcCommonHandler.getOidProvider());
                         }
                         Pset_Asset psetAsset = new Pset_Asset(type, assetTypeEnumeration);
                         ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToTypeObject(newTypeObject, psetAsset, false);

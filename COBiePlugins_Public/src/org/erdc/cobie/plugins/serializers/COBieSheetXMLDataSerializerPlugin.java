@@ -1,19 +1,22 @@
 package org.erdc.cobie.plugins.serializers;
 import org.bimserver.models.store.ObjectDefinition;
+import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.objectidms.ObjectIDMException;
+import org.bimserver.plugins.serializers.AbstractSerializerPlugin;
 import org.bimserver.plugins.serializers.EmfSerializer;
+import org.bimserver.plugins.serializers.Serializer;
 import org.bimserver.plugins.serializers.SerializerPlugin;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginName;
+import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
 
-public class COBieSheetXMLDataSerializerPlugin implements SerializerPlugin{
+public class COBieSheetXMLDataSerializerPlugin extends AbstractSerializerPlugin{
 	private boolean initialized = false;
 	//private File configurationFile;
 	
 	@Override
 	public String getDescription() {
-		return "XML based on a schema derived from the COBie spreadsheet columns.";
+		return COBieSerializerPluginInfo.SHEET_XMLDATA.getDescription();
 	}
 	
 	@Override
@@ -36,9 +39,8 @@ public class COBieSheetXMLDataSerializerPlugin implements SerializerPlugin{
 		initialized = true;	
 	}
 	
-	@Override
 	public EmfSerializer createSerializer() {
-		return new COBieSheetXMLDataSerializer();
+		return (EmfSerializer) this.createSerializer(null);
 	}
 
 
@@ -54,7 +56,7 @@ public class COBieSheetXMLDataSerializerPlugin implements SerializerPlugin{
 	@Override
 	public String getDefaultExtension() {
 		//return "xml";//Change this to proper extension
-		return "xml";
+		return COBieSerializerPluginInfo.SHEET_XMLDATA.getFileExtension();
 	}
  /////////////////////////////////////////////////
 	@Override
@@ -65,7 +67,7 @@ public class COBieSheetXMLDataSerializerPlugin implements SerializerPlugin{
 @Override
 public String getDefaultName()
 {
-	return COBieSerializerPluginName.COBIE_SHEET_XMLDATA.toString();
+	return COBieSerializerPluginInfo.SHEET_XMLDATA.toString();
 }
 
 @Override
@@ -78,7 +80,12 @@ public ObjectDefinition getSettingsDefinition()
 @Override
 public boolean needsGeometry()
 {
-	// TODO Auto-generated method stub
-	return false;
+	return true;
+}
+
+@Override
+public Serializer createSerializer(PluginConfiguration plugin)
+{
+	return new COBieSheetXMLDataSerializer();
 }
 }

@@ -20,14 +20,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import org.bimserver.models.store.ObjectDefinition;
+import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
+import org.bimserver.plugins.deserializers.Deserializer;
 import org.bimserver.plugins.deserializers.DeserializerPlugin;
 import org.bimserver.plugins.deserializers.EmfDeserializer;
 import org.bimserver.plugins.schema.SchemaException;
 import org.bimserver.plugins.serializers.SerializerPlugin;
 import org.erdc.cobie.plugins.serializers.COBieCheckSerializerPlugin;
-import org.erdc.cobie.plugins.utils.ConfigUtil;
+import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
 import org.erdc.cobie.shared.enums.COBieDeserializerPluginName;
 
 public class COBieDeserializerPlugin implements DeserializerPlugin {
@@ -39,10 +41,8 @@ public class COBieDeserializerPlugin implements DeserializerPlugin {
 	private COBieCheckSerializerPlugin checkSerializer;
 	
 	
-	@Override
-	public EmfDeserializer createDeserializer() {
-		
-		return new COBieDeserializer(configurationFile,preImportFileDirectory,checkSerializer);
+	public Deserializer createDeserializer() {
+		return this.createDeserializer(null);
 	}
 
 	@Override
@@ -65,14 +65,14 @@ public class COBieDeserializerPlugin implements DeserializerPlugin {
 		}
 		try
 		{
-			configurationFile = ConfigUtil.prepareSerializerConfigFile(pluginManager, "COBieDeserializer", this,localConfigFilePath);
+			configurationFile = PluginRuntimeFileHelper.prepareSerializerConfigFile(pluginManager, "COBieDeserializer", this,localConfigFilePath);
 		}
 		catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
 			throw new PluginException("Could not find configuration files");
 		}
-		preImportFileDirectory = ConfigUtil.getDirectory(pluginManager, COBIE_PREIMPORT_CHECK_DIRECTORY_NAME);
+		preImportFileDirectory = PluginRuntimeFileHelper.getDirectory(pluginManager, COBIE_PREIMPORT_CHECK_DIRECTORY_NAME);
 		initialized = true;
 	}
 	
@@ -97,7 +97,13 @@ public class COBieDeserializerPlugin implements DeserializerPlugin {
 	@Override
 	public ObjectDefinition getSettingsDefinition()
 	{
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Deserializer createDeserializer(
+			PluginConfiguration pluginConfiguration)
+	{
+		return new COBieDeserializer(configurationFile,preImportFileDirectory,checkSerializer);
 	}
 }
