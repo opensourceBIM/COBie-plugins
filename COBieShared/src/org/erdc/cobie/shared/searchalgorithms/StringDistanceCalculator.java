@@ -32,9 +32,9 @@ public class StringDistanceCalculator
             case Jaccard:
                 doubleDistance = Jaccard.calc(searchString.split(" "), targetKeyword.split(" "));
             case Composite:
-                throw new NotImplementedException();
+            	break;
             default:
-                throw new NotImplementedException();
+                break;
 
         }
         return doubleDistance;
