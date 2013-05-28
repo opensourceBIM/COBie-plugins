@@ -12,7 +12,6 @@ import org.erdc.cobie.cobielite.JobType;
 import org.erdc.cobie.cobielite.ResourceCollectionType;
 import org.erdc.cobie.cobielite.ValueHelper;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
-import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.JobResourceDispatcher;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
@@ -25,6 +24,7 @@ public class JobParser extends DeepParser<org.erdc.cobie.sheetxmldata.JobType, J
         super(cobieSheetXMLData, cobieLiteRowData, indexedCOBie);
     }
 
+    @SuppressWarnings("rawtypes")
     @Override
     protected ArrayList<COBieLiteParserDispatcher> getChildParsingDispatchers()
     {

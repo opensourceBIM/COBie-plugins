@@ -88,6 +88,7 @@ public class IfcPropertySetToCOBieString
     {
         Map<String, String> propertyMap = new HashMap<String, String>();
         Map<String, String> tmpPropertyMap = new HashMap<String, String>();
+        @SuppressWarnings("unchecked")
         ArrayList<String> copyPNames = (ArrayList<String>)propertyNames.clone();
         if (pSetDef instanceof IfcPropertySet)
         {
@@ -119,6 +120,7 @@ public class IfcPropertySetToCOBieString
     {
         Map<String, String> propertyMap = new HashMap<String, String>();
         Map<String, String> tmpPropertyMap = new HashMap<String, String>();
+        @SuppressWarnings("unchecked")
         ArrayList<String> copyPNames = (ArrayList<String>)propertyNames.clone();
         if (IfcPropertySet.class.isInstance(pSetDef))
         {
@@ -150,6 +152,7 @@ public class IfcPropertySetToCOBieString
     {
         Map<String, IfcPropertyToCOBieString> propertyMap = new HashMap<String, IfcPropertyToCOBieString>();
         Map<String, IfcPropertyToCOBieString> tmpPropertyMap = new HashMap<String, IfcPropertyToCOBieString>();
+        @SuppressWarnings("unchecked")
         ArrayList<String> copyPNames = (ArrayList<String>)propertyNames.clone();
         if (IfcPropertySet.class.isInstance(pSetDef))
         {
@@ -180,7 +183,7 @@ public class IfcPropertySetToCOBieString
     {
         Map<String, IfcPropertyToCOBieString> clonePsetStrings = IfcPropertySetToCOBieString.clonePsetStringMap(psetStrings);
         String pSetName = pSetDef.getName();
-        String guid = pSetDef.getGlobalId().getWrappedValue();
+        String guid = pSetDef.getGlobalId();
         for (String key : clonePsetStrings.keySet())
         {
             IfcPropertyToCOBieString tmpPsetStr = clonePsetStrings.get(key);

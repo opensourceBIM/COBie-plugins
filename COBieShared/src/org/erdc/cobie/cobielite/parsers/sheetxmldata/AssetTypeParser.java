@@ -14,7 +14,6 @@ import org.erdc.cobie.cobielite.ValueHelper;
 import org.erdc.cobie.cobielite.WarrantyCollectionType;
 import org.erdc.cobie.cobielite.WarrantyType;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
-import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AssetTypeAssemblyDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AssetTypeAssetDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AssetTypeJobDispatcher;
@@ -36,6 +35,7 @@ public class AssetTypeParser extends DeepParser<TypeType, AssetTypeInfoType>
         super(cobieSheetXMLData, cobieLiteRowData, indexedCOBie);
     }
 
+    @SuppressWarnings("rawtypes")
     @Override
     protected ArrayList<COBieLiteParserDispatcher> getChildParsingDispatchers()
     {

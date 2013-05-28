@@ -3,7 +3,6 @@ package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 import java.util.ArrayList;
 
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
-import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.COBIEBaseType;
 
@@ -15,6 +14,7 @@ public abstract class DeepParser<COBIE_SHEET_XML_DATA_TYPE extends COBIEBaseType
         super(cobieSheetXMLData, cobieLiteRowData, indexedCOBie);
     }
 
+    @SuppressWarnings("rawtypes")
     protected abstract ArrayList<COBieLiteParserDispatcher> getChildParsingDispatchers();
 
     protected abstract void parseChildLeaves();
@@ -23,8 +23,9 @@ public abstract class DeepParser<COBIE_SHEET_XML_DATA_TYPE extends COBIEBaseType
     protected void parseComplexElements()
     {
         parseChildLeaves();
+        @SuppressWarnings("rawtypes")
         ArrayList<COBieLiteParserDispatcher> dispatchers = getChildParsingDispatchers();
-        for (COBieLiteParserDispatcher dispatcher : dispatchers)
+        for (@SuppressWarnings("rawtypes") COBieLiteParserDispatcher dispatcher : dispatchers)
         {
             dispatcher.dispatchParsers();
         }

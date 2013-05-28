@@ -96,6 +96,11 @@ public class LogHandler
         rowCount++;
         return rowWrittenStr;
     }
+    
+    public void setRowCount(int rowCount)
+    {
+        this.rowCount = rowCount;
+    }
 
     public String sheetWriteBegin()
     {

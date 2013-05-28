@@ -38,8 +38,8 @@ public class COBieUtils
 
     /**
      * Tests whether the supplied IfcProduct matches the supplied COBIEBaseType.
-     * As of now, this method only works for FloorType, SpaceType, ComponentType, and
-     * ZoneTypes.
+     * As of now, this method only works for FloorType, SpaceType,
+     * ComponentType, and ZoneTypes.
      * 
      * @param product
      *            The IfcProduct to compare.
@@ -56,31 +56,32 @@ public class COBieUtils
 
         if (type instanceof SpaceType)
         {
-            globalId = product.getGlobalId().getWrappedValue();
+            globalId = product.getGlobalId();
             extId = ((SpaceType)type).getExtIdentifier();
         }
 
         else if (type instanceof FloorType)
         {
-            globalId = product.getGlobalId().getWrappedValue();
+            globalId = product.getGlobalId();
             extId = ((FloorType)type).getExtIdentifier();
         }
 
         else if (type instanceof ZoneType)
         {
-            globalId = product.getGlobalId().getWrappedValue();
+            globalId = product.getGlobalId();
             extId = ((ZoneType)type).getExtIdentifier();
         }
-        
+
         else if (type instanceof ComponentType)
         {
-            globalId = product.getGlobalId().getWrappedValue();
+            globalId = product.getGlobalId();
             extId = ((ComponentType)type).getExtIdentifier();
         }
 
         else
         {
-            throw new IllegalArgumentException("This method only supports the following COBIEBaseTypes: FloorType, SpaceType, ZoneType, ComponentType");
+            throw new IllegalArgumentException(
+                    "This method only supports the following COBIEBaseTypes: FloorType, SpaceType, ZoneType, ComponentType");
         }
 
         if (!COBieUtility.isNullOrEmpty(globalId) && !COBieUtility.isNullOrEmpty(extId))

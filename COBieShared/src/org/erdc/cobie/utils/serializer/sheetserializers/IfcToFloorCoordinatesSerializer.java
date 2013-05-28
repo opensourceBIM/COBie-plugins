@@ -9,10 +9,10 @@ import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.models.ifc2x3tc1.IfcBuildingStorey;
 import org.bimserver.models.ifc2x3tc1.IfcLocalPlacement;
 import org.erdc.cobie.shared.COBieUtility;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.modelhandlers.GeometryHandler;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.COBIEType.Coordinates;
 import org.erdc.cobie.sheetxmldata.CoordinateType;
-import org.erdc.cobie.utils.deserializer.modelhandlers.GeometryHandler;
 import org.erdc.cobie.utils.serializer.IfcCOBieSerializer;
 
 public class IfcToFloorCoordinatesSerializer extends IfcCOBieSerializer<CoordinateType, COBIEType.Coordinates, IfcBuildingStorey>
@@ -88,7 +88,7 @@ public class IfcToFloorCoordinatesSerializer extends IfcCOBieSerializer<Coordina
         }
         String extSystem = COBieUtility.getApplicationName(ifcBuildingStorey.getOwnerHistory());
         String extObject = COBieUtility.extObjectFromObjectDef(ifcBuildingStorey);
-        String extId = COBieUtility.getCOBieString(ifcBuildingStorey.getGlobalId().getWrappedValue());
+        String extId = COBieUtility.extIdFromRoot(ifcBuildingStorey);
         String clockWiseRotation = COBieUtility.COBieNA;
         String elevationRotation = COBieUtility.COBieNA;
         String yawRotation = COBieUtility.COBieNA;

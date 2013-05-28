@@ -5,10 +5,14 @@ import java.util.Collections;
 
 import org.bimserver.models.ifc2x3tc1.IfcUnit;
 import org.bimserver.models.ifc2x3tc1.IfcUnitEnum;
-import org.erdc.cobie.utils.deserializer.modelhandlers.IfcUnitHandler;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.modelhandlers.IfcUnitHandler;
 
 public abstract class IfcUnitSearch extends ArrayList<UnitTextMatcher>
 {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 4496742373969133609L;
     private static final double MATCH_THRESHOLD = 0.10;
     private IfcUnit matchedUnit;
     private double matchDistance;

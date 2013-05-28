@@ -6,6 +6,10 @@ import org.bimserver.models.ifc2x3tc1.IfcProperty;
 
 public class PropertyNameStringValueMap extends HashMap<String, String>
 {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 4270640288642678599L;
     private HashMap<String, IfcProperty> propertyMap;
 
     public PropertyNameStringValueMap()

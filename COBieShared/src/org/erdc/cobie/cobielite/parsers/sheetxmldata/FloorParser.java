@@ -7,7 +7,6 @@ import org.erdc.cobie.cobielite.DocumentCollectionType;
 import org.erdc.cobie.cobielite.IssueCollectionType;
 import org.erdc.cobie.cobielite.ValueHelper;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
-import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.FloorSpaceDispatcher;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.FloorSpacesIndex;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
@@ -49,6 +48,7 @@ public class FloorParser extends DeepParser<FloorType, org.erdc.cobie.cobielite.
 
     }
 
+    @SuppressWarnings("rawtypes")
     @Override
     protected ArrayList<COBieLiteParserDispatcher> getChildParsingDispatchers()
     {

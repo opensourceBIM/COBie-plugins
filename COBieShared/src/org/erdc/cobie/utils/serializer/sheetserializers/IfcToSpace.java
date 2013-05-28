@@ -198,7 +198,7 @@ public class IfcToSpace
                 description = IfcToSpace.descriptionFromSpace(ifcSpace);
                 extSystem = COBieUtility.getApplicationName(oh);
                 extObject = IfcToSpace.extObject;
-                extIdentifier = COBieUtility.identifierFromObject(ifcSpace);
+                extIdentifier = COBieUtility.extIdFromRoot(ifcSpace);
                 roomTag = IfcToSpace.roomTagFromSpace(ifcSpace);
                 usableHeight = IfcToSpace.usableHeightFromSpace(ifcSpace);
                 grossArea = IfcToSpace.grossAreaFromSpace(ifcSpace);

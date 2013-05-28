@@ -1,7 +1,5 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
-import java.io.File;
-
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AttributeDocumentIssueHelper;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.exceptions.NonExistingDescriptiveElementException;
 import org.erdc.cobie.shared.COBieUtility;

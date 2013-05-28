@@ -14,7 +14,7 @@ import org.bimserver.models.ifc2x3tc1.IfcRectangleProfileDef;
 import org.bimserver.models.ifc2x3tc1.IfcRepresentation;
 import org.bimserver.models.ifc2x3tc1.IfcRepresentationItem;
 import org.bimserver.models.ifc2x3tc1.IfcSweptAreaSolid;
-import org.erdc.cobie.utils.deserializer.modelhandlers.GeometryHandler;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.modelhandlers.GeometryHandler;
 
 public class RectangleCoordinatesCalculator
 {

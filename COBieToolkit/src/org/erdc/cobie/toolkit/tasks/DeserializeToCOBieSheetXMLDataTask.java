@@ -24,39 +24,16 @@ import org.bimserver.plugins.deserializers.Deserializer;
 import org.bimserver.plugins.objectidms.ObjectIDM;
 import org.bimserver.plugins.serializers.SerializerException;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadSheetToComponents;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadSheetToSpares;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToAssemblies;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToAttributes;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToConnections;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToContacts;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToCoordinates;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToDocuments;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToFacilities;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToFloors;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToImpacts;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToIssues;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToJobs;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToResources;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToSpaces;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToSystems;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToTypes;
-import org.erdc.cobie.plugins.utils.spreadsheetml.SpreadsheetToZones;
-import org.erdc.cobie.shared.COBieSharedUtilities.COBIE_FILE_TYPE;
+import org.erdc.cobie.shared.PluginUtilities.OutgingFileType;
+import org.erdc.cobie.shared.cobiesheetxmldata.COBieFactory;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.toolkit.CobieToolkit;
-import org.erdc.cobie.utils.serializer.BIMServerCOBieSheetXMLDataSerializer;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 public class DeserializeToCOBieSheetXMLDataTask extends ApplicationTask<COBIEDocument>
 {
-    public enum TaskStep
-    {
-        Assembly, Attribute, Component, Connection, Contact, DerivingCOBieSheetXMLData, Document, Done, Job, Coordinate, Spare, Resource, Facility, Floor, InitializeXLWorkbook, ReadingIfc, Impact, Issue, Space, System, Type, Zone
-    }
-
     private static final String SHEET_STATUS_SUFFIX = " Populated";
     private static final String SPARE_DONE_MESSAGE = "Spares" + SHEET_STATUS_SUFFIX;
     private static final String RESOURCE_DONE_MESSAGE = "Resources" + SHEET_STATUS_SUFFIX;
@@ -88,13 +65,13 @@ public class DeserializeToCOBieSheetXMLDataTask extends ApplicationTask<COBIEDoc
     public static final String PROPERTY_NAME_PROGRESS = "progress";
     private InputStream cobieSheetXMLDataFile;
     private File inputFile;
-    private COBIE_FILE_TYPE inputFileType;
+    private OutgingFileType inputFileType;
     private CobieToolkit cobieToolkit;
     private TaskStep deserializeState;
 
     private Workbook xlWorkbook = null;;
 
-    public DeserializeToCOBieSheetXMLDataTask(final CobieToolkit cobieToolkit, COBIE_FILE_TYPE fileType, File inputFile, Informable informable,
+    public DeserializeToCOBieSheetXMLDataTask(final CobieToolkit cobieToolkit, OutgingFileType fileType, File inputFile, Informable informable,
             boolean requiresRunningBiMServer)
     {
         super(informable, requiresRunningBiMServer);
@@ -194,6 +171,8 @@ public class DeserializeToCOBieSheetXMLDataTask extends ApplicationTask<COBIEDoc
             case IfcXML:
                 cobieDocument = handleIfcXMLDocument();
                 break;
+            default:
+                break;
 
         }
 
@@ -220,7 +199,6 @@ public class DeserializeToCOBieSheetXMLDataTask extends ApplicationTask<COBIEDoc
         setProgress(1);
         publish(TaskStep.DerivingCOBieSheetXMLData);
         COBIEDocument cobieDocument = COBIEDocument.Factory.parse(inputFile);
-        publish(TaskStep.Done);
         setProgress(100);
         return cobieDocument;
     }
@@ -239,12 +217,10 @@ public class DeserializeToCOBieSheetXMLDataTask extends ApplicationTask<COBIEDoc
         setClassificationInverseSlots(model);
         publish(TaskStep.DerivingCOBieSheetXMLData);
         setProgress(50);
-        BIMServerCOBieSheetXMLDataSerializer cobieSheetXMLDataSerializer = cobieToolkit.getCOBieSheetXMLDataSerializer();
-        cobieSheetXMLDataSerializer.init(model, cobieToolkit.getPluginManager());
-        cobieSheetXMLDataSerializer.modelToCOBie();
+        COBieFactory cobieFactory = new COBieFactory();
+        COBIEDocument cobie = cobieFactory.parse(model);
         setProgress(100);
-        publish(TaskStep.Done);
-        return cobieSheetXMLDataSerializer.getCOBieDocument();
+        return cobie;
     }
 
     private COBIEDocument handleIfcXMLDocument() throws FileNotFoundException, DeserializeException, SerializerException
@@ -260,202 +236,8 @@ public class DeserializeToCOBieSheetXMLDataTask extends ApplicationTask<COBIEDoc
         setProgress(5);
         COBIEDocument cobieDocument = COBIEDocument.Factory.newInstance();
         COBIEType cobie = cobieDocument.addNewCOBIE();
-        try
-        {
-            SpreadsheetToContacts.writeContactsToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-        publish(TaskStep.Contact);
-
-        setProgress(10);
-
-        try
-        {
-            SpreadsheetToFacilities.writeFacilitiesToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-            publish(TaskStep.Facility);
-        }
-
-        setProgress(15);
-        try
-        {
-            SpreadsheetToFloors.writeFloorsToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-        publish(TaskStep.Floor);
-
-        setProgress(20);
-
-        try
-        {
-            SpreadsheetToSpaces.writeSpacesToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Space);
-
-        setProgress(25);
-        try
-        {
-            SpreadsheetToZones.writeZonesToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Zone);
-
-        setProgress(30);
-        try
-        {
-            SpreadsheetToTypes.writeTypesToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Type);
-
-        setProgress(35);
-        try
-        {
-            SpreadSheetToComponents.writeComponentsToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Component);
-
-        setProgress(40);
-        try
-        {
-            SpreadsheetToSystems.writeSystemsToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.System);
-
-        setProgress(45);
-        try
-        {
-            SpreadsheetToAssemblies.writeAssembliesToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Assembly);
-
-        setProgress(50);
-        try
-        {
-            SpreadsheetToConnections.writeConnectionsToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Connection);
-
-        setProgress(55);
-        try
-        {
-            SpreadSheetToSpares.writeSparesToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Spare);
-
-        setProgress(60);
-        try
-        {
-            SpreadsheetToResources.writeResourcesToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Resource);
-
-        setProgress(65);
-        try
-        {
-            SpreadsheetToJobs.writeJobsToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Job);
-
-        setProgress(70);
-        try
-        {
-            SpreadsheetToImpacts.writeImpactsToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        setProgress(75);
-        publish(TaskStep.Impact);
-
-        setProgress(80);
-        try
-        {
-            SpreadsheetToDocuments.writeDocumentsToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Document);
-
-        setProgress(85);
-        try
-        {
-            SpreadsheetToAttributes.writeAttributesToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Attribute);
-
-        setProgress(90);
-        try
-        {
-            SpreadsheetToCoordinates.writeCoordinatesToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Coordinate);
-
-        setProgress(95);
-        try
-        {
-            SpreadsheetToIssues.writeIssuesToCOBie(cobie, xlWorkbook);
-        } catch (Exception ex)
-        {
-
-        }
-
-        publish(TaskStep.Issue);
-
+        ThreadedSpreadsheetParser parser = new ThreadedSpreadsheetParser(xlWorkbook, cobie, this);
+        parser.parse();
         setProgress(100);
         return cobieDocument;
 
@@ -475,6 +257,7 @@ public class DeserializeToCOBieSheetXMLDataTask extends ApplicationTask<COBIEDoc
             case Assembly:
                 setDeserializeState(TaskStep.Assembly);
                 publish(new COBieTaskProgress(ASSEMBLIES_DONE_MESSAGE));
+
                 break;
             case Component:
                 setDeserializeState(TaskStep.Component);
@@ -561,6 +344,8 @@ public class DeserializeToCOBieSheetXMLDataTask extends ApplicationTask<COBIEDoc
                 publish(new COBieTaskProgress(SPARE_DONE_MESSAGE));
                 break;
         }
+
+        setProgress(Math.min(getProgress() + taskStep.getProgress(), 100));
     }
 
     private void setClassificationInverseSlots(IfcModelInterface model)

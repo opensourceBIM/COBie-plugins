@@ -2,7 +2,6 @@ package org.erdc.cobie.sheetxmldata.parsers;
 
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.shared.parsers.Parser;
-import org.erdc.cobie.sheetxmldata.COBIEBaseType;
 
 public abstract class COBieSheetXMLDataParser<SOURCE, TARGET extends  org.apache.xmlbeans.XmlObject> extends Parser<SOURCE, TARGET>
 {

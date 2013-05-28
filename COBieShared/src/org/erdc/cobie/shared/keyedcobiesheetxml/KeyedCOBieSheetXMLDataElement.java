@@ -22,20 +22,25 @@ public abstract class KeyedCOBieSheetXMLDataElement<T extends XmlObject>
     public boolean equals(Object o)
     {
         boolean equals = false;
-        if (o == this)
+        if(o instanceof KeyedCOBieSheetXMLDataElement<?>)
         {
-            equals = true;
-        }
-        if (o.getClass().equals(this.getClass()))
-        {
-            KeyedCOBieSheetXMLDataElement<T> castObject = (KeyedCOBieSheetXMLDataElement<T>)o;
-            COBIERowDictionary oRowDictionary = COBIESheetDictionary.cobieRowColumnNameValuesFromXMLObject(
-                    sheetNameFromXmlObjectClass(castObject.getCOBieSheetXMLDataElement()), castObject.getCOBieSheetXMLDataElement());
-            if (oRowDictionary.getCOBieRowIdString().equals(rowDictionary.getCOBieRowIdString()))
+            if (o == this)
             {
                 equals = true;
             }
+            if (o.getClass().equals(this.getClass()))
+            {
+                @SuppressWarnings("unchecked")
+                KeyedCOBieSheetXMLDataElement<T> castObject = (KeyedCOBieSheetXMLDataElement<T>) o;
+                COBIERowDictionary oRowDictionary = COBIESheetDictionary.cobieRowColumnNameValuesFromXMLObject(
+                        sheetNameFromXmlObjectClass(castObject.getCOBieSheetXMLDataElement()), castObject.getCOBieSheetXMLDataElement());
+                if (oRowDictionary.getCOBieRowIdString().equals(rowDictionary.getCOBieRowIdString()))
+                {
+                    equals = true;
+                }
 
+            }
+            
         }
         return equals;
     }

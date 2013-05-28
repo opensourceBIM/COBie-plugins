@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.erdc.cobie.cobielite.CobieBaseType;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
-import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 

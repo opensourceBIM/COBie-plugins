@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.bimserver.models.ifc2x3tc1.IfcCurrencyEnum;
-import org.bimserver.models.ifc2x3tc1.IfcUnit;
 import org.bimserver.models.ifc2x3tc1.IfcUnitEnum;
 import org.erdc.cobie.cobielite.AreaUnitSimpleType;
 import org.erdc.cobie.cobielite.AttributeCollectionType;
@@ -18,7 +17,6 @@ import org.erdc.cobie.cobielite.ProjectType;
 import org.erdc.cobie.cobielite.SiteType;
 import org.erdc.cobie.cobielite.VolumeUnitSimpleType;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
-import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.FacilityAssetTypeDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.FacilityConnectionDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.FacilityContactDispatcher;
@@ -27,10 +25,8 @@ import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.FacilitySystemD
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.FacilityZoneDispatcher;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
-import org.erdc.cobie.shared.keyedcobiesheetxml.KeyedZoneType;
 import org.erdc.cobie.shared.targetunits.IfcUnitSearch;
 import org.erdc.cobie.shared.targetunits.IfcUnitSearchDispatcher;
-import org.erdc.cobie.shared.targetunits.UnitTextMatcher;
 import org.erdc.cobie.shared.targetunits.UnitSearchToCOBieLiteUnits;
 import org.erdc.cobie.shared.targetunits.area.AreaUnitSearch;
 import org.erdc.cobie.shared.targetunits.length.LengthUnitSearch;
@@ -50,6 +46,7 @@ public class FacilityParser extends DeepParser<org.erdc.cobie.sheetxmldata.Facil
         cobieSheetXMLAll = indexedCOBie.getCobie();
     }
 
+    @SuppressWarnings("rawtypes")
     @Override
     protected ArrayList<COBieLiteParserDispatcher> getChildParsingDispatchers()
     {

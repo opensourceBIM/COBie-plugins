@@ -6,6 +6,11 @@ import org.erdc.cobie.shared.targetunits.IfcUnitSearch;
 public class LengthUnitSearch extends IfcUnitSearch
 {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -8437258094469132399L;
+
     public LengthUnitSearch(String searchString)
     {
         super(searchString, IfcUnitEnum.LENGTHUNIT);

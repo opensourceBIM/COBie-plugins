@@ -103,9 +103,4 @@ public abstract class COBieLiteCOBIEBaseTypeParser<COBIE_SHEET_XML_DATA_TYPE ext
     @Override
     protected abstract void parseIssues() throws Exception;
 
-
-    private void setCobieSpreadsheetName(CobieSheetName cobieSpreadsheetName)
-    {
-        this.cobieSpreadsheetName = cobieSpreadsheetName;
-    }
 }

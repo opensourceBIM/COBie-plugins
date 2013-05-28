@@ -1,7 +1,5 @@
 package org.erdc.cobie.cobielite.parsers;
 
-import java.util.ArrayList;
-
 import org.erdc.cobie.cobielite.CobieBaseType;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;

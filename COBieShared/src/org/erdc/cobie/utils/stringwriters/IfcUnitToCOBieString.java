@@ -428,6 +428,12 @@ public class IfcUnitToCOBieString
             case ZWD:
                 currencyString = "Zimbabwean dollar (ZWD)";
                 break;
+            case NULL:
+                currencyString = COBieUtility.COBieNA;
+                break;
+            default:
+                currencyString = COBieUtility.COBieNA;
+                break;
         }
 
         if (COBieUtility.isNA(currencyString))

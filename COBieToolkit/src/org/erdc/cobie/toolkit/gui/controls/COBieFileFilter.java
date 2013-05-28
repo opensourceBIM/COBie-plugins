@@ -5,13 +5,13 @@ import java.io.File;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import org.erdc.cobie.shared.COBieSharedUtilities;
-import org.erdc.cobie.shared.COBieSharedUtilities.COBIE_FILE_TYPE;
+import org.erdc.cobie.shared.PluginUtilities;
+import org.erdc.cobie.shared.PluginUtilities.OutgingFileType;
 
 public class COBieFileFilter extends FileFilter
 {
 	private static final String FILE_FILTER_FORMAT_STRING = "%s (%s) %s";
-	private COBIE_FILE_TYPE cobieFileType;
+	private OutgingFileType cobieFileType;
 	private String extensionString;
 	public String getExtensionString()
 	{
@@ -19,20 +19,20 @@ public class COBieFileFilter extends FileFilter
 	}
 	private FileNameExtensionFilter extensionFilter;
 	
-	protected String getFileMenuDisplayString(COBIE_FILE_TYPE cobieFileType,String fileExtension,String shortDescription)
+	protected String getFileMenuDisplayString(OutgingFileType cobieFileType,String fileExtension,String shortDescription)
 	{
 		return String.format(FILE_FILTER_FORMAT_STRING, cobieFileType.name(),fileExtension,shortDescription);
 	}
-	public COBieFileFilter(COBIE_FILE_TYPE cobieFileType)
+	public COBieFileFilter(OutgingFileType cobieFileType)
 	{
 		super();
 		this.cobieFileType = cobieFileType;
-		extensionString = COBieSharedUtilities.COBIE_FILE_TYPE_TO_FILE_EXTENSIONS.get(cobieFileType);
+		extensionString = PluginUtilities.COBIE_FILE_TYPE_TO_FILE_EXTENSIONS.get(cobieFileType);
 		if (extensionString.startsWith("."))
 			extensionString = extensionString.substring(1);
 		String description =getFileMenuDisplayString
 				(cobieFileType,extensionString,
-						COBieSharedUtilities.COBIE_FILE_TYPE_TO_SHORT_DESCRIPTION.get(cobieFileType));
+						PluginUtilities.COBIE_FILE_TYPE_TO_SHORT_DESCRIPTION.get(cobieFileType));
 		extensionFilter = new FileNameExtensionFilter(description, extensionString);
 	}
 	
@@ -55,7 +55,7 @@ public class COBieFileFilter extends FileFilter
 		return extensionFilter.getDescription();
 	}
 
-	public COBIE_FILE_TYPE getCobieFileType()
+	public OutgingFileType getCobieFileType()
 	{
 		return cobieFileType;
 	}

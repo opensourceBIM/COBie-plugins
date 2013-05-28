@@ -5,6 +5,10 @@ import java.util.HashMap;
 
 public class CaseAgnosticStringList extends ArrayList<String>
 {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -2618371365309788986L;
     private HashMap<String, String> caseAgnosticToCaseSensitive;
 
     public CaseAgnosticStringList(ArrayList<String> strings)

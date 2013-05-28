@@ -45,8 +45,8 @@ public class IfcToFloor
     protected static final String extObject = IfcBuildingStorey.class.getSimpleName();
     private static final Logger LOGGER = LoggerFactory.getLogger(IfcToFloor.class);
     private static final CobieSheetName sheetName = CobieSheetName.Floor;
-    private static final ArrayList<String> heightPropertyNames = new ArrayList(Arrays.asList("Height", "NetHeight", "GrossHeight", "Net Height",
-            "Gross Height", "StoreyHeight", "Storey Height", "FloorHeight", "Floor Height"));
+    private static final ArrayList<String> heightPropertyNames = new ArrayList<String>(Arrays.asList("Height", "NetHeight", "GrossHeight",
+            "Net Height", "Gross Height", "StoreyHeight", "Storey Height", "FloorHeight", "Floor Height"));
 
     protected static String elevationFromStorey(IfcBuildingStorey storey)
     {
@@ -57,6 +57,21 @@ public class IfcToFloor
             elevationStr = String.valueOf(elevation);
         }
         return elevationStr;
+    }
+
+    private static String extObjectFromBuildingStorey(IfcBuildingStorey storey)
+    {
+        String extObject = IfcToFloor.extObject;
+        if (!COBieUtility.isNA(storey.getObjectType()))
+        {
+            String objectType = storey.getObjectType();
+            if (objectType.equalsIgnoreCase(SITE) || objectType.equalsIgnoreCase(IFC_SITE))
+            {
+                extObject = IFC_SITE;
+            }
+
+        }
+        return extObject;
     }
 
     protected static ArrayList<IfcBuildingStorey> floorsFromBuilding(IfcBuilding bldg)
@@ -70,7 +85,7 @@ public class IfcToFloor
                 if (objDef.getClass() == IfcBuildingStoreyImpl.class)
                 {
                     IfcBuildingStorey storey = (IfcBuildingStorey)objDef;
-                    String guid = storey.getGlobalId().getWrappedValue();
+                    String guid = storey.getGlobalId();
                     if (!floorGuids.contains(guid))
                     {
                         floors.add(storey);
@@ -151,7 +166,7 @@ public class IfcToFloor
                     category = COBieUtility.getObjectClassificationCategoryString(storey);
                     extSystem = COBieUtility.getApplicationName(ownerHistory);
                     extObject = extObjectFromBuildingStorey(storey);
-                    extIdentifier = COBieUtility.identifierFromObject(storey);
+                    extIdentifier = COBieUtility.extIdFromRoot(storey);
                     description = IfcToFacility.descriptionFromSpatialStructureElement(storey);
                     elevation = COBieUtility.getCOBieString(IfcToFloor.elevationFromStorey(storey));
                     height = IfcToFloor.heightFromStorey(storey);
@@ -177,18 +192,5 @@ public class IfcToFloor
         }
         loggerHandler.sheetWritten();
         return cType;
-    }
-
-    private static String extObjectFromBuildingStorey(IfcBuildingStorey storey)
-    {
-        String extObject = IfcToFloor.extObject;
-        if(!COBieUtility.isNA(storey.getObjectType()))
-        {
-            String objectType = storey.getObjectType();
-            if(objectType.equalsIgnoreCase(SITE) || objectType.equalsIgnoreCase(IFC_SITE))
-                extObject = IFC_SITE;
-                
-        }
-        return extObject;
     }
 }

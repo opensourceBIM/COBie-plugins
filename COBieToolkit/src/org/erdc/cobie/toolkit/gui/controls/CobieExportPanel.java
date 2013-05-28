@@ -111,8 +111,8 @@ public class CobieExportPanel extends COBieApplicationTaskPanel<COBieSheetXMLDat
 	{
 		if(e.getSource()==btnExport)
 		{
-			SerializerFileChoser fileChoser =
-					new SerializerFileChoser(cobieToolkit);
+			SerializerFileChooser fileChoser =
+					new SerializerFileChooser(cobieToolkit);
 			fileChoser.initializeCurrentDirectory(cobieToolkit);
 			int returnval =fileChoser.showSaveDialog(CobieExportPanel.this);
 			if (returnval == JFileChooser.APPROVE_OPTION)
@@ -160,7 +160,6 @@ public class CobieExportPanel extends COBieApplicationTaskPanel<COBieSheetXMLDat
 			if(event.getPropertyName().
 					equals(COBieApplicationTaskPanel.PROPERTY_NAME_TASK_PANEL_STATE))
 			{
-				TaskPanelStateValue oldState = (TaskPanelStateValue) event.getOldValue();
 				TaskPanelStateValue newState = (TaskPanelStateValue) event.getNewValue();
 				switch(newState)
 				{

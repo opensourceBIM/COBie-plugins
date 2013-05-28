@@ -10,7 +10,6 @@ import org.erdc.cobie.cobielite.SpaceAssignmentCollectionType;
 import org.erdc.cobie.cobielite.SystemAssignmentCollectionType;
 import org.erdc.cobie.cobielite.SystemKeyType;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
-import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AssetAssemblyDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AssignmentHelper;
 import org.erdc.cobie.shared.COBieUtility;
@@ -26,6 +25,7 @@ public class AssetParser extends DeepParser<ComponentType, AssetInfoType>
         super(cobieSheetXMLData, cobieLiteRowData, indexedCOBie);
     }
 
+    @SuppressWarnings("rawtypes")
     @Override
     protected ArrayList<COBieLiteParserDispatcher> getChildParsingDispatchers()
     {

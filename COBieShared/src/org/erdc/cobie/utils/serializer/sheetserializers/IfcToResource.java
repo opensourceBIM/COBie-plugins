@@ -93,7 +93,7 @@ public class IfcToResource
                 category = IfcToResource.categoryFromConstructionEquipmentResource(equipmentResource);
                 extSystem = COBieUtility.getApplicationName(oh);
                 extObject = COBieUtility.extObjectFromObjectDef(equipmentResource);
-                extIdentifier = equipmentResource.getGlobalId().getWrappedValue();
+                extIdentifier = COBieUtility.extIdFromRoot(equipmentResource);
                 description = IfcToResource.descriptionFromConstructionEquipmentResource(equipmentResource);
 
                 ResourceType resource = resources.addNewResource();

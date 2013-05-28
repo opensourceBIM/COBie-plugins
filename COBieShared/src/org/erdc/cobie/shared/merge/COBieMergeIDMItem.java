@@ -143,7 +143,17 @@ public class COBieMergeIDMItem extends COBieMergeItem<COBieMergeIDMDocument>
 
     private void init()
     {
-        sheetNameToCobieRowId_IgnoreList = new HashMap<String, ArrayList<String>>();
+        setSheetNameToCobieRowId_IgnoreList(new HashMap<String, ArrayList<String>>());
+    }
+
+    public HashMap<String, ArrayList<String>> getSheetNameToCobieRowId_IgnoreList()
+    {
+        return sheetNameToCobieRowId_IgnoreList;
+    }
+
+    public void setSheetNameToCobieRowId_IgnoreList(HashMap<String, ArrayList<String>> sheetNameToCobieRowId_IgnoreList)
+    {
+        this.sheetNameToCobieRowId_IgnoreList = sheetNameToCobieRowId_IgnoreList;
     }
 
 }

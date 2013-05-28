@@ -326,14 +326,11 @@ public class GuidCompressor
     public static boolean isValidGuid(String guid)
     {
         boolean isValid = true;
-        guid.length();
-        if (guid == null)
+        if ((guid == null) || (guid.length() != VALID_GUID_LENGTH))
         {
             isValid = false;
-        } else if (guid.length() != VALID_GUID_LENGTH)
-        {
-            isValid = false;
-        } else
+        }  
+        else
         {
             for (char character : guid.toCharArray())
             {

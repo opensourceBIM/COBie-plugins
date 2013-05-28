@@ -6,6 +6,10 @@ import java.util.HashMap;
 
 public class COBIESheetCollection extends ArrayList<COBIERowDictionary>
 {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 2435268371579118908L;
     private static final ArrayList<String> ASSEMBLY_KEYS = new ArrayList<String>(Arrays.asList("Name", "SheetName", "ParentName", "ChildNames"));
     private static final ArrayList<String> ATTRIBUTE_KEYS = new ArrayList<String>(Arrays.asList("Name", "SheetName", "RowName"));
     private static final ArrayList<String> COMPONENT_KEYS = new ArrayList<String>(Arrays.asList("Name"));

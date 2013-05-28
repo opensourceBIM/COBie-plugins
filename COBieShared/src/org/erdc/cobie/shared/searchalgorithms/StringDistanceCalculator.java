@@ -1,5 +1,7 @@
 package org.erdc.cobie.shared.searchalgorithms;
 
+import org.erdc.cobie.shared.utils.exceptions.NotImplementedException;
+
 public class StringDistanceCalculator
 {
     public enum EditDistanceAlgorithmEnum
@@ -29,6 +31,10 @@ public class StringDistanceCalculator
                 break;
             case Jaccard:
                 doubleDistance = Jaccard.calc(searchString.split(" "), targetKeyword.split(" "));
+            case Composite:
+                throw new NotImplementedException();
+            default:
+                throw new NotImplementedException();
 
         }
         return doubleDistance;

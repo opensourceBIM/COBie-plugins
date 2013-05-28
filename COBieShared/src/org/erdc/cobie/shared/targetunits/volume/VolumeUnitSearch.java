@@ -6,6 +6,11 @@ import org.erdc.cobie.shared.targetunits.IfcUnitSearch;
 public class VolumeUnitSearch extends IfcUnitSearch
 {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 8325040169644048805L;
+
     public VolumeUnitSearch(String searchString)
     {
         super(searchString, IfcUnitEnum.VOLUMEUNIT);

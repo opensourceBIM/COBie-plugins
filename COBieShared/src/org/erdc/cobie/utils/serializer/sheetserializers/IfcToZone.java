@@ -36,9 +36,9 @@ import org.bimserver.models.ifc2x3tc1.IfcSpace;
 import org.bimserver.models.ifc2x3tc1.IfcZone;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.ZoneDeserializer;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.ZoneType;
-import org.erdc.cobie.utils.deserializer.ZoneDeserializer;
 import org.erdc.cobie.utils.stringwriters.IfcSingleValueToCOBieString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -208,7 +208,7 @@ public class IfcToZone
 
                 extSystem = COBieUtility.getApplicationName(oh);
                 extObject = IfcToZone.extObject;
-                extIdentifier = COBieUtility.identifierFromObject(zone);
+                extIdentifier = COBieUtility.extIdFromRoot(zone);
                 description = IfcToZone.descriptionFromZone(zone);
                 if (spaceNames.size() > 0)
                 {

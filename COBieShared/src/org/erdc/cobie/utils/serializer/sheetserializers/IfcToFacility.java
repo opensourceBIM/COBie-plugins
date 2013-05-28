@@ -256,7 +256,7 @@ public class IfcToFacility
                 projectName = proj.getLongName();
             } else
             {
-                projectName = COBieUtility.getCOBieString(proj.getGlobalId().toString());
+                projectName = COBieUtility.getCOBieString(proj.getGlobalId());
             }
         } else
         {
@@ -279,7 +279,7 @@ public class IfcToFacility
                 siteName = site.getLongName();
             } else
             {
-                siteName = COBieUtility.getCOBieString(site.getGlobalId().getWrappedValue());
+                siteName = COBieUtility.getCOBieString(site.getGlobalId());
             }
         } else
         {
@@ -319,33 +319,33 @@ public class IfcToFacility
         if (bldg != null)
         {
             name = bldg.getName();
-            if ((name == null) || (name.length() == 0))
+            if (COBieUtility.isNA(name))
             {
                 name = bldg.getLongName();
             }
         } else if (proj != null)
         {
-            if ((name == null) || (name.length() == 0))
+            if (COBieUtility.isNA(name))
             {
                 name = proj.getName();
             }
-            if ((name == null) || (name.length() == 0))
+            if (COBieUtility.isNA(name))
             {
                 name = proj.getLongName();
             }
         } else if (site != null)
         {
-            if ((name == null) || (name.length() == 0))
+            if (COBieUtility.isNA(name))
             {
                 name = site.getName();
             }
-            if ((name == null) || (name.length() == 0))
+            if (COBieUtility.isNA(name))
             {
                 name = site.getLongName();
             }
-            if ((name == null) || (name.length() == 0))
+            if (COBieUtility.isNA(name))
             {
-                name = bldg.getGlobalId().getWrappedValue();
+                name = COBieUtility.COBieNA;
             }
         }
 
@@ -446,7 +446,7 @@ public class IfcToFacility
                 extProjectObject = IfcToFacility.ExtProjectObject;
                 if (bldgProj != null)
                 {
-                    extProjectIdentifier = COBieUtility.identifierFromObject(bldgProj);
+                    extProjectIdentifier = COBieUtility.extIdFromRoot(bldgProj);
                 } else
                 {
                     extProjectIdentifier = GuidCompressor.getNewIfcGloballyUniqueId();
@@ -454,13 +454,13 @@ public class IfcToFacility
                 extSiteObject = IfcToFacility.ExtSiteObject;
                 if (bldgSite != null)
                 {
-                    extSiteIdentifier = COBieUtility.identifierFromObject(bldgSite);
+                    extSiteIdentifier = COBieUtility.extIdFromRoot(bldgSite);
                 } else
                 {
                     extSiteIdentifier = GuidCompressor.getNewIfcGloballyUniqueId();
                 }
                 extFacilityObject = IfcToFacility.ExtFacilityObject;
-                extFacilityIdentifier = COBieUtility.identifierFromObject(ifcBldg);
+                extFacilityIdentifier = COBieUtility.extIdFromRoot(ifcBldg);
                 description = IfcToFacility.descriptionFromSpatialStructureElement(ifcBldg);
                 projectDescription = IfcToFacility.descriptionFromProject(bldgProj);
                 siteDescription = IfcToFacility.descriptionFromSpatialStructureElement(bldgSite);

@@ -20,7 +20,7 @@ public class COBieTaskProgress
 		currentSubTask = "";
 	}
 	
-	public COBieTaskProgress(String message,String currentSubTask)
+	public COBieTaskProgress(String message, String currentSubTask)
 	{
 		setSubTaskName(currentSubTask);
 		setProgressText(message);

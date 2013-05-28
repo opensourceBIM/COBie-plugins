@@ -32,7 +32,6 @@ import org.slf4j.LoggerFactory;
 public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<ComponentType, COBIEType.Components, IfcProduct>
 {
 
-    
     private static void getRidOfNASpaceNamesIfOthersExist(ArrayList<String> spaceNames)
     {
         if (spaceNames.size() > 1)
@@ -233,7 +232,7 @@ public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<Compone
             }
             description = IfcToComponent.descriptionFromProduct(product);
             extObject = IfcToComponent.extObjectFromProduct(product);
-            extIdentifier = IfcToComponent.extIdentifierFromProduct(product);
+            extIdentifier = COBieUtility.extIdFromRoot(product);
             serialNumber = IfcToComponent.serialNumberFromProduct(product);
             installationDate = IfcToComponent.installationDateFromProduct(product);
             warrantyStartDate = IfcToComponent.warrantyStartDateFromProduct(product);

@@ -8,6 +8,7 @@ import org.bimserver.models.ifc2x3tc1.IfcReal;
 import org.bimserver.models.ifc2x3tc1.IfcUnit;
 import org.bimserver.models.ifc2x3tc1.IfcUnitEnum;
 import org.erdc.cobie.shared.COBieUtility;
+import org.erdc.cobie.shared.utils.exceptions.NotImplementedException;
 
 public abstract class ConversionBasedUnitTextMatcher extends UnitTextMatcher
 {
@@ -53,6 +54,60 @@ public abstract class ConversionBasedUnitTextMatcher extends UnitTextMatcher
             case VOLUMEUNIT:
                 exponents.setLengthExponent(VOLUME_UNIT_EXPONENT);
                 break;
+            case ABSORBEDDOSEUNIT:    
+                throw new NotImplementedException();
+            case AMOUNTOFSUBSTANCEUNIT:
+                throw new NotImplementedException();
+            case DOSEEQUIVALENTUNIT:
+                throw new NotImplementedException();
+            case ELECTRICCAPACITANCEUNIT:
+                throw new NotImplementedException();
+            case ELECTRICCHARGEUNIT:
+                throw new NotImplementedException();
+            case ELECTRICCONDUCTANCEUNIT:
+                throw new NotImplementedException();
+            case ELECTRICCURRENTUNIT:
+                throw new NotImplementedException();
+            case ELECTRICRESISTANCEUNIT:
+                throw new NotImplementedException();
+            case ELECTRICVOLTAGEUNIT:
+                throw new NotImplementedException();
+            case ENERGYUNIT:
+                throw new NotImplementedException();
+            case FORCEUNIT:
+                throw new NotImplementedException();
+            case FREQUENCYUNIT:
+                throw new NotImplementedException();
+            case ILLUMINANCEUNIT:
+                throw new NotImplementedException();
+            case INDUCTANCEUNIT:
+                throw new NotImplementedException();
+            case LUMINOUSFLUXUNIT:
+                throw new NotImplementedException();
+            case LUMINOUSINTENSITYUNIT:
+                throw new NotImplementedException();
+            case MAGNETICFLUXDENSITYUNIT:
+                throw new NotImplementedException();
+            case MAGNETICFLUXUNIT:
+                throw new NotImplementedException();
+            case NULL:
+                throw new NotImplementedException();
+            case PLANEANGLEUNIT:
+                throw new NotImplementedException();
+            case POWERUNIT:
+                throw new NotImplementedException();
+            case PRESSUREUNIT:
+                throw new NotImplementedException();
+            case RADIOACTIVITYUNIT:
+                throw new NotImplementedException();
+            case SOLIDANGLEUNIT:
+                throw new NotImplementedException();
+            case THERMODYNAMICTEMPERATUREUNIT:
+                throw new NotImplementedException();
+            case USERDEFINED:
+                throw new NotImplementedException();
+            default:
+                throw new NotImplementedException();
 
         }
         return exponents;

@@ -2,13 +2,15 @@ package org.erdc.cobie.toolkit.tasks;
 
 import java.io.File;
 
+import org.bimserver.emf.IfcModelInterfaceException;
 import org.bimserver.ifc.IfcModel;
+import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.EmfSerializer;
 import org.bimserver.plugins.serializers.SerializerPlugin;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.COBieIfcModel;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.FromCOBieToIfc;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
-import org.erdc.cobie.utils.deserializer.COBieIfcModel;
-import org.erdc.cobie.utils.deserializer.FromCOBieToIfc;
 import org.erdc.cobie.utils.serializer.BIMServerCOBieSheetXMLDataSerializer;
 
 public class COBieSheetXMLDataExportTask extends ApplicationTask<Void>
@@ -47,7 +49,7 @@ public class COBieSheetXMLDataExportTask extends ApplicationTask<Void>
 		super.setProgress(1);
 		try
 		{
-			EmfSerializer emfSerializer = (EmfSerializer) serializerPlugin.createSerializer();
+			EmfSerializer emfSerializer = (EmfSerializer) serializerPlugin.createSerializer(new PluginConfiguration());
 			if(model==null && !(emfSerializer instanceof BIMServerCOBieSheetXMLDataSerializer))
 			{
 				model = deserializeCOBieSheetXMLDataToIfc();
@@ -59,7 +61,7 @@ public class COBieSheetXMLDataExportTask extends ApplicationTask<Void>
 			
 			if(emfSerializer instanceof BIMServerCOBieSheetXMLDataSerializer)
 			{
-				((BIMServerCOBieSheetXMLDataSerializer)emfSerializer).init(pluginManager, cobieSheetXMLData);
+				((BIMServerCOBieSheetXMLDataSerializer)emfSerializer).init(cobieSheetXMLData);
 			}
 			else
 			{
@@ -81,7 +83,7 @@ public class COBieSheetXMLDataExportTask extends ApplicationTask<Void>
 		return null;
 	}
 	
-	protected IfcModel deserializeCOBieSheetXMLDataToIfc()
+	protected IfcModel deserializeCOBieSheetXMLDataToIfc() throws IfcModelInterfaceException
 	{
 		FromCOBieToIfc deserializer = 
 				new FromCOBieToIfc(cobieSheetXMLData.getCOBIE());

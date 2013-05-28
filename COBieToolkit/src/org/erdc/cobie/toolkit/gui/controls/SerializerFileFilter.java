@@ -5,6 +5,7 @@ import java.io.File;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import org.bimserver.plugins.serializers.AbstractSerializerPlugin;
 import org.bimserver.plugins.serializers.SerializerPlugin;
 
 public class SerializerFileFilter extends FileFilter
@@ -14,7 +15,7 @@ public class SerializerFileFilter extends FileFilter
 	private SerializerPlugin serializerPlugin;
 	private FileNameExtensionFilter extensionFilter;
 	private String extension;
-	public SerializerFileFilter(SerializerPlugin serializerPlugin)
+	public SerializerFileFilter(AbstractSerializerPlugin serializerPlugin)
 	{
 		setSerializerName(serializerPlugin.getDefaultName());
 		setSerializerPlugin(serializerPlugin);

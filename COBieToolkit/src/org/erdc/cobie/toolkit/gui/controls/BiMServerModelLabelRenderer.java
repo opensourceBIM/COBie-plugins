@@ -12,11 +12,16 @@ import org.bimserver.interfaces.objects.SRevision;
 import org.erdc.cobie.toolkit.ControlTextItem;
 import org.erdc.cobie.toolkit.SRevisionAndSProject;
 
+@SuppressWarnings("rawtypes")
 public class BiMServerModelLabelRenderer extends JLabel implements
 		ListCellRenderer
 {
 
-	ListCellRenderer defaultRenderer;
+	/**
+     * 
+     */
+    private static final long serialVersionUID = -684244648079687731L;
+    ListCellRenderer defaultRenderer;
 	private Object underlyingItem;
 	public BiMServerModelLabelRenderer()
 	{

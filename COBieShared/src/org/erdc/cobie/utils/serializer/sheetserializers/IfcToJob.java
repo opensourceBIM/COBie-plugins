@@ -299,7 +299,7 @@ public class IfcToJob
                 frequency = IfcToJob.frequencyFromTask(task);
                 frequencyUnit = IfcToJob.frequencyUnitFromTask(task);
                 extSystem = COBieUtility.getApplicationName(oh);
-                extIdentifier = COBieUtility.getCOBieString(task.getGlobalId().getWrappedValue());
+                extIdentifier = COBieUtility.extIdFromRoot(task);
                 extObject = COBieUtility.extObjectFromObjectDef(task);
                 taskNumber = IfcToJob.taskNumberFromTask(task);
                 priors = IfcToJob.priorsFromTask(task);

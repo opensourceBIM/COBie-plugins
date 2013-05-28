@@ -6,7 +6,7 @@ import org.bimserver.models.ifc2x3tc1.IfcSIUnitName;
 import org.bimserver.models.ifc2x3tc1.IfcUnit;
 import org.bimserver.models.ifc2x3tc1.IfcUnitEnum;
 import org.erdc.cobie.shared.COBieUtility;
-import org.erdc.cobie.utils.deserializer.propertysets.PropertyUtility;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.propertysets.PropertyUtility;
 
 public class TimeStatics
 {

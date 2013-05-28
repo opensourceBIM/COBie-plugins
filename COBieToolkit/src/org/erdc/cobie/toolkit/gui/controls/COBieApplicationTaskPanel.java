@@ -26,8 +26,6 @@ implements ActionListener, PropertyChangeListener
 	private TaskPanelStateValue state;
 	public static final String PROPERTY_NAME_SWING_WORKER_PROGRESS = "progress";
 	public static final String PROPERTY_NAME_TASK_PANEL_STATE = "state";
-	private static final int ERROR_SHOW_DURATION_MILLISECONDS = 2000;
-
 	public enum PROGRESS_TEXTAREA_TYPE {textbox,label};
 	private static final long serialVersionUID = 1L;
 	private JComponentCollection taskComponents;
@@ -72,7 +70,8 @@ implements ActionListener, PropertyChangeListener
 
 		}	 
 		 
-	public final void executeInstantiatedTask(ApplicationTask cobieTask) throws Exception
+	@SuppressWarnings("unchecked")
+    public final void executeInstantiatedTask(@SuppressWarnings("rawtypes") ApplicationTask cobieTask) throws Exception
 	{
 		try
 		{
@@ -244,35 +243,45 @@ implements ActionListener, PropertyChangeListener
 		{
 			if(event.getPropertyName().equals(PROPERTY_NAME_SWING_WORKER_PROGRESS))
 			{
-				int newProgress = (Integer) event.getNewValue();
-				progressBar.setValue(newProgress);
+				updateProgress(event);
 			}
 			else if (event.getPropertyName().equals(PROPERTY_NAME_TASK_PANEL_STATE))
 			{
-				SwingWorker.StateValue state =
-						(SwingWorker.StateValue) event.getNewValue();
-				switch(state)
-				{
-					case DONE:
-					{
-						if (primaryTask.isCancelled())
-							defaultCancelActions();
-						else
-							defaultDoneControlActions();
-						setState(TaskPanelStateValue.TaskDone);
-						break;
-					}
-					case PENDING:
-						setState(TaskPanelStateValue.TaskStarted);
-						break;
-					case STARTED:
-						setState(TaskPanelStateValue.TaskStarted);
-						break;
-				
-				}
+				updateState(event);
 			}
 		}
 	}
+
+    private void updateState(PropertyChangeEvent event)
+    {
+        SwingWorker.StateValue state =
+        		(SwingWorker.StateValue) event.getNewValue();
+        switch(state)
+        {
+        	case DONE:
+        	{
+        		if (primaryTask.isCancelled())
+        			defaultCancelActions();
+        		else
+        			defaultDoneControlActions();
+        		setState(TaskPanelStateValue.TaskDone);
+        		break;
+        	}
+        	case PENDING:
+        		setState(TaskPanelStateValue.TaskStarted);
+        		break;
+        	case STARTED:
+        		setState(TaskPanelStateValue.TaskStarted);
+        		break;
+        
+        }
+    }
+
+    private void updateProgress(PropertyChangeEvent event)
+    {
+        int newProgress = (Integer) event.getNewValue();
+        progressBar.setValue(newProgress);
+    }
 	public void takeAShortNap()
 	{
 		try

@@ -1,6 +1,5 @@
 package org.erdc.cobie.utils.serializer;
 
-import org.erdc.cobie.sheetxmldata.COBIEDocument;
 
 public interface COBieSchematronCheckable
 { 

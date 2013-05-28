@@ -18,6 +18,8 @@ package org.erdc.cobie.shared;
  *****************************************************************************/
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -767,6 +769,11 @@ public class COBieUtility
         return className;
     }
 
+    public static String extIdFromRoot(IfcRoot root)
+    {
+        return getCOBieString(root.getGlobalId());
+    }
+    
     public static IfcOwnerHistory firstOwnerHistoryFromModel(IfcModelInterface model)
     {
         IfcOwnerHistory oh = null;
@@ -950,17 +957,15 @@ public class COBieUtility
 
         } catch (NoSuchMethodException ex)
         {
-            // Didn't actually implement getDisplayValue().
+
         } catch (InvocationTargetException ex)
         {
-            // getDisplayValue() threw an exception.
+ 
         } catch (IllegalArgumentException e)
         {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IllegalAccessException e)
         {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return names;
@@ -1214,26 +1219,17 @@ public class COBieUtility
         return xmlEncodedString;
     }
 
-    public static String identifierFromObject(IfcObject obj)
-    {
-        String ID = "";
-        if (obj != null)
-        {
-            ID = obj.getGlobalId().getWrappedValue();
-        }
-        return COBieUtility.getCOBieString(ID);
-    }
 
     public static String identifierFromObjectDefinition(IfcObjectDefinition objDef)
     {
         String ID = "";
-        ID = objDef.getGlobalId().getWrappedValue();
+        ID = objDef.getGlobalId();
         return COBieUtility.getCOBieString(ID);
     }
 
     public static String identifierFromRelationship(IfcRelationship rel)
     {
-        String id = rel.getGlobalId().getWrappedValue();
+        String id = rel.getGlobalId();
         return COBieUtility.getCOBieString(id);
     }
 
@@ -1366,7 +1362,7 @@ public class COBieUtility
             for (IfcRoot relatedObject : relAssociates.getRelatedObjects())
             {
                 if ((relatedObject != null) && (relatedObject.getGlobalId() != null) && (ifcObj != null) && (ifcObj.getGlobalId() != null)
-                        && relatedObject.getGlobalId().getWrappedValue().equals(ifcObj.getGlobalId().getWrappedValue()))
+                        && relatedObject.getGlobalId().equals(ifcObj.getGlobalId()))
                 {
                     associations.add(relAssociates);
                 }
@@ -1547,6 +1543,28 @@ public class COBieUtility
     public static String DateStringFromMonthDayYear(int month, int day, int year)
     {
         return "";
+    }
+
+    public static String hashFromString(String hash) throws NoSuchAlgorithmException
+    {
+        MessageDigest msgDigest = MessageDigest.getInstance("MD5");
+        byte[] msgContents = hash.getBytes();
+        byte[] hashedContents = msgDigest.digest(msgContents);
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < hashedContents.length; i++)
+        {
+            sb.append(Integer.toString((hashedContents[i] & 0xff) + 0x100, 16).substring(1));
+        }
+        hash = sb.toString();
+        return hash;
+    }
+
+    public static Calendar getCurrentTimeCalendar()
+    {
+        Calendar cal = Calendar.getInstance();
+        Date StartTime = cal.getTime();
+        Calendar calStart = new org.apache.xmlbeans.XmlCalendar(StartTime);
+        return calStart;
     }
     
 

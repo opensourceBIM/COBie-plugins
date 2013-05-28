@@ -11,6 +11,10 @@ import org.w3c.dom.Node;
 
 public class COBIERowDictionary extends HashMap<String, String>
 {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -8413706875417450242L;
     private static final int HASH_OFFSET = 220;
     private static final String KEY_COMPONENT_DELIM = ",";
 
@@ -97,7 +101,7 @@ public class COBIERowDictionary extends HashMap<String, String>
         {
             rowValuesHash = rowValuesHash.substring(0, rowValuesHash.length() - 1);
         }
-        rowValuesHash = COBieSharedUtilities.hashFromString(rowValuesHash);
+        rowValuesHash = COBieUtility.hashFromString(rowValuesHash);
         return rowValuesHash;
 
     }
@@ -261,7 +265,7 @@ public class COBIERowDictionary extends HashMap<String, String>
         try
         {
 
-            cobieRowHash = COBieSharedUtilities.hashFromString(getConcatenatedRowIdString());
+            cobieRowHash = COBieUtility.hashFromString(getConcatenatedRowIdString());
         } catch (NoSuchAlgorithmException e)
         {
 

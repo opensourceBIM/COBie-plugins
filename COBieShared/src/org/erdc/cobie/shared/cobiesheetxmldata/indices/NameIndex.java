@@ -7,6 +7,10 @@ import org.erdc.cobie.shared.COBieUtility;
 
 public abstract class NameIndex<SOURCE_TYPE> extends HashMap<String, ArrayList<SOURCE_TYPE>>
 {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -5533611662570465428L;
     private static final boolean DEFAULT_EXCLUDE_NA_KEYS = false;
     private final boolean excludeNAKeys;
 
@@ -53,7 +57,7 @@ public abstract class NameIndex<SOURCE_TYPE> extends HashMap<String, ArrayList<S
                 String[] names = name.split(COBieUtility.getCOBieDelim());
                 for (String nameEntry : names)
                 {
-                    addToListIgnoreDuplicates(name, nameList);
+                    addToListIgnoreDuplicates(nameEntry, nameList);
                 }
             } else
             {

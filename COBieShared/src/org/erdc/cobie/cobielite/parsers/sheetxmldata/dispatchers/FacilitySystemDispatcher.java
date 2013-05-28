@@ -3,7 +3,6 @@ package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 import org.erdc.cobie.cobielite.FacilityType;
 import org.erdc.cobie.cobielite.SystemCollectionType;
 import org.erdc.cobie.cobielite.SystemType;
-import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.SystemParser;
 import org.erdc.cobie.shared.COBieUtility;

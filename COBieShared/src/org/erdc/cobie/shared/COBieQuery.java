@@ -31,6 +31,8 @@ import org.erdc.cobie.sheetxmldata.TypeType;
 
 public class COBieQuery
 {
+    private static final String NO_CATEGORY_MESSAGE = "No matching sheet name in CategoryPickLists";
+
     public static ArrayList<DocumentType> documentsForCOBieRow(COBIEType.Documents documents, COBieUtility.CobieSheetName sheet, String rowKey)
     {
         ArrayList<DocumentType> matchingDocuments = new ArrayList<DocumentType>();
@@ -90,7 +92,7 @@ public class COBieQuery
         String guid = "";
         try
         {
-            guid = product.getGlobalId().getWrappedValue();
+            guid = product.getGlobalId();
         } catch (Exception e)
         {
 
@@ -161,7 +163,7 @@ public class COBieQuery
             }
             if (pickListColName.length() == 0)
             {
-                throw new Exception("No matching sheet name in CategoryPickLists");
+                throw new Exception(NO_CATEGORY_MESSAGE);
             }
             return pickListColName;
         } catch (Exception e)

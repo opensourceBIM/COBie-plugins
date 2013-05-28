@@ -41,7 +41,6 @@ import org.bimserver.models.ifc2x3tc1.IfcQuantityVolume;
 import org.bimserver.models.ifc2x3tc1.IfcRelDefines;
 import org.bimserver.models.ifc2x3tc1.IfcRelDefinesByType;
 import org.bimserver.models.ifc2x3tc1.IfcRoot;
-import org.bimserver.models.ifc2x3tc1.IfcSimpleProperty;
 import org.bimserver.models.ifc2x3tc1.IfcSpace;
 import org.bimserver.models.ifc2x3tc1.IfcValue;
 import org.bimserver.models.ifc2x3tc1.IfcVolumeMeasure;
@@ -49,9 +48,9 @@ import org.eclipse.emf.common.util.EList;
 import org.erdc.cobie.shared.COBieQuery;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.modelhandlers.OwnerHistoryHandler;
 import org.erdc.cobie.sheetxmldata.AttributeType;
 import org.erdc.cobie.sheetxmldata.COBIEType;
-import org.erdc.cobie.utils.deserializer.modelhandlers.OwnerHistoryHandler;
 import org.erdc.cobie.utils.stringwriters.IfcEnumeratedValueToCOBieString;
 import org.erdc.cobie.utils.stringwriters.IfcPhysicalQuantityToCOBieString;
 import org.erdc.cobie.utils.stringwriters.IfcPropertyToCOBieString;
@@ -133,6 +132,60 @@ public class IfcToAttribute
         tempAttribute.setDescription(description);
         tempAttribute.setAllowedValues(allowedValues);
         tempAttribute.setExtIdentifier(extIdentifier);
+    }
+
+    private static String assignUnitsBasedOnProjectDefaults(IfcPropertyToCOBieString pStrvalue, IfcProject ifcProject)
+    {
+        String unit = COBieUtility.COBieNA;
+        String linearUnits = IfcToFacility.getProjectLinearUnits(ifcProject);
+        String areaUnits = IfcToFacility.getProjectAreaUnits(ifcProject);
+        String volumeUnits = IfcToFacility.volumeUnitsFromProject(ifcProject);
+
+        if (pStrvalue.getQuantity() instanceof IfcQuantityArea)
+        {
+            unit = areaUnits;
+        } else if (pStrvalue instanceof IfcQuantityCount)
+        {
+            unit = COUNT_QUANTITY_UNIT_DEFAULT;
+        } else if (pStrvalue.getQuantity() instanceof IfcQuantityLength)
+        {
+            unit = linearUnits;
+        } else if (pStrvalue.getQuantity() instanceof IfcQuantityVolume)
+        {
+            unit = volumeUnits;
+        } else if (pStrvalue.getProperty() instanceof IfcPropertySingleValue)
+        {
+            IfcPropertySingleValue propertySingleValue = (IfcPropertySingleValue)pStrvalue.getProperty();
+            IfcValue value = propertySingleValue.getNominalValue();
+            if (value instanceof IfcVolumeMeasure)
+            {
+                unit = volumeUnits;
+            } else if (value instanceof IfcAreaMeasure)
+            {
+                unit = areaUnits;
+            } else if (value instanceof IfcLengthMeasure)
+            {
+                unit = linearUnits;
+            } else if (value instanceof IfcCountMeasure)
+            {
+                unit = COUNT_QUANTITY_UNIT_DEFAULT;
+            }
+
+        }
+        return unit;
+    }
+
+    private static String categoryFromPropertyStringValue(IfcModelInterface model, String category, IfcPropertyToCOBieString pStrvalue)
+    {
+        if (pStrvalue.getPropertySet() != null)
+        {
+            String tmpCategory = COBieUtility.getPropertySetClassification(pStrvalue.getPropertySet(), model);
+            if (!COBieUtility.isNA(tmpCategory))
+            {
+                category = tmpCategory;
+            }
+        }
+        return category;
     }
 
     protected static String categoryFromRoot(IfcRoot root)
@@ -279,6 +332,17 @@ public class IfcToAttribute
         return facilityExclusionsCopy;
     }
 
+    private static IfcProject getFirstProject(IfcModelInterface model)
+    {
+        List<IfcProject> projects = model.getAll(IfcProject.class);
+        IfcProject project = null;
+        if (projects.size() > 0)
+        {
+            project = projects.get(0);
+        }
+        return project;
+    }
+
     protected static ArrayList<String> getFloorExclusions()
     {
         ArrayList<String> floorExclusionsCopy = new ArrayList<String>();
@@ -352,6 +416,29 @@ public class IfcToAttribute
         return typeExclusionsCopy;
     }
 
+    private static String getUnit(IfcPropertyToCOBieString pStrvalue, IfcProject ifcProject)
+    {
+        String unit = "";
+        if (pStrvalue instanceof IfcPhysicalQuantityToCOBieString)
+        {
+            IfcPhysicalQuantityToCOBieString pQStr = (IfcPhysicalQuantityToCOBieString)pStrvalue;
+            unit = COBieUtility.getCOBieString(pQStr.getUnitString());
+        } else if (pStrvalue instanceof IfcSingleValueToCOBieString)
+        {
+            IfcSingleValueToCOBieString svStr = (IfcSingleValueToCOBieString)pStrvalue;
+            unit = COBieUtility.getCOBieString(svStr.getUnitString());
+        } else if (pStrvalue instanceof IfcEnumeratedValueToCOBieString)
+        {
+            IfcEnumeratedValueToCOBieString enumStr = (IfcEnumeratedValueToCOBieString)pStrvalue;
+            unit = COBieUtility.getCOBieString(enumStr.getUnitString());
+        }
+        if (COBieUtility.isNA(unit))
+        {
+            unit = assignUnitsBasedOnProjectDefaults(pStrvalue, ifcProject);
+        }
+        return unit;
+    }
+
     protected static ArrayList<String> getValueExclusions()
     {
         return valueExclusions;
@@ -381,6 +468,24 @@ public class IfcToAttribute
         {
             return false;
         }
+    }
+
+    private static String setAllowedValues(IfcPropertyToCOBieString pStrvalue)
+    {
+        String allowedValues = "";
+        if (pStrvalue instanceof IfcPhysicalQuantityToCOBieString)
+        {
+            allowedValues = COBieUtility.COBieNA;
+        } else if (pStrvalue instanceof IfcSingleValueToCOBieString)
+        {
+            allowedValues = COBieUtility.COBieNA;
+        } else if (pStrvalue instanceof IfcEnumeratedValueToCOBieString)
+        {
+            IfcEnumeratedValueToCOBieString enumStr = (IfcEnumeratedValueToCOBieString)pStrvalue;
+            allowedValues = COBieUtility.getCOBieString(COBieUtility.delimittedStringFromArrayList(enumStr.getEnumerationReferenceStrings()));
+
+        }
+        return allowedValues;
     }
 
     protected static String sheetNameFromRoot(IfcRoot root)
@@ -514,108 +619,6 @@ public class IfcToAttribute
                 }
             }
         }
-    }
-
-    private static IfcProject getFirstProject(IfcModelInterface model)
-    {
-        List<IfcProject> projects = model.getAll(IfcProject.class);
-        IfcProject project = null;
-        if(projects.size()>0)
-            project = projects.get(0);
-        return project;
-    }
-
-    private static String categoryFromPropertyStringValue(IfcModelInterface model, String category, IfcPropertyToCOBieString pStrvalue)
-    {
-        if (pStrvalue.getPropertySet() != null)
-        {
-            String tmpCategory = COBieUtility.getPropertySetClassification(pStrvalue.getPropertySet(), model);
-            if (!COBieUtility.isNA(tmpCategory))
-            {
-                category = tmpCategory;
-            }
-        }
-        return category;
-    }
-
-    private static String getUnit(IfcPropertyToCOBieString pStrvalue, IfcProject ifcProject)
-    {
-        String unit = "";
-        if (pStrvalue instanceof IfcPhysicalQuantityToCOBieString)
-        {
-            IfcPhysicalQuantityToCOBieString pQStr = (IfcPhysicalQuantityToCOBieString)pStrvalue;
-            unit = COBieUtility.getCOBieString(pQStr.getUnitString());            
-        } 
-        else if (pStrvalue instanceof IfcSingleValueToCOBieString)
-        {
-            IfcSingleValueToCOBieString svStr = (IfcSingleValueToCOBieString)pStrvalue;
-            unit = COBieUtility.getCOBieString(svStr.getUnitString());
-        } 
-        else if (pStrvalue instanceof IfcEnumeratedValueToCOBieString)
-        {
-            IfcEnumeratedValueToCOBieString enumStr = (IfcEnumeratedValueToCOBieString)pStrvalue;
-            unit = COBieUtility.getCOBieString(enumStr.getUnitString());
-        }
-        if(COBieUtility.isNA(unit))
-        {
-            unit = assignUnitsBasedOnProjectDefaults(pStrvalue, ifcProject);
-        }
-        return unit;
-    }
-
-    private static String assignUnitsBasedOnProjectDefaults(IfcPropertyToCOBieString pStrvalue, IfcProject ifcProject)
-    {
-        String unit = COBieUtility.COBieNA;
-        String linearUnits = IfcToFacility.getProjectLinearUnits(ifcProject);
-        String areaUnits = IfcToFacility.getProjectAreaUnits(ifcProject);
-        String volumeUnits = IfcToFacility.volumeUnitsFromProject(ifcProject);
-        
-        if (pStrvalue.getQuantity() instanceof IfcQuantityArea)
-            unit = areaUnits;
-        else if (pStrvalue instanceof IfcQuantityCount)
-            unit = COUNT_QUANTITY_UNIT_DEFAULT;
-        else if (pStrvalue.getQuantity() instanceof IfcQuantityLength)
-            unit = linearUnits;
-        else if (pStrvalue.getQuantity() instanceof IfcQuantityVolume)
-            unit = volumeUnits;
-        else if (pStrvalue.getProperty() instanceof IfcPropertySingleValue)
-        {
-            IfcPropertySingleValue propertySingleValue =
-                    (IfcPropertySingleValue) pStrvalue.getProperty();
-            IfcValue value = propertySingleValue.getNominalValue();
-            if(value instanceof IfcVolumeMeasure)
-                unit = volumeUnits;
-            else if (value instanceof IfcAreaMeasure)
-                unit = areaUnits;
-            else if (value instanceof IfcLengthMeasure)
-                unit = linearUnits;
-            else if (value instanceof IfcCountMeasure)
-                unit = COUNT_QUANTITY_UNIT_DEFAULT;
-            
-        }
-        return unit;
-    }
-
-    private static String setAllowedValues(IfcPropertyToCOBieString pStrvalue)
-    {
-        String allowedValues="";
-        if (pStrvalue instanceof IfcPhysicalQuantityToCOBieString)
-        {
-            allowedValues = COBieUtility.COBieNA;
-        } 
-        else if (pStrvalue instanceof IfcSingleValueToCOBieString)
-        {
-            IfcSingleValueToCOBieString svStr = (IfcSingleValueToCOBieString)pStrvalue;
-            allowedValues = COBieUtility.COBieNA;
-        } 
-        else if (pStrvalue instanceof IfcEnumeratedValueToCOBieString)
-        {
-            IfcEnumeratedValueToCOBieString enumStr = (IfcEnumeratedValueToCOBieString)pStrvalue;
-            allowedValues = COBieUtility.getCOBieString(COBieUtility.delimittedStringFromArrayList(enumStr
-                    .getEnumerationReferenceStrings()));
-
-        }
-        return allowedValues;
     }
 
     protected static void writeTypeAttributes(

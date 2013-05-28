@@ -531,6 +531,10 @@ public class MonetaryTextMatcher
                             "Zimbabwe", "Zimbabwean dollar", "ZWD", "Zimbabwean dollars"
                     });
                     break;
+                case NULL:
+                    break;
+                default:
+                    break;
             }
 
         }

@@ -1,24 +1,25 @@
 package org.erdc.cobie;
 
+import java.awt.Dimension;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JDialog;
-import javax.swing.JTextArea;
-import java.awt.BorderLayout;
-import java.awt.SystemColor;
-import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JEditorPane;
-import java.awt.TextArea;
-import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JTextArea;
 
 public class JavaVersionWarning extends JDialog implements ActionListener
 {
 	
-	public JavaVersionWarning()
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 3878719665664674345L;
+
+    public JavaVersionWarning()
 	{
 		setResizable(false);
 		setMinimumSize(new Dimension(615, 337));

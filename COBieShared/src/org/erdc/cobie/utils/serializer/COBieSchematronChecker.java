@@ -40,54 +40,29 @@ public class COBieSchematronChecker
     private String schematronRulePath;
     private String preProcessorPath;
     private String svrlHTMLPath;
-    private String svrlXSDPath;
-    private String cssPath;
     private COBIEDocument COBie;
+
+    public COBieSchematronChecker(String schematronRulePath, String preProcessorPath, String svrlXSDPath, String svrlHTMLPath, String cssPath)
+    {
+        this.schematronRulePath = schematronRulePath;
+        this.preProcessorPath = preProcessorPath;
+        this.svrlHTMLPath = svrlHTMLPath;
+    }
+
+    public COBieSchematronChecker(String schematronRulePath, String preProcessorPath, String svrlXSDPath, String svrlHTMLPath, String cssPath,
+            COBIEDocument cobie)
+    {
+        this.schematronRulePath = schematronRulePath;
+        this.preProcessorPath = preProcessorPath;
+        this.svrlHTMLPath = svrlHTMLPath;
+        COBie = cobie;
+    }
 
     public COBIEDocument getCOBie()
     {
         return COBie;
     }
 
-
-    public void setCOBie(COBIEDocument cOBie)
-    {
-        COBie = cOBie;
-    }
-
-
-    public COBieSchematronChecker(String schematronRulePath, String preProcessorPath,String svrlXSDPath,String svrlHTMLPath,String cssPath, COBIEDocument cobie)
-    {
-        this.schematronRulePath = schematronRulePath;
-        this.preProcessorPath = preProcessorPath;
-        this.svrlHTMLPath = svrlHTMLPath;
-        this.svrlXSDPath = svrlXSDPath;
-        this.cssPath = cssPath;
-        this.COBie = cobie;
-    }
-    
-  
-    public COBieSchematronChecker(String schematronRulePath, String preProcessorPath,String svrlXSDPath,String svrlHTMLPath,String cssPath)
-    {
-        this.schematronRulePath = schematronRulePath;
-        this.preProcessorPath = preProcessorPath;
-        this.svrlHTMLPath = svrlHTMLPath;
-        this.svrlXSDPath = svrlXSDPath;
-        this.cssPath = cssPath;
-    }
-    
-    public void writeResult(OutputStream output) throws Exception
-    {
-        try
-        {
-            schematronReportToOutputStream(output);
-        }
-        catch(Exception ex)
-        {
-            throw ex;
-        }
-    }
-    
     private void schematronReportToOutputStream(OutputStream outputStream) throws UnsupportedEncodingException
     {
         Templates templates1 = null;
@@ -95,77 +70,66 @@ public class COBieSchematronChecker
         Templates templates3 = null;
         LOGGER.info(LOGGER_MESSAGE_TRANSFORM1_BEGIN);
         File ruleFile = new File(schematronRulePath);
-        TransformerFactory tfactory = TransformerFactory.newInstance(
-                "net.sf.saxon.TransformerFactoryImpl", getClass()
-                        .getClassLoader());
+        TransformerFactory tfactory = TransformerFactory.newInstance("net.sf.saxon.TransformerFactoryImpl", getClass().getClassLoader());
         SAXBuilder builder = new SAXBuilder();
         try
         {
             builder.build(new File(preProcessorPath));
-        }
-        catch (JDOMException e1)
+        } catch (JDOMException e1)
         {
             // TODO Auto-generated catch block
             LOGGER.error(LOGGER_MESSAGE_TRANSFORM1_JDOM_ERROR + e1.getMessage());
             e1.printStackTrace();
-        }
-        catch (IOException e1)
+        } catch (IOException e1)
         {
             // TODO Auto-generated catch block
-            LOGGER.error(LOGGER_MESSAGE_TRANSFORM1_IO_ERROR+e1.getMessage());
+            LOGGER.error(LOGGER_MESSAGE_TRANSFORM1_IO_ERROR + e1.getMessage());
             e1.printStackTrace();
         }
         File preProc = new File(preProcessorPath);
-    
-        StringWriter schematronXSLBuffer = XSLUtils.transformInputSourceToStringWriter(templates1,
-                new StreamSource(ruleFile),new StreamSource(preProc),tfactory);
+
+        StringWriter schematronXSLBuffer = XSLUtils.transformInputSourceToStringWriter(templates1, new StreamSource(ruleFile), new StreamSource(
+                preProc), tfactory);
         LOGGER.info(LOGGER_MESSAGE_TRANSFORM1_DONE);
         LOGGER.info(LOGGER_MESSAGE_TRANSFORM2_BEGIN);
         ByteArrayInputStream targetDocStream = new ByteArrayInputStream(COBie.toString().getBytes("UTF-8"));
         StringWriter svrlXSLBuffer = new StringWriter();
         try
         {
-            svrlXSLBuffer = XSLUtils.transformInputSourceToStringWriter(templates2,
-                new StreamSource(targetDocStream),
-                new StreamSource(new StringReader(schematronXSLBuffer.toString())),
-                tfactory);
+            svrlXSLBuffer = XSLUtils.transformInputSourceToStringWriter(templates2, new StreamSource(targetDocStream), new StreamSource(
+                    new StringReader(schematronXSLBuffer.toString())), tfactory);
             LOGGER.info(LOGGER_MESSAGE_TRANSFORM2_DONE);
-        }
-        catch(Exception e)
+        } catch (Exception e)
         {
-            LOGGER.error(LOGGER_MESSAGE_TRANSFORM2_ERROR+e.getMessage());
+            LOGGER.error(LOGGER_MESSAGE_TRANSFORM2_ERROR + e.getMessage());
         }
         LOGGER.info(LOGGER_MESSAGE_TRANSFORM3_BEGIN);
         File svrlHTMLFile = new File(svrlHTMLPath);
         try
         {
             builder.build(svrlHTMLFile);
-        }
-        catch (JDOMException e1)
+        } catch (JDOMException e1)
         {
-            LOGGER.error(LOGGER_MESSAGE_TRANSFORM3_PREPARE_ERROR+e1.getMessage());
+            LOGGER.error(LOGGER_MESSAGE_TRANSFORM3_PREPARE_ERROR + e1.getMessage());
             e1.printStackTrace();
-        }
-        catch (IOException e1)
+        } catch (IOException e1)
         {
-            LOGGER.error(LOGGER_MESSAGE_TRANSFORM3_PREPARE_ERROR+e1.getMessage());
+            LOGGER.error(LOGGER_MESSAGE_TRANSFORM3_PREPARE_ERROR + e1.getMessage());
             e1.printStackTrace();
         }
         StringWriter svrlHTMLBuffer = new StringWriter();
         try
         {
-            //PrintWriter prt = new PrintWriter(new File("testsvrl.xml"));
-            //prt.write(svrlXSLBuffer.toString());
-            //prt.flush();
-            //prt.close();
-             svrlHTMLBuffer = XSLUtils.transformInputSourceToStringWriter(templates3,
-                new StreamSource(new StringReader(svrlXSLBuffer.toString())),
-                new StreamSource(svrlHTMLFile),tfactory);
-             LOGGER.info(LOGGER_MESSAGE_TRANSFORM3_DONE);
-        }
-        catch(Exception e)
+            // PrintWriter prt = new PrintWriter(new File("testsvrl.xml"));
+            // prt.write(svrlXSLBuffer.toString());
+            // prt.flush();
+            // prt.close();
+            svrlHTMLBuffer = XSLUtils.transformInputSourceToStringWriter(templates3, new StreamSource(new StringReader(svrlXSLBuffer.toString())),
+                    new StreamSource(svrlHTMLFile), tfactory);
+            LOGGER.info(LOGGER_MESSAGE_TRANSFORM3_DONE);
+        } catch (Exception e)
         {
-            LOGGER.info(LOGGER_MESSAGE_TRANSFORM3_ERROR+e.getMessage());
+            LOGGER.info(LOGGER_MESSAGE_TRANSFORM3_ERROR + e.getMessage());
         }
 
         try
@@ -176,14 +140,28 @@ public class COBieSchematronChecker
             wrt.write(result);
             wrt.flush();
             LOGGER.info(LOGGER_MESSAGE_TOOS_DONE);
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             // TODO Auto-generated catch block
-            LOGGER.error(LOGGER_MESSAGE_RESPONSE_EXCEPTION+e.getMessage());
+            LOGGER.error(LOGGER_MESSAGE_RESPONSE_EXCEPTION + e.getMessage());
             e.printStackTrace();
         }
 
-        
+    }
+
+    public void setCOBie(COBIEDocument cOBie)
+    {
+        COBie = cOBie;
+    }
+
+    public void writeResult(OutputStream output) throws Exception
+    {
+        try
+        {
+            schematronReportToOutputStream(output);
+        } catch (Exception ex)
+        {
+            throw ex;
+        }
     }
 }

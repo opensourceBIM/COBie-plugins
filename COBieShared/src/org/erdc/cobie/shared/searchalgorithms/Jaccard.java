@@ -30,33 +30,33 @@ public class Jaccard
         return innerCalc(alen, blen, set.size());
     }
 
-    private static <K extends Comparable<K>> double calcByMerge(K[] a, int offsetA, K[] b, int offsetB)
-    {
-
-        int aLen = a.length - offsetA;
-        int bLen = b.length - offsetB;
-
-        int overlap = 0;
-        int i = offsetA;
-        int j = offsetB;
-        while ((i < a.length) && (j < b.length))
-        {
-            if (a[i].equals(b[j]))
-            {
-                overlap++;
-                i++;
-                j++;
-            } else if (a[i].compareTo(b[j]) < 0)
-            {
-                i++;
-            } else
-            {
-                j++;
-            }
-        }
-        return overlap / (double)((aLen + bLen) - overlap);
-
-    }
+//    private static <K extends Comparable<K>> double calcByMerge(K[] a, int offsetA, K[] b, int offsetB)
+//    {
+//
+//        int aLen = a.length - offsetA;
+//        int bLen = b.length - offsetB;
+//
+//        int overlap = 0;
+//        int i = offsetA;
+//        int j = offsetB;
+//        while ((i < a.length) && (j < b.length))
+//        {
+//            if (a[i].equals(b[j]))
+//            {
+//                overlap++;
+//                i++;
+//                j++;
+//            } else if (a[i].compareTo(b[j]) < 0)
+//            {
+//                i++;
+//            } else
+//            {
+//                j++;
+//            }
+//        }
+//        return overlap / (double)((aLen + bLen) - overlap);
+//
+//    }
 
     /**
      * 

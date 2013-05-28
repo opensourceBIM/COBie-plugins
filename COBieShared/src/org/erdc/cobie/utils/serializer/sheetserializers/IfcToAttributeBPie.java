@@ -62,7 +62,7 @@ public class IfcToAttributeBPie extends IfcToAttribute
                 IfcPropertySetDefinition pSetDef = relPropDef.getRelatingPropertyDefinition();
                 if (pSetDef.getName().equalsIgnoreCase(ATTRIBUTE_SPACE_TYPE_PSET_NAME))
                 {
-                    guid = pSetDef.getGlobalId().getWrappedValue();
+                    guid = pSetDef.getGlobalId();
                 }
             }
         }

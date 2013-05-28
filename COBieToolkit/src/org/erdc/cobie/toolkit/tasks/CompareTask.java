@@ -40,12 +40,8 @@ public class CompareTask extends ApplicationTask<Void> implements PropertyChange
 	private COBieCompareDocument compareDocument;
 	private COBieCompareResult compareResult;
 	private String reportFilePath;
-
-
-	private ReportSerializer reportSerializer;
-
-
 	private boolean writesReportFile;
+	
 	public CompareTask(COBIEDocument baselineDocument,COBIEDocument revisionDocument,
 			String reportFilePath,
 			Informable informable,boolean requiresRunningBiMServer)
@@ -58,14 +54,12 @@ public class CompareTask extends ApplicationTask<Void> implements PropertyChange
 		setWritesReportFile(true);
 		compareResult = new COBieCompareResult(baselineDocument,revisionDocument);
 		compareResult.getState().addPropertyChangeListener(CompareTask.this);
-		initializeHtmlReportSerializer();
 	}
 	public CompareTask(Informable informable,boolean requiresRunningBiMServer)
 	{
 		super(informable,requiresRunningBiMServer);
 		compareResult = new COBieCompareResult();
 		compareResult.getState().addPropertyChangeListener(CompareTask.this);
-		initializeHtmlReportSerializer();
 	}
 	@Override
 	protected Void doInBackground() throws Exception
@@ -84,7 +78,6 @@ public class CompareTask extends ApplicationTask<Void> implements PropertyChange
 				//publish(new COBieTaskProgress("Initializing document..."));
 				//COBieCompareDocument compareDocument = COBieCompareDocument..Factory.newInstance();
 				//publish(new COBieTaskProgress("Initialed blank compare..."));
-				COBieCompareDocument compareDoc = COBieCompareDocument.Factory.newInstance();
 				setCompareDocument(compareResult.asCOBieCompareDocument());
 				setProgress(70);
 				publish(new COBieTaskProgress(PROGRESS_MESSAGE_SAVING_COMPARE));
@@ -125,7 +118,7 @@ public class CompareTask extends ApplicationTask<Void> implements PropertyChange
 	private void executeXslTransform(File saveFile) throws UnsupportedEncodingException, IOException
 	{
 		FileOutputStream fOut = new FileOutputStream(saveFile);
-		reportSerializer.exexuteSaxonXSLT(fOut, compareDocument.toString().getBytes(DEFAULT_ENCODING),COMPARE_HTML_XSLT_PATH);
+		ReportSerializer.executeSaxonXSLT(fOut, compareDocument.toString().getBytes(DEFAULT_ENCODING),COMPARE_HTML_XSLT_PATH);
 	}
 
 	public COBIEDocument getBaselineDocument()
@@ -152,12 +145,7 @@ public class CompareTask extends ApplicationTask<Void> implements PropertyChange
 	{
 		return revisionDocument;
 	}
-	
-    private void initializeHtmlReportSerializer()
-	{
-		reportSerializer = new ReportSerializer(COMPARE_HTML_XSLT_PATH);
-	}
-	
+
 	public boolean isWritesReportFile()
 	{
 		return writesReportFile;
@@ -207,18 +195,12 @@ public class CompareTask extends ApplicationTask<Void> implements PropertyChange
 	{
 		this.baselineDocument = baselineDocument;
 	}
-	public void setCompareDocument(COBieCompareDocument compareDocument)
+	
+	public void setCompareDocument(COBieCompareDocument compareDocument) throws IOException
 	{
 		this.compareDocument = compareDocument;
-		try
-		{
-			compareDocument.save(new File(TEST_COMPARE_FILENAME));
-		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		compareDocument.save(new File(TEST_COMPARE_FILENAME));
+
 	}
 
 	protected void setCompareResult(COBieCompareResult compareResult)

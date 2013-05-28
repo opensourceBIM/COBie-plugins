@@ -2,7 +2,7 @@ package org.erdc.cobie.shared.targetunits.length;
 
 import org.bimserver.models.ifc2x3tc1.IfcReal;
 import org.bimserver.models.ifc2x3tc1.IfcUnit;
-import org.erdc.cobie.utils.deserializer.propertysets.PropertyUtility;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.propertysets.PropertyUtility;
 
 public class MilesTextMatcher extends LengthConversionBasedUnitTextMatcher
 {

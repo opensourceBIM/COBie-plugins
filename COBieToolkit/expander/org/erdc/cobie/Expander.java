@@ -58,7 +58,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 public class Expander extends JFrame {
-	private static final double GB_DIVIDEND = (double) Math.pow(1024, 2);
 	private static final String JAVA_64_BIT_ARCHITECTURE_PROPERTY_VALUE = "64";
 	private static final String SUN_ARCH_DATA_MODEL_PROPERTYNAME = "sun.arch.data.model";
 	private static final String WINDOW_TITLE = "COBie Toolkit Starter";
@@ -364,7 +363,7 @@ public class Expander extends JFrame {
 	}
 
 	private File expand() {
-		JarFile jar;
+		JarFile jar = null;
 		String jarFileName = getJarFileNameNew();
 		File destDir = new File(jarFileName.substring(0, jarFileName.indexOf(".jar")));
 		if (!destDir.isDirectory()) {
@@ -397,24 +396,21 @@ public class Expander extends JFrame {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			finally {
+                try {
+                    if (jar != null) {
+                        jar.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 		} else {
 			System.out.println("No expanding necessary");
 		}
 		return destDir;
 	}
 	
-	private static void printMemoryInfo()
-	{
-		Runtime runtime = Runtime.getRuntime();  
-		  
-		double maxMemory = (double)runtime.maxMemory();  
-		double allocatedMemory = (double) runtime.totalMemory();  
-		double freeMemory = (double)runtime.freeMemory();  
-		System.out.println("free memory: " + freeMemory / GB_DIVIDEND+" GB");  
-		System.out.println("allocated memory: " + allocatedMemory / GB_DIVIDEND+" GB");  
-		System.out.println("max memory: " + maxMemory /GB_DIVIDEND+" GB");  
-		System.out.println("total free memory: " +    (freeMemory + (maxMemory - allocatedMemory)) / GB_DIVIDEND+" GB");
-	}
 	private static boolean isJavaHome64Bit()
 	{
 		boolean is64Bit = false;

@@ -1,31 +1,27 @@
 package org.erdc.cobie.toolkit.gui.controls;
 
-import java.awt.Component;
-import java.awt.HeadlessException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
-
-import org.erdc.cobie.shared.COBieSharedUtilities.COBIE_FILE_TYPE;
+import org.erdc.cobie.shared.PluginUtilities.OutgingFileType;
 import org.erdc.cobie.toolkit.CobieToolkit;
 
 public class CobieFileChoser extends JFileChooser
 {
 	private static final long serialVersionUID = 1L;
 	//private COBIE_FILE_TYPE fileType;
-	private List<COBIE_FILE_TYPE> fileTypes;
-	private COBIE_FILE_TYPE chosenFileType;
+	private List<OutgingFileType> fileTypes;
+	private OutgingFileType chosenFileType;
 	public CobieFileChoser()
 	{
 		super();
 	}
 	
-	public CobieFileChoser(COBIE_FILE_TYPE cobieFileType)
+	public CobieFileChoser(OutgingFileType cobieFileType)
 	{
 		init();
 		fileTypes.add(cobieFileType);
@@ -42,10 +38,10 @@ public class CobieFileChoser extends JFileChooser
 	
 	private void init()
 	{
-		fileTypes = new ArrayList<COBIE_FILE_TYPE>();
+		fileTypes = new ArrayList<OutgingFileType>();
 	}
 	
-	public CobieFileChoser(List<COBIE_FILE_TYPE> cobieFileTypes)
+	public CobieFileChoser(List<OutgingFileType> cobieFileTypes)
 	{
 		init();
 		fileTypes = cobieFileTypes;
@@ -56,7 +52,7 @@ public class CobieFileChoser extends JFileChooser
 
 	private void initializeFileFilter()
 	{
-		for(COBIE_FILE_TYPE fileType:fileTypes)
+		for(OutgingFileType fileType:fileTypes)
 		{
 			COBieFileFilter fileFilter =
 					new COBieFileFilter(fileType);
@@ -91,12 +87,12 @@ public class CobieFileChoser extends JFileChooser
 		return cobieFileFilter;
 	}
 
-	public COBIE_FILE_TYPE getChosenFileType()
+	public OutgingFileType getChosenFileType()
 	{
 		return chosenFileType;
 	}
 
-	private void setChosenFileType(COBIE_FILE_TYPE chosenFile)
+	private void setChosenFileType(OutgingFileType chosenFile)
 	{
 		this.chosenFileType = chosenFile;
 	}

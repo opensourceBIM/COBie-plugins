@@ -46,9 +46,9 @@ import org.bimserver.models.ifc2x3tc1.IfcTypeObject;
 import org.bimserver.models.ifc2x3tc1.IfcZone;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.modelhandlers.ClassificationHandler;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.DocumentType;
-import org.erdc.cobie.utils.deserializer.modelhandlers.ClassificationHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -172,7 +172,7 @@ public class IfcToDocument
                             rowName = IfcToDocument.bamieRowNameFromDistributionElement(element);
                             extSystem = COBieUtility.getApplicationName(oh);
                             extObject = IfcToComponent.extObjectFromProduct(element);
-                            extIdentifier = element.getGlobalId().getWrappedValue();
+                            extIdentifier = COBieUtility.extIdFromRoot(element);
                             description = COBieUtility.getCOBieString(element.getName());
                             reference = IfcToDocument.Reference;
 
@@ -332,7 +332,7 @@ public class IfcToDocument
                             file = IfcToDocument.File;
                             extSystem = COBieUtility.getApplicationName(oh);
                             extObject = IfcToType.extObjectFromTypeObject(type);
-                            extIdentifier = type.getGlobalId().getWrappedValue();
+                            extIdentifier = COBieUtility.extIdFromRoot(type);
                             description = IfcToDocument.descriptionFromTypeObject(type);
                             reference = IfcToDocument.Reference;
 
@@ -370,7 +370,7 @@ public class IfcToDocument
         String extId = "";
         if ((relAssociatesDocument.getRelatedObjects() != null) && (relAssociatesDocument.getRelatedObjects().size() > 0))
         {
-            extId = relAssociatesDocument.getRelatedObjects().get(0).getGlobalId().getWrappedValue();
+            extId = COBieUtility.extIdFromRoot(relAssociatesDocument.getRelatedObjects().get(0));
         }
         return COBieUtility.getCOBieString(extId);
     }

@@ -110,7 +110,7 @@ public class IfcToSpaceCoordinatesSerializer extends IfcCOBieSerializer<Coordina
         }
         String extSystem = COBieUtility.getApplicationName(ifcSpace.getOwnerHistory());
         String extObject = COBieUtility.extObjectFromObjectDef(ifcSpace);
-        String extId = COBieUtility.getCOBieString(ifcSpace.getGlobalId().getWrappedValue());
+        String extId = COBieUtility.extIdFromRoot(ifcSpace);
         String clockWiseRotation = COBieUtility.COBieNA;
         String elevationRotation = COBieUtility.COBieNA;
         String yawRotation = COBieUtility.COBieNA;

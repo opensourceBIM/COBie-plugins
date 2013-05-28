@@ -210,6 +210,7 @@ public class IfcRelationshipsToCOBie
     static public Map<String, String> propertyStringsFromFirstRelatedObject(IfcRelationship rel, ArrayList<String> propertyNames)
     {
         Map<String, String> propertyMap = new HashMap<String, String>();
+        @SuppressWarnings("unchecked")
         ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
         Map<String, String> tmpPropertyMap = new HashMap<String, String>();
         IfcObject firstInstance = firstRelatedObjectFromRelationship(rel);
@@ -231,6 +232,7 @@ public class IfcRelationshipsToCOBie
     static public Map<String, String> propertyStringsFromFirstRelatedObject(IfcRelationship rel, ArrayList<String> propertyNames, boolean exclusive)
     {
         Map<String, String> propertyMap = new HashMap<String, String>();
+        @SuppressWarnings("unchecked")
         ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
         Map<String, String> tmpPropertyMap = new HashMap<String, String>();
         IfcObject firstInstance = firstRelatedObjectFromRelationship(rel);
@@ -283,6 +285,7 @@ public class IfcRelationshipsToCOBie
     {
         Map<String, String> propertyMap = new HashMap<String, String>();
         new HashMap<String, String>();
+        @SuppressWarnings("unchecked")
         ArrayList<String> copyPNames = (ArrayList<String>)propertyNames.clone();
         IfcPropertySetDefinition pSetDef = relDefinesByProperties.getRelatingPropertyDefinition();
         propertyMap = stringMapFromPropertySetDefinition(copyPNames, pSetDef);
@@ -297,6 +300,7 @@ public class IfcRelationshipsToCOBie
     {
         Map<String, String> propertyMap = new HashMap<String, String>();
         Map<String, String> tmpPropertyMap = new HashMap<String, String>();
+        @SuppressWarnings("unchecked")
         ArrayList<String> copyPNames = (ArrayList<String>)propertyNames.clone();
         IfcPropertySetDefinition pSetDef = relDefinesByProperties.getRelatingPropertyDefinition();
         if (IfcPropertySet.class.isInstance(pSetDef))
@@ -324,6 +328,7 @@ public class IfcRelationshipsToCOBie
 
     static private Map<String, String> propertyStringsFromRelDefinesByType(IfcRelDefinesByType relDefinesByType, ArrayList<String> propertyNames)
     {
+        @SuppressWarnings("unchecked")
         ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
         Map<String, String> propertyMap = new HashMap<String, String>();
         Map<String, String> tmpPropertyMap = new HashMap<String, String>();
@@ -367,6 +372,7 @@ public class IfcRelationshipsToCOBie
             ArrayList<String> propertyNames,
             boolean exclusive)
     {
+        @SuppressWarnings("unchecked")
         ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
         Map<String, String> propertyMap = new HashMap<String, String>();
         Map<String, String> tmpPropertyMap = new HashMap<String, String>();
@@ -406,6 +412,7 @@ public class IfcRelationshipsToCOBie
     static public Map<String, String> propertyStringsFromTypeObject(IfcTypeObject rType, ArrayList<String> propertyNames)
     {
 
+        @SuppressWarnings("unchecked")
         ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
         Map<String, String> propertyMap = new HashMap<String, String>();
         Map<String, String> tmpPropertyMap = new HashMap<String, String>();
@@ -429,6 +436,7 @@ public class IfcRelationshipsToCOBie
 
     static public Map<String, String> propertyStringsFromTypeObject(IfcTypeObject rType, ArrayList<String> propertyNames, boolean exclusive)
     {
+        @SuppressWarnings("unchecked")
         ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
         Map<String, String> propertyMap = new HashMap<String, String>();
         Map<String, String> tmpPropertyMap = new HashMap<String, String>();
@@ -455,6 +463,7 @@ public class IfcRelationshipsToCOBie
             boolean exclusive)
     {
         Map<String, IfcPropertyToCOBieString> propertyMap = new HashMap<String, IfcPropertyToCOBieString>();
+        @SuppressWarnings("unchecked")
         ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
         Map<String, IfcPropertyToCOBieString> tmpPropertyMap = new HashMap<String, IfcPropertyToCOBieString>();
         IfcObject firstInstance = firstRelatedObjectFromRelationship(rel);
@@ -497,6 +506,7 @@ public class IfcRelationshipsToCOBie
     {
         Map<String, IfcPropertyToCOBieString> propertyMap = new HashMap<String, IfcPropertyToCOBieString>();
         Map<String, IfcPropertyToCOBieString> tmpPropertyMap = new HashMap<String, IfcPropertyToCOBieString>();
+        @SuppressWarnings("unchecked")
         ArrayList<String> copyPNames = (ArrayList<String>)propertyNames.clone();
         IfcPropertySetDefinition pSetDef = relDefinesByProperties.getRelatingPropertyDefinition();
         if (IfcPropertySet.class.isInstance(pSetDef))
@@ -529,6 +539,7 @@ public class IfcRelationshipsToCOBie
             ArrayList<String> propertyNames,
             boolean exclusive)
     {
+        @SuppressWarnings("unchecked")
         ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
         Map<String, IfcPropertyToCOBieString> propertyMap = new HashMap<String, IfcPropertyToCOBieString>();
         Map<String, IfcPropertyToCOBieString> tmpPropertyMap = new HashMap<String, IfcPropertyToCOBieString>();
@@ -561,6 +572,7 @@ public class IfcRelationshipsToCOBie
             ArrayList<String> propertyNames,
             boolean exclusive)
     {
+        @SuppressWarnings("unchecked")
         ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
         Map<String, IfcPropertyToCOBieString> propertyMap = new HashMap<String, IfcPropertyToCOBieString>();
         Map<String, IfcPropertyToCOBieString> tmpPropertyMap = new HashMap<String, IfcPropertyToCOBieString>();

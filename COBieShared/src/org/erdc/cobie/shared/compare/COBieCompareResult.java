@@ -21,11 +21,12 @@ import org.bimserver.shared.cobie.compare.COBieSheetComparisonType;
 import org.bimserver.shared.cobie.compare.CompareMetadataType;
 import org.bimserver.shared.exceptions.ServerException;
 import org.bimserver.shared.exceptions.UserException;
+import org.bimserver.shared.interfaces.PluginInterface;
 import org.bimserver.shared.interfaces.ServiceInterface;
 import org.erdc.cobie.shared.COBIERowDictionary;
 import org.erdc.cobie.shared.COBIESheetCollection;
 import org.erdc.cobie.shared.COBIESheetDictionary;
-import org.erdc.cobie.shared.COBieSharedUtilities;
+import org.erdc.cobie.shared.PluginUtilities;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.compare.COBieCompareState.CompareMode;
 import org.erdc.cobie.shared.compare.COBieCompareState.ComparisonDocument;
@@ -73,7 +74,7 @@ public class COBieCompareResult// extends SCompareResult
         setHasBiMServerConnection(true);
     }
 
-    public COBieCompareResult(long roid1, long roid2, ServiceInterface service) throws ServerException, UserException, XmlException, IOException
+    public COBieCompareResult(long roid1, long roid2, PluginInterface pluginInterface, ServiceInterface serviceInterface) throws ServerException, UserException, XmlException, IOException
     {
         initializeState();
         this.roid1 = roid1;
@@ -82,14 +83,14 @@ public class COBieCompareResult// extends SCompareResult
         {
             throw new IOException("Baseline and Target Revision the same, no comparison performed");
         }
-        this.service = service;
+        this.service = serviceInterface;
         state.setMode(CompareMode.Fetching);
         state.setCurrentDocument(ComparisonDocument.baseline);
         state.setProgress(1);
-        cobie1 = COBieSharedUtilities.getCOBieFromROID(roid1, service);
+        cobie1 = PluginUtilities.getCOBieFromROID(roid1, pluginInterface, serviceInterface);
         state.setCurrentDocument(ComparisonDocument.revision);
         state.setProgress(12);
-        cobie2 = COBieSharedUtilities.getCOBieFromROID(roid2, service);
+        cobie2 = PluginUtilities.getCOBieFromROID(roid2, pluginInterface, serviceInterface);
         state.setProgress(25);
         setHasBiMServerConnection(true);
         indexDocumentsAndPerformCompare();
@@ -308,7 +309,7 @@ public class COBieCompareResult// extends SCompareResult
 
     }
 
-    public void initializeBiMServerCompare(long roid1, long roid2, ServiceInterface service) throws ServerException, UserException, XmlException,
+    public void initializeBiMServerCompare(long roid1, long roid2, PluginInterface pluginInterface, ServiceInterface serviceInterface) throws ServerException, UserException, XmlException,
             IOException
     {
         // initializeState();
@@ -318,14 +319,14 @@ public class COBieCompareResult// extends SCompareResult
         {
             throw new IOException("Baseline and Target Revision the same, no comparison performed");
         }
-        this.service = service;
+        this.service = serviceInterface;
         state.setMode(CompareMode.Fetching);
         state.setCurrentDocument(ComparisonDocument.baseline);
         state.setProgress(1);
-        cobie1 = COBieSharedUtilities.getCOBieFromROID(roid1, service);
+        cobie1 = PluginUtilities.getCOBieFromROID(roid1, pluginInterface, service);
         state.setCurrentDocument(ComparisonDocument.revision);
         state.setProgress(12);
-        cobie2 = COBieSharedUtilities.getCOBieFromROID(roid2, service);
+        cobie2 = PluginUtilities.getCOBieFromROID(roid2, pluginInterface, service);
         state.setProgress(25);
         setHasBiMServerConnection(true);
     }
@@ -337,7 +338,7 @@ public class COBieCompareResult// extends SCompareResult
         CompareMetadataType compareMetadata = compareDocumentRoot.addNewCompareMetadata();
         compareMetadata.setCOBieModelARoid(String.valueOf(roid1));
         compareMetadata.setCOBieModelBRoid(String.valueOf(roid2));
-        compareMetadata.setCompareDateTime(COBieSharedUtilities.getCurrentTimeCalendar());
+        compareMetadata.setCompareDateTime(COBieUtility.getCurrentTimeCalendar());
         try
         {
             SRevision rev1 = service.getRevision(roid1);
@@ -369,7 +370,7 @@ public class COBieCompareResult// extends SCompareResult
         CompareMetadataType compareMetadata = compareDocumentRoot.addNewCompareMetadata();
         compareMetadata.setCOBieModelARoid(ROID_NO_BIMSERVER);
         compareMetadata.setCOBieModelBRoid(ROID_NO_BIMSERVER);
-        compareMetadata.setCompareDateTime(COBieSharedUtilities.getCurrentTimeCalendar());
+        compareMetadata.setCompareDateTime(COBieUtility.getCurrentTimeCalendar());
         compareMetadata.setCOBieModelADisplayName(DEFAULT_MODEL_A_DISPLAY_NAME);
         compareMetadata.setCOBieModelBDisplayName(DEFAULT_MODEL_B_DISPLAY_NAME);
         return compareDocument;

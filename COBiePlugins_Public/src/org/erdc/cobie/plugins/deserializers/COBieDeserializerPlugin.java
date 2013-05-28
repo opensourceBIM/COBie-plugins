@@ -20,73 +20,39 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import org.bimserver.models.store.ObjectDefinition;
+import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
+import org.bimserver.plugins.deserializers.Deserializer;
 import org.bimserver.plugins.deserializers.DeserializerPlugin;
-import org.bimserver.plugins.deserializers.EmfDeserializer;
 import org.bimserver.plugins.schema.SchemaException;
 import org.bimserver.plugins.serializers.SerializerPlugin;
 import org.erdc.cobie.plugins.serializers.COBieCheckSerializerPlugin;
-import org.erdc.cobie.plugins.utils.ConfigUtil;
+import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
 import org.erdc.cobie.shared.enums.COBieDeserializerPluginName;
 
-public class COBieDeserializerPlugin implements DeserializerPlugin {
-	private static String localConfigFilePath = "lib/COBieExcelTemplate.xml";	
+public class COBieDeserializerPlugin implements DeserializerPlugin
+{
+	private static String localConfigFilePath = "lib/COBieExcelTemplate.xml";
 	private static String COBIE_PREIMPORT_CHECK_DIRECTORY_NAME = "COBiePreImportComplianceReports";
 	private boolean initialized = false;
 	private File configurationFile;
 	private File preImportFileDirectory;
 	private COBieCheckSerializerPlugin checkSerializer;
-	
-	
-	@Override
-	public EmfDeserializer createDeserializer() {
-		
-		return new COBieDeserializer(configurationFile,preImportFileDirectory,checkSerializer);
-	}
 
 	@Override
-	public String getDescription() {
-		return "Deserializes COBie spreadsheetML into the model server.";
-	}
-
-	@Override
-	public String getVersion() {
-		return "1.0";
-	}
-
-	@Override
-	public void init(PluginManager pluginManager) throws SchemaException, PluginException {
-		checkSerializer = null;
-		for(SerializerPlugin plugin: pluginManager.getAllSerializerPlugins(true))
-		{
-			if (plugin instanceof COBieCheckSerializerPlugin)
-				this.checkSerializer = (COBieCheckSerializerPlugin) plugin;
-		}
-		try
-		{
-			configurationFile = ConfigUtil.prepareSerializerConfigFile(pluginManager, "COBieDeserializer", this,localConfigFilePath);
-		}
-		catch (FileNotFoundException e)
-		{
-			e.printStackTrace();
-			throw new PluginException("Could not find configuration files");
-		}
-		preImportFileDirectory = ConfigUtil.getDirectory(pluginManager, COBIE_PREIMPORT_CHECK_DIRECTORY_NAME);
-		initialized = true;
-	}
-	
-	@Override
-	public boolean canHandleExtension(String extension) {
+	public boolean canHandleExtension(String extension)
+	{
 		return extension.equalsIgnoreCase("xml");
 	}
 
 	@Override
-	public boolean isInitialized() {
-		return initialized;
+	public Deserializer createDeserializer(
+			PluginConfiguration pluginConfiguration)
+	{
+		return new COBieDeserializer(configurationFile, preImportFileDirectory,
+				checkSerializer);
 	}
-
-
 
 	@Override
 	public String getDefaultName()
@@ -95,9 +61,55 @@ public class COBieDeserializerPlugin implements DeserializerPlugin {
 	}
 
 	@Override
+	public String getDescription()
+	{
+		return "Deserializes COBie spreadsheetML into the model server.";
+	}
+
+	@Override
 	public ObjectDefinition getSettingsDefinition()
 	{
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getVersion()
+	{
+		return "1.0";
+	}
+
+	@Override
+	public void init(PluginManager pluginManager) throws SchemaException,
+			PluginException
+	{
+		checkSerializer = null;
+		for (SerializerPlugin plugin : pluginManager
+				.getAllSerializerPlugins(true))
+		{
+			if (plugin instanceof COBieCheckSerializerPlugin)
+			{
+				checkSerializer = (COBieCheckSerializerPlugin) plugin;
+			}
+		}
+		try
+		{
+			configurationFile = PluginRuntimeFileHelper
+					.prepareSerializerConfigFile(pluginManager,
+							"COBieDeserializer", this, localConfigFilePath);
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+			throw new PluginException("Could not find configuration files");
+		}
+		preImportFileDirectory = PluginRuntimeFileHelper.getDirectory(
+				pluginManager, COBIE_PREIMPORT_CHECK_DIRECTORY_NAME);
+		initialized = true;
+	}
+
+	@Override
+	public boolean isInitialized()
+	{
+		return initialized;
 	}
 }

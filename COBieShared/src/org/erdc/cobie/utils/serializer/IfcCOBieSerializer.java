@@ -103,10 +103,7 @@ public abstract class IfcCOBieSerializer<COBIEROWTYPE extends XmlObject, COBIERO
             try
             {
                 List<COBIEROWTYPE> newRows = serializeModelObject(modelObject);
-                for (COBIEROWTYPE newRow : newRows)
-                {
-                    loggerHandler.rowWritten();
-                }
+                this.loggerHandler.setRowCount(newRows.size());
             } catch (Exception ex)
             {
                 loggerHandler.error(ex);

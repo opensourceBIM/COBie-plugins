@@ -23,28 +23,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bimserver.emf.IfcModelInterface;
-import org.bimserver.models.ifc2x3tc1.IfcControllerType;
 import org.bimserver.models.ifc2x3tc1.IfcFurnitureType;
 import org.bimserver.models.ifc2x3tc1.IfcMaterial;
 import org.bimserver.models.ifc2x3tc1.IfcMaterialLayerSet;
 import org.bimserver.models.ifc2x3tc1.IfcMaterialLayerSetUsage;
 import org.bimserver.models.ifc2x3tc1.IfcMaterialSelect;
-import org.bimserver.models.ifc2x3tc1.IfcObjectDefinition;
-import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
 import org.bimserver.models.ifc2x3tc1.IfcRelAssociatesMaterial;
 import org.bimserver.models.ifc2x3tc1.IfcRelDefinesByType;
 import org.bimserver.models.ifc2x3tc1.IfcTypeObject;
 import org.bimserver.models.ifc2x3tc1.IfcUnitEnum;
 import org.erdc.cobie.shared.COBieUtility;
-import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.ConnectionDeserializer;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.TypeType;
-import org.erdc.cobie.utils.deserializer.ConnectionDeserializer;
 import org.erdc.cobie.utils.stringwriters.IfcPropertyToCOBieString;
 import org.erdc.cobie.utils.stringwriters.IfcRelationshipsToCOBie;
 import org.erdc.cobie.utils.stringwriters.IfcSingleValueToCOBieString;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class IfcToType
 {
@@ -52,8 +46,6 @@ public class IfcToType
     private static final String MOVEABLE_ASSET_TYPE_CAMELCASE = "Moveable";
     private static final String NONFIXED_ASSET_TYPE_LCASE = "nonfixed";
     private static final String MOVEABLE_ASSET_TYPE_LCASE = "moveable";
-    private static final Logger LOGGER = LoggerFactory.getLogger(IfcToType.class);
-    private static final CobieSheetName sheetName = CobieSheetName.Type;
     private static final ArrayList<String> excludeAssetStrings = new ArrayList<String>(Arrays.asList("IfcBeamType", "IfcMaterial",
             "IfcMaterialLayerSet", "IfcCableCarrierSegmentType", "IfcCableSegmentType", "IfcColumnType", "IfcCurtainWallType", "IfcDuctFittingType",
             "IfcDuctSegmentType", "IfcFastenerType", "IfcJunctionBoxType", "IfcMemberType", "IfcPipeFittingType", "IfcPipeSegmentType",
@@ -65,10 +57,12 @@ public class IfcToType
     private static final ArrayList<String> modelNumberStrings = new ArrayList<String>(Arrays.asList("ModelNumber", "ArticleNumber", "ModelLabel"));
     private static final ArrayList<String> warrantyGuarantorPartsStrings = new ArrayList<String>(Arrays.asList("WarrantyGuarantorParts",
             "PointOfContact"));
-    private static final ArrayList<String> warrantyDurationPartsStrings = new ArrayList<String>(Arrays.asList("WarrantyDurationParts","WarrantyPeriod"));
+    private static final ArrayList<String> warrantyDurationPartsStrings = new ArrayList<String>(Arrays.asList("WarrantyDurationParts",
+            "WarrantyPeriod"));
     private static final ArrayList<String> warrantyGuarantorLaborStrings = new ArrayList<String>(Arrays.asList("WarrantyGuarantorLabor",
             "PointOfContact"));
-    private static final ArrayList<String> warrantyDurationLaborStrings = new ArrayList<String>(Arrays.asList("WarrantyDurationLabor","WarrantyPeriod"));
+    private static final ArrayList<String> warrantyDurationLaborStrings = new ArrayList<String>(Arrays.asList("WarrantyDurationLabor",
+            "WarrantyPeriod"));
     private static final ArrayList<String> replacementCostStrings = new ArrayList<String>(Arrays.asList("ReplacementCost", "Replacement Cost",
             "Cost", "Replacement"));
     private static final ArrayList<String> expectedLifeStrings = new ArrayList<String>(Arrays.asList("ExpectedLife", "Expected Life",
@@ -304,7 +298,6 @@ public class IfcToType
         return COBieUtility.getCOBieString(pString);
     }
 
-
     protected static String extObjectFromTypeObject(IfcTypeObject type)
     {
         String className = type.getClass().getSimpleName();
@@ -515,7 +508,6 @@ public class IfcToType
         return warrantyGuarantorPartsStrings;
     }
 
-
     protected static String gradeFromTypeObject(IfcTypeObject type)
     {
         String pString;
@@ -525,11 +517,6 @@ public class IfcToType
         pString = getTypePropertySearchResult(type, typePNames);
 
         return COBieUtility.getCOBieString(pString);
-    }
-
-    private static boolean isBAMieVirtualController(IfcTypeObject type)
-    {
-        return ((type instanceof IfcControllerType) && type.getName().startsWith(ConnectionDeserializer.VIRTUAL_CONTROLLER_TYPE_PREFIX));
     }
 
     private static boolean isBAMieVirtualControllerTypeDefinition(IfcRelDefinesByType defByType)
@@ -573,7 +560,6 @@ public class IfcToType
 
         return COBieUtility.getCOBieString(pString);
     }
-
 
     protected static String modelNumberFromTypeObject(IfcTypeObject type)
     {
@@ -679,14 +665,6 @@ public class IfcToType
         return COBieUtility.getCOBieString(pString);
     }
 
-    private static boolean shouldWriteType(ArrayList<String> writtenTypes, String name, IfcTypeObject type)
-    {
-        // boolean shouldWrite = !writtenTypes.contains(name)&&
-        // !isBAMieVirtualController(type);
-        boolean shouldWrite = !isBAMieVirtualController(type);
-        return shouldWrite;
-    }
-
     protected static String sizeFromTypeObject(IfcTypeObject type)
     {
         String pString;
@@ -788,5 +766,5 @@ public class IfcToType
 
         return COBieUtility.getCOBieString(pString);
     }
-   
+
 }

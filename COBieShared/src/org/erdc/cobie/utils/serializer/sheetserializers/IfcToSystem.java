@@ -37,9 +37,9 @@ import org.bimserver.models.ifc2x3tc1.IfcSystem;
 import org.eclipse.emf.common.util.EList;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.SystemDeserializer;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.SystemType;
-import org.erdc.cobie.utils.deserializer.SystemDeserializer;
 import org.erdc.cobie.utils.stringwriters.IfcSingleValueToCOBieString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -119,7 +119,7 @@ public class IfcToSystem
         {
             for (IfcRelAssignsToGroup assignsToGroup : model.getAllWithSubTypes(IfcRelAssignsToGroup.class))
             {
-                if (assignsToGroup.getRelatingGroup().getGlobalId().getWrappedValue().equals(system.getGlobalId().getWrappedValue()))
+                if (assignsToGroup.getRelatingGroup().getGlobalId().equals(system.getGlobalId()))
                 {
                     for (IfcObjectDefinition def : assignsToGroup.getRelatedObjects())
                     {

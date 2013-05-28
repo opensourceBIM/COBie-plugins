@@ -410,6 +410,7 @@ public class IfcPropertyToCOBieString
     static public Map<String, String> propertyStringsFromPhysicalQuantity(IfcPhysicalQuantity quantity, ArrayList<String> propertyNames)
     {
         Map<String, String> propertyVals = new HashMap<String, String>();
+        @SuppressWarnings("unchecked")
         ArrayList<String> copyPropertyNames = (ArrayList<String>)propertyNames.clone();
         IfcPhysicalSimpleQuantity psq;
         IfcPhysicalComplexQuantity pcq;
@@ -448,6 +449,7 @@ public class IfcPropertyToCOBieString
         return propertyVals;
     }
 
+    @SuppressWarnings("unchecked")
     static public Map<String, String> propertyStringsFromPhysicalQuantity(
             IfcPhysicalQuantity quantity,
             ArrayList<String> propertyNames,
@@ -512,6 +514,7 @@ public class IfcPropertyToCOBieString
         return propertyVals;
     }
 
+    @SuppressWarnings("unchecked")
     static Map<String, String> propertyStringsFromProperty(IfcProperty property, ArrayList<String> propertyNames)
     {
         Map<String, String> propertyVals = new PropertyNameStringValueMap();
@@ -598,6 +601,7 @@ public class IfcPropertyToCOBieString
         return referenceValueLiteral;
     }
 
+    @SuppressWarnings("unchecked")
     static Map<String, String> propertyStringsFromProperty(IfcProperty property, ArrayList<String> propertyNames, boolean exclusive)
     {
         boolean testProperty = false;
@@ -683,6 +687,7 @@ public class IfcPropertyToCOBieString
         return sValStr;
     }
 
+    @SuppressWarnings("unchecked")
     static public Map<String, IfcPropertyToCOBieString> psetStringsFromPhysicalQuantity(
             IfcPhysicalQuantity quantity,
             ArrayList<String> propertyNames,
@@ -750,6 +755,7 @@ public class IfcPropertyToCOBieString
         return propertyVals;
     }
 
+    @SuppressWarnings("unchecked")
     static Map<String, IfcPropertyToCOBieString> psetStringsFromProperty(IfcProperty property, ArrayList<String> propertyNames, boolean exclusive)
     {
         boolean testProperty = false;

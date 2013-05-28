@@ -27,7 +27,7 @@ public class ReportSerializer
     private static final String LOGGER_MESSAGE_SUFFIX_BEGIN = "Begin XSL Transformation from COBieSheetXMLData to HTML.";
     private static final Logger LOGGER = LoggerFactory.getLogger(ReportSerializer.class);
 
-    public static void exexuteSaxonXSLT(OutputStream outputStream, byte[] sourceDocument, String reportPath) throws IOException
+    public static void executeSaxonXSLT(OutputStream outputStream, byte[] sourceDocument, String reportPath) throws IOException
     {
 
         LOGGER.info(getBeginLoggerMessage());

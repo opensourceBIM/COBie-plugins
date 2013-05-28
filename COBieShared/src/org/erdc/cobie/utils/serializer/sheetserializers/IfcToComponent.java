@@ -46,10 +46,10 @@ import org.bimserver.models.ifc2x3tc1.IfcWindow;
 import org.bimserver.models.ifc2x3tc1.IfcZone;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.ComponentDeserializer;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.COBIEType.Components;
 import org.erdc.cobie.sheetxmldata.ComponentType;
-import org.erdc.cobie.utils.deserializer.ComponentDeserializer;
 import org.erdc.cobie.utils.stringwriters.IfcRelationshipsToCOBie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,8 +68,8 @@ public class IfcToComponent
             "IfcSpace", "IfcBuildingStorey", "IfcBuilding", "IfcSite", "IfcVirtualElement", "IfcBeam", "IfcBuildingElementPart", "IfcColumn",
             "IfcCurtainWall", "IfcElementAssembly", "IfcFastener", "IfcFeatureElement", "IfcFlowFitting", "IfcFlowSegment", "IfcFooting",
             "IfcMechanicalFastener", "IfcMember", "IfcPile", "IfcPlate", "IfcRailing", "IfcRamp", "IfcRampFlight", "IfcReinforcingBar",
-            "IfcReinforcingMesh", "IfcRoof", "IfcSlab", "IfcStair", "IfcStairFlight", "IfcTendon", "IfcTendonAnchor", "IfcWall","IfcWallStandardCase",
-             "IfcCovering"));
+            "IfcReinforcingMesh", "IfcRoof", "IfcSlab", "IfcStair", "IfcStairFlight", "IfcTendon", "IfcTendonAnchor", "IfcWall",
+            "IfcWallStandardCase", "IfcCovering"));
 
     protected static String assetIdentifierFromProduct(IfcProduct product)
     {
@@ -98,11 +98,6 @@ public class IfcToComponent
             description = product.getName();
         }
         return description;
-    }
-
-    static protected String extIdentifierFromProduct(IfcProduct product)
-    {
-        return product.getGlobalId().getWrappedValue();
     }
 
     static protected String extObjectFromProduct(IfcProduct product)
@@ -214,7 +209,7 @@ public class IfcToComponent
 
         for (IfcProduct product : model.getAllWithSubTypes(IfcProduct.class))
         {
-            tmpGuid = product.getGlobalId().getWrappedValue();
+            tmpGuid = product.getGlobalId();
             if (componentGuids.contains(tmpGuid))
             {
                 ;
@@ -314,7 +309,7 @@ public class IfcToComponent
                                 }
                                 Description = IfcToComponent.descriptionFromProduct(product);
                                 ExtObject = IfcToComponent.extObjectFromProduct(product);
-                                ExtIdentifier = IfcToComponent.extIdentifierFromProduct(product);
+                                ExtIdentifier = COBieUtility.extIdFromRoot(product);
                                 SerialNumber = IfcToComponent.serialNumberFromProduct(product);
                                 InstallationDate = IfcToComponent.installationDateFromProduct(product);
                                 WarrantyStartDate = IfcToComponent.warrantyStartDateFromProduct(product);
@@ -402,7 +397,7 @@ public class IfcToComponent
                     }
                     Description = IfcToComponent.descriptionFromProduct(product);
                     ExtObject = IfcToComponent.extObjectFromProduct(product);
-                    ExtIdentifier = IfcToComponent.extIdentifierFromProduct(product);
+                    ExtIdentifier = COBieUtility.extIdFromRoot(product);
                     SerialNumber = IfcToComponent.serialNumberFromProduct(product);
                     InstallationDate = IfcToComponent.installationDateFromProduct(product);
                     WarrantyStartDate = IfcToComponent.warrantyStartDateFromProduct(product);
@@ -492,7 +487,7 @@ public class IfcToComponent
                         }
                         Description = IfcToComponent.descriptionFromProduct(product);
                         ExtObject = IfcToComponent.extObjectFromProduct(product);
-                        ExtIdentifier = IfcToComponent.extIdentifierFromProduct(product);
+                        ExtIdentifier = COBieUtility.extIdFromRoot(product);
                         SerialNumber = IfcToComponent.serialNumberFromProduct(product);
                         InstallationDate = IfcToComponent.installationDateFromProduct(product);
                         WarrantyStartDate = IfcToComponent.warrantyStartDateFromProduct(product);
@@ -567,7 +562,7 @@ public class IfcToComponent
         String key;
         try
         {
-            key = product.getGlobalId().getWrappedValue();
+            key = product.getGlobalId();
             if (COBieUtility.isNA(key))
             {
                 key = product.getName();
