@@ -1,0 +1,44 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:space="http://space.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://space.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+					A COBieLite space with cardinalities as prescribed by the responsibility matrix.
+			</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SpaceType">
+	<xs:annotation>
+		<xs:documentation>A minimum of one COBie.Space record is required for all COBie deliverables related to Space information.</xs:documentation>
+	</xs:annotation>
+	<xs:complexContent>
+		<xs:extension base="base:SpaceType">
+			<xs:sequence>
+				<xs:element ref="base:SpaceCategory"/>
+				<xs:element ref="base:SpaceDescription" />
+				<xs:element ref="base:SpaceSignageName" minOccurs="0"/>
+				<xs:element ref="base:SpaceUsableHeightValue" minOccurs="0"/>
+				<xs:element ref="base:SpaceGrossAreaValue" minOccurs="0"/>
+				<xs:element ref="base:SpaceNetAreaValue" minOccurs="0"/>
+				<xs:element ref="base:Space2DShape" minOccurs="0"/>
+				<xs:element ref="base:SpaceZoneAssignments" minOccurs="0"/>
+				<xs:element ref="base:SpaceAttributes" minOccurs="0"/>
+				<xs:element ref="base:SpaceDocuments" minOccurs="0"/>
+				<xs:element ref="base:SpaceIssues" minOccurs="0"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:element name="Space" type="space:SpaceType" substitutionGroup="base:Space" id="d2e572">
+	<xs:annotation>
+		<xs:documentation>A minimum of one COBie.Space record is required for all COBie deliverables related to Space information. </xs:documentation>
+	</xs:annotation>
+</xs:element>
+<xs:element name="Spaces" type="base:SpaceCollectionType" substitutionGroup="base:Spaces" id="d2e559">
+	<xs:annotation>
+		<xs:documentation>COBie.Space contains information about the horizontal organization of space within a given vertical, or Floor, level.</xs:documentation>
+	</xs:annotation>
+	<xs:key name="SpaceKey">
+		<xs:selector xpath="base:Space"/>
+		<xs:field xpath="base:SpaceName"/>
+	</xs:key>
+</xs:element>
+</xs:schema>

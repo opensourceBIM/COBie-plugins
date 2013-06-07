@@ -1,0 +1,34 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://document.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
+		<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="Attribute.xsd"/>
+			<xs:import namespace="http://issue.lcie.cobielite.cobie.erdc.org" schemaLocation="Issue.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+					A COBieLite Document with cardinalities as prescribed by the responsibility matrix.
+			</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="DocumentType">
+		<xs:annotation>
+			<xs:documentation>Information about a specific Document.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="base:DocumentType">
+				<xs:sequence>
+					<xs:element ref="base:DocumentCategory"/>
+					<xs:element ref="base:DocumentDescription" minOccurs="0"/>
+					<xs:element ref="base:DocumentURI"/>
+					<xs:element ref="base:DocumentReferenceURI" minOccurs="0"/>
+					<xs:element ref="base:DocumentAttributes" minOccurs="0"/>
+					<xs:element ref="base:DocumentIssues" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Document" type="doc:DocumentType" substitutionGroup="base:Document">
+		<xs:annotation>
+			<xs:documentation>
+			Information about a specific Document. 			
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

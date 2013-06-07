@@ -1,0 +1,54 @@
+<!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:type="http://assettype.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://assettype.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+					A COBieLite AssetType with cardinalities as prescribed by the responsibility matrix.
+			</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="AssetTypeInfoType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="base:AssetTypeInfoType">
+				<xs:sequence>
+					<xs:element ref="base:AssetTypeCategory"/>
+					<xs:element ref="base:AssetTypeDescription"/>
+					<xs:element ref="base:AssetTypePortabilityText"/>
+					<xs:element ref="base:AssetTypeModelNumber"/>
+					<xs:element ref="base:AssetTypeReplacementCostValue" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeExpectedLifeValue" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeNominalLength"/>
+					<xs:element ref="base:AssetTypeNominalWidth"/>
+					<xs:element ref="base:AssetTypeNominalHeight"/>
+					<xs:element ref="base:AssetTypeAccessibilityText" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeCodePerformance" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeColorCode" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeConstituentsDescription" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeFeaturesDescription" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeFinishDescription" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeGradeDescription" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeMaterialDescription" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeShapeDescription" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeSizeDescription" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
+					<xs:element ref="base:Assets"/>
+					<xs:element ref="base:AssetTypeContactAssignments"/>
+					<xs:element ref="base:Warranties"/>
+					<xs:element ref="base:Spares" minOccurs="0"/>
+					<xs:element ref="base:Jobs" minOccurs="0"/>
+					<xs:element ref="base:AssemblyAssignments" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeAttributes" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeDocuments" minOccurs="0"/>
+					<xs:element ref="base:AssetTypeIssues" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AssetType" type="type:AssetTypeInfoType" substitutionGroup="base:AssetType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one AssetType record is required for all COBie deliverables related to equipment Type information. AssetType is associated with one or more Assets.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

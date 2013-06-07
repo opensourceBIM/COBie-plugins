@@ -1,0 +1,45 @@
+<!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ts="http://typeselect.lcie.cobielite.cobie.erdc.org" xmlns:tf="http://producttype.common.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:ns1="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:ns2="http://attribute.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typeselect.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
+	<xs:import namespace="http://producttype.common.lcie.cobielite.cobie.erdc.org" schemaLocation="../Exchanges/common/ProductType_Facility.xsd"/>
+	<xs:import namespace="http://document.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/document.xsd"/>
+
+	<xs:annotation>
+		<xs:documentation>
+					Product Type Selection view of a facility
+			</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="AssetTypeInfoType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tf:AssetTypeInfoType">
+				<xs:sequence>
+					<xs:element ref="base:AssetTypeModelNumber">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="base:AssetTypeContactAssignments">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="base:AssetTypeDocuments">
+											<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AssetType" type="ts:AssetTypeInfoType" substitutionGroup="tf:AssetType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one AssetType record is required for all COBie deliverables related to equipment Type information. AssetType is associated with one or more Assets.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Facility" type="tf:FacilityType" substitutionGroup="tf:Facility"/>
+</xs:schema>

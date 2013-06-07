@@ -1,0 +1,39 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:zone="http://zone.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://zone.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+					A COBieLite zone with cardinalities as prescribed by the responsibility matrix.
+			</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="ZoneType">
+	<xs:annotation>
+		<xs:documentation>COBie.Zone information is considered to be required only as-specified.  Please refer to the COBie Guide for more information on specific zoning requirements.</xs:documentation>
+	</xs:annotation>
+	<xs:complexContent>
+		<xs:extension base="base:ZoneType">
+			<xs:sequence>
+				<xs:element ref="base:ZoneDescription" minOccurs="0"/>
+				<xs:element ref="base:ZoneAttributes" minOccurs="0"/>
+				<xs:element ref="base:ZoneDocuments" minOccurs="0"/>
+				<xs:element ref="base:ZoneIssues" minOccurs="0"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:element name="Zone" type="zone:ZoneType" substitutionGroup="base:Zone" id="d2e781">
+	<xs:annotation>
+		<xs:documentation>COBie.Zone information is considered to be required only as-specified. Please refer to the COBie Guide for more information on specific zoning requirements.</xs:documentation>
+	</xs:annotation>
+</xs:element>
+<xs:element name="Zones" type="base:ZoneCollectionType" substitutionGroup="base:Zones" id="d2e768">
+	<xs:annotation>
+		<xs:documentation>COBie.Zone provides a mechanism through which groups of spaces may be organized into relevant categories that support various design or operational functions of the facility.</xs:documentation>
+	</xs:annotation>
+	<xs:key name="ZoneKey">
+		<xs:selector xpath="base:Zone"/>
+		<xs:field xpath="base:ZoneName"/>
+		<xs:field xpath="base:ZoneCategory"/>
+	</xs:key>
+</xs:element>
+
+</xs:schema>

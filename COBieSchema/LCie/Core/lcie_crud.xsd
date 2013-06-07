@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB 
+	(private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:cobie="http://cobielite.cobie.erdc.org" xmlns:cobiex="http://transaction.lcie.cobielite.cobie.erdc.org"
+	targetNamespace="http://transaction.lcie.cobielite.cobie.erdc.org"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="RC2">
+	<xs:import namespace="http://cobielite.cobie.erdc.org"
+		schemaLocation="../../COBieLite/xsd/cobielite.xsd" />
+	<xs:complexType name="ExchangeType" abstract="true">
+		<xs:choice>
+			<xs:element ref="cobiex:Create" />
+			<xs:element ref="cobiex:Read" />
+			<xs:element ref="cobiex:Update" />
+			<xs:element ref="cobiex:Delete" />
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="CreateType" abstract="true">
+		<xs:sequence>
+			<xs:element ref="cobiex:CreateKey" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReadType" abstract="true">
+		<xs:sequence>
+			<xs:element ref="cobiex:ReadKey" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UpdateType" abstract="true">
+		<xs:sequence>
+			<xs:element ref="cobiex:UpdateKey" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeleteType">
+		<xs:sequence>
+			<xs:element ref="cobiex:DeleteKey" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CreateKey" type="cobie:CobieKeyType"
+		abstract="true" />
+	<xs:element name="ReadKey" type="cobie:CobieKeyType"
+		abstract="true" />
+	<xs:element name="UpdateKey" type="cobie:CobieKeyType"
+		abstract="true" />
+	<xs:element name="DeleteKey" type="cobie:CobieKeyType"
+		abstract="true" />
+	<xs:element name="Create" type="cobiex:CreateType" abstract="true" />
+	<xs:element name="Read" type="cobiex:ReadType" abstract="true" />
+	<xs:element name="Update" type="cobiex:UpdateType" abstract="true" />
+	<xs:element name="Delete" type="cobiex:DeleteType" />
+</xs:schema>

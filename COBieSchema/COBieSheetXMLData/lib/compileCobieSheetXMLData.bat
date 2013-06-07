@@ -1,0 +1,1 @@
+scomp -src COBieSheetXMLData\src -out COBieSheetXMLData\COBieSheetXMLData.jar COBIE_lite.xsd -compiler "C:\Program Files\Java\jdk1.6.0_25\bin\javac.exe"

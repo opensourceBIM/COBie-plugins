@@ -1,0 +1,38 @@
+<!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:asset="http://asset.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://asset.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+					A COBieLite Asset with cardinalities as prescribed by the responsibility matrix.
+			</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="AssetInfoType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Asset record is required for all COBie deliverables related to equpment Asset information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="base:AssetInfoType">
+				<xs:sequence>
+					<xs:element ref="base:AssetDescription"/>
+					<xs:element ref="base:AssetSerialNumber" minOccurs="0"/>
+					<xs:element ref="base:AssetInstallationDate" minOccurs="0"/>
+					<xs:element ref="base:AssetInstalledModelNumber" minOccurs="0"/>
+					<xs:element ref="base:AssetWarrantyStartDate" minOccurs="0"/>
+					<xs:element ref="base:AssetTagNumber" minOccurs="0"/>
+					<xs:element ref="base:AssetBarCode" minOccurs="0"/>
+					<xs:element ref="base:AssetIdentifier" minOccurs="0"/>
+					<xs:element ref="base:AssetLocationDescription" minOccurs="0"/>
+					<xs:element ref="base:AssemblyAssignments" minOccurs="0"/>
+					<xs:element ref="base:AssetAttributes" minOccurs="0"/>
+					<xs:element ref="base:AssetDocuments" minOccurs="0"/>
+					<xs:element ref="base:AssetIssues" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Asset" type="asset:AssetInfoType" substitutionGroup="base:Asset">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Component record is required for all COBie deliverables related to equpment Component information. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

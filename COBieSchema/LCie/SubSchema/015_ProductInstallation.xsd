@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cobie="http://cobielite.cobie.erdc.org" xmlns:lciepi="productinstallation.lcie.cobielite.cobie.erdc.org" targetNamespace="productinstallation.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="unqualified" version="RC2">
+	<xs:import namespace="http://cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite.xsd"/>
+	<!--Type Definitions-->
+	
+</xs:schema>

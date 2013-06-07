@@ -1,0 +1,32 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:issue="http://issue.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://issue.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+					A COBieLite Issue with cardinalities as prescribed by the responsibility matrix.
+			</xs:documentation>
+	</xs:annotation>
+	
+	<xs:complexType name="IssueType">
+	<xs:annotation>
+		<xs:documentation>A specific Issue within this set of Issues.</xs:documentation>
+	</xs:annotation>
+	<xs:complexContent>
+		<xs:extension base="base:IssueType">
+			<xs:sequence>
+				<xs:element ref="base:IssueRiskText" />
+				<xs:element ref="base:IssueSeverityText" />
+				<xs:element ref="base:IssueImpactText" />
+				<xs:element ref="base:IssueDescription" />
+				<xs:element ref="base:ContactAssignment" />
+				<xs:element ref="base:IssueMitigationDescription"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:element name="Issue" type="issue:IssueType" substitutionGroup="base:Issue" id="d2e1495">
+	<xs:annotation>
+		<xs:documentation>A specific Issue within this set of Issues. </xs:documentation>
+	</xs:annotation>
+</xs:element>
+
+</xs:schema>

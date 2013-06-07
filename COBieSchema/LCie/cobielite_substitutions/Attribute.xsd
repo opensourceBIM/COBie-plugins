@@ -1,0 +1,41 @@
+<!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:ns1="http://issue.lcie.cobielite.cobie.erdc.org" targetNamespace="http://attribute.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
+	<xs:import namespace="http://issue.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/issue.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+					A COBieLite Attribute with cardinalities as prescribed by the responsibility matrix.
+			</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="AttributeType">
+		<xs:annotation>
+			<xs:documentation>Information about a specific Attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="base:AttributeType">
+				<xs:sequence>
+					<xs:element ref="base:AttributeDescription" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="base:AttributeValue">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="base:AttributeIssues" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Attribute" type="att:AttributeType" substitutionGroup="base:Attribute">
+		<xs:annotation>
+			<xs:documentation>Information about a specific Attribute.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,30 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:system="http://system.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://system.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+					A COBieLite system with cardinalities as prescribed by the responsibility matrix.
+			</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="SystemType">
+	<xs:annotation>
+		<xs:documentation>COBie.System information is considered to be required only as-specified.  Please refer to the COBie Guide for more information on specific system requirements.</xs:documentation>
+	</xs:annotation>
+	<xs:complexContent>
+		<xs:extension base="base:SystemType">
+			<xs:sequence>
+				<xs:element ref="base:SystemDescription" minOccurs="0"/>
+				<xs:element ref="base:SystemAttributes" minOccurs="0"/>
+				<xs:element ref="base:SystemDocuments" minOccurs="0"/>
+				<xs:element ref="base:SystemIssues" minOccurs="0"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:element name="System" type="system:SystemType" substitutionGroup="base:System" id="d2e5973">
+	<xs:annotation>
+		<xs:documentation>Definition
+COBie.System information is considered to be required only as-specified. Please refer to the COBie Guide for more information on specific system requirements. </xs:documentation>
+	</xs:annotation>
+</xs:element>
+
+</xs:schema>

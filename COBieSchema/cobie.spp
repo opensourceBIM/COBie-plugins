@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+	<Folder FolderName="XML Files" ExtStr="xml;cml;math;rdf;smil;svg;wml"/>
+	<Folder FolderName="XSL Files" ExtStr="xsl;xslt"/>
+	<Folder FolderName="XQuery Files" ExtStr="xq;xql;xquery"/>
+	<Folder FolderName="HTML Files" ExtStr="html;htm;xhtml;asp"/>
+	<Folder FolderName="DTD/Schemas" ExtStr="dtd;dcd;xdr;biz;xsd">
+		<Folder FolderName="LCieSubSchema">
+			<Folder FolderName="common">
+				<File FilePath="LCie\Exchanges\common\ProductType_Facility.xsd" HomeFolder="Yes"/>
+			</Folder>
+			<File FilePath="LCie\SubSchema\010_ProductTypeTemplate.xsd" HomeFolder="Yes"/>
+			<File FilePath="LCie\SubSchema\011_ProductTypeCandidate.xsd" HomeFolder="Yes"/>
+			<File FilePath="LCie\SubSchema\013_ProductTypeSelection.xsd" HomeFolder="Yes"/>
+			<File FilePath="LCie\SubSchema\015_ProductInstallation.xsd" HomeFolder="Yes"/>
+			<File FilePath="LCie\SubSchema\016_ProductInspection.xsd" HomeFolder="Yes"/>
+			<File FilePath="LCie\SubSchema\018_ProductTypeParts.xsd" HomeFolder="Yes"/>
+			<File FilePath="LCie\SubSchema\019_ProductTypeWarranty.xsd" HomeFolder="Yes"/>
+			<File FilePath="LCie\SubSchema\020_ProductTypeMaintenance.xsd" HomeFolder="Yes"/>
+			<File FilePath="LCie\SubSchema\021_SystemOperations.xsd" HomeFolder="Yes"/>
+		</Folder>
+		<Folder FolderName="COBieLite">
+			<File FilePath="COBieLite\xsd\cobielite.xsd" HomeFolder="Yes"/>
+			<File FilePath="COBieLite\xsd\cobielite_all.xsd" HomeFolder="Yes"/>
+			<File FilePath="COBieLite\xsd\cobielite_core.xsd" HomeFolder="Yes"/>
+		</Folder>
+		<File FilePath="COBieSheetXMLData\core\cobieSheetXMLData.xsd" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="LCieEntities" ExtStr="ent">
+		<File FilePath="LCie\cobielite_substitutions\Assembly.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Asset.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\AssetType.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Attribute.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Connection.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Contact.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Document.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Facility.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Floor.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Impact.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Issue.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Job.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Resource.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Space.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Spare.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\System.xsd" HomeFolder="Yes"/>
+		<File FilePath="LCie\cobielite_substitutions\Zone.xsd" HomeFolder="Yes"/>
+	</Folder>
+</Project>

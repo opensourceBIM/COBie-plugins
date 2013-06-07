@@ -1,0 +1,4 @@
+xcopy /y C:\Users\RDITLACB\Documents\Projects\Projnet\FY13\NewCOBieLiteSchema\UnderConstruction\COBieLiteRC3\COBieLiteRC3.jar C:\Users\RDITLACB\git\cobieserver\BimServer\lib\COBieLiteRC2.jar
+xcopy /y C:\Users\RDITLACB\Documents\Projects\Projnet\FY13\NewCOBieLiteSchema\UnderConstruction\COBieLiteRC3\COBieLiteRC3.jar C:\Users\RDITLACB\git\cobieserver\COBieShared\lib\COBieLiteRC2.jar
+xcopy /y C:\Users\RDITLACB\Documents\Projects\Projnet\FY13\NewCOBieLiteSchema\UnderConstruction\COBieLiteRC3\COBieLiteRC3.jar C:\Users\RDITLACB\git\cobieserver\COBiePlugins_Public\lib\COBieLiteRC2.jar
+xcopy /y C:\Users\RDITLACB\Documents\Projects\Projnet\FY13\NewCOBieLiteSchema\UnderConstruction\COBieLiteRC3\COBieLiteRC3.jar C:\Users\RDITLACB\git\cobieserver\ProjNetShared\lib\COBieLiteRC2.jar
