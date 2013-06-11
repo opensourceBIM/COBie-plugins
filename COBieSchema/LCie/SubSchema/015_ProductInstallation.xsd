@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cobie="http://cobielite.cobie.erdc.org" xmlns:lciepi="productinstallation.lcie.cobielite.cobie.erdc.org" targetNamespace="productinstallation.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="unqualified" version="RC2">
-	<xs:import namespace="http://cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:lciepi="http://productinstallation.lcie.cobielite.cobie.erdc.org" xmlns:cg="http://groups.lcie.cobielite.cobie.erdc.org" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:floor="http://floor.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" targetNamespace="http://productinstallation.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/attribute.xsd"/>
+	<xs:import namespace="http://contact.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/contact.xsd"/>
+	<xs:import namespace="http://floor.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/floor.xsd"/>
+	<xs:import namespace="http://groups.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/element_groups.xsd"/>
 	<!--Type Definitions-->
-	
+	<xs:complexType name="FacilityType">
+		<xs:annotation>
+			<xs:documentation>A type for the Facility element that is the root of a COBie document</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="FacilityType">
+				<xs:sequence>
+					<xs:group ref="cg:FacilityMeta"/>
+					<xs:element ref="AssetTypes"/>
+					<xs:element ref="Floors"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="InstallationAssetTypeInfoType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AssetTypeInfoType">
+				<xs:sequence>
+					<xs:group ref="cg:AssetTypeMeta"/>
+					<xs:group ref="cg:AssetTypeManufacturer"/>
+					<xs:element ref="Assets"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="InstallationAssetInfoType">
+		<xs:complexContent>
+			<xs:extension base="AssetInfoType">
+				<xs:sequence>
+					<xs:group ref="cg:AssetMeta"/>
+					<xs:group ref="cg:AssetInstalled"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Asset" type="lciepi:InstallationAssetInfoType" substitutionGroup="Asset"/>
+	<xs:element name="AssetType" type="lciepi:InstallationAssetTypeInfoType" substitutionGroup="AssetType"/>
+	<xs:element name="Facility" type="lciepi:FacilityType" substitutionGroup="Facility"/>
 </xs:schema>

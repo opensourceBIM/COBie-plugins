@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB 
+	(private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:crud="http://crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:complexType name="ExchangeType" abstract="true">
+		<xs:choice>
+			<xs:element ref="crud:Create"/>
+			<xs:element ref="crud:Read"/>
+			<xs:element ref="crud:ReadAll"/>
+			<xs:element ref="crud:Update"/>
+			<xs:element ref="crud:Delete"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="CreateType" abstract="true">
+		<xs:sequence>
+			<xs:element ref="crud:CreateKey"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReadType" abstract="true">
+		<xs:sequence>
+			<xs:element ref="crud:ReadKey"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReadAllType" abstract="true">
+	<xs:sequence>
+	
+	</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UpdateType" abstract="true">
+		<xs:sequence>
+			<xs:element ref="crud:UpdateKey"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeleteType">
+		<xs:sequence>
+			<xs:element ref="crud:DeleteKey"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CreateKey" type="CobieKeyType" abstract="true"/>
+	<xs:element name="ReadKey" type="CobieKeyType" abstract="true"/>
+	<xs:element name="UpdateKey" type="CobieKeyType" abstract="true"/>
+	<xs:element name="DeleteKey" type="CobieKeyType" abstract="true"/>
+	<xs:element name="Create" type="crud:CreateType" abstract="true"/>
+	<xs:element name="Read" type="crud:ReadType" abstract="true"/>
+	<xs:element name="ReadAll" type="crud:ReadAllType" abstract="true"/>
+	<xs:element name="Update" type="crud:UpdateType" abstract="true"/>
+	<xs:element name="Delete" type="crud:DeleteType"/>
+</xs:schema>

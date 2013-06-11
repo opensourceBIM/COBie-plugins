@@ -1,6 +1,8 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:system="http://system.lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://system.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
-	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
-	<xs:import namespace="http://document.lcie.cobielite.cobie.erdc.org" schemaLocation="document.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:system="http://system.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://system.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../cobielite_core.xsd"/>
+		<xs:import namespace="http://attribute.cobielite.cobie.erdc.org" schemaLocation="attribute.xsd"/>
+	<xs:import namespace="http://document.cobielite.cobie.erdc.org" schemaLocation="document.xsd"/>
+	<xs:import namespace="http://issue.cobielite.cobie.erdc.org" schemaLocation="issue.xsd"/>
 	<xs:annotation>
 		<xs:documentation>
 					A COBieLite system with cardinalities as prescribed by the responsibility matrix.
@@ -14,7 +16,9 @@
 			<xs:extension base="SystemType">
 				<xs:sequence>
 					<xs:element ref="SystemDescription" minOccurs="0"/>
+					<xs:element ref="SystemAttributes" minOccurs="0"/>
 					<xs:element ref="SystemDocuments" minOccurs="0"/>
+					<xs:element ref="SystemIssues" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

@@ -1,6 +1,6 @@
 <!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cnt="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://contact.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
-	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cnt="http://contact.lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://contact.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:annotation>
 		<xs:documentation>
 					A COBieLite Contact with cardinalities as prescribed by the responsibility matrix.
@@ -11,84 +11,69 @@
 			<xs:documentation>Information about a specific company who can provide the type of equipment.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="base:ContactType">
+			<xs:extension base="ContactType">
 				<xs:sequence>
-					<xs:element ref="base:ContactCategory">
+					<xs:element ref="ContactCategory">
 						<xs:annotation>
-							<xs:appinfo source="urn:base:ReadOnly">false</xs:appinfo>
+							<xs:appinfo source="urn:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactCompanyName">
-						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="base:ContactPhoneNumber">
+					<xs:element ref="ContactCompanyName">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactDepartmentName" minOccurs="0">
+					<xs:element ref="ContactPhoneNumber">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactGivenName" minOccurs="0">
+					<xs:element ref="ContactDepartmentName" minOccurs="0">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactFamilyName" minOccurs="0">
+					<xs:element ref="ContactGivenName" minOccurs="0">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactStreet" minOccurs="0">
+					<xs:element ref="ContactFamilyName" minOccurs="0">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactPostalBoxNumber" minOccurs="0">
+					<xs:element ref="ContactStreet" minOccurs="0">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactTownName" minOccurs="0">
+					<xs:element ref="ContactPostalBoxNumber" minOccurs="0">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactRegionCode" minOccurs="0">
+					<xs:element ref="ContactTownName" minOccurs="0">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactCountryName" minOccurs="0">
+					<xs:element ref="ContactRegionCode" minOccurs="0">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactPostalCode" minOccurs="0">
+					<xs:element ref="ContactCountryName" minOccurs="0">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactURL" minOccurs="0">
+					<xs:element ref="ContactPostalCode" minOccurs="0">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="base:ContactAttributes" minOccurs="0">
-						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="base:ContactDocuments" minOccurs="0">
-						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="base:ContactIssues" minOccurs="0">
+					<xs:element ref="ContactURL" minOccurs="0">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
@@ -97,7 +82,7 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name="Contact" type="cnt:ContactType" substitutionGroup="base:Contact">
+	<xs:element name="Contact" type="cnt:ContactType" substitutionGroup="Contact">
 		<xs:annotation>
 			<xs:documentation>Information about a specific manufacturer or supplier associated with an AssetType.</xs:documentation>
 		</xs:annotation>

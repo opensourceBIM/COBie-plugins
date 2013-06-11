@@ -1,0 +1,61 @@
+<!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fac="http://facility.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org"  xmlns:camed="http://jcam.org.uk/editor" xmlns:ns1="http://assembly.cobielite.cobie.erdc.org" xmlns:ns2="http://assettype.cobielite.cobie.erdc.org" xmlns:ns3="http://attribute.cobielite.cobie.erdc.org" xmlns:ns4="http://connection.cobielite.cobie.erdc.org" xmlns:ns5="http://contact.cobielite.cobie.erdc.org" xmlns:ns6="http://document.cobielite.cobie.erdc.org" xmlns:ns7="http://floor.cobielite.cobie.erdc.org" xmlns:ns8="http://issue.cobielite.cobie.erdc.org" xmlns:ns9="http://job.cobielite.cobie.erdc.org" xmlns:ns10="http://resource.cobielite.cobie.erdc.org" xmlns:ns11="http://space.cobielite.cobie.erdc.org" xmlns:ns12="http://spare.cobielite.cobie.erdc.org" xmlns:ns13="http://system.cobielite.cobie.erdc.org" xmlns:ns14="http://zone.cobielite.cobie.erdc.org" targetNamespace="http://facility.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../cobielite_core.xsd"/>
+	<xs:import namespace="http://assembly.cobielite.cobie.erdc.org" schemaLocation="assembly.xsd"/>
+	<xs:import namespace="http://assettype.cobielite.cobie.erdc.org" schemaLocation="AssetType.xsd"/>
+	<xs:import namespace="http://assettype.cobielite.cobie.erdc.org" schemaLocation="assettype.xsd"/>
+	<xs:import namespace="http://attribute.cobielite.cobie.erdc.org" schemaLocation="attribute.xsd"/>
+	<xs:import namespace="http://connection.cobielite.cobie.erdc.org" schemaLocation="connection.xsd"/>
+	<xs:import namespace="http://contact.cobielite.cobie.erdc.org" schemaLocation="contact.xsd"/>
+	<xs:import namespace="http://document.cobielite.cobie.erdc.org" schemaLocation="document.xsd"/>
+	<xs:import namespace="http://floor.cobielite.cobie.erdc.org" schemaLocation="floor.xsd"/>
+	<xs:import namespace="http://issue.cobielite.cobie.erdc.org" schemaLocation="issue.xsd"/>
+	<xs:import namespace="http://job.cobielite.cobie.erdc.org" schemaLocation="job.xsd"/>
+	<xs:import namespace="http://resource.cobielite.cobie.erdc.org" schemaLocation="resource.xsd"/>
+	<xs:import namespace="http://space.cobielite.cobie.erdc.org" schemaLocation="space.xsd"/>
+	<xs:import namespace="http://spare.cobielite.cobie.erdc.org" schemaLocation="spare.xsd"/>
+	<xs:import namespace="http://system.cobielite.cobie.erdc.org" schemaLocation="system.xsd"/>
+	<xs:import namespace="http://zone.cobielite.cobie.erdc.org" schemaLocation="zone.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+					A COBieLite Facilitywith cardinalities as prescribed by the responsibility matrix.
+			</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="FacilityType">
+		<xs:annotation>
+			<xs:documentation>A type for the Facility element that is the root of a COBie document</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="FacilityType">
+				<xs:sequence>
+					<xs:element ref="FacilityCategory" minOccurs="0"/>
+					<xs:element ref="ProjectAssignment" minOccurs="0"/>
+					<xs:element ref="SiteAssignment" minOccurs="0"/>
+					<xs:element ref="FacilityDefaultLinearUnit" minOccurs="0"/>
+					<xs:element ref="FacilityDefaultAreaUnit" minOccurs="0"/>
+					<xs:element ref="FacilityDefaultVolumeUnit" minOccurs="0"/>
+					<xs:element ref="FacilityDefaultCurrencyUnit" minOccurs="0"/>
+					<xs:element ref="FacilityDefaultMeasurementStandard" minOccurs="0"/>
+					<xs:element ref="FacilityDescription" minOccurs="0"/>
+					<xs:element ref="FacilityDeliverablePhaseName" minOccurs="0"/>
+					<xs:element ref="Floors" minOccurs="0"/>
+					<xs:element ref="Zones" minOccurs="0"/>
+					<xs:element ref="AssetTypes" minOccurs="0"/>
+					<xs:element ref="Systems" minOccurs="0"/>
+					<xs:element ref="Connections" minOccurs="0"/>
+					<xs:element ref="Contacts" minOccurs="0"/>
+					<xs:element ref="FacilityAttributes" minOccurs="0"/>
+					<xs:element ref="FacilityDocuments" minOccurs="0"/>
+					<xs:element ref="FacilityIssues" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Facility" type="fac:FacilityType" substitutionGroup="Facility">
+		<xs:annotation>
+			<xs:documentation>
+			Facility contains information about the facility being exchanged during a given COBie deliverable.  Since COBie deliverables may be exchanged during planning, design, construction, handover, or operation phases there may be differences in facility designations.  COBie files will typically contain a single facility.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

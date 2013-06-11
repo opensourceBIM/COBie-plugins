@@ -1,0 +1,41 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:job="http://job.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://job.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../cobielite_core.xsd"/>
+		<xs:import namespace="http://attribute.cobielite.cobie.erdc.org" schemaLocation="attribute.xsd"/>
+	<xs:import namespace="http://document.cobielite.cobie.erdc.org" schemaLocation="document.xsd"/>
+	<xs:import namespace="http://issue.cobielite.cobie.erdc.org" schemaLocation="issue.xsd"/>
+	<xs:import namespace="http://resource.cobielite.cobie.erdc.org" schemaLocation="resource.xsd"/>
+
+	<xs:annotation>
+		<xs:documentation>
+					A COBieLite Job with cardinalities as prescribed by the responsibility matrix.
+			</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="JobType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Job record is required for all relevant COBie.Type objects submitted at the benefical occupancy or facility handover stage.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="JobType">
+				<xs:sequence>
+					<xs:element ref="JobCategory" minOccurs="0"/>
+					<xs:element ref="JobStatus" minOccurs="0"/>
+					<xs:element ref="JobDescription" minOccurs="0"/>
+					<xs:element ref="JobDuration" minOccurs="0"/>
+					<xs:element ref="JobStartDate" minOccurs="0"/>
+					<xs:element ref="JobStartConditionDescription" minOccurs="0"/>
+					<xs:element ref="JobFrequencyValue" minOccurs="0"/>
+					<xs:element ref="JobPriorTaskID" minOccurs="0"/>
+					<xs:element ref="Resources" minOccurs="0"/>
+					<xs:element ref="JobAttributes" minOccurs="0"/>
+					<xs:element ref="JobDocuments" minOccurs="0"/>
+					<xs:element ref="JobIssues" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Job" type="job:JobType" substitutionGroup="Job" id="d2e4137">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Job record is required for all relevant COBie.Type objects submitted at the benefical occupancy or facility handover stage. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

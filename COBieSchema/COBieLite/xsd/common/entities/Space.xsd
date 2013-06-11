@@ -1,9 +1,8 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:space="http://space.lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cg="http://groups.lcie.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://space.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
-	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
-	<xs:import namespace="http://groups.lcie.cobielite.cobie.erdc.org" schemaLocation="element_groups.xsd"/>
-	<!--	<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="attribute.xsd"/>
-	<xs:import namespace="http://document.lcie.cobielite.cobie.erdc.org" schemaLocation="document.xsd"/>
-	<xs:import namespace="http://issue.lcie.cobielite.cobie.erdc.org" schemaLocation="issue.xsd"/>-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:space="http://space.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://space.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../cobielite_core.xsd"/>
+		<xs:import namespace="http://attribute.cobielite.cobie.erdc.org" schemaLocation="attribute.xsd"/>
+	<xs:import namespace="http://document.cobielite.cobie.erdc.org" schemaLocation="document.xsd"/>
+	<xs:import namespace="http://issue.cobielite.cobie.erdc.org" schemaLocation="issue.xsd"/>
 	<xs:annotation>
 		<xs:documentation>
 					A COBieLite space with cardinalities as prescribed by the responsibility matrix.
@@ -16,12 +15,17 @@
 		<xs:complexContent>
 			<xs:extension base="SpaceType">
 				<xs:sequence>
-					<xs:group ref="cg:SpaceMeta"/>
-					<!--					<xs:element ref="Space2DShape" minOccurs="0"/>-->
-<!--					<xs:element ref="SpaceZoneAssignments" minOccurs="0"/>-->
-					<!--					<xs:element ref="SpaceAttributes" minOccurs="0"/>
+					<xs:element ref="SpaceCategory" minOccurs="0"/>
+					<xs:element ref="SpaceDescription" minOccurs="0"/>
+					<xs:element ref="SpaceSignageName" minOccurs="0"/>
+					<xs:element ref="SpaceUsableHeightValue" minOccurs="0"/>
+					<xs:element ref="SpaceGrossAreaValue" minOccurs="0"/>
+					<xs:element ref="SpaceNetAreaValue" minOccurs="0"/>
+					<xs:element ref="Space2DShape" minOccurs="0"/>
+					<xs:element ref="SpaceZoneAssignments" minOccurs="0"/>
+					<xs:element ref="SpaceAttributes" minOccurs="0"/>
 					<xs:element ref="SpaceDocuments" minOccurs="0"/>
-					<xs:element ref="SpaceIssues" minOccurs="0"/>-->
+					<xs:element ref="SpaceIssues" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

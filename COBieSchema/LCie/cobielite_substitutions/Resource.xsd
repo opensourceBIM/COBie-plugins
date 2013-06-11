@@ -1,31 +1,28 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:resource="http://resource.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://resource.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
-	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:resource="http://resource.lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://resource.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://document.lcie.cobielite.cobie.erdc.org" schemaLocation="document.xsd"/>
 	<xs:annotation>
 		<xs:documentation>
 					A COBieLite resource with cardinalities as prescribed by the responsibility matrix.
 			</xs:documentation>
 	</xs:annotation>
-	
 	<xs:complexType name="ResourceType">
-	<xs:annotation>
-		<xs:documentation>Information about a specific resource.</xs:documentation>
-	</xs:annotation>
-	<xs:complexContent>
-		<xs:extension base="base:ResourceType">
-			<xs:sequence>
-				<xs:element ref="base:ResourceCategory"/>
-				<xs:element ref="base:ResourceDescription" minOccurs="0"/>
-				<xs:element ref="base:ResourceAttributes" minOccurs="0"/>
-				<xs:element ref="base:ResourceDocuments" minOccurs="0"/>
-				<xs:element ref="base:ResourceIssues" minOccurs="0"/>
-			</xs:sequence>
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
-<xs:element name="Resource" type="resource:ResourceType" substitutionGroup="base:Resource" id="d2e4451">
-	<xs:annotation>
-		<xs:documentation>Information about a specific resource. </xs:documentation>
-	</xs:annotation>
-</xs:element>
-
+		<xs:annotation>
+			<xs:documentation>Information about a specific resource.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ResourceType">
+				<xs:sequence>
+					<xs:element ref="ResourceCategory"/>
+					<xs:element ref="ResourceDescription" minOccurs="0"/>
+					<xs:element ref="ResourceDocuments" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Resource" type="resource:ResourceType" substitutionGroup="Resource" id="d2e4451">
+		<xs:annotation>
+			<xs:documentation>Information about a specific resource. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
 </xs:schema>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:parts="productparts.lcie.cobielite.cobie.erdc.org" targetNamespace="productparts.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://document.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/document.xsd"/>
+	<xs:import namespace="http://contact.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/contact.xsd"/>
+	<!--Type Definitions-->
+	<xs:complexType name="FacilityType">
+		<xs:annotation>
+			<xs:documentation>A type for the Facility element that is the root of a COBie document</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="FacilityType">
+				<xs:sequence>
+					<xs:element ref="FacilityCategory"/>
+					<xs:element ref="ProjectAssignment"/>
+					<xs:element ref="SiteAssignment"/>
+					<xs:element ref="FacilityDefaultLinearUnit"/>
+					<xs:element ref="FacilityDefaultAreaUnit"/>
+					<xs:element ref="FacilityDefaultVolumeUnit"/>
+					<xs:element ref="FacilityDefaultCurrencyUnit"/>
+					<xs:element ref="FacilityDefaultMeasurementStandard"/>
+					<xs:element ref="FacilityDescription" minOccurs="0"/>
+					<xs:element ref="FacilityDeliverablePhaseName" minOccurs="0"/>
+					<xs:element ref="AssetTypes"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="InstallationAssetTypeInfoType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AssetTypeInfoType">
+				<xs:sequence>
+					<xs:element ref="AssetTypeCategory">
+					</xs:element>
+					<xs:element ref="AssetTypeDescription">
+					</xs:element>
+					<xs:element ref="AssetTypePortabilityText">
+					</xs:element>
+					<xs:element ref="AssetTypeModelNumber">
+					</xs:element>
+					<xs:element ref="AssetTypeContactAssignments">
+					</xs:element>
+					<xs:element ref="AssetTypeReplacementCostValue" minOccurs="0"/>
+					<xs:element ref="AssetTypeExpectedLifeValue" minOccurs="0"/>
+					<xs:element ref="AssetTypeNominalLength">
+					</xs:element>
+					<xs:element ref="AssetTypeNominalWidth">
+					</xs:element>
+					<xs:element ref="AssetTypeNominalHeight">
+					</xs:element>
+					<xs:element ref="AssetTypeAccessibilityText" minOccurs="0"/>
+					<xs:element ref="AssetTypeCodePerformance" minOccurs="0"/>
+					<xs:element ref="AssetTypeColorCode" minOccurs="0"/>
+					<xs:element ref="AssetTypeConstituentsDescription" minOccurs="0"/>
+					<xs:element ref="AssetTypeFeaturesDescription" minOccurs="0"/>
+					<xs:element ref="AssetTypeFinishDescription" minOccurs="0"/>
+					<xs:element ref="AssetTypeGradeDescription" minOccurs="0"/>
+					<xs:element ref="AssetTypeMaterialDescription" minOccurs="0"/>
+					<xs:element ref="AssetTypeShapeDescription" minOccurs="0"/>
+					<xs:element ref="AssetTypeSizeDescription" minOccurs="0"/>
+					<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
+					<xs:element ref="AssetTypeDocuments" minOccurs="0"/>
+					<xs:element ref="Spares">
+						<xs:annotation>
+							<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SpareType">
+		<xs:annotation>
+			<xs:documentation>Information about a specific Spare.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="SpareType">
+				<xs:sequence>
+					<xs:element ref="SpareDescription" minOccurs="0">
+<xs:annotation>
+							<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+						</xs:annotation>					
+					</xs:element>
+					<xs:element ref="SpareSetNumber" minOccurs="0">
+<xs:annotation>
+							<xs:appinfo source="urn:ReadOnly">false</xs:appinfo>
+						</xs:annotation>					
+					</xs:element>
+					<xs:element ref="SparePartNumber" minOccurs="0">
+<xs:annotation>
+							<xs:appinfo source="urn:ReadOnly">false</xs:appinfo>
+						</xs:annotation>					
+					</xs:element>
+					<xs:element ref="SpareContactAssignments">
+<xs:annotation>
+							<xs:appinfo source="urn:ReadOnly">false</xs:appinfo>
+						</xs:annotation>					
+					</xs:element>
+					<xs:element ref="SpareDocuments" minOccurs="0">
+<xs:annotation>
+							<xs:appinfo source="urn:ReadOnly">false</xs:appinfo>
+						</xs:annotation>					
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AssetType" type="parts:InstallationAssetTypeInfoType" substitutionGroup="AssetType"/>
+	<xs:element name="Facility" type="parts:FacilityType" substitutionGroup="Facility"/>
+	<xs:element name="Spare" type="parts:SpareType" substitutionGroup="Spare"/>
+</xs:schema>

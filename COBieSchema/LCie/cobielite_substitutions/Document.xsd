@@ -1,7 +1,5 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://document.lcie.cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
-	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/cobielite_core.xsd"/>
-		<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="Attribute.xsd"/>
-			<xs:import namespace="http://issue.lcie.cobielite.cobie.erdc.org" schemaLocation="Issue.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:ns1="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:ns2="http://issue.lcie.cobielite.cobie.erdc.org" targetNamespace="http://document.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:annotation>
 		<xs:documentation>
 					A COBieLite Document with cardinalities as prescribed by the responsibility matrix.
@@ -12,19 +10,17 @@
 			<xs:documentation>Information about a specific Document.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="base:DocumentType">
+			<xs:extension base="DocumentType">
 				<xs:sequence>
-					<xs:element ref="base:DocumentCategory"/>
-					<xs:element ref="base:DocumentDescription" minOccurs="0"/>
-					<xs:element ref="base:DocumentURI"/>
-					<xs:element ref="base:DocumentReferenceURI" minOccurs="0"/>
-					<xs:element ref="base:DocumentAttributes" minOccurs="0"/>
-					<xs:element ref="base:DocumentIssues" minOccurs="0"/>
+					<xs:element ref="DocumentCategory"/>
+					<xs:element ref="DocumentDescription" minOccurs="0"/>
+					<xs:element ref="DocumentURI"/>
+					<xs:element ref="DocumentReferenceURI" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name="Document" type="doc:DocumentType" substitutionGroup="base:Document">
+	<xs:element name="Document" type="doc:DocumentType" substitutionGroup="Document">
 		<xs:annotation>
 			<xs:documentation>
 			Information about a specific Document. 			

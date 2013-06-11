@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cg="http://groups.lcie.cobielite.cobie.erdc.org" targetNamespace="http://groups.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:group name="AssetKey">
+		<xs:sequence>
+			<xs:element ref="AssetName"/>
+			<xs:element ref="AssetSpaceAssignments"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetMeta">
+		<xs:sequence>
+			<xs:element ref="AssetDescription"/>
+			<xs:element ref="AssetLocationDescription" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetInstalled">
+		<xs:sequence>
+					<xs:element ref="AssetSerialNumber" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="AssetInstallationDate" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="AssetInstalledModelNumber" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="AssetWarrantyStartDate" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="AssetTagNumber" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="AssetBarCode" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="AssetIdentifier" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="AssetAttributes" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetNotInstalledSelect">
+		<xs:sequence>
+			<xs:group ref="cg:AssetKey"/>
+			<xs:group ref="cg:AssetMeta"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetInstalledSelect">
+		<xs:sequence>
+			<xs:group ref="cg:AssetKey"/>
+			<xs:group ref="cg:AssetMeta"/>
+			<xs:group ref="cg:AssetInstalled"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeKey">
+		<xs:sequence>
+			<xs:element ref="AssetTypeName"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeMeta">
+		<xs:sequence>
+			<xs:element ref="AssetTypeCategory"/>
+			<xs:element ref="AssetTypeDescription"/>
+			<xs:element ref="AssetTypePortabilityText"/>
+			<xs:element ref="AssetTypeReplacementCostValue" minOccurs="0"/>
+			<xs:element ref="AssetTypeExpectedLifeValue" minOccurs="0"/>
+			<xs:element ref="AssetTypeNominalLength"/>
+			<xs:element ref="AssetTypeNominalWidth"/>
+			<xs:element ref="AssetTypeNominalHeight"/>
+			<xs:element ref="AssetTypeAccessibilityText" minOccurs="0"/>
+			<xs:element ref="AssetTypeCodePerformance" minOccurs="0"/>
+			<xs:element ref="AssetTypeColorCode" minOccurs="0"/>
+			<xs:element ref="AssetTypeConstituentsDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeFeaturesDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeFinishDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeGradeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeMaterialDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeShapeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeSizeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeWithoutManufacturerSelect">
+		<xs:sequence>
+			<xs:group ref="cg:AssetTypeKey"/>
+			<xs:group ref="cg:AssetTypeMeta"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeManufacturer">
+		<xs:sequence>
+			<xs:element ref="AssetTypeModelNumber"/>
+			<xs:element ref="AssetTypeContactAssignments"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeWithManufacturerSelect">
+		<xs:sequence>
+			<xs:group ref="cg:AssetTypeKey"/>
+			<xs:group ref="cg:AssetTypeManufacturer"/>
+			<xs:group ref="cg:AssetTypeMeta"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="FacilityKey">
+		<xs:sequence>
+			<xs:element ref="FacilityName"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="FacilityMeta">
+		<xs:sequence>
+			<xs:element ref="FacilityCategory"/>
+			<xs:element ref="ProjectAssignment"/>
+			<xs:element ref="SiteAssignment"/>
+			<xs:element ref="FacilityDefaultLinearUnit"/>
+			<xs:element ref="FacilityDefaultAreaUnit"/>
+			<xs:element ref="FacilityDefaultVolumeUnit"/>
+			<xs:element ref="FacilityDefaultCurrencyUnit"/>
+			<xs:element ref="FacilityDefaultMeasurementStandard"/>
+			<xs:element ref="FacilityDescription" minOccurs="0"/>
+			<xs:element ref="FacilityDeliverablePhaseName" minOccurs="0"/>
+			<xs:element ref="Contacts" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="FloorKey">
+		<xs:sequence>
+			<xs:element ref="FloorName"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="FloorMeta">
+		<xs:sequence>
+			<xs:element ref="FloorCategory"/>
+			<xs:element ref="FloorDescription" minOccurs="0"/>
+			<xs:element ref="FloorElevationValue" minOccurs="0"/>
+			<xs:element ref="FloorHeightValue" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="FacilitySelect">
+		<xs:sequence>
+			<xs:group ref="cg:FacilityKey"/>
+			<xs:group ref="cg:FacilityMeta"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="FloorSelect">
+		<xs:sequence>
+			<xs:group ref="cg:FloorKey"/>
+			<xs:group ref="cg:FloorMeta"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="SpaceKey">
+		<xs:sequence>
+			<xs:element ref="SpaceName"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="SpaceMeta">
+		<xs:sequence>
+			<xs:element ref="SpaceCategory"/>
+			<xs:element ref="SpaceDescription"/>
+			<xs:element ref="SpaceSignageName" minOccurs="0"/>
+			<xs:element ref="SpaceUsableHeightValue" minOccurs="0"/>
+			<xs:element ref="SpaceGrossAreaValue" minOccurs="0"/>
+			<xs:element ref="SpaceNetAreaValue" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="SpaceSelect">
+		<xs:sequence>
+			<xs:group ref="cg:SpaceKey"/>
+			<xs:group ref="cg:SpaceMeta"/>
+		</xs:sequence>
+	</xs:group>
+</xs:schema>
