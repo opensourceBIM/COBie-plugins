@@ -238,7 +238,7 @@
 		<xs:complexContent>
 			<xs:extension base="ValueBaseType">
 				<xs:sequence>
-					<xs:element ref="DecimalValue" minOccurs="0"/>
+					<xs:element ref="IntegerValue" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -1159,6 +1159,19 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="WarrantyKeyType">
+		<xs:annotation>
+			<xs:documentation>The elements required to form a primary key for an AssetType Warranty element</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AssetTypeKeyType">
+				<xs:sequence>
+					<xs:element ref="WarrantyName"/>
+					<xs:element ref="WarrantyCategory"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:complexType name="ZoneKeyType">
 		<xs:annotation>
 			<xs:documentation>The elements required to form a primary key for Zone elements.</xs:documentation>
@@ -1658,6 +1671,7 @@ COBie.System information is considered to be required only as-specified. Please 
 		<xs:key name="WarrantyKey">
 			<xs:selector xpath="Warranty"/>
 			<xs:field xpath="WarrantyName"/>
+			<xs:field xpath="WarrantyCategory"/>
 		</xs:key>
 	</xs:element>
 	<xs:element name="Warranty" type="WarrantyType" id="d2e3323">

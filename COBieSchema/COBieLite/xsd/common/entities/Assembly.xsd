@@ -1,10 +1,9 @@
 <!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:assembly="http://assembly.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://assembly.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:assembly="http://assembly.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:att="http://attribute.cobielite.cobie.erdc.org" xmlns:doc="http://document.cobielite.cobie.erdc.org" xmlns:iss="http://issue.cobielite.cobie.erdc.org" targetNamespace="http://assembly.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../cobielite_core.xsd"/>
 	<xs:import namespace="http://attribute.cobielite.cobie.erdc.org" schemaLocation="attribute.xsd"/>
-<xs:import namespace="http://document.cobielite.cobie.erdc.org" schemaLocation="document.xsd"/>
-<xs:import namespace="http://issue.cobielite.cobie.erdc.org" schemaLocation="issue.xsd"/>
-
+	<xs:import namespace="http://document.cobielite.cobie.erdc.org" schemaLocation="document.xsd"/>
+	<xs:import namespace="http://issue.cobielite.cobie.erdc.org" schemaLocation="issue.xsd"/>
 	<xs:annotation>
 		<xs:documentation>
 					A COBieLite Assembly with cardinalities as prescribed by the responsibility matrix.

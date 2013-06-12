@@ -16,46 +16,76 @@
 	</xs:group>
 	<xs:group name="AssetInstalled">
 		<xs:sequence>
-					<xs:element ref="AssetSerialNumber" minOccurs="0">
-						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="AssetInstallationDate" minOccurs="0">
-						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="AssetInstalledModelNumber" minOccurs="0">
-						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="AssetWarrantyStartDate" minOccurs="0">
-						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="AssetTagNumber" minOccurs="0">
-						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="AssetBarCode" minOccurs="0">
-						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="AssetIdentifier" minOccurs="0">
-						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="AssetAttributes" minOccurs="0">
-						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-						</xs:annotation>
-					</xs:element>
+			<xs:element ref="AssetSerialNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetInstallationDate" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetInstalledModelNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetWarrantyStartDate" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTagNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetBarCode" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetIdentifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetInspected">
+		<xs:sequence>
+			<xs:element ref="AssetSerialNumber" minOccurs="0">
+
+			</xs:element>
+			<xs:element ref="AssetInstallationDate" minOccurs="0">
+
+			</xs:element>
+			<xs:element ref="AssetInstalledModelNumber" minOccurs="0">
+
+			</xs:element>
+			<xs:element ref="AssetWarrantyStartDate" minOccurs="0">
+
+			</xs:element>
+			<xs:element ref="AssetTagNumber" minOccurs="0">
+
+			</xs:element>
+			<xs:element ref="AssetBarCode" minOccurs="0">
+
+			</xs:element>
+			<xs:element ref="AssetIdentifier" minOccurs="0">
+
+			</xs:element>
+			<xs:element ref="AssetAttributes" minOccurs="0">
+
+			</xs:element>
+			<xs:element ref="AssetDocuments" minOccurs="0"/>
+			<xs:element ref="AssetIssues" minOccurs="0"/>
 		</xs:sequence>
 	</xs:group>
 	<xs:group name="AssetNotInstalledSelect">
@@ -69,6 +99,13 @@
 			<xs:group ref="cg:AssetKey"/>
 			<xs:group ref="cg:AssetMeta"/>
 			<xs:group ref="cg:AssetInstalled"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetInspectedSelect">
+		<xs:sequence>
+			<xs:group ref="cg:AssetKey"/>
+			<xs:group ref="cg:AssetMeta"/>
+			<xs:group ref="cg:AssetInspected"/>
 		</xs:sequence>
 	</xs:group>
 	<xs:group name="AssetTypeKey">
@@ -182,6 +219,73 @@
 		<xs:sequence>
 			<xs:group ref="cg:SpaceKey"/>
 			<xs:group ref="cg:SpaceMeta"/>
+		</xs:sequence>
+	</xs:group>
+	
+	<xs:group name="SpareKey">
+		<xs:sequence>
+			<xs:element ref="SpareName"/>
+		</xs:sequence>
+	</xs:group>
+	
+	<xs:group name="SpareMeta">
+		<xs:sequence>
+		<xs:element ref="SpareDescription" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="SpareSetNumber" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="SparePartNumber" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="SpareContactAssignments">
+						<xs:annotation>
+							<xs:appinfo source="urn:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="SpareDocuments" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo source="urn:ReadOnly">false</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+		</xs:sequence>
+	</xs:group>
+	
+	<xs:group name="SpareSelect">
+		<xs:sequence>
+			<xs:group ref="cg:SpareKey"/>
+			<xs:group ref="cg:SpareMeta"/>
+		</xs:sequence>
+	</xs:group>
+	
+	<xs:group name="WarrantyKey">
+		<xs:sequence>
+			<xs:element ref="WarrantyName"/>
+			<xs:element ref="WarrantyCategory"/>
+		</xs:sequence>
+	</xs:group>
+	
+	<xs:group name="WarrantyMeta">
+		<xs:sequence>
+								<xs:element ref="WarrantyDuration" minOccurs="0"/>
+					<xs:element ref="WarrantyContactAssignments" minOccurs="0"/>
+					<xs:element ref="WarrantyAttributes" minOccurs="0"/>
+					<xs:element ref="WarrantyDocuments" minOccurs="0"/>
+					<xs:element ref="WarrantyIssues" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+	
+	<xs:group name="WarrantySelect">
+		<xs:sequence>
+			<xs:group ref="cg:WarrantyKey" minOccurs="0"/>
+			<xs:group ref="cg:WarrantyMeta" minOccurs="0"/>
 		</xs:sequence>
 	</xs:group>
 </xs:schema>

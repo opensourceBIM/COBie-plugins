@@ -72,6 +72,13 @@
 				<Folder FolderName="examples">
 					<File FilePath="LCie\CRUD\examples\010_ProductTypeTemplate_ReadAll.xml" HomeFolder="Yes"/>
 					<File FilePath="LCie\CRUD\examples\010_ProductTypeTemplate_ReadOne.xml" HomeFolder="Yes"/>
+					<File FilePath="LCie\CRUD\examples\010_ProductTypeTemplate_Update.xml" HomeFolder="Yes"/>
+					<File FilePath="LCie\CRUD\examples\013_ProductTypeSelection_ReadAll.xml" HomeFolder="Yes"/>
+					<File FilePath="LCie\CRUD\examples\013_ProductTypeSelection_ReadOne.xml" HomeFolder="Yes"/>
+					<File FilePath="LCie\CRUD\examples\013_ProductTypeSelection_Update.xml" HomeFolder="Yes"/>
+					<File FilePath="LCie\CRUD\examples\015_ProductInstallation_ReadAll.xml" HomeFolder="Yes"/>
+					<File FilePath="LCie\CRUD\examples\015_ProductInstallation_ReadOne.xml" HomeFolder="Yes"/>
+					<File FilePath="LCie\CRUD\examples\015_ProductInstallation_Update.xml" HomeFolder="Yes"/>
 				</Folder>
 				<File FilePath="LCie\CRUD\010_ProductTypeTemplate_CRUD.xsd" HomeFolder="Yes"/>
 				<File FilePath="LCie\CRUD\011_ProductTypeCandidate_CRUD.xsd" HomeFolder="Yes"/>
