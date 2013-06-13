@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  MapForce Project File  -->
+<Project Expanded="Yes" Type="Root" language="java" OutputDir="output\" Title="mappings" OutputName="mappings" Version="6">
+	<Folder FolderName="Mapping Folder" Expanded="Yes" Type="MappingFolder">
+		<File Type="Mapping" FilePath="COBieLite_To_ProductTypeTemplate.mfd"/>
+		<File Type="Mapping" FilePath="ProductTypeTemplate_To_COBieLite.mfd"/>
+		<File Type="Mapping" FilePath="C:\Users\RDITLACB\git\cobieserver\COBieSchema\COBieLite\xsd\xsl\RC2_to_RC3.mfd"/>
+	</Folder>
+</Project>

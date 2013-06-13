@@ -1,5 +1,5 @@
 <!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cobie="http://cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cobie="cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="cobielite.cobie.erdc.org" elementFormDefault="qualified" attributeFormDefault="qualified" version="RC2">
 	<xs:annotation>
 		<xs:documentation>
 			The Construction-Operations Building information exchange (COBie) is a United States Building Information Model Standard published by the buildingSMART alliance, a Council of the National Institute of Building Sciences.   COBie defines the information exchange requirements needed to capture required information needed to manage facility assets during the planning, design, construction, operations, management, renovation, and recycling of a facility.  COBie is a marketing name used by the buildingSMART alliance for the underlying internationally used format defined by the Facility Management Handover Model View Defintion, and internally used and recognized Model View of the STEP-based ISO 16739 standard.
@@ -18,7 +18,7 @@
 			<xs:annotation>
 				<xs:documentation>Foriegn key for relation of a pair of Space and Zone elements.</xs:documentation>
 			</xs:annotation>
-			<xs:selector xpath="cobie:Floors/cobie:Floor/cobie:Spaces/cobie:Space/cobie:SpaceZoneAssignments/cobie:ZoneAssignment"/>
+			<xs:selector xpath="cobie:Floors/cobie:Floor/cobie:Spaces/cobie:Space/cobie:ZoneAssignments/cobie:ZoneAssignment"/>
 			<xs:field xpath="cobie:ZoneName"/>
 			<xs:field xpath="cobie:ZoneCategory"/>
 		</xs:keyref>
@@ -27,7 +27,7 @@
 			<xs:annotation>
 				<xs:documentation>Foreign key for relation of a pair of Space and Asset elements.</xs:documentation>
 			</xs:annotation>
-			<xs:selector xpath="cobie:AssetTypes/cobie:AssetType/cobie:Assets/cobie:Asset/cobie:AssetSpaceAssignments/cobie:SpaceAssignment"/>
+			<xs:selector xpath="cobie:AssetTypes/cobie:AssetType/cobie:Assets/cobie:Asset/cobie:SpaceAssignments/cobie:SpaceAssignment"/>
 			<xs:field xpath="cobie:SpaceName"/>
 		</xs:keyref>
 	</xs:element>
@@ -165,15 +165,6 @@
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="AttributeMonetaryValueType">
-		<xs:annotation>
-			<xs:documentation>COBie monetary value type for Attributes.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element ref="cobie:MonetaryValue"/>
-			<xs:element ref="cobie:MonetaryUnit"/>
-		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="AttributeStringValueType">
 		<xs:annotation>
@@ -351,14 +342,6 @@
 			<xs:enumeration value="yards"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="MonetaryValueSimpleType">
-		<xs:annotation>
-			<xs:documentation>A decimal type with only 2 decimal places.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:decimal">
-			<xs:fractionDigits value="2"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="PropertySetNameSimpleType">
 		<xs:annotation>
 			<xs:documentation>A simple type for property set names.</xs:documentation>
@@ -480,9 +463,9 @@
 					<xs:element ref="cobie:AssemblyParentName"/>
 					<xs:element ref="cobie:AssemblyCategory" minOccurs="0"/>
 					<xs:element ref="cobie:AssemblyDescription" minOccurs="0"/>
-					<xs:element ref="cobie:AssemblyAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:AssemblyDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:AssemblyIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -498,18 +481,17 @@
 					<xs:element ref="cobie:AssetDescription" minOccurs="0"/>
 					<xs:element ref="cobie:AssetSerialNumber" minOccurs="0"/>
 					<xs:element ref="cobie:AssetInstallationDate" minOccurs="0"/>
-					<xs:element ref="cobie:AssetInstalledModelNumber" minOccurs="0"/>
 					<xs:element ref="cobie:AssetWarrantyStartDate" minOccurs="0"/>
 					<xs:element ref="cobie:AssetTagNumber" minOccurs="0"/>
 					<xs:element ref="cobie:AssetBarCode" minOccurs="0"/>
 					<xs:element ref="cobie:AssetIdentifier" minOccurs="0"/>
 					<xs:element ref="cobie:AssetLocationDescription" minOccurs="0"/>
-					<xs:element ref="cobie:AssetSpaceAssignments"/>
-					<xs:element ref="cobie:AssetSystemAssignments" minOccurs="0"/>
+					<xs:element ref="cobie:SpaceAssignments"/>
+					<xs:element ref="cobie:SystemAssignments" minOccurs="0"/>
 					<xs:element ref="cobie:AssemblyAssignments" minOccurs="0"/>
-					<xs:element ref="cobie:AssetAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:AssetDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:AssetIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -553,14 +535,14 @@
 					<xs:element ref="cobie:AssetTypeSizeDescription" minOccurs="0"/>
 					<xs:element ref="cobie:AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
 					<xs:element ref="cobie:Assets" minOccurs="0"/>
-					<xs:element ref="cobie:AssetTypeContactAssignments" minOccurs="0"/>
+					<xs:element ref="cobie:ContactAssignments" minOccurs="0"/>
 					<xs:element ref="cobie:Warranties" minOccurs="0"/>
 					<xs:element ref="cobie:Spares" minOccurs="0"/>
 					<xs:element ref="cobie:Jobs" minOccurs="0"/>
 					<xs:element ref="cobie:AssemblyAssignments" minOccurs="0"/>
-					<xs:element ref="cobie:AssetTypeAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:AssetTypeDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:AssetTypeIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -576,7 +558,7 @@
 					<xs:element ref="cobie:AttributeDescription" minOccurs="0"/>
 					<xs:element ref="cobie:AttributeCategory" minOccurs="0"/>
 					<xs:element ref="cobie:AttributeValue" minOccurs="0"/>
-					<xs:element ref="cobie:AttributeIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 				<xs:attribute ref="cobie:propertySetName" use="optional"/>
 				<xs:attribute ref="cobie:propertySetExternalIdentifier" use="optional"/>
@@ -589,13 +571,12 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="cobie:CobieComplexObjectType">
-				<xs:choice minOccurs="0" maxOccurs="1">
+				<xs:choice minOccurs="0">
 					<xs:element ref="cobie:AttributeBooleanValue"/>
 					<xs:element ref="cobie:AttributeDateValue"/>
 					<xs:element ref="cobie:AttributeDateTimeValue"/>
 					<xs:element ref="cobie:AttributeDecimalValue"/>
 					<xs:element ref="cobie:AttributeIntegerValue"/>
-					<xs:element ref="cobie:AttributeMonetaryValue"/>
 					<xs:element ref="cobie:AttributeStringValue"/>
 					<xs:element ref="cobie:AttributeTimeValue"/>
 				</xs:choice>
@@ -616,9 +597,9 @@
 					<xs:element ref="cobie:ConnectionAsset2Name" minOccurs="0"/>
 					<xs:element ref="cobie:ConnectionAsset2PortName" minOccurs="0"/>
 					<xs:element ref="cobie:ConnectionDescription" minOccurs="0"/>
-					<xs:element ref="cobie:ConnectionAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:ConnectionDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:ConnectionIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -631,7 +612,6 @@
 			<xs:extension base="cobie:CobieRowType">
 				<xs:all>
 					<xs:element ref="cobie:ContactEmail"/>
-					<xs:element ref="cobie:ContactCategory" minOccurs="0"/>
 					<xs:element ref="cobie:ContactCompanyName" minOccurs="0"/>
 					<xs:element ref="cobie:ContactPhoneNumber" minOccurs="0"/>
 					<xs:element ref="cobie:ContactDepartmentName" minOccurs="0"/>
@@ -644,9 +624,9 @@
 					<xs:element ref="cobie:ContactCountryName" minOccurs="0"/>
 					<xs:element ref="cobie:ContactPostalCode" minOccurs="0"/>
 					<xs:element ref="cobie:ContactURL" minOccurs="0"/>
-					<xs:element ref="cobie:ContactAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:ContactDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:ContactIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -663,8 +643,8 @@
 					<xs:element ref="cobie:DocumentDescription" minOccurs="0"/>
 					<xs:element ref="cobie:DocumentURI" minOccurs="0"/>
 					<xs:element ref="cobie:DocumentReferenceURI" minOccurs="0"/>
-					<xs:element ref="cobie:DocumentAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:DocumentIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -693,9 +673,9 @@
 					<xs:element ref="cobie:Systems" minOccurs="0"/>
 					<xs:element ref="cobie:Connections" minOccurs="0"/>
 					<xs:element ref="cobie:Contacts" minOccurs="0"/>
-					<xs:element ref="cobie:FacilityAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:FacilityDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:FacilityIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -713,9 +693,9 @@
 					<xs:element ref="cobie:FloorElevationValue" minOccurs="0"/>
 					<xs:element ref="cobie:FloorHeightValue" minOccurs="0"/>
 					<xs:element ref="cobie:Spaces" minOccurs="0"/>
-					<xs:element ref="cobie:FloorAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:FloorDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:FloorIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -757,9 +737,9 @@
 					<xs:element ref="cobie:JobTaskID"/>
 					<xs:element ref="cobie:JobPriorTaskID" minOccurs="0"/>
 					<xs:element ref="cobie:Resources" minOccurs="0"/>
-					<xs:element ref="cobie:JobAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:JobDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:JobIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -824,9 +804,9 @@
 					<xs:element ref="cobie:ResourceName"/>
 					<xs:element ref="cobie:ResourceCategory" minOccurs="0"/>
 					<xs:element ref="cobie:ResourceDescription" minOccurs="0"/>
-					<xs:element ref="cobie:ResourceAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:ResourceDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:ResourceIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -859,10 +839,10 @@
 					<xs:element ref="cobie:SpaceGrossAreaValue" minOccurs="0"/>
 					<xs:element ref="cobie:SpaceNetAreaValue" minOccurs="0"/>
 					<xs:element ref="cobie:Space2DShape" minOccurs="0"/>
-					<xs:element ref="cobie:SpaceZoneAssignments" minOccurs="0"/>
-					<xs:element ref="cobie:SpaceAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:SpaceDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:SpaceIssues" minOccurs="0"/>
+					<xs:element ref="cobie:ZoneAssignments" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -879,10 +859,10 @@
 					<xs:element ref="cobie:SpareDescription" minOccurs="0"/>
 					<xs:element ref="cobie:SpareSetNumber" minOccurs="0"/>
 					<xs:element ref="cobie:SparePartNumber" minOccurs="0"/>
-					<xs:element ref="cobie:SpareContactAssignments" minOccurs="0"/>
-					<xs:element ref="cobie:SpareAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:SpareDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:SpareIssues" minOccurs="0"/>
+					<xs:element ref="cobie:ContactAssignments" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -897,9 +877,9 @@
 					<xs:element ref="cobie:SystemName"/>
 					<xs:element ref="cobie:SystemCategory"/>
 					<xs:element ref="cobie:SystemDescription" minOccurs="0"/>
-					<xs:element ref="cobie:SystemAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:SystemDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:SystemIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -914,10 +894,10 @@
 					<xs:element ref="cobie:WarrantyName" minOccurs="0"/>
 					<xs:element ref="cobie:WarrantyCategory" minOccurs="0"/>
 					<xs:element ref="cobie:WarrantyDuration" minOccurs="0"/>
-					<xs:element ref="cobie:WarrantyContactAssignments" minOccurs="0"/>
-					<xs:element ref="cobie:WarrantyAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:WarrantyDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:WarrantyIssues" minOccurs="0"/>
+					<xs:element ref="cobie:ContactAssignments" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -932,9 +912,9 @@
 					<xs:element ref="cobie:ZoneName"/>
 					<xs:element ref="cobie:ZoneCategory" minOccurs="0"/>
 					<xs:element ref="cobie:ZoneDescription" minOccurs="0"/>
-					<xs:element ref="cobie:ZoneAttributes" minOccurs="0"/>
-					<xs:element ref="cobie:ZoneDocuments" minOccurs="0"/>
-					<xs:element ref="cobie:ZoneIssues" minOccurs="0"/>
+					<xs:element ref="cobie:Attributes" minOccurs="0"/>
+					<xs:element ref="cobie:Documents" minOccurs="0"/>
+					<xs:element ref="cobie:Issues" minOccurs="0"/>
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
@@ -1215,7 +1195,7 @@
 				<xs:sequence>
 					<xs:element ref="cobie:AssetName"/>
 					<xs:element ref="cobie:AssetTypeAssignment"/>
-					<xs:element ref="cobie:AssetSpaceAssignments"/>
+					<xs:element ref="cobie:SpaceAssignments"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -1240,7 +1220,7 @@
 		<xs:complexContent>
 			<xs:extension base="cobie:CobieKeyType">
 				<xs:sequence>
-					<xs:element ref="cobie:ContactEmailReference" minOccurs="0"/>
+					<xs:element ref="cobie:ContactEmail" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -1269,19 +1249,6 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="JobKeyType">
-		<xs:annotation>
-			<xs:documentation>The elements required to form a primary key for Job elements.</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="cobie:AssetTypeKeyType">
-				<xs:sequence>
-					<xs:element ref="cobie:JobName"/>
-					<xs:element ref="cobie:JobTaskID"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="SpaceKeyType">
 		<xs:annotation>
 			<xs:documentation>The elements required to form a primary key for Space elements.</xs:documentation>
@@ -1290,30 +1257,6 @@
 			<xs:extension base="cobie:FloorKeyType">
 				<xs:sequence>
 					<xs:element ref="cobie:SpaceName"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="ResourceKeyType">
-		<xs:annotation>
-			<xs:documentation>The elements required to form a primary key for Resource elements.</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="cobie:AssetTypeKeyType">
-				<xs:sequence>
-					<xs:element ref="cobie:ResourceName"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="SpareKeyType">
-		<xs:annotation>
-			<xs:documentation>The elements required to form a primary key for Spare elements.</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="cobie:AssetTypeKeyType">
-				<xs:sequence>
-					<xs:element ref="cobie:SpareName"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -1536,11 +1479,6 @@ COBie2.4Column:  M</xs:documentation>
 			<xs:documentation>Integer Attribute Value</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="AttributeMonetaryValue" type="cobie:AttributeMonetaryValueType">
-		<xs:annotation>
-			<xs:documentation>Attribute with a monetary value</xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="AttributeStringValue" type="cobie:AttributeStringValueType">
 		<xs:annotation>
 			<xs:documentation>String Attribute Value</xs:documentation>
@@ -1582,13 +1520,13 @@ COBie2.4Column:  M</xs:documentation>
 			<xs:documentation>The assignment of a Contact to a COBie element.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="AssetTypeContactAssignments" type="cobie:ContactAssignmentCollectionType" id="d2e2629">
+	<xs:element name="ContactAssignments" type="cobie:ContactAssignmentCollectionType" id="d2e2629">
 		<xs:annotation>
-			<xs:documentation>Assignment of Contacts to an AssetType element.</xs:documentation>
+			<xs:documentation>Assignment of Contacts to a COBie element.</xs:documentation>
 		</xs:annotation>
-		<xs:key name="AssetTypeContactAssignmentKey">
+		<xs:key name="ContactAssignmentKey">
 			<xs:selector xpath="cobie:ContactAssignment"/>
-			<xs:field xpath="cobie:ContactEmailReference"/>
+			<xs:field xpath="cobie:ContactEmail"/>
 		</xs:key>
 	</xs:element>
 	<xs:element name="Contacts" type="cobie:ContactCollectionType">
@@ -1707,15 +1645,6 @@ COBie2.4Column:  M</xs:documentation>
 			<xs:documentation>Information about a specific Spare.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="SpareContactAssignments" type="cobie:ContactAssignmentCollectionType" id="e2e2629">
-		<xs:annotation>
-			<xs:documentation>Assignment of Contacts to a Spare element.</xs:documentation>
-		</xs:annotation>
-		<xs:key name="SpareContactAssignmentKey">
-			<xs:selector xpath="cobie:ContactAssignment"/>
-			<xs:field xpath="cobie:ContactEmailReference"/>
-		</xs:key>
-	</xs:element>
 	<xs:element name="Spares" type="cobie:SpareCollectionType" id="d2e4601">
 		<xs:annotation>
 			<xs:documentation>The set of Spares, replacement parts, and consumables needed for this specific Type.</xs:documentation>
@@ -1803,7 +1732,7 @@ COBie.System information is considered to be required only as-specified. Please 
 			<xs:documentation>The assignment of a System to an Asset or AssetType.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="AssetSystemAssignments" type="cobie:SystemAssignmentCollectionType">
+	<xs:element name="SystemAssignments" type="cobie:SystemAssignmentCollectionType">
 		<xs:annotation>
 			<xs:documentation>The assignment of a COBie element to Systems.</xs:documentation>
 		</xs:annotation>
@@ -1837,23 +1766,14 @@ COBie.System information is considered to be required only as-specified. Please 
 			<xs:documentation>Information about a specific warranty. </xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="WarrantyContactAssignments" type="cobie:ContactAssignmentCollectionType" id="d2e2329">
-		<xs:annotation>
-			<xs:documentation>Assignment of Contacts to a Warranty element.</xs:documentation>
-		</xs:annotation>
-		<xs:key name="WarrantyContactAssignmentKey">
-			<xs:selector xpath="cobie:ContactAssignment"/>
-			<xs:field xpath="cobie:ContactEmailReference"/>
-		</xs:key>
-	</xs:element>
 	<xs:element name="ZoneAssignment" type="cobie:ZoneKeyType">
 		<xs:annotation>
 			<xs:documentation>The assignment of a COBie element to a Zone.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="SpaceZoneAssignments" type="cobie:ZoneAssignmentCollectionType">
+	<xs:element name="ZoneAssignments" type="cobie:ZoneAssignmentCollectionType">
 		<xs:annotation>
-			<xs:documentation>The assignment of zones to a COBie Space element.</xs:documentation>
+			<xs:documentation>The assignment of zones to a COBie element.</xs:documentation>
 		</xs:annotation>
 		<xs:key name="ZoneAssignmentKey">
 			<xs:selector xpath="cobie:ZoneAssignment"/>
@@ -1878,11 +1798,6 @@ COBie.System information is considered to be required only as-specified. Please 
 	</xs:element>
 	<!--Element Definitions:  COBie Fields (Elements of SimpleTypes)-->
 	<!--COBie Fields: Assembly Fields-->
-	<xs:element name="AssemblyAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Assembly element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="AssemblyCategory" type="cobie:AssemblyCategorySimpleType">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">AssemblyCategory identifies the way in which the current component is combined into the Assembly.</xs:appinfo>
@@ -1911,16 +1826,6 @@ COBie.System information is considered to be required only as-specified. Please 
 			COBie2.4Header:  COBie.Assembly.Description
 			COBie2.4Column:  K
 			</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="AssemblyDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Assembly element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="AssemblyIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Assembly element. </xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="AssemblyName" type="cobie:CobieNameSimpleType">
@@ -1956,11 +1861,6 @@ COBie.System information is considered to be required only as-specified. Please 
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  Asset Fields-->
-	<xs:element name="AssetAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Asset element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="AssetBarCode" type="cobie:CobieTextSimpleType" id="d2e5907">
 		<xs:annotation>
 			<xs:documentation>
@@ -1988,16 +1888,6 @@ COBie.System information is considered to be required only as-specified. Please 
 			</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="AssetDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Asset element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="AssetIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Asset element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="AssetIdentifier" type="cobie:CobieTextSimpleType" id="d2e5934">
 		<xs:annotation>
 			<xs:documentation>
@@ -2022,22 +1912,6 @@ COBie.System information is considered to be required only as-specified. Please 
 			ISO16739Mapping:  IfcProduct IfcPropertySingleValue with name containing "InstallationDate" 
 			COBie2.4Header:  
 			COBie2.4Column:  
-			</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="AssetInstalledModelNumber" type="cobie:CobieTextSimpleType" id="f35829">
-		<xs:annotation>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">AssetInstalledModel number represents the model number as indicated on the installed piece of equipment - note that this model number can be slightly different than the AssetType model number even in the same product line, e.g. color identifiers appended to model numbers </xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:Value">1020 MAS (SUPPLY) B|2VT8 3 32 ADP MVOLT 1/3 GEB10-SIS LP830 EL14R|Axiom Multix M-2|LF8N 2/26TRT F8B4W-L 277|LH1720C-B |Generator Quick Connect Switchboard c|K-4904-ET-R10|Series 416b </xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:ISO16739Mapping">IfcProduct IfcPropertySingleValue with name = "InstalledModelNumber" </xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Header">COBie.Attribute with Name=InstalledModelNumber and SheetName=Component</xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Column">n/a</xs:appinfo>
-			<xs:documentation>
-			Definition:  AssetInstalledModel number represents the model number as indicated on the installed piece of equipment - note that this model number can be slightly different than the AssetType model number even in the same product line, e.g. color identifiers appended to model numbers
-			Value:  1020 MAS (SUPPLY) B|2VT8 3 32 ADP MVOLT 1/3 GEB10-SIS LP830 EL14R|Axiom Multix M-2|LF8N 2/26TRT F8B4W-L 277|LH1720C-B |Generator Quick Connect Switchboard c|K-4904-ET-R10|Series 416b
-			ISO16739Mapping: IfcProduct IfcPropertySingleValue with name = "InstalledModelNumber" 
-			COBie2.4Header:  OBie.Attribute with Name=InstalledModelNumber and SheetName=Component
-			COBie2.4Column:  n/a
 			</xs:documentation>
 		</xs:annotation>
 	</xs:element>
@@ -2122,21 +1996,6 @@ COBie.System information is considered to be required only as-specified. Please 
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  AssetType Fields-->
-	<xs:element name="AssetTypeAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an AssetType element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="AssetTypeDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an AssetType element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="AssetTypeIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an AssetType element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="AssetTypeAccessibilityText" type="cobie:CobieTextSimpleType" id="d2e2550">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">AssetType.AccessibilityText contains a description of the finish of the AccessibilityPerformanceDescription as found on the manufacturer's product data sheet.</xs:appinfo>
@@ -2447,16 +2306,6 @@ COBie.System information is considered to be required only as-specified. Please 
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  Attribute Fields-->
-	<xs:element name="AttributeDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Attribute element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="AttributeIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Attribute element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="AttributeAllowedValue" type="cobie:CobieTextSimpleType">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">AttributeAllowedValue allows documentation of the original source of the information identified in this row. If there is a specific list of allowed values, this field represents one allowed value.</xs:appinfo>
@@ -2571,37 +2420,12 @@ COBie.System information is considered to be required only as-specified. Please 
 			<xs:documentation>Specifies the maximum value of an integer in a bounded integer value range.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="MonetaryUnit" type="cobie:CurrencyUnitSimpleType">
-		<xs:annotation>
-			<xs:documentation>An occurence of a currency unit.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="MonetaryValue" type="cobie:MonetaryValueSimpleType">
-		<xs:annotation>
-			<xs:documentation>A COBie value represented by a decimal type constrained to two decimal places.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="StringValue" type="cobie:CobieTextSimpleType">
 		<xs:annotation>
 			<xs:documentation>A COBie value represented by a text or string type.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<!-- COBie Fields:  Connection Fields-->
-	<xs:element name="ConnectionAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Connection element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="ConnectionDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Connection element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="ConnectionIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Connection element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="ConnectionAsset1Name" type="cobie:CobieNameSimpleType">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">ConnectionAsset1Name contains the Type or Component Name for the upstream element of a connection. In database terms, this field is a Foreign Key.
@@ -2719,37 +2543,6 @@ Value
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  Contact Fields-->
-	<xs:element name="ContactAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Contact element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="ContactDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Contact element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="ContactIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Contact element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="ContactCategory" type="cobie:CobieCategorySimpleType" id="d2g2754">
-		<xs:annotation>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">ContactCategory is a classification or category describing the role of the contact.</xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:Value">34-55 14 11: Consultant|34-31 11: Manufacturer|34-11 11 51: Partner|34-41 11: Facility Manager|34-31 21: Distributor </xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:ISO16739Mapping">IfcActorRole.UserDefinedRole</xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Header">COBie.Contact.Category</xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Column">D</xs:appinfo>
-			<xs:documentation>
-			Definition:  ContactCategory is a classification or category describing the role of the contact.
-			Value:  34-55 14 11: Consultant|34-31 11: Manufacturer|34-11 11 51: Partner|34-41 11: Facility Manager|34-31 21: Distributor
-			ISO16739Mapping:  IfcActorRole.UserDefinedRole
-			COBie2.4Header:  COBie.Contact.Category
-			COBie2.4Column: D
-			</xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="ContactCompanyName" type="cobie:CobieTextSimpleType" id="d2e2734">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">ContactCompanyName is the name of the company associated with the Contact.Email.</xs:appinfo>
@@ -2807,22 +2600,6 @@ Value
 			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Column">A</xs:appinfo>
 			<xs:documentation>
 			Definition:  Contact.Email is the email address of the people and companies whose documentation is required in a COBie file.  Contact.Email is the primary key of the Contact worksheet and it is referenced in all subsequent COBie worksheets. 
-			Value:  mariangelica.carrasquillo@usace.army.mil|sales@panelfold.com|info@modernfold.com|info@hufcor.com|karpensteel@karpensteel.com|contact@securalldoors.com|sales@marvin.com
-			ISO16739Mapping:  IfcTelecomAddress.ElectronicMailAddresses 
-			COBie2.4Header:  COBie.Contact.Email 
-			COBie2.4Column:  A
-			</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="ContactEmailReference" type="cobie:CobieNameSimpleType" id="d2f1783">
-		<xs:annotation>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">Contact.Email is the email address of the people and companies whose documentation is required in a COBie file.  Contact.Email is the primary key of the Contact worksheet and it is referenced in all subsequent COBie worksheets. </xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:Value">mariangelica.carrasquillo@usace.army.mil|sales@panelfold.com|info@modernfold.com|info@hufcor.com|karpensteel@karpensteel.com|contact@securalldoors.com|sales@marvin.com</xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:ISO16739Mapping">IfcTelecomAddress.ElectronicMailAddresses </xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Header">COBie.Contact.Email </xs:appinfo>
-			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Column">A</xs:appinfo>
-			<xs:documentation>
-			Definition:  ContactEmailReference is a reference to an email address (stored in a Contact element) of the people and companies whose documentation is required in a COBie file.  Contact.Email is the primary key of the Contact worksheet and it is referenced in all subsequent COBie worksheets. 
 			Value:  mariangelica.carrasquillo@usace.army.mil|sales@panelfold.com|info@modernfold.com|info@hufcor.com|karpensteel@karpensteel.com|contact@securalldoors.com|sales@marvin.com
 			ISO16739Mapping:  IfcTelecomAddress.ElectronicMailAddresses 
 			COBie2.4Header:  COBie.Contact.Email 
@@ -2975,16 +2752,6 @@ Value
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  Document Fields-->
-	<xs:element name="DocumentAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Document element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="DocumentIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Document element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="DocumentCategory" type="cobie:DocumentCategorySimpleType">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">Category name of the Document.</xs:appinfo>
@@ -3066,21 +2833,6 @@ Value
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  Facility Fields-->
-	<xs:element name="FacilityAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Facility element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="FacilityDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Facility element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="FacilityIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Facility element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="FacilityCategory" type="cobie:FacilityCategorySimpleType" id="d2e105">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">Category provides the classification of the information provided in this row of data.</xs:appinfo>
@@ -3289,21 +3041,6 @@ COBie2.4Column:  A</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  Floor Fields-->
-	<xs:element name="FloorAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Floor element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="FloorDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Floor element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="FloorIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Floor element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="FloorCategory" type="cobie:FloorCategorySimpleType" id="d2e466">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">FloorCategory provides the classification of the information provided in this row of data.</xs:appinfo>
@@ -3374,16 +3111,6 @@ COBie2.4Column:  A</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<!-- COBie Fields:  Issue Fields-->
-	<xs:element name="IssueAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Issue element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="IssueDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Issue element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="IssueCategory" type="cobie:IssueCategorySimpleType" id="d2e5493">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">IssueCategory identifies the category of issue contained in this record.</xs:appinfo>
@@ -3486,21 +3213,6 @@ COBie2.4Column:  A</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  Job Fields-->
-	<xs:element name="JobAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Assembly element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="JobDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Assembly element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="JobIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Assembly element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="JobCategory" type="cobie:JobCategorySimpleType" id="d2e4176">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">Category provides the classification of the information provided in this row of data.</xs:appinfo>
@@ -3696,21 +3408,6 @@ COBie2.4Column:  A</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  Resource Fields-->
-	<xs:element name="ResourceAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Resource element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="ResourceDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Resource element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="ResourceIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Resource element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="ResourceCategory" type="cobie:ResourceCategorySimpleType" id="d2e4490">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">Category provides the classification of the information provided in this row of data.</xs:appinfo>
@@ -3760,29 +3457,14 @@ COBie2.4Column:  A</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  Space Fields-->
-	<xs:element name="SpaceAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Space element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="SpaceDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Space element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="SpaceIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Space element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="SpaceAssignment" type="cobie:SpaceKeyType">
 		<xs:annotation>
 			<xs:documentation>The assignment of a Space to a COBie element.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="AssetSpaceAssignments" type="cobie:SpaceAssignmentCollectionType">
+	<xs:element name="SpaceAssignments" type="cobie:SpaceAssignmentCollectionType">
 		<xs:annotation>
-			<xs:documentation>The assignment of a COBie Asset element to Spaces (i.e. rooms).</xs:documentation>
+			<xs:documentation>The assignment of a COBie element to Spaces (i.e. rooms).</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="SpaceCategory" type="cobie:SpaceCategorySimpleType" id="d2e611">
@@ -3851,21 +3533,6 @@ COBie2.4Column:  A</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  Spare Fields-->
-	<xs:element name="SpareAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Spare element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="SpareDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Spare element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="SpareIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Spare element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="SpareCategory" type="cobie:SpareCategorySimpleType" id="d2e4653">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">Category provides the classification of the information provided in this row of data.</xs:appinfo>
@@ -3947,21 +3614,6 @@ COBie2.4Column:  A</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  System Fields-->
-	<xs:element name="SystemAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an System element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="SystemDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an System element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="SystemIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an System element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="SystemCategory" type="cobie:SystemCategorySimpleType" id="d2e6012">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">Category provides the classification of the information provided in this row of data.  In a given category of System a Asset should be listed only once.  System.Category is part of a combination Primary Key comprised of System.Name, System.Category, and System.AssetNames.</xs:appinfo>
@@ -4029,21 +3681,6 @@ COBie2.4Column:  A</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  Warranty Fields-->
-	<xs:element name="WarrantyAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Warranty element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="WarrantyDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Warranty element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="WarrantyIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Warranty element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="WarrantyCategory" type="cobie:WarrantyCategorySimpleType" id="d2e3362">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">Warranty Category identifies specific coverage of this warranty.</xs:appinfo>
@@ -4095,21 +3732,6 @@ WarrantyDurationValue contains the length of time allowed under the warranty for
 		</xs:annotation>
 	</xs:element>
 	<!--COBie Fields:  ZoneT Fields-->
-	<xs:element name="ZoneAttributes" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Attribute elements associated with an Zone element.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="ZoneDocuments" type="cobie:DocumentCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Document elements associated with an Zone element.  </xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="ZoneIssues" type="cobie:AttributeCollectionType">
-		<xs:annotation>
-			<xs:documentation>A set of Issue elements associated with an Zone element. </xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="ZoneCategory" type="cobie:ZoneCategorySimpleType" id="d2e820">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">Category provides the classification of the information provided in this row of data.  In a given category of Zone a space should be listed only once.</xs:appinfo>

@@ -1,14 +1,13 @@
 <!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://facility.cobielite.cobie.erdc.org" xmlns:fac="http://facility.cobielite.cobie.erdc.org" xmlns:floor="http://floor.cobielite.cobie.erdc.org" xmlns:space="http://space.cobielite.cobie.erdc.org" xmlns:zone="http://zone.cobielite.cobie.erdc.org" xmlns:base="http://core.cobielite.cobie.erdc.org" xmlns:type="http://type.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:assembly="http://assembly.cobielite.cobie.erdc.org" xmlns:aty="http://assettype.cobielite.cobie.erdc.org" xmlns:att="http://attribute.cobielite.cobie.erdc.org" xmlns:conn="http://connection.cobielite.cobie.erdc.org" xmlns:con="http://contact.cobielite.cobie.erdc.org" xmlns:doc="http://document.cobielite.cobie.erdc.org" xmlns:iss="http://issue.cobielite.cobie.erdc.org" xmlns:job="http://job.cobielite.cobie.erdc.org" xmlns:res="http://resource.cobielite.cobie.erdc.org" xmlns:spr="http://spare.cobielite.cobie.erdc.org" xmlns:sys="http://system.cobielite.cobie.erdc.org" xmlns:ns1="http://cobielite.cobie.erdc.org" targetNamespace="http://cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:facility="http://facility.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobielite="http://cobielite.cobie.erdc.org"  targetNamespace="http://cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://facility.cobielite.cobie.erdc.org" schemaLocation="common/entities/facility.xsd"/>
-
 	<xs:annotation>
 		<xs:documentation>
 			The Construction-Operations Building information exchange (COBie) is a United States Building Information Model Standard published by the buildingSMART alliance, a Council of the National Institute of Building Sciences.   COBie defines the information exchange requirements needed to capture required information needed to manage facility assets during the planning, design, construction, operations, management, renovation, and recycling of a facility.  COBie is a marketing name used by the buildingSMART alliance for the underlying internationally used format defined by the Facility Management Handover Model View Defintion, and internally used and recognized Model View of the STEP-based ISO 16739 standard.
 			</xs:documentation>
 	</xs:annotation>
 	<!-- Document Root Element-->
-	<xs:element name="Facility" type="FacilityType">
+	<xs:element name="Facility" type="facility:FacilityType">
 		<xs:annotation>
 			<xs:documentation>
 			Facility contains information about the facility being exchanged during a given COBie deliverable.  Since COBie deliverables may be exchanged during planning, design, construction, handover, or operation phases there may be differences in facility designations.  COBie files will typically contain a single facility.

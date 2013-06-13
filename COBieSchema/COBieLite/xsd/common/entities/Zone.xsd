@@ -1,6 +1,6 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:zone="http://zone.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://zone.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:zone="http://zone.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:attribute="http://attribute.cobielite.cobie.erdc.org" xmlns:document="http://document.cobielite.cobie.erdc.org" xmlns:issue="http://issue.cobielite.cobie.erdc.org" targetNamespace="http://zone.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../cobielite_core.xsd"/>
-		<xs:import namespace="http://attribute.cobielite.cobie.erdc.org" schemaLocation="attribute.xsd"/>
+	<xs:import namespace="http://attribute.cobielite.cobie.erdc.org" schemaLocation="attribute.xsd"/>
 	<xs:import namespace="http://document.cobielite.cobie.erdc.org" schemaLocation="document.xsd"/>
 	<xs:import namespace="http://issue.cobielite.cobie.erdc.org" schemaLocation="issue.xsd"/>
 	<xs:annotation>
@@ -27,15 +27,5 @@
 		<xs:annotation>
 			<xs:documentation>COBie.Zone information is considered to be required only as-specified. Please refer to the COBie Guide for more information on specific zoning requirements.</xs:documentation>
 		</xs:annotation>
-	</xs:element>
-	<xs:element name="Zones" type="ZoneCollectionType" substitutionGroup="Zones" id="d2e768">
-		<xs:annotation>
-			<xs:documentation>COBie.Zone provides a mechanism through which groups of spaces may be organized into relevant categories that support various design or operational functions of the facility.</xs:documentation>
-		</xs:annotation>
-		<xs:key name="ZoneKey">
-			<xs:selector xpath="Zone"/>
-			<xs:field xpath="ZoneName"/>
-			<xs:field xpath="ZoneCategory"/>
-		</xs:key>
 	</xs:element>
 </xs:schema>
