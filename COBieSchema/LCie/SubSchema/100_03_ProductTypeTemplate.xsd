@@ -1,0 +1,10 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ttd="http://typetemplate100.defs.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:tt="http://typetemplate090.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typetemplate090.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://typetemplate100.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/100_03_ProductTypeTemplate_defs.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+					Product Type Template view of a facility
+			</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ProductTypeTemplate" type="ttd:ProductTypeTemplateType"/>
+</xs:schema>

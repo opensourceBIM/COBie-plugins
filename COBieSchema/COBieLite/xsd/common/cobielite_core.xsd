@@ -1,4 +1,4 @@
-<!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://core.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:annotation>
 		<xs:documentation>
@@ -1928,6 +1928,22 @@ COBie.System information is considered to be required only as-specified. Please 
 			ISO16739Mapping:  IfcProduct IfcPropertySingleValue with name containing "SerialNumber" 
 			COBie2.4Header:  COBie.SerialNumber 
 			COBie2.4Column:  J
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="AssetStartDate" type="CobieTextSimpleType">
+			<xs:annotation>
+			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">AssetStartDate date contains the Start date of the equipment identified in this row. This is provided during construction or updated during facility operations. </xs:appinfo>
+			<xs:appinfo source="urn:camed:annotation:documentation:type:Value">1066-10-14T22:01:00|1944-12-15T12:49:00|2011-09-14T16:57:53|2011-09-14T16:57:59|2012-12-14T08:00:00|2012-09-14T10:00:00|2019-06-27T15:37:00 </xs:appinfo>
+			<xs:appinfo source="urn:camed:annotation:documentation:type:ISO16739Mapping">IfcProduct IfcPropertySingleValue with name containing "InstallationDate" </xs:appinfo>
+			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Header">n/a</xs:appinfo>
+			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Column">n/a</xs:appinfo>
+			<xs:documentation>
+			Definition:  AssetInstallationDate date contains the installation date of the equipment identified in this row. This is provided during construction or updated during facility operations. 
+			Value:  1066-10-14T22:01:00|1944-12-15T12:49:00|2011-09-14T16:57:53|2011-09-14T16:57:59|2012-12-14T08:00:00|2012-09-14T10:00:00|2019-06-27T15:37:00 
+			ISO16739Mapping:  IfcProduct IfcPropertySingleValue with name containing "InstallationDate" 
+			COBie2.4Header:  
+			COBie2.4Column:  
 			</xs:documentation>
 		</xs:annotation>
 	</xs:element>

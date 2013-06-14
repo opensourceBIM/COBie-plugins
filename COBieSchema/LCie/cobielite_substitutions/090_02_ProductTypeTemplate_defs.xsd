@@ -1,0 +1,139 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:tt="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://lcie.cobielite.cobie.erdc.org" schemaLocation="../Subschema/lcie_abstract.xsd"/>
+	<xs:import namespace="http://document.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/document.xsd"/>
+	<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/attribute.xsd"/>
+	<xs:import namespace="http://contact.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/contact.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+					Product Type Template view of a facility
+			</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="ProductTypeTemplateType">
+		<xs:complexContent>
+			<xs:extension base="lcie:InformationExchangeComplexType">
+				<xs:sequence>
+					<xs:element ref="AssetTypes"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:group name="AssetTypeEditGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeCategory">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeDescription">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypePortabilityText">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeNominalLength">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeNominalWidth">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeNominalHeight">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeAccessibilityText" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeCodePerformance" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeColorCode" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeConstituentsDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeFeaturesDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeFinishDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeGradeDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeMaterialDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeShapeDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeSizeDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="AssetTypeInfoType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AssetTypeInfoType">
+				<xs:sequence>
+					<xs:group ref="tt:AssetTypeEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AssetTypeName" type="CobieNameSimpleType" substitutionGroup="AssetTypeName">
+		<xs:annotation>
+			<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="AssetType" type="tt:AssetTypeInfoType" abstract="true" substitutionGroup="AssetType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one AssetType record is required for all COBie deliverables related to equipment Type information. AssetType is associated with one or more Assets.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="090.02_ProductTypeTemplate"/>
+</xs:schema>

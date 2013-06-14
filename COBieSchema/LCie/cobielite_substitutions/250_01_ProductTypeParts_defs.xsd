@@ -1,0 +1,77 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:ppd="http://parts250.defs.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" targetNamespace="http://parts250.defs.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://lcie.cobielite.cobie.erdc.org" schemaLocation="../Subschema/lcie_abstract.xsd"/>
+	<xs:import namespace="http://document.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/document.xsd"/>
+	<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/attribute.xsd"/>
+	<xs:import namespace="http://contact.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/contact.xsd"/>
+	<xs:group name="AssetTypeReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeCategory"/>
+			<xs:element ref="AssetTypeDescription"/>
+			<xs:element ref="AssetTypeModelNumber"/>
+			<xs:element ref="AssetTypeContactAssignments"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeEditGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="Spares">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="ProductPartsType">
+		<xs:complexContent>
+			<xs:extension base="lcie:InformationExchangeComplexType">
+				<xs:sequence>
+					<xs:element ref="AssetTypes"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductPartsAssetTypeType">
+		<xs:complexContent>
+			<xs:extension base="AssetTypeInfoType">
+				<xs:sequence>
+					<xs:group ref="ppd:AssetTypeReadOnlyGroup"/>
+					<xs:group ref="ppd:AssetTypeEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductPartsSpareType">
+		<xs:complexContent>
+			<xs:extension base="SpareType">
+				<xs:sequence>
+					<xs:group ref="ppd:SpareEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:group name="SpareEditGroup">
+		<xs:sequence>
+			<xs:element ref="SpareDescription" minOccurs="0"/>
+			<xs:element ref="SpareSetNumber" minOccurs="0"/>
+			<xs:element ref="SparePartNumber" minOccurs="0"/>
+			<xs:element ref="SpareContactAssignments"/>
+			<xs:element ref="SpareAttributes" minOccurs="0"/>
+			<xs:element ref="SpareDocuments" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:element name="SpareName" substitutionGroup="SpareName">
+		<xs:annotation>
+			<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="250.01_ProductTypeParts"/>
+	<xs:element name="AssetType" type="ppd:ProductPartsAssetTypeType" substitutionGroup="AssetType"/>
+	<xs:element name="Spare" type="ppd:ProductPartsSpareType" substitutionGroup="Spare"/>
+</xs:schema>

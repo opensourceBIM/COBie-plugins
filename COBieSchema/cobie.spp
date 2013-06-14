@@ -56,17 +56,6 @@
 				<File FilePath="LCie\cobielite_substitutions\System.xsd" HomeFolder="Yes"/>
 				<File FilePath="LCie\cobielite_substitutions\Zone.xsd" HomeFolder="Yes"/>
 			</Folder>
-			<Folder FolderName="subschema">
-				<File FilePath="LCie\SubSchema\010_ProductTypeTemplate.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\SubSchema\011_ProductTypeCandidate.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\SubSchema\013_ProductTypeSelection.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\SubSchema\015_ProductInstallation.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\SubSchema\016_ProductInspection.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\SubSchema\018_ProductTypeParts.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\SubSchema\019_ProductTypeWarranty.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\SubSchema\020_ProductTypeMaintenance.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\SubSchema\021_SystemOperations.xsd" HomeFolder="Yes"/>
-			</Folder>
 			<Folder FolderName="CRUD">
 				<Folder FolderName="common">
 					<File FilePath="LCie\Transactions\common\lcie_crud.xsd" HomeFolder="Yes"/>
@@ -91,6 +80,20 @@
 				<File FilePath="LCie\CRUD\019_ProductTypeWarranty_CRUD.xsd" HomeFolder="Yes"/>
 				<File FilePath="LCie\CRUD\020_ProductTypeMaintenance_CRUD.xsd" HomeFolder="Yes"/>
 				<File FilePath="LCie\CRUD\021_SystemOperations_CRUD.xsd" HomeFolder="Yes"/>
+			</Folder>
+			<Folder FolderName="Subschema">
+				<File FilePath="LCie\SubSchema\090_02_ProductTypeTemplate.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\100_02_ProductTypeCandidate.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\100_03_ProductTypeTemplate.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\110_01_ProductTypeCandidate.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\180_01_ProductTypeSelection.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\210_01_ProductInstallationReport.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\230_01_ProductInspection.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\250_01_ProductTypeParts.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\250_02_ProductTypeWarranty.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\250_03_ProductTypeMaintenance.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\250_04_SystemOperation.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\lcie_appinfo.xsd" HomeFolder="Yes"/>
 			</Folder>
 		</Folder>
 	</Folder>

@@ -1,9 +1,10 @@
-<!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:type="http://producttype.common.lcie.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cg="http://groups.lcie.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" targetNamespace="http://producttype.common.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:type="http://producttype.common.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://annotations.lcie.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cg="http://groups.lcie.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" targetNamespace="http://producttype.common.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:import namespace="http://contact.lcie.cobielite.cobie.erdc.org" schemaLocation="contact.xsd"/>
 	<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="attribute.xsd"/>
 	<xs:import namespace="http://groups.lcie.cobielite.cobie.erdc.org" schemaLocation="element_groups.xsd"/>
+	<xs:import namespace="http://annotations.lcie.cobielite.cobie.erdc.org" schemaLocation="../SubSchema/lcie_appinfo.xsd"/>
 	<xs:annotation>
 		<xs:documentation>
 					Product Type Template view of a facility
@@ -38,7 +39,7 @@
 				<xs:sequence>
 					<xs:element ref="AssetTypeCategory">
 						<xs:annotation>
-							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+							<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
 					<xs:element ref="AssetTypeDescription">
@@ -51,8 +52,6 @@
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="AssetTypeReplacementCostValue" minOccurs="0"/>
-					<xs:element ref="AssetTypeExpectedLifeValue" minOccurs="0"/>
 					<xs:element ref="AssetTypeNominalLength">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
@@ -98,4 +97,5 @@
 			<xs:documentation>A minimum of one AssetType record is required for all COBie deliverables related to equipment Type information. AssetType is associated with one or more Assets.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
+<!--	<xs:element name="AssetTypes" type="AssetTypeCollectionType" substitutionGroup="AssetTypes"/>-->
 </xs:schema>

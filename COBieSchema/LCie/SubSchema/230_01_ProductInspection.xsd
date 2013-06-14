@@ -1,0 +1,6 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pid="http://inspection230.defs.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:pi="http://inspection230.lcie.cobielite.cobie.erdc.org" targetNamespace="http://inspection230.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://inspection230.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/230_01_ProductInspection_defs.xsd"/>
+
+	<xs:element name="ProductInspection" type="pid:ProductInspectionType"/>
+</xs:schema>

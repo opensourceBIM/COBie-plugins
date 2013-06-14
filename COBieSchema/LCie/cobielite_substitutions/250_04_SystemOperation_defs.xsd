@@ -1,0 +1,170 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:op="http://operation250.defs.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:issue="http://issue.lcie.cobielite.cobie.erdc.org" targetNamespace="http://operation250.defs.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://lcie.cobielite.cobie.erdc.org" schemaLocation="../Subschema/lcie_abstract.xsd"/>
+	<xs:import namespace="http://document.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/document.xsd"/>
+	<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/attribute.xsd"/>
+	<xs:import namespace="http://contact.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/contact.xsd"/>
+	<xs:import namespace="http://issue.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/issue.xsd"/>
+	<xs:complexType name="OperationAssetInfoType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AssetInfoType">
+			<xs:sequence>
+							<xs:group ref="op:AssetReadOnlyGroup"/>
+				<xs:group ref="op:AssetEditGroup"/>
+			</xs:sequence>
+
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OperationFloorType">
+		<xs:complexContent>
+			<xs:extension base="FloorType">
+				<xs:sequence>
+					<xs:element ref="Spaces"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OperationAssetTypeInfoType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AssetTypeInfoType">
+				<xs:group ref="op:AssetTypeReadOnlyGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="OperationSpaceType">
+		<xs:complexContent>
+			<xs:extension base="SpaceType">
+				<xs:sequence>
+					<xs:group ref="op:SpaceEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OperationSystemType">
+		<xs:complexContent>
+			<xs:extension base="SystemType">
+				<xs:sequence>
+					<xs:group ref="op:SystemEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OperationZoneType">
+		<xs:complexContent>
+			<xs:extension base="ZoneType">
+				<xs:sequence>
+					<xs:group ref="op:ZoneEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SystemOperationType">
+		<xs:complexContent>
+			<xs:extension base="lcie:InformationExchangeComplexType">
+				<xs:sequence>
+					<xs:element ref="AssetTypes"/>
+					<xs:element ref="Floors"/>
+					<xs:element ref="Systems"/>
+					<xs:element ref="Zones"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:group name="AssetTypeReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeCategory"/>
+			<xs:element ref="AssetTypeDescription"/>
+			<xs:element ref="AssetTypeContactAssignments"/>
+			<xs:element ref="AssetTypeModelNumber"/>
+			<xs:element ref="Assets"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeEditGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeDocuments"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetEditGroup">
+		<xs:sequence>
+			<xs:element ref="AssetWarrantyStartDate" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetSystemAssignments"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetDescription"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="SystemEditGroup">
+		<xs:sequence>
+			<xs:element ref="SystemDescription">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SystemAttributes">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SystemDocuments">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SystemIssues">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="SpaceEditGroup">
+		<xs:sequence>
+			<xs:element ref="SpaceZoneAssignments"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="ZoneEditGroup">
+		<xs:sequence>
+			<xs:element ref="ZoneDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ZoneAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ZoneDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ZoneIssues" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:element name="AssetType" type="op:OperationAssetTypeInfoType" substitutionGroup="AssetType"/>
+	<xs:element name="Zone" type="op:OperationZoneType" substitutionGroup="Zone"/>
+	<xs:element name="Asset" type="op:OperationAssetInfoType" substitutionGroup="Asset"/>
+	<xs:element name="Floor" type="op:OperationFloorType" substitutionGroup="Floor"/>
+	<xs:element name="Space" type="op:OperationSpaceType" substitutionGroup="Space"/>
+	<xs:element name="System" type="op:OperationSystemType" substitutionGroup="System"/>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="250.04_SystemOperation"/>
+</xs:schema>

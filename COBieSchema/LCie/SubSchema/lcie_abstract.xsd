@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:cobielite="http://core.cobielite.cobie.erdc.org" targetNamespace="http://lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:simpleType name="InformationExchangeSimpleType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="090.02_ProductTypeTemplate"/>
+			<xs:enumeration value="100.02_ProductTypeCandidate"/>
+			<xs:enumeration value="100.03_ProductTypeTemplate"/>
+			<xs:enumeration value="110.01_ProductTypeCandidate"/>
+			<xs:enumeration value="180.01_ProductTypeSelection"/>
+			<xs:enumeration value="210.01_ProductInstallationReport"/>
+			<xs:enumeration value="230.01_ProductInspection"/>
+			<xs:enumeration value="250.01_ProductTypeParts"/>
+			<xs:enumeration value="250.02_ProductTypeWarranty"/>
+			<xs:enumeration value="250.03_ProductTypeMaintenance"/>
+			<xs:enumeration value="250.04_SystemOperation"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" abstract="true"/>
+	<xs:complexType name="InformationExchangeComplexType" abstract="true">
+		<xs:sequence>
+			<xs:element ref="lcie:InformationExchangeID"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:attribute name="ReadOnly" type="xs:boolean" default="true">
+		<xs:annotation>
+			<xs:documentation>Used in LCie subschema app-info annotations to indicate whether or not the element is editable at the modeled stage of the facility life-cycle.  Default value is true and if asumed true if this app-info tag is not present in a subschema element.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+</xs:schema>

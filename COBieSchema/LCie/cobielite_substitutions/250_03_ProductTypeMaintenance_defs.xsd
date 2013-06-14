@@ -1,0 +1,155 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:pm="http://maintenance250.defs.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" targetNamespace="http://maintenance250.defs.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://lcie.cobielite.cobie.erdc.org" schemaLocation="../Subschema/lcie_abstract.xsd"/>
+	<xs:import namespace="http://document.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/document.xsd"/>
+	<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/attribute.xsd"/>
+	<xs:import namespace="http://contact.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/contact.xsd"/>
+	<xs:complexType name="AssetTypeInfoType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AssetTypeInfoType">
+				<xs:group ref="pm:AssetTypeReadOnlyGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:group name="AssetTypeReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeCategory"/>
+			<xs:element ref="AssetTypeDescription"/>
+			<xs:element ref="AssetTypeContactAssignments"/>
+			<xs:element ref="AssetTypeModelNumber"/>
+			<xs:element ref="Assets"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeEditGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeDocuments"/>
+			<xs:element ref="Jobs"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="JobType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one COBie.Job record is required for all relevant COBie.Type objects submitted at the benefical occupancy or facility handover stage.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="JobType">
+				<xs:sequence>
+					<xs:group ref="pm:JobTypeEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:group name="JobTypeEditGroup">
+		<xs:sequence>
+			<xs:element ref="JobCategory">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobStatus">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobDescription">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobDuration">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobStartDate">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobStartConditionDescription">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobFrequencyValue">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobPriorTaskID" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="Resources" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="ResourceType">
+		<xs:annotation>
+			<xs:documentation>Information about a specific resource.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ResourceType">
+				<xs:sequence>
+					<xs:group ref="pm:ResourceEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:group name="ResourceEditGroup">
+		<xs:sequence>
+			<xs:element ref="ResourceCategory">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ResourceDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ResourceAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ResourceDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+		<xs:complexType name="ProductMaintenanceType">
+		<xs:complexContent>
+			<xs:extension base="lcie:InformationExchangeComplexType">
+				<xs:sequence>
+					<xs:element ref="AssetTypes"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AssetType" type="pm:AssetTypeInfoType" substitutionGroup="AssetType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one AssetType record is required for all COBie deliverables related to equipment Type information. AssetType is associated with one or more Assets.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Job" type="pm:JobType" substitutionGroup="Job"/>
+	<xs:element name="Resource" type="pm:ResourceType" substitutionGroup="Resource"/>
+</xs:schema>

@@ -1,0 +1,105 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:pid="http://inspection230.defs.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" targetNamespace="http://inspection230.defs.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://lcie.cobielite.cobie.erdc.org" schemaLocation="../Subschema/lcie_abstract.xsd"/>
+	<xs:import namespace="http://document.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/document.xsd"/>
+	<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/attribute.xsd"/>
+	<xs:import namespace="http://contact.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/contact.xsd"/>
+	<xs:group name="AssetTypeReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeCategory"/>
+			<xs:element ref="AssetTypeDescription"/>
+			<xs:element ref="AssetTypePortabilityText"/>
+			<xs:element ref="AssetTypeModelNumber"/>
+			<xs:element ref="AssetTypeReplacementCostValue" minOccurs="0"/>
+			<xs:element ref="AssetTypeExpectedLifeValue" minOccurs="0"/>
+			<xs:element ref="AssetTypeNominalLength"/>
+			<xs:element ref="AssetTypeNominalWidth"/>
+			<xs:element ref="AssetTypeNominalHeight"/>
+			<xs:element ref="AssetTypeAccessibilityText" minOccurs="0"/>
+			<xs:element ref="AssetTypeCodePerformance" minOccurs="0"/>
+			<xs:element ref="AssetTypeColorCode" minOccurs="0"/>
+			<xs:element ref="AssetTypeConstituentsDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeFeaturesDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeFinishDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeGradeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeMaterialDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeShapeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeSizeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeContactAssignments"/>
+			<xs:element ref="Assets"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeEditGroup">
+		<xs:sequence>
+					<xs:element ref="AssetTypeAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeIssues" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetEditGroup">
+		<xs:sequence>
+			<xs:element ref="AssetSerialNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetInstallationDate" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetDescription"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="ProductInspectionType">
+		<xs:complexContent>
+			<xs:extension base="lcie:InformationExchangeComplexType">
+				<xs:sequence>
+					<xs:element ref="AssetTypes"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionAssetTypeType">
+		<xs:complexContent>
+			<xs:extension base="AssetTypeInfoType">
+				<xs:sequence>
+					<xs:group ref="pid:AssetTypeReadOnlyGroup"/>
+					<xs:group ref="pid:AssetTypeEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionAssetType">
+		<xs:complexContent>
+			<xs:extension base="AssetInfoType">
+				<xs:sequence>
+					<xs:group ref="pid:AssetReadOnlyGroup"/>
+					<xs:group ref="pid:AssetEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="230.01_ProductInspection"/>
+	<xs:element name="AssetType" type="pid:ProductInspectionAssetTypeType" substitutionGroup="AssetType"/>
+	<xs:element name="Asset" type="pid:ProductInspectionAssetType" substitutionGroup="Asset"/>
+</xs:schema>

@@ -1,0 +1,52 @@
+<!-- edited with XMLSpy v2023 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:pwd="http://warranty250.defs.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" targetNamespace="http://warranty250.defs.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://lcie.cobielite.cobie.erdc.org" schemaLocation="../Subschema/lcie_abstract.xsd"/>
+	<xs:import namespace="http://document.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/document.xsd"/>
+	<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/attribute.xsd"/>
+	<xs:import namespace="http://contact.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/contact.xsd"/>
+	<xs:group name="AssetTypeReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeCategory"/>
+			<xs:element ref="AssetTypeDescription"/>
+			<xs:element ref="AssetTypeModelNumber"/>
+			<xs:element ref="AssetTypeContactAssignments"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeEditGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="Warranties">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="ProductWarrantyType">
+		<xs:complexContent>
+			<xs:extension base="lcie:InformationExchangeComplexType">
+				<xs:sequence>
+					<xs:element ref="AssetTypes"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductWarrantyAssetTypeType">
+		<xs:complexContent>
+			<xs:extension base="AssetTypeInfoType">
+				<xs:sequence>
+					<xs:group ref="pwd:AssetTypeReadOnlyGroup"/>
+					<xs:group ref="pwd:AssetTypeEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="250.02_ProductTypeWarranty"/>
+	<xs:element name="AssetType" type="pwd:ProductWarrantyAssetTypeType" substitutionGroup="AssetType"/>
+</xs:schema>
