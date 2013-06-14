@@ -37,24 +37,17 @@
 		</Folder>
 		<Folder FolderName="LCie">
 			<Folder FolderName="cobielite_substitutions">
-				<File FilePath="LCie\cobielite_substitutions\Assembly.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Asset.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\AssetType.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Attribute.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Connection.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Contact.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Document.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\element_groups.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Facility.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Floor.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Issue.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Job.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\ProductType_Facility.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Resource.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Space.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Spare.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\System.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\cobielite_substitutions\Zone.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\cobielite_substitutions\090_02_ProductTypeTemplate_defs.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\cobielite_substitutions\100_02_ProductTypeCandidate_defs.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\cobielite_substitutions\100_03_ProductTypeTemplate_defs.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\cobielite_substitutions\110_01_ProductTypeCandidate_defs.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\cobielite_substitutions\180_01_ProductTypeSelection_defs.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\cobielite_substitutions\210_01_ProductInstallationReport_defs.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\cobielite_substitutions\230_01_ProductInspection_defs.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\cobielite_substitutions\250_01_ProductTypeParts_defs.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\cobielite_substitutions\250_02_ProductTypeWarranty_defs.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\cobielite_substitutions\250_03_ProductTypeMaintenance_defs.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\cobielite_substitutions\250_04_SystemOperation_defs.xsd" HomeFolder="Yes"/>
 			</Folder>
 			<Folder FolderName="CRUD">
 				<Folder FolderName="common">
@@ -71,15 +64,17 @@
 					<File FilePath="LCie\CRUD\examples\015_ProductInstallation_ReadOne.xml" HomeFolder="Yes"/>
 					<File FilePath="LCie\CRUD\examples\015_ProductInstallation_Update.xml" HomeFolder="Yes"/>
 				</Folder>
-				<File FilePath="LCie\CRUD\010_ProductTypeTemplate_CRUD.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\CRUD\011_ProductTypeCandidate_CRUD.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\CRUD\013_ProductTypeSelection_CRUD.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\CRUD\015_ProductInstallation_CRUD.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\CRUD\016_ProductInspection_CRUD.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\CRUD\018_ProductTypeParts_CRUD.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\CRUD\019_ProductTypeWarranty_CRUD.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\CRUD\020_ProductTypeMaintenance_CRUD.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\CRUD\021_SystemOperations_CRUD.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\090_02_ProductTypeTemplate_CRUD.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\100_02_ProductTypeCandidate_CRUD.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\100_03_ProductTypeTemplate.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\110_01_ProductTypeCandidate_CRUD.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\180_01_ProductTypeSelection_CRUD.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\210_01_ProductInstallationReport_CRUD.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\230_01_ProductInspection_CRUD.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\250_01_ProductTypeParts_CRUD.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\250_02_ProductTypeWarranty_CRUD.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\250_03_ProductTypeMaintenance_CRUD.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\250_04_SystemOperation_CRUD.xsd" HomeFolder="Yes"/>
 			</Folder>
 			<Folder FolderName="Subschema">
 				<File FilePath="LCie\SubSchema\090_02_ProductTypeTemplate.xsd" HomeFolder="Yes"/>
@@ -93,7 +88,7 @@
 				<File FilePath="LCie\SubSchema\250_02_ProductTypeWarranty.xsd" HomeFolder="Yes"/>
 				<File FilePath="LCie\SubSchema\250_03_ProductTypeMaintenance.xsd" HomeFolder="Yes"/>
 				<File FilePath="LCie\SubSchema\250_04_SystemOperation.xsd" HomeFolder="Yes"/>
-				<File FilePath="LCie\SubSchema\lcie_appinfo.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\SubSchema\lcie_abstract.xsd" HomeFolder="Yes"/>
 			</Folder>
 		</Folder>
 	</Folder>

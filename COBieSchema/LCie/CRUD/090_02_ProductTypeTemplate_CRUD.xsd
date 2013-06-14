@@ -1,7 +1,8 @@
 <!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:pttc="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org" xmlns:cg="http://groups.lcie.cobielite.cobie.erdc.org" xmlns:ptt="http://typetemplate.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pttd="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:pttc="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org" xmlns:cg="http://groups.lcie.cobielite.cobie.erdc.org" xmlns:ptt="http://typetemplate090.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/lcie_crud.xsd"/>
-	<xs:import namespace="http://typetemplate.lcie.cobielite.cobie.erdc.org" schemaLocation="../subschema/010_ProductTypeTemplate.xsd"/>
+	<xs:import namespace="http://typetemplate090.lcie.cobielite.cobie.erdc.org" schemaLocation="../subschema/090_02_ProductTypeTemplate.xsd"/>
+		<xs:import namespace="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/090_02_ProductTypeTemplate_defs.xsd"/>
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:import namespace="http://groups.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/element_groups.xsd"/>
 	<xs:complexType name="TypeTemplateExchangeType">
@@ -13,9 +14,7 @@
 		<xs:complexContent>
 			<xs:extension base="cobiex:ReadType">
 				<xs:sequence>
-					<xs:group ref="cg:FacilitySelect"/>
-					<xs:group ref="cg:AssetTypeWithoutManufacturerSelect"/>
-					<xs:element ref="AssetTypeAttributes"/>
+					<xs:group ref="pttd:AssetTypeEditGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -24,7 +23,7 @@
 		<xs:complexContent>
 			<xs:extension base="cobiex:ReadAllType">
 				<xs:sequence>
-					<xs:element ref="ptt:Facility"/>
+					<xs:element ref="ptt:ProductTypeTemplate"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -33,14 +32,7 @@
 		<xs:complexContent>
 			<xs:extension base="cobiex:UpdateType">
 				<xs:sequence>
-					<xs:element ref="AssetTypeName" minOccurs="0"/>
-					<xs:element ref="AssetTypeCategory" minOccurs="0"/>
-					<xs:element ref="AssetTypeDescription" minOccurs="0"/>
-					<xs:element ref="AssetTypePortabilityText" minOccurs="0"/>
-					<xs:element ref="AssetTypeNominalLength" minOccurs="0"/>
-					<xs:element ref="AssetTypeNominalWidth" minOccurs="0"/>
-					<xs:element ref="AssetTypeNominalHeight" minOccurs="0"/>
-					<xs:element ref="AssetTypeAttributes" minOccurs="0"/>
+					<xs:group ref="pttd:AssetTypeEditGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
