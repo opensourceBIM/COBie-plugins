@@ -24,7 +24,7 @@ public class AssetTypeInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.As
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypeCategory");
     private static final javax.xml.namespace.QName ASSETTYPEDESCRIPTION$2 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypeDescription");
-    private static final javax.xml.namespace.QName AssetTypeAccountingCategory$4 = 
+    private static final javax.xml.namespace.QName ASSETTYPEACCOUNTINGCATEGORY$4 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypeAccountingCategory");
     private static final javax.xml.namespace.QName ASSETTYPEMODELNUMBER$6 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypeModelNumber");
@@ -62,7 +62,7 @@ public class AssetTypeInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.As
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypeSustainabilityPerformanceDescription");
     private static final javax.xml.namespace.QName ASSETS$40 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "Assets");
-    private static final javax.xml.namespace.QName AssetTypeManufacturerContactAssignments$42 = 
+    private static final javax.xml.namespace.QName ASSETTYPEMANUFACTURERCONTACTASSIGNMENTS$42 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypeManufacturerContactAssignments");
     private static final javax.xml.namespace.QName WARRANTIES$44 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "Warranties");
@@ -273,7 +273,7 @@ public class AssetTypeInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.As
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(AssetTypeAccountingCategory$4, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETTYPEACCOUNTINGCATEGORY$4, 0);
             if (target == null)
             {
                 return null;
@@ -291,7 +291,7 @@ public class AssetTypeInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.As
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().find_element_user(AssetTypeAccountingCategory$4, 0);
+            target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().find_element_user(ASSETTYPEACCOUNTINGCATEGORY$4, 0);
             return target;
         }
     }
@@ -304,43 +304,43 @@ public class AssetTypeInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.As
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(AssetTypeAccountingCategory$4) != 0;
+            return get_store().count_elements(ASSETTYPEACCOUNTINGCATEGORY$4) != 0;
         }
     }
     
     /**
      * Sets the "AssetTypeAccountingCategory" element
      */
-    public void setAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum AssetTypeAccountingCategory)
+    public void setAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum assetTypeAccountingCategory)
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(AssetTypeAccountingCategory$4, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETTYPEACCOUNTINGCATEGORY$4, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(AssetTypeAccountingCategory$4);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETTYPEACCOUNTINGCATEGORY$4);
             }
-            target.setEnumValue(AssetTypeAccountingCategory);
+            target.setEnumValue(assetTypeAccountingCategory);
         }
     }
     
     /**
      * Sets (as xml) the "AssetTypeAccountingCategory" element
      */
-    public void xsetAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType AssetTypeAccountingCategory)
+    public void xsetAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType assetTypeAccountingCategory)
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().find_element_user(AssetTypeAccountingCategory$4, 0);
+            target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().find_element_user(ASSETTYPEACCOUNTINGCATEGORY$4, 0);
             if (target == null)
             {
-                target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().add_element_user(AssetTypeAccountingCategory$4);
+                target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().add_element_user(ASSETTYPEACCOUNTINGCATEGORY$4);
             }
-            target.set(AssetTypeAccountingCategory);
+            target.set(assetTypeAccountingCategory);
         }
     }
     
@@ -352,7 +352,7 @@ public class AssetTypeInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.As
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(AssetTypeAccountingCategory$4, 0);
+            get_store().remove_element(ASSETTYPEACCOUNTINGCATEGORY$4, 0);
         }
     }
     
@@ -1853,7 +1853,7 @@ public class AssetTypeInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.As
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().find_element_user(AssetTypeManufacturerContactAssignments$42, 0);
+            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().find_element_user(ASSETTYPEMANUFACTURERCONTACTASSIGNMENTS$42, 0);
             if (target == null)
             {
                 return null;
@@ -1870,16 +1870,16 @@ public class AssetTypeInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.As
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(AssetTypeManufacturerContactAssignments$42) != 0;
+            return get_store().count_elements(ASSETTYPEMANUFACTURERCONTACTASSIGNMENTS$42) != 0;
         }
     }
     
     /**
      * Sets the "AssetTypeManufacturerContactAssignments" element
      */
-    public void setAssetTypeManufacturerContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType AssetTypeManufacturerContactAssignments)
+    public void setAssetTypeManufacturerContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType assetTypeManufacturerContactAssignments)
     {
-        generatedSetterHelperImpl(AssetTypeManufacturerContactAssignments, AssetTypeManufacturerContactAssignments$42, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
+        generatedSetterHelperImpl(assetTypeManufacturerContactAssignments, ASSETTYPEMANUFACTURERCONTACTASSIGNMENTS$42, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
@@ -1891,7 +1891,7 @@ public class AssetTypeInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.As
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().add_element_user(AssetTypeManufacturerContactAssignments$42);
+            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().add_element_user(ASSETTYPEMANUFACTURERCONTACTASSIGNMENTS$42);
             return target;
         }
     }
@@ -1904,7 +1904,7 @@ public class AssetTypeInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.As
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(AssetTypeManufacturerContactAssignments$42, 0);
+            get_store().remove_element(ASSETTYPEMANUFACTURERCONTACTASSIGNMENTS$42, 0);
         }
     }
     

@@ -26,7 +26,7 @@ public class SpareTypeImpl extends org.erdc.cobie.cobielite.core.impl.SpareTypeI
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "SpareSetNumber");
     private static final javax.xml.namespace.QName SPAREPARTNUMBER$4 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "SparePartNumber");
-    private static final javax.xml.namespace.QName SpareSupplierContactAssignments$6 = 
+    private static final javax.xml.namespace.QName SPARESUPPLIERCONTACTASSIGNMENTS$6 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "SpareSupplierContactAssignments");
     private static final javax.xml.namespace.QName SPAREATTRIBUTES$8 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "SpareAttributes");
@@ -321,7 +321,7 @@ public class SpareTypeImpl extends org.erdc.cobie.cobielite.core.impl.SpareTypeI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().find_element_user(SpareSupplierContactAssignments$6, 0);
+            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().find_element_user(SPARESUPPLIERCONTACTASSIGNMENTS$6, 0);
             if (target == null)
             {
                 return null;
@@ -338,16 +338,16 @@ public class SpareTypeImpl extends org.erdc.cobie.cobielite.core.impl.SpareTypeI
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(SpareSupplierContactAssignments$6) != 0;
+            return get_store().count_elements(SPARESUPPLIERCONTACTASSIGNMENTS$6) != 0;
         }
     }
     
     /**
      * Sets the "SpareSupplierContactAssignments" element
      */
-    public void setSpareSupplierContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType SpareSupplierContactAssignments)
+    public void setSpareSupplierContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType spareSupplierContactAssignments)
     {
-        generatedSetterHelperImpl(SpareSupplierContactAssignments, SpareSupplierContactAssignments$6, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
+        generatedSetterHelperImpl(spareSupplierContactAssignments, SPARESUPPLIERCONTACTASSIGNMENTS$6, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
@@ -359,7 +359,7 @@ public class SpareTypeImpl extends org.erdc.cobie.cobielite.core.impl.SpareTypeI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().add_element_user(SpareSupplierContactAssignments$6);
+            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().add_element_user(SPARESUPPLIERCONTACTASSIGNMENTS$6);
             return target;
         }
     }
@@ -372,7 +372,7 @@ public class SpareTypeImpl extends org.erdc.cobie.cobielite.core.impl.SpareTypeI
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(SpareSupplierContactAssignments$6, 0);
+            get_store().remove_element(SPARESUPPLIERCONTACTASSIGNMENTS$6, 0);
         }
     }
     

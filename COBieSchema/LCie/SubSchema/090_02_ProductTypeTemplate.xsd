@@ -1,4 +1,4 @@
-<!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
+
 <xs:schema xmlns="http://core.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tt="http://typetemplate090.lcie.cobielite.cobie.erdc.org" xmlns:ttd="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typetemplate090.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:import namespace="http://lcie.cobielite.cobie.erdc.org" schemaLocation="lcie_abstract.xsd"/>

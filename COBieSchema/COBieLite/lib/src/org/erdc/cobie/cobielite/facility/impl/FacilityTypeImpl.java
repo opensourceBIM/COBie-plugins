@@ -44,10 +44,6 @@ public class FacilityTypeImpl extends org.erdc.cobie.cobielite.core.impl.Facilit
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "Floors");
     private static final javax.xml.namespace.QName ZONES$22 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "Zones");
-    private static final org.apache.xmlbeans.QNameSet ZONES$23 = org.apache.xmlbeans.QNameSet.forArray( new javax.xml.namespace.QName[] { 
-        new javax.xml.namespace.QName("http://zone.cobielite.cobie.erdc.org", "Zones"),
-        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "Zones"),
-    });
     private static final javax.xml.namespace.QName ASSETTYPES$24 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypes");
     private static final javax.xml.namespace.QName SYSTEMS$26 = 
@@ -1001,7 +997,7 @@ public class FacilityTypeImpl extends org.erdc.cobie.cobielite.core.impl.Facilit
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ZoneCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ZoneCollectionType)get_store().find_element_user(ZONES$23, 0);
+            target = (org.erdc.cobie.cobielite.core.ZoneCollectionType)get_store().find_element_user(ZONES$22, 0);
             if (target == null)
             {
                 return null;
@@ -1018,7 +1014,7 @@ public class FacilityTypeImpl extends org.erdc.cobie.cobielite.core.impl.Facilit
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(ZONES$23) != 0;
+            return get_store().count_elements(ZONES$22) != 0;
         }
     }
     
@@ -1027,17 +1023,7 @@ public class FacilityTypeImpl extends org.erdc.cobie.cobielite.core.impl.Facilit
      */
     public void setZones(org.erdc.cobie.cobielite.core.ZoneCollectionType zones)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.erdc.cobie.cobielite.core.ZoneCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ZoneCollectionType)get_store().find_element_user(ZONES$23, 0);
-            if (target == null)
-            {
-                target = (org.erdc.cobie.cobielite.core.ZoneCollectionType)get_store().add_element_user(ZONES$22);
-            }
-            target.set(zones);
-        }
+        generatedSetterHelperImpl(zones, ZONES$22, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
@@ -1062,7 +1048,7 @@ public class FacilityTypeImpl extends org.erdc.cobie.cobielite.core.impl.Facilit
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(ZONES$23, 0);
+            get_store().remove_element(ZONES$22, 0);
         }
     }
     

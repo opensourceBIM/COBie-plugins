@@ -23,10 +23,6 @@ public class SpacesDocumentImpl extends org.apache.xmlbeans.impl.values.XmlCompl
     
     private static final javax.xml.namespace.QName SPACES$0 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "Spaces");
-    private static final org.apache.xmlbeans.QNameSet SPACES$1 = org.apache.xmlbeans.QNameSet.forArray( new javax.xml.namespace.QName[] { 
-        new javax.xml.namespace.QName("http://space.cobielite.cobie.erdc.org", "Spaces"),
-        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "Spaces"),
-    });
     
     
     /**
@@ -38,7 +34,7 @@ public class SpacesDocumentImpl extends org.apache.xmlbeans.impl.values.XmlCompl
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.SpaceCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.SpaceCollectionType)get_store().find_element_user(SPACES$1, 0);
+            target = (org.erdc.cobie.cobielite.core.SpaceCollectionType)get_store().find_element_user(SPACES$0, 0);
             if (target == null)
             {
                 return null;
@@ -52,17 +48,7 @@ public class SpacesDocumentImpl extends org.apache.xmlbeans.impl.values.XmlCompl
      */
     public void setSpaces(org.erdc.cobie.cobielite.core.SpaceCollectionType spaces)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.erdc.cobie.cobielite.core.SpaceCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.SpaceCollectionType)get_store().find_element_user(SPACES$1, 0);
-            if (target == null)
-            {
-                target = (org.erdc.cobie.cobielite.core.SpaceCollectionType)get_store().add_element_user(SPACES$0);
-            }
-            target.set(spaces);
-        }
+        generatedSetterHelperImpl(spaces, SPACES$0, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**

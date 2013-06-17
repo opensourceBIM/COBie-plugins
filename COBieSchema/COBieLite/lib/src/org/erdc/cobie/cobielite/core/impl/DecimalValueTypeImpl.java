@@ -20,99 +20,99 @@ public class DecimalValueTypeImpl extends org.erdc.cobie.cobielite.core.impl.Val
         super(sType);
     }
     
-    private static final javax.xml.namespace.QName INTEGERVALUE$0 = 
-        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "IntegerValue");
+    private static final javax.xml.namespace.QName DECIMALVALUE$0 = 
+        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "DecimalValue");
     
     
     /**
-     * Gets the "IntegerValue" element
+     * Gets the "DecimalValue" element
      */
-    public java.math.BigInteger getIntegerValue()
+    public java.math.BigDecimal getDecimalValue()
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(INTEGERVALUE$0, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(DECIMALVALUE$0, 0);
             if (target == null)
             {
                 return null;
             }
-            return target.getBigIntegerValue();
+            return target.getBigDecimalValue();
         }
     }
     
     /**
-     * Gets (as xml) the "IntegerValue" element
+     * Gets (as xml) the "DecimalValue" element
      */
-    public org.apache.xmlbeans.XmlInteger xgetIntegerValue()
+    public org.apache.xmlbeans.XmlDecimal xgetDecimalValue()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            org.apache.xmlbeans.XmlInteger target = null;
-            target = (org.apache.xmlbeans.XmlInteger)get_store().find_element_user(INTEGERVALUE$0, 0);
+            org.apache.xmlbeans.XmlDecimal target = null;
+            target = (org.apache.xmlbeans.XmlDecimal)get_store().find_element_user(DECIMALVALUE$0, 0);
             return target;
         }
     }
     
     /**
-     * True if has "IntegerValue" element
+     * True if has "DecimalValue" element
      */
-    public boolean isSetIntegerValue()
+    public boolean isSetDecimalValue()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(INTEGERVALUE$0) != 0;
+            return get_store().count_elements(DECIMALVALUE$0) != 0;
         }
     }
     
     /**
-     * Sets the "IntegerValue" element
+     * Sets the "DecimalValue" element
      */
-    public void setIntegerValue(java.math.BigInteger integerValue)
+    public void setDecimalValue(java.math.BigDecimal decimalValue)
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(INTEGERVALUE$0, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(DECIMALVALUE$0, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(INTEGERVALUE$0);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(DECIMALVALUE$0);
             }
-            target.setBigIntegerValue(integerValue);
+            target.setBigDecimalValue(decimalValue);
         }
     }
     
     /**
-     * Sets (as xml) the "IntegerValue" element
+     * Sets (as xml) the "DecimalValue" element
      */
-    public void xsetIntegerValue(org.apache.xmlbeans.XmlInteger integerValue)
+    public void xsetDecimalValue(org.apache.xmlbeans.XmlDecimal decimalValue)
     {
         synchronized (monitor())
         {
             check_orphaned();
-            org.apache.xmlbeans.XmlInteger target = null;
-            target = (org.apache.xmlbeans.XmlInteger)get_store().find_element_user(INTEGERVALUE$0, 0);
+            org.apache.xmlbeans.XmlDecimal target = null;
+            target = (org.apache.xmlbeans.XmlDecimal)get_store().find_element_user(DECIMALVALUE$0, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.XmlInteger)get_store().add_element_user(INTEGERVALUE$0);
+                target = (org.apache.xmlbeans.XmlDecimal)get_store().add_element_user(DECIMALVALUE$0);
             }
-            target.set(integerValue);
+            target.set(decimalValue);
         }
     }
     
     /**
-     * Unsets the "IntegerValue" element
+     * Unsets the "DecimalValue" element
      */
-    public void unsetIntegerValue()
+    public void unsetDecimalValue()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(INTEGERVALUE$0, 0);
+            get_store().remove_element(DECIMALVALUE$0, 0);
         }
     }
 }

@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface SpaceAssignmentCollectionType extends org.erdc.cobie.cobielite.core.CobieComplexObjectType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SpaceAssignmentCollectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("spaceassignmentcollectiontype1be7type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SpaceAssignmentCollectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("spaceassignmentcollectiontype1be7type");
     
     /**
      * Gets array of all "SpaceAssignment" elements

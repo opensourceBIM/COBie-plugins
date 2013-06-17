@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface WarrantyType extends org.erdc.cobie.cobielite.core.CobieBaseType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(WarrantyType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("warrantytype7f0atype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(WarrantyType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("warrantytype7f0atype");
     
     /**
      * Gets the "WarrantyName" element
@@ -96,7 +96,7 @@ public interface WarrantyType extends org.erdc.cobie.cobielite.core.CobieBaseTyp
     /**
      * Sets the "WarrantyGaurantorContactAssignments" element
      */
-    void setWarrantyGaurantorContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType WarrantyGaurantorContactAssignments);
+    void setWarrantyGaurantorContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType warrantyGaurantorContactAssignments);
     
     /**
      * Appends and returns a new empty "WarrantyGaurantorContactAssignments" element

@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface ConnectionCategorySimpleType extends org.apache.xmlbeans.XmlString
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ConnectionCategorySimpleType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("connectioncategorysimpletype9378type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ConnectionCategorySimpleType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("connectioncategorysimpletype9378type");
     
     /**
      * A factory class with static methods for creating instances

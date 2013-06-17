@@ -16,37 +16,37 @@ package org.erdc.cobie.cobielite.core;
 public interface DecimalValueType extends org.erdc.cobie.cobielite.core.ValueBaseType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(DecimalValueType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("decimalvaluetype4c66type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(DecimalValueType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("decimalvaluetype4c66type");
     
     /**
-     * Gets the "IntegerValue" element
+     * Gets the "DecimalValue" element
      */
-    java.math.BigInteger getIntegerValue();
+    java.math.BigDecimal getDecimalValue();
     
     /**
-     * Gets (as xml) the "IntegerValue" element
+     * Gets (as xml) the "DecimalValue" element
      */
-    org.apache.xmlbeans.XmlInteger xgetIntegerValue();
+    org.apache.xmlbeans.XmlDecimal xgetDecimalValue();
     
     /**
-     * True if has "IntegerValue" element
+     * True if has "DecimalValue" element
      */
-    boolean isSetIntegerValue();
+    boolean isSetDecimalValue();
     
     /**
-     * Sets the "IntegerValue" element
+     * Sets the "DecimalValue" element
      */
-    void setIntegerValue(java.math.BigInteger integerValue);
+    void setDecimalValue(java.math.BigDecimal decimalValue);
     
     /**
-     * Sets (as xml) the "IntegerValue" element
+     * Sets (as xml) the "DecimalValue" element
      */
-    void xsetIntegerValue(org.apache.xmlbeans.XmlInteger integerValue);
+    void xsetDecimalValue(org.apache.xmlbeans.XmlDecimal decimalValue);
     
     /**
-     * Unsets the "IntegerValue" element
+     * Unsets the "DecimalValue" element
      */
-    void unsetIntegerValue();
+    void unsetDecimalValue();
     
     /**
      * A factory class with static methods for creating instances

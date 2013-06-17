@@ -23,10 +23,6 @@ public class ZonesDocumentImpl extends org.apache.xmlbeans.impl.values.XmlComple
     
     private static final javax.xml.namespace.QName ZONES$0 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "Zones");
-    private static final org.apache.xmlbeans.QNameSet ZONES$1 = org.apache.xmlbeans.QNameSet.forArray( new javax.xml.namespace.QName[] { 
-        new javax.xml.namespace.QName("http://zone.cobielite.cobie.erdc.org", "Zones"),
-        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "Zones"),
-    });
     
     
     /**
@@ -38,7 +34,7 @@ public class ZonesDocumentImpl extends org.apache.xmlbeans.impl.values.XmlComple
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ZoneCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ZoneCollectionType)get_store().find_element_user(ZONES$1, 0);
+            target = (org.erdc.cobie.cobielite.core.ZoneCollectionType)get_store().find_element_user(ZONES$0, 0);
             if (target == null)
             {
                 return null;
@@ -52,17 +48,7 @@ public class ZonesDocumentImpl extends org.apache.xmlbeans.impl.values.XmlComple
      */
     public void setZones(org.erdc.cobie.cobielite.core.ZoneCollectionType zones)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.erdc.cobie.cobielite.core.ZoneCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ZoneCollectionType)get_store().find_element_user(ZONES$1, 0);
-            if (target == null)
-            {
-                target = (org.erdc.cobie.cobielite.core.ZoneCollectionType)get_store().add_element_user(ZONES$0);
-            }
-            target.set(zones);
-        }
+        generatedSetterHelperImpl(zones, ZONES$0, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**

@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.asset;
 public interface AssetInfoType extends org.erdc.cobie.cobielite.core.AssetInfoType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetInfoType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("assetinfotypebcabtype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetInfoType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("assetinfotypebcabtype");
     
     /**
      * Gets the "AssetDescription" element
@@ -167,6 +167,36 @@ public interface AssetInfoType extends org.erdc.cobie.cobielite.core.AssetInfoTy
      * Unsets the "AssetWarrantyStartDate" element
      */
     void unsetAssetWarrantyStartDate();
+    
+    /**
+     * Gets the "AssetStartDate" element
+     */
+    java.lang.String getAssetStartDate();
+    
+    /**
+     * Gets (as xml) the "AssetStartDate" element
+     */
+    org.erdc.cobie.cobielite.core.CobieTextSimpleType xgetAssetStartDate();
+    
+    /**
+     * True if has "AssetStartDate" element
+     */
+    boolean isSetAssetStartDate();
+    
+    /**
+     * Sets the "AssetStartDate" element
+     */
+    void setAssetStartDate(java.lang.String assetStartDate);
+    
+    /**
+     * Sets (as xml) the "AssetStartDate" element
+     */
+    void xsetAssetStartDate(org.erdc.cobie.cobielite.core.CobieTextSimpleType assetStartDate);
+    
+    /**
+     * Unsets the "AssetStartDate" element
+     */
+    void unsetAssetStartDate();
     
     /**
      * Gets the "AssetTagNumber" element

@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.core;
 public interface AttributeValueDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AttributeValueDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("attributevalue9abbdoctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AttributeValueDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("attributevalue9abbdoctype");
     
     /**
      * Gets the "AttributeValue" element

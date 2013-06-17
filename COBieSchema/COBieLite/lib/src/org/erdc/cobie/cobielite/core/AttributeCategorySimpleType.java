@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface AttributeCategorySimpleType extends org.apache.xmlbeans.XmlString
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AttributeCategorySimpleType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("attributecategorysimpletype45ectype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AttributeCategorySimpleType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("attributecategorysimpletype45ectype");
     
     /**
      * A factory class with static methods for creating instances

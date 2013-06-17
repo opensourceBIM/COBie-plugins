@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.assettype;
 public interface AssetTypeInfoType extends org.erdc.cobie.cobielite.core.AssetTypeInfoType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetTypeInfoType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("assettypeinfotype8f8btype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetTypeInfoType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("assettypeinfotype8f8btype");
     
     /**
      * Gets the "AssetTypeCategory" element
@@ -96,12 +96,12 @@ public interface AssetTypeInfoType extends org.erdc.cobie.cobielite.core.AssetTy
     /**
      * Sets the "AssetTypeAccountingCategory" element
      */
-    void setAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum AssetTypeAccountingCategory);
+    void setAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum assetTypeAccountingCategory);
     
     /**
      * Sets (as xml) the "AssetTypeAccountingCategory" element
      */
-    void xsetAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType AssetTypeAccountingCategory);
+    void xsetAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType assetTypeAccountingCategory);
     
     /**
      * Unsets the "AssetTypeAccountingCategory" element
@@ -631,7 +631,7 @@ public interface AssetTypeInfoType extends org.erdc.cobie.cobielite.core.AssetTy
     /**
      * Sets the "AssetTypeManufacturerContactAssignments" element
      */
-    void setAssetTypeManufacturerContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType AssetTypeManufacturerContactAssignments);
+    void setAssetTypeManufacturerContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType assetTypeManufacturerContactAssignments);
     
     /**
      * Appends and returns a new empty "AssetTypeManufacturerContactAssignments" element

@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface AssetTypeInfoType extends org.erdc.cobie.cobielite.core.CobieRowType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetTypeInfoType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("assettypeinfotype6aa0type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetTypeInfoType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("assettypeinfotype6aa0type");
     
     /**
      * Gets the "AssetTypeName" element

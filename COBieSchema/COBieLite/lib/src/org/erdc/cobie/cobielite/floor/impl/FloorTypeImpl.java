@@ -30,10 +30,6 @@ public class FloorTypeImpl extends org.erdc.cobie.cobielite.core.impl.FloorTypeI
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "FloorHeightValue");
     private static final javax.xml.namespace.QName SPACES$8 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "Spaces");
-    private static final org.apache.xmlbeans.QNameSet SPACES$9 = org.apache.xmlbeans.QNameSet.forArray( new javax.xml.namespace.QName[] { 
-        new javax.xml.namespace.QName("http://space.cobielite.cobie.erdc.org", "Spaces"),
-        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "Spaces"),
-    });
     private static final javax.xml.namespace.QName FLOORATTRIBUTES$10 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "FloorAttributes");
     private static final javax.xml.namespace.QName FLOORDOCUMENTS$12 = 
@@ -363,7 +359,7 @@ public class FloorTypeImpl extends org.erdc.cobie.cobielite.core.impl.FloorTypeI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.SpaceCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.SpaceCollectionType)get_store().find_element_user(SPACES$9, 0);
+            target = (org.erdc.cobie.cobielite.core.SpaceCollectionType)get_store().find_element_user(SPACES$8, 0);
             if (target == null)
             {
                 return null;
@@ -380,7 +376,7 @@ public class FloorTypeImpl extends org.erdc.cobie.cobielite.core.impl.FloorTypeI
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(SPACES$9) != 0;
+            return get_store().count_elements(SPACES$8) != 0;
         }
     }
     
@@ -389,17 +385,7 @@ public class FloorTypeImpl extends org.erdc.cobie.cobielite.core.impl.FloorTypeI
      */
     public void setSpaces(org.erdc.cobie.cobielite.core.SpaceCollectionType spaces)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.erdc.cobie.cobielite.core.SpaceCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.SpaceCollectionType)get_store().find_element_user(SPACES$9, 0);
-            if (target == null)
-            {
-                target = (org.erdc.cobie.cobielite.core.SpaceCollectionType)get_store().add_element_user(SPACES$8);
-            }
-            target.set(spaces);
-        }
+        generatedSetterHelperImpl(spaces, SPACES$8, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
@@ -424,7 +410,7 @@ public class FloorTypeImpl extends org.erdc.cobie.cobielite.core.impl.FloorTypeI
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(SPACES$9, 0);
+            get_store().remove_element(SPACES$8, 0);
         }
     }
     

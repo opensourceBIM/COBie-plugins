@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface AttributeType extends org.erdc.cobie.cobielite.core.CobieRowType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AttributeType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("attributetype0b1ctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AttributeType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("attributetype0b1ctype");
     
     /**
      * Gets the "AttributeName" element

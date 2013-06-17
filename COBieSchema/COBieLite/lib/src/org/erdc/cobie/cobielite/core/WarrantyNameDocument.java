@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.core;
 public interface WarrantyNameDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(WarrantyNameDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("warrantyname2649doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(WarrantyNameDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("warrantyname2649doctype");
     
     /**
      * Gets the "WarrantyName" element

@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.core;
 public interface Space2DShapeDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Space2DShapeDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("space2dshape5887doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Space2DShapeDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("space2dshape5887doctype");
     
     /**
      * Gets the "Space2DShape" element

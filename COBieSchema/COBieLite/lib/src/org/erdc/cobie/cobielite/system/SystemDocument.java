@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.system;
 public interface SystemDocument extends org.erdc.cobie.cobielite.core.SystemDocument
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SystemDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("system69f1doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SystemDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("system69f1doctype");
     
     /**
      * Gets the "System" element

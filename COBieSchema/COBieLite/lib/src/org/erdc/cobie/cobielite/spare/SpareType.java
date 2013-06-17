@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.spare;
 public interface SpareType extends org.erdc.cobie.cobielite.core.SpareType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SpareType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("sparetyped1fdtype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SpareType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("sparetyped1fdtype");
     
     /**
      * Gets the "SpareDescription" element
@@ -121,7 +121,7 @@ public interface SpareType extends org.erdc.cobie.cobielite.core.SpareType
     /**
      * Sets the "SpareSupplierContactAssignments" element
      */
-    void setSpareSupplierContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType SpareSupplierContactAssignments);
+    void setSpareSupplierContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType spareSupplierContactAssignments);
     
     /**
      * Appends and returns a new empty "SpareSupplierContactAssignments" element

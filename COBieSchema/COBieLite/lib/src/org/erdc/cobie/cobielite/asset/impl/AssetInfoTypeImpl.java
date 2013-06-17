@@ -30,23 +30,25 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetInstalledModelNumber");
     private static final javax.xml.namespace.QName ASSETWARRANTYSTARTDATE$8 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetWarrantyStartDate");
-    private static final javax.xml.namespace.QName ASSETTAGNUMBER$10 = 
+    private static final javax.xml.namespace.QName ASSETSTARTDATE$10 = 
+        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetStartDate");
+    private static final javax.xml.namespace.QName ASSETTAGNUMBER$12 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTagNumber");
-    private static final javax.xml.namespace.QName ASSETBARCODE$12 = 
+    private static final javax.xml.namespace.QName ASSETBARCODE$14 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetBarCode");
-    private static final javax.xml.namespace.QName ASSETIDENTIFIER$14 = 
+    private static final javax.xml.namespace.QName ASSETIDENTIFIER$16 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetIdentifier");
-    private static final javax.xml.namespace.QName ASSETLOCATIONDESCRIPTION$16 = 
+    private static final javax.xml.namespace.QName ASSETLOCATIONDESCRIPTION$18 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetLocationDescription");
-    private static final javax.xml.namespace.QName ASSETSYSTEMASSIGNMENTS$18 = 
+    private static final javax.xml.namespace.QName ASSETSYSTEMASSIGNMENTS$20 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetSystemAssignments");
-    private static final javax.xml.namespace.QName ASSEMBLYASSIGNMENTS$20 = 
+    private static final javax.xml.namespace.QName ASSEMBLYASSIGNMENTS$22 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssemblyAssignments");
-    private static final javax.xml.namespace.QName ASSETATTRIBUTES$22 = 
+    private static final javax.xml.namespace.QName ASSETATTRIBUTES$24 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetAttributes");
-    private static final javax.xml.namespace.QName ASSETDOCUMENTS$24 = 
+    private static final javax.xml.namespace.QName ASSETDOCUMENTS$26 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetDocuments");
-    private static final javax.xml.namespace.QName ASSETISSUES$26 = 
+    private static final javax.xml.namespace.QName ASSETISSUES$28 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetIssues");
     
     
@@ -511,6 +513,98 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
     }
     
     /**
+     * Gets the "AssetStartDate" element
+     */
+    public java.lang.String getAssetStartDate()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.apache.xmlbeans.SimpleValue target = null;
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETSTARTDATE$10, 0);
+            if (target == null)
+            {
+                return null;
+            }
+            return target.getStringValue();
+        }
+    }
+    
+    /**
+     * Gets (as xml) the "AssetStartDate" element
+     */
+    public org.erdc.cobie.cobielite.core.CobieTextSimpleType xgetAssetStartDate()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.erdc.cobie.cobielite.core.CobieTextSimpleType target = null;
+            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETSTARTDATE$10, 0);
+            return target;
+        }
+    }
+    
+    /**
+     * True if has "AssetStartDate" element
+     */
+    public boolean isSetAssetStartDate()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            return get_store().count_elements(ASSETSTARTDATE$10) != 0;
+        }
+    }
+    
+    /**
+     * Sets the "AssetStartDate" element
+     */
+    public void setAssetStartDate(java.lang.String assetStartDate)
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.apache.xmlbeans.SimpleValue target = null;
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETSTARTDATE$10, 0);
+            if (target == null)
+            {
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETSTARTDATE$10);
+            }
+            target.setStringValue(assetStartDate);
+        }
+    }
+    
+    /**
+     * Sets (as xml) the "AssetStartDate" element
+     */
+    public void xsetAssetStartDate(org.erdc.cobie.cobielite.core.CobieTextSimpleType assetStartDate)
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.erdc.cobie.cobielite.core.CobieTextSimpleType target = null;
+            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETSTARTDATE$10, 0);
+            if (target == null)
+            {
+                target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().add_element_user(ASSETSTARTDATE$10);
+            }
+            target.set(assetStartDate);
+        }
+    }
+    
+    /**
+     * Unsets the "AssetStartDate" element
+     */
+    public void unsetAssetStartDate()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            get_store().remove_element(ASSETSTARTDATE$10, 0);
+        }
+    }
+    
+    /**
      * Gets the "AssetTagNumber" element
      */
     public java.lang.String getAssetTagNumber()
@@ -519,7 +613,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETTAGNUMBER$10, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETTAGNUMBER$12, 0);
             if (target == null)
             {
                 return null;
@@ -537,7 +631,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.CobieTextSimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETTAGNUMBER$10, 0);
+            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETTAGNUMBER$12, 0);
             return target;
         }
     }
@@ -550,7 +644,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(ASSETTAGNUMBER$10) != 0;
+            return get_store().count_elements(ASSETTAGNUMBER$12) != 0;
         }
     }
     
@@ -563,10 +657,10 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETTAGNUMBER$10, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETTAGNUMBER$12, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETTAGNUMBER$10);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETTAGNUMBER$12);
             }
             target.setStringValue(assetTagNumber);
         }
@@ -581,10 +675,10 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.CobieTextSimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETTAGNUMBER$10, 0);
+            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETTAGNUMBER$12, 0);
             if (target == null)
             {
-                target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().add_element_user(ASSETTAGNUMBER$10);
+                target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().add_element_user(ASSETTAGNUMBER$12);
             }
             target.set(assetTagNumber);
         }
@@ -598,7 +692,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(ASSETTAGNUMBER$10, 0);
+            get_store().remove_element(ASSETTAGNUMBER$12, 0);
         }
     }
     
@@ -611,7 +705,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETBARCODE$12, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETBARCODE$14, 0);
             if (target == null)
             {
                 return null;
@@ -629,7 +723,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.CobieTextSimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETBARCODE$12, 0);
+            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETBARCODE$14, 0);
             return target;
         }
     }
@@ -642,7 +736,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(ASSETBARCODE$12) != 0;
+            return get_store().count_elements(ASSETBARCODE$14) != 0;
         }
     }
     
@@ -655,10 +749,10 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETBARCODE$12, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETBARCODE$14, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETBARCODE$12);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETBARCODE$14);
             }
             target.setStringValue(assetBarCode);
         }
@@ -673,10 +767,10 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.CobieTextSimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETBARCODE$12, 0);
+            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETBARCODE$14, 0);
             if (target == null)
             {
-                target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().add_element_user(ASSETBARCODE$12);
+                target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().add_element_user(ASSETBARCODE$14);
             }
             target.set(assetBarCode);
         }
@@ -690,7 +784,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(ASSETBARCODE$12, 0);
+            get_store().remove_element(ASSETBARCODE$14, 0);
         }
     }
     
@@ -703,7 +797,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETIDENTIFIER$14, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETIDENTIFIER$16, 0);
             if (target == null)
             {
                 return null;
@@ -721,7 +815,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.CobieTextSimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETIDENTIFIER$14, 0);
+            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETIDENTIFIER$16, 0);
             return target;
         }
     }
@@ -734,7 +828,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(ASSETIDENTIFIER$14) != 0;
+            return get_store().count_elements(ASSETIDENTIFIER$16) != 0;
         }
     }
     
@@ -747,10 +841,10 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETIDENTIFIER$14, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETIDENTIFIER$16, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETIDENTIFIER$14);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETIDENTIFIER$16);
             }
             target.setStringValue(assetIdentifier);
         }
@@ -765,10 +859,10 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.CobieTextSimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETIDENTIFIER$14, 0);
+            target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().find_element_user(ASSETIDENTIFIER$16, 0);
             if (target == null)
             {
-                target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().add_element_user(ASSETIDENTIFIER$14);
+                target = (org.erdc.cobie.cobielite.core.CobieTextSimpleType)get_store().add_element_user(ASSETIDENTIFIER$16);
             }
             target.set(assetIdentifier);
         }
@@ -782,7 +876,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(ASSETIDENTIFIER$14, 0);
+            get_store().remove_element(ASSETIDENTIFIER$16, 0);
         }
     }
     
@@ -795,7 +889,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETLOCATIONDESCRIPTION$16, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETLOCATIONDESCRIPTION$18, 0);
             if (target == null)
             {
                 return null;
@@ -813,7 +907,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.CobieDescriptionSimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.CobieDescriptionSimpleType)get_store().find_element_user(ASSETLOCATIONDESCRIPTION$16, 0);
+            target = (org.erdc.cobie.cobielite.core.CobieDescriptionSimpleType)get_store().find_element_user(ASSETLOCATIONDESCRIPTION$18, 0);
             return target;
         }
     }
@@ -826,7 +920,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(ASSETLOCATIONDESCRIPTION$16) != 0;
+            return get_store().count_elements(ASSETLOCATIONDESCRIPTION$18) != 0;
         }
     }
     
@@ -839,10 +933,10 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETLOCATIONDESCRIPTION$16, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETLOCATIONDESCRIPTION$18, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETLOCATIONDESCRIPTION$16);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETLOCATIONDESCRIPTION$18);
             }
             target.setStringValue(assetLocationDescription);
         }
@@ -857,10 +951,10 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.CobieDescriptionSimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.CobieDescriptionSimpleType)get_store().find_element_user(ASSETLOCATIONDESCRIPTION$16, 0);
+            target = (org.erdc.cobie.cobielite.core.CobieDescriptionSimpleType)get_store().find_element_user(ASSETLOCATIONDESCRIPTION$18, 0);
             if (target == null)
             {
-                target = (org.erdc.cobie.cobielite.core.CobieDescriptionSimpleType)get_store().add_element_user(ASSETLOCATIONDESCRIPTION$16);
+                target = (org.erdc.cobie.cobielite.core.CobieDescriptionSimpleType)get_store().add_element_user(ASSETLOCATIONDESCRIPTION$18);
             }
             target.set(assetLocationDescription);
         }
@@ -874,7 +968,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(ASSETLOCATIONDESCRIPTION$16, 0);
+            get_store().remove_element(ASSETLOCATIONDESCRIPTION$18, 0);
         }
     }
     
@@ -887,7 +981,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.SystemAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.SystemAssignmentCollectionType)get_store().find_element_user(ASSETSYSTEMASSIGNMENTS$18, 0);
+            target = (org.erdc.cobie.cobielite.core.SystemAssignmentCollectionType)get_store().find_element_user(ASSETSYSTEMASSIGNMENTS$20, 0);
             if (target == null)
             {
                 return null;
@@ -904,7 +998,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(ASSETSYSTEMASSIGNMENTS$18) != 0;
+            return get_store().count_elements(ASSETSYSTEMASSIGNMENTS$20) != 0;
         }
     }
     
@@ -913,7 +1007,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
      */
     public void setAssetSystemAssignments(org.erdc.cobie.cobielite.core.SystemAssignmentCollectionType assetSystemAssignments)
     {
-        generatedSetterHelperImpl(assetSystemAssignments, ASSETSYSTEMASSIGNMENTS$18, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
+        generatedSetterHelperImpl(assetSystemAssignments, ASSETSYSTEMASSIGNMENTS$20, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
@@ -925,7 +1019,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.SystemAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.SystemAssignmentCollectionType)get_store().add_element_user(ASSETSYSTEMASSIGNMENTS$18);
+            target = (org.erdc.cobie.cobielite.core.SystemAssignmentCollectionType)get_store().add_element_user(ASSETSYSTEMASSIGNMENTS$20);
             return target;
         }
     }
@@ -938,7 +1032,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(ASSETSYSTEMASSIGNMENTS$18, 0);
+            get_store().remove_element(ASSETSYSTEMASSIGNMENTS$20, 0);
         }
     }
     
@@ -951,7 +1045,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.AssemblyAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.AssemblyAssignmentCollectionType)get_store().find_element_user(ASSEMBLYASSIGNMENTS$20, 0);
+            target = (org.erdc.cobie.cobielite.core.AssemblyAssignmentCollectionType)get_store().find_element_user(ASSEMBLYASSIGNMENTS$22, 0);
             if (target == null)
             {
                 return null;
@@ -968,7 +1062,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(ASSEMBLYASSIGNMENTS$20) != 0;
+            return get_store().count_elements(ASSEMBLYASSIGNMENTS$22) != 0;
         }
     }
     
@@ -977,7 +1071,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
      */
     public void setAssemblyAssignments(org.erdc.cobie.cobielite.core.AssemblyAssignmentCollectionType assemblyAssignments)
     {
-        generatedSetterHelperImpl(assemblyAssignments, ASSEMBLYASSIGNMENTS$20, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
+        generatedSetterHelperImpl(assemblyAssignments, ASSEMBLYASSIGNMENTS$22, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
@@ -989,7 +1083,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.AssemblyAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.AssemblyAssignmentCollectionType)get_store().add_element_user(ASSEMBLYASSIGNMENTS$20);
+            target = (org.erdc.cobie.cobielite.core.AssemblyAssignmentCollectionType)get_store().add_element_user(ASSEMBLYASSIGNMENTS$22);
             return target;
         }
     }
@@ -1002,7 +1096,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(ASSEMBLYASSIGNMENTS$20, 0);
+            get_store().remove_element(ASSEMBLYASSIGNMENTS$22, 0);
         }
     }
     
@@ -1015,7 +1109,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.AttributeCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.AttributeCollectionType)get_store().find_element_user(ASSETATTRIBUTES$22, 0);
+            target = (org.erdc.cobie.cobielite.core.AttributeCollectionType)get_store().find_element_user(ASSETATTRIBUTES$24, 0);
             if (target == null)
             {
                 return null;
@@ -1032,7 +1126,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(ASSETATTRIBUTES$22) != 0;
+            return get_store().count_elements(ASSETATTRIBUTES$24) != 0;
         }
     }
     
@@ -1041,7 +1135,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
      */
     public void setAssetAttributes(org.erdc.cobie.cobielite.core.AttributeCollectionType assetAttributes)
     {
-        generatedSetterHelperImpl(assetAttributes, ASSETATTRIBUTES$22, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
+        generatedSetterHelperImpl(assetAttributes, ASSETATTRIBUTES$24, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
@@ -1053,7 +1147,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.AttributeCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.AttributeCollectionType)get_store().add_element_user(ASSETATTRIBUTES$22);
+            target = (org.erdc.cobie.cobielite.core.AttributeCollectionType)get_store().add_element_user(ASSETATTRIBUTES$24);
             return target;
         }
     }
@@ -1066,7 +1160,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(ASSETATTRIBUTES$22, 0);
+            get_store().remove_element(ASSETATTRIBUTES$24, 0);
         }
     }
     
@@ -1079,7 +1173,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.DocumentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.DocumentCollectionType)get_store().find_element_user(ASSETDOCUMENTS$24, 0);
+            target = (org.erdc.cobie.cobielite.core.DocumentCollectionType)get_store().find_element_user(ASSETDOCUMENTS$26, 0);
             if (target == null)
             {
                 return null;
@@ -1096,7 +1190,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(ASSETDOCUMENTS$24) != 0;
+            return get_store().count_elements(ASSETDOCUMENTS$26) != 0;
         }
     }
     
@@ -1105,7 +1199,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
      */
     public void setAssetDocuments(org.erdc.cobie.cobielite.core.DocumentCollectionType assetDocuments)
     {
-        generatedSetterHelperImpl(assetDocuments, ASSETDOCUMENTS$24, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
+        generatedSetterHelperImpl(assetDocuments, ASSETDOCUMENTS$26, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
@@ -1117,7 +1211,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.DocumentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.DocumentCollectionType)get_store().add_element_user(ASSETDOCUMENTS$24);
+            target = (org.erdc.cobie.cobielite.core.DocumentCollectionType)get_store().add_element_user(ASSETDOCUMENTS$26);
             return target;
         }
     }
@@ -1130,7 +1224,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(ASSETDOCUMENTS$24, 0);
+            get_store().remove_element(ASSETDOCUMENTS$26, 0);
         }
     }
     
@@ -1143,7 +1237,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.IssueCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.IssueCollectionType)get_store().find_element_user(ASSETISSUES$26, 0);
+            target = (org.erdc.cobie.cobielite.core.IssueCollectionType)get_store().find_element_user(ASSETISSUES$28, 0);
             if (target == null)
             {
                 return null;
@@ -1160,7 +1254,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(ASSETISSUES$26) != 0;
+            return get_store().count_elements(ASSETISSUES$28) != 0;
         }
     }
     
@@ -1169,7 +1263,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
      */
     public void setAssetIssues(org.erdc.cobie.cobielite.core.IssueCollectionType assetIssues)
     {
-        generatedSetterHelperImpl(assetIssues, ASSETISSUES$26, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
+        generatedSetterHelperImpl(assetIssues, ASSETISSUES$28, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
@@ -1181,7 +1275,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.IssueCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.IssueCollectionType)get_store().add_element_user(ASSETISSUES$26);
+            target = (org.erdc.cobie.cobielite.core.IssueCollectionType)get_store().add_element_user(ASSETISSUES$28);
             return target;
         }
     }
@@ -1194,7 +1288,7 @@ public class AssetInfoTypeImpl extends org.erdc.cobie.cobielite.core.impl.AssetI
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(ASSETISSUES$26, 0);
+            get_store().remove_element(ASSETISSUES$28, 0);
         }
     }
 }

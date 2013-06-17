@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface SystemExternalEntityNameSimpleType extends org.erdc.cobie.cobielite.core.ExternalEntityNameSimpleType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SystemExternalEntityNameSimpleType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("systemexternalentitynamesimpletype3eectype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SystemExternalEntityNameSimpleType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("systemexternalentitynamesimpletype3eectype");
     
     /**
      * A factory class with static methods for creating instances
