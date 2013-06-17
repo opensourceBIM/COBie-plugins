@@ -45,14 +45,14 @@
 		</cobie:Contacts>
 		<cobie:AssetTypeName>String</cobie:AssetTypeName>
 		<cobie:AssetTypeModelNumber>String</cobie:AssetTypeModelNumber>
-		<cobie:AssetTypeContactAssignments>
+		<cobie:AssetTypeManufacturerContactAssignments>
 			<cobie:ContactAssignment>
 				<cobie:ContactEmailReference>String</cobie:ContactEmailReference>
 			</cobie:ContactAssignment>
-		</cobie:AssetTypeContactAssignments>
+		</cobie:AssetTypeManufacturerContactAssignments>
 		<cobie:AssetTypeCategory>String</cobie:AssetTypeCategory>
 		<cobie:AssetTypeDescription>String</cobie:AssetTypeDescription>
-		<cobie:AssetTypePortabilityText>Moveable</cobie:AssetTypePortabilityText>
+		<cobie:AssetTypeAccountingCategory>Moveable</cobie:AssetTypeAccountingCategory>
 		<cobie:AssetTypeReplacementCostValue>
 			<cobie:UnitName>String</cobie:UnitName>
 			<cobie:DecimalValue>0.0</cobie:DecimalValue>
@@ -99,11 +99,11 @@
 			<cobie:UnitName>String</cobie:UnitName>
 			<cobie:IntegerValue>0</cobie:IntegerValue>
 		</cobie:WarrantyDuration>
-		<cobie:WarrantyContactAssignments>
+		<cobie:WarrantyGaurantorContactAssignments>
 			<cobie:ContactAssignment>
 				<cobie:ContactEmailReference>String</cobie:ContactEmailReference>
 			</cobie:ContactAssignment>
-		</cobie:WarrantyContactAssignments>
+		</cobie:WarrantyGaurantorContactAssignments>
 		<cobie:WarrantyAttributes/>
 		<cobie:WarrantyDocuments>
 			<doc:Document cobie:externalEntityName="String" cobie:externalID="String" cobie:externalSystemName="String">

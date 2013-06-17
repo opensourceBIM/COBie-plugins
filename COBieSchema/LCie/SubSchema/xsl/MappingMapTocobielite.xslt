@@ -110,9 +110,9 @@ http://www.altova.com/mapforce
 							<AssetTypeDescription>
 								<xsl:sequence select="fn:string(ns2:AssetTypeDescription)"/>
 							</AssetTypeDescription>
-							<AssetTypePortabilityText>
-								<xsl:sequence select="fn:string(ns2:AssetTypePortabilityText)"/>
-							</AssetTypePortabilityText>
+							<AssetTypeAccountingCategory>
+								<xsl:sequence select="fn:string(ns2:AssetTypeAccountingCategory)"/>
+							</AssetTypeAccountingCategory>
 							<xsl:for-each select="ns2:AssetTypeReplacementCostValue">
 								<AssetTypeReplacementCostValue>
 									<xsl:sequence select="(./@node(), ./node())"/>

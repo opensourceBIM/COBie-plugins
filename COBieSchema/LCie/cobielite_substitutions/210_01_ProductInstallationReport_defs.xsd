@@ -1,4 +1,4 @@
-
+<!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:pid="http://installation210.defs.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" targetNamespace="http://installation210.defs.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:import namespace="http://lcie.cobielite.cobie.erdc.org" schemaLocation="../Subschema/lcie_abstract.xsd"/>
@@ -9,7 +9,7 @@
 		<xs:sequence>
 			<xs:element ref="AssetTypeCategory"/>
 			<xs:element ref="AssetTypeDescription"/>
-			<xs:element ref="AssetTypePortabilityText"/>
+			<xs:element ref="AssetTypeAccountingCategory"/>
 			<xs:element ref="AssetTypeModelNumber"/>
 			<xs:element ref="AssetTypeReplacementCostValue" minOccurs="0"/>
 			<xs:element ref="AssetTypeExpectedLifeValue" minOccurs="0"/>
@@ -27,7 +27,7 @@
 			<xs:element ref="AssetTypeShapeDescription" minOccurs="0"/>
 			<xs:element ref="AssetTypeSizeDescription" minOccurs="0"/>
 			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
-			<xs:element ref="AssetTypeContactAssignments"/>
+			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
 			<xs:element ref="Assets"/>
 		</xs:sequence>
 	</xs:group>
@@ -94,7 +94,7 @@
 			<xs:element ref="AssetDescription"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:complexType name="ProductPartsType">
+	<xs:complexType name="ProductInstallationReportType">
 		<xs:complexContent>
 			<xs:extension base="lcie:InformationExchangeComplexType">
 				<xs:sequence>

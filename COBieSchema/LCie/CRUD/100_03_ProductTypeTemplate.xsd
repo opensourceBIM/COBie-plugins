@@ -36,7 +36,7 @@
 					<xs:element ref="AssetTypeName" minOccurs="0"/>
 					<xs:element ref="AssetTypeCategory" minOccurs="0"/>
 					<xs:element ref="AssetTypeDescription" minOccurs="0"/>
-					<xs:element ref="AssetTypePortabilityText" minOccurs="0"/>
+					<xs:element ref="AssetTypeAccountingCategory" minOccurs="0"/>
 					<xs:element ref="AssetTypeNominalLength" minOccurs="0"/>
 					<xs:element ref="AssetTypeNominalWidth" minOccurs="0"/>
 					<xs:element ref="AssetTypeNominalHeight" minOccurs="0"/>

@@ -82,7 +82,7 @@
 		<xs:sequence>
 			<xs:element ref="AssetTypeCategory"/>
 			<xs:element ref="AssetTypeDescription"/>
-			<xs:element ref="AssetTypeContactAssignments"/>
+			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
 			<xs:element ref="AssetTypeModelNumber"/>
 			<xs:element ref="Assets"/>
 		</xs:sequence>

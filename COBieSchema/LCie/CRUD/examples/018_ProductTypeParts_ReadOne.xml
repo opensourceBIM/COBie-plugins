@@ -44,14 +44,14 @@
 		</Contacts>
 		<AssetTypeName>n/a</AssetTypeName>
 		<AssetTypeModelNumber>n/a</AssetTypeModelNumber>
-		<AssetTypeContactAssignments>
+		<AssetTypeManufacturerContactAssignments>
 			<ContactAssignment>
 				<ContactEmailReference>n/a</ContactEmailReference>
 			</ContactAssignment>
-		</AssetTypeContactAssignments>
+		</AssetTypeManufacturerContactAssignments>
 		<AssetTypeCategory>n/a</AssetTypeCategory>
 		<AssetTypeDescription>n/a</AssetTypeDescription>
-		<AssetTypePortabilityText/>
+		<AssetTypeAccountingCategory/>
 		<AssetTypeReplacementCostValue>
 			<UnitName>n/a</UnitName>
 			<DecimalValue>0.0</DecimalValue>
@@ -96,11 +96,11 @@
 		<SpareDescription>n/a</SpareDescription>
 		<SpareSetNumber>n/a</SpareSetNumber>
 		<SparePartNumber>n/a</SparePartNumber>
-		<SpareContactAssignments>
+		<SpareSupplierContactAssignments>
 			<ContactAssignment>
 				<ContactEmailReference>n/a</ContactEmailReference>
 			</ContactAssignment>
-		</SpareContactAssignments>
+		</SpareSupplierContactAssignments>
 		<SpareDocuments>
 			<doc:Document cobie:externalEntityName="n/a" cobie:externalID="n/a" cobie:externalSystemName="n/a">
 				<DocumentName>n/a</DocumentName>

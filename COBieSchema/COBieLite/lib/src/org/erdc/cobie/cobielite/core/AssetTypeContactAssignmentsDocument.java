@@ -1,8 +1,8 @@
 /*
  * An XML document type.
- * Localname: AssetTypeContactAssignments
+ * Localname: AssetTypeManufacturerContactAssignments
  * Namespace: http://core.cobielite.cobie.erdc.org
- * Java type: org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument
+ * Java type: org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument
  *
  * Automatically generated - do not modify.
  */
@@ -10,29 +10,29 @@ package org.erdc.cobie.cobielite.core;
 
 
 /**
- * A document containing one AssetTypeContactAssignments(@http://core.cobielite.cobie.erdc.org) element.
+ * A document containing one AssetTypeManufacturerContactAssignments(@http://core.cobielite.cobie.erdc.org) element.
  *
  * This is a complex type.
  */
-public interface AssetTypeContactAssignmentsDocument extends org.apache.xmlbeans.XmlObject
+public interface AssetTypeManufacturerContactAssignmentsDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetTypeContactAssignmentsDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("assettypecontactassignments92b2doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetTypeManufacturerContactAssignmentsDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sDB8A4E468FD3CA78BBE0CAC69C637E16").resolveHandle("AssetTypeManufacturerContactAssignments92b2doctype");
     
     /**
-     * Gets the "AssetTypeContactAssignments" element
+     * Gets the "AssetTypeManufacturerContactAssignments" element
      */
-    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getAssetTypeContactAssignments();
+    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getAssetTypeManufacturerContactAssignments();
     
     /**
-     * Sets the "AssetTypeContactAssignments" element
+     * Sets the "AssetTypeManufacturerContactAssignments" element
      */
-    void setAssetTypeContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType assetTypeContactAssignments);
+    void setAssetTypeManufacturerContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType AssetTypeManufacturerContactAssignments);
     
     /**
-     * Appends and returns a new empty "AssetTypeContactAssignments" element
+     * Appends and returns a new empty "AssetTypeManufacturerContactAssignments" element
      */
-    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewAssetTypeContactAssignments();
+    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewAssetTypeManufacturerContactAssignments();
     
     /**
      * A factory class with static methods for creating instances
@@ -41,63 +41,63 @@ public interface AssetTypeContactAssignmentsDocument extends org.apache.xmlbeans
     
     public static final class Factory
     {
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument newInstance() {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().newInstance( type, null ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument newInstance() {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().newInstance( type, null ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument newInstance(org.apache.xmlbeans.XmlOptions options) {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().newInstance( type, options ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument newInstance(org.apache.xmlbeans.XmlOptions options) {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().newInstance( type, options ); }
         
         /** @param xmlAsString the string value to parse */
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(java.lang.String xmlAsString) throws org.apache.xmlbeans.XmlException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xmlAsString, type, null ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(java.lang.String xmlAsString) throws org.apache.xmlbeans.XmlException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xmlAsString, type, null ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(java.lang.String xmlAsString, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xmlAsString, type, options ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(java.lang.String xmlAsString, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xmlAsString, type, options ); }
         
         /** @param file the file from which to load an xml document */
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(java.io.File file) throws org.apache.xmlbeans.XmlException, java.io.IOException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( file, type, null ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(java.io.File file) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( file, type, null ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(java.io.File file, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( file, type, options ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(java.io.File file, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( file, type, options ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(java.net.URL u) throws org.apache.xmlbeans.XmlException, java.io.IOException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( u, type, null ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(java.net.URL u) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( u, type, null ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(java.net.URL u, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( u, type, options ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(java.net.URL u, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( u, type, options ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(java.io.InputStream is) throws org.apache.xmlbeans.XmlException, java.io.IOException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( is, type, null ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(java.io.InputStream is) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( is, type, null ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(java.io.InputStream is, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( is, type, options ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(java.io.InputStream is, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( is, type, options ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(java.io.Reader r) throws org.apache.xmlbeans.XmlException, java.io.IOException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( r, type, null ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(java.io.Reader r) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( r, type, null ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(java.io.Reader r, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( r, type, options ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(java.io.Reader r, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( r, type, options ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(javax.xml.stream.XMLStreamReader sr) throws org.apache.xmlbeans.XmlException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( sr, type, null ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(javax.xml.stream.XMLStreamReader sr) throws org.apache.xmlbeans.XmlException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( sr, type, null ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(javax.xml.stream.XMLStreamReader sr, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( sr, type, options ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(javax.xml.stream.XMLStreamReader sr, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( sr, type, options ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(org.w3c.dom.Node node) throws org.apache.xmlbeans.XmlException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( node, type, null ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(org.w3c.dom.Node node) throws org.apache.xmlbeans.XmlException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( node, type, null ); }
         
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(org.w3c.dom.Node node, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( node, type, options ); }
-        
-        /** @deprecated {@link org.apache.xmlbeans.xml.stream.XMLInputStream} */
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(org.apache.xmlbeans.xml.stream.XMLInputStream xis) throws org.apache.xmlbeans.XmlException, org.apache.xmlbeans.xml.stream.XMLStreamException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xis, type, null ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(org.w3c.dom.Node node, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( node, type, options ); }
         
         /** @deprecated {@link org.apache.xmlbeans.xml.stream.XMLInputStream} */
-        public static org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument parse(org.apache.xmlbeans.xml.stream.XMLInputStream xis, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, org.apache.xmlbeans.xml.stream.XMLStreamException {
-          return (org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xis, type, options ); }
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(org.apache.xmlbeans.xml.stream.XMLInputStream xis) throws org.apache.xmlbeans.XmlException, org.apache.xmlbeans.xml.stream.XMLStreamException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xis, type, null ); }
+        
+        /** @deprecated {@link org.apache.xmlbeans.xml.stream.XMLInputStream} */
+        public static org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument parse(org.apache.xmlbeans.xml.stream.XMLInputStream xis, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, org.apache.xmlbeans.xml.stream.XMLStreamException {
+          return (org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xis, type, options ); }
         
         /** @deprecated {@link org.apache.xmlbeans.xml.stream.XMLInputStream} */
         public static org.apache.xmlbeans.xml.stream.XMLInputStream newValidatingXMLInputStream(org.apache.xmlbeans.xml.stream.XMLInputStream xis) throws org.apache.xmlbeans.XmlException, org.apache.xmlbeans.xml.stream.XMLStreamException {

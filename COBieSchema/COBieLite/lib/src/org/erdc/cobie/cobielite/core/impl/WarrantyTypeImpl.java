@@ -26,8 +26,8 @@ public class WarrantyTypeImpl extends org.erdc.cobie.cobielite.core.impl.CobieBa
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "WarrantyCategory");
     private static final javax.xml.namespace.QName WARRANTYDURATION$4 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "WarrantyDuration");
-    private static final javax.xml.namespace.QName WARRANTYCONTACTASSIGNMENTS$6 = 
-        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "WarrantyContactAssignments");
+    private static final javax.xml.namespace.QName WarrantyGaurantorContactAssignments$6 = 
+        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "WarrantyGaurantorContactAssignments");
     private static final javax.xml.namespace.QName WARRANTYATTRIBUTES$8 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "WarrantyAttributes");
     private static final javax.xml.namespace.QName WARRANTYDOCUMENTS$10 = 
@@ -237,15 +237,15 @@ public class WarrantyTypeImpl extends org.erdc.cobie.cobielite.core.impl.CobieBa
     }
     
     /**
-     * Gets the "WarrantyContactAssignments" element
+     * Gets the "WarrantyGaurantorContactAssignments" element
      */
-    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getWarrantyContactAssignments()
+    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getWarrantyGaurantorContactAssignments()
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().find_element_user(WARRANTYCONTACTASSIGNMENTS$6, 0);
+            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().find_element_user(WarrantyGaurantorContactAssignments$6, 0);
             if (target == null)
             {
                 return null;
@@ -255,48 +255,48 @@ public class WarrantyTypeImpl extends org.erdc.cobie.cobielite.core.impl.CobieBa
     }
     
     /**
-     * True if has "WarrantyContactAssignments" element
+     * True if has "WarrantyGaurantorContactAssignments" element
      */
-    public boolean isSetWarrantyContactAssignments()
+    public boolean isSetWarrantyGaurantorContactAssignments()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(WARRANTYCONTACTASSIGNMENTS$6) != 0;
+            return get_store().count_elements(WarrantyGaurantorContactAssignments$6) != 0;
         }
     }
     
     /**
-     * Sets the "WarrantyContactAssignments" element
+     * Sets the "WarrantyGaurantorContactAssignments" element
      */
-    public void setWarrantyContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType warrantyContactAssignments)
+    public void setWarrantyGaurantorContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType WarrantyGaurantorContactAssignments)
     {
-        generatedSetterHelperImpl(warrantyContactAssignments, WARRANTYCONTACTASSIGNMENTS$6, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
+        generatedSetterHelperImpl(WarrantyGaurantorContactAssignments, WarrantyGaurantorContactAssignments$6, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
-     * Appends and returns a new empty "WarrantyContactAssignments" element
+     * Appends and returns a new empty "WarrantyGaurantorContactAssignments" element
      */
-    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewWarrantyContactAssignments()
+    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewWarrantyGaurantorContactAssignments()
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().add_element_user(WARRANTYCONTACTASSIGNMENTS$6);
+            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().add_element_user(WarrantyGaurantorContactAssignments$6);
             return target;
         }
     }
     
     /**
-     * Unsets the "WarrantyContactAssignments" element
+     * Unsets the "WarrantyGaurantorContactAssignments" element
      */
-    public void unsetWarrantyContactAssignments()
+    public void unsetWarrantyGaurantorContactAssignments()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(WARRANTYCONTACTASSIGNMENTS$6, 0);
+            get_store().remove_element(WarrantyGaurantorContactAssignments$6, 0);
         }
     }
     

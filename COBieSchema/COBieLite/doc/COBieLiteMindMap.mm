@@ -1485,7 +1485,7 @@
 <node CREATED="1366101147725" ID="ID_d1e654" MODIFIED="1366101147725" STYLE="fork" TEXT="cobie:AssetTypeDescription ?">
 <font NAME="SansSerif" SIZE="12"/>
 </node>
-<node CREATED="1366101147725" ID="ID_d1e656" MODIFIED="1366101147725" STYLE="fork" TEXT="cobie:AssetTypePortabilityText ?">
+<node CREATED="1366101147725" ID="ID_d1e656" MODIFIED="1366101147725" STYLE="fork" TEXT="cobie:AssetTypeAccountingCategory ?">
 <font NAME="SansSerif" SIZE="12"/>
 <attribute NAME="list" VALUE="&apos;Fixed&apos; |&apos;Moveable&apos; |&apos;&apos;"/>
 </node>

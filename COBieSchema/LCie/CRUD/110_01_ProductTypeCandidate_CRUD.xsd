@@ -36,12 +36,12 @@
 					<xs:element ref="AssetTypeName" minOccurs="0"/>
 					<xs:element ref="AssetTypeCategory" minOccurs="0"/>
 					<xs:element ref="AssetTypeDescription" minOccurs="0"/>
-					<xs:element ref="AssetTypePortabilityText" minOccurs="0"/>
+					<xs:element ref="AssetTypeAccountingCategory" minOccurs="0"/>
 					<xs:element ref="AssetTypeNominalLength" minOccurs="0"/>
 					<xs:element ref="AssetTypeNominalWidth" minOccurs="0"/>
 					<xs:element ref="AssetTypeNominalHeight" minOccurs="0"/>
 					<xs:element ref="AssetTypeModelNumber" minOccurs="0"/>
-					<xs:element ref="AssetTypeContactAssignments" minOccurs="0"/>
+					<xs:element ref="AssetTypeManufacturerContactAssignments" minOccurs="0"/>
 					<xs:element ref="AssetTypeAttributes" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>

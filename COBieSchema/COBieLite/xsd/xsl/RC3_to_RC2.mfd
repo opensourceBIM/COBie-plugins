@@ -248,7 +248,7 @@
 												<entry name="AssetTypeName" inpkey="6671"/>
 												<entry name="AssetTypeCategory" inpkey="6672"/>
 												<entry name="AssetTypeDescription" inpkey="6673"/>
-												<entry name="AssetTypePortabilityText" inpkey="6674"/>
+												<entry name="AssetTypeAccountingCategory" inpkey="6674"/>
 												<entry name="AssetTypeModelNumber" inpkey="6675"/>
 												<entry name="AssetTypeReplacementCostValue" inpkey="6676">
 													<entry name="UnitName" inpkey="6677"/>
@@ -1449,7 +1449,7 @@
 												<entry name="AssetTypeName" outkey="7605"/>
 												<entry name="AssetTypeCategory" outkey="7606"/>
 												<entry name="AssetTypeDescription" outkey="7607"/>
-												<entry name="AssetTypePortabilityText" outkey="7608"/>
+												<entry name="AssetTypeAccountingCategory" outkey="7608"/>
 												<entry name="AssetTypeModelNumber" outkey="7609"/>
 												<entry name="AssetTypeReplacementCostValue" outkey="7610">
 													<entry name="UnitName" outkey="7611"/>
@@ -1649,7 +1649,7 @@
 														</entry>
 													</entry>
 												</entry>
-												<entry name="AssetTypeContactAssignments" outkey="7771">
+												<entry name="AssetTypeManufacturerContactAssignments" outkey="7771">
 													<entry name="ContactAssignment" outkey="7772"/>
 												</entry>
 												<entry name="Warranties" outkey="7773" expanded="1">
@@ -1675,7 +1675,7 @@
 														<entry name="SpareDescription" outkey="7790"/>
 														<entry name="SpareSetNumber" outkey="7791"/>
 														<entry name="SparePartNumber" outkey="7792"/>
-														<entry name="SpareContactAssignments" outkey="7793">
+														<entry name="SpareSupplierContactAssignments" outkey="7793">
 															<entry name="ContactAssignment" outkey="7794"/>
 														</entry>
 														<entry name="SpareAttributes" outkey="7795">

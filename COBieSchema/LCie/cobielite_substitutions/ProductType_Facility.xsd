@@ -47,7 +47,7 @@
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="AssetTypePortabilityText">
+					<xs:element ref="AssetTypeAccountingCategory">
 						<xs:annotation>
 							<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 						</xs:annotation>

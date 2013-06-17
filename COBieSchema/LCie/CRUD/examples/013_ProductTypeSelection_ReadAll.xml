@@ -43,7 +43,7 @@
 				<tf:AssetTypeName>n/a</tf:AssetTypeName>
 				<AssetTypeCategory>n/a</AssetTypeCategory>
 				<AssetTypeDescription>n/a</AssetTypeDescription>
-				<AssetTypePortabilityText/>
+				<AssetTypeAccountingCategory/>
 				<AssetTypeReplacementCostValue>
 					<UnitName>n/a</UnitName>
 					<DecimalValue>0.0</DecimalValue>
@@ -89,11 +89,11 @@
 					</att:Attribute>
 				</AssetTypeAttributes>
 				<AssetTypeModelNumber>n/a</AssetTypeModelNumber>
-				<AssetTypeContactAssignments>
+				<AssetTypeManufacturerContactAssignments>
 					<ContactAssignment>
 						<ContactEmailReference>n/a</ContactEmailReference>
 					</ContactAssignment>
-				</AssetTypeContactAssignments>
+				</AssetTypeManufacturerContactAssignments>
 				<AssetTypeDocuments>
 					<doc:Document cobie:externalEntityName="n/a" cobie:externalID="n/a" cobie:externalSystemName="n/a">
 						<DocumentName>n/a</DocumentName>

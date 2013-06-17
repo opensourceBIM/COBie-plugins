@@ -79,34 +79,34 @@ public interface AssetTypeInfoType extends org.erdc.cobie.cobielite.core.AssetTy
     void unsetAssetTypeDescription();
     
     /**
-     * Gets the "AssetTypePortabilityText" element
+     * Gets the "AssetTypeAccountingCategory" element
      */
-    org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum getAssetTypePortabilityText();
+    org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum getAssetTypeAccountingCategory();
     
     /**
-     * Gets (as xml) the "AssetTypePortabilityText" element
+     * Gets (as xml) the "AssetTypeAccountingCategory" element
      */
-    org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType xgetAssetTypePortabilityText();
+    org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType xgetAssetTypeAccountingCategory();
     
     /**
-     * True if has "AssetTypePortabilityText" element
+     * True if has "AssetTypeAccountingCategory" element
      */
-    boolean isSetAssetTypePortabilityText();
+    boolean isSetAssetTypeAccountingCategory();
     
     /**
-     * Sets the "AssetTypePortabilityText" element
+     * Sets the "AssetTypeAccountingCategory" element
      */
-    void setAssetTypePortabilityText(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum assetTypePortabilityText);
+    void setAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum AssetTypeAccountingCategory);
     
     /**
-     * Sets (as xml) the "AssetTypePortabilityText" element
+     * Sets (as xml) the "AssetTypeAccountingCategory" element
      */
-    void xsetAssetTypePortabilityText(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType assetTypePortabilityText);
+    void xsetAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType AssetTypeAccountingCategory);
     
     /**
-     * Unsets the "AssetTypePortabilityText" element
+     * Unsets the "AssetTypeAccountingCategory" element
      */
-    void unsetAssetTypePortabilityText();
+    void unsetAssetTypeAccountingCategory();
     
     /**
      * Gets the "AssetTypeModelNumber" element
@@ -619,29 +619,29 @@ public interface AssetTypeInfoType extends org.erdc.cobie.cobielite.core.AssetTy
     void unsetAssets();
     
     /**
-     * Gets the "AssetTypeContactAssignments" element
+     * Gets the "AssetTypeManufacturerContactAssignments" element
      */
-    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getAssetTypeContactAssignments();
+    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getAssetTypeManufacturerContactAssignments();
     
     /**
-     * True if has "AssetTypeContactAssignments" element
+     * True if has "AssetTypeManufacturerContactAssignments" element
      */
-    boolean isSetAssetTypeContactAssignments();
+    boolean isSetAssetTypeManufacturerContactAssignments();
     
     /**
-     * Sets the "AssetTypeContactAssignments" element
+     * Sets the "AssetTypeManufacturerContactAssignments" element
      */
-    void setAssetTypeContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType assetTypeContactAssignments);
+    void setAssetTypeManufacturerContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType AssetTypeManufacturerContactAssignments);
     
     /**
-     * Appends and returns a new empty "AssetTypeContactAssignments" element
+     * Appends and returns a new empty "AssetTypeManufacturerContactAssignments" element
      */
-    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewAssetTypeContactAssignments();
+    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewAssetTypeManufacturerContactAssignments();
     
     /**
-     * Unsets the "AssetTypeContactAssignments" element
+     * Unsets the "AssetTypeManufacturerContactAssignments" element
      */
-    void unsetAssetTypeContactAssignments();
+    void unsetAssetTypeManufacturerContactAssignments();
     
     /**
      * Gets the "Warranties" element

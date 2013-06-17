@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
+	<resources/>
+	<component name="defaultmap1" blackbox="0" uid="1" editable="1">
+		<properties SelectedLanguage="java"/>
+		<structure>
+			<children>
+				<component name="cobielite" library="xml" uid="3" kind="14">
+					<properties/>
+					<view rbx="300" rby="500"/>
+					<data>
+						<root scrollposition="238">
+							<header>
+								<namespaces>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://attribute.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://assettype.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="4" expanded="1">
+								<entry name="document" ns="4" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Facility" ns="3" expanded="1">
+										<entry name="AssetTypes" outkey="1">
+											<entry name="AssetType" ns="2" outkey="2">
+												<entry name="externalEntityName" type="attribute" outkey="3"/>
+												<entry name="externalID" type="attribute" outkey="4"/>
+												<entry name="externalSystemName" type="attribute" outkey="5"/>
+												<entry name="AssetTypeName" outkey="6"/>
+												<entry name="AssetTypeDescription" outkey="8"/>
+												<entry name="AssetTypeAccountingCategory" outkey="9"/>
+												<entry name="AssetTypeNominalLength" outkey="11"/>
+												<entry name="AssetTypeNominalWidth" outkey="12"/>
+												<entry name="AssetTypeNominalHeight" outkey="13"/>
+												<entry name="AssetTypeAccessibilityText" outkey="14"/>
+												<entry name="AssetTypeCodePerformance" outkey="15"/>
+												<entry name="AssetTypeColorCode" outkey="16"/>
+												<entry name="AssetTypeConstituentsDescription" outkey="17"/>
+												<entry name="AssetTypeFeaturesDescription" outkey="18"/>
+												<entry name="AssetTypeFinishDescription" outkey="19"/>
+												<entry name="AssetTypeGradeDescription" outkey="20"/>
+												<entry name="AssetTypeMaterialDescription" outkey="21"/>
+												<entry name="AssetTypeShapeDescription" outkey="22"/>
+												<entry name="AssetTypeSizeDescription" outkey="23"/>
+												<entry name="AssetTypeSustainabilityPerformanceDescription" outkey="24"/>
+												<entry name="AssetTypeAttributes" outkey="26">
+													<entry name="Attribute" ns="1" outkey="27">
+														<entry name="externalEntityName" type="attribute" outkey="28"/>
+														<entry name="externalID" type="attribute" outkey="29"/>
+														<entry name="externalSystemName" type="attribute" outkey="30"/>
+														<entry name="propertySetName" type="attribute" outkey="31"/>
+														<entry name="propertySetExternalIdentifier" type="attribute" outkey="32"/>
+														<entry name="AttributeName" outkey="33"/>
+														<entry name="AttributeCategory" outkey="34"/>
+														<entry name="AttributeDescription" outkey="35"/>
+														<entry name="AttributeValue" outkey="36"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\..\..\COBieLite\xsd\cobielite.xsd" inputinstance="..\..\..\COBieLite\examples\ClinicHandover_COBieLite_RC3.xml" outputinstance="..\..\..\COBieLite\examples\ClinicHandover_COBieLite_RC3.xml" instanceroot="{http://cobielite.cobie.erdc.org}Facility"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="100_03_ProductTypeTemplate" library="xml" uid="5" kind="14">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="410" rbx="1106" rby="490"/>
+					<data>
+						<root scrollposition="447">
+							<header>
+								<namespaces>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate100.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate100.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="4" expanded="1">
+								<entry name="document" ns="4" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductTypeTemplate" ns="3" expanded="1">
+										<entry name="AssetTypes" inpkey="196" expanded="1">
+											<entry name="AssetType" ns="2" inpkey="197" expanded="1">
+												<entry name="externalEntityName" type="attribute" inpkey="198"/>
+												<entry name="externalID" type="attribute" inpkey="199"/>
+												<entry name="externalSystemName" type="attribute" inpkey="200"/>
+												<entry name="AssetTypeName" inpkey="201"/>
+												<entry name="AssetTypeDescription" inpkey="202"/>
+												<entry name="AssetTypeAccountingCategory" inpkey="203"/>
+												<entry name="AssetTypeNominalLength" inpkey="204"/>
+												<entry name="AssetTypeNominalWidth" inpkey="205"/>
+												<entry name="AssetTypeNominalHeight" inpkey="206"/>
+												<entry name="AssetTypeAccessibilityText" inpkey="207"/>
+												<entry name="AssetTypeCodePerformance" inpkey="208"/>
+												<entry name="AssetTypeColorCode" inpkey="209"/>
+												<entry name="AssetTypeConstituentsDescription" inpkey="210"/>
+												<entry name="AssetTypeFeaturesDescription" inpkey="211"/>
+												<entry name="AssetTypeFinishDescription" inpkey="212"/>
+												<entry name="AssetTypeGradeDescription" inpkey="213"/>
+												<entry name="AssetTypeMaterialDescription" inpkey="214"/>
+												<entry name="AssetTypeShapeDescription" inpkey="215"/>
+												<entry name="AssetTypeSizeDescription" inpkey="216"/>
+												<entry name="AssetTypeSustainabilityPerformanceDescription" inpkey="217"/>
+												<entry name="AssetTypeAttributes" inpkey="218">
+													<entry name="Attribute" ns="1" inpkey="219">
+														<entry name="externalEntityName" type="attribute" inpkey="220"/>
+														<entry name="externalID" type="attribute" inpkey="221"/>
+														<entry name="externalSystemName" type="attribute" inpkey="222"/>
+														<entry name="propertySetName" type="attribute" inpkey="223"/>
+														<entry name="propertySetExternalIdentifier" type="attribute" inpkey="224"/>
+														<entry name="AttributeName" inpkey="225"/>
+														<entry name="AttributeCategory" inpkey="226"/>
+														<entry name="AttributeDescription" inpkey="227"/>
+														<entry name="AttributeValue" inpkey="228"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\100_03_ProductTypeTemplate.xsd" outputinstance="..\100_03_ProductTypeTemplate.xml" instanceroot="{http://typetemplate100.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate"/>
+						<wsdl/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="229">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="230">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="231">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="232">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="196" edgekey="233"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="197" edgekey="234"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="198" edgekey="235"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="199" edgekey="236"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="200" edgekey="237"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="201" edgekey="238"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="202" edgekey="239"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="9">
+						<edges>
+							<edge vertexkey="203" edgekey="240"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="11">
+						<edges>
+							<edge vertexkey="204" edgekey="231"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="205" edgekey="230"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="13">
+						<edges>
+							<edge vertexkey="206" edgekey="232"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="14">
+						<edges>
+							<edge vertexkey="207" edgekey="241"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="15">
+						<edges>
+							<edge vertexkey="208" edgekey="242"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="16">
+						<edges>
+							<edge vertexkey="209" edgekey="243"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="17">
+						<edges>
+							<edge vertexkey="210" edgekey="244"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="18">
+						<edges>
+							<edge vertexkey="211" edgekey="245"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="19">
+						<edges>
+							<edge vertexkey="212" edgekey="246"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="20">
+						<edges>
+							<edge vertexkey="213" edgekey="247"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="21">
+						<edges>
+							<edge vertexkey="214" edgekey="248"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="22">
+						<edges>
+							<edge vertexkey="215" edgekey="249"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="23">
+						<edges>
+							<edge vertexkey="216" edgekey="250"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="24">
+						<edges>
+							<edge vertexkey="217" edgekey="251"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="26">
+						<edges>
+							<edge vertexkey="218" edgekey="252"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="27">
+						<edges>
+							<edge vertexkey="219" edgekey="253"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="28">
+						<edges>
+							<edge vertexkey="220" edgekey="254"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="29">
+						<edges>
+							<edge vertexkey="221" edgekey="255"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="30">
+						<edges>
+							<edge vertexkey="222" edgekey="256"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="31">
+						<edges>
+							<edge vertexkey="223" edgekey="257"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="32">
+						<edges>
+							<edge vertexkey="224" edgekey="258"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="33">
+						<edges>
+							<edge vertexkey="225" edgekey="259"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="34">
+						<edges>
+							<edge vertexkey="226" edgekey="260"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="35">
+						<edges>
+							<edge vertexkey="227" edgekey="261"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="36">
+						<edges>
+							<edge vertexkey="228" edgekey="229"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

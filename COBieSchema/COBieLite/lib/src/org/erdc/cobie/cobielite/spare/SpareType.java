@@ -109,29 +109,29 @@ public interface SpareType extends org.erdc.cobie.cobielite.core.SpareType
     void unsetSparePartNumber();
     
     /**
-     * Gets the "SpareContactAssignments" element
+     * Gets the "SpareSupplierContactAssignments" element
      */
-    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getSpareContactAssignments();
+    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getSpareSupplierContactAssignments();
     
     /**
-     * True if has "SpareContactAssignments" element
+     * True if has "SpareSupplierContactAssignments" element
      */
-    boolean isSetSpareContactAssignments();
+    boolean isSetSpareSupplierContactAssignments();
     
     /**
-     * Sets the "SpareContactAssignments" element
+     * Sets the "SpareSupplierContactAssignments" element
      */
-    void setSpareContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType spareContactAssignments);
+    void setSpareSupplierContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType SpareSupplierContactAssignments);
     
     /**
-     * Appends and returns a new empty "SpareContactAssignments" element
+     * Appends and returns a new empty "SpareSupplierContactAssignments" element
      */
-    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewSpareContactAssignments();
+    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewSpareSupplierContactAssignments();
     
     /**
-     * Unsets the "SpareContactAssignments" element
+     * Unsets the "SpareSupplierContactAssignments" element
      */
-    void unsetSpareContactAssignments();
+    void unsetSpareSupplierContactAssignments();
     
     /**
      * Gets the "SpareAttributes" element

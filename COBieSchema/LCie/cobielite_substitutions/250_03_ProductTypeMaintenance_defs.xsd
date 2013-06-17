@@ -10,7 +10,10 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="AssetTypeInfoType">
-				<xs:group ref="pm:AssetTypeReadOnlyGroup"/>
+			<xs:sequence>
+							<xs:group ref="pm:AssetTypeReadOnlyGroup"/>
+				<xs:group ref="pm:AssetTypeEditGroup"/>
+			</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -18,7 +21,7 @@
 		<xs:sequence>
 			<xs:element ref="AssetTypeCategory"/>
 			<xs:element ref="AssetTypeDescription"/>
-			<xs:element ref="AssetTypeContactAssignments"/>
+			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
 			<xs:element ref="AssetTypeModelNumber"/>
 			<xs:element ref="Assets"/>
 		</xs:sequence>
@@ -136,7 +139,7 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:group>
-		<xs:complexType name="ProductMaintenanceType">
+	<xs:complexType name="ProductMaintenanceType">
 		<xs:complexContent>
 			<xs:extension base="lcie:InformationExchangeComplexType">
 				<xs:sequence>
@@ -150,6 +153,7 @@
 			<xs:documentation>A minimum of one AssetType record is required for all COBie deliverables related to equipment Type information. AssetType is associated with one or more Assets.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="250.03_ProductTypeMaintenance"/>
 	<xs:element name="Job" type="pm:JobType" substitutionGroup="Job"/>
 	<xs:element name="Resource" type="pm:ResourceType" substitutionGroup="Resource"/>
 </xs:schema>

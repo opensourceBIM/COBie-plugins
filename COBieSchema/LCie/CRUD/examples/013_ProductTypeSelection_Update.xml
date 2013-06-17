@@ -9,12 +9,12 @@
 	<tf:AssetTypeName>n/a</tf:AssetTypeName>
 	<AssetTypeCategory>n/a</AssetTypeCategory>
 	<AssetTypeDescription>n/a</AssetTypeDescription>
-	<AssetTypePortabilityText>Moveable</AssetTypePortabilityText>
-	<AssetTypeContactAssignments>
+	<AssetTypeAccountingCategory>Moveable</AssetTypeAccountingCategory>
+	<AssetTypeManufacturerContactAssignments>
 		<ContactAssignment>
 			<ContactEmailReference>n/a</ContactEmailReference>
 		</ContactAssignment>
-	</AssetTypeContactAssignments>
+	</AssetTypeManufacturerContactAssignments>
 	<AssetTypeModelNumber>n/a</AssetTypeModelNumber>
 	<AssetTypeNominalLength>
 		<UnitName>n/a</UnitName>

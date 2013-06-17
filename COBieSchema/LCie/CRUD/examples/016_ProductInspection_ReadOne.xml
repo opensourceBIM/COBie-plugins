@@ -69,14 +69,14 @@
 		</SpaceNetAreaValue>
 		<AssetTypeName>n/a</AssetTypeName>
 		<AssetTypeModelNumber>n/a</AssetTypeModelNumber>
-		<AssetTypeContactAssignments>
+		<AssetTypeManufacturerContactAssignments>
 			<ContactAssignment>
 				<ContactEmailReference>n/a</ContactEmailReference>
 			</ContactAssignment>
-		</AssetTypeContactAssignments>
+		</AssetTypeManufacturerContactAssignments>
 		<AssetTypeCategory>n/a</AssetTypeCategory>
 		<AssetTypeDescription>n/a</AssetTypeDescription>
-		<AssetTypePortabilityText/>
+		<AssetTypeAccountingCategory/>
 		<AssetTypeReplacementCostValue>
 			<UnitName>n/a</UnitName>
 			<DecimalValue>0.0</DecimalValue>

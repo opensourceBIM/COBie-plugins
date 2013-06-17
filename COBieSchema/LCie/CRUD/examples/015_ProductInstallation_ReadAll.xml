@@ -43,7 +43,7 @@
 				<AssetTypeName>n/a</AssetTypeName>
 				<AssetTypeCategory>n/a</AssetTypeCategory>
 				<AssetTypeDescription>n/a</AssetTypeDescription>
-				<AssetTypePortabilityText>Fixed</AssetTypePortabilityText>
+				<AssetTypeAccountingCategory>Fixed</AssetTypeAccountingCategory>
 				<AssetTypeReplacementCostValue>
 					<UnitName>n/a</UnitName>
 					<DecimalValue>0.0</DecimalValue>
@@ -76,11 +76,11 @@
 				<AssetTypeSizeDescription>n/a</AssetTypeSizeDescription>
 				<AssetTypeSustainabilityPerformanceDescription>n/a</AssetTypeSustainabilityPerformanceDescription>
 				<AssetTypeModelNumber>n/a</AssetTypeModelNumber>
-				<AssetTypeContactAssignments>
+				<AssetTypeManufacturerContactAssignments>
 					<ContactAssignment>
 						<ContactEmailReference>n/a</ContactEmailReference>
 					</ContactAssignment>
-				</AssetTypeContactAssignments>
+				</AssetTypeManufacturerContactAssignments>
 				<Assets>
 					<pi:Asset cobie:externalEntityName="n/a" cobie:externalID="n/a" cobie:externalSystemName="n/a">
 						<AssetName>n/a</AssetName>

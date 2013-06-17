@@ -18,7 +18,7 @@
 					<xs:element ref="SpareDescription" minOccurs="0"/>
 					<xs:element ref="SpareSetNumber" minOccurs="0"/>
 					<xs:element ref="SparePartNumber" minOccurs="0"/>
-					<xs:element ref="SpareContactAssignments" minOccurs="0"/>
+					<xs:element ref="SpareSupplierContactAssignments" minOccurs="0"/>
 					<xs:element ref="SpareAttributes" minOccurs="0"/>
 					<xs:element ref="SpareDocuments" minOccurs="0"/>
 					<xs:element ref="SpareIssues" minOccurs="0"/>

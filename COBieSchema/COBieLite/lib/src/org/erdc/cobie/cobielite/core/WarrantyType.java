@@ -84,29 +84,29 @@ public interface WarrantyType extends org.erdc.cobie.cobielite.core.CobieBaseTyp
     void unsetWarrantyDuration();
     
     /**
-     * Gets the "WarrantyContactAssignments" element
+     * Gets the "WarrantyGaurantorContactAssignments" element
      */
-    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getWarrantyContactAssignments();
+    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getWarrantyGaurantorContactAssignments();
     
     /**
-     * True if has "WarrantyContactAssignments" element
+     * True if has "WarrantyGaurantorContactAssignments" element
      */
-    boolean isSetWarrantyContactAssignments();
+    boolean isSetWarrantyGaurantorContactAssignments();
     
     /**
-     * Sets the "WarrantyContactAssignments" element
+     * Sets the "WarrantyGaurantorContactAssignments" element
      */
-    void setWarrantyContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType warrantyContactAssignments);
+    void setWarrantyGaurantorContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType WarrantyGaurantorContactAssignments);
     
     /**
-     * Appends and returns a new empty "WarrantyContactAssignments" element
+     * Appends and returns a new empty "WarrantyGaurantorContactAssignments" element
      */
-    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewWarrantyContactAssignments();
+    org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewWarrantyGaurantorContactAssignments();
     
     /**
-     * Unsets the "WarrantyContactAssignments" element
+     * Unsets the "WarrantyGaurantorContactAssignments" element
      */
-    void unsetWarrantyContactAssignments();
+    void unsetWarrantyGaurantorContactAssignments();
     
     /**
      * Gets the "WarrantyAttributes" element

@@ -45,7 +45,7 @@
 												<entry name="AssetTypeName" inpkey="89"/>
 												<entry name="AssetTypeCategory" inpkey="90"/>
 												<entry name="AssetTypeDescription" inpkey="91"/>
-												<entry name="AssetTypePortabilityText" inpkey="92"/>
+												<entry name="AssetTypeAccountingCategory" inpkey="92"/>
 												<entry name="AssetTypeReplacementCostValue" inpkey="93"/>
 												<entry name="AssetTypeExpectedLifeValue" inpkey="94"/>
 												<entry name="AssetTypeNominalLength" inpkey="95"/>
@@ -166,7 +166,7 @@
 												<entry name="AssetTypeName" outkey="246"/>
 												<entry name="AssetTypeCategory" outkey="247"/>
 												<entry name="AssetTypeDescription" outkey="248"/>
-												<entry name="AssetTypePortabilityText" outkey="249"/>
+												<entry name="AssetTypeAccountingCategory" outkey="249"/>
 												<entry name="AssetTypeReplacementCostValue" outkey="250"/>
 												<entry name="AssetTypeExpectedLifeValue" outkey="251"/>
 												<entry name="AssetTypeNominalLength" outkey="252"/>

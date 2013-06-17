@@ -51,7 +51,7 @@
 			</Folder>
 			<Folder FolderName="CRUD">
 				<Folder FolderName="common">
-					<File FilePath="LCie\Transactions\common\lcie_crud.xsd" HomeFolder="Yes"/>
+					<File FilePath="LCie\CRUD\common\lcie_crud.xsd" HomeFolder="Yes"/>
 				</Folder>
 				<Folder FolderName="examples">
 					<File FilePath="LCie\CRUD\examples\010_ProductTypeTemplate_ReadAll.xml" HomeFolder="Yes"/>

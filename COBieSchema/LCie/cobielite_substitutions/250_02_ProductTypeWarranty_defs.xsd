@@ -10,16 +10,11 @@
 			<xs:element ref="AssetTypeCategory"/>
 			<xs:element ref="AssetTypeDescription"/>
 			<xs:element ref="AssetTypeModelNumber"/>
-			<xs:element ref="AssetTypeContactAssignments"/>
+			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
 		</xs:sequence>
 	</xs:group>
 	<xs:group name="AssetTypeEditGroup">
 		<xs:sequence>
-			<xs:element ref="AssetTypeDocuments" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
 			<xs:element ref="Warranties">
 				<xs:annotation>
 					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>

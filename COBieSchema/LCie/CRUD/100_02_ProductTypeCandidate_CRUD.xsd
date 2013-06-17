@@ -1,9 +1,9 @@
 <!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:tcc="http://typecandidate.crud.lcie.cobielite.cobie.erdc.org" xmlns:cg="http://groups.lcie.cobielite.cobie.erdc.org" xmlns:tc="http://typecandidate.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typecandidate.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/lcie_crud.xsd"/>
-	<xs:import namespace="http://typecandidate.lcie.cobielite.cobie.erdc.org" schemaLocation="../subschema/011_ProductTypeCandidate.xsd"/>
+	<xs:import namespace="http://typetemplate090.lcie.cobielite.cobie.erdc.org" schemaLocation="../subschema/090_02_ProductTypeTemplate.xsd"/>
+	<xs:import namespace="http://typecandidate100.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/100_02_ProductTypeCandidate_defs.xsd"/>
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
-	<xs:import namespace="http://groups.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/element_groups.xsd"/>
 	<xs:complexType name="TypeCandidateExchangeType">
 		<xs:complexContent>
 			<xs:extension base="cobiex:ExchangeType"/>
@@ -13,9 +13,7 @@
 		<xs:complexContent>
 			<xs:extension base="cobiex:ReadType">
 				<xs:sequence>
-					<xs:group ref="cg:FacilitySelect"/>
-					<xs:group ref="cg:AssetTypeWithManufacturerSelect"/>
-					<xs:element ref="AssetTypeAttributes"/>
+
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -36,12 +34,12 @@
 					<xs:element ref="AssetTypeName" minOccurs="0"/>
 					<xs:element ref="AssetTypeCategory" minOccurs="0"/>
 					<xs:element ref="AssetTypeDescription" minOccurs="0"/>
-					<xs:element ref="AssetTypePortabilityText" minOccurs="0"/>
+					<xs:element ref="AssetTypeAccountingCategory" minOccurs="0"/>
 					<xs:element ref="AssetTypeNominalLength" minOccurs="0"/>
 					<xs:element ref="AssetTypeNominalWidth" minOccurs="0"/>
 					<xs:element ref="AssetTypeNominalHeight" minOccurs="0"/>
 					<xs:element ref="AssetTypeModelNumber" minOccurs="0"/>
-					<xs:element ref="AssetTypeContactAssignments" minOccurs="0"/>
+					<xs:element ref="AssetTypeManufacturerContactAssignments" minOccurs="0"/>
 					<xs:element ref="AssetTypeAttributes" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>

@@ -21,7 +21,7 @@
 				<xs:sequence>
 					<xs:element ref="AssetTypeCategory" minOccurs="0"/>
 					<xs:element ref="AssetTypeDescription" minOccurs="0"/>
-					<xs:element ref="AssetTypePortabilityText" minOccurs="0"/>
+					<xs:element ref="AssetTypeAccountingCategory" minOccurs="0"/>
 					<xs:element ref="AssetTypeModelNumber" minOccurs="0"/>
 					<xs:element ref="AssetTypeReplacementCostValue" minOccurs="0"/>
 					<xs:element ref="AssetTypeExpectedLifeValue" minOccurs="0"/>
@@ -40,7 +40,7 @@
 					<xs:element ref="AssetTypeSizeDescription" minOccurs="0"/>
 					<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
 					<xs:element ref="Assets" minOccurs="0"/>
-					<xs:element ref="AssetTypeContactAssignments" minOccurs="0"/>
+					<xs:element ref="AssetTypeManufacturerContactAssignments" minOccurs="0"/>
 					<xs:element ref="Warranties" minOccurs="0"/>
 					<xs:element ref="Spares" minOccurs="0"/>
 					<xs:element ref="Jobs" minOccurs="0"/>

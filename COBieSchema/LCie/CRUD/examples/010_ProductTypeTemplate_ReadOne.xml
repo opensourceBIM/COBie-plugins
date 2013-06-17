@@ -44,7 +44,7 @@
 		<tf:AssetTypeName>n/a</tf:AssetTypeName>
 		<AssetTypeCategory>n/a</AssetTypeCategory>
 		<AssetTypeDescription>n/a</AssetTypeDescription>
-		<AssetTypePortabilityText>Fixed</AssetTypePortabilityText>
+		<AssetTypeAccountingCategory>Fixed</AssetTypeAccountingCategory>
 		<AssetTypeReplacementCostValue>
 			<UnitName>n/a</UnitName>
 			<DecimalValue>0.0</DecimalValue>

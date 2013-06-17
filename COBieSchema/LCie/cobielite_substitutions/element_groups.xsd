@@ -117,7 +117,7 @@
 		<xs:sequence>
 			<xs:element ref="AssetTypeCategory"/>
 			<xs:element ref="AssetTypeDescription"/>
-			<xs:element ref="AssetTypePortabilityText"/>
+			<xs:element ref="AssetTypeAccountingCategory"/>
 			<xs:element ref="AssetTypeReplacementCostValue" minOccurs="0"/>
 			<xs:element ref="AssetTypeExpectedLifeValue" minOccurs="0"/>
 			<xs:element ref="AssetTypeNominalLength"/>
@@ -145,7 +145,7 @@
 	<xs:group name="AssetTypeManufacturer">
 		<xs:sequence>
 			<xs:element ref="AssetTypeModelNumber"/>
-			<xs:element ref="AssetTypeContactAssignments"/>
+			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
 		</xs:sequence>
 	</xs:group>
 	<xs:group name="AssetTypeWithManufacturerSelect">
@@ -245,7 +245,7 @@
 							<xs:appinfo source="urn:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
 					</xs:element>
-					<xs:element ref="SpareContactAssignments">
+					<xs:element ref="SpareSupplierContactAssignments">
 						<xs:annotation>
 							<xs:appinfo source="urn:ReadOnly">false</xs:appinfo>
 						</xs:annotation>
@@ -275,7 +275,7 @@
 	<xs:group name="WarrantyMeta">
 		<xs:sequence>
 								<xs:element ref="WarrantyDuration" minOccurs="0"/>
-					<xs:element ref="WarrantyContactAssignments" minOccurs="0"/>
+					<xs:element ref="WarrantyGaurantorContactAssignments" minOccurs="0"/>
 					<xs:element ref="WarrantyAttributes" minOccurs="0"/>
 					<xs:element ref="WarrantyDocuments" minOccurs="0"/>
 					<xs:element ref="WarrantyIssues" minOccurs="0"/>

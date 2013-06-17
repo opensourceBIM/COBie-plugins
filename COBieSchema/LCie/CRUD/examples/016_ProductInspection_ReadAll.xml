@@ -43,7 +43,7 @@
 				<AssetTypeName>n/a</AssetTypeName>
 				<AssetTypeCategory>n/a</AssetTypeCategory>
 				<AssetTypeDescription>n/a</AssetTypeDescription>
-				<AssetTypePortabilityText>Moveable</AssetTypePortabilityText>
+				<AssetTypeAccountingCategory>Moveable</AssetTypeAccountingCategory>
 				<AssetTypeReplacementCostValue>
 					<UnitName>n/a</UnitName>
 					<DecimalValue>0.0</DecimalValue>
@@ -76,11 +76,11 @@
 				<AssetTypeSizeDescription>n/a</AssetTypeSizeDescription>
 				<AssetTypeSustainabilityPerformanceDescription>n/a</AssetTypeSustainabilityPerformanceDescription>
 				<AssetTypeModelNumber>n/a</AssetTypeModelNumber>
-				<AssetTypeContactAssignments>
+				<AssetTypeManufacturerContactAssignments>
 					<ContactAssignment>
 						<ContactEmailReference>n/a</ContactEmailReference>
 					</ContactAssignment>
-				</AssetTypeContactAssignments>
+				</AssetTypeManufacturerContactAssignments>
 				<AssetTypeAttributes>
 					<att:Attribute cobie:externalEntityName="n/a" cobie:externalID="n/a" cobie:externalSystemName="n/a" cobie:propertySetName="n/a" cobie:propertySetExternalIdentifier="n/a">
 						<AttributeName>n/a</AttributeName>

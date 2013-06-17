@@ -749,7 +749,7 @@ public class MappingMapTocobielite extends com.altova.TraceProvider
 			}
 			private boolean moveNext_15() throws Exception {
 				state = 16;				
-				current = com.altova.functions.Core.createElement(com.altova.functions.Core.createQName("AssetTypePortabilityText", "http://core.cobielite.cobie.erdc.org"), com.altova.functions.Core.box(com.altova.CoreTypes.nodeToString((com.altova.mapforce.IMFNode)com.altova.functions.Core.first(com.altova.functions.Core.filterElements(com.altova.functions.Core.createQName("AssetTypePortabilityText", "http://core.cobielite.cobie.erdc.org"), closure.var1_current)))));
+				current = com.altova.functions.Core.createElement(com.altova.functions.Core.createQName("AssetTypeAccountingCategory", "http://core.cobielite.cobie.erdc.org"), com.altova.functions.Core.box(com.altova.CoreTypes.nodeToString((com.altova.mapforce.IMFNode)com.altova.functions.Core.first(com.altova.functions.Core.filterElements(com.altova.functions.Core.createQName("AssetTypeAccountingCategory", "http://core.cobielite.cobie.erdc.org"), closure.var1_current)))));
 				pos++;
 				return true;
 			}

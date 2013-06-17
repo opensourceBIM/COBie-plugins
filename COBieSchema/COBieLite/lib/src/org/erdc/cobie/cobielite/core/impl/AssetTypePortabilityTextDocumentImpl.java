@@ -1,40 +1,40 @@
 /*
  * An XML document type.
- * Localname: AssetTypePortabilityText
+ * Localname: AssetTypeAccountingCategory
  * Namespace: http://core.cobielite.cobie.erdc.org
- * Java type: org.erdc.cobie.cobielite.core.AssetTypePortabilityTextDocument
+ * Java type: org.erdc.cobie.cobielite.core.AssetTypeAccountingCategoryDocument
  *
  * Automatically generated - do not modify.
  */
 package org.erdc.cobie.cobielite.core.impl;
 /**
- * A document containing one AssetTypePortabilityText(@http://core.cobielite.cobie.erdc.org) element.
+ * A document containing one AssetTypeAccountingCategory(@http://core.cobielite.cobie.erdc.org) element.
  *
  * This is a complex type.
  */
-public class AssetTypePortabilityTextDocumentImpl extends org.apache.xmlbeans.impl.values.XmlComplexContentImpl implements org.erdc.cobie.cobielite.core.AssetTypePortabilityTextDocument
+public class AssetTypeAccountingCategoryDocumentImpl extends org.apache.xmlbeans.impl.values.XmlComplexContentImpl implements org.erdc.cobie.cobielite.core.AssetTypeAccountingCategoryDocument
 {
     private static final long serialVersionUID = 1L;
     
-    public AssetTypePortabilityTextDocumentImpl(org.apache.xmlbeans.SchemaType sType)
+    public AssetTypeAccountingCategoryDocumentImpl(org.apache.xmlbeans.SchemaType sType)
     {
         super(sType);
     }
     
-    private static final javax.xml.namespace.QName ASSETTYPEPORTABILITYTEXT$0 = 
-        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypePortabilityText");
+    private static final javax.xml.namespace.QName AssetTypeAccountingCategory$0 = 
+        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypeAccountingCategory");
     
     
     /**
-     * Gets the "AssetTypePortabilityText" element
+     * Gets the "AssetTypeAccountingCategory" element
      */
-    public org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum getAssetTypePortabilityText()
+    public org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum getAssetTypeAccountingCategory()
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETTYPEPORTABILITYTEXT$0, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(AssetTypeAccountingCategory$0, 0);
             if (target == null)
             {
                 return null;
@@ -44,52 +44,52 @@ public class AssetTypePortabilityTextDocumentImpl extends org.apache.xmlbeans.im
     }
     
     /**
-     * Gets (as xml) the "AssetTypePortabilityText" element
+     * Gets (as xml) the "AssetTypeAccountingCategory" element
      */
-    public org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType xgetAssetTypePortabilityText()
+    public org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType xgetAssetTypeAccountingCategory()
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().find_element_user(ASSETTYPEPORTABILITYTEXT$0, 0);
+            target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().find_element_user(AssetTypeAccountingCategory$0, 0);
             return target;
         }
     }
     
     /**
-     * Sets the "AssetTypePortabilityText" element
+     * Sets the "AssetTypeAccountingCategory" element
      */
-    public void setAssetTypePortabilityText(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum assetTypePortabilityText)
+    public void setAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType.Enum AssetTypeAccountingCategory)
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETTYPEPORTABILITYTEXT$0, 0);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(AssetTypeAccountingCategory$0, 0);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETTYPEPORTABILITYTEXT$0);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(AssetTypeAccountingCategory$0);
             }
-            target.setEnumValue(assetTypePortabilityText);
+            target.setEnumValue(AssetTypeAccountingCategory);
         }
     }
     
     /**
-     * Sets (as xml) the "AssetTypePortabilityText" element
+     * Sets (as xml) the "AssetTypeAccountingCategory" element
      */
-    public void xsetAssetTypePortabilityText(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType assetTypePortabilityText)
+    public void xsetAssetTypeAccountingCategory(org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType AssetTypeAccountingCategory)
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().find_element_user(ASSETTYPEPORTABILITYTEXT$0, 0);
+            target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().find_element_user(AssetTypeAccountingCategory$0, 0);
             if (target == null)
             {
-                target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().add_element_user(ASSETTYPEPORTABILITYTEXT$0);
+                target = (org.erdc.cobie.cobielite.core.AssetPortabilitySimpleType)get_store().add_element_user(AssetTypeAccountingCategory$0);
             }
-            target.set(assetTypePortabilityText);
+            target.set(AssetTypeAccountingCategory);
         }
     }
 }

@@ -26,8 +26,8 @@ public class SpareTypeImpl extends org.erdc.cobie.cobielite.core.impl.SpareTypeI
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "SpareSetNumber");
     private static final javax.xml.namespace.QName SPAREPARTNUMBER$4 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "SparePartNumber");
-    private static final javax.xml.namespace.QName SPARECONTACTASSIGNMENTS$6 = 
-        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "SpareContactAssignments");
+    private static final javax.xml.namespace.QName SpareSupplierContactAssignments$6 = 
+        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "SpareSupplierContactAssignments");
     private static final javax.xml.namespace.QName SPAREATTRIBUTES$8 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "SpareAttributes");
     private static final javax.xml.namespace.QName SPAREDOCUMENTS$10 = 
@@ -313,15 +313,15 @@ public class SpareTypeImpl extends org.erdc.cobie.cobielite.core.impl.SpareTypeI
     }
     
     /**
-     * Gets the "SpareContactAssignments" element
+     * Gets the "SpareSupplierContactAssignments" element
      */
-    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getSpareContactAssignments()
+    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getSpareSupplierContactAssignments()
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().find_element_user(SPARECONTACTASSIGNMENTS$6, 0);
+            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().find_element_user(SpareSupplierContactAssignments$6, 0);
             if (target == null)
             {
                 return null;
@@ -331,48 +331,48 @@ public class SpareTypeImpl extends org.erdc.cobie.cobielite.core.impl.SpareTypeI
     }
     
     /**
-     * True if has "SpareContactAssignments" element
+     * True if has "SpareSupplierContactAssignments" element
      */
-    public boolean isSetSpareContactAssignments()
+    public boolean isSetSpareSupplierContactAssignments()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(SPARECONTACTASSIGNMENTS$6) != 0;
+            return get_store().count_elements(SpareSupplierContactAssignments$6) != 0;
         }
     }
     
     /**
-     * Sets the "SpareContactAssignments" element
+     * Sets the "SpareSupplierContactAssignments" element
      */
-    public void setSpareContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType spareContactAssignments)
+    public void setSpareSupplierContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType SpareSupplierContactAssignments)
     {
-        generatedSetterHelperImpl(spareContactAssignments, SPARECONTACTASSIGNMENTS$6, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
+        generatedSetterHelperImpl(SpareSupplierContactAssignments, SpareSupplierContactAssignments$6, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
-     * Appends and returns a new empty "SpareContactAssignments" element
+     * Appends and returns a new empty "SpareSupplierContactAssignments" element
      */
-    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewSpareContactAssignments()
+    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewSpareSupplierContactAssignments()
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().add_element_user(SPARECONTACTASSIGNMENTS$6);
+            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().add_element_user(SpareSupplierContactAssignments$6);
             return target;
         }
     }
     
     /**
-     * Unsets the "SpareContactAssignments" element
+     * Unsets the "SpareSupplierContactAssignments" element
      */
-    public void unsetSpareContactAssignments()
+    public void unsetSpareSupplierContactAssignments()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(SPARECONTACTASSIGNMENTS$6, 0);
+            get_store().remove_element(SpareSupplierContactAssignments$6, 0);
         }
     }
     

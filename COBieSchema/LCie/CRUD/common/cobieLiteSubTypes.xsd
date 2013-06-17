@@ -534,7 +534,7 @@
 					<xs:element ref="cobie:AssetTypeName"/>
 					<xs:element ref="cobie:AssetTypeCategory" minOccurs="0"/>
 					<xs:element ref="cobie:AssetTypeDescription" minOccurs="0"/>
-					<xs:element ref="cobie:AssetTypePortabilityText" minOccurs="0"/>
+					<xs:element ref="cobie:AssetTypeAccountingCategory" minOccurs="0"/>
 					<xs:element ref="cobie:AssetTypeModelNumber" minOccurs="0"/>
 					<xs:element ref="cobie:AssetTypeReplacementCostValue" minOccurs="0"/>
 					<xs:element ref="cobie:AssetTypeExpectedLifeValue" minOccurs="0"/>
@@ -553,7 +553,7 @@
 					<xs:element ref="cobie:AssetTypeSizeDescription" minOccurs="0"/>
 					<xs:element ref="cobie:AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
 					<xs:element ref="cobie:Assets" minOccurs="0"/>
-					<xs:element ref="cobie:AssetTypeContactAssignments" minOccurs="0"/>
+					<xs:element ref="cobie:AssetTypeManufacturerContactAssignments" minOccurs="0"/>
 					<xs:element ref="cobie:Warranties" minOccurs="0"/>
 					<xs:element ref="cobie:Spares" minOccurs="0"/>
 					<xs:element ref="cobie:Jobs" minOccurs="0"/>
@@ -879,7 +879,7 @@
 					<xs:element ref="cobie:SpareDescription" minOccurs="0"/>
 					<xs:element ref="cobie:SpareSetNumber" minOccurs="0"/>
 					<xs:element ref="cobie:SparePartNumber" minOccurs="0"/>
-					<xs:element ref="cobie:SpareContactAssignments" minOccurs="0"/>
+					<xs:element ref="cobie:SpareSupplierContactAssignments" minOccurs="0"/>
 					<xs:element ref="cobie:SpareAttributes" minOccurs="0"/>
 					<xs:element ref="cobie:SpareDocuments" minOccurs="0"/>
 					<xs:element ref="cobie:SpareIssues" minOccurs="0"/>
@@ -914,7 +914,7 @@
 					<xs:element ref="cobie:WarrantyName" minOccurs="0"/>
 					<xs:element ref="cobie:WarrantyCategory" minOccurs="0"/>
 					<xs:element ref="cobie:WarrantyDuration" minOccurs="0"/>
-					<xs:element ref="cobie:WarrantyContactAssignments" minOccurs="0"/>
+					<xs:element ref="cobie:WarrantyGaurantorContactAssignments" minOccurs="0"/>
 					<xs:element ref="cobie:WarrantyAttributes" minOccurs="0"/>
 					<xs:element ref="cobie:WarrantyDocuments" minOccurs="0"/>
 					<xs:element ref="cobie:WarrantyIssues" minOccurs="0"/>
@@ -1582,7 +1582,7 @@ COBie2.4Column:  M</xs:documentation>
 			<xs:documentation>The assignment of a Contact to a COBie element.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="AssetTypeContactAssignments" type="cobie:ContactAssignmentCollectionType" id="d2e2629">
+	<xs:element name="AssetTypeManufacturerContactAssignments" type="cobie:ContactAssignmentCollectionType" id="d2e2629">
 		<xs:annotation>
 			<xs:documentation>Assignment of Contacts to an AssetType element.</xs:documentation>
 		</xs:annotation>
@@ -1707,7 +1707,7 @@ COBie2.4Column:  M</xs:documentation>
 			<xs:documentation>Information about a specific Spare.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="SpareContactAssignments" type="cobie:ContactAssignmentCollectionType" id="e2e2629">
+	<xs:element name="SpareSupplierContactAssignments" type="cobie:ContactAssignmentCollectionType" id="e2e2629">
 		<xs:annotation>
 			<xs:documentation>Assignment of Contacts to a Spare element.</xs:documentation>
 		</xs:annotation>
@@ -1837,7 +1837,7 @@ COBie.System information is considered to be required only as-specified. Please 
 			<xs:documentation>Information about a specific warranty. </xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="WarrantyContactAssignments" type="cobie:ContactAssignmentCollectionType" id="d2e2329">
+	<xs:element name="WarrantyGaurantorContactAssignments" type="cobie:ContactAssignmentCollectionType" id="d2e2329">
 		<xs:annotation>
 			<xs:documentation>Assignment of Contacts to a Warranty element.</xs:documentation>
 		</xs:annotation>
@@ -2382,7 +2382,7 @@ COBie.System information is considered to be required only as-specified. Please 
 			</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="AssetTypePortabilityText" type="cobie:AssetPortabilitySimpleType" id="d2e2111">
+	<xs:element name="AssetTypeAccountingCategory" type="cobie:AssetPortabilitySimpleType" id="d2e2111">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">Type.AssetType provides the asset type classification of the information provided in this row of data.</xs:appinfo>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Value">Fixed|Moveable </xs:appinfo>

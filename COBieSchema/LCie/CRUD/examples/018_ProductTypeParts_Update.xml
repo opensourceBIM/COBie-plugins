@@ -10,11 +10,11 @@
 	<SpareDescription>n/a</SpareDescription>
 	<SpareSetNumber>n/a</SpareSetNumber>
 	<SparePartNumber>n/a</SparePartNumber>
-	<SpareContactAssignments>
+	<SpareSupplierContactAssignments>
 		<ContactAssignment>
 			<ContactEmailReference>n/a</ContactEmailReference>
 		</ContactAssignment>
-	</SpareContactAssignments>
+	</SpareSupplierContactAssignments>
 	<SpareDocuments>
 		<doc:Document cobie:externalEntityName="n/a" cobie:externalID="n/a" cobie:externalSystemName="n/a">
 			<DocumentName>n/a</DocumentName>

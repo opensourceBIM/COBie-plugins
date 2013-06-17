@@ -1,40 +1,40 @@
 /*
  * An XML document type.
- * Localname: AssetTypeContactAssignments
+ * Localname: AssetTypeManufacturerContactAssignments
  * Namespace: http://core.cobielite.cobie.erdc.org
- * Java type: org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument
+ * Java type: org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument
  *
  * Automatically generated - do not modify.
  */
 package org.erdc.cobie.cobielite.core.impl;
 /**
- * A document containing one AssetTypeContactAssignments(@http://core.cobielite.cobie.erdc.org) element.
+ * A document containing one AssetTypeManufacturerContactAssignments(@http://core.cobielite.cobie.erdc.org) element.
  *
  * This is a complex type.
  */
-public class AssetTypeContactAssignmentsDocumentImpl extends org.apache.xmlbeans.impl.values.XmlComplexContentImpl implements org.erdc.cobie.cobielite.core.AssetTypeContactAssignmentsDocument
+public class AssetTypeManufacturerContactAssignmentsDocumentImpl extends org.apache.xmlbeans.impl.values.XmlComplexContentImpl implements org.erdc.cobie.cobielite.core.AssetTypeManufacturerContactAssignmentsDocument
 {
     private static final long serialVersionUID = 1L;
     
-    public AssetTypeContactAssignmentsDocumentImpl(org.apache.xmlbeans.SchemaType sType)
+    public AssetTypeManufacturerContactAssignmentsDocumentImpl(org.apache.xmlbeans.SchemaType sType)
     {
         super(sType);
     }
     
-    private static final javax.xml.namespace.QName ASSETTYPECONTACTASSIGNMENTS$0 = 
-        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypeContactAssignments");
+    private static final javax.xml.namespace.QName AssetTypeManufacturerContactAssignments$0 = 
+        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypeManufacturerContactAssignments");
     
     
     /**
-     * Gets the "AssetTypeContactAssignments" element
+     * Gets the "AssetTypeManufacturerContactAssignments" element
      */
-    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getAssetTypeContactAssignments()
+    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType getAssetTypeManufacturerContactAssignments()
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().find_element_user(ASSETTYPECONTACTASSIGNMENTS$0, 0);
+            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().find_element_user(AssetTypeManufacturerContactAssignments$0, 0);
             if (target == null)
             {
                 return null;
@@ -44,23 +44,23 @@ public class AssetTypeContactAssignmentsDocumentImpl extends org.apache.xmlbeans
     }
     
     /**
-     * Sets the "AssetTypeContactAssignments" element
+     * Sets the "AssetTypeManufacturerContactAssignments" element
      */
-    public void setAssetTypeContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType assetTypeContactAssignments)
+    public void setAssetTypeManufacturerContactAssignments(org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType AssetTypeManufacturerContactAssignments)
     {
-        generatedSetterHelperImpl(assetTypeContactAssignments, ASSETTYPECONTACTASSIGNMENTS$0, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
+        generatedSetterHelperImpl(AssetTypeManufacturerContactAssignments, AssetTypeManufacturerContactAssignments$0, 0, org.apache.xmlbeans.impl.values.XmlObjectBase.KIND_SETTERHELPER_SINGLETON);
     }
     
     /**
-     * Appends and returns a new empty "AssetTypeContactAssignments" element
+     * Appends and returns a new empty "AssetTypeManufacturerContactAssignments" element
      */
-    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewAssetTypeContactAssignments()
+    public org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType addNewAssetTypeManufacturerContactAssignments()
     {
         synchronized (monitor())
         {
             check_orphaned();
             org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType target = null;
-            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().add_element_user(ASSETTYPECONTACTASSIGNMENTS$0);
+            target = (org.erdc.cobie.cobielite.core.ContactAssignmentCollectionType)get_store().add_element_user(AssetTypeManufacturerContactAssignments$0);
             return target;
         }
     }
