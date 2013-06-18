@@ -22,8 +22,6 @@ public class AssetTypeKeyTypeImpl extends org.erdc.cobie.cobielite.core.impl.Cob
     
     private static final javax.xml.namespace.QName ASSETTYPENAME$0 = 
         new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypeName");
-    private static final javax.xml.namespace.QName ASSETTYPECATEGORY$2 = 
-        new javax.xml.namespace.QName("http://core.cobielite.cobie.erdc.org", "AssetTypeCategory");
     
     
     /**
@@ -91,74 +89,6 @@ public class AssetTypeKeyTypeImpl extends org.erdc.cobie.cobielite.core.impl.Cob
                 target = (org.erdc.cobie.cobielite.core.CobieNameSimpleType)get_store().add_element_user(ASSETTYPENAME$0);
             }
             target.set(assetTypeName);
-        }
-    }
-    
-    /**
-     * Gets the "AssetTypeCategory" element
-     */
-    public java.lang.String getAssetTypeCategory()
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETTYPECATEGORY$2, 0);
-            if (target == null)
-            {
-                return null;
-            }
-            return target.getStringValue();
-        }
-    }
-    
-    /**
-     * Gets (as xml) the "AssetTypeCategory" element
-     */
-    public org.erdc.cobie.cobielite.core.AssetCategorySimpleType xgetAssetTypeCategory()
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.erdc.cobie.cobielite.core.AssetCategorySimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.AssetCategorySimpleType)get_store().find_element_user(ASSETTYPECATEGORY$2, 0);
-            return target;
-        }
-    }
-    
-    /**
-     * Sets the "AssetTypeCategory" element
-     */
-    public void setAssetTypeCategory(java.lang.String assetTypeCategory)
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_element_user(ASSETTYPECATEGORY$2, 0);
-            if (target == null)
-            {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_element_user(ASSETTYPECATEGORY$2);
-            }
-            target.setStringValue(assetTypeCategory);
-        }
-    }
-    
-    /**
-     * Sets (as xml) the "AssetTypeCategory" element
-     */
-    public void xsetAssetTypeCategory(org.erdc.cobie.cobielite.core.AssetCategorySimpleType assetTypeCategory)
-    {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.erdc.cobie.cobielite.core.AssetCategorySimpleType target = null;
-            target = (org.erdc.cobie.cobielite.core.AssetCategorySimpleType)get_store().find_element_user(ASSETTYPECATEGORY$2, 0);
-            if (target == null)
-            {
-                target = (org.erdc.cobie.cobielite.core.AssetCategorySimpleType)get_store().add_element_user(ASSETTYPECATEGORY$2);
-            }
-            target.set(assetTypeCategory);
         }
     }
 }

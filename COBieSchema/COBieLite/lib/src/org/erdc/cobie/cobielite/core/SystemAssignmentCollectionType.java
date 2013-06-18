@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface SystemAssignmentCollectionType extends org.erdc.cobie.cobielite.core.CobieRowAssignmentsType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SystemAssignmentCollectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("systemassignmentcollectiontype93ectype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SystemAssignmentCollectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("systemassignmentcollectiontype93ectype");
     
     /**
      * Gets array of all "SystemAssignment" elements

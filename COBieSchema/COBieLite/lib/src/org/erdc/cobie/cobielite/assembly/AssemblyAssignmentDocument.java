@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.assembly;
 public interface AssemblyAssignmentDocument extends org.erdc.cobie.cobielite.core.AssemblyAssignmentDocument
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssemblyAssignmentDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("assemblyassignmente776doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssemblyAssignmentDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("assemblyassignmente776doctype");
     
     /**
      * Gets the "AssemblyAssignment" element

@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.core;
 public interface ContactAssignmentDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ContactAssignmentDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("contactassignment23f5doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ContactAssignmentDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("contactassignment23f5doctype");
     
     /**
      * Gets the "ContactAssignment" element

@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface AssetTypeKeyType extends org.erdc.cobie.cobielite.core.CobieKeyType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetTypeKeyType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("assettypekeytypeecf1type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetTypeKeyType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("assettypekeytypeecf1type");
     
     /**
      * Gets the "AssetTypeName" element
@@ -37,26 +37,6 @@ public interface AssetTypeKeyType extends org.erdc.cobie.cobielite.core.CobieKey
      * Sets (as xml) the "AssetTypeName" element
      */
     void xsetAssetTypeName(org.erdc.cobie.cobielite.core.CobieNameSimpleType assetTypeName);
-    
-    /**
-     * Gets the "AssetTypeCategory" element
-     */
-    java.lang.String getAssetTypeCategory();
-    
-    /**
-     * Gets (as xml) the "AssetTypeCategory" element
-     */
-    org.erdc.cobie.cobielite.core.AssetCategorySimpleType xgetAssetTypeCategory();
-    
-    /**
-     * Sets the "AssetTypeCategory" element
-     */
-    void setAssetTypeCategory(java.lang.String assetTypeCategory);
-    
-    /**
-     * Sets (as xml) the "AssetTypeCategory" element
-     */
-    void xsetAssetTypeCategory(org.erdc.cobie.cobielite.core.AssetCategorySimpleType assetTypeCategory);
     
     /**
      * A factory class with static methods for creating instances

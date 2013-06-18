@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface ResourceKeyType extends org.erdc.cobie.cobielite.core.AssetTypeKeyType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ResourceKeyType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("resourcekeytypebba7type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ResourceKeyType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("resourcekeytypebba7type");
     
     /**
      * Gets the "ResourceName" element

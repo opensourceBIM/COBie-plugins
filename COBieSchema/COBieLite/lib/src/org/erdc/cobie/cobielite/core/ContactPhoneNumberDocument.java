@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.core;
 public interface ContactPhoneNumberDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ContactPhoneNumberDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("contactphonenumber9299doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ContactPhoneNumberDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("contactphonenumber9299doctype");
     
     /**
      * Gets the "ContactPhoneNumber" element

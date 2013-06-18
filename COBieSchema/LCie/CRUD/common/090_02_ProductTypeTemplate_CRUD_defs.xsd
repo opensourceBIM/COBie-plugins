@@ -1,0 +1,61 @@
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pttd="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:pttc="http://typetemplate.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:ptt="http://typetemplate090.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typetemplate.defs.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="lcie_crud.xsd"/>
+	<xs:import namespace="http://typetemplate090.lcie.cobielite.cobie.erdc.org" schemaLocation="../../subschema/090_02_ProductTypeTemplate.xsd"/>
+	<xs:import namespace="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../../cobielite_substitutions/090_02_ProductTypeTemplate_defs.xsd"/>
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:complexType name="TypeTemplateReadResultType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ReadResultType">
+				<xs:sequence>
+					<xs:element ref="pttd:AssetType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeTemplateReadAllResultType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ReadAllResultType">
+				<xs:sequence>
+					<xs:element ref="ptt:ProductTypeTemplate"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeTemplateUpdateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:UpdateRequestType">
+				<xs:sequence>
+					<xs:element ref="pttd:AssetType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeTemplateCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:CreateRequestType">
+				<xs:sequence>
+					<xs:group ref="pttd:AssetTypeEditGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeTemplateClientRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeTemplateServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ProductTypeTemplate" type="pttd:ProductTypeTemplateType" substitutionGroup="cobiex:InformationExchange"/>
+	<xs:element name="CreateRequest" type="pttc:TypeTemplateCreateRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="ReadResult" type="pttc:TypeTemplateReadResultType" substitutionGroup="cobiex:ReadResult"/>
+	<xs:element name="UpdateRequest" type="pttc:TypeTemplateUpdateRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="ReadKey" type="AssetTypeKeyType" substitutionGroup="cobiex:ReadKey"/>
+	<xs:element name="UpdateKey" type="AssetTypeKeyType" substitutionGroup="cobiex:UpdateKey"/>
+	<xs:element name="CreateKey" type="AssetTypeKeyType" substitutionGroup="cobiex:CreateKey"/>
+	<xs:element name="DeleteKey" type="AssetTypeKeyType" substitutionGroup="cobiex:DeleteKey"/>
+</xs:schema>

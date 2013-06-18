@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.connection;
 public interface ConnectionType extends org.erdc.cobie.cobielite.core.ConnectionType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ConnectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("connectiontypec589type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ConnectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("connectiontypec589type");
     
     /**
      * Gets the "ConnectionAsset1Name" element

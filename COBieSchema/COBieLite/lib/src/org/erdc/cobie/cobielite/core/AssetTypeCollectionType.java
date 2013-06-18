@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface AssetTypeCollectionType extends org.erdc.cobie.cobielite.core.CobieWorksheetType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetTypeCollectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("assettypecollectiontype9b70type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetTypeCollectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("assettypecollectiontype9b70type");
     
     /**
      * Gets array of all "AssetType" elements

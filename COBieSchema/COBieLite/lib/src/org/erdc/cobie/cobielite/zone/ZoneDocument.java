@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.zone;
 public interface ZoneDocument extends org.erdc.cobie.cobielite.core.ZoneDocument
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ZoneDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("zone1ef7doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ZoneDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("zone1ef7doctype");
     
     /**
      * Gets the "Zone" element

@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface DocumentCollectionType extends org.erdc.cobie.cobielite.core.CobieWorksheetType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(DocumentCollectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s66652C141B24B73BD4333B57A0EF7E00").resolveHandle("documentcollectiontype9dcdtype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(DocumentCollectionType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("documentcollectiontype9dcdtype");
     
     /**
      * Gets array of all "Document" elements

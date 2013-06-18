@@ -20,6 +20,11 @@
 	</xs:complexType>
 	<xs:group name="AssetTypeEditGroup">
 		<xs:sequence>
+		<xs:element ref="AssetTypeCategory">
+						<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+		</xs:element>
 			<xs:element ref="AssetTypeDescription">
 				<xs:annotation>
 					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
