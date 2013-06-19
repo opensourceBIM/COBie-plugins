@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.space;
 public interface SpaceDocument extends org.erdc.cobie.cobielite.core.SpaceDocument
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SpaceDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("space48b3doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(SpaceDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sC7CAE39C2CC479123ADE186B88FEDB2D").resolveHandle("space48b3doctype");
     
     /**
      * Gets the "Space" element

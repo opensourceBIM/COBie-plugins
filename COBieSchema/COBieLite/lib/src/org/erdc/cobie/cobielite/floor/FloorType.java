@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.floor;
 public interface FloorType extends org.erdc.cobie.cobielite.core.FloorType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(FloorType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("floortyped55dtype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(FloorType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sC7CAE39C2CC479123ADE186B88FEDB2D").resolveHandle("floortyped55dtype");
     
     /**
      * Gets the "FloorCategory" element

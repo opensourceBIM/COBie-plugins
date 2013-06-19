@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.core;
 public interface AssetAttributesDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetAttributesDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("assetattributesd11bdoctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(AssetAttributesDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sC7CAE39C2CC479123ADE186B88FEDB2D").resolveHandle("assetattributesd11bdoctype");
     
     /**
      * Gets the "AssetAttributes" element

@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
+	<resources/>
+	<component name="defaultmap1" blackbox="0" uid="1" editable="1">
+		<properties SelectedLanguage="java"/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="6" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="551"/>
+					</targets>
+					<view ltx="1004" lty="223" rbx="1161" rby="241"/>
+					<data>
+						<constant value="230.01_ProductInspection" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="12" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1146"/>
+						<datapoint pos="1" key="1136"/>
+						<datapoint pos="2" key="1139"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1140"/>
+					</targets>
+					<view ltx="1171" lty="470" rbx="1268" rby="546"/>
+				</component>
+				<component name="exists" library="core" uid="16" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1133"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1134"/>
+					</targets>
+					<view ltx="944" lty="480" rbx="1011" rby="519"/>
+				</component>
+				<component name="exists" library="core" uid="19" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1137"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1138"/>
+					</targets>
+					<view ltx="911" lty="663" rbx="978" rby="702"/>
+				</component>
+				<component name="230_01_ProductInspection" library="xml" uid="11" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1770" lty="67" rbx="2564" rby="824"/>
+					<data>
+						<root scrollposition="858">
+							<header>
+								<namespaces>
+									<namespace uid="http://inspection230.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://document.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://contact.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://inspection230.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="6" expanded="1">
+								<entry name="document" ns="6" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductInspection" ns="5" expanded="1">
+										<entry name="InformationExchangeID" inpkey="1147"/>
+										<entry name="AssetTypes" ns="1" inpkey="1148" expanded="1">
+											<entry name="AssetType" inpkey="1149" expanded="1">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1150"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="1151"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1152"/>
+												<entry name="AssetTypeName" ns="1" inpkey="1153"/>
+												<entry name="AssetTypeCategory" ns="1" inpkey="1154"/>
+												<entry name="AssetTypeDescription" ns="1" inpkey="1155"/>
+												<entry name="AssetTypeAccountingCategory" ns="1" inpkey="1156"/>
+												<entry name="AssetTypeModelNumber" ns="1" inpkey="1157"/>
+												<entry name="AssetTypeReplacementCostValue" ns="1" inpkey="1158"/>
+												<entry name="AssetTypeExpectedLifeValue" ns="1" inpkey="1159"/>
+												<entry name="AssetTypeNominalLength" ns="1" inpkey="1160"/>
+												<entry name="AssetTypeNominalWidth" ns="1" inpkey="1161"/>
+												<entry name="AssetTypeNominalHeight" ns="1" inpkey="1162"/>
+												<entry name="AssetTypeAccessibilityText" ns="1" inpkey="1163"/>
+												<entry name="AssetTypeCodePerformance" ns="1" inpkey="1164"/>
+												<entry name="AssetTypeColorCode" ns="1" inpkey="1165"/>
+												<entry name="AssetTypeConstituentsDescription" ns="1" inpkey="1166"/>
+												<entry name="AssetTypeFeaturesDescription" ns="1" inpkey="1167"/>
+												<entry name="AssetTypeFinishDescription" ns="1" inpkey="1168"/>
+												<entry name="AssetTypeGradeDescription" ns="1" inpkey="1169"/>
+												<entry name="AssetTypeMaterialDescription" ns="1" inpkey="1170"/>
+												<entry name="AssetTypeShapeDescription" ns="1" inpkey="1171"/>
+												<entry name="AssetTypeSizeDescription" ns="1" inpkey="1172"/>
+												<entry name="AssetTypeSustainabilityPerformanceDescription" ns="1" inpkey="1173"/>
+												<entry name="AssetTypeManufacturerContactAssignments" ns="1" inpkey="1174"/>
+												<entry name="Assets" ns="1" inpkey="1175" expanded="1">
+													<entry name="Asset" inpkey="1176" expanded="1">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1177"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="1178"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1179"/>
+														<entry name="AssetName" ns="1" inpkey="1180"/>
+														<entry name="AssetSpaceAssignments" ns="1" inpkey="1181"/>
+														<entry name="AssetDescription" ns="1" inpkey="1182"/>
+														<entry name="AssetSerialNumber" ns="1" inpkey="1183"/>
+														<entry name="AssetInstallationDate" ns="1" inpkey="1184"/>
+														<entry name="AssetWarrantyStartDate" ns="1" inpkey="1142"/>
+														<entry name="AssetDocuments" ns="1" inpkey="1185">
+															<entry name="Document" ns="2" inpkey="1186">
+																<entry name="externalEntityName" ns="1" type="attribute" inpkey="1187"/>
+																<entry name="externalID" ns="1" type="attribute" inpkey="1188"/>
+																<entry name="externalSystemName" ns="1" type="attribute" inpkey="1189"/>
+																<entry name="DocumentName" ns="1" inpkey="1190"/>
+																<entry name="DocumentCategory" ns="1" inpkey="1191"/>
+																<entry name="DocumentDescription" ns="1" inpkey="1192"/>
+																<entry name="DocumentURI" ns="1" inpkey="1193"/>
+																<entry name="DocumentReferenceURI" ns="1" inpkey="1194"/>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="AssetTypeAttributes" ns="1" inpkey="1195">
+													<entry name="Attribute" ns="3" inpkey="1196">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1197"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="1198"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1199"/>
+														<entry name="propertySetName" ns="1" type="attribute" inpkey="1200"/>
+														<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="1201"/>
+														<entry name="AttributeName" ns="1" inpkey="1202"/>
+														<entry name="AttributeCategory" ns="1" inpkey="1203"/>
+														<entry name="AttributeDescription" ns="1" inpkey="1204"/>
+														<entry name="AttributeValue" ns="1" inpkey="1205"/>
+													</entry>
+												</entry>
+												<entry name="AssetTypeIssues" ns="1" inpkey="1206"/>
+											</entry>
+										</entry>
+										<entry name="Contacts" ns="1" inpkey="1207" expanded="1">
+											<entry name="Contact" ns="4" inpkey="1208">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1209"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="1210"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1211"/>
+												<entry name="ContactEmail" ns="1" inpkey="1212"/>
+												<entry name="ContactCategory" ns="1" inpkey="1213"/>
+												<entry name="ContactCompanyName" ns="1" inpkey="1214"/>
+												<entry name="ContactPhoneNumber" ns="1" inpkey="1215"/>
+												<entry name="ContactDepartmentName" ns="1" inpkey="1216"/>
+												<entry name="ContactGivenName" ns="1" inpkey="1217"/>
+												<entry name="ContactFamilyName" ns="1" inpkey="1218"/>
+												<entry name="ContactStreet" ns="1" inpkey="1219"/>
+												<entry name="ContactPostalBoxNumber" ns="1" inpkey="1220"/>
+												<entry name="ContactTownName" ns="1" inpkey="1221"/>
+												<entry name="ContactRegionCode" ns="1" inpkey="1222"/>
+												<entry name="ContactCountryName" ns="1" inpkey="1223"/>
+												<entry name="ContactPostalCode" ns="1" inpkey="1224"/>
+												<entry name="ContactURL" ns="1" inpkey="1225"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\230_01_ProductInspection.xsd" outputinstance="..\230_01_ProductInspection.xml" instanceroot="{http://inspection230.lcie.cobielite.cobie.erdc.org}ProductInspection"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="cobielite" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="-99" lty="15" rbx="747" rby="884"/>
+					<data>
+						<root scrollposition="1527">
+							<header>
+								<namespaces>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://document.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://asset.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://attribute.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://assettype.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://contact.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="7" expanded="1">
+								<entry name="document" ns="7" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Facility" ns="6" expanded="1">
+										<entry name="AssetTypes" outkey="291" expanded="1">
+											<entry name="AssetType" ns="4" outkey="292" expanded="1">
+												<entry name="externalEntityName" type="attribute" outkey="293"/>
+												<entry name="externalID" type="attribute" outkey="294"/>
+												<entry name="externalSystemName" type="attribute" outkey="295"/>
+												<entry name="AssetTypeName" outkey="296"/>
+												<entry name="AssetTypeCategory" outkey="640"/>
+												<entry name="AssetTypeDescription" outkey="298"/>
+												<entry name="AssetTypeAccountingCategory" outkey="299"/>
+												<entry name="AssetTypeModelNumber" outkey="642"/>
+												<entry name="AssetTypeReplacementCostValue" outkey="937"/>
+												<entry name="AssetTypeExpectedLifeValue" outkey="938"/>
+												<entry name="AssetTypeNominalLength" outkey="302"/>
+												<entry name="AssetTypeNominalWidth" outkey="303"/>
+												<entry name="AssetTypeNominalHeight" outkey="304"/>
+												<entry name="AssetTypeAccessibilityText" outkey="305"/>
+												<entry name="AssetTypeCodePerformance" outkey="306"/>
+												<entry name="AssetTypeColorCode" outkey="307"/>
+												<entry name="AssetTypeConstituentsDescription" outkey="308"/>
+												<entry name="AssetTypeFeaturesDescription" outkey="309"/>
+												<entry name="AssetTypeFinishDescription" outkey="310"/>
+												<entry name="AssetTypeGradeDescription" outkey="311"/>
+												<entry name="AssetTypeMaterialDescription" outkey="312"/>
+												<entry name="AssetTypeShapeDescription" outkey="313"/>
+												<entry name="AssetTypeSizeDescription" outkey="314"/>
+												<entry name="AssetTypeSustainabilityPerformanceDescription" outkey="315"/>
+												<entry name="Assets" outkey="939" expanded="1">
+													<entry name="Asset" ns="2" outkey="940" expanded="1">
+														<entry name="externalEntityName" type="attribute" outkey="941"/>
+														<entry name="externalID" type="attribute" outkey="942"/>
+														<entry name="externalSystemName" type="attribute" outkey="943"/>
+														<entry name="AssetName" outkey="944"/>
+														<entry name="AssetSpaceAssignments" outkey="945"/>
+														<entry name="AssetDescription" outkey="946"/>
+														<entry name="AssetSerialNumber" outkey="947"/>
+														<entry name="AssetInstallationDate" outkey="948"/>
+														<entry name="AssetWarrantyStartDate" outkey="1135"/>
+														<entry name="AssetDocuments" outkey="955">
+															<entry name="Document" ns="1" outkey="956">
+																<entry name="externalEntityName" type="attribute" outkey="957"/>
+																<entry name="externalID" type="attribute" outkey="958"/>
+																<entry name="externalSystemName" type="attribute" outkey="959"/>
+																<entry name="DocumentName" outkey="960"/>
+																<entry name="DocumentCategory" outkey="961"/>
+																<entry name="DocumentDescription" outkey="962"/>
+																<entry name="DocumentURI" outkey="963"/>
+																<entry name="DocumentReferenceURI" outkey="964"/>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="AssetTypeManufacturerContactAssignments" outkey="643"/>
+												<entry name="AssetTypeAttributes" outkey="316">
+													<entry name="Attribute" ns="3" outkey="317">
+														<entry name="externalEntityName" type="attribute" outkey="318"/>
+														<entry name="externalID" type="attribute" outkey="319"/>
+														<entry name="externalSystemName" type="attribute" outkey="320"/>
+														<entry name="propertySetName" type="attribute" outkey="321"/>
+														<entry name="propertySetExternalIdentifier" type="attribute" outkey="322"/>
+														<entry name="AttributeName" outkey="323"/>
+														<entry name="AttributeCategory" outkey="324"/>
+														<entry name="AttributeDescription" outkey="325"/>
+														<entry name="AttributeValue" outkey="326"/>
+													</entry>
+												</entry>
+												<entry name="AssetTypeIssues" outkey="1226"/>
+											</entry>
+										</entry>
+										<entry name="Contacts" outkey="654" expanded="1">
+											<entry name="Contact" ns="5" outkey="655" expanded="1">
+												<entry name="externalEntityName" type="attribute" outkey="656"/>
+												<entry name="externalID" type="attribute" outkey="657"/>
+												<entry name="externalSystemName" type="attribute" outkey="658"/>
+												<entry name="ContactEmail" outkey="659"/>
+												<entry name="ContactCategory" outkey="660"/>
+												<entry name="ContactCompanyName" outkey="661"/>
+												<entry name="ContactPhoneNumber" outkey="662"/>
+												<entry name="ContactDepartmentName" outkey="663"/>
+												<entry name="ContactGivenName" outkey="664"/>
+												<entry name="ContactFamilyName" outkey="665"/>
+												<entry name="ContactStreet" outkey="666"/>
+												<entry name="ContactPostalBoxNumber" outkey="667"/>
+												<entry name="ContactTownName" outkey="668"/>
+												<entry name="ContactRegionCode" outkey="669"/>
+												<entry name="ContactCountryName" outkey="670"/>
+												<entry name="ContactPostalCode" outkey="671"/>
+												<entry name="ContactURL" outkey="672"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\..\..\COBieLite\xsd\cobielite.xsd" inputinstance="..\..\..\COBieLite\examples\ClinicHandover_COBieLite_RC3.xml" instanceroot="{http://cobielite.cobie.erdc.org}Facility"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="20" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1227"/>
+						<datapoint pos="1" key="1143"/>
+						<datapoint pos="2" key="1144"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1145"/>
+					</targets>
+					<view ltx="1171" lty="663" rbx="1268" rby="739"/>
+				</component>
+				<component name="constant" library="core" uid="21" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1316"/>
+					</targets>
+					<view ltx="1016" lty="610" rbx="1096" rby="628"/>
+					<data>
+						<constant value="6/19/2013" datatype="anySimpleType"/>
+						<wsdl/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="1228">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="1229">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="1230">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="1231">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="1232">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="1233">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="1234">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="1235">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="291">
+						<edges>
+							<edge vertexkey="1148" edgekey="1236"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="292">
+						<edges>
+							<edge vertexkey="1149" edgekey="1237"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="293">
+						<edges>
+							<edge vertexkey="1150" edgekey="1238"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="294">
+						<edges>
+							<edge vertexkey="1151" edgekey="1239"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="295">
+						<edges>
+							<edge vertexkey="1152" edgekey="1240"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="296">
+						<edges>
+							<edge vertexkey="1153" edgekey="1241"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="298">
+						<edges>
+							<edge vertexkey="1155" edgekey="1242"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="299">
+						<edges>
+							<edge vertexkey="1156" edgekey="1243"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="302">
+						<edges>
+							<edge vertexkey="1160" edgekey="1230"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="303">
+						<edges>
+							<edge vertexkey="1161" edgekey="1229"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="304">
+						<edges>
+							<edge vertexkey="1162" edgekey="1232"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="305">
+						<edges>
+							<edge vertexkey="1163" edgekey="1244"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="306">
+						<edges>
+							<edge vertexkey="1164" edgekey="1245"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="307">
+						<edges>
+							<edge vertexkey="1165" edgekey="1246"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="308">
+						<edges>
+							<edge vertexkey="1166" edgekey="1247"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="309">
+						<edges>
+							<edge vertexkey="1167" edgekey="1248"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="310">
+						<edges>
+							<edge vertexkey="1168" edgekey="1249"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="311">
+						<edges>
+							<edge vertexkey="1169" edgekey="1250"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="312">
+						<edges>
+							<edge vertexkey="1170" edgekey="1251"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="313">
+						<edges>
+							<edge vertexkey="1171" edgekey="1252"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="314">
+						<edges>
+							<edge vertexkey="1172" edgekey="1253"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="315">
+						<edges>
+							<edge vertexkey="1173" edgekey="1254"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="316">
+						<edges>
+							<edge vertexkey="1195" edgekey="1255"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="317">
+						<edges>
+							<edge vertexkey="1196" edgekey="1256"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="318">
+						<edges>
+							<edge vertexkey="1197" edgekey="1257"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="319">
+						<edges>
+							<edge vertexkey="1198" edgekey="1258"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="320">
+						<edges>
+							<edge vertexkey="1199" edgekey="1259"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="321">
+						<edges>
+							<edge vertexkey="1200" edgekey="1260"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="322">
+						<edges>
+							<edge vertexkey="1201" edgekey="1261"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="323">
+						<edges>
+							<edge vertexkey="1202" edgekey="1262"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="324">
+						<edges>
+							<edge vertexkey="1203" edgekey="1263"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="325">
+						<edges>
+							<edge vertexkey="1204" edgekey="1264"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="326">
+						<edges>
+							<edge vertexkey="1205" edgekey="1235"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="551">
+						<edges>
+							<edge vertexkey="1147" edgekey="1265"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="640">
+						<edges>
+							<edge vertexkey="1154" edgekey="1266"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="642">
+						<edges>
+							<edge vertexkey="1157" edgekey="1267"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="643">
+						<edges>
+							<edge vertexkey="1174" edgekey="1234"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="654">
+						<edges>
+							<edge vertexkey="1207" edgekey="1268"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="655">
+						<edges>
+							<edge vertexkey="1208" edgekey="1269"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="656">
+						<edges>
+							<edge vertexkey="1209" edgekey="1270"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="657">
+						<edges>
+							<edge vertexkey="1210" edgekey="1271"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="658">
+						<edges>
+							<edge vertexkey="1211" edgekey="1272"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="659">
+						<edges>
+							<edge vertexkey="1212" edgekey="1273"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="660">
+						<edges>
+							<edge vertexkey="1213" edgekey="1274"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="661">
+						<edges>
+							<edge vertexkey="1214" edgekey="1275"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="662">
+						<edges>
+							<edge vertexkey="1215" edgekey="1276"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="663">
+						<edges>
+							<edge vertexkey="1216" edgekey="1277"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="664">
+						<edges>
+							<edge vertexkey="1217" edgekey="1278"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="665">
+						<edges>
+							<edge vertexkey="1218" edgekey="1279"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="666">
+						<edges>
+							<edge vertexkey="1219" edgekey="1280"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="667">
+						<edges>
+							<edge vertexkey="1220" edgekey="1281"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="668">
+						<edges>
+							<edge vertexkey="1221" edgekey="1282"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="669">
+						<edges>
+							<edge vertexkey="1222" edgekey="1283"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="670">
+						<edges>
+							<edge vertexkey="1223" edgekey="1284"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="671">
+						<edges>
+							<edge vertexkey="1224" edgekey="1285"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="672">
+						<edges>
+							<edge vertexkey="1225" edgekey="1286"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="937">
+						<edges>
+							<edge vertexkey="1158" edgekey="1228"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="938">
+						<edges>
+							<edge vertexkey="1159" edgekey="1231"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="939">
+						<edges>
+							<edge vertexkey="1175" edgekey="1287"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="940">
+						<edges>
+							<edge vertexkey="1176" edgekey="1288"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="941">
+						<edges>
+							<edge vertexkey="1177" edgekey="1289"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="942">
+						<edges>
+							<edge vertexkey="1178" edgekey="1290"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="943">
+						<edges>
+							<edge vertexkey="1179" edgekey="1291"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="944">
+						<edges>
+							<edge vertexkey="1180" edgekey="1292"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="945">
+						<edges>
+							<edge vertexkey="1181" edgekey="1233"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="946">
+						<edges>
+							<edge vertexkey="1182" edgekey="1293"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="947">
+						<edges>
+							<edge vertexkey="1183" edgekey="1294"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="948">
+						<edges>
+							<edge vertexkey="1137" edgekey="1295"/>
+							<edge vertexkey="1143" edgekey="1296"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="955">
+						<edges>
+							<edge vertexkey="1185" edgekey="1297"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="956">
+						<edges>
+							<edge vertexkey="1186" edgekey="1298"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="957">
+						<edges>
+							<edge vertexkey="1187" edgekey="1299"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="958">
+						<edges>
+							<edge vertexkey="1188" edgekey="1300"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="959">
+						<edges>
+							<edge vertexkey="1189" edgekey="1301"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="960">
+						<edges>
+							<edge vertexkey="1190" edgekey="1302"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="961">
+						<edges>
+							<edge vertexkey="1191" edgekey="1303"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="962">
+						<edges>
+							<edge vertexkey="1192" edgekey="1304"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="963">
+						<edges>
+							<edge vertexkey="1193" edgekey="1305"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="964">
+						<edges>
+							<edge vertexkey="1194" edgekey="1306"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1134">
+						<edges>
+							<edge vertexkey="1146" edgekey="1307"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1135">
+						<edges>
+							<edge vertexkey="1133" edgekey="1308"/>
+							<edge vertexkey="1136" edgekey="1309"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1138">
+						<edges>
+							<edge vertexkey="1227" edgekey="1310"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1140">
+						<edges>
+							<edge vertexkey="1142" edgekey="1311"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1145">
+						<edges>
+							<edge vertexkey="1184" edgekey="1314"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1226">
+						<edges>
+							<edge vertexkey="1206" edgekey="1315"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1316">
+						<edges>
+							<edge vertexkey="1139" edgekey="1317"/>
+							<edge vertexkey="1144" edgekey="1318"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.issue;
 public interface IssueType extends org.erdc.cobie.cobielite.core.IssueType
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(IssueType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("issuetype95bdtype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(IssueType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sC7CAE39C2CC479123ADE186B88FEDB2D").resolveHandle("issuetype95bdtype");
     
     /**
      * Gets the "IssueRiskText" element

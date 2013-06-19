@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.document;
 public interface DocumentDocument extends org.erdc.cobie.cobielite.core.DocumentDocument
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(DocumentDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("document2fd9doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(DocumentDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sC7CAE39C2CC479123ADE186B88FEDB2D").resolveHandle("document2fd9doctype");
     
     /**
      * Gets the "Document" element

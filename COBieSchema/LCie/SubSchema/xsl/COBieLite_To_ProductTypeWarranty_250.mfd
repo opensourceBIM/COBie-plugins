@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
+	<resources/>
+	<component name="defaultmap1" blackbox="0" uid="1" editable="1">
+		<properties SelectedLanguage="java"/>
+		<structure>
+			<children>
+				<component name="250_02_ProductTypeWarranty" library="xml" uid="28" kind="14">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="1181" lty="80" rbx="1481" rby="280"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://warranty250.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://document.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://contact.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://warranty250.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="6" expanded="1">
+								<entry name="document" ns="6" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductTypeWarranty" ns="5" expanded="1">
+										<entry name="InformationExchangeID" inpkey="1520"/>
+										<entry name="AssetTypes" ns="1" inpkey="1521">
+											<entry name="AssetType" inpkey="1522">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1523"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="1524"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1525"/>
+												<entry name="AssetTypeName" ns="1" inpkey="1526"/>
+												<entry name="AssetTypeCategory" ns="1" inpkey="1527"/>
+												<entry name="AssetTypeDescription" ns="1" inpkey="1528"/>
+												<entry name="AssetTypeModelNumber" ns="1" inpkey="1529"/>
+												<entry name="AssetTypeManufacturerContactAssignments" ns="1" inpkey="1530"/>
+												<entry name="Warranties" ns="1" inpkey="1531">
+													<entry name="Warranty" ns="1" inpkey="1532">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1533"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="1534"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1535"/>
+														<entry name="WarrantyName" ns="1" inpkey="1536"/>
+														<entry name="WarrantyCategory" ns="1" inpkey="1537"/>
+														<entry name="WarrantyDuration" ns="1" inpkey="1538"/>
+														<entry name="WarrantyGaurantorContactAssignments" ns="1" inpkey="1539"/>
+														<entry name="WarrantyAttributes" ns="1" inpkey="1540">
+															<entry name="Attribute" ns="2" inpkey="1541">
+																<entry name="externalEntityName" ns="1" type="attribute" inpkey="1542"/>
+																<entry name="externalID" ns="1" type="attribute" inpkey="1543"/>
+																<entry name="externalSystemName" ns="1" type="attribute" inpkey="1544"/>
+																<entry name="propertySetName" ns="1" type="attribute" inpkey="1545"/>
+																<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="1546"/>
+																<entry name="AttributeName" ns="1" inpkey="1547"/>
+																<entry name="AttributeCategory" ns="1" inpkey="1548"/>
+																<entry name="AttributeDescription" ns="1" inpkey="1549"/>
+																<entry name="AttributeValue" ns="1" inpkey="1550"/>
+															</entry>
+														</entry>
+														<entry name="WarrantyDocuments" ns="1" inpkey="1551">
+															<entry name="Document" ns="3" inpkey="1552">
+																<entry name="externalEntityName" ns="1" type="attribute" inpkey="1553"/>
+																<entry name="externalID" ns="1" type="attribute" inpkey="1554"/>
+																<entry name="externalSystemName" ns="1" type="attribute" inpkey="1555"/>
+																<entry name="DocumentName" ns="1" inpkey="1556"/>
+																<entry name="DocumentCategory" ns="1" inpkey="1557"/>
+																<entry name="DocumentDescription" ns="1" inpkey="1558"/>
+																<entry name="DocumentURI" ns="1" inpkey="1559"/>
+																<entry name="DocumentReferenceURI" ns="1" inpkey="1560"/>
+															</entry>
+														</entry>
+														<entry name="WarrantyIssues" ns="1" inpkey="1561"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Contacts" ns="1" inpkey="1562">
+											<entry name="Contact" ns="4" inpkey="1563">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1564"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="1565"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1566"/>
+												<entry name="ContactEmail" ns="1" inpkey="1567"/>
+												<entry name="ContactCategory" ns="1" inpkey="1568"/>
+												<entry name="ContactCompanyName" ns="1" inpkey="1569"/>
+												<entry name="ContactPhoneNumber" ns="1" inpkey="1570"/>
+												<entry name="ContactDepartmentName" ns="1" inpkey="1571"/>
+												<entry name="ContactGivenName" ns="1" inpkey="1572"/>
+												<entry name="ContactFamilyName" ns="1" inpkey="1573"/>
+												<entry name="ContactStreet" ns="1" inpkey="1574"/>
+												<entry name="ContactPostalBoxNumber" ns="1" inpkey="1575"/>
+												<entry name="ContactTownName" ns="1" inpkey="1576"/>
+												<entry name="ContactRegionCode" ns="1" inpkey="1577"/>
+												<entry name="ContactCountryName" ns="1" inpkey="1578"/>
+												<entry name="ContactPostalCode" ns="1" inpkey="1579"/>
+												<entry name="ContactURL" ns="1" inpkey="1580"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\250_02_ProductTypeWarranty.xsd" outputinstance="..\250_02_ProductTypeWarranty.xml" instanceroot="{http://warranty250.lcie.cobielite.cobie.erdc.org}ProductTypeWarranty"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="6" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="551"/>
+					</targets>
+					<view ltx="925" lty="91" rbx="1089" rby="109"/>
+					<data>
+						<constant value="250.02_ProductTypeWarranty" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="cobielite" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="-99" lty="15" rbx="791" rby="899"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://asset.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://attribute.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://document.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://assettype.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://contact.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="7" expanded="1">
+								<entry name="document" ns="7" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Facility" ns="6" expanded="1">
+										<entry name="AssetTypes" outkey="291">
+											<entry name="AssetType" ns="4" outkey="292" expanded="1">
+												<entry name="externalEntityName" type="attribute" outkey="293"/>
+												<entry name="externalID" type="attribute" outkey="294"/>
+												<entry name="externalSystemName" type="attribute" outkey="295"/>
+												<entry name="AssetTypeName" outkey="296"/>
+												<entry name="AssetTypeCategory" outkey="640"/>
+												<entry name="AssetTypeDescription" outkey="298"/>
+												<entry name="AssetTypeModelNumber" outkey="642"/>
+												<entry name="Assets">
+													<entry name="Asset" ns="1" expanded="1"/>
+												</entry>
+												<entry name="AssetTypeManufacturerContactAssignments" outkey="643"/>
+												<entry name="Warranties" outkey="1581">
+													<entry name="Warranty" outkey="1582">
+														<entry name="externalEntityName" type="attribute" outkey="1583"/>
+														<entry name="externalID" type="attribute" outkey="1584"/>
+														<entry name="externalSystemName" type="attribute" outkey="1585"/>
+														<entry name="WarrantyName" outkey="1586"/>
+														<entry name="WarrantyCategory" outkey="1587"/>
+														<entry name="WarrantyDuration" outkey="1588"/>
+														<entry name="WarrantyGaurantorContactAssignments" outkey="1589"/>
+														<entry name="WarrantyAttributes" outkey="1590">
+															<entry name="Attribute" ns="2" outkey="1591">
+																<entry name="externalEntityName" type="attribute" outkey="1592"/>
+																<entry name="externalID" type="attribute" outkey="1593"/>
+																<entry name="externalSystemName" type="attribute" outkey="1594"/>
+																<entry name="propertySetName" type="attribute" outkey="1595"/>
+																<entry name="propertySetExternalIdentifier" type="attribute" outkey="1596"/>
+																<entry name="AttributeName" outkey="1597"/>
+																<entry name="AttributeCategory" outkey="1598"/>
+																<entry name="AttributeDescription" outkey="1599"/>
+																<entry name="AttributeValue" outkey="1600"/>
+															</entry>
+														</entry>
+														<entry name="WarrantyDocuments" outkey="1601">
+															<entry name="Document" ns="3" outkey="1602">
+																<entry name="externalEntityName" type="attribute" outkey="1603"/>
+																<entry name="externalID" type="attribute" outkey="1604"/>
+																<entry name="externalSystemName" type="attribute" outkey="1605"/>
+																<entry name="DocumentName" outkey="1606"/>
+																<entry name="DocumentCategory" outkey="1607"/>
+																<entry name="DocumentDescription" outkey="1608"/>
+																<entry name="DocumentURI" outkey="1609"/>
+																<entry name="DocumentReferenceURI" outkey="1610"/>
+															</entry>
+														</entry>
+														<entry name="WarrantyIssues" outkey="1611"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Contacts" outkey="654">
+											<entry name="Contact" ns="5" outkey="655" expanded="1">
+												<entry name="externalEntityName" type="attribute" outkey="656"/>
+												<entry name="externalID" type="attribute" outkey="657"/>
+												<entry name="externalSystemName" type="attribute" outkey="658"/>
+												<entry name="ContactEmail" outkey="659"/>
+												<entry name="ContactCategory" outkey="660"/>
+												<entry name="ContactCompanyName" outkey="661"/>
+												<entry name="ContactPhoneNumber" outkey="662"/>
+												<entry name="ContactDepartmentName" outkey="663"/>
+												<entry name="ContactGivenName" outkey="664"/>
+												<entry name="ContactFamilyName" outkey="665"/>
+												<entry name="ContactStreet" outkey="666"/>
+												<entry name="ContactPostalBoxNumber" outkey="667"/>
+												<entry name="ContactTownName" outkey="668"/>
+												<entry name="ContactRegionCode" outkey="669"/>
+												<entry name="ContactCountryName" outkey="670"/>
+												<entry name="ContactPostalCode" outkey="671"/>
+												<entry name="ContactURL" outkey="672"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\..\..\COBieLite\xsd\cobielite.xsd" inputinstance="..\..\..\COBieLite\examples\ClinicHandover_COBieLite_RC3.xml" instanceroot="{http://cobielite.cobie.erdc.org}Facility"/>
+						<wsdl/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="1612">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="1613">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="1614">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="1615">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="291">
+						<edges>
+							<edge vertexkey="1521" edgekey="1616"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="292">
+						<edges>
+							<edge vertexkey="1522" edgekey="1617"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="293">
+						<edges>
+							<edge vertexkey="1523" edgekey="1618"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="294">
+						<edges>
+							<edge vertexkey="1524" edgekey="1619"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="295">
+						<edges>
+							<edge vertexkey="1525" edgekey="1620"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="296">
+						<edges>
+							<edge vertexkey="1526" edgekey="1621"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="298">
+						<edges>
+							<edge vertexkey="1528" edgekey="1622"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="551">
+						<edges>
+							<edge vertexkey="1520" edgekey="1623"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="640">
+						<edges>
+							<edge vertexkey="1527" edgekey="1624"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="642">
+						<edges>
+							<edge vertexkey="1529" edgekey="1625"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="643">
+						<edges>
+							<edge vertexkey="1530" edgekey="1614"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="654">
+						<edges>
+							<edge vertexkey="1562" edgekey="1626"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="655">
+						<edges>
+							<edge vertexkey="1563" edgekey="1627"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="656">
+						<edges>
+							<edge vertexkey="1564" edgekey="1628"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="657">
+						<edges>
+							<edge vertexkey="1565" edgekey="1629"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="658">
+						<edges>
+							<edge vertexkey="1566" edgekey="1630"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="659">
+						<edges>
+							<edge vertexkey="1567" edgekey="1631"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="660">
+						<edges>
+							<edge vertexkey="1568" edgekey="1632"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="661">
+						<edges>
+							<edge vertexkey="1569" edgekey="1633"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="662">
+						<edges>
+							<edge vertexkey="1570" edgekey="1634"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="663">
+						<edges>
+							<edge vertexkey="1571" edgekey="1635"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="664">
+						<edges>
+							<edge vertexkey="1572" edgekey="1636"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="665">
+						<edges>
+							<edge vertexkey="1573" edgekey="1637"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="666">
+						<edges>
+							<edge vertexkey="1574" edgekey="1638"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="667">
+						<edges>
+							<edge vertexkey="1575" edgekey="1639"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="668">
+						<edges>
+							<edge vertexkey="1576" edgekey="1640"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="669">
+						<edges>
+							<edge vertexkey="1577" edgekey="1641"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="670">
+						<edges>
+							<edge vertexkey="1578" edgekey="1642"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="671">
+						<edges>
+							<edge vertexkey="1579" edgekey="1643"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="672">
+						<edges>
+							<edge vertexkey="1580" edgekey="1644"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1581">
+						<edges>
+							<edge vertexkey="1531" edgekey="1645"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1582">
+						<edges>
+							<edge vertexkey="1532" edgekey="1646"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1583">
+						<edges>
+							<edge vertexkey="1533" edgekey="1647"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1584">
+						<edges>
+							<edge vertexkey="1534" edgekey="1648"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1585">
+						<edges>
+							<edge vertexkey="1535" edgekey="1649"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1586">
+						<edges>
+							<edge vertexkey="1536" edgekey="1650"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1587">
+						<edges>
+							<edge vertexkey="1537" edgekey="1651"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1588">
+						<edges>
+							<edge vertexkey="1538" edgekey="1615"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1589">
+						<edges>
+							<edge vertexkey="1539" edgekey="1613"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1590">
+						<edges>
+							<edge vertexkey="1540" edgekey="1652"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1591">
+						<edges>
+							<edge vertexkey="1541" edgekey="1653"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1592">
+						<edges>
+							<edge vertexkey="1542" edgekey="1654"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1593">
+						<edges>
+							<edge vertexkey="1543" edgekey="1655"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1594">
+						<edges>
+							<edge vertexkey="1544" edgekey="1656"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1595">
+						<edges>
+							<edge vertexkey="1545" edgekey="1657"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1596">
+						<edges>
+							<edge vertexkey="1546" edgekey="1658"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1597">
+						<edges>
+							<edge vertexkey="1547" edgekey="1659"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1598">
+						<edges>
+							<edge vertexkey="1548" edgekey="1660"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1599">
+						<edges>
+							<edge vertexkey="1549" edgekey="1661"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1600">
+						<edges>
+							<edge vertexkey="1550" edgekey="1612"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1601">
+						<edges>
+							<edge vertexkey="1551" edgekey="1662"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1602">
+						<edges>
+							<edge vertexkey="1552" edgekey="1663"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1603">
+						<edges>
+							<edge vertexkey="1553" edgekey="1664"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1604">
+						<edges>
+							<edge vertexkey="1554" edgekey="1665"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1605">
+						<edges>
+							<edge vertexkey="1555" edgekey="1666"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1606">
+						<edges>
+							<edge vertexkey="1556" edgekey="1667"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1607">
+						<edges>
+							<edge vertexkey="1557" edgekey="1668"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1608">
+						<edges>
+							<edge vertexkey="1558" edgekey="1669"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1609">
+						<edges>
+							<edge vertexkey="1559" edgekey="1670"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1610">
+						<edges>
+							<edge vertexkey="1560" edgekey="1671"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1611">
+						<edges>
+							<edge vertexkey="1561" edgekey="1672"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

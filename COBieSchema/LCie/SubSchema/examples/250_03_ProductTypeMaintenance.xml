@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProductTypemaintenance xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:cobielite="http://core.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:pwd="http://maintenance250.defs.lcie.cobielite.cobie.erdc.org" xsi:schemaLocation="http://maintenance250.lcie.cobielite.cobie.erdc.org C:/Users/RDITLACB/git/cobieserver/COBieSchema/LCie/SubSchema/250_03_ProductTypeMaintenance.xsd" xmlns="http://maintenance250.lcie.cobielite.cobie.erdc.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<pwd:InformationExchangeID>250.03_ProductTypeMaintenance</pwd:InformationExchangeID>
+	<cobielite:AssetTypes>
+		<pwd:AssetType cobielite:externalEntityName="IfcFanType" cobielite:externalID="0JGTSjcSn7v8o$ZI4qc5Mg" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+			<cobielite:AssetTypeName>AHU</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-75 35 14 17: Modular Indoor Air Handling Units</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>63300000 J</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>sales@York.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeModelNumber>AP-500</cobielite:AssetTypeModelNumber>
+			<cobielite:Assets/>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcFanType" cobielite:externalID="0JGTSjcSn7v8o$ZI4qc5Mg" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+					<cobielite:DocumentName>AHU Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>63300000 J</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/AHU-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Air Handling Units Manufacturers Equipment Information</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Manufacturer Instructions</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V3-SD-08-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 45 00.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Air Handling Units Preventative Maintenance Procedures</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-10-PreventiveMaintenanceProcedures-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Air Handling Units Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Air Handling Units-Damper Leakage Test</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Test Reports</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-09-AirHandlingUnits-DamperLeakageTest.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 20 01.11 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Field Test Report-Air Handling Units-Preliminary Tests</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Test Reports</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-09-AirHandlingUnits-PreliminaryTests.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 20 01.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Lubrication Schedule-Air Handling Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-10-LubricationSchedule-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Manufacturers Equipment Information-Air Handling Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V3-SD-08-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 45 00.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Operations and Maintenance Data-Central Station Air Handling Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V3-SD-10-CentralStationAirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Operator Servicing Requirements-Central Station Air Handling Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-08-CentralStationAirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Preventative Maintenance Procedures-Air Handling Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-10-PreventiveMaintenance-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Safety Instructions-Air Handling Units and AC Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Closeout Submittals</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-08-SafetyInstructions-AirHandlingAndACUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 35 26</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sound Vibration and Seismic Control-AirHandlingUnits</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Test Reports</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-09-SoundVibrationAndSeismicControl-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 20 01.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Jobs>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Air Handler Lockout</cobielite:JobName>
+					<cobielite:JobTaskID>1</cobielite:JobTaskID>
+					<cobielite:JobCategory>Safety</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>1.  Turn off power at the control panel. 2.  Shut down all auxillary power to the unit. 3.  Check power readings to insure total shut down. 4.  Remove safety pin from the panel.5.  Kill power to the device. 6. Wait until all moving parts have been STOPPED.  7. Complete task.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">30</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">year</cobie:UnitName>
+						<cobie:DecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">1.0</cobie:DecimalValue>
+					</cobielite:JobFrequencyValue>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>0</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>AHU PM</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">180</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">year</cobie:UnitName>
+						<cobie:DecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">1.0</cobie:DecimalValue>
+					</cobielite:JobFrequencyValue>
+					<cobielite:Resources>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Tachometer</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Grease gun and oiler</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Pressure washer</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Vacuum</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Fin comb</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Safety goggles</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+					</cobielite:Resources>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>1</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>1.  Check fan blades for dust buildup and clean if necessary.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">10</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>2</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>2.  Check fan blades and moving parts for cracks and excessive wear.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>3</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>3.  Check fan RPM against design specifications.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>4</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>4.  Check bearing collar set screws on fan shaft to make sure  they are tight.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">10</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>5</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>5.  Check dampers for dirt accumulations, clean as necessary.  Check felt, repair or replace as necessary.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">15</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>6</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>6.  Check damper actuators and linkage for proper operation.  Adjust linkage on dampers if out of alignment.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">10</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>7</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>7.  Lubricate mechanical connections of dampers sparingly.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>8</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>8.  Clean coils by brushing, blowing, vacuuming, or pressure washing.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">10</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>9</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>9.  Check coils for leaking, tightness of fittings.  On direct expansion units, check for refrigerant leaks on all lines, valves, fittings, coils, etc., using a halogen leak detector or similar testing device.  If leaks are not able to be stopped or corrected, report leak status to supervisor.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">15</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>10</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>10.  Use fin comb to straighten coil fins.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>11</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>11.  Flush and clean condensate pans and drains, remove all rust prepare metal and paint.  Consult the Material Safety Data Sheet (MSDS) to ensure that the paint lead level is 0.06% or less.  Hose down coils and drain pans and wash with an appropriate EPA approved solution approved solution.  Treat condensate pans with an EPA approved biocide.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">15</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>12</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>12.  Check belts for wear and cracks, adjust tension or alignment,  and replace belts when necessary.  Multibelt drives shall only  be replaced with matched sets.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">15</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>13</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>13.  Check rigid couplings for alignment on direct drives, and for  tightness of assembly.  Check flexible couplings for alignment  and wear.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">10</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>14</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>14.  Before heating season (chilled water coils only):  Drain cooling coils; blow down to remove moisture; refill with antifreeze and water solution;  drain.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">15</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>15</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>15.  Check freezestat for proper temperature setting and  operation.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">10</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>16</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>16.  Vacuum interior of unit.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">10</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>17</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>17.  Lubricate fan shaft bearings while unit is running.  Add grease slowly until slight bleeding is noted from the seals.  Do not over lubricate.  Remove old or excess lubricant.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">10</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>AHU Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>18</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>18.  Clean up work area.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+			</cobielite:Jobs>
+		</pwd:AssetType>
+		<pwd:AssetType cobielite:externalEntityName="IfcBoilerType" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:AssetTypeName>Boiler</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-75 10 11 14: Hot Water Heat Generators</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>Induced Heat Draft, Natural Gas Fired, Copper Tube, Hot Water Boiler</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>sales@lochinvar.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeModelNumber>CBN1435</cobielite:AssetTypeModelNumber>
+			<cobielite:Assets/>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Boiler Preventative  Maintenance Plan and Schedule</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-10-PreventiveMaintenancePlanAndSchedule-Boilers.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="IfcBoilerType" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Boiler Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/Boiler-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Boiler-Operational Field Test Report</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Test Reports</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-09-Boiler-OperationalFieldTestResults.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 20 01.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Field Test Report-Boiler-Water Analysis</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Test Reports</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-09-Boilers-WaterAnalysis.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 20 01.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Lubrication Schedule-Boiler</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-10-LubricationSchedule-Boiler.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Lubrication Schedule-Pumps</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-10-LubricationSchedule-Pumps.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Manufacturers Equipment Information-Boiler</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V3-SD-08-Boiler.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Operations and Maintenance Data-Boiler</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V3-SD-10-Boiler.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Operator Servicing Requirements-Boiler</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-08-Boiler.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Preventative Maintenance Procedures-Boilers</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-10-PreventiveMaintenanceProcedures-Boilers.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Safety Instructions-Boiler</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Closeout Submittals</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-08-SafetyInstructions-Boiler.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 35 26</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sound Vibration and Seismic Control-Boiler</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Test Reports</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-09-SoundVibrationAndSeismicControl-Boiler.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 20 01.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Warranty-Boiler</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Warranty Certificate</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V1-SD-07-Warranty-Boiler.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 45 00.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Jobs>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Boiler Lock Out</cobielite:JobName>
+					<cobielite:JobTaskID>0</cobielite:JobTaskID>
+					<cobielite:JobCategory>Safety</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>Boiler Lock Out</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">20</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">year</cobie:UnitName>
+						<cobie:DecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">1.0</cobie:DecimalValue>
+					</cobielite:JobFrequencyValue>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Boiler Lock Out</cobielite:JobName>
+					<cobielite:JobTaskID>1</cobielite:JobTaskID>
+					<cobielite:JobCategory>Safety</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>1.  Turn off power at the control panel.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">3</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Boiler Lock Out</cobielite:JobName>
+					<cobielite:JobTaskID>2</cobielite:JobTaskID>
+					<cobielite:JobCategory>Safety</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>2.  Place placard on door.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">2</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Boiler Lock Out</cobielite:JobName>
+					<cobielite:JobTaskID>3</cobielite:JobTaskID>
+					<cobielite:JobCategory>Safety</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>3.  Test for power.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Boiler Lock Out</cobielite:JobName>
+					<cobielite:JobTaskID>4</cobielite:JobTaskID>
+					<cobielite:JobCategory>Safety</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>4.  Turn on power after job is complete.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Boiler Lock Out</cobielite:JobName>
+					<cobielite:JobTaskID>5</cobielite:JobTaskID>
+					<cobielite:JobCategory>Safety</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>5.  Shut off main gas valve and lock with the provided chain and keyed lock.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Boiler Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>1</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>1.  Apply hydrostatic test of safety popoff valve (1.5 times operating pressure, safety valve gauged). 2.  Drain boiler, tag valves and controls.  NEVER attempt to remove a manhole or handhole cover with out first properly venting the water or steam side of a boiler to the atmosphere. Prior to opening or entering a boiler it must be at atmospheric pressure.  To protect the boiler from unnecessary stresses the boiler water temperature should be allowed to reach the boiler room temperature before draining the boiler. 3.  Brush all tubes clean of scale. 4.  Brush plate surfaces clean, use vacuum cleaner.  5.  Clean breaching, ducts, fireboxes, or main fire tube, and flue passages.  6.  Check and replace worn or damaged insulation.  Repair the damage and remove the debris.  If the insulation contains asbestos, follow the asbestos management plan for isolation, notification, work practice, and waste disposal.  7.  Check refractory and brick work; if damaged notify supervisor and enter this data in boiler log. 8.  When the boiler has cooled to the ambient boiler room temperature, wash out mud legs, and flush boiler  9.  Refill boiler with water and chemicals if boiler is to be put back in service or if wetlayups are to be employed. 10.  Determine if there is ample provision for expansion between the sections. 11.  Check for excessive rust buildup between sections (cast iron  type). 12.  Examine all steam and water line to controls to determine that they are clear of scale and arranged to insure proper control operations. 13.  Clean stems and shafts, and tighten packing nuts on valves and pumps. 14.  Flush fuel oil strainer baskets and oil solenoid valve seats. 15.  Dismantle low water fuel cut offs and water feeders to insure  freedom from obstructions and proper functioning of the working parts.  Always replace old gaskets before reassembling. 16.  Inspect connecting lines to boiler for accumulations of mud, scale, etc., and clean as needed. 17.  Examine all visible wiring for brittle or worn insulation, and make sure electrical contacts are clean and functioning  properly. 18.  On electrical type detection devices, replace vacuum tubes annually, and replace defective solid state devices. 19.  Replace fusible plugs, if applicable.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">180</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">year</cobie:UnitName>
+						<cobie:DecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">1.0</cobie:DecimalValue>
+					</cobielite:JobFrequencyValue>
+					<cobielite:Resources>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Tool Group C</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Scrapers</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Combustion testing equipment</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Hydrostatic pump and safety valve gag</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Respirator</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Safety goggles</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Safety signs</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Suitable chain and locks for securing isolation valves</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+					</cobielite:Resources>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+			</cobielite:Jobs>
+		</pwd:AssetType>
+		<pwd:AssetType cobielite:externalEntityName="IfcFireSuppressionTerminalType" cobielite:externalID="0ch9VYgcbAYQpkbobh$sFH" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+			<cobielite:AssetTypeName>Fire Sprinkler</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-65 70 17 11 24: Fire Fighting Sprinkler Heads</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>15 mm Pendent</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>sales@pacificfiresafety.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeModelNumber>GB 5.6 K-Factor</cobielite:AssetTypeModelNumber>
+			<cobielite:Assets/>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcFireSuppressionTerminalType" cobielite:externalID="0ch9VYgcbAYQpkbobh$sFH" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+					<cobielite:DocumentName>Fire Sprinkler Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>15 mm Pendent</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/FireSprinkler-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinkers Preventative Maintenance Schedule</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-10-Sprinklers-Schedule.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - AFCON Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-AFCONParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Allied Tube Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-AlliedTube.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Central Model GB Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-CentralModelGB.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - FEBCO Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-FEBCOParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Inlet Connection Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-InletConnection.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Parts Identification</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-PartsIdentification.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Potter Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-PotterParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - TOLCO Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-TOLCOParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - UL Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-ULParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Victaulic Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-VictaulicParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Warranty</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Closeout Submittals</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-07-Sprinklers-Warranty.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 35 26</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers Emergency Operations</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-10-Sprinklers-Emergency.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers Environmental Conditions</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Closeout Submittals</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-08-Sprinklers-EnvironmentalConditions.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 35 26</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers Lubrication</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-10-Sprinklers-Lubrication.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers Normal Operations</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-10-Sprinklers-NormalOperations.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers Safety Precautions</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Closeout Submittals</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-08-Sprinklers-Safety.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 35 26</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Jobs>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Sprinkler Head Semi-Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>0</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>Sprinkler Head Semi-Annual Maintenance</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">35</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">year</cobie:UnitName>
+						<cobie:DecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">2.0</cobie:DecimalValue>
+					</cobielite:JobFrequencyValue>
+					<cobielite:Resources>
+						<pwd:Resource cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:ResourceName>Tool Group C</cobielite:ResourceName>
+							<cobielite:ResourceCategory>Tools</cobielite:ResourceCategory>
+							<cobielite:ResourceDescription>n/a</cobielite:ResourceDescription>
+							<cobielite:ResourceAttributes/>
+							<cobielite:ResourceDocuments/>
+						</pwd:Resource>
+					</cobielite:Resources>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Sprinkler Head Semi-Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>1</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>1.  Inspect and identify damaged, bent, corroded, painted, whitewashed, or weeping sprinkler heads, all of which will need replacement.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Sprinkler Head Semi-Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>2</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>2.  Remove any insect nests attached to sprinkler heads.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">2</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Sprinkler Head Semi-Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>3</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>3.  Place light coat of oil on sprinkler heads located in areas conducive to insect nests.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">3</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Sprinkler Head Semi-Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>4</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>4.  For sprinkler heads which are subject to above normal temperature (adjacent to steam pipes, furnaces, ovens, hot gas, vents, exhaust, etc.), check color coding of sprinkler heads for the proper temperature range.  Identify the sprinkler heads with improper temperature ranges, all of which will need replacement.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Sprinkler Head Semi-Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>5</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>5.  Check that minimum distance of 18 to 36 inches is maintained between sprinkler heads and racks, palletized stock, or other stacked materials.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Sprinkler Head Semi-Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>6</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>6.  Remove any ladders, stock or material which is being supported by the sprinkler piping.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Sprinkler Head Semi-Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>7</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>7.  Replace broken pipe hangers and refasten any that have come loose.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+				<pwd:Job cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:JobName>Sprinkler Head Semi-Annual Maintenance</cobielite:JobName>
+					<cobielite:JobTaskID>8</cobielite:JobTaskID>
+					<cobielite:JobCategory>PM</cobielite:JobCategory>
+					<cobielite:JobStatus>Not Yet Started</cobielite:JobStatus>
+					<cobielite:JobDescription>8.  Check that all water is drained from low points on dry piping systems.</cobielite:JobDescription>
+					<cobielite:JobDuration>
+						<cobie:UnitName xmlns:cobie="http://core.cobielite.cobie.erdc.org">minute</cobie:UnitName>
+						<cobie:IntegerValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">5</cobie:IntegerValue>
+					</cobielite:JobDuration>
+					<cobielite:JobStartDate>2011-09-14</cobielite:JobStartDate>
+					<cobielite:JobStartConditionDescription>year</cobielite:JobStartConditionDescription>
+					<cobielite:JobFrequencyValue/>
+					<cobielite:Resources/>
+					<cobielite:JobAttributes/>
+					<cobielite:JobDocuments/>
+				</pwd:Job>
+			</cobielite:Jobs>
+		</pwd:AssetType>
+	</cobielite:AssetTypes>
+</ProductTypemaintenance>

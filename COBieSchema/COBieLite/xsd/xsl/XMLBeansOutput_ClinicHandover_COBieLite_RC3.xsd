@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://cobielite.cobie.erdc.org" xmlns="http://cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://zone.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC311.xsd"/>
+	<xs:import namespace="http://system.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC34.xsd"/>
+	<xs:import namespace="http://spare.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC38.xsd"/>
+	<xs:import namespace="http://space.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC313.xsd"/>
+	<xs:import namespace="http://resource.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC310.xsd"/>
+	<xs:import namespace="http://job.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC39.xsd"/>
+	<xs:import namespace="http://floor.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC312.xsd"/>
+	<xs:import namespace="http://document.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC32.xsd"/>
+	<xs:import namespace="http://contact.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC33.xsd"/>
+	<xs:import namespace="http://attribute.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC37.xsd"/>
+	<xs:import namespace="http://assettype.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC35.xsd"/>
+	<xs:import namespace="http://asset.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC36.xsd"/>
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="XMLBeansOutput_ClinicHandover_COBieLite_RC31.xsd"/>
+	<xs:element name="Facility">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cobie:FacilityName"/>
+				<xs:element ref="cobie:FacilityCategory"/>
+				<xs:element ref="cobie:ProjectAssignment"/>
+				<xs:element ref="cobie:SiteAssignment"/>
+				<xs:element ref="cobie:FacilityDefaultLinearUnit"/>
+				<xs:element ref="cobie:FacilityDefaultAreaUnit"/>
+				<xs:element ref="cobie:FacilityDefaultVolumeUnit"/>
+				<xs:element ref="cobie:FacilityDefaultCurrencyUnit"/>
+				<xs:element ref="cobie:FacilityDefaultMeasurementStandard"/>
+				<xs:element ref="cobie:FacilityDescription"/>
+				<xs:element ref="cobie:FacilityDeliverablePhaseName"/>
+				<xs:element ref="cobie:Floors"/>
+				<xs:element ref="cobie:Zones"/>
+				<xs:element ref="cobie:AssetTypes"/>
+				<xs:element ref="cobie:Systems"/>
+				<xs:element ref="cobie:Contacts"/>
+				<xs:element ref="cobie:FacilityAttributes"/>
+				<xs:element ref="cobie:FacilityDocuments"/>
+				<xs:element ref="cobie:FacilityIssues"/>
+			</xs:sequence>
+			<xs:attribute ref="cobie:externalSystemName" use="required"/>
+			<xs:attribute ref="cobie:externalID" use="required"/>
+			<xs:attribute ref="cobie:externalEntityName" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

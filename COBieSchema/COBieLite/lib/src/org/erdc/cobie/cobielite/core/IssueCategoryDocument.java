@@ -17,7 +17,7 @@ package org.erdc.cobie.cobielite.core;
 public interface IssueCategoryDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(IssueCategoryDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("issuecategoryc0cbdoctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(IssueCategoryDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sC7CAE39C2CC479123ADE186B88FEDB2D").resolveHandle("issuecategoryc0cbdoctype");
     
     /**
      * Gets the "IssueCategory" element

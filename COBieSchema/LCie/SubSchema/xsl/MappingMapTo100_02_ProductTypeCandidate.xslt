@@ -14,6 +14,7 @@ http://www.altova.com/mapforce
 		<xsl:variable name="var1_Facility" as="node()?" select="ns2:Facility"/>
 		<ProductTypeCandidate xmlns="http://typecandidate100.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:cobielite="http://core.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:tcd="http://typecandidate100.defs.lcie.cobielite.cobie.erdc.org">
 			<xsl:attribute name="xsi:schemaLocation" namespace="http://www.w3.org/2001/XMLSchema-instance" select="'http://typecandidate100.lcie.cobielite.cobie.erdc.org C:/Users/RDITLACB/git/cobieserver/COBieSchema/LCie/SubSchema/100_02_ProductTypeCandidate.xsd'"/>
+			<tcd:InformationExchangeID>100.02_ProductTypeCandidatee</tcd:InformationExchangeID>
 			<xsl:for-each select="$var1_Facility/cobielite:AssetTypes">
 				<cobielite:AssetTypes>
 					<xsl:for-each select="ns0:AssetType">

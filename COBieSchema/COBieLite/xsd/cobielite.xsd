@@ -1,5 +1,4 @@
-
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:facility="http://facility.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobielite="http://cobielite.cobie.erdc.org"  targetNamespace="http://cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:fac="http://facility.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobielite="http://cobielite.cobie.erdc.org" xmlns:assembly="http://assembly.cobielite.cobie.erdc.org" xmlns:assettype="http://assettype.cobielite.cobie.erdc.org" xmlns:attribute="http://attribute.cobielite.cobie.erdc.org" xmlns:connection="http://connection.cobielite.cobie.erdc.org" xmlns:contact="http://contact.cobielite.cobie.erdc.org" xmlns:document="http://document.cobielite.cobie.erdc.org" xmlns:floor="http://floor.cobielite.cobie.erdc.org" xmlns:issue="http://issue.cobielite.cobie.erdc.org" xmlns:job="http://job.cobielite.cobie.erdc.org" xmlns:resource="http://resource.cobielite.cobie.erdc.org" xmlns:space="http://space.cobielite.cobie.erdc.org" xmlns:spare="http://spare.cobielite.cobie.erdc.org" xmlns:system="http://system.cobielite.cobie.erdc.org" xmlns:zone="http://zone.cobielite.cobie.erdc.org" targetNamespace="http://cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://facility.cobielite.cobie.erdc.org" schemaLocation="common/entities/facility.xsd"/>
 	<xs:annotation>
 		<xs:documentation>
@@ -7,7 +6,7 @@
 			</xs:documentation>
 	</xs:annotation>
 	<!-- Document Root Element-->
-	<xs:element name="Facility" type="facility:FacilityType">
+	<xs:element name="Facility" type="fac:FacilityType">
 		<xs:annotation>
 			<xs:documentation>
 			Facility contains information about the facility being exchanged during a given COBie deliverable.  Since COBie deliverables may be exchanged during planning, design, construction, handover, or operation phases there may be differences in facility designations.  COBie files will typically contain a single facility.

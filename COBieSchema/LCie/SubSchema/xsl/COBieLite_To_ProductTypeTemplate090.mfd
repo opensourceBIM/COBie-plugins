@@ -5,9 +5,20 @@
 		<properties SelectedLanguage="java"/>
 		<structure>
 			<children>
+				<component name="constant" library="core" uid="6" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="551"/>
+					</targets>
+					<view ltx="1004" lty="223" rbx="1163" rby="241"/>
+					<data>
+						<constant value="090.02_ProductTypeTemplate" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
 				<component name="090_02_ProductTypeTemplate" library="xml" uid="4" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
-					<view ltx="1238" lty="143" rbx="1965" rby="785"/>
+					<view ltx="1370" lty="242" rbx="2097" rby="884"/>
 					<data>
 						<root scrollposition="1">
 							<header>
@@ -29,6 +40,7 @@
 												<entry name="externalID" ns="1" type="attribute" inpkey="487"/>
 												<entry name="externalSystemName" ns="1" type="attribute" inpkey="488"/>
 												<entry name="AssetTypeName" ns="1" inpkey="489"/>
+												<entry name="AssetTypeCategory" ns="1" inpkey="571"/>
 												<entry name="AssetTypeDescription" ns="1" inpkey="490"/>
 												<entry name="AssetTypeAccountingCategory" ns="1" inpkey="491"/>
 												<entry name="AssetTypeNominalLength" ns="1" inpkey="492"/>
@@ -64,18 +76,7 @@
 								</entry>
 							</entry>
 						</root>
-						<document schema="..\090_02_ProductTypeTemplate.xsd" outputinstance="..\090_02_ProductTypeTemplate.xml" instanceroot="{http://typetemplate090.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate"/>
-						<wsdl/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="6" kind="2">
-					<properties/>
-					<targets>
-						<datapoint pos="0" key="551"/>
-					</targets>
-					<view ltx="1004" lty="223" rbx="1163" rby="241"/>
-					<data>
-						<constant value="090.02_ProductTypeTemplate" datatype="string"/>
+						<document schema="..\090_02_ProductTypeTemplate.xsd" inputinstance="..\examples\090_02_ProductTypeTemplate.xml" outputinstance="..\090_02_ProductTypeTemplate.xml" instanceroot="{http://typetemplate090.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate"/>
 						<wsdl/>
 					</data>
 				</component>
@@ -83,7 +84,7 @@
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view ltx="-13" lty="15" rbx="833" rby="884"/>
 					<data>
-						<root scrollposition="273">
+						<root scrollposition="256">
 							<header>
 								<namespaces>
 									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
@@ -103,6 +104,7 @@
 												<entry name="externalID" type="attribute" outkey="294"/>
 												<entry name="externalSystemName" type="attribute" outkey="295"/>
 												<entry name="AssetTypeName" outkey="296"/>
+												<entry name="AssetTypeCategory" outkey="572"/>
 												<entry name="AssetTypeDescription" outkey="298"/>
 												<entry name="AssetTypeAccountingCategory" outkey="299"/>
 												<entry name="AssetTypeNominalLength" outkey="302"/>
@@ -338,6 +340,11 @@
 					<vertex vertexkey="551">
 						<edges>
 							<edge vertexkey="550" edgekey="552"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="572">
+						<edges>
+							<edge vertexkey="571" edgekey="573"/>
 						</edges>
 					</vertex>
 				</vertices>

@@ -1,0 +1,1865 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProductTypeParts xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:cobielite="http://core.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:pid="http://parts250.defs.lcie.cobielite.cobie.erdc.org" xsi:schemaLocation="http://parts250.lcie.cobielite.cobie.erdc.org C:/Users/RDITLACB/git/cobieserver/COBieSchema/LCie/SubSchema/250_01_ProductTypeParts.xsd" xmlns="http://parts250.lcie.cobielite.cobie.erdc.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<pid:InformationExchangeID>250.01_ProductTypeParts</pid:InformationExchangeID>
+	<cobielite:AssetTypes>
+		<pid:AssetType cobielite:externalEntityName="IfcFanType" cobielite:externalID="0JGTSjcSn7v8o$ZI4qc5Mg" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+			<cobielite:AssetTypeName>AHU</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-75 35 14 17: Modular Indoor Air Handling Units</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>63300000 J</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeModelNumber>AP-500</cobielite:AssetTypeModelNumber>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>sales@York.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcFanType" cobielite:externalID="0JGTSjcSn7v8o$ZI4qc5Mg" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+					<cobielite:DocumentName>AHU Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>63300000 J</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/AHU-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Air Handling Units Manufacturers Equipment Information</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Manufacturer Instructions</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V3-SD-08-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 45 00.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Air Handling Units Preventative Maintenance Procedures</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-10-PreventiveMaintenanceProcedures-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Air Handling Units Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Air Handling Units-Damper Leakage Test</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Test Reports</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-09-AirHandlingUnits-DamperLeakageTest.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 20 01.11 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Field Test Report-Air Handling Units-Preliminary Tests</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Test Reports</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-09-AirHandlingUnits-PreliminaryTests.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 20 01.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Lubrication Schedule-Air Handling Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-10-LubricationSchedule-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Manufacturers Equipment Information-Air Handling Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V3-SD-08-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 45 00.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Operations and Maintenance Data-Central Station Air Handling Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V3-SD-10-CentralStationAirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Operator Servicing Requirements-Central Station Air Handling Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-08-CentralStationAirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Preventative Maintenance Procedures-Air Handling Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-10-PreventiveMaintenance-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Safety Instructions-Air Handling Units and AC Units</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Closeout Submittals</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-08-SafetyInstructions-AirHandlingAndACUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 35 26</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sound Vibration and Seismic Control-AirHandlingUnits</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Test Reports</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V2-SD-09-SoundVibrationAndSeismicControl-AirHandlingUnits.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 20 01.00 10</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Spares>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>PF-1</cobielite:SpareName>
+					<cobielite:SpareCategory>Filter</cobielite:SpareCategory>
+					<cobielite:SpareDescription>See furnished filter boxes for quantity</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>sales@York.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Design Filter Change Out</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 6</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>Pa</cobie:UnitName>
+									<cobie:DecimalValue>90</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Maximum Clean Resistance</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 5</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>Pa</cobie:UnitName>
+									<cobie:DecimalValue>30</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Minimum Avg. Efficiency</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 4</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>%</cobie:UnitName>
+									<cobie:DecimalValue>30</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Minimum Number and Arrangement</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 3</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>As Required to Fit</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Nominal Size of Each Filter</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 2</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>As Required to Fit</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Remarks</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 7</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>Mount in AHU Filter Mixing Box</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Total Filter</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 1</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>L/s</cobie:UnitName>
+									<cobie:DecimalValue>12385</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+					</cobielite:SpareAttributes>
+					<cobielite:SpareDocuments>
+						<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+							<cobielite:DocumentName>HVAC Filters-Product Data</cobielite:DocumentName>
+							<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+							<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+							<cobielite:DocumentURI>doc/V1-SD-03-HVACFilters.pdf</cobielite:DocumentURI>
+							<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+						</doc:Document>
+					</cobielite:SpareDocuments>
+				</pid:Spare>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>AF-1</cobielite:SpareName>
+					<cobielite:SpareCategory>Filter</cobielite:SpareCategory>
+					<cobielite:SpareDescription>See furnished filter boxes for quantity</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>sales@York.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Design Filter Change Out</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 6</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>Pa</cobie:UnitName>
+									<cobie:DecimalValue>300</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Maximum Clean Resistance</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 5</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>Pa</cobie:UnitName>
+									<cobie:DecimalValue>90</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Minimum Avg. Efficiency</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 4</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>%</cobie:UnitName>
+									<cobie:DecimalValue>90</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Minimum Number and Arrangement</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 3</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>As Required to Fit</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Nominal Size of Each Filter</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 2</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>As Required to Fit</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Remarks</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 7</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>Mount in AHU Filter Housing Box</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Total Filter</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 1</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>L/s</cobie:UnitName>
+									<cobie:DecimalValue>12385</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+					</cobielite:SpareAttributes>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>PF-2</cobielite:SpareName>
+					<cobielite:SpareCategory>Filter</cobielite:SpareCategory>
+					<cobielite:SpareDescription>See furnished filter boxes for quantity</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>sales@York.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Design Filter Change Out</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 6</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>Pa</cobie:UnitName>
+									<cobie:DecimalValue>90</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Maximum Clean Resistance</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 5</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>Pa</cobie:UnitName>
+									<cobie:DecimalValue>30</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Minimum Avg. Efficiency</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 4</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>%</cobie:UnitName>
+									<cobie:DecimalValue>30</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Minimum Number and Arrangement</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 3</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>As Required to Fit</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Nominal Size of Each Filter</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 2</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>As Required to Fit</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Remarks</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 7</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>Mount in AHU Filter Mixing Box</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Total Filter</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 1</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>L/s</cobie:UnitName>
+									<cobie:DecimalValue>10675</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+					</cobielite:SpareAttributes>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>AF-2</cobielite:SpareName>
+					<cobielite:SpareCategory>Filter</cobielite:SpareCategory>
+					<cobielite:SpareDescription>See furnished filter boxes for quantity</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>sales@York.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Design Filter Change Out</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 6</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>Pa</cobie:UnitName>
+									<cobie:DecimalValue>300</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Maximum Clean Resistance</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 5</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>Pa</cobie:UnitName>
+									<cobie:DecimalValue>90</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Minimum Avg. Efficiency</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 4</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>%</cobie:UnitName>
+									<cobie:DecimalValue>90</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Minimum Number and Arrangement</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 3</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>As Required to Fit</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Nominal Size of Each Filter</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 2</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>As Required to Fit</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Remarks</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 7</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeStringValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:StringValue>Mount in AHU Filter Housing Box</cobie:StringValue>
+								</cobie:AttributeStringValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+						<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a">
+							<cobielite:AttributeName>Total Filter</cobielite:AttributeName>
+							<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+							<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Filter Schedule, Column 1</cobielite:AttributeDescription>
+							<cobielite:AttributeValue>
+								<cobie:AttributeDecimalValue xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+									<cobie:UnitName>L/s</cobie:UnitName>
+									<cobie:DecimalValue>10675</cobie:DecimalValue>
+								</cobie:AttributeDecimalValue>
+							</cobielite:AttributeValue>
+						</att:Attribute>
+					</cobielite:SpareAttributes>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+			</cobielite:Spares>
+		</pid:AssetType>
+		<pid:AssetType cobielite:externalEntityName="IfcOutletType" cobielite:externalID="0Oe4W3Rwf1Dht7uPdCMKEv" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+			<cobielite:AssetTypeName>Duplex Receptacle- GFCI</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-80 50 11 17: Ground Fault Receptacles</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>GFCI</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeModelNumber>2095W</cobielite:AssetTypeModelNumber>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>salesrep@legrand.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcOutletType" cobielite:externalID="0Oe4W3Rwf1Dht7uPdCMKEv" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+					<cobielite:DocumentName>Duplex Receptacle- GFCI Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>GFCI</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/DuplexReceptavle-GFCI-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Spares>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>GFCI Duplex Receptacles</cobielite:SpareName>
+					<cobielite:SpareCategory>Spare</cobielite:SpareCategory>
+					<cobielite:SpareDescription>6 extra receptacles</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>sales@lithonia.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes/>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+			</cobielite:Spares>
+		</pid:AssetType>
+		<pid:AssetType cobielite:externalEntityName="IfcFireSuppressionTerminalType" cobielite:externalID="0ch9VYgcbAYQpkbobh$sFH" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+			<cobielite:AssetTypeName>Fire Sprinkler</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-65 70 17 11 24: Fire Fighting Sprinkler Heads</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>15 mm Pendent</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeModelNumber>GB 5.6 K-Factor</cobielite:AssetTypeModelNumber>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>sales@pacificfiresafety.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcFireSuppressionTerminalType" cobielite:externalID="0ch9VYgcbAYQpkbobh$sFH" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+					<cobielite:DocumentName>Fire Sprinkler Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>15 mm Pendent</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/FireSprinkler-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinkers Preventative Maintenance Schedule</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-10-Sprinklers-Schedule.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - AFCON Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-AFCONParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Allied Tube Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-AlliedTube.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Central Model GB Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-CentralModelGB.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - FEBCO Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-FEBCOParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Inlet Connection Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-InletConnection.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Parts Identification</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-PartsIdentification.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Potter Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-PotterParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - TOLCO Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-TOLCOParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - UL Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-ULParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Victaulic Parts Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-03-Sprinklers-VictaulicParts.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers - Warranty</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Closeout Submittals</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-07-Sprinklers-Warranty.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 35 26</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers Emergency Operations</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-10-Sprinklers-Emergency.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers Environmental Conditions</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Closeout Submittals</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-08-Sprinklers-EnvironmentalConditions.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 35 26</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers Lubrication</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-10-Sprinklers-Lubrication.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers Normal Operations</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Operation and Maintenance</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-10-Sprinklers-NormalOperations.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 78 23</cobielite:DocumentReferenceURI>
+				</doc:Document>
+				<doc:Document cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:DocumentName>Sprinklers Safety Precautions</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Closeout Submittals</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/V8-SD-08-Sprinklers-Safety.pdf</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>01 35 26</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Spares>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>Sprinkler Head</cobielite:SpareName>
+					<cobielite:SpareCategory>Spare</cobielite:SpareCategory>
+					<cobielite:SpareDescription>12 extra sprinkler heads</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>sales@pacificfiresafety.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes/>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+			</cobielite:Spares>
+		</pid:AssetType>
+		<pid:AssetType cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="2FyTkPjK9BvRWrsrCGCvMc" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+			<cobielite:AssetTypeName>Light Fixture B1</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-80 70 11 14 11: Downlights</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>0600x4100mm Troffer with 32 Cell, 78mm Deep</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeModelNumber>GT2 MV</cobielite:AssetTypeModelNumber>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>sales@lithonia.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="2FyTkPjK9BvRWrsrCGCvMc" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+					<cobielite:DocumentName>Light Fixture B1 Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>0600x1200mm(2 Lamp) - 120V</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/LightFixture-B1-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Spares>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>Lamp Type A</cobielite:SpareName>
+					<cobielite:SpareCategory>Spare</cobielite:SpareCategory>
+					<cobielite:SpareDescription>F32T8/4100K, 277V, 2900 Lumens, CRI=75</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>salesrep@legrand.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes/>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+			</cobielite:Spares>
+		</pid:AssetType>
+		<pid:AssetType cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:AssetTypeName>Light Fixture B18</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-80 70 11 14 11: Downlights</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>0600x4100mm Troffer with 32 Cell, 78mm Deep with 85 Color Rendering Lamps</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeModelNumber>CFD FA 4 32 A125 277 EB81</cobielite:AssetTypeModelNumber>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>sales@cooperindustries.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="n/a" cobielite:externalSystemName="Autodesk Revit MEP 2020">
+					<cobielite:DocumentName>Light Fixture B18 Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/LightFixture-B18-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Spares>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>Lamp Type B</cobielite:SpareName>
+					<cobielite:SpareCategory>Spare</cobielite:SpareCategory>
+					<cobielite:SpareDescription>F32T8/4100K, 277V, 2900 Lumens, CRI=85</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>salesrep@legrand.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes/>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+			</cobielite:Spares>
+		</pid:AssetType>
+		<pid:AssetType cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="312$WHH7b36fc6XaYoDluI" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+			<cobielite:AssetTypeName>Light Fixture B3</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-80 70 11 14 11: Downlights</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>600mm X 600mm Fluorescent Troffer (U Shaped)</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeModelNumber>2ES8P 2U31 BILP L835HT8</cobielite:AssetTypeModelNumber>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>sales@lithonia.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="312$WHH7b36fc6XaYoDluI" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+					<cobielite:DocumentName>Light Fixture B3 Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>0600x0600mm(2 Lamp) - 120V</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/LightFixture-B3-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Spares>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>Lamp Type C</cobielite:SpareName>
+					<cobielite:SpareCategory>Spare</cobielite:SpareCategory>
+					<cobielite:SpareDescription>F32T8/4100K, 277V, 3150 Lumens, CRI=75 (U-Shaped)</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>salesrep@legrand.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes/>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+			</cobielite:Spares>
+		</pid:AssetType>
+		<pid:AssetType cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:AssetTypeName>Light Fixture M175</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-80 70 11 14 11: Downlights</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>Surface Mounted Metal Halide</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeModelNumber>TXD 175MP A23 TB SCWA LPI</cobielite:AssetTypeModelNumber>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>sales@lithonia.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="n/a" cobielite:externalSystemName="Autodesk Revit MEP 2034">
+					<cobielite:DocumentName>Light Fixture M175 Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/LightFixture-M175-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Spares>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>175W Metal Halide Lamp</cobielite:SpareName>
+					<cobielite:SpareCategory>Spare</cobielite:SpareCategory>
+					<cobielite:SpareDescription>2 extra lamps</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>salesrep@legrand.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes/>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+			</cobielite:Spares>
+		</pid:AssetType>
+		<pid:AssetType cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:AssetTypeName>Light Fixture M250</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-80 70 11 14 11: Downlights</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>Surface Mounted Metal Halide</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeModelNumber>TXD 250MP A23 TB SCWA LPI</cobielite:AssetTypeModelNumber>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>sales@lithonia.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="n/a" cobielite:externalSystemName="Autodesk Revit MEP 2035">
+					<cobielite:DocumentName>Light Fixture M250 Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/LightFixture-M250-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Spares>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>250W Metal Halide Lamp</cobielite:SpareName>
+					<cobielite:SpareCategory>Spare</cobielite:SpareCategory>
+					<cobielite:SpareDescription>2 extra lamps</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>salesrep@legrand.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes/>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+			</cobielite:Spares>
+		</pid:AssetType>
+		<pid:AssetType cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:AssetTypeName>Light Fixture M400</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23-80 70 11 14 11: Downlights</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>Surface Mounted Metal Halide</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeModelNumber>TXD 400MP A23 TB SCWA LPI</cobielite:AssetTypeModelNumber>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>sales@lithonia.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="n/a" cobielite:externalSystemName="Autodesk Revit MEP 2036">
+					<cobielite:DocumentName>Light Fixture M400 Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>n/a</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/LightFixture-M400-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Spares>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>400W Metal Halide Lamp</cobielite:SpareName>
+					<cobielite:SpareCategory>Spare</cobielite:SpareCategory>
+					<cobielite:SpareDescription>2 extra lamps</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>salesrep@legrand.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes/>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+			</cobielite:Spares>
+		</pid:AssetType>
+		<pid:AssetType cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="0FGGKr9E19BvyMqqUqhCY9" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+			<cobielite:AssetTypeName>Light Switch</cobielite:AssetTypeName>
+			<cobielite:AssetTypeCategory>23.80.50.11.14: Switches</cobielite:AssetTypeCategory>
+			<cobielite:AssetTypeDescription>Single Pole</cobielite:AssetTypeDescription>
+			<cobielite:AssetTypeModelNumber>PS15AC1CSL</cobielite:AssetTypeModelNumber>
+			<cobielite:AssetTypeManufacturerContactAssignments>
+				<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+					<cobie:ContactEmailReference>salesrep@legrand.com</cobie:ContactEmailReference>
+				</cobie:ContactAssignment>
+			</cobielite:AssetTypeManufacturerContactAssignments>
+			<cobielite:AssetTypeDocuments>
+				<doc:Document cobielite:externalEntityName="IfcLightFixtureType" cobielite:externalID="0FGGKr9E19BvyMqqUqhCY9" cobielite:externalSystemName="Autodesk Revit MEP 2011">
+					<cobielite:DocumentName>Light Switch Product Data</cobielite:DocumentName>
+					<cobielite:DocumentCategory>Product Data</cobielite:DocumentCategory>
+					<cobielite:DocumentDescription>Single Pole</cobielite:DocumentDescription>
+					<cobielite:DocumentURI>doc/LightSwitch-ProductData.PDF</cobielite:DocumentURI>
+					<cobielite:DocumentReferenceURI>n/a</cobielite:DocumentReferenceURI>
+				</doc:Document>
+			</cobielite:AssetTypeDocuments>
+			<cobielite:Spares>
+				<pid:Spare cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+					<cobielite:SpareName>Siingle Pole Light Switches</cobielite:SpareName>
+					<cobielite:SpareCategory>Spare</cobielite:SpareCategory>
+					<cobielite:SpareDescription>20 extra light switches</cobielite:SpareDescription>
+					<cobielite:SpareSetNumber>n/a</cobielite:SpareSetNumber>
+					<cobielite:SparePartNumber>n/a</cobielite:SparePartNumber>
+					<cobielite:SpareSupplierContactAssignments>
+						<cobie:ContactAssignment xmlns:cobie="http://core.cobielite.cobie.erdc.org">
+							<cobie:ContactEmailReference>sales@lithonia.com</cobie:ContactEmailReference>
+						</cobie:ContactAssignment>
+					</cobielite:SpareSupplierContactAssignments>
+					<cobielite:SpareAttributes/>
+					<cobielite:SpareDocuments/>
+				</pid:Spare>
+			</cobielite:Spares>
+		</pid:AssetType>
+	</cobielite:AssetTypes>
+	<cobielite:Contacts>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>bill.east@us.army.mil</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-55 14 11: Consultant</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Engineer Research and Development Center</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>217.352-6511</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>n/a</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>Bill</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>East</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>2902 Newmark Dr.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 9005</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>2902 Newmark Dr.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>IL</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>61826</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="IfcPersonAndOrganization" cobielite:externalID="n/a" cobielite:externalSystemName="Autodesk Revit Architecture 2011">
+			<cobielite:ContactEmail>danielle.r.love@usace.army.mil</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-55 14 11: Consultant</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>USACE</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>217-373-3475</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>n/a</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>Danielle</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>Love</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>2902 Newmark Dr.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 9005</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>2902 Newmark Dr.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>IL</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>61826</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="IfcPersonAndOrganization" cobielite:externalID="n/a" cobielite:externalSystemName="Autodesk Revit Architecture 2012">
+			<cobielite:ContactEmail>mariangelica.carrasquillo@usace.army.mil</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-55 14 11: Consultant</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>USACE</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>217-352-6511</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>n/a</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>Mariangelica</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>Carrasquillo-Mangual</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>2902 Newmark Dr.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 9006</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>2902 Newmark Dr.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>IL</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>61827</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="IfcPersonAndOrganization" cobielite:externalID="n/a" cobielite:externalSystemName="Autodesk Revit Architecture 2012">
+			<cobielite:ContactEmail>james.d.mcauley@usace.army.mil</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-55 14 11: Consultant</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>USACE</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>217-352-6511</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>n/a</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>James</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>McAulley</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>2902 Newmark Dr.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 9006</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>2902 Newmark Dr.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>IL</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>61827</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>info@coleparmer.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 21: Distributor</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Cole-Parmer</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-323-4340</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>625 East Bunker Court</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>625 East Bunker Court</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>IL</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>60061</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>contact@securalldoors.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Securall</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>888-326-7890</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>5122 N. State Rd. 39</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>5122 N. State Rd. 39</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>IN</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>46350</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>DayBrite.Marketing@Philips.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Philips Day-Brite</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-234-1890</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>776 South Green Street</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>776 South Green Street</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>MS</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>38804</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>dependable@tubeliteinc.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Tubelite Inc.</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-866-2227</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>3056 Walker Ridge Dr. NW Suite G</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>3056 Walker Ridge Dr. NW Suite G</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>MI</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>49544</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>fibrdor@fibrdor.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>FIB-R-DOR</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-342-7367</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>n/a</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 13268</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>n/a</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>AR</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>72113</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>info@amtrol.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Amtrol Inc</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>401-884-6300</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>1400 Division Road</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>1400 Division Road</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>RI</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>02893</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>info@contrastlighting.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Contrast Lighting</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>888-839-4624</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>1009 rue du Parc Industriel</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>1009 rue du Parc Industriel</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>Qc</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>CAN</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>G6Z 1C5</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>info@crossaluminum.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Cross Aluminum</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-806-3667</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>1770 Mayflower Rd.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>1770 Mayflower Rd.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>MI</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>49120</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>info@ellisonbronze.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Ellison Bronze</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-665-6445</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>125 W. Main St.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>125 W. Main St.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>NY</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>14733</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>info@hartcool.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Hart &amp; Cooley</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-223-8461</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>5030 Corporate Exchange Blvd.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>5030 Corporate Exchange Blvd.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>MI</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>49512</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>info@hufcor.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Hufcor</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-356-6968</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>2101 Kennedy Rd.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 591</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>2101 Kennedy Rd.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>WI</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>53547</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>info@modernfold.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Modernfold</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-869-9685</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>215 W. New Rd.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>215 W. New Rd.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>IN</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>46140</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>info@truaire.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Truaire Industries Inc</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>888-878-2473</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>11020 Bloomfield Ave</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>11020 Bloomfield Ave</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>CA</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>90670</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>info@wolfxray.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Wolf X-Ray Corporation</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-356-9729</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>100 West Industry Court</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>100 West Industry Court</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>NY</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>11729</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>karpensteel@karpensteel.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Karpen Steel</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>828-645-4821</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>181 Reems Creek Rd.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>181 Reems Creek Rd.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>NC</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>28787</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>manufacturerx@genericmanufacturer.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Generic Manufacturer</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>217-352-6511</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>n/a</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>n/a</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>n/a</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>n/a</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>n/a</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>manufacturery@genericmanufacturer.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Generic Manufacturer</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>217-352-6511</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>n/a</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>n/a</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>n/a</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>n/a</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>n/a</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>quickquote@doorcomponents.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Door Components</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>909-770-5700</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>7980 Redwood Ave</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>7980 Redwood Ave</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>CA</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>92336</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@4oakton.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Oakton Instruments</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>888-462-5866</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>n/a</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 5136</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>n/a</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>IL</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>60061</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@allightingltd.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>AL Lighting Ltd</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>631-698-8919</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>15 Commercial Blvd.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>15 Commercial Blvd.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>NY</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>11763</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@americanstandard-us.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>American Standard</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-442-1902</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>1 Centennial Plaza</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>1 Centennial Plaza</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>NJ</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>08855-6820</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@apollovalves.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Conbraco Industries</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>704-841-6000</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>701 Matthews Mint Hill Rd</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>701 Matthews Mint Hill Rd</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>NC</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>28105</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@bradleycorp.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Bradley Corporation</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-272-3539</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>W142 N9101 Fountain Blvd.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>P.O. Box 309</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>W142 N9101 Fountain Blvd.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>WI</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>2045-03-31T00:00:00.000</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@cooperindustries.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Cooper Lighting</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>770-486-4800</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>1121 Highway 74 South</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>1121 Highway 74 South</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>GA</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>30269</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@dataaire.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Data Aire Inc.</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>714-921-6000</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>230 W. Blue Ridge Avenue</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>230 W. Blue Ridge Avenue</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>CA</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>92865-4225</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@eaton.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Eaton</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>412-893-3300</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>1000 Cherrington Parkway</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>1000 Cherrington Parkway</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>PA</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>15108</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@efcocorp.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>EFCO Coorporation</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-221-4169</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>1000 Country Rd.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>1000 Country Rd.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>MO</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>2079-11-24T00:00:00.000</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@elkayusa.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Elkay Manufacturing Co.</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>630-574-8484</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>2222 Camden Court</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>2222 Camden Court</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>IL</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>60523</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@fleetwoodusa.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>FleetWood Windows &amp; Doors</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-736-7363</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>1 Fleetwood Way</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>P.O. Box 1086</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>1 Fleetwood Way</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>CA</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>2154-04-15T00:00:00.000</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@goodtime.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Goodtime Medical</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>888-386-8225</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>25 Cooperative Way</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>25 Cooperative Way</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>MO</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>2073-07-20T00:00:00.000</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@grainger.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Grainger.com</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>888-361-8649</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>n/a</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>n/a</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>n/a</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>n/a</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@greenheck.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Greenheck</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>715-359-6171</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>n/a</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 410</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>n/a</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>WI</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>54476-0410</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@inprocorp.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>InPro Corporation</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-222-5556</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>S80 W18766 Apollo Drive</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>S80 W18766 Apollo Drive</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>WI</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>2045-07-07T00:00:00.000</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@kohler.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Kohler</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-456-4537</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>444 Highland Drive</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>444 Highland Drive</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>WI</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>53044</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@krueger-hvac.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Krueger</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>602-622-7601</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>n/a</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 5486</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>n/a</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>AZ</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>85703-9990</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@leader-ventilation.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Leader Ventilation</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>86-574-87881138</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>Floor 2, ShenYongDa Building, Airport Road</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>Floor 2, ShenYongDa Building, Airport Road</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>Zhejiang</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>China</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>315176</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@lithonia.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Lithonia Lighting</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-315-4963</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>1 Lithonia Way</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>1 Lithonia Way</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>GA</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>30012</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@lochinvar.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Lochinvar</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>615-889-8900</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>2005 Elm Hill Pike</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>2005 Elm Hill Pike</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>TN</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>37210</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@lumaxlighting.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Lumax Industries Inc</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>814-944-2537</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>n/a</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 991</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>n/a</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>PA</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>16603</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@marble.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>All Granite and Marble</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>631-492-2027</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>90 Marcus Blvd.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>90 Marcus Blvd.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>NY</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>11729</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@marvin.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Marvin Door and Window</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>888-537-7828</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>n/a</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 100</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>n/a</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>MN</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>56763</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@mitsubishielectric.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Mitsubishi Electric</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>81-3-3218-2111</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>Tokyo Building 2-7-3</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>Tokyo Building 2-7-3</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>Tokyo</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>Japan</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>100-8310</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@pacificfiresafety.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Pacific Fire Safety</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>818-765-0170</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>12556 Saticoy Street</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>12556 Saticoy Street</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>CA</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>91605</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@panelfold.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Panelfold</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>305-688-3501</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>10700 NW 36th Ave.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>10700 NW 36th Ave.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>FL</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>33167</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@PVI.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>PVI Industries</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-433-5654</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>n/a</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>PO Box 7124</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>n/a</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>TX</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>76111</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@radiometeramerica.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Radiometer America Inc</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-736-0600</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>810 Sharon Drive</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>810 Sharon Drive</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>OH</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>44145</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@siemens.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Siemens</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-743-6367</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>300 New Jersey Avenue Suite 1000</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>300 New Jersey Avenue Suite 1000</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>DC</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>20001</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@spycor.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>SPYCOR Construction Systems</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>877-293-0784</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>1121 Park West Blvd. Suite B-183</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>1121 Park West Blvd. Suite B-183</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>SC</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>1980-09-02T00:00:00.000</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@sunraydoors.co.uk</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Sunray Doors</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>01233 639039</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>Kingsworth Industrial Estate Wotton Rd.</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>Kingsworth Industrial Estate Wotton Rd.</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>Kent</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>UK</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>IN23 6LL</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@taco-hvac.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Taco Inc.</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>401-942-8000</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>1160 Cranston Street</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>1160 Cranston Street</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>RI</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>02920</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@us.kone.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Kone</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-956-5663</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>Operation Center</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>One Kone Court</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>One Kone Court</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>IL</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>2067-09-25T00:00:00.000</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@York.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>York International</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>858-560-7890</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>3954 Murphy Canyon Road Suite D-203</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>3954 Murphy Canyon Road Suite D-203</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>CA</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>92123</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>sales@zoll.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Zoll Medical Corporation</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>800-348-9011</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>269 Mill Road</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>269 Mill Road</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>MA</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>01824</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>salesrep@legrand.com</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Legrand</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>877-295-3472</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>sales</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>60 Woodlawn Street</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>60 Woodlawn Street</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>CT</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>06110</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+		<con:Contact cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a">
+			<cobielite:ContactEmail>supplycompany@usace.army.mil</cobielite:ContactEmail>
+			<cobielite:ContactCategory>34-31 11: Manufacturer</cobielite:ContactCategory>
+			<cobielite:ContactCompanyName>Company</cobielite:ContactCompanyName>
+			<cobielite:ContactPhoneNumber>217-373-3475</cobielite:ContactPhoneNumber>
+			<cobielite:ContactDepartmentName>n/a</cobielite:ContactDepartmentName>
+			<cobielite:ContactGivenName>n/a</cobielite:ContactGivenName>
+			<cobielite:ContactFamilyName>n/a</cobielite:ContactFamilyName>
+			<cobielite:ContactStreet>904 Illinois Street</cobielite:ContactStreet>
+			<cobielite:ContactPostalBoxNumber>n/a</cobielite:ContactPostalBoxNumber>
+			<cobielite:ContactTownName>904 Illinois Street</cobielite:ContactTownName>
+			<cobielite:ContactRegionCode>IL</cobielite:ContactRegionCode>
+			<cobielite:ContactCountryName>USA</cobielite:ContactCountryName>
+			<cobielite:ContactPostalCode>61820</cobielite:ContactPostalCode>
+			<cobielite:ContactURL>n/a</cobielite:ContactURL>
+		</con:Contact>
+	</cobielite:Contacts>
+</ProductTypeParts>

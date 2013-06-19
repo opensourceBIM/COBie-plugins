@@ -16,7 +16,7 @@ package org.erdc.cobie.cobielite.core;
 public interface ZoneCategorySimpleType extends org.apache.xmlbeans.XmlString
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ZoneCategorySimpleType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s3CB9F4CCC0C9D802814557AAC3F0E7DA").resolveHandle("zonecategorysimpletype9c2atype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ZoneCategorySimpleType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sC7CAE39C2CC479123ADE186B88FEDB2D").resolveHandle("zonecategorysimpletype9c2atype");
     
     /**
      * A factory class with static methods for creating instances

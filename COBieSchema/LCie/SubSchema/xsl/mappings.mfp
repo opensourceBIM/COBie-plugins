@@ -2,9 +2,19 @@
 <!--  MapForce Project File  -->
 <Project Expanded="Yes" Type="Root" language="java" OutputDir="output\" Title="mappings" OutputName="mappings" Version="6">
 	<Folder FolderName="Mapping Folder" Expanded="Yes" Type="MappingFolder">
+		<File Type="Mapping" FilePath="COBieLite_To_ProductInspection_230.mfd"/>
+		<File Type="Mapping" FilePath="COBieLite_To_ProductTInstallationReport_210.mfd"/>
 		<File Type="Mapping" FilePath="COBieLite_To_ProductTypeCandidate100.mfd"/>
+		<File Type="Mapping" FilePath="COBieLite_To_ProductTypeCandidate110.mfd"/>
+		<File Type="Mapping" FilePath="COBieLite_To_ProductTypeMaintenance_250.mfd"/>
+		<File Type="Mapping" FilePath="COBieLite_To_ProductTypeParts_250.mfd"/>
+		<File Type="Mapping" FilePath="COBieLite_To_ProductTypeSelection_180.mfd"/>
 		<File Type="Mapping" FilePath="COBieLite_To_ProductTypeTemplate090.mfd"/>
+		<File Type="Mapping" FilePath="COBieLite_To_ProductTypeTemplate100.mfd"/>
+		<File Type="Mapping" FilePath="COBieLite_To_ProductTypeWarranty_250.mfd"/>
+		<File Type="Mapping" FilePath="COBieLite_To_SystemOperation_250.mfd"/>
 		<File Type="Mapping" FilePath="ProductTypeTemplate_To_COBieLite.mfd"/>
 		<File Type="Mapping" FilePath="C:\Users\RDITLACB\git\cobieserver\COBieSchema\COBieLite\xsd\xsl\RC2_to_RC3.mfd"/>
+		<File Type="Mapping" FilePath="C:\Users\RDITLACB\git\cobieserver\COBieSchema\COBieLite\xsd\xsl\XMLBeansOutput_to_RC3(PreferredOutput).mfd"/>
 	</Folder>
 </Project>
