@@ -22,23 +22,22 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="TypeTemplateUpdateFieldsType">
+		<xs:sequence>
+			<xs:group ref="pttd:AssetTypeUpdateGroup"/>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="TypeTemplateUpdateRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
 				<xs:sequence>
-					<xs:element ref="pttd:AssetType"/>
+					<xs:group ref="pttd:AssetTypeUpdateGroup"/>
 				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="TypeTemplateCreateRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:CreateRequestType">
+
 				<xs:sequence>
 					<xs:group ref="pttd:AssetTypeEditGroup"/>
 				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+
 	</xs:complexType>
 	<xs:complexType name="ProductTypeTemplateClientRequestType">
 		<xs:complexContent>
@@ -51,9 +50,9 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:element name="ProductTypeTemplate" type="pttd:ProductTypeTemplateType" substitutionGroup="cobiex:InformationExchange"/>
-	<xs:element name="CreateRequest" type="pttc:TypeTemplateCreateRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="CreateNonKey" type="pttc:TypeTemplateCreateRequestType" substitutionGroup="cobiex:CreateNonKey"/>
 	<xs:element name="ReadResult" type="pttc:TypeTemplateReadResultType" substitutionGroup="cobiex:ReadResult"/>
-	<xs:element name="UpdateRequest" type="pttc:TypeTemplateUpdateRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="UpdatedElements" type="pttc:TypeTemplateUpdateRequestType" substitutionGroup="cobiex:UpdatedElements"/>
 	<xs:element name="ReadKey" type="AssetTypeKeyType" substitutionGroup="cobiex:ReadKey"/>
 	<xs:element name="UpdateKey" type="AssetTypeKeyType" substitutionGroup="cobiex:UpdateKey"/>
 	<xs:element name="CreateKey" type="AssetTypeKeyType" substitutionGroup="cobiex:CreateKey"/>

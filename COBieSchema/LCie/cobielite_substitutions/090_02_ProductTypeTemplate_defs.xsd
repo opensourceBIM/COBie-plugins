@@ -18,6 +18,105 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:group name="AssetTypeUpdateGroup">
+		<xs:sequence>
+		<xs:element ref="AssetTypeName" minOccurs="0">
+					<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+		</xs:element>
+<xs:element ref="AssetTypeCategory" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeAccountingCategory" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeNominalLength" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeNominalWidth" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeNominalHeight" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeAccessibilityText" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeCodePerformance" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeColorCode" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeConstituentsDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeFeaturesDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeFinishDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeGradeDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeMaterialDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeShapeDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeSizeDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>		
+		</xs:sequence>
+	</xs:group>
 	<xs:group name="AssetTypeEditGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeCategory">

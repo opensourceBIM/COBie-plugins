@@ -3,17 +3,14 @@
 	<pttd:InformationExchangeID>090.02_ProductTypeTemplate</pttd:InformationExchangeID>
 	<bimsie:SessionToken>abcdefghijklmnop</bimsie:SessionToken>
 	<bimsie:UserID>345</bimsie:UserID>
-	<pttcd:UpdateRequest>
+	<crud:UpdateRequest>
 		<bimsie:RevisionID>203</bimsie:RevisionID>
 		<bimsie:UpdateHandlerID>505</bimsie:UpdateHandlerID>
 		<pttcd:UpdateKey>
 			<cobie:AssetTypeName>AC Unit Type 1</cobie:AssetTypeName>
 		</pttcd:UpdateKey>
-		<pttd:AssetType cobie:externalEntityName="IfcMedicalDeviceType" cobie:externalID="n/a" cobie:externalSystemName="n/a">
-			<cobie:AssetTypeName>NewTypeName</cobie:AssetTypeName>
-			<cobie:AssetTypeCategory>NewTypeCategory</cobie:AssetTypeCategory>
-			<cobie:AssetTypeDescription>NewAssetTypeDescription</cobie:AssetTypeDescription>
+		<pttcd:UpdatedElements>
 			<cobie:AssetTypeAccountingCategory>Moveable</cobie:AssetTypeAccountingCategory>
-		</pttd:AssetType>
-	</pttcd:UpdateRequest>
+		</pttcd:UpdatedElements>
+	</crud:UpdateRequest>
 </ProductTypeTemplate_090_Request>

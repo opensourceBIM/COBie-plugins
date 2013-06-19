@@ -3,114 +3,116 @@
 	<pttd:InformationExchangeID>090.02_ProductTypeTemplate</pttd:InformationExchangeID>
 	<bimsie:SessionToken>abcdefghijklmnop</bimsie:SessionToken>
 	<bimsie:UserID>345</bimsie:UserID>
-	<pttcd:CreateRequest>
+	<crud:CreateRequest>
 		<bimsie:ProjectID>202</bimsie:ProjectID>
-		<bimsie:CreateHandlerID>100</bimsie:CreateHandlerID>
+		<bimsie:CreateHandlerID>600</bimsie:CreateHandlerID>
 		<pttcd:CreateKey>
 			<cobie:AssetTypeName>AC Unit Type 1</cobie:AssetTypeName>
 		</pttcd:CreateKey>
-		<cobie:AssetTypeCategory>23-75 10 24 21 27: Unitary Air Conditioning Equipment</cobie:AssetTypeCategory>
-		<cobie:AssetTypeDescription>Horiz. D.X. Fan Coil</cobie:AssetTypeDescription>
-		<cobie:AssetTypeAccountingCategory>Fixed</cobie:AssetTypeAccountingCategory>
-		<cobie:AssetTypeNominalLength/>
-		<cobie:AssetTypeNominalWidth/>
-		<cobie:AssetTypeNominalHeight/>
-		<cobie:AssetTypeAccessibilityText>n/a</cobie:AssetTypeAccessibilityText>
-		<cobie:AssetTypeCodePerformance>n/a</cobie:AssetTypeCodePerformance>
-		<cobie:AssetTypeColorCode>n/a</cobie:AssetTypeColorCode>
-		<cobie:AssetTypeConstituentsDescription>n/a</cobie:AssetTypeConstituentsDescription>
-		<cobie:AssetTypeFeaturesDescription>n/a</cobie:AssetTypeFeaturesDescription>
-		<cobie:AssetTypeFinishDescription>n/a</cobie:AssetTypeFinishDescription>
-		<cobie:AssetTypeGradeDescription>n/a</cobie:AssetTypeGradeDescription>
-		<cobie:AssetTypeMaterialDescription>n/a</cobie:AssetTypeMaterialDescription>
-		<cobie:AssetTypeShapeDescription>n/a</cobie:AssetTypeShapeDescription>
-		<cobie:AssetTypeSizeDescription>n/a</cobie:AssetTypeSizeDescription>
-		<cobie:AssetTypeSustainabilityPerformanceDescription>n/a</cobie:AssetTypeSustainabilityPerformanceDescription>
-		<cobie:AssetTypeAttributes>
-			<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
-				<cobielite:AttributeName>Return Duct  (Unit/Room Outlet) Test Pressure</cobielite:AttributeName>
-				<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
-				<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 6</cobielite:AttributeDescription>
-				<cobielite:AttributeValue>
-					<cobie:AttributeStringValue>
-						<cobie:UnitName>P</cobie:UnitName>
-						<cobie:StringValue>250 Negative</cobie:StringValue>
-					</cobie:AttributeStringValue>
-				</cobielite:AttributeValue>
-			</att:Attribute>
-			<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
-				<cobielite:AttributeName>Return Duct (Unit/Room Outlet) Leak Class</cobielite:AttributeName>
-				<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
-				<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 5</cobielite:AttributeDescription>
-				<cobielite:AttributeValue>
-					<cobie:AttributeDecimalValue>
-						<cobie:DecimalValue>3</cobie:DecimalValue>
-					</cobie:AttributeDecimalValue>
-				</cobielite:AttributeValue>
-			</att:Attribute>
-			<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
-				<cobielite:AttributeName>Return Duct (Unit/Room Outlet) Min. Static Pressure</cobielite:AttributeName>
-				<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
-				<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 3</cobielite:AttributeDescription>
-				<cobielite:AttributeValue>
-					<cobie:AttributeStringValue>
-						<cobie:UnitName>P</cobie:UnitName>
-						<cobie:StringValue>250 Negative</cobie:StringValue>
-					</cobie:AttributeStringValue>
-				</cobielite:AttributeValue>
-			</att:Attribute>
-			<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
-				<cobielite:AttributeName>Return Duct (Unit/Room Outlet)Seal Class</cobielite:AttributeName>
-				<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
-				<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 4</cobielite:AttributeDescription>
-				<cobielite:AttributeValue>
-					<cobie:AttributeStringValue>
-						<cobie:StringValue>A</cobie:StringValue>
-					</cobie:AttributeStringValue>
-				</cobielite:AttributeValue>
-			</att:Attribute>
-			<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
-				<cobielite:AttributeName>Supply Duct (Unit/Room Outlet) Leak Class</cobielite:AttributeName>
-				<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
-				<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 5</cobielite:AttributeDescription>
-				<cobielite:AttributeValue>
-					<cobie:AttributeDecimalValue>
-						<cobie:DecimalValue>3</cobie:DecimalValue>
-					</cobie:AttributeDecimalValue>
-				</cobielite:AttributeValue>
-			</att:Attribute>
-			<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
-				<cobielite:AttributeName>Supply Duct (Unit/Room Outlet) Min. Static Pressure</cobielite:AttributeName>
-				<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
-				<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 3</cobielite:AttributeDescription>
-				<cobielite:AttributeValue>
-					<cobie:AttributeStringValue>
-						<cobie:UnitName>P</cobie:UnitName>
-						<cobie:StringValue>250 Positive</cobie:StringValue>
-					</cobie:AttributeStringValue>
-				</cobielite:AttributeValue>
-			</att:Attribute>
-			<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
-				<cobielite:AttributeName>Supply Duct (Unit/Room Outlet) Test Pressure</cobielite:AttributeName>
-				<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
-				<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 6</cobielite:AttributeDescription>
-				<cobielite:AttributeValue>
-					<cobie:AttributeStringValue>
-						<cobie:UnitName>P</cobie:UnitName>
-						<cobie:StringValue>250 Positive</cobie:StringValue>
-					</cobie:AttributeStringValue>
-				</cobielite:AttributeValue>
-			</att:Attribute>
-			<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
-				<cobielite:AttributeName>Supply Duct (Unit/Room Outlet)Seal Class</cobielite:AttributeName>
-				<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
-				<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 4</cobielite:AttributeDescription>
-				<cobielite:AttributeValue>
-					<cobie:AttributeStringValue>
-						<cobie:StringValue>A</cobie:StringValue>
-					</cobie:AttributeStringValue>
-				</cobielite:AttributeValue>
-			</att:Attribute>
-		</cobie:AssetTypeAttributes>
-	</pttcd:CreateRequest>
+		<pttcd:CreateNonKey>
+			<cobie:AssetTypeCategory>23-75 10 24 21 27: Unitary Air Conditioning Equipment</cobie:AssetTypeCategory>
+			<cobie:AssetTypeDescription>Horiz. D.X. Fan Coil</cobie:AssetTypeDescription>
+			<cobie:AssetTypeAccountingCategory>Fixed</cobie:AssetTypeAccountingCategory>
+			<cobie:AssetTypeNominalLength/>
+			<cobie:AssetTypeNominalWidth/>
+			<cobie:AssetTypeNominalHeight/>
+			<cobie:AssetTypeAccessibilityText>n/a</cobie:AssetTypeAccessibilityText>
+			<cobie:AssetTypeCodePerformance>n/a</cobie:AssetTypeCodePerformance>
+			<cobie:AssetTypeColorCode>n/a</cobie:AssetTypeColorCode>
+			<cobie:AssetTypeConstituentsDescription>n/a</cobie:AssetTypeConstituentsDescription>
+			<cobie:AssetTypeFeaturesDescription>n/a</cobie:AssetTypeFeaturesDescription>
+			<cobie:AssetTypeFinishDescription>n/a</cobie:AssetTypeFinishDescription>
+			<cobie:AssetTypeGradeDescription>n/a</cobie:AssetTypeGradeDescription>
+			<cobie:AssetTypeMaterialDescription>n/a</cobie:AssetTypeMaterialDescription>
+			<cobie:AssetTypeShapeDescription>n/a</cobie:AssetTypeShapeDescription>
+			<cobie:AssetTypeSizeDescription>n/a</cobie:AssetTypeSizeDescription>
+			<cobie:AssetTypeSustainabilityPerformanceDescription>n/a</cobie:AssetTypeSustainabilityPerformanceDescription>
+			<cobie:AssetTypeAttributes>
+				<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
+					<cobielite:AttributeName>Return Duct  (Unit/Room Outlet) Test Pressure</cobielite:AttributeName>
+					<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+					<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 6</cobielite:AttributeDescription>
+					<cobielite:AttributeValue>
+						<cobie:AttributeStringValue>
+							<cobie:UnitName>P</cobie:UnitName>
+							<cobie:StringValue>250 Negative</cobie:StringValue>
+						</cobie:AttributeStringValue>
+					</cobielite:AttributeValue>
+				</att:Attribute>
+				<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
+					<cobielite:AttributeName>Return Duct (Unit/Room Outlet) Leak Class</cobielite:AttributeName>
+					<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+					<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 5</cobielite:AttributeDescription>
+					<cobielite:AttributeValue>
+						<cobie:AttributeDecimalValue>
+							<cobie:DecimalValue>3</cobie:DecimalValue>
+						</cobie:AttributeDecimalValue>
+					</cobielite:AttributeValue>
+				</att:Attribute>
+				<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
+					<cobielite:AttributeName>Return Duct (Unit/Room Outlet) Min. Static Pressure</cobielite:AttributeName>
+					<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+					<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 3</cobielite:AttributeDescription>
+					<cobielite:AttributeValue>
+						<cobie:AttributeStringValue>
+							<cobie:UnitName>P</cobie:UnitName>
+							<cobie:StringValue>250 Negative</cobie:StringValue>
+						</cobie:AttributeStringValue>
+					</cobielite:AttributeValue>
+				</att:Attribute>
+				<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
+					<cobielite:AttributeName>Return Duct (Unit/Room Outlet)Seal Class</cobielite:AttributeName>
+					<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+					<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 4</cobielite:AttributeDescription>
+					<cobielite:AttributeValue>
+						<cobie:AttributeStringValue>
+							<cobie:StringValue>A</cobie:StringValue>
+						</cobie:AttributeStringValue>
+					</cobielite:AttributeValue>
+				</att:Attribute>
+				<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
+					<cobielite:AttributeName>Supply Duct (Unit/Room Outlet) Leak Class</cobielite:AttributeName>
+					<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+					<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 5</cobielite:AttributeDescription>
+					<cobielite:AttributeValue>
+						<cobie:AttributeDecimalValue>
+							<cobie:DecimalValue>3</cobie:DecimalValue>
+						</cobie:AttributeDecimalValue>
+					</cobielite:AttributeValue>
+				</att:Attribute>
+				<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
+					<cobielite:AttributeName>Supply Duct (Unit/Room Outlet) Min. Static Pressure</cobielite:AttributeName>
+					<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+					<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 3</cobielite:AttributeDescription>
+					<cobielite:AttributeValue>
+						<cobie:AttributeStringValue>
+							<cobie:UnitName>P</cobie:UnitName>
+							<cobie:StringValue>250 Positive</cobie:StringValue>
+						</cobie:AttributeStringValue>
+					</cobielite:AttributeValue>
+				</att:Attribute>
+				<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
+					<cobielite:AttributeName>Supply Duct (Unit/Room Outlet) Test Pressure</cobielite:AttributeName>
+					<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+					<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 6</cobielite:AttributeDescription>
+					<cobielite:AttributeValue>
+						<cobie:AttributeStringValue>
+							<cobie:UnitName>P</cobie:UnitName>
+							<cobie:StringValue>250 Positive</cobie:StringValue>
+						</cobie:AttributeStringValue>
+					</cobielite:AttributeValue>
+				</att:Attribute>
+				<att:Attribute cobielite:externalEntityName="n/a" cobielite:externalID="n/a" cobielite:externalSystemName="n/a" cobielite:propertySetName="n/a" cobielite:propertySetExternalIdentifier="n/a" xmlns:cobielite="http://core.cobielite.cobie.erdc.org">
+					<cobielite:AttributeName>Supply Duct (Unit/Room Outlet)Seal Class</cobielite:AttributeName>
+					<cobielite:AttributeCategory>Requirement</cobielite:AttributeCategory>
+					<cobielite:AttributeDescription>Clinic_245_HVACSChedules.PDF Duct Static Pressure Schedule, Column 4</cobielite:AttributeDescription>
+					<cobielite:AttributeValue>
+						<cobie:AttributeStringValue>
+							<cobie:StringValue>A</cobie:StringValue>
+						</cobie:AttributeStringValue>
+					</cobielite:AttributeValue>
+				</att:Attribute>
+			</cobie:AssetTypeAttributes>
+		</pttcd:CreateNonKey>
+	</crud:CreateRequest>
 </ProductTypeTemplate_090_Request>
