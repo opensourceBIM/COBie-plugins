@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:crud="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" targetNamespace="http://bimsie.bimserver.org" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="lcie_crud.xsd"/>
+	<xs:element name="ProjectID" type="xs:long" substitutionGroup="crud:ProjectID"/>
+	<xs:element name="RevisionID" type="xs:long" substitutionGroup="crud:RevisionID"/>
+	<xs:element name="SessionToken" type="xs:string" substitutionGroup="crud:SessionToken"/>
+	<xs:element name="ReadHandlerID" type="xs:long" substitutionGroup="crud:ReadHandlerID"/>
+	<xs:element name="CreateHandlerID" type="xs:long" substitutionGroup="crud:CreateHandlerID"/>
+	<xs:element name="UpdateHandlerID" type="xs:long" substitutionGroup="crud:UpdateHandlerID"/>
+	<xs:element name="DeleteHandlerID" type="xs:long" substitutionGroup="crud:DeleteHandlerID"/>
+	<xs:element name="UserID" type="xs:long" substitutionGroup="crud:UserID"/>
+</xs:schema>

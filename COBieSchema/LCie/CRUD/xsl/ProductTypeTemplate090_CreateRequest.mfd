@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
+	<resources/>
+	<component name="defaultmap1" blackbox="0" uid="1" editable="1">
+		<properties SelectedLanguage="java"/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="4" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="644" lty="47" rbx="803" rby="65"/>
+					<data>
+						<constant value="090.02_ProductTypeTemplate" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="5" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="680" lty="90" rbx="803" rby="108"/>
+					<data>
+						<constant value="abcdefghijklmnop" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="6" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="734" lty="149" rbx="784" rby="167"/>
+					<data>
+						<constant value="345" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="7" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="686" lty="215" rbx="736" rby="233"/>
+					<data>
+						<constant value="202" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="8" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="716" lty="245" rbx="766" rby="263"/>
+					<data>
+						<constant value="100" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="090_02_ProductTypeTemplate" library="xml" uid="9" kind="14">
+					<properties/>
+					<view ltx="132" lty="275" rbx="432" rby="475"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate090.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="3" expanded="1">
+								<entry name="document" ns="3" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductTypeTemplate" ns="2" expanded="1">
+										<entry name="AssetTypes" expanded="1">
+											<entry name="AssetType" ns="1" outkey="7" expanded="1">
+												<entry name="AssetTypeName" outkey="8"/>
+												<entry name="AssetTypeCategory" outkey="9"/>
+												<entry name="AssetTypeDescription" outkey="10"/>
+												<entry name="AssetTypeAccountingCategory" outkey="11"/>
+												<entry name="AssetTypeNominalLength" outkey="12"/>
+												<entry name="AssetTypeNominalWidth" outkey="13"/>
+												<entry name="AssetTypeNominalHeight" outkey="14"/>
+												<entry name="AssetTypeAccessibilityText" outkey="15"/>
+												<entry name="AssetTypeCodePerformance" outkey="16"/>
+												<entry name="AssetTypeColorCode" outkey="17"/>
+												<entry name="AssetTypeConstituentsDescription" outkey="18"/>
+												<entry name="AssetTypeFeaturesDescription" outkey="19"/>
+												<entry name="AssetTypeFinishDescription" outkey="20"/>
+												<entry name="AssetTypeGradeDescription" outkey="21"/>
+												<entry name="AssetTypeMaterialDescription" outkey="22"/>
+												<entry name="AssetTypeShapeDescription" outkey="23"/>
+												<entry name="AssetTypeSizeDescription" outkey="24"/>
+												<entry name="AssetTypeSustainabilityPerformanceDescription" outkey="25"/>
+												<entry name="AssetTypeAttributes" outkey="26"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\..\SubSchema\090_02_ProductTypeTemplate.xsd" inputinstance="..\..\SubSchema\examples\090_02_ProductTypeTemplate.xml" outputinstance="..\..\SubSchema\examples\090_02_ProductTypeTemplate.xml" instanceroot="{http://typetemplate090.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="ttd:AssetType" library="core" uid="12" kind="3">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="27"/>
+						<datapoint pos="1" key="28"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="29"/>
+						<datapoint/>
+					</targets>
+					<view ltx="541" lty="245" rbx="644" rby="301"/>
+				</component>
+				<component name="position" library="core" uid="11" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="30"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="31"/>
+					</targets>
+					<view ltx="541" lty="383" rbx="608" rby="422"/>
+				</component>
+				<component name="constant" library="core" uid="15" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="32"/>
+					</targets>
+					<view ltx="587" lty="659" rbx="625" rby="677"/>
+					<data>
+						<constant value="1" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="equal" library="core" uid="14" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="33"/>
+						<datapoint pos="1" key="34"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="35"/>
+					</targets>
+					<view ltx="644" lty="350" rbx="697" rby="406"/>
+				</component>
+				<component name="090_02_ProductTypeTemplate_CRUD" library="xml" uid="2" kind="14">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="1031" lty="100" rbx="1530" rby="615"/>
+					<data>
+						<root scrollposition="807">
+							<header>
+								<namespaces>
+									<namespace uid="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://bimsie.bimserver.org"/>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate.defs.crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="6" expanded="1">
+								<entry name="document" ns="6" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductTypeTemplate_090_Request" ns="5" expanded="1">
+										<entry name="InformationExchangeID" inpkey="36"/>
+										<entry name="SessionToken" ns="1" inpkey="37"/>
+										<entry name="UserID" ns="1" inpkey="38"/>
+										<entry name="CreateRequest" ns="3" inpkey="39" expanded="1">
+											<entry name="ProjectID" ns="1" inpkey="2"/>
+											<entry name="CreateHandlerID" ns="1" inpkey="40"/>
+											<entry name="CreateKey" ns="3" expanded="1">
+												<entry name="AssetTypeName" ns="2" inpkey="41"/>
+											</entry>
+											<entry name="AssetTypeCategory" ns="2" inpkey="42"/>
+											<entry name="AssetTypeDescription" ns="2" inpkey="43"/>
+											<entry name="AssetTypeAccountingCategory" ns="2" inpkey="44"/>
+											<entry name="AssetTypeNominalLength" ns="2" inpkey="45"/>
+											<entry name="AssetTypeNominalWidth" ns="2" inpkey="46"/>
+											<entry name="AssetTypeNominalHeight" ns="2" inpkey="47"/>
+											<entry name="AssetTypeAccessibilityText" ns="2" inpkey="48"/>
+											<entry name="AssetTypeCodePerformance" ns="2" inpkey="49"/>
+											<entry name="AssetTypeColorCode" ns="2" inpkey="50"/>
+											<entry name="AssetTypeConstituentsDescription" ns="2" inpkey="51"/>
+											<entry name="AssetTypeFeaturesDescription" ns="2" inpkey="52"/>
+											<entry name="AssetTypeFinishDescription" ns="2" inpkey="53"/>
+											<entry name="AssetTypeGradeDescription" ns="2" inpkey="54"/>
+											<entry name="AssetTypeMaterialDescription" ns="2" inpkey="55"/>
+											<entry name="AssetTypeShapeDescription" ns="2" inpkey="56"/>
+											<entry name="AssetTypeSizeDescription" ns="2" inpkey="57"/>
+											<entry name="AssetTypeSustainabilityPerformanceDescription" ns="2" inpkey="58"/>
+											<entry name="AssetTypeAttributes" ns="2" inpkey="59" expanded="1">
+												<entry name="Attribute" ns="4" expanded="1"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\090_02_ProductTypeTemplate_CRUD.xsd" outputinstance="..\090_02_ProductTypeTemplate_CRUD.xml" instanceroot="{http://typetemplate.crud.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate_090_Request"/>
+						<wsdl/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="60">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="61">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="62">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="63">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2" edgekey="64"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="40" edgekey="65"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="36" edgekey="66"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="37" edgekey="67"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="38" edgekey="68"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="7">
+						<edges>
+							<edge vertexkey="30" edgekey="69"/>
+							<edge vertexkey="27" edgekey="70"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="41" edgekey="71"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="9">
+						<edges>
+							<edge vertexkey="42" edgekey="72"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="10">
+						<edges>
+							<edge vertexkey="43" edgekey="73"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="11">
+						<edges>
+							<edge vertexkey="44" edgekey="74"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="45" edgekey="62"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="13">
+						<edges>
+							<edge vertexkey="46" edgekey="63"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="14">
+						<edges>
+							<edge vertexkey="47" edgekey="61"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="15">
+						<edges>
+							<edge vertexkey="48" edgekey="75"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="16">
+						<edges>
+							<edge vertexkey="49" edgekey="76"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="17">
+						<edges>
+							<edge vertexkey="50" edgekey="77"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="18">
+						<edges>
+							<edge vertexkey="51" edgekey="78"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="19">
+						<edges>
+							<edge vertexkey="52" edgekey="79"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="20">
+						<edges>
+							<edge vertexkey="53" edgekey="80"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="21">
+						<edges>
+							<edge vertexkey="54" edgekey="81"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="22">
+						<edges>
+							<edge vertexkey="55" edgekey="82"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="23">
+						<edges>
+							<edge vertexkey="56" edgekey="83"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="24">
+						<edges>
+							<edge vertexkey="57" edgekey="84"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="25">
+						<edges>
+							<edge vertexkey="58" edgekey="85"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="26">
+						<edges>
+							<edge vertexkey="59" edgekey="60"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="29">
+						<edges>
+							<edge vertexkey="39" edgekey="86"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="31">
+						<edges>
+							<edge vertexkey="33" edgekey="87"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="32">
+						<edges>
+							<edge vertexkey="34" edgekey="88"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="35">
+						<edges>
+							<edge vertexkey="28" edgekey="89"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

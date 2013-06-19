@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
+	<resources/>
+	<component name="defaultmap1" blackbox="0" uid="1" editable="1">
+		<properties SelectedLanguage="java"/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="15" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="32"/>
+					</targets>
+					<view ltx="587" lty="659" rbx="625" rby="677"/>
+					<data>
+						<constant value="1" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="equal" library="core" uid="14" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="33"/>
+						<datapoint pos="1" key="34"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="35"/>
+					</targets>
+					<view ltx="644" lty="350" rbx="697" rby="406"/>
+				</component>
+				<component name="constant" library="core" uid="5" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="680" lty="90" rbx="803" rby="108"/>
+					<data>
+						<constant value="abcdefghijklmnop" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="6" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="734" lty="149" rbx="784" rby="167"/>
+					<data>
+						<constant value="345" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="17" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="808" lty="543" rbx="921" rby="561"/>
+					<data>
+						<constant value="NewTypeName" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="18" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="824" lty="620" rbx="954" rby="638"/>
+					<data>
+						<constant value="NewTypeCategory" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="19" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="840" lty="679" rbx="926" rby="697"/>
+					<data>
+						<constant value="Moveable" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="20" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="910" lty="736" rbx="1074" rby="754"/>
+					<data>
+						<constant value="NewAssetTypeDescription" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="8" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="716" lty="245" rbx="766" rby="263"/>
+					<data>
+						<constant value="808" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="position" library="core" uid="11" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="30"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="31"/>
+					</targets>
+					<view ltx="479" lty="333" rbx="546" rby="372"/>
+				</component>
+				<component name="ttd:AssetType" library="core" uid="12" kind="3">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="27"/>
+						<datapoint pos="1" key="28"/>
+					</sources>
+					<targets>
+						<datapoint/>
+						<datapoint/>
+					</targets>
+					<view ltx="587" lty="279" rbx="690" rby="335"/>
+				</component>
+				<component name="090_02_ProductTypeTemplate" library="xml" uid="9" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="80" lty="183" rbx="549" rby="813"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate090.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="3" expanded="1">
+								<entry name="document" ns="3" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductTypeTemplate" ns="2" expanded="1">
+										<entry name="AssetTypes" ns="1" expanded="1">
+											<entry name="AssetType" outkey="7" expanded="1"/>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\..\SubSchema\090_02_ProductTypeTemplate.xsd" inputinstance="..\..\SubSchema\examples\090_02_ProductTypeTemplate.xml" outputinstance="..\..\SubSchema\examples\090_02_ProductTypeTemplate.xml" instanceroot="{http://typetemplate090.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="090_02_ProductTypeTemplate_CRUD" library="xml" uid="21" kind="14">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="1092" lty="112" rbx="1782" rby="787"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate.defs.crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://bimsie.bimserver.org"/>
+									<namespace uid="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="7" expanded="1">
+								<entry name="document" ns="7" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductTypeTemplate_090_ServerResponse" ns="6" expanded="1">
+										<entry name="ReadResult" ns="3">
+											<entry name="AssetType" ns="2" expanded="1">
+												<entry name="AssetTypeAttributes" ns="1" expanded="1">
+													<entry name="Attribute" expanded="1"/>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="ReadAllResult" ns="4">
+											<entry name="ProductTypeTemplate" ns="3" expanded="1"/>
+										</entry>
+										<entry name="UpdateResult" ns="4" expanded="1"/>
+										<entry name="DeleteResult" ns="4" expanded="1">
+											<entry name="InformationExchangeID" ns="2" inpkey="233"/>
+											<entry name="RevisionID" ns="5" inpkey="234"/>
+											<entry name="DeleteSuccess" ns="4" inpkey="235"/>
+											<entry name="DeleteResultMessage" ns="4" inpkey="236"/>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\090_02_ProductTypeTemplate_CRUD.xsd" outputinstance="..\090_02_ProductTypeTemplate_CRUD.xml" instanceroot="{http://typetemplate.crud.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate_090_ServerResponse"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="4" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="644" lty="47" rbx="803" rby="65"/>
+					<data>
+						<constant value="090.02_ProductTypeTemplate" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="22" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="150"/>
+					</targets>
+					<view ltx="891" lty="319" rbx="942" rby="337"/>
+					<data>
+						<constant value="true" datatype="anySimpleType"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="7" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="686" lty="215" rbx="736" rby="233"/>
+					<data>
+						<constant value="206" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="23" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="151"/>
+					</targets>
+					<view ltx="828" lty="396" rbx="980" rby="414"/>
+					<data>
+						<constant value="AssetType deleted for 090.02 ProductTypeTemplate at revision 206." datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="234" edgekey="237"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="233" edgekey="238"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="7">
+						<edges>
+							<edge vertexkey="30" edgekey="69"/>
+							<edge vertexkey="27" edgekey="70"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="31">
+						<edges>
+							<edge vertexkey="33" edgekey="87"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="32">
+						<edges>
+							<edge vertexkey="34" edgekey="88"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="35">
+						<edges>
+							<edge vertexkey="28" edgekey="89"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="150">
+						<edges>
+							<edge vertexkey="235" edgekey="239"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="151">
+						<edges>
+							<edge vertexkey="236" edgekey="240"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

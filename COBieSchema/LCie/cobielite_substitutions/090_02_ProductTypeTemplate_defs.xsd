@@ -20,11 +20,11 @@
 	</xs:complexType>
 	<xs:group name="AssetTypeEditGroup">
 		<xs:sequence>
-		<xs:element ref="AssetTypeCategory">
-						<xs:annotation>
+			<xs:element ref="AssetTypeCategory">
+				<xs:annotation>
 					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 				</xs:annotation>
-		</xs:element>
+			</xs:element>
 			<xs:element ref="AssetTypeDescription">
 				<xs:annotation>
 					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
@@ -35,17 +35,17 @@
 					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element ref="AssetTypeNominalLength">
+			<xs:element ref="AssetTypeNominalLength" minOccurs="0">
 				<xs:annotation>
 					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element ref="AssetTypeNominalWidth">
+			<xs:element ref="AssetTypeNominalWidth" minOccurs="0">
 				<xs:annotation>
 					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 				</xs:annotation>
 			</xs:element>
-			<xs:element ref="AssetTypeNominalHeight">
+			<xs:element ref="AssetTypeNominalHeight" minOccurs="0">
 				<xs:annotation>
 					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
 				</xs:annotation>

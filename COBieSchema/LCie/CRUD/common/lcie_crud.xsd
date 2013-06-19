@@ -7,13 +7,15 @@
 	<xs:complexType name="ClientRequestExchangeType" abstract="true">
 		<xs:complexContent>
 			<xs:extension base="crud:RequestType">
-				<xs:choice>
-					<xs:element ref="crud:CreateRequest"/>
-					<xs:element ref="crud:ReadRequest"/>
-					<xs:element ref="crud:ReadAllRequest"/>
-					<xs:element ref="crud:UpdateRequest"/>
-					<xs:element ref="crud:DeleteRequest"/>
-				</xs:choice>
+				<xs:sequence>
+					<xs:choice>
+						<xs:element ref="crud:CreateRequest"/>
+						<xs:element ref="crud:ReadRequest"/>
+						<xs:element ref="crud:ReadAllRequest"/>
+						<xs:element ref="crud:UpdateRequest"/>
+						<xs:element ref="crud:DeleteRequest"/>
+					</xs:choice>
+				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -29,6 +31,8 @@
 	<xs:complexType name="RequestType" abstract="true">
 		<xs:sequence>
 			<xs:element ref="lcie:InformationExchangeID"/>
+			<xs:element ref="crud:SessionToken"/>
+			<xs:element ref="crud:UserID"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ResultType" abstract="true">
@@ -38,6 +42,8 @@
 	</xs:complexType>
 	<xs:complexType name="CreateRequestType" abstract="true">
 		<xs:sequence>
+			<xs:element ref="crud:ProjectID"/>
+			<xs:element ref="crud:CreateHandlerID"/>
 			<xs:element ref="crud:CreateKey"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -45,14 +51,21 @@
 		<xs:complexContent>
 			<xs:extension base="crud:ResultType">
 				<xs:sequence>
+					<xs:element ref="crud:RevisionID">
+						<xs:annotation>
+							<xs:documentation>The new revision ID generated as a result of the successful create action.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 					<xs:element ref="crud:CreateSuccess"/>
-					<xs:element ref="crud:CreateResultMessage"/>
+					<xs:element ref="crud:CreateResultMessage" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="ReadRequestType">
 		<xs:sequence>
+			<xs:element ref="crud:RevisionID"/>
+			<xs:element ref="crud:ReadHandlerID"/>
 			<xs:element ref="crud:ReadKey"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -61,7 +74,12 @@
 			<xs:extension base="crud:ResultType"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="ReadAllRequestType"/>
+	<xs:complexType name="ReadAllRequestType">
+		<xs:sequence>
+			<xs:element ref="crud:RevisionID"/>
+			<xs:element ref="crud:ReadHandlerID"/>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="ReadAllResultType">
 		<xs:sequence>
 			<xs:element ref="crud:InformationExchange"/>
@@ -69,6 +87,8 @@
 	</xs:complexType>
 	<xs:complexType name="UpdateRequestType" abstract="true">
 		<xs:sequence>
+			<xs:element ref="crud:RevisionID"/>
+			<xs:element ref="crud:UpdateHandlerID"/>
 			<xs:element ref="crud:UpdateKey"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -76,14 +96,21 @@
 		<xs:complexContent>
 			<xs:extension base="crud:ResultType">
 				<xs:sequence>
+					<xs:element ref="crud:RevisionID">
+						<xs:annotation>
+							<xs:documentation>The new revision ID generated as a result of the successful update action.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 					<xs:element ref="crud:UpdateSuccess"/>
-					<xs:element ref="crud:UpdateResultMessage"/>
+					<xs:element ref="crud:UpdateResultMessage" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="DeleteRequestType">
 		<xs:sequence>
+			<xs:element ref="crud:RevisionID"/>
+			<xs:element ref="crud:DeleteHandlerID"/>
 			<xs:element ref="crud:DeleteKey"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -91,32 +118,219 @@
 		<xs:complexContent>
 			<xs:extension base="crud:ResultType">
 				<xs:sequence>
+					<xs:element ref="crud:RevisionID">
+						<xs:annotation>
+							<xs:documentation>The new revision ID generated as a result of the successful delete action.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 					<xs:element ref="crud:DeleteSuccess"/>
-					<xs:element ref="crud:DeleteResultMessage"/>
+					<xs:element ref="crud:DeleteResultMessage" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-
-	<xs:element name="CreateKey" type="CobieKeyType" abstract="true"/>
-	<xs:element name="ReadKey" type="CobieKeyType" abstract="true"/>
-	<xs:element name="UpdateKey" type="CobieKeyType" abstract="true"/>
-	<xs:element name="DeleteKey" type="CobieKeyType" abstract="true"/>
-	<xs:element name="CreateRequest" type="crud:CreateRequestType" abstract="true"/>
-	<xs:element name="CreateResult" type="crud:CreateResultType"/>
-	<xs:element name="ReadRequest" type="crud:ReadRequestType"/>
-	<xs:element name="ReadResult" type="crud:ReadResultType" abstract="true"/>
-	<xs:element name="ReadAllRequest" type="crud:ReadAllRequestType"/>
-	<xs:element name="ReadAllResult" type="crud:ReadAllResultType"/>
-	<xs:element name="UpdateRequest" type="crud:UpdateRequestType" abstract="true"/>
-	<xs:element name="UpdateResult" type="crud:UpdateResultType"/>
-	<xs:element name="DeleteRequest" type="crud:DeleteRequestType"/>
-	<xs:element name="DeleteResult" type="crud:DeleteResultType"/>
-	<xs:element name="InformationExchange" type="lcie:InformationExchangeComplexType" abstract="true"/>
-	<xs:element name="CreateSuccess" type="xs:boolean"/>
-	<xs:element name="CreateResultMessage" type="xs:string"/>
-	<xs:element name="DeleteSuccess" type="xs:boolean"/>
-	<xs:element name="DeleteResultMessage" type="xs:string"/>
-	<xs:element name="UpdateSuccess" type="xs:boolean"/>
-	<xs:element name="UpdateResultMessage" type="xs:string"/>
+	<!-- Service Wrapper Elements -->
+	<xs:element name="ProjectID" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				The ID associated with the project.  A project is the server item to which revisions are written.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="RevisionID" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				An ID associated with a specific Project revision.  RevisionIDs are required for all read requests and are returned by all create, update, and delete results.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SessionToken" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				Authentication token for the current session.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ReadHandlerID" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				An ID associated with a server-side handler that produces a transformed result of a project revision.  For example, this element corresponds to the Serializer object id in BIMSie.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CreateHandlerID" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				An ID associated with a server-side handler that handles a create request.  For example, this element corresponds to the Deserializer object id in BIMSie.
+			</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="UpdateHandlerID" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				An ID associated with a server-side handler that handles an update request.  For example, this element corresponds to the Deserializer object id in BIMSie.
+			</xs:documentation>
+		</xs:annotation>		
+	</xs:element>
+	<xs:element name="DeleteHandlerID" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				An ID associated with a server-side handler that handles a delete request.  For example, this element corresponds to the Deserializer object id in BIMSie.
+			</xs:documentation>
+		</xs:annotation>		
+	</xs:element>
+	<xs:element name="UserID" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				The ID of the user associated with the current session.
+			</xs:documentation>
+		</xs:annotation>		
+	</xs:element>
+	<xs:element name="CreateKey" type="CobieKeyType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				The required key elements of the target LCie create object.
+			</xs:documentation>
+		</xs:annotation>		
+	</xs:element>
+	<xs:element name="ReadKey" type="CobieKeyType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				The key corresponding to one particular LCie element or concept that will be read.
+			</xs:documentation>
+		</xs:annotation>		
+	</xs:element>
+	<xs:element name="UpdateKey" type="CobieKeyType" abstract="true">
+			<xs:annotation>
+			<xs:documentation>
+				The key corresponding to one particular LCie element or concept that will be updated.
+			</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="DeleteKey" type="CobieKeyType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				The key corresponding to one particular LCie element or concept that will be deleted.
+			</xs:documentation>
+		</xs:annotation>		
+	</xs:element>
+	<xs:element name="CreateRequest" type="crud:CreateRequestType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				A Request to create an LCie element.  Typically a Create request should correspond to an element with many children, e.g. the COBieLite Asset.
+			</xs:documentation>
+		</xs:annotation>		
+	</xs:element>
+	<xs:element name="CreateResult" type="crud:CreateResultType">
+			<xs:annotation>
+			<xs:documentation>
+				Results of the Create Request include the new revision ID, a boolean indicating success, and an optional message.
+			</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="ReadRequest" type="crud:ReadRequestType">
+				<xs:annotation>
+			<xs:documentation>
+				A ReadRequest must contain a ReadKey element.
+			</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="ReadResult" type="crud:ReadResultType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				The result of a ReadRequest will contain information relevant to one LCie concept.
+			</xs:documentation>
+		</xs:annotation>		
+	</xs:element>
+	<xs:element name="ReadAllRequest" type="crud:ReadAllRequestType">
+				<xs:annotation>
+			<xs:documentation>
+				Requires only credentials, a revisionID, and a ReadHandlerID.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ReadAllResult" type="crud:ReadAllResultType">
+		<xs:annotation>
+			<xs:documentation>
+				The result of a ReadAllRequest will contain all items relvant to one LCie concept.  For example, a ProductTypeTemplate view of all AssetType elements in a model revision.
+			</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="UpdateRequest" type="crud:UpdateRequestType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				An UpdateRequest must have a RevisionID, an UpdateHandlerID, UpdateKey corresponding to an existing element in the project's latest revision, and a packet of information to update.
+			</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="UpdateResult" type="crud:UpdateResultType">
+				<xs:annotation>
+			<xs:documentation>
+				The result of an UpdateRequest will contain a new RevsisionID, a boolean indicating success or failure, and an optional message.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DeleteRequest" type="crud:DeleteRequestType">
+				<xs:annotation>
+			<xs:documentation>
+				A delete request must contain a RevisionID, a DeleteHandlerID, and a DeleteKey corresponding to one LCie concept.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DeleteResult" type="crud:DeleteResultType">
+			<xs:annotation>
+			<xs:documentation>
+				A DeleteResult must contain a new RevisionID, a boolean indicating success or failure, and an optional message.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="InformationExchange" type="lcie:InformationExchangeComplexType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				An instance of an LCie information exchange.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CreateSuccess" type="xs:boolean">
+<xs:annotation>
+	<xs:documentation>
+		Indicating success or failure of a CreateRequest.
+	</xs:documentation>
+</xs:annotation>	
+	</xs:element>
+	<xs:element name="CreateResultMessage" type="xs:string">
+	<xs:annotation>
+	<xs:documentation>
+		A server-provided message generated as confirmation of a handled CreateRequest.
+	</xs:documentation>
+</xs:annotation>	
+	</xs:element>
+	<xs:element name="DeleteSuccess" type="xs:boolean">
+		<xs:annotation>
+	<xs:documentation>
+Indicates success or failure of a handled DeleteRequest.
+	</xs:documentation>
+</xs:annotation>	
+	</xs:element>
+	<xs:element name="DeleteResultMessage" type="xs:string">
+	<xs:annotation>
+	<xs:documentation>
+		A server-provided message generated as confirmation of a handled DeleteRequest.
+	</xs:documentation>
+</xs:annotation>		
+	</xs:element>
+	<xs:element name="UpdateSuccess" type="xs:boolean">
+	<xs:annotation>
+	<xs:documentation>
+		Indicates success or failure of a handled UpdateRequest.
+	</xs:documentation>
+</xs:annotation>		
+	</xs:element>
+	<xs:element name="UpdateResultMessage" type="xs:string">
+	<xs:annotation>
+	<xs:documentation>
+		A server-provided message generated as confirmation of a handled UpdateRequest.
+	</xs:documentation>
+</xs:annotation>		
+	</xs:element>
 </xs:schema>

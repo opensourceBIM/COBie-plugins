@@ -1,5 +1,6 @@
 <!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:pttc="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org" xmlns:pttcd="http://typetemplate.defs.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:pttc="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:pttcd="http://typetemplate.defs.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://bimsie.bimserver.org" schemaLocation="common/BIMsieWrapper.xsd"/>
 	<xs:import namespace="http://typetemplate.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/090_02_ProductTypeTemplate_CRUD_defs.xsd"/>
 	<xs:element name="ProductTypeTemplate_090_Request" type="pttcd:ProductTypeTemplateClientRequestType"/>
 	<xs:element name="ProductTypeTemplate_090_ServerResponse" type="pttcd:ProductTypeTemplateServerResponseType"/>

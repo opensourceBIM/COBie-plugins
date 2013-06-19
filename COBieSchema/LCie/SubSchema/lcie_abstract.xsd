@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:cobielite="http://core.cobielite.cobie.erdc.org" targetNamespace="http://lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:simpleType name="InformationExchangeSimpleType">
@@ -18,7 +17,11 @@
 			<xs:enumeration value="Other"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" abstract="true"/>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Corresponds to an LCie information exchange defined in the InformationExchangeSimpleType enumeration</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:complexType name="InformationExchangeComplexType" abstract="true">
 		<xs:sequence>
 			<xs:element ref="lcie:InformationExchangeID"/>
