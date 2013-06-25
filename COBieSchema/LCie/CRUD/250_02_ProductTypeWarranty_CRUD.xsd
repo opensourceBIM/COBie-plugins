@@ -1,48 +1,6 @@
-<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:pwc="http://productwarranty.crud.lcie.cobielite.cobie.erdc.org" xmlns:cg="http://groups.lcie.cobielite.cobie.erdc.org" xmlns:pw="http://productwarranty.lcie.cobielite.cobie.erdc.org" targetNamespace="http://productwarranty.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
-	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/lcie_crud.xsd"/>
-	<xs:import namespace="http://productwarranty.lcie.cobielite.cobie.erdc.org" schemaLocation="../subschema/019_ProductTypeWarranty.xsd"/>
-	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
-	<xs:import namespace="http://groups.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/element_groups.xsd"/>
-	<xs:complexType name="WarrantyExchangeType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:ExchangeType"/>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="WarrantyReadResultType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:ReadResultType">
-				<xs:sequence>
-					<xs:group ref="cg:FacilitySelect"/>
-					<xs:group ref="cg:AssetTypeWithManufacturerSelect"/>
-					<xs:element ref="AssetTypeDocuments"/>
-					<xs:group ref="cg:WarrantySelect"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="WarrantyReadAllResultType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:ReadAllResultType">
-				<xs:sequence>
-					<xs:element ref="pw:Facility"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="WarrantyUpdateType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateType">
-				<xs:sequence>
-					<xs:group ref="cg:WarrantySelect"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="ProductTypeWarranty" type="pwc:WarrantyExchangeType"/>
-	<xs:element name="Read" type="pwc:WarrantyReadResultType" substitutionGroup="cobiex:Read"/>
-	<xs:element name="ReadAll" type="pwc:WarrantyReadAllResultType" substitutionGroup="cobiex:ReadAll"/>
-	<xs:element name="Update" type="pwc:WarrantyUpdateType" substitutionGroup="cobiex:Update"/>
-	<xs:element name="ReadKey" type="WarrantyKeyType" substitutionGroup="cobiex:ReadKey"/>
-	<xs:element name="UpdateKey" type="WarrantyKeyType" substitutionGroup="cobiex:UpdateKey"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:ptcc="http://warranty250.crud.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:picd="http://warranty250.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pic="http://warranty250.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://warranty250.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://bimsie.bimserver.org" schemaLocation="common/BIMsieWrapper.xsd"/>
+	<xs:import namespace="http://warranty250.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/250_02_ProductTypeWarranty_CRUD_defs.xsd"/>
+	<xs:element name="ProductTypeWarranty_250_Request" type="picd:ProductTypeWarrantyClientRequestType"/>
+	<xs:element name="ProductTypeWarranty_250_ServerResponse" type="picd:ProductTypeWarrantyServerResponseType"/>
 </xs:schema>

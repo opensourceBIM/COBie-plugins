@@ -26,9 +26,9 @@
 			<xs:element ref="AssetTypeAccountingCategory"/>
 			<xs:element ref="AssetTypeModelNumber"/>
 			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
-			<xs:element ref="AssetTypeNominalLength"/>
-			<xs:element ref="AssetTypeNominalWidth"/>
-			<xs:element ref="AssetTypeNominalHeight"/>
+			<xs:element ref="AssetTypeNominalLength" minOccurs="0"/>
+			<xs:element ref="AssetTypeNominalWidth" minOccurs="0"/>
+			<xs:element ref="AssetTypeNominalHeight" minOccurs="0"/>
 			<xs:element ref="AssetTypeAccessibilityText" minOccurs="0"/>
 			<xs:element ref="AssetTypeCodePerformance" minOccurs="0"/>
 			<xs:element ref="AssetTypeColorCode" minOccurs="0"/>
@@ -42,7 +42,7 @@
 			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeEditGroup">
+	<xs:group name="AssetTypeCreateGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeAttributes" minOccurs="0">
 				<xs:annotation>
@@ -65,7 +65,7 @@
 			<xs:extension base="AssetTypeInfoType">
 				<xs:sequence>
 					<xs:group ref="tc:AssetTypeReadOnlyGroup"/>
-					<xs:group ref="tc:AssetTypeEditGroup"/>
+					<xs:group ref="tc:AssetTypeCreateGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

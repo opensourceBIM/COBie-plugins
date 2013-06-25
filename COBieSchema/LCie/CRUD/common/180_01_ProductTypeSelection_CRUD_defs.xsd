@@ -1,0 +1,123 @@
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:conc="http://contact.crud.lcie.cobielite.cobie.erdc.org" xmlns:docc="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:attc="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:tsc="http://typeselection180.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:cg="http://groups.lcie.cobielite.cobie.erdc.org" xmlns:ts="http://typeselection180.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typeselection180.defs.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="lcie_crud.xsd"/>
+	<xs:import namespace="http://typeselection180.lcie.cobielite.cobie.erdc.org" schemaLocation="../../subschema/180_01_ProductTypeSelection.xsd"/>
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://contact.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="contact_crud.xsd"/>
+			<xs:import namespace="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Attribute_CRUD_defs.xsd"/>
+	<xs:import namespace="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Document_CRUD_defs.xsd"/>
+	<xs:complexType name="TypeSelectReadResultType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ReadResultType">
+				<xs:sequence>
+					<xs:element ref="AssetType"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeSelectReadAllResultType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ReadAllResultType">
+				<xs:sequence>
+					<xs:element ref="ts:ProductTypeSelection"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeSelectUpdateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:UpdateRequestType">
+				<xs:sequence>
+					<xs:element ref="tsc:ProductTypeSelectionKey"/>
+					<xs:element ref="AssetTypeAttributes" minOccurs="0"/>
+					<xs:element ref="AssetTypeDocuments" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+			<xs:complexType name="TypeSelectUpdateAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="attc:UpdateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="tsc:ProductTypeSelectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeSelectCreateAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="attc:CreateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="tsc:ProductTypeSelectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeSelectDeleteAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="attc:DeleteAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="tsc:ProductTypeSelectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeSelectUpdateDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:UpdateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="tsc:ProductTypeSelectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeSelectCreateDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:CreateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="tsc:ProductTypeSelectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeSelectDeleteDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:DeleteDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="tsc:ProductTypeSelectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeSelectClientRequestType">
+	<xs:complexContent>
+			<xs:extension base="cobiex:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeSelectServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeSelectionClientRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeSelectionServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+			<xs:element name="DeleteAssetTypeAttributeRequest" type="tsc:TypeSelectDeleteAttributeRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="CreateAssetTypeAttributeRequest" type="tsc:TypeSelectCreateAttributeRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="UpdateAssetTypeAttributeRequest" type="tsc:TypeSelectUpdateAttributeRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="DeleteAssetTypeDocumentRequest" type="tsc:TypeSelectDeleteDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="CreateAssetTypeDocumentRequest" type="tsc:TypeSelectCreateDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="UpdateAssetTypeDocumentRequest" type="tsc:TypeSelectUpdateDocumentRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="ProductTypeSelectionReadResult" type="tsc:TypeSelectReadResultType" substitutionGroup="cobiex:ReadResult"/>
+	<xs:element name="ProductTypeSelectionReadAllResult" type="tsc:TypeSelectReadAllResultType" substitutionGroup="cobiex:ReadAllResult"/>
+	<xs:element name="UpdateAssetTypeRequest" type="tsc:TypeSelectUpdateRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="ProductTypeSelectionKey" type="AssetTypeKeyType" substitutionGroup="cobiex:Key"/>
+</xs:schema>

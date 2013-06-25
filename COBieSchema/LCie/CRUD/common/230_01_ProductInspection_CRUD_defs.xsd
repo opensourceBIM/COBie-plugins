@@ -1,0 +1,147 @@
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:pic="http://productinspection230.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:docc="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:attc="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org"  xmlns:issc="http://issue.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pi="http://productinspection230.defs.lcie.cobielite.cobie.erdc.org" xmlns:conc="http://contact.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://productinspection230.defs.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="lcie_crud.xsd"/>
+	<xs:import namespace="http://productinspection230.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../../cobielite_substitutions/230_01_ProductInspection_defs.xsd"/>
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://contact.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="contact_crud.xsd"/>
+		<xs:import namespace="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Attribute_CRUD_defs.xsd"/>
+	<xs:import namespace="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Document_CRUD_defs.xsd"/>
+	<xs:import namespace="http://issue.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Issue_CRUD_defs.xsd"/>
+	<xs:complexType name="InstallReadResultType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ReadResultType">
+				<xs:sequence>
+					<xs:element ref="AssetType"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="InstallReadAllResultType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ReadAllResultType">
+				<xs:sequence>
+					<xs:element ref="pic:ProductInspection"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionUpdateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="pic:UpdateAssetRequest"/>
+					<xs:element ref="pic:UpdateAssetTypeRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionUpdateAssetInfoType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:UpdateRequestType">
+				<xs:sequence>
+					<xs:element ref="pic:ProductInspectionKey"/>
+					<xs:group ref="pi:AssetUpdateGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionUpdateAssetTypeInfoType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:UpdateRequestType">
+				<xs:sequence>
+					<xs:element ref="pic:AssetTypeKey"/>
+					<xs:group ref="pi:AssetTypeCreateGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+		<xs:complexType name="ProductInspectionUpdateAssetTypeAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="attc:UpdateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="pic:AssetTypeKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+		<xs:complexType name="ProductInspectionUpdateAssetTypeIssueRequestType">
+		<xs:complexContent>
+			<xs:extension base="issc:UpdateIssueRequestType">
+				<xs:sequence>
+					<xs:element ref="pic:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionCreateAssetTypeIssueRequestType">
+		<xs:complexContent>
+			<xs:extension base="issc:CreateIssueRequestType">
+				<xs:sequence>
+					<xs:element ref="pic:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionDeleteAssetTypeIssueRequestType">
+		<xs:complexContent>
+			<xs:extension base="issc:DeleteIssueRequestType">
+				<xs:sequence>
+					<xs:element ref="pic:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionClientRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionUpdateAssetDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:UpdateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pic:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionCreateDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:CreateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pic:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionDeleteDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:DeleteDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pic:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+		<xs:element name="UpdateAssetDocumentRequest" type="pic:ProductInspectionUpdateAssetDocumentRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="DeleteAssetDocumentRequest" type="pic:ProductInspectionDeleteDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="CreateAssetDocumentRequest" type="pic:ProductInspectionCreateDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
+		<xs:element name="UpdateAssetTypeIssueRequest" type="pic:ProductInspectionUpdateAssetTypeIssueRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="DeleteAssetTypeIssueRequest" type="pic:ProductInspectionDeleteAssetTypeIssueRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="CreateAssetTypeIssueRequest" type="pic:ProductInspectionCreateAssetTypeIssueRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="UpdateAssetTypeAttributeRequest" type="pic:ProductInspectionUpdateAssetTypeAttributeRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="ProductInspection" type="pi:ProductInspectionType"/>
+	<xs:element name="ProductInspectionUpdateRequest" type="pic:ProductInspectionUpdateRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="UpdateAssetRequest" type="pic:ProductInspectionUpdateAssetInfoType"/>
+	<xs:element name="UpdateAssetTypeRequest" type="pic:ProductInspectionUpdateAssetTypeInfoType"/>
+	<xs:element name="ProductInspectionReadResult" type="pic:InstallReadResultType" substitutionGroup="cobiex:ReadResult"/>
+	<xs:element name="ProductInspectionReadAllResult" type="pic:InstallReadAllResultType" substitutionGroup="cobiex:ReadAllResult"/>
+	<xs:element name="ProductInspectionKey" type="AssetKeyType" substitutionGroup="cobiex:Key"/>
+	<xs:element name="AssetTypeKey" type="AssetTypeKeyType"/>
+</xs:schema>

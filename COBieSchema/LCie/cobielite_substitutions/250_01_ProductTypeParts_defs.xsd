@@ -1,4 +1,3 @@
-
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:ppd="http://parts250.defs.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" targetNamespace="http://parts250.defs.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:import namespace="http://lcie.cobielite.cobie.erdc.org" schemaLocation="../Subschema/lcie_abstract.xsd"/>
@@ -13,7 +12,7 @@
 			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeEditGroup">
+	<xs:group name="AssetTypeCreateGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeDocuments" minOccurs="0">
 				<xs:annotation>
@@ -42,7 +41,7 @@
 			<xs:extension base="AssetTypeInfoType">
 				<xs:sequence>
 					<xs:group ref="ppd:AssetTypeReadOnlyGroup"/>
-					<xs:group ref="ppd:AssetTypeEditGroup"/>
+					<xs:group ref="ppd:AssetTypeCreateGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -51,17 +50,27 @@
 		<xs:complexContent>
 			<xs:extension base="SpareType">
 				<xs:sequence>
-					<xs:group ref="ppd:SpareEditGroup"/>
+					<xs:group ref="ppd:SpareCreateGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:group name="SpareEditGroup">
+	<xs:group name="SpareCreateGroup">
 		<xs:sequence>
 			<xs:element ref="SpareDescription" minOccurs="0"/>
 			<xs:element ref="SpareSetNumber" minOccurs="0"/>
 			<xs:element ref="SparePartNumber" minOccurs="0"/>
 			<xs:element ref="SpareSupplierContactAssignments"/>
+			<xs:element ref="SpareAttributes" minOccurs="0"/>
+			<xs:element ref="SpareDocuments" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+		<xs:group name="SpareUpdateGroup">
+		<xs:sequence>
+			<xs:element ref="SpareDescription" minOccurs="0"/>
+			<xs:element ref="SpareSetNumber" minOccurs="0"/>
+			<xs:element ref="SparePartNumber" minOccurs="0"/>
+			<xs:element ref="SpareSupplierContactAssignments" minOccurs="0"/>
 			<xs:element ref="SpareAttributes" minOccurs="0"/>
 			<xs:element ref="SpareDocuments" minOccurs="0"/>
 		</xs:sequence>

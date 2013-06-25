@@ -1,0 +1,112 @@
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:docc="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:pwc="http://warranty250.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pw="http://warranty250.defs.lcie.cobielite.cobie.erdc.org" xmlns:conc="http://contact.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://warranty250.defs.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="lcie_crud.xsd"/>
+	<xs:import namespace="http://warranty250.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../../cobielite_substitutions/250_02_ProductTypeWarranty_defs.xsd"/>
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://contact.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="contact_crud.xsd"/>
+	<xs:import namespace="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Document_CRUD_defs.xsd"/>
+	<xs:complexType name="WarrantyReadResultType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ReadResultType">
+				<xs:sequence>
+					<xs:element ref="AssetType"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="WarrantyReadAllResultType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ReadAllResultType">
+				<xs:sequence>
+					<xs:element ref="pwc:ProductTypeWarranty"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeWarrantyUpdateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:UpdateRequestType">
+				<xs:sequence>
+					<xs:element ref="pwc:ProductTypeWarrantyKey"/>
+					<xs:element ref="WarrantyName" minOccurs="0"/>
+					<xs:element ref="WarrantyCategory" minOccurs="0"/>
+					<xs:element ref="WarrantyDuration" minOccurs="0"/>
+					<xs:element ref="WarrantyGaurantorContactAssignments" minOccurs="0"/>
+					<xs:element ref="WarrantyDocuments" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeWarrantyCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:CreateRequestType">
+				<xs:sequence>
+					<xs:element ref="pwc:AssetTypeKey"/>
+					<xs:element ref="WarrantyName" minOccurs="0"/>
+					<xs:element ref="WarrantyCategory" minOccurs="0"/>
+					<xs:element ref="WarrantyDuration" minOccurs="0"/>
+					<xs:element ref="WarrantyGaurantorContactAssignments" minOccurs="0"/>
+					<xs:element ref="WarrantyDocuments" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeWarrantyUpdateDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:UpdateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pwc:ProductTypeWarrantyKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeWarrantyCreateDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:CreateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pwc:ProductTypeWarrantyKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeWarrantyDeleteDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:DeleteDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pwc:ProductTypeWarrantyKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeWarrantyDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:DeleteRequestType">
+				<xs:sequence>
+					<xs:element ref="pwc:ProductTypeWarrantyKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeWarrantyClientRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeWarrantyServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ProductTypeWarranty" type="pw:ProductWarrantyType"/>
+	<xs:element name="DeleteWarrantyDocumentRequest" type="pwc:ProductTypeWarrantyDeleteDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="CreateWarrantyDocumentRequest" type="pwc:ProductTypeWarrantyCreateDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="UpdateWarrantyDocumentRequest" type="pwc:ProductTypeWarrantyUpdateDocumentRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="UpdateProductTypeWarrantyRequest" type="pwc:ProductTypeWarrantyUpdateRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+		<xs:element name="CreateProductTypeWarrantyRequest" type="pwc:ProductTypeWarrantyCreateRequestType" substitutionGroup="cobiex:CreateRequest"/>
+		<xs:element name="DeleteProductTypeWarrantyRequest" type="pwc:ProductTypeWarrantyDeleteRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="ProductTypeWarrantyReportReadResult" type="pwc:WarrantyReadResultType" substitutionGroup="cobiex:ReadResult"/>
+	<xs:element name="ProductTypeWarrantyReportReadAllResult" type="pwc:WarrantyReadAllResultType" substitutionGroup="cobiex:ReadAllResult"/>
+	<xs:element name="ProductTypeWarrantyKey" type="WarrantyKeyType" substitutionGroup="cobiex:Key"/>
+	<xs:element name="AssetTypeKey" type="AssetKeyType"/>
+</xs:schema>

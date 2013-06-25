@@ -11,11 +11,10 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="AssetInfoType">
-			<xs:sequence>
-							<xs:group ref="op:AssetReadOnlyGroup"/>
-				<xs:group ref="op:AssetEditGroup"/>
-			</xs:sequence>
-
+				<xs:sequence>
+					<xs:group ref="op:AssetReadOnlyGroup"/>
+					<xs:group ref="op:AssetCreateGroup"/>
+				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -38,12 +37,11 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-
 	<xs:complexType name="OperationSpaceType">
 		<xs:complexContent>
 			<xs:extension base="SpaceType">
 				<xs:sequence>
-					<xs:group ref="op:SpaceEditGroup"/>
+					<xs:group ref="op:SpaceCreateGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -52,7 +50,7 @@
 		<xs:complexContent>
 			<xs:extension base="SystemType">
 				<xs:sequence>
-					<xs:group ref="op:SystemEditGroup"/>
+					<xs:group ref="op:SystemCreateGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -61,7 +59,7 @@
 		<xs:complexContent>
 			<xs:extension base="ZoneType">
 				<xs:sequence>
-					<xs:group ref="op:ZoneEditGroup"/>
+					<xs:group ref="op:ZoneCreateGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -87,12 +85,12 @@
 			<xs:element ref="Assets"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeEditGroup">
+	<xs:group name="AssetTypeCreateGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeDocuments"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetEditGroup">
+	<xs:group name="AssetCreateGroup">
 		<xs:sequence>
 			<xs:element ref="AssetWarrantyStartDate" minOccurs="0">
 				<xs:annotation>
@@ -107,7 +105,7 @@
 			<xs:element ref="AssetDescription"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="SystemEditGroup">
+	<xs:group name="SystemCreateGroup">
 		<xs:sequence>
 			<xs:element ref="SystemDescription">
 				<xs:annotation>
@@ -131,13 +129,85 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="SpaceEditGroup">
+		<xs:group name="SystemUpdateGroup">
 		<xs:sequence>
-			<xs:element ref="SpaceZoneAssignments"/>
+					<xs:element ref="SystemName" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+						<xs:element ref="SystemCategory" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SystemDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SystemAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SystemDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SystemIssues" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="ZoneEditGroup">
+	<xs:group name="SpaceCreateGroup">
 		<xs:sequence>
+			<xs:element ref="SpaceZoneAssignments">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>			
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="ZoneCreateGroup">
+		<xs:sequence>
+			<xs:element ref="ZoneDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ZoneAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ZoneDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ZoneIssues" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+		<xs:group name="ZoneUpdateGroup">
+		<xs:sequence>
+			<xs:element ref="ZoneName" minOccurs="0">
+							<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+						<xs:element ref="ZoneCategory" minOccurs="0">
+							<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
 			<xs:element ref="ZoneDescription" minOccurs="0">
 				<xs:annotation>
 					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>

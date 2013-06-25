@@ -1,0 +1,6 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:pmc="http://maintenance250.crud.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:pmcd="http://maintenance250.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pm="http://maintenance250.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://maintenance250.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://bimsie.bimserver.org" schemaLocation="common/BIMsieWrapper.xsd"/>
+	<xs:import namespace="http://maintenance250.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/250_03_ProductTypeMaintenance_CRUD_defs.xsd"/>
+	<xs:element name="ProductTypeMaintenance_250_Request" type="pmcd:ProductTypeMaintenanceClientRequestType"/>
+	<xs:element name="ProductTypeMaintenance_250_ServerResponse" type="pmcd:ProductTypeMaintenanceServerResponseType"/>
+</xs:schema>

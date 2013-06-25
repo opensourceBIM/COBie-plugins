@@ -1055,7 +1055,20 @@
 			<xs:extension base="CobieKeyType">
 				<xs:sequence>
 					<xs:element ref="AssetTypeName"/>
-<!--					<xs:element ref="AssetTypeCategory"/>-->
+					<!--					<xs:element ref="AssetTypeCategory"/>-->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AttributeKeyType">
+		<xs:annotation>
+			<xs:documentation>The elements required to form a primary key for AssetType elements.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CobieKeyType">
+				<xs:sequence>
+					<xs:element ref="AttributeName"/>
+					<xs:element ref="AttributeCategory"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -1068,6 +1081,18 @@
 			<xs:extension base="CobieKeyType">
 				<xs:sequence>
 					<xs:element ref="ContactEmailReference" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DocumentKeyType">
+		<xs:annotation>
+			<xs:documentation>The elements required to form a primary key for Document elements.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CobieKeyType">
+				<xs:sequence>
+					<xs:element ref="DocumentName"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -1092,6 +1117,19 @@
 			<xs:extension base="CobieKeyType">
 				<xs:sequence>
 					<xs:element ref="FacilityName"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IssueKeyType">
+		<xs:annotation>
+			<xs:documentation>The elements required to form a primary key for Issue elements.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CobieKeyType">
+				<xs:sequence>
+					<xs:element ref="IssueName"/>
+					<xs:element ref="IssueCategory"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -1126,7 +1164,7 @@
 			<xs:documentation>The elements required to form a primary key for Resource elements.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="AssetTypeKeyType">
+			<xs:extension base="JobKeyType">
 				<xs:sequence>
 					<xs:element ref="ResourceName"/>
 				</xs:sequence>

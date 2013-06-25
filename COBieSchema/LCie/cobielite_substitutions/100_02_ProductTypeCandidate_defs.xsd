@@ -40,7 +40,33 @@
 			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeEditGroup">
+
+	<xs:group name="AssetTypeUpdateGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeModelNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeManufacturerContactAssignments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>	
+	
+	<xs:group name="AssetTypeCreateGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeModelNumber">
 				<xs:annotation>
@@ -73,7 +99,7 @@
 			<xs:extension base="AssetTypeInfoType">
 				<xs:sequence>
 					<xs:group ref="tc:AssetTypeReadOnlyGroup"/>
-					<xs:group ref="tc:AssetTypeEditGroup"/>
+					<xs:group ref="tc:AssetTypeCreateGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

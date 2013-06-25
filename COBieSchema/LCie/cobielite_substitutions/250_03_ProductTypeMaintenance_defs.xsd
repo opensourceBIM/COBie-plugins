@@ -10,10 +10,10 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="AssetTypeInfoType">
-			<xs:sequence>
-							<xs:group ref="pm:AssetTypeReadOnlyGroup"/>
-				<xs:group ref="pm:AssetTypeEditGroup"/>
-			</xs:sequence>
+				<xs:sequence>
+					<xs:group ref="pm:AssetTypeReadOnlyGroup"/>
+					<xs:group ref="pm:AssetTypeCreateGroup"/>
+				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -26,7 +26,7 @@
 			<xs:element ref="Assets"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeEditGroup">
+	<xs:group name="AssetTypeCreateGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeDocuments"/>
 			<xs:element ref="Jobs"/>
@@ -39,12 +39,12 @@
 		<xs:complexContent>
 			<xs:extension base="JobType">
 				<xs:sequence>
-					<xs:group ref="pm:JobTypeEditGroup"/>
+					<xs:group ref="pm:JobTypeCreateGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:group name="JobTypeEditGroup">
+	<xs:group name="JobTypeCreateGroup">
 		<xs:sequence>
 			<xs:element ref="JobCategory">
 				<xs:annotation>
@@ -103,6 +103,75 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:group>
+	<xs:group name="JobUpdateGroup">
+		<xs:sequence>
+					<xs:element ref="JobName" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+								<xs:element ref="JobTaskID" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobCategory" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobStatus" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobDuration" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobStartDate" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobStartConditionDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobFrequencyValue" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobPriorTaskID" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="Resources" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
 	<xs:complexType name="ResourceType">
 		<xs:annotation>
 			<xs:documentation>Information about a specific resource.</xs:documentation>
@@ -110,12 +179,41 @@
 		<xs:complexContent>
 			<xs:extension base="ResourceType">
 				<xs:sequence>
-					<xs:group ref="pm:ResourceEditGroup"/>
+					<xs:group ref="pm:ResourceCreateGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:group name="ResourceEditGroup">
+		<xs:group name="ResourceUpdateGroup">
+		<xs:sequence>
+					<xs:element ref="ResourceName" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ResourceCategory" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ResourceDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ResourceAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ResourceDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="ResourceCreateGroup">
 		<xs:sequence>
 			<xs:element ref="ResourceCategory">
 				<xs:annotation>

@@ -1,19 +1,18 @@
-<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:tcc="http://typecandidate.crud.lcie.cobielite.cobie.erdc.org" xmlns:cg="http://groups.lcie.cobielite.cobie.erdc.org" xmlns:tc="http://typecandidate.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typecandidate.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
-	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/lcie_crud.xsd"/>
-	<xs:import namespace="http://typetemplate090.lcie.cobielite.cobie.erdc.org" schemaLocation="../subschema/090_02_ProductTypeTemplate.xsd"/>
-	<xs:import namespace="http://typecandidate100.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/100_02_ProductTypeCandidate_defs.xsd"/>
-	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
-	<xs:complexType name="TypeCandidateExchangeType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:ExchangeType"/>
-		</xs:complexContent>
-	</xs:complexType>
+<!-- edited with XMLSpy v2013 rel. 2 (x64) (http://www.altova.com) by Jackie L Heriard (private) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ptcd="http://typecandidate100.defs.lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:docc="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:attc="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:ptcc="http://typecandidate100.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:ptc="http://typecandidate100.lcie.cobielite.cobie.erdc.org" xmlns:ns1="http://contact.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typecandidate100.defs.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="lcie_crud.xsd"/>
+	<xs:import namespace="http://contact.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="contact_crud.xsd"/>
+	<xs:import namespace="http://typecandidate100.lcie.cobielite.cobie.erdc.org" schemaLocation="../../subschema/100_02_ProductTypeCandidate.xsd"/>
+	<xs:import namespace="http://typecandidate100.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../../cobielite_substitutions/100_02_ProductTypeCandidate_defs.xsd"/>
+	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../../COBieLite/xsd/common/cobielite_core.xsd"/>
+	<xs:import namespace="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Attribute_CRUD_defs.xsd"/>
+	<xs:import namespace="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Document_CRUD_defs.xsd"/>
 	<xs:complexType name="TypeCandidateReadResultType">
 		<xs:complexContent>
 			<xs:extension base="cobiex:ReadResultType">
 				<xs:sequence>
-
+					<xs:element ref="ptcd:AssetType"/>
+					<xs:element ref="Contacts"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -22,33 +21,93 @@
 		<xs:complexContent>
 			<xs:extension base="cobiex:ReadAllResultType">
 				<xs:sequence>
-					<xs:element ref="tc:Facility"/>
+					<xs:element ref="ptc:ProductTypeCandidate"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="TypeCandidateUpdateType">
+	<xs:complexType name="TypeCandidateUpdateRequestType">
 		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateType">
+			<xs:extension base="cobiex:UpdateRequestType">
 				<xs:sequence>
-					<xs:element ref="AssetTypeName" minOccurs="0"/>
-					<xs:element ref="AssetTypeCategory" minOccurs="0"/>
-					<xs:element ref="AssetTypeDescription" minOccurs="0"/>
-					<xs:element ref="AssetTypeAccountingCategory" minOccurs="0"/>
-					<xs:element ref="AssetTypeNominalLength" minOccurs="0"/>
-					<xs:element ref="AssetTypeNominalWidth" minOccurs="0"/>
-					<xs:element ref="AssetTypeNominalHeight" minOccurs="0"/>
-					<xs:element ref="AssetTypeModelNumber" minOccurs="0"/>
-					<xs:element ref="AssetTypeManufacturerContactAssignments" minOccurs="0"/>
-					<xs:element ref="AssetTypeAttributes" minOccurs="0"/>
+					<xs:element ref="ptcc:ProductTypeCandidateKey"/>
+					<xs:group ref="ptcd:AssetTypeUpdateGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name="ProductTypeCandidate" type="tcc:TypeCandidateExchangeType"/>
-	<xs:element name="Read" type="tcc:TypeCandidateReadResultType" substitutionGroup="cobiex:Read"/>
-	<xs:element name="ReadAll" type="tcc:TypeCandidateReadAllResultType" substitutionGroup="cobiex:ReadAll"/>
-	<xs:element name="Update" type="tcc:TypeCandidateUpdateType" substitutionGroup="cobiex:Update"/>
-	<xs:element name="ReadKey" type="AssetTypeKeyType" substitutionGroup="cobiex:ReadKey"/>
-	<xs:element name="UpdateKey" type="AssetTypeKeyType" substitutionGroup="cobiex:UpdateKey"/>
+	<xs:complexType name="ProductTypeCandidateClientRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeCandidateServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeCandidateUpdateAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="attc:UpdateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptcc:ProductTypeCandidateKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeCandidateCreateAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="attc:CreateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptcc:ProductTypeCandidateKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeCandidateDeleteAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="attc:DeleteAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptcc:ProductTypeCandidateKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeCandidateUpdateDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:UpdateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptcc:ProductTypeCandidateKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeCandidateCreateDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:CreateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptcc:ProductTypeCandidateKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeCandidateDeleteDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="docc:DeleteDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptcc:ProductTypeCandidateKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+		<xs:element name="DeleteAssetTypeAttributeRequest" type="ptcc:ProductTypeCandidateDeleteAttributeRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="CreateAssetTypeAttributeRequest" type="ptcc:ProductTypeCandidateCreateAttributeRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="UpdateAssetTypeAttributeRequest" type="ptcc:ProductTypeCandidateUpdateAttributeRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+			<xs:element name="DeleteAssetTypeDocumentRequest" type="ptcc:ProductTypeCandidateDeleteDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="CreateAssetTypeDocumentRequest" type="ptcc:ProductTypeCandidateCreateDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="UpdateAssetTypeDocumentRequest" type="ptcc:ProductTypeCandidateUpdateDocumentRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="ProductTypeCandidates" type="ptcd:ProductTypeCandidateType" substitutionGroup="cobiex:InformationExchange"/>
+	<xs:element name="ProductTypeCandidate" type="ptcc:TypeCandidateReadResultType" substitutionGroup="cobiex:ReadResult"/>
+	<xs:element name="UpdateAssetTypeCandidateRequest" type="ptcc:TypeCandidateUpdateRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="ProductTypeCandidateKey" type="AssetTypeKeyType" substitutionGroup="cobiex:Key"/>
 </xs:schema>

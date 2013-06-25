@@ -1,5 +1,4 @@
-
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cnt="http://contact.lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://contact.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" targetNamespace="http://contact.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:annotation>
 		<xs:documentation>
@@ -12,6 +11,17 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="ContactType">
+				<xs:group ref="con:EditContactGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:group name="UpdateContactGroup">
+		<xs:sequence>
+			<xs:element ref="ContactEmail"/>
+			<xs:group ref="con:EditContactGroup"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="EditContactGroup">
 				<xs:sequence>
 					<xs:element ref="ContactCategory">
 						<xs:annotation>
@@ -79,10 +89,9 @@
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="Contact" type="cnt:ContactType" substitutionGroup="Contact">
+	</xs:group>
+	
+	<xs:element name="Contact" type="con:ContactType" substitutionGroup="Contact">
 		<xs:annotation>
 			<xs:documentation>Information about a specific manufacturer or supplier associated with an AssetType.</xs:documentation>
 		</xs:annotation>
