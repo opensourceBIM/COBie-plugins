@@ -71,6 +71,7 @@
 				</Folder>
 				<File FilePath="LCie\CRUD\090_02_ProductTypeTemplate_CRUD.xsd" HomeFolder="Yes"/>
 				<File FilePath="LCie\CRUD\100_02_ProductTypeCandidate_CRUD.xsd" HomeFolder="Yes"/>
+				<File FilePath="LCie\CRUD\100_03_ProductTypeTemplate_CRUD.xsd" HomeFolder="Yes"/>
 				<File FilePath="LCie\CRUD\110_01_ProductTypeCandidate_CRUD.xsd" HomeFolder="Yes"/>
 				<File FilePath="LCie\CRUD\180_01_ProductTypeSelection_CRUD.xsd" HomeFolder="Yes"/>
 				<File FilePath="LCie\CRUD\210_01_ProductInstallationReport_CRUD.xsd" HomeFolder="Yes"/>

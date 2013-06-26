@@ -1,4 +1,18 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pwd="http://maintenance250.defs.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:camed="http://jcam.org.uk/editor" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:pi="http://maintenance250.lcie.cobielite.cobie.erdc.org" targetNamespace="http://maintenance250.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://maintenance250.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../cobielite_substitutions/250_03_ProductTypemaintenance_defs.xsd"/>
-	<xs:element name="ProductTypeMaintenance" type="pwd:ProductMaintenanceType"/>
+	<xs:element name="ProductTypeMaintenance" type="pwd:ProductMaintenanceType">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=3496">Background:  The compilation of commissioning information requires the collection of a variety of different types of information from product manufactures. This information includes: product attributes, replacement parts, warranty terms and conditions, and preventative maintenance tasks. Currently such information is provided by manufacturers in documents whose information cannot be effectively compiled during the construction commissioning stage or effectively used by the facility manager during the operations stage of the building.
+			</xs:documentation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=3496">Business Case:  Commissioning agents can directly use commissioning information directly provided by product manufacturers to eliminate the requirement to manually load such information into owner CMMS systems. Product manufacturers can provide recommended maintenance information to the facility manager in a way that the information can be used. Currently many owners use generic, rather than manufacturer-specific PM schedules. Facility operators use the actual manufacturer’s PM schedules to improve the reliability of their assets.
+			</xs:documentation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=3496">Example Contract Clause:  Construction Contractor shall provide manufacturers’ preventative maintenance instructions required in the contract in electronic format in accordance with the Product Type Maintenance specification of the LCie model.
+			</xs:documentation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=3496">OmniClass Table 31 Phase:  31-40 50 00 Commissioning Phase</xs:documentation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=3496">OmniClass Table 34 Actors:  34-35 17 00 Sub Contractor</xs:documentation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=3496">OmniClass Table 32 Services:  32-21 00 00 Execution Services</xs:documentation>
+									<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6200">Example File (WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6209</xs:documentation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6200">Example File (Local):  examples/250_03_ProductTypeMaintenance.xml</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 </xs:schema>

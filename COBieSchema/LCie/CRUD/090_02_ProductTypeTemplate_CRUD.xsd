@@ -1,6 +1,44 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org"  xmlns:bimsie="http://bimsie.bimserver.org" xmlns:pttcd="http://typetemplate090.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pttc="http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:pttcd="http://typetemplate090.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pttc="http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://bimsie.bimserver.org" schemaLocation="common/BIMsieWrapper.xsd"/>
 	<xs:import namespace="http://typetemplate090.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/090_02_ProductTypeTemplate_CRUD_defs.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Description:  As the design progresses, performance characteristics and suitable products for the building systems are identified.  System types and equipment are identified by the Specifier based on the facility requirements.  Six copies are required to be submitted for review.  Some products are defined in more detail by iden-tifying manufacturers and model numbers which meet requirements (Basis of Design). In these cases, 3 qualifying products should be listed.    
+			</xs:documentation>
+		<xs:documentation>Life Cycle Process:  Develop Design - Design Schematic
+			</xs:documentation>
+		<xs:documentation>Actors:  Specifier</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation>
+			The following example files are available on the WWW:
+090.02 Product Type Template Create AssetType Request (http://projects.buildingsmartalliance.org/files/?artifact_id=6246)
+090.02 Product Type Template Create AssetType Response (http://projects.buildingsmartalliance.org/files/?artifact_id=6247)
+090.02 Product Type Template Delete AssetType Request (http://projects.buildingsmartalliance.org/files/?artifact_id=6252)
+090.02 Product Type Template Delete AssetType Response (http://projects.buildingsmartalliance.org/files/?artifact_id=6253)
+090.02 Product Type Template Read All Request (http://projects.buildingsmartalliance.org/files/?artifact_id=6254)
+090.02 Product Type Template Read All Response (http://projects.buildingsmartalliance.org/files/?artifact_id=6255)
+090.02 Product Type Template Read Request (http://projects.buildingsmartalliance.org/files/?artifact_id=6250)
+090.02 Product Type Template Read Response (http://projects.buildingsmartalliance.org/files/?artifact_id=6251)
+090.02 Product Type Template Update AssetType Request (http://projects.buildingsmartalliance.org/files/?artifact_id=6248)
+090.02 Product Type Template Update AssetType Response (http://projects.buildingsmartalliance.org/files/?artifact_id=6249)
+		</xs:documentation>
+	</xs:annotation>
+		<xs:annotation>
+		<xs:documentation>
+			The following example files are also available from the specified relative paths (relative to github location of this file):
+
+090.02 Product Type Template Delete AssetType Response (examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_DeleteResponse.xml)
+090.02 Product Type Template Read All Request(examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_ReadAllRequest.xml)
+090.02 Product Type Template Read All Response(examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_ReadAllResponse.xml)
+090.02 Product Type Template Read Request(examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_ReadRequest.xml)
+090.02 Product Type Template Read Response(examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_ReadResponse.xml)
+090.02 Product Type Template Update AssetType Request(examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_UpdateRequest.xml)
+090.02 Product Type Template Update AssetType Response(examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_UpdateResponse.xml)
+
+
+
+		</xs:documentation>
+	</xs:annotation>
 	<xs:element name="ProductTypeTemplate_090_Request" type="pttcd:ProductTypeTemplateClientRequestType"/>
 	<xs:element name="ProductTypeTemplate_090_ServerResponse" type="pttcd:ProductTypeTemplateServerResponseType"/>
 </xs:schema>

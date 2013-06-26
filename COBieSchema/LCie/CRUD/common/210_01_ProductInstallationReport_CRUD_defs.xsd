@@ -104,16 +104,48 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name="ProductInstallationCreateRequest" type="pic:ProductInstallationCreateRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="ProductInstallationUpdateRequest" type="pic:ProductInstallationUpdateRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="ProductInstallationDeleteRequest" type="pic:ProductInstallationDeleteRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="ProductInstallationReportReadResult" type="pic:InstallReadResultType" substitutionGroup="cobiex:ReadResult"/>
+	<xs:element name="ProductInstallationCreateRequest" type="pic:ProductInstallationCreateRequestType" substitutionGroup="cobiex:CreateRequest">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6258">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6258</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_CreateDocumentRequest.xml">Example File(Local):  ../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_CreateDocumentRequest.xml</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ProductInstallationUpdateRequest" type="pic:ProductInstallationUpdateRequestType" substitutionGroup="cobiex:UpdateRequest">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6262">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6262</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_UpdateAssetRequest.xml">Example File(Local):  ../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_UpdateAssetRequest.xml</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ProductInstallationDeleteRequest" type="pic:ProductInstallationDeleteRequestType" substitutionGroup="cobiex:DeleteRequest">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6264">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6264</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_DeleteRequest.xml">Example File(Local):  ../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_DeleteRequest.xml</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ProductInstallationReportReadResult" type="pic:InstallReadResultType" substitutionGroup="cobiex:ReadResult">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6261">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6261</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_ReadResponse.xml">Example File(Local):  ../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_ReadResponse.xml</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="ProductInstallationReport" type="pi:ProductInstallationReportType" substitutionGroup="cobiex:InformationExchange"/>
 	<xs:element name="ProductInstallationKey" type="AssetKeyType" substitutionGroup="cobiex:Key"/>
-	<xs:element name="UpdateAssetRequest" type="pic:ProductInstallationUpdateAssetInfoType"/>
+	<xs:element name="UpdateAssetRequest" type="pic:ProductInstallationUpdateAssetInfoType">
+			<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6258">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6258</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport_UpdateAssetRequest.xml">Example File(Local):  ../examples/210_01_ProductInstallationReport_UpdateAssetRequest.xml
+</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="UpdateAssetDocumentRequest" type="pic:ProductInstallationUpdateAssetDocumentRequestType"/>
 	<xs:element name="DeleteAssetDocumentRequest" type="pic:ProductInstallationDeleteDocumentRequestType"/>
-	<xs:element name="CreateAssetDocumentRequest" type="pic:ProductInstallationCreateDocumentRequestType"/>
+	<xs:element name="CreateAssetDocumentRequest" type="pic:ProductInstallationCreateDocumentRequestType">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6258">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6258</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport_CreateDocumentRequest.xml">Example File(Local):  examples/210_01_ProductInstallationReport_CreateDocumentRequest.xml
+</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="UpdateAssetTypeRequest" type="pic:ProductInstallationUpdateAssetTypeInfoType"/>
 	<xs:element name="UpdateAssetTypeAttributeRequest" type="pic:ProductInstallationUpdateAssetTypeAttributeRequestType"/>
 	<xs:element name="AssetTypeKey" type="AssetTypeKeyType"/>

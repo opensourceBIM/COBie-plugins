@@ -2,6 +2,14 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:ptcc="http://typecandidate110.crud.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:ptccd="http://typecandidate110.defs.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://typecandidate110.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://bimsie.bimserver.org" schemaLocation="common/BIMsieWrapper.xsd"/>
 	<xs:import namespace="http://typecandidate110.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/110_01_ProductTypeCandidate_CRUD_defs.xsd"/>
+	<xs:annotation>
+	<xs:documentation>Description:  At this phase of the project all equipment and sys-tem types must be identified by the Specifier.  Product information from the Design Coordinated phase is incorporated into to this phase.  Three (3) qualifying products for each type required must be listed.  
+			</xs:documentation>
+	<xs:documentation>Life Cycle Process:  Finalize Design - Design Final
+			</xs:documentation>
+	<xs:documentation>Actors:  Specifier</xs:documentation>
+</xs:annotation>
+
 	<xs:element name="ProductTypeCandidate_110_Request" type="ptccd:ProductTypeCandidateClientRequestType"/>
 	<xs:element name="ProductTypeCandidate_110_ServerResponse" type="ptccd:ProductTypeCandidateServerResponseType"/>
 </xs:schema>
