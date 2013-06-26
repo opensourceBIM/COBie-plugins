@@ -12,7 +12,7 @@
 			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeCreateGroup">
+	<xs:group name="AssetTypeGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeDocuments" minOccurs="0">
 				<xs:annotation>
@@ -41,7 +41,7 @@
 			<xs:extension base="AssetTypeInfoType">
 				<xs:sequence>
 					<xs:group ref="ppd:AssetTypeReadOnlyGroup"/>
-					<xs:group ref="ppd:AssetTypeCreateGroup"/>
+					<xs:group ref="ppd:AssetTypeGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

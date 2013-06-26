@@ -171,39 +171,29 @@
 					</data>
 				</component>
 				<component name="090_02_ProductTypeTemplate_CRUD" library="xml" uid="21" kind="14">
-					<properties XSLTDefaultOutput="1"/>
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1092" lty="112" rbx="1782" rby="787"/>
 					<data>
 						<root scrollposition="1">
 							<header>
 								<namespaces>
-									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://typetemplate.defs.crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate090.defs.crud.lcie.cobielite.cobie.erdc.org"/>
 									<namespace uid="http://crud.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org"/>
 									<namespace uid="http://www.altova.com/mapforce"/>
 								</namespaces>
 							</header>
-							<entry name="FileInstance" ns="6" expanded="1">
-								<entry name="document" ns="6" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="ProductTypeTemplate_090_ServerResponse" ns="5" expanded="1">
-										<entry name="ReadResult" ns="3">
-											<entry name="AssetType" ns="2" expanded="1">
-												<entry name="AssetTypeAttributes" ns="1" expanded="1">
-													<entry name="Attribute" expanded="1"/>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="ReadAllResult" ns="4" expanded="1">
-											<entry name="ProductTypeTemplate" ns="3" inpkey="222" expanded="1"/>
+							<entry name="FileInstance" ns="3" expanded="1">
+								<entry name="document" ns="3" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductTypeTemplate_090_ServerResponse" ns="2" expanded="1">
+										<entry name="ReadAllResult" ns="1" expanded="1">
+											<entry name="ProductTypeTemplate" inpkey="225"/>
 										</entry>
 									</entry>
 								</entry>
 							</entry>
 						</root>
-						<document schema="..\090_02_ProductTypeTemplate_CRUD.xsd" outputinstance="..\090_02_ProductTypeTemplate_CRUD.xml" instanceroot="{http://typetemplate.crud.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate_090_ServerResponse"/>
+						<document schema="..\090_02_ProductTypeTemplate_CRUD.xsd" outputinstance="..\090_02_ProductTypeTemplate_CRUD.xml" instanceroot="{http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate_090_ServerResponse"/>
 						<wsdl/>
 					</data>
 				</component>
@@ -237,7 +227,7 @@
 			</children>
 			<graph directed="1">
 				<edges>
-					<edge edgekey="224">
+					<edge edgekey="226">
 						<data>
 							<dataconnection type="2"/>
 						</data>
@@ -267,7 +257,7 @@
 					</vertex>
 					<vertex vertexkey="223">
 						<edges>
-							<edge vertexkey="222" edgekey="224"/>
+							<edge vertexkey="225" edgekey="226"/>
 						</edges>
 					</vertex>
 				</vertices>

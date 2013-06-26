@@ -12,20 +12,20 @@ http://www.altova.com/mapforce
 	<xsl:output method="xml" encoding="UTF-8" indent="yes"/>
 	<xsl:template match="/">
 		<ProductTypeTemplate xmlns="http://typetemplate090.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:cobielite="http://core.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:ttd="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org">
-			<xsl:attribute name="xsi:schemaLocation" namespace="http://www.w3.org/2001/XMLSchema-instance" select="'http://typetemplate090.lcie.cobielite.cobie.erdc.org C:/Users/RDITLACB/git/cobieserver/COBieSchema/LCie/SubSchema/090_02_ProductTypeTemplate.xsd'"/>
+			<xsl:attribute name="xsi:schemaLocation" namespace="http://www.w3.org/2001/XMLSchema-instance" select="'http://typetemplate090.lcie.cobielite.cobie.erdc.org ../090_02_ProductTypeTemplate.xsd'"/>
 			<ttd:InformationExchangeID>090.02_ProductTypeTemplate</ttd:InformationExchangeID>
 			<xsl:for-each select="ns2:Facility/cobielite:AssetTypes">
 				<cobielite:AssetTypes>
 					<xsl:for-each select="ns0:AssetType">
 						<xsl:variable name="var1_externalSystemName" as="node()?" select="@cobielite:externalSystemName"/>
-						<xsl:variable name="var2_externalEntityName" as="node()?" select="@cobielite:externalEntityName"/>
-						<xsl:variable name="var3_externalID" as="node()?" select="@cobielite:externalID"/>
+						<xsl:variable name="var2_externalID" as="node()?" select="@cobielite:externalID"/>
+						<xsl:variable name="var3_externalEntityName" as="node()?" select="@cobielite:externalEntityName"/>
 						<ttd:AssetType>
-							<xsl:if test="fn:exists($var2_externalEntityName)">
-								<xsl:attribute name="cobielite:externalEntityName" select="fn:string($var2_externalEntityName)"/>
+							<xsl:if test="fn:exists($var3_externalEntityName)">
+								<xsl:attribute name="cobielite:externalEntityName" select="fn:string($var3_externalEntityName)"/>
 							</xsl:if>
-							<xsl:if test="fn:exists($var3_externalID)">
-								<xsl:attribute name="cobielite:externalID" select="fn:string($var3_externalID)"/>
+							<xsl:if test="fn:exists($var2_externalID)">
+								<xsl:attribute name="cobielite:externalID" select="fn:string($var2_externalID)"/>
 							</xsl:if>
 							<xsl:if test="fn:exists($var1_externalSystemName)">
 								<xsl:attribute name="cobielite:externalSystemName" select="fn:string($var1_externalSystemName)"/>
@@ -33,6 +33,11 @@ http://www.altova.com/mapforce
 							<cobielite:AssetTypeName>
 								<xsl:sequence select="fn:string(cobielite:AssetTypeName)"/>
 							</cobielite:AssetTypeName>
+							<xsl:for-each select="cobielite:AssetTypeCategory">
+								<cobielite:AssetTypeCategory>
+									<xsl:sequence select="fn:string(.)"/>
+								</cobielite:AssetTypeCategory>
+							</xsl:for-each>
 							<xsl:for-each select="cobielite:AssetTypeDescription">
 								<cobielite:AssetTypeDescription>
 									<xsl:sequence select="fn:string(.)"/>

@@ -42,7 +42,7 @@
 			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeCreateGroup">
+	<xs:group name="AssetTypeGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeAttributes" minOccurs="0">
 				<xs:annotation>
@@ -65,7 +65,7 @@
 			<xs:extension base="AssetTypeInfoType">
 				<xs:sequence>
 					<xs:group ref="tc:AssetTypeReadOnlyGroup"/>
-					<xs:group ref="tc:AssetTypeCreateGroup"/>
+					<xs:group ref="tc:AssetTypeGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ProductTypeTemplate_090_Request xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:crud="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:pttcd="http://typetemplate.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pttd="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" xmlns:ptt="http://typetemplate090.lcie.cobielite.cobie.erdc.org" xsi:schemaLocation="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org C:/Users/RDITLACB/git/cobieserver/COBieSchema/LCie/CRUD/090_02_ProductTypeTemplate_CRUD.xsd" xmlns="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ProductTypeTemplate_090_Request xmlns:attc="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:crud="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:pttcd="http://typetemplate090.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pttd="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" xmlns:ptt="http://typetemplate090.lcie.cobielite.cobie.erdc.org" xsi:schemaLocation="http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org ../../090_02_ProductTypeTemplate_CRUD.xsd" xmlns="http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<pttd:InformationExchangeID>090.02_ProductTypeTemplate</pttd:InformationExchangeID>
 	<bimsie:SessionToken>abcdefghijklmnop</bimsie:SessionToken>
 	<bimsie:UserID>345</bimsie:UserID>
-	<crud:UpdateRequest>
-		<bimsie:RevisionID>203</bimsie:RevisionID>
+	<pttcd:ProductTypeTemplateUpdateRequest>
+		<bimsie:RevisionID>3</bimsie:RevisionID>
 		<bimsie:UpdateHandlerID>505</bimsie:UpdateHandlerID>
-		<pttcd:UpdateKey>
-			<cobie:AssetTypeName>AC Unit Type 1</cobie:AssetTypeName>
-		</pttcd:UpdateKey>
-		<pttcd:UpdatedElements>
+		<pttcd:UpdateAssetTypeRequest>
+			<pttcd:ProductTypeTemplateKey>
+				<cobie:AssetTypeName>AC Unit Type 1</cobie:AssetTypeName>
+			</pttcd:ProductTypeTemplateKey>
+			<cobie:AssetTypeDescription>NewAssetTypeDescription</cobie:AssetTypeDescription>
 			<cobie:AssetTypeAccountingCategory>Moveable</cobie:AssetTypeAccountingCategory>
-		</pttcd:UpdatedElements>
-	</crud:UpdateRequest>
+		</pttcd:UpdateAssetTypeRequest>
+	</pttcd:ProductTypeTemplateUpdateRequest>
 </ProductTypeTemplate_090_Request>

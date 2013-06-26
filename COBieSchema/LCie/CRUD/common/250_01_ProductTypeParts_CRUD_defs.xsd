@@ -1,10 +1,10 @@
 <!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by RDITLACB (private) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org"  xmlns:docc="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:attc="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org"  xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:ppc="http://parts250.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pp="http://parts250.defs.lcie.cobielite.cobie.erdc.org" xmlns:conc="http://contact.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://parts250.defs.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:docc="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:attc="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:ppc="http://parts250.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pp="http://parts250.defs.lcie.cobielite.cobie.erdc.org" xmlns:conc="http://contact.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://parts250.defs.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="lcie_crud.xsd"/>
 	<xs:import namespace="http://parts250.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../../cobielite_substitutions/250_01_ProductTypeParts_defs.xsd"/>
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:import namespace="http://contact.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="contact_crud.xsd"/>
-			<xs:import namespace="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Attribute_CRUD_defs.xsd"/>
+	<xs:import namespace="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Attribute_CRUD_defs.xsd"/>
 	<xs:import namespace="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Document_CRUD_defs.xsd"/>
 	<xs:complexType name="InstallReadResultType">
 		<xs:complexContent>
@@ -16,43 +16,16 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="InstallReadAllResultType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:ReadAllResultType">
-				<xs:sequence>
-					<xs:element ref="ppc:ProductTypeParts"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="UpdateProductTypePartsRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:choice>
-					<xs:element ref="ppc:UpdateSpareRequest"/>
-					<xs:element ref="ppc:UpdateAssetTypeRequest"/>
-				</xs:choice>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="CreateSpareType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:CreateRequestType">
-				<xs:sequence>
-					<xs:element ref="ppc:ProductTypePartsKey"/>
-					<xs:group ref="pp:SpareCreateGroup"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="ppc:ProductTypePartsKey"/>
+			<xs:group ref="pp:SpareCreateGroup"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DeleteSpareType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:DeleteRequestType">
-				<xs:sequence>
-					<xs:element ref="ppc:ProductTypePartsKey"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="ppc:ProductTypePartsKey"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="UpdateAssetTypeInfoType">
 		<xs:sequence>
@@ -66,7 +39,7 @@
 			<xs:group ref="pp:SpareUpdateGroup"/>
 		</xs:sequence>
 	</xs:complexType>
-		<xs:complexType name="UpdateDocumentRequestType">
+	<xs:complexType name="UpdateDocumentRequestType">
 		<xs:complexContent>
 			<xs:extension base="docc:UpdateDocumentRequestType">
 				<xs:sequence>
@@ -93,7 +66,7 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-			<xs:complexType name="UpdateAttributeRequestType">
+	<xs:complexType name="UpdateAttributeRequestType">
 		<xs:complexContent>
 			<xs:extension base="attc:UpdateAttributeRequestType">
 				<xs:sequence>
@@ -130,17 +103,49 @@
 			<xs:extension base="cobiex:ServerResponseExchangeType"/>
 		</xs:complexContent>
 	</xs:complexType>
-			<xs:element name="UpdateSpareDocumentRequest" type="ppc:UpdateDocumentRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteSpareDocumentRequest" type="ppc:DeleteDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateSpareDocumentRequest" type="ppc:CreateDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="DeleteSpareRequest" type="ppc:DeleteSpareType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateSpareRequest" type="ppc:CreateSpareType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="ProductTypeParts" type="pp:ProductPartsType"/>
+	<xs:complexType name="ProductTypePartsCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:CreateRequestType">
+				<xs:choice>
+					<xs:element ref="ppc:CreateSpareDocumentRequest"/>
+					<xs:element ref="ppc:CreateSpareRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypePartsDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:DeleteRequestType">
+				<xs:choice>
+					<xs:element ref="ppc:DeleteSpareDocumentRequest"/>
+					<xs:element ref="ppc:DeleteSpareRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateProductTypePartsRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="ppc:UpdateSpareRequest"/>
+					<xs:element ref="ppc:UpdateAssetTypeRequest"/>
+					<xs:element ref="ppc:UpdateSpareDocumentRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:element name="ProductTypePartsUpdateRequest" type="ppc:UpdateProductTypePartsRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="ProductTypePartsCreateRequest" type="ppc:ProductTypePartsCreateRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="ProductTypePartsDeleteRequest" type="ppc:ProductTypePartsDeleteRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="ProductTypeParts" type="pp:ProductPartsType" substitutionGroup="cobiex:InformationExchange"/>
+	<xs:element name="ProductTypePartsReadResult" type="ppc:InstallReadResultType" substitutionGroup="cobiex:ReadResult"/>
+	<xs:element name="ProductTypePartsKey" type="SpareKeyType" substitutionGroup="cobiex:Key"/>
+	<xs:element name="UpdateSpareDocumentRequest" type="ppc:UpdateDocumentRequestType"/>
+	<xs:element name="DeleteSpareDocumentRequest" type="ppc:DeleteDocumentRequestType"/>
+	<xs:element name="CreateSpareDocumentRequest" type="ppc:CreateDocumentRequestType"/>
+	<xs:element name="DeleteSpareRequest" type="ppc:DeleteSpareType"/>
+	<xs:element name="CreateSpareRequest" type="ppc:CreateSpareType"/>
 	<xs:element name="UpdateSpareRequest" type="ppc:UpdateSpareType"/>
 	<xs:element name="UpdateAssetTypeRequest" type="ppc:UpdateAssetTypeInfoType"/>
-	<xs:element name="ProductTypePartsReadResult" type="ppc:InstallReadResultType" substitutionGroup="cobiex:ReadResult"/>
-	<xs:element name="ProductTypePartsReadAllResult" type="ppc:InstallReadAllResultType" substitutionGroup="cobiex:ReadAllResult"/>
-	<xs:element name="ProductTypePartsKey" type="SpareKeyType" substitutionGroup="cobiex:Key"/>
 	<xs:element name="AssetTypeKey" type="AssetTypeKeyType"/>
 </xs:schema>

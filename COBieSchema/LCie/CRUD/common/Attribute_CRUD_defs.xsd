@@ -3,41 +3,25 @@
 	<xs:import namespace="http://attribute.lcie.cobielite.cobie.erdc.org" schemaLocation="../../cobielite_substitutions/Attribute.xsd"/>
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:complexType name="AttributeReadResultType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:ReadResultType">
-				<xs:sequence>
-					<xs:element ref="Attribute"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="Attribute"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DeleteAttributeRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:DeleteRequestType">
-				<xs:sequence>
-					<xs:element ref="attc:AttributeKey"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="attc:AttributeKey"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="UpdateAttributeRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:sequence>
-					<xs:element ref="attc:AttributeKey"/>
-					<xs:element ref="Attribute"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="attc:AttributeKey"/>
+			<xs:element ref="Attribute"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="CreateAttributeRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:CreateRequestType">
-				<xs:sequence>
-					<xs:element ref="Attribute"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="Attribute"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="AttributeClientRequestType">
 		<xs:complexContent>

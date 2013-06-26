@@ -3,41 +3,33 @@
 	<xs:import namespace="http://issue.lcie.cobielite.cobie.erdc.org" schemaLocation="../../cobielite_substitutions/Issue.xsd"/>
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:complexType name="IssueReadResultType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:ReadResultType">
+
 				<xs:sequence>
 					<xs:element ref="Issue"/>
 				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+
 	</xs:complexType>
 	<xs:complexType name="DeleteIssueRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:DeleteRequestType">
+
 				<xs:sequence>
 					<xs:element ref="issc:IssueKey"/>
 				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+
 	</xs:complexType>
 	<xs:complexType name="UpdateIssueRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
+
 				<xs:sequence>
 					<xs:element ref="issc:IssueKey"/>
 					<xs:element ref="Issue"/>
 				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+
 	</xs:complexType>
 	<xs:complexType name="CreateIssueRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:CreateRequestType">
+
 				<xs:sequence>
 					<xs:element ref="Issue"/>
 				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+
 	</xs:complexType>
 	<xs:complexType name="IssueClientRequestType">
 		<xs:complexContent>

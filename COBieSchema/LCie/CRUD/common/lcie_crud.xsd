@@ -217,7 +217,7 @@
 			</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="CreateResult" type="crud:CreateResultType" abstract="true">
+	<xs:element name="CreateResult" type="crud:CreateResultType">
 		<xs:annotation>
 			<xs:documentation>
 				Results of the Create Request include the new revision ID, a boolean indicating success, and an optional message.
@@ -329,7 +329,7 @@ Indicates success or failure of a handled DeleteRequest.
 	</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-<!--	<xs:element name="Update" abstract="true">
+	<!--	<xs:element name="Update" abstract="true">
 		<xs:annotation>
 			<xs:documentation>The updated elements of an Update request.</xs:documentation>
 		</xs:annotation>

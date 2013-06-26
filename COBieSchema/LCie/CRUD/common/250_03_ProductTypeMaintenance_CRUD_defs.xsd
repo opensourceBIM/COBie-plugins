@@ -16,72 +16,39 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="MaintenanceReadAllResultType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:ReadAllResultType">
-				<xs:sequence>
-					<xs:element ref="ptm:ProductTypeMaintenance"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="CreateJobType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:CreateRequestType">
-				<xs:sequence>
-					<xs:element ref="mc:AssetTypeKey"/>
-					<xs:element ref="Job"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="mc:AssetTypeKey"/>
+			<xs:element ref="Job"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DeleteJobType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:DeleteRequestType">
-				<xs:sequence>
-					<xs:element ref="mc:JobKey"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="mc:JobKey"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="UpdateJobType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:sequence>
-					<xs:element ref="mc:JobKey"/>
-					<xs:group ref="md:JobUpdateGroup"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="mc:JobKey"/>
+			<xs:group ref="md:JobUpdateGroup"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="CreateResourceType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:CreateRequestType">
-				<xs:sequence>
-					<xs:element ref="mc:JobKey"/>
-					<xs:element ref="Resource"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="mc:JobKey"/>
+			<xs:element ref="Resource"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DeleteResourceType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:DeleteRequestType">
-				<xs:sequence>
-					<xs:element ref="mc:ResourceKey"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="mc:ResourceKey"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="UpdateResourceType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:sequence>
-					<xs:element ref="mc:ResourceKey"/>
-					<xs:group ref="md:ResourceUpdateGroup"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="mc:ResourceKey"/>
+			<xs:group ref="md:ResourceUpdateGroup"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="UpdateAssetTypeDocumentType">
 		<xs:complexContent>
@@ -228,30 +195,78 @@
 			<xs:extension base="cobiex:ServerResponseExchangeType"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name="DeleteAssetTypeDocumentRequest" type="mc:DeleteAssetTypeDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateAssetTypeDocumentRequest" type="mc:CreateAssetTypeDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateAssetTypeDocumentRequest" type="mc:UpdateAssetTypeDocumentType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteJobDocumentRequest" type="mc:DeleteJobDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateJobDocumentRequest" type="mc:CreateJobDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateJobDocumentRequest" type="mc:UpdateJobDocumentType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteResourceDocumentRequest" type="mc:DeleteResourceDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateResourceDocumentRequest" type="mc:CreateResourceDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateResourceDocumentRequest" type="mc:UpdateResourceDocumentType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteJobAttributeRequest" type="mc:DeleteJobAttributeRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateJobAttributeRequest" type="mc:CreateJobAttributeRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateJobAttributeRequest" type="mc:UpdateJobAttributeType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteResourceAttributeRequest" type="mc:DeleteResourceAttributeRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateResourceAttributeRequest" type="mc:CreateResourceAttributeRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateResourceAttributeRequest" type="mc:UpdateResourceAttributeType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="CreateJobRequest" type="mc:CreateJobType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateJobRequest" type="mc:UpdateJobType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteJobRequest" type="mc:DeleteJobType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateResourceRequest" type="mc:CreateResourceType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateResourceRequest" type="mc:UpdateResourceType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteResourceRequest" type="mc:DeleteResourceType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:complexType name="ProductTypeMaintenanceCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:CreateRequestType">
+				<xs:choice>
+					<xs:element ref="mc:CreateAssetTypeDocumentRequest"/>
+					<xs:element ref="mc:CreateJobDocumentRequest"/>
+					<xs:element ref="mc:CreateResourceDocumentRequest"/>
+					<xs:element ref="mc:CreateJobAttributeRequest"/>
+					<xs:element ref="mc:CreateResourceAttributeRequest"/>
+					<xs:element ref="mc:CreateJobRequest"/>
+					<xs:element ref="mc:CreateResourceRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeMaintenanceDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:DeleteRequestType">
+				<xs:choice>
+					<xs:element ref="mc:DeleteAssetTypeDocumentRequest"/>
+					<xs:element ref="mc:DeleteJobDocumentRequest"/>
+					<xs:element ref="mc:DeleteResourceDocumentRequest"/>
+					<xs:element ref="mc:DeleteJobAttributeRequest"/>
+					<xs:element ref="mc:DeleteResourceAttributeRequest"/>
+					<xs:element ref="mc:DeleteJobRequest"/>
+					<xs:element ref="mc:DeleteResourceRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateProductTypeMaintenanceRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="mc:UpdateAssetTypeDocumentRequest"/>
+					<xs:element ref="mc:UpdateJobDocumentRequest"/>
+					<xs:element ref="mc:UpdateResourceDocumentRequest"/>
+					<xs:element ref="mc:UpdateJobAttributeRequest"/>
+					<xs:element ref="mc:UpdateResourceAttributeRequest"/>
+					<xs:element ref="mc:UpdateJobRequest"/>
+					<xs:element ref="mc:UpdateResourceRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ProductTypeMaintenanceUpdateRequest" type="mc:UpdateProductTypeMaintenanceRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="ProductTypeMaintenanceCreateRequest" type="mc:ProductTypeMaintenanceCreateRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="ProductTypeMaintenanceDeleteRequest" type="mc:ProductTypeMaintenanceDeleteRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="AssetTypeKey" type="AssetTypeKeyType" substitutionGroup="cobiex:Key"/>
 	<xs:element name="ProductTypeMaintenanceReadResult" type="mc:MaintenanceReadResultType" substitutionGroup="cobiex:ReadResult"/>
-	<xs:element name="ProductTypeMaintenanceReadAllResult" type="mc:MaintenanceReadAllResultType" substitutionGroup="cobiex:ReadAllResult"/>
+	<xs:element name="ProductTypeMaintenance" type="md:ProductMaintenanceType" substitutionGroup="cobiex:InformationExchange"/>
+	<xs:element name="DeleteAssetTypeDocumentRequest" type="mc:DeleteAssetTypeDocumentRequestType"/>
+	<xs:element name="CreateAssetTypeDocumentRequest" type="mc:CreateAssetTypeDocumentRequestType"/>
+	<xs:element name="UpdateAssetTypeDocumentRequest" type="mc:UpdateAssetTypeDocumentType"/>
+	<xs:element name="DeleteJobDocumentRequest" type="mc:DeleteJobDocumentRequestType"/>
+	<xs:element name="CreateJobDocumentRequest" type="mc:CreateJobDocumentRequestType"/>
+	<xs:element name="UpdateJobDocumentRequest" type="mc:UpdateJobDocumentType"/>
+	<xs:element name="DeleteResourceDocumentRequest" type="mc:DeleteResourceDocumentRequestType"/>
+	<xs:element name="CreateResourceDocumentRequest" type="mc:CreateResourceDocumentRequestType"/>
+	<xs:element name="UpdateResourceDocumentRequest" type="mc:UpdateResourceDocumentType"/>
+	<xs:element name="DeleteJobAttributeRequest" type="mc:DeleteJobAttributeRequestType"/>
+	<xs:element name="CreateJobAttributeRequest" type="mc:CreateJobAttributeRequestType"/>
+	<xs:element name="UpdateJobAttributeRequest" type="mc:UpdateJobAttributeType"/>
+	<xs:element name="DeleteResourceAttributeRequest" type="mc:DeleteResourceAttributeRequestType"/>
+	<xs:element name="CreateResourceAttributeRequest" type="mc:CreateResourceAttributeRequestType"/>
+	<xs:element name="UpdateResourceAttributeRequest" type="mc:UpdateResourceAttributeType"/>
+	<xs:element name="CreateJobRequest" type="mc:CreateJobType"/>
+	<xs:element name="UpdateJobRequest" type="mc:UpdateJobType"/>
+	<xs:element name="DeleteJobRequest" type="mc:DeleteJobType"/>
+	<xs:element name="CreateResourceRequest" type="mc:CreateResourceType"/>
+	<xs:element name="UpdateResourceRequest" type="mc:UpdateResourceType"/>
+	<xs:element name="DeleteResourceRequest" type="mc:DeleteResourceType"/>
 	<xs:element name="JobKey" type="JobKeyType"/>
 	<xs:element name="ResourceKey" type="ResourceKeyType"/>
-	<xs:element name="AssetTypeKey" type="AssetTypeKeyType" substitutionGroup="cobiex:Key"/>
 </xs:schema>

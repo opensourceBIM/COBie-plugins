@@ -5,107 +5,6 @@
 		<properties SelectedLanguage="java"/>
 		<structure>
 			<children>
-				<component name="100_02_ProductTypeCandidate" library="xml" uid="4" kind="14">
-					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
-					<view ltx="799" lty="184" rbx="1581" rby="684"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace uid="http://typecandidate100.defs.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://document.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://contact.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://typecandidate100.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="6" expanded="1">
-								<entry name="document" ns="6" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="ProductTypeCandidate" ns="5" expanded="1">
-										<entry name="InformationExchangeID" inpkey="197"/>
-										<entry name="AssetTypes" ns="1" inpkey="66" expanded="1">
-											<entry name="AssetType" inpkey="67" expanded="1">
-												<entry name="externalEntityName" ns="1" type="attribute" inpkey="68"/>
-												<entry name="externalID" ns="1" type="attribute" inpkey="69"/>
-												<entry name="externalSystemName" ns="1" type="attribute" inpkey="70"/>
-												<entry name="AssetTypeName" ns="1" inpkey="71"/>
-												<entry name="AssetTypeCategory" ns="1" inpkey="72"/>
-												<entry name="AssetTypeDescription" ns="1" inpkey="73"/>
-												<entry name="AssetTypeAccountingCategory" ns="1" inpkey="74"/>
-												<entry name="AssetTypeNominalLength" ns="1" inpkey="75"/>
-												<entry name="AssetTypeNominalWidth" ns="1" inpkey="76"/>
-												<entry name="AssetTypeNominalHeight" ns="1" inpkey="77"/>
-												<entry name="AssetTypeAccessibilityText" ns="1" inpkey="78"/>
-												<entry name="AssetTypeCodePerformance" ns="1" inpkey="79"/>
-												<entry name="AssetTypeColorCode" ns="1" inpkey="80"/>
-												<entry name="AssetTypeConstituentsDescription" ns="1" inpkey="81"/>
-												<entry name="AssetTypeFeaturesDescription" ns="1" inpkey="82"/>
-												<entry name="AssetTypeFinishDescription" ns="1" inpkey="83"/>
-												<entry name="AssetTypeGradeDescription" ns="1" inpkey="84"/>
-												<entry name="AssetTypeMaterialDescription" ns="1" inpkey="85"/>
-												<entry name="AssetTypeShapeDescription" ns="1" inpkey="86"/>
-												<entry name="AssetTypeSizeDescription" ns="1" inpkey="87"/>
-												<entry name="AssetTypeSustainabilityPerformanceDescription" ns="1" inpkey="88"/>
-												<entry name="AssetTypeModelNumber" ns="1" inpkey="89"/>
-												<entry name="AssetTypeManufacturerContactAssignments" ns="1" inpkey="90"/>
-												<entry name="AssetTypeAttributes" ns="1" inpkey="91">
-													<entry name="Attribute" ns="2" inpkey="92">
-														<entry name="externalEntityName" ns="1" type="attribute" inpkey="93"/>
-														<entry name="externalID" ns="1" type="attribute" inpkey="94"/>
-														<entry name="externalSystemName" ns="1" type="attribute" inpkey="95"/>
-														<entry name="propertySetName" ns="1" type="attribute" inpkey="96"/>
-														<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="97"/>
-														<entry name="AttributeName" ns="1" inpkey="98"/>
-														<entry name="AttributeCategory" ns="1" inpkey="99"/>
-														<entry name="AttributeDescription" ns="1" inpkey="100"/>
-														<entry name="AttributeValue" ns="1" inpkey="101"/>
-													</entry>
-												</entry>
-												<entry name="AssetTypeDocuments" ns="1" inpkey="102">
-													<entry name="Document" ns="3" inpkey="103">
-														<entry name="externalEntityName" ns="1" type="attribute" inpkey="104"/>
-														<entry name="externalID" ns="1" type="attribute" inpkey="105"/>
-														<entry name="externalSystemName" ns="1" type="attribute" inpkey="106"/>
-														<entry name="DocumentName" ns="1" inpkey="107"/>
-														<entry name="DocumentCategory" ns="1" inpkey="108"/>
-														<entry name="DocumentDescription" ns="1" inpkey="109"/>
-														<entry name="DocumentURI" ns="1" inpkey="110"/>
-														<entry name="DocumentReferenceURI" ns="1" inpkey="111"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="Contacts" ns="1" inpkey="112">
-											<entry name="Contact" ns="4" inpkey="113">
-												<entry name="externalEntityName" ns="1" type="attribute" inpkey="114"/>
-												<entry name="externalID" ns="1" type="attribute" inpkey="115"/>
-												<entry name="externalSystemName" ns="1" type="attribute" inpkey="116"/>
-												<entry name="ContactEmail" ns="1" inpkey="117"/>
-												<entry name="ContactCategory" ns="1" inpkey="118"/>
-												<entry name="ContactCompanyName" ns="1" inpkey="119"/>
-												<entry name="ContactPhoneNumber" ns="1" inpkey="120"/>
-												<entry name="ContactDepartmentName" ns="1" inpkey="121"/>
-												<entry name="ContactGivenName" ns="1" inpkey="122"/>
-												<entry name="ContactFamilyName" ns="1" inpkey="123"/>
-												<entry name="ContactStreet" ns="1" inpkey="124"/>
-												<entry name="ContactPostalBoxNumber" ns="1" inpkey="125"/>
-												<entry name="ContactTownName" ns="1" inpkey="126"/>
-												<entry name="ContactRegionCode" ns="1" inpkey="127"/>
-												<entry name="ContactCountryName" ns="1" inpkey="128"/>
-												<entry name="ContactPostalCode" ns="1" inpkey="129"/>
-												<entry name="ContactURL" ns="1" inpkey="130"/>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\100_02_ProductTypeCandidate.xsd" outputinstance="..\100_02_ProductTypeCandidate.xml" instanceroot="{http://typecandidate100.lcie.cobielite.cobie.erdc.org}ProductTypeCandidate"/>
-						<wsdl/>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="5" kind="2">
 					<properties/>
 					<targets>
@@ -218,6 +117,107 @@
 							</entry>
 						</root>
 						<document schema="..\..\..\COBieLite\xsd\cobielite.xsd" inputinstance="..\..\..\COBieLite\examples\ClinicHandover_COBieLite_RC3.xml" outputinstance="..\..\..\COBieLite\examples\ClinicHandover_COBieLite_RC3.xml" instanceroot="{http://cobielite.cobie.erdc.org}Facility"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="100_02_ProductTypeCandidate" library="xml" uid="4" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="799" lty="184" rbx="1581" rby="684"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://typecandidate100.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://document.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://contact.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typecandidate100.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="6" expanded="1">
+								<entry name="document" ns="6" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductTypeCandidate" ns="5" expanded="1">
+										<entry name="InformationExchangeID" inpkey="197"/>
+										<entry name="AssetTypes" ns="1" inpkey="66" expanded="1">
+											<entry name="AssetType" inpkey="67" expanded="1">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="68"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="69"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="70"/>
+												<entry name="AssetTypeName" ns="1" inpkey="71"/>
+												<entry name="AssetTypeCategory" ns="1" inpkey="72"/>
+												<entry name="AssetTypeDescription" ns="1" inpkey="73"/>
+												<entry name="AssetTypeAccountingCategory" ns="1" inpkey="74"/>
+												<entry name="AssetTypeNominalLength" ns="1" inpkey="75"/>
+												<entry name="AssetTypeNominalWidth" ns="1" inpkey="76"/>
+												<entry name="AssetTypeNominalHeight" ns="1" inpkey="77"/>
+												<entry name="AssetTypeAccessibilityText" ns="1" inpkey="78"/>
+												<entry name="AssetTypeCodePerformance" ns="1" inpkey="79"/>
+												<entry name="AssetTypeColorCode" ns="1" inpkey="80"/>
+												<entry name="AssetTypeConstituentsDescription" ns="1" inpkey="81"/>
+												<entry name="AssetTypeFeaturesDescription" ns="1" inpkey="82"/>
+												<entry name="AssetTypeFinishDescription" ns="1" inpkey="83"/>
+												<entry name="AssetTypeGradeDescription" ns="1" inpkey="84"/>
+												<entry name="AssetTypeMaterialDescription" ns="1" inpkey="85"/>
+												<entry name="AssetTypeShapeDescription" ns="1" inpkey="86"/>
+												<entry name="AssetTypeSizeDescription" ns="1" inpkey="87"/>
+												<entry name="AssetTypeSustainabilityPerformanceDescription" ns="1" inpkey="88"/>
+												<entry name="AssetTypeModelNumber" ns="1" inpkey="89"/>
+												<entry name="AssetTypeManufacturerContactAssignments" ns="1" inpkey="90"/>
+												<entry name="AssetTypeAttributes" ns="1" inpkey="91">
+													<entry name="Attribute" ns="2" inpkey="92">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="93"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="94"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="95"/>
+														<entry name="propertySetName" ns="1" type="attribute" inpkey="96"/>
+														<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="97"/>
+														<entry name="AttributeName" ns="1" inpkey="98"/>
+														<entry name="AttributeCategory" ns="1" inpkey="99"/>
+														<entry name="AttributeDescription" ns="1" inpkey="100"/>
+														<entry name="AttributeValue" ns="1" inpkey="101"/>
+													</entry>
+												</entry>
+												<entry name="AssetTypeDocuments" ns="1" inpkey="102">
+													<entry name="Document" ns="3" inpkey="103">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="104"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="105"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="106"/>
+														<entry name="DocumentName" ns="1" inpkey="107"/>
+														<entry name="DocumentCategory" ns="1" inpkey="108"/>
+														<entry name="DocumentDescription" ns="1" inpkey="109"/>
+														<entry name="DocumentURI" ns="1" inpkey="110"/>
+														<entry name="DocumentReferenceURI" ns="1" inpkey="111"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Contacts" ns="1" inpkey="112">
+											<entry name="Contact" ns="4" inpkey="113">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="114"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="115"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="116"/>
+												<entry name="ContactEmail" ns="1" inpkey="117"/>
+												<entry name="ContactCategory" ns="1" inpkey="118"/>
+												<entry name="ContactCompanyName" ns="1" inpkey="119"/>
+												<entry name="ContactPhoneNumber" ns="1" inpkey="120"/>
+												<entry name="ContactDepartmentName" ns="1" inpkey="121"/>
+												<entry name="ContactGivenName" ns="1" inpkey="122"/>
+												<entry name="ContactFamilyName" ns="1" inpkey="123"/>
+												<entry name="ContactStreet" ns="1" inpkey="124"/>
+												<entry name="ContactPostalBoxNumber" ns="1" inpkey="125"/>
+												<entry name="ContactTownName" ns="1" inpkey="126"/>
+												<entry name="ContactRegionCode" ns="1" inpkey="127"/>
+												<entry name="ContactCountryName" ns="1" inpkey="128"/>
+												<entry name="ContactPostalCode" ns="1" inpkey="129"/>
+												<entry name="ContactURL" ns="1" inpkey="130"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\100_02_ProductTypeCandidate.xsd" outputinstance="..\100_02_ProductTypeCandidate.xml" instanceroot="{http://typecandidate100.lcie.cobielite.cobie.erdc.org}ProductTypeCandidate" userdefinedschemalocation="../100_02_ProductTypeCandidate.xsd"/>
 						<wsdl/>
 					</data>
 				</component>

@@ -50,151 +50,6 @@
 					</targets>
 					<view ltx="1170" lty="854" rbx="1237" rby="893"/>
 				</component>
-				<component name="250_04_SystemOperation" library="xml" uid="33" kind="14">
-					<properties XSLTDefaultOutput="1"/>
-					<view ltx="1258" lty="389" rbx="1558" rby="589"/>
-					<data>
-						<root scrollposition="455">
-							<header>
-								<namespaces>
-									<namespace uid="http://operation250.defs.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://document.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://issue.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://operation250.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="6" expanded="1">
-								<entry name="document" ns="6" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="SystemOperation" ns="5" expanded="1">
-										<entry name="InformationExchangeID" inpkey="2198"/>
-										<entry name="AssetTypes" ns="1" inpkey="1920" expanded="1">
-											<entry name="AssetType" inpkey="1921" expanded="1">
-												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1922"/>
-												<entry name="externalID" ns="1" type="attribute" inpkey="1923"/>
-												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1924"/>
-												<entry name="AssetTypeName" ns="1" inpkey="1925"/>
-												<entry name="AssetTypeCategory" ns="1" inpkey="1926"/>
-												<entry name="AssetTypeDescription" ns="1" inpkey="1927"/>
-												<entry name="AssetTypeManufacturerContactAssignments" ns="1" inpkey="1928"/>
-												<entry name="AssetTypeModelNumber" ns="1" inpkey="1929"/>
-												<entry name="Assets" ns="1" inpkey="1930" expanded="1">
-													<entry name="Asset" inpkey="1931">
-														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1932"/>
-														<entry name="externalID" ns="1" type="attribute" inpkey="1933"/>
-														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1934"/>
-														<entry name="AssetName" ns="1" inpkey="1935"/>
-														<entry name="AssetSpaceAssignments" ns="1" inpkey="1936"/>
-														<entry name="AssetDescription" ns="1" inpkey="1937"/>
-														<entry name="AssetWarrantyStartDate" ns="1" inpkey="1938"/>
-														<entry name="AssetSystemAssignments" ns="1" inpkey="1939"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="Floors" ns="1" inpkey="1940" expanded="1">
-											<entry name="Floor" inpkey="1941" expanded="1">
-												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1942"/>
-												<entry name="externalID" ns="1" type="attribute" inpkey="1943"/>
-												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1944"/>
-												<entry name="FloorName" ns="1" inpkey="1945"/>
-												<entry name="Spaces" ns="1" inpkey="1946" expanded="1">
-													<entry name="Space" inpkey="1947">
-														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1948"/>
-														<entry name="externalID" ns="1" type="attribute" inpkey="1949"/>
-														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1950"/>
-														<entry name="SpaceName" ns="1" inpkey="1951"/>
-														<entry name="SpaceZoneAssignments" ns="1" inpkey="1952"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="Systems" ns="1" inpkey="1953">
-											<entry name="System" inpkey="1954">
-												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1955"/>
-												<entry name="externalID" ns="1" type="attribute" inpkey="1956"/>
-												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1957"/>
-												<entry name="SystemName" ns="1" inpkey="1958"/>
-												<entry name="SystemCategory" ns="1" inpkey="1959"/>
-												<entry name="SystemDescription" ns="1" inpkey="1960"/>
-												<entry name="SystemAttributes" ns="1" inpkey="1961">
-													<entry name="Attribute" ns="2" inpkey="1962">
-														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1963"/>
-														<entry name="externalID" ns="1" type="attribute" inpkey="1964"/>
-														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1965"/>
-														<entry name="propertySetName" ns="1" type="attribute" inpkey="1966"/>
-														<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="1967"/>
-														<entry name="AttributeName" ns="1" inpkey="1968"/>
-														<entry name="AttributeCategory" ns="1" inpkey="1969"/>
-														<entry name="AttributeDescription" ns="1" inpkey="1970"/>
-														<entry name="AttributeValue" ns="1" inpkey="1971"/>
-													</entry>
-												</entry>
-												<entry name="SystemDocuments" ns="1" inpkey="1972">
-													<entry name="Document" ns="3" inpkey="1973">
-														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1974"/>
-														<entry name="externalID" ns="1" type="attribute" inpkey="1975"/>
-														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1976"/>
-														<entry name="DocumentName" ns="1" inpkey="1977"/>
-														<entry name="DocumentCategory" ns="1" inpkey="1978"/>
-														<entry name="DocumentDescription" ns="1" inpkey="1979"/>
-														<entry name="DocumentURI" ns="1" inpkey="1980"/>
-														<entry name="DocumentReferenceURI" ns="1" inpkey="1981"/>
-													</entry>
-												</entry>
-												<entry name="SystemIssues" ns="1" inpkey="1982">
-													<entry name="Issue" ns="4" inpkey="1983"/>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="Zones" ns="1" inpkey="1984">
-											<entry name="Zone" inpkey="1985">
-												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1986"/>
-												<entry name="externalID" ns="1" type="attribute" inpkey="1987"/>
-												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1988"/>
-												<entry name="ZoneName" ns="1" inpkey="1989"/>
-												<entry name="ZoneCategory" ns="1" inpkey="1990"/>
-												<entry name="ZoneDescription" ns="1" inpkey="1991"/>
-												<entry name="ZoneAttributes" ns="1" inpkey="1992">
-													<entry name="Attribute" ns="2" inpkey="1993">
-														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1994"/>
-														<entry name="externalID" ns="1" type="attribute" inpkey="1995"/>
-														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1996"/>
-														<entry name="propertySetName" ns="1" type="attribute" inpkey="1997"/>
-														<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="1998"/>
-														<entry name="AttributeName" ns="1" inpkey="1999"/>
-														<entry name="AttributeCategory" ns="1" inpkey="2000"/>
-														<entry name="AttributeDescription" ns="1" inpkey="2001"/>
-														<entry name="AttributeValue" ns="1" inpkey="2002"/>
-													</entry>
-												</entry>
-												<entry name="ZoneDocuments" ns="1" inpkey="2003">
-													<entry name="Document" ns="3" inpkey="2004">
-														<entry name="externalEntityName" ns="1" type="attribute" inpkey="2005"/>
-														<entry name="externalID" ns="1" type="attribute" inpkey="2006"/>
-														<entry name="externalSystemName" ns="1" type="attribute" inpkey="2007"/>
-														<entry name="DocumentName" ns="1" inpkey="2008"/>
-														<entry name="DocumentCategory" ns="1" inpkey="2009"/>
-														<entry name="DocumentDescription" ns="1" inpkey="2010"/>
-														<entry name="DocumentURI" ns="1" inpkey="2011"/>
-														<entry name="DocumentReferenceURI" ns="1" inpkey="2012"/>
-													</entry>
-												</entry>
-												<entry name="ZoneIssues" ns="1" inpkey="2013">
-													<entry name="Issue" ns="4" inpkey="2014"/>
-												</entry>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\250_04_SystemOperation.xsd" outputinstance="..\250_04_SystemOperation.xml" instanceroot="{http://operation250.lcie.cobielite.cobie.erdc.org}SystemOperation"/>
-						<wsdl/>
-					</data>
-				</component>
 				<component name="floor:Floor" library="core" uid="39" kind="3">
 					<properties/>
 					<sources>
@@ -379,6 +234,151 @@
 						<datapoint pos="0" key="2193"/>
 					</targets>
 					<view ltx="878" lty="264" rbx="945" rby="303"/>
+				</component>
+				<component name="250_04_SystemOperation" library="xml" uid="33" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1258" lty="389" rbx="1558" rby="589"/>
+					<data>
+						<root scrollposition="455">
+							<header>
+								<namespaces>
+									<namespace uid="http://operation250.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://document.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://issue.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://operation250.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="6" expanded="1">
+								<entry name="document" ns="6" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="SystemOperation" ns="5" expanded="1">
+										<entry name="InformationExchangeID" inpkey="2198"/>
+										<entry name="AssetTypes" ns="1" inpkey="1920" expanded="1">
+											<entry name="AssetType" inpkey="1921" expanded="1">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1922"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="1923"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1924"/>
+												<entry name="AssetTypeName" ns="1" inpkey="1925"/>
+												<entry name="AssetTypeCategory" ns="1" inpkey="1926"/>
+												<entry name="AssetTypeDescription" ns="1" inpkey="1927"/>
+												<entry name="AssetTypeManufacturerContactAssignments" ns="1" inpkey="1928"/>
+												<entry name="AssetTypeModelNumber" ns="1" inpkey="1929"/>
+												<entry name="Assets" ns="1" inpkey="1930" expanded="1">
+													<entry name="Asset" inpkey="1931">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1932"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="1933"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1934"/>
+														<entry name="AssetName" ns="1" inpkey="1935"/>
+														<entry name="AssetSpaceAssignments" ns="1" inpkey="1936"/>
+														<entry name="AssetDescription" ns="1" inpkey="1937"/>
+														<entry name="AssetWarrantyStartDate" ns="1" inpkey="1938"/>
+														<entry name="AssetSystemAssignments" ns="1" inpkey="1939"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Floors" ns="1" inpkey="1940" expanded="1">
+											<entry name="Floor" inpkey="1941" expanded="1">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1942"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="1943"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1944"/>
+												<entry name="FloorName" ns="1" inpkey="1945"/>
+												<entry name="Spaces" ns="1" inpkey="1946" expanded="1">
+													<entry name="Space" inpkey="1947">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1948"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="1949"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1950"/>
+														<entry name="SpaceName" ns="1" inpkey="1951"/>
+														<entry name="SpaceZoneAssignments" ns="1" inpkey="1952"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Systems" ns="1" inpkey="1953">
+											<entry name="System" inpkey="1954">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1955"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="1956"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1957"/>
+												<entry name="SystemName" ns="1" inpkey="1958"/>
+												<entry name="SystemCategory" ns="1" inpkey="1959"/>
+												<entry name="SystemDescription" ns="1" inpkey="1960"/>
+												<entry name="SystemAttributes" ns="1" inpkey="1961">
+													<entry name="Attribute" ns="2" inpkey="1962">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1963"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="1964"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1965"/>
+														<entry name="propertySetName" ns="1" type="attribute" inpkey="1966"/>
+														<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="1967"/>
+														<entry name="AttributeName" ns="1" inpkey="1968"/>
+														<entry name="AttributeCategory" ns="1" inpkey="1969"/>
+														<entry name="AttributeDescription" ns="1" inpkey="1970"/>
+														<entry name="AttributeValue" ns="1" inpkey="1971"/>
+													</entry>
+												</entry>
+												<entry name="SystemDocuments" ns="1" inpkey="1972">
+													<entry name="Document" ns="3" inpkey="1973">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1974"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="1975"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1976"/>
+														<entry name="DocumentName" ns="1" inpkey="1977"/>
+														<entry name="DocumentCategory" ns="1" inpkey="1978"/>
+														<entry name="DocumentDescription" ns="1" inpkey="1979"/>
+														<entry name="DocumentURI" ns="1" inpkey="1980"/>
+														<entry name="DocumentReferenceURI" ns="1" inpkey="1981"/>
+													</entry>
+												</entry>
+												<entry name="SystemIssues" ns="1" inpkey="1982">
+													<entry name="Issue" ns="4" inpkey="1983"/>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Zones" ns="1" inpkey="1984">
+											<entry name="Zone" inpkey="1985">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1986"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="1987"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1988"/>
+												<entry name="ZoneName" ns="1" inpkey="1989"/>
+												<entry name="ZoneCategory" ns="1" inpkey="1990"/>
+												<entry name="ZoneDescription" ns="1" inpkey="1991"/>
+												<entry name="ZoneAttributes" ns="1" inpkey="1992">
+													<entry name="Attribute" ns="2" inpkey="1993">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1994"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="1995"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1996"/>
+														<entry name="propertySetName" ns="1" type="attribute" inpkey="1997"/>
+														<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="1998"/>
+														<entry name="AttributeName" ns="1" inpkey="1999"/>
+														<entry name="AttributeCategory" ns="1" inpkey="2000"/>
+														<entry name="AttributeDescription" ns="1" inpkey="2001"/>
+														<entry name="AttributeValue" ns="1" inpkey="2002"/>
+													</entry>
+												</entry>
+												<entry name="ZoneDocuments" ns="1" inpkey="2003">
+													<entry name="Document" ns="3" inpkey="2004">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="2005"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="2006"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="2007"/>
+														<entry name="DocumentName" ns="1" inpkey="2008"/>
+														<entry name="DocumentCategory" ns="1" inpkey="2009"/>
+														<entry name="DocumentDescription" ns="1" inpkey="2010"/>
+														<entry name="DocumentURI" ns="1" inpkey="2011"/>
+														<entry name="DocumentReferenceURI" ns="1" inpkey="2012"/>
+													</entry>
+												</entry>
+												<entry name="ZoneIssues" ns="1" inpkey="2013">
+													<entry name="Issue" ns="4" inpkey="2014"/>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\250_04_SystemOperation.xsd" outputinstance="..\250_04_SystemOperation.xml" instanceroot="{http://operation250.lcie.cobielite.cobie.erdc.org}SystemOperation" userdefinedschemalocation="../250_04_SystemOperation.xsd"/>
+						<wsdl/>
+					</data>
 				</component>
 			</children>
 			<graph directed="1">

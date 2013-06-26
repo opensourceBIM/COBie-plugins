@@ -112,7 +112,7 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeCreateGroup">
+	<xs:group name="AssetTypeGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeCategory">
 				<xs:annotation>
@@ -213,7 +213,7 @@
 		<xs:complexContent>
 			<xs:extension base="AssetTypeInfoType">
 				<xs:sequence>
-					<xs:group ref="tt:AssetTypeCreateGroup"/>
+					<xs:group ref="tt:AssetTypeGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

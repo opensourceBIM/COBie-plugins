@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
+	<resources/>
+	<component name="defaultmap1" blackbox="0" uid="1" editable="1">
+		<properties SelectedLanguage="java"/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="4" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="518" lty="117" rbx="641" rby="135"/>
+					<data>
+						<constant value="abcdefghijklmnop" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="5" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="591" lty="156" rbx="641" rby="174"/>
+					<data>
+						<constant value="345" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="11" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="350" lty="349" rbx="400" rby="367"/>
+					<data>
+						<constant value="808" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="7" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="150" lty="500" rbx="261" rby="518"/>
+					<data>
+						<constant value="AC Unit Type 1" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="9" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="293" lty="748" rbx="358" rby="766"/>
+					<data>
+						<constant value="1B21" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="8" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="133" lty="653" rbx="221" rby="671"/>
+					<data>
+						<constant value="First Floor" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="6" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="120" lty="470" rbx="258" rby="488"/>
+					<data>
+						<constant value="AC Unit Type 1 AC-1" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="3" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="9"/>
+					</targets>
+					<view ltx="216" lty="156" rbx="366" rby="174"/>
+					<data>
+						<constant value="210.01_ProductInstallationReport" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="10" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="320" lty="319" rbx="358" rby="337"/>
+					<data>
+						<constant value="5" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="13" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="31"/>
+					</targets>
+					<view ltx="463" lty="544" rbx="514" rby="562"/>
+					<data>
+						<constant value="true" datatype="anySimpleType"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="12" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="12"/>
+					</targets>
+					<view ltx="447" lty="385" rbx="595" rby="403"/>
+					<data>
+						<constant value="Document Field Test Report-Air Handling Units-Equipment Tests AH1-3 of Asset AC Unit Type 1 AC-1, Type AC Unit Type 1, in 1B21 First Floor has been deleted." datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="210_01_ProductInstallationReport_CRUD" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="736" lty="156" rbx="1285" rby="576"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://productinstallation210.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://bimsie.bimserver.org"/>
+									<namespace uid="http://crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://productinstallation210.crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="4" expanded="1">
+								<entry name="document" ns="4" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductInstallationReport_210_ServerResponse" ns="3" expanded="1">
+										<entry name="DeleteResult" ns="2" expanded="1">
+											<entry name="InformationExchangeID" inpkey="32"/>
+											<entry name="RevisionID" ns="1" inpkey="33"/>
+											<entry name="DeleteSuccess" ns="2" inpkey="34"/>
+											<entry name="DeleteResultMessage" ns="2" inpkey="35"/>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\..\210_01_ProductInstallationReport_CRUD.xsd" outputinstance="..\..\210_01_ProductInstallationReport_CRUD.xml" instanceroot="{http://productinstallation210.crud.lcie.cobielite.cobie.erdc.org}ProductInstallationReport_210_ServerResponse" userdefinedschemalocation="../../210_01_ProductInstallationReport_CRUD.xsd"/>
+						<wsdl/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="33" edgekey="36"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="9">
+						<edges>
+							<edge vertexkey="32" edgekey="37"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="35" edgekey="38"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="31">
+						<edges>
+							<edge vertexkey="34" edgekey="39"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

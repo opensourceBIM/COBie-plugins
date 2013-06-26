@@ -27,39 +27,6 @@
 					</targets>
 					<view ltx="644" lty="350" rbx="697" rby="406"/>
 				</component>
-				<component name="constant" library="core" uid="4" kind="2">
-					<properties/>
-					<targets>
-						<datapoint pos="0" key="4"/>
-					</targets>
-					<view ltx="644" lty="47" rbx="803" rby="65"/>
-					<data>
-						<constant value="090.02_ProductTypeTemplate" datatype="string"/>
-						<wsdl/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="5" kind="2">
-					<properties/>
-					<targets>
-						<datapoint pos="0" key="5"/>
-					</targets>
-					<view ltx="680" lty="90" rbx="803" rby="108"/>
-					<data>
-						<constant value="abcdefghijklmnop" datatype="string"/>
-						<wsdl/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="6" kind="2">
-					<properties/>
-					<targets>
-						<datapoint pos="0" key="6"/>
-					</targets>
-					<view ltx="734" lty="149" rbx="784" rby="167"/>
-					<data>
-						<constant value="345" datatype="decimal"/>
-						<wsdl/>
-					</data>
-				</component>
 				<component name="position" library="core" uid="11" kind="5">
 					<properties/>
 					<sources>
@@ -69,17 +36,6 @@
 						<datapoint pos="0" key="31"/>
 					</targets>
 					<view ltx="479" lty="333" rbx="546" rby="372"/>
-				</component>
-				<component name="constant" library="core" uid="17" kind="2">
-					<properties/>
-					<targets>
-						<datapoint/>
-					</targets>
-					<view ltx="808" lty="543" rbx="921" rby="561"/>
-					<data>
-						<constant value="NewTypeName" datatype="string"/>
-						<wsdl/>
-					</data>
 				</component>
 				<component name="constant" library="core" uid="18" kind="2">
 					<properties/>
@@ -114,50 +70,6 @@
 						<wsdl/>
 					</data>
 				</component>
-				<component name="090_02_ProductTypeTemplate_CRUD" library="xml" uid="16" kind="14">
-					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
-					<view ltx="1096" lty="279" rbx="1820" rby="724"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace uid="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://bimsie.bimserver.org"/>
-									<namespace uid="http://typetemplate.defs.crud.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://crud.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="6" expanded="1">
-								<entry name="document" ns="6" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="ProductTypeTemplate_090_Request" ns="5" expanded="1">
-										<entry name="InformationExchangeID" inpkey="90"/>
-										<entry name="SessionToken" ns="1" inpkey="91"/>
-										<entry name="UserID" ns="1" inpkey="92"/>
-										<entry name="ReadRequest" ns="3">
-											<entry name="ReadKey" ns="2" expanded="1"/>
-										</entry>
-										<entry name="UpdateRequest" ns="2">
-											<entry name="UpdateKey" ns="2" expanded="1"/>
-											<entry name="AssetType" expanded="1"/>
-										</entry>
-										<entry name="DeleteRequest" ns="3" inpkey="138" expanded="1">
-											<entry name="RevisionID" ns="1" inpkey="139"/>
-											<entry name="DeleteHandlerID" ns="1" inpkey="140"/>
-											<entry name="DeleteKey" ns="2" expanded="1">
-												<entry name="AssetTypeName" ns="4" inpkey="141"/>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\090_02_ProductTypeTemplate_CRUD.xsd" outputinstance="..\090_02_ProductTypeTemplate_CRUD.xml" instanceroot="{http://typetemplate.crud.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate_090_Request"/>
-						<wsdl/>
-					</data>
-				</component>
 				<component name="ttd:AssetType" library="core" uid="12" kind="3">
 					<properties/>
 					<sources>
@@ -165,7 +77,7 @@
 						<datapoint pos="1" key="28"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="29"/>
+						<datapoint/>
 						<datapoint/>
 					</targets>
 					<view ltx="587" lty="279" rbx="690" rby="335"/>
@@ -177,8 +89,8 @@
 						<root scrollposition="154">
 							<header>
 								<namespaces>
-									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
 									<namespace uid="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
 									<namespace uid="http://typetemplate090.lcie.cobielite.cobie.erdc.org"/>
 									<namespace uid="http://www.altova.com/mapforce"/>
 								</namespaces>
@@ -186,10 +98,8 @@
 							<entry name="FileInstance" ns="3" expanded="1">
 								<entry name="document" ns="3" expanded="1" casttotargettypemode="cast-in-subtree">
 									<entry name="ProductTypeTemplate" ns="2" expanded="1">
-										<entry name="AssetTypes" expanded="1">
-											<entry name="AssetType" ns="1" outkey="7" expanded="1">
-												<entry name="AssetTypeName" outkey="8"/>
-											</entry>
+										<entry name="AssetTypes" ns="1" expanded="1">
+											<entry name="AssetType" outkey="7" expanded="1"/>
 										</entry>
 									</entry>
 								</entry>
@@ -199,14 +109,47 @@
 						<wsdl/>
 					</data>
 				</component>
+				<component name="constant" library="core" uid="4" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="644" lty="47" rbx="803" rby="65"/>
+					<data>
+						<constant value="090.02_ProductTypeTemplate" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="5" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="680" lty="90" rbx="803" rby="108"/>
+					<data>
+						<constant value="abcdefghijklmnop" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="6" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="734" lty="149" rbx="784" rby="167"/>
+					<data>
+						<constant value="345" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
 				<component name="constant" library="core" uid="7" kind="2">
 					<properties/>
 					<targets>
 						<datapoint pos="0" key="1"/>
 					</targets>
-					<view ltx="686" lty="215" rbx="736" rby="233"/>
+					<view ltx="686" lty="215" rbx="724" rby="233"/>
 					<data>
-						<constant value="203" datatype="decimal"/>
+						<constant value="1" datatype="decimal"/>
 						<wsdl/>
 					</data>
 				</component>
@@ -221,49 +164,88 @@
 						<wsdl/>
 					</data>
 				</component>
+				<component name="090_02_ProductTypeTemplate_CRUD" library="xml" uid="21" kind="14">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="1228" lty="200" rbx="1528" rby="400"/>
+					<data>
+						<root scrollposition="99">
+							<header>
+								<namespaces>
+									<namespace uid="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://bimsie.bimserver.org"/>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate090.defs.crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="5" expanded="1">
+								<entry name="document" ns="5" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductTypeTemplate_090_Request" ns="4" expanded="1">
+										<entry name="InformationExchangeID" inpkey="146"/>
+										<entry name="SessionToken" ns="1" inpkey="147"/>
+										<entry name="UserID" ns="1" inpkey="148"/>
+										<entry name="ProductTypeTemplateDeleteRequest" ns="3" expanded="1">
+											<entry name="RevisionID" ns="1" inpkey="149"/>
+											<entry name="DeleteHandlerID" ns="1" inpkey="150"/>
+											<entry name="DeleteAssetTypeRequest" ns="3" expanded="1">
+												<entry name="ProductTypeTemplateKey" ns="3" expanded="1">
+													<entry name="AssetTypeName" ns="2" inpkey="151"/>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\090_02_ProductTypeTemplate_CRUD.xsd" outputinstance="..\090_02_ProductTypeTemplate_CRUD.xml" instanceroot="{http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate_090_Request"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="17" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="152"/>
+					</targets>
+					<view ltx="808" lty="543" rbx="919" rby="561"/>
+					<data>
+						<constant value="AC Unit Type 1" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
 			</children>
 			<graph directed="1">
 				<edges/>
 				<vertices>
 					<vertex vertexkey="1">
 						<edges>
-							<edge vertexkey="139" edgekey="142"/>
+							<edge vertexkey="149" edgekey="153"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="3">
 						<edges>
-							<edge vertexkey="140" edgekey="143"/>
+							<edge vertexkey="150" edgekey="154"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="4">
 						<edges>
-							<edge vertexkey="90" edgekey="99"/>
+							<edge vertexkey="146" edgekey="155"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="5">
 						<edges>
-							<edge vertexkey="91" edgekey="100"/>
+							<edge vertexkey="147" edgekey="156"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="6">
 						<edges>
-							<edge vertexkey="92" edgekey="128"/>
+							<edge vertexkey="148" edgekey="157"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="7">
 						<edges>
 							<edge vertexkey="30" edgekey="69"/>
 							<edge vertexkey="27" edgekey="70"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="8">
-						<edges>
-							<edge vertexkey="141" edgekey="144"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="29">
-						<edges>
-							<edge vertexkey="138" edgekey="145"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="31">
@@ -279,6 +261,11 @@
 					<vertex vertexkey="35">
 						<edges>
 							<edge vertexkey="28" edgekey="89"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="152">
+						<edges>
+							<edge vertexkey="151" edgekey="158"/>
 						</edges>
 					</vertex>
 				</vertices>

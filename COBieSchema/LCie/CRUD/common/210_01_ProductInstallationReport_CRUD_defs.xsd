@@ -16,44 +16,17 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="InstallReadAllResultType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:ReadAllResultType">
-				<xs:sequence>
-					<xs:element ref="pic:ProductInstallationReport"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="ProductInstallationUpdateRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:choice>
-					<xs:element ref="pic:UpdateAssetRequest"/>
-					<xs:element ref="pic:UpdateAssetTypeRequest"/>
-				</xs:choice>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="ProductInstallationUpdateAssetInfoType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:sequence>
-					<xs:element ref="pic:ProductInstallationKey"/>
-					<xs:group ref="pi:AssetUpdateGroup"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="pic:ProductInstallationKey"/>
+			<xs:group ref="pi:AssetUpdateGroup"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ProductInstallationUpdateAssetTypeInfoType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:sequence>
-					<xs:element ref="pic:AssetTypeKey"/>
-					<xs:group ref="pi:AssetTypeCreateGroup"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="pic:AssetTypeKey"/>
+			<xs:group ref="pi:AssetTypeGroup"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ProductInstallationUpdateAssetTypeAttributeRequestType">
 		<xs:complexContent>
@@ -101,16 +74,47 @@
 			<xs:extension base="cobiex:ServerResponseExchangeType"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name="ProductInstallationReport" type="pi:ProductInstallationReportType"/>
+	<xs:complexType name="ProductInstallationCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:CreateRequestType">
+				<xs:choice>
+					<xs:element ref="pic:CreateAssetDocumentRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationUpdateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="pic:UpdateAssetRequest"/>
+					<xs:element ref="pic:UpdateAssetTypeRequest"/>
+					<xs:element ref="pic:UpdateAssetDocumentRequest"/>
+					<xs:element ref="pic:UpdateAssetTypeAttributeRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:DeleteRequestType">
+				<xs:choice>
+					<xs:element ref="pic:DeleteAssetDocumentRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ProductInstallationCreateRequest" type="pic:ProductInstallationCreateRequestType" substitutionGroup="cobiex:CreateRequest"/>
 	<xs:element name="ProductInstallationUpdateRequest" type="pic:ProductInstallationUpdateRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="UpdateAssetRequest" type="pic:ProductInstallationUpdateAssetInfoType"/>
-	<xs:element name="UpdateAssetDocumentRequest" type="pic:ProductInstallationUpdateAssetDocumentRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteAssetDocumentRequest" type="pic:ProductInstallationDeleteDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateAssetDocumentRequest" type="pic:ProductInstallationCreateDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateAssetTypeRequest" type="pic:ProductInstallationUpdateAssetTypeInfoType"/>
-	<xs:element name="UpdateAssetTypeAttributeRequest" type="pic:ProductInstallationUpdateAssetTypeAttributeRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="ProductInstallationDeleteRequest" type="pic:ProductInstallationDeleteRequestType" substitutionGroup="cobiex:DeleteRequest"/>
 	<xs:element name="ProductInstallationReportReadResult" type="pic:InstallReadResultType" substitutionGroup="cobiex:ReadResult"/>
-	<xs:element name="ProductInstallationReportReadAllResult" type="pic:InstallReadAllResultType" substitutionGroup="cobiex:ReadAllResult"/>
+	<xs:element name="ProductInstallationReport" type="pi:ProductInstallationReportType" substitutionGroup="cobiex:InformationExchange"/>
 	<xs:element name="ProductInstallationKey" type="AssetKeyType" substitutionGroup="cobiex:Key"/>
+	<xs:element name="UpdateAssetRequest" type="pic:ProductInstallationUpdateAssetInfoType"/>
+	<xs:element name="UpdateAssetDocumentRequest" type="pic:ProductInstallationUpdateAssetDocumentRequestType"/>
+	<xs:element name="DeleteAssetDocumentRequest" type="pic:ProductInstallationDeleteDocumentRequestType"/>
+	<xs:element name="CreateAssetDocumentRequest" type="pic:ProductInstallationCreateDocumentRequestType"/>
+	<xs:element name="UpdateAssetTypeRequest" type="pic:ProductInstallationUpdateAssetTypeInfoType"/>
+	<xs:element name="UpdateAssetTypeAttributeRequest" type="pic:ProductInstallationUpdateAssetTypeAttributeRequestType"/>
 	<xs:element name="AssetTypeKey" type="AssetTypeKeyType"/>
 </xs:schema>

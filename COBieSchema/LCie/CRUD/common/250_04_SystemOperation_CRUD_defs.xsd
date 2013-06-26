@@ -1,4 +1,4 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sod="http://operation250.defs.lcie.cobielite.cobie.erdc.org" xmlns:attc="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org"  xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:issc="http://issue.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:soc="http://operation250.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:docc="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:so="http://operation250.lcie.cobielite.cobie.erdc.org" targetNamespace="http://operation250.defs.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sod="http://operation250.defs.lcie.cobielite.cobie.erdc.org" xmlns:attc="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:issc="http://issue.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:cobiex="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:soc="http://operation250.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:docc="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:so="http://operation250.lcie.cobielite.cobie.erdc.org" targetNamespace="http://operation250.defs.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
 	<xs:import namespace="http://crud.lcie.cobielite.cobie.erdc.org" schemaLocation="lcie_crud.xsd"/>
 	<xs:import namespace="http://operation250.lcie.cobielite.cobie.erdc.org" schemaLocation="../../subschema/250_04_SystemOperation.xsd"/>
 	<xs:import namespace="http://operation250.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../../cobielite_substitutions/250_04_SystemOperation_defs.xsd"/>
@@ -6,15 +6,6 @@
 	<xs:import namespace="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Document_CRUD_defs.xsd"/>
 	<xs:import namespace="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Attribute_CRUD_defs.xsd"/>
 	<xs:import namespace="http://issue.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Issue_CRUD_defs.xsd"/>
-	<xs:complexType name="SystemOperationReadAllType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:ReadAllResultType">
-				<xs:sequence>
-					<xs:element ref="so:SystemOperation"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="SystemOperationReadType">
 		<xs:complexContent>
 			<xs:extension base="cobiex:ReadResultType">
@@ -28,14 +19,10 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="UpdateZoneType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:sequence>
-					<xs:element ref="soc:ZoneKey"/>
-					<xs:group ref="sod:ZoneUpdateGroup"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="soc:ZoneKey"/>
+			<xs:group ref="sod:ZoneUpdateGroup"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="UpdateZoneIssueRequestType">
 		<xs:complexContent>
@@ -146,52 +133,32 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="UpdateAssetRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:sequence>
-					<xs:element ref="AssetWarrantyStartDate"/>
-					<xs:element ref="AssetSystemAssignments"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="AssetWarrantyStartDate"/>
+			<xs:element ref="AssetSystemAssignments"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="CreateSystemRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:CreateRequestType">
-				<xs:sequence>
-					<xs:element ref="System"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="System"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DeleteSystemRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:DeleteRequestType">
-				<xs:sequence>
-					<xs:element ref="soc:SystemOperationKey"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="soc:SystemOperationKey"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="UpdateSystemRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:sequence>
-					<xs:element ref="soc:SystemOperationKey"/>
-					<xs:group ref="sod:SystemUpdateGroup"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="soc:SystemOperationKey"/>
+			<xs:group ref="sod:SystemUpdateGroup"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="UpdateSpaceRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:sequence>
-					<xs:element ref="soc:SpaceKey"/>
-					<xs:group ref="sod:SpaceCreateGroup"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="soc:SpaceKey"/>
+			<xs:group ref="sod:SpaceCreateGroup"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="UpdateSystemIssueRequestType">
 		<xs:complexContent>
@@ -284,35 +251,88 @@
 			<xs:extension base="cobiex:ServerResponseExchangeType"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name="UpdateSystemRequest" type="soc:UpdateSystemRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteSystemRequest" type="soc:DeleteSystemRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateSystemRequest" type="soc:CreateSystemRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateAssetRequest" type="soc:UpdateAssetRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="UpdateZoneIssueRequest" type="soc:UpdateZoneIssueRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteZoneIssueRequest" type="soc:DeleteZoneIssueRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateZoneIssueRequest" type="soc:CreateZoneIssueRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateZoneAttributeRequest" type="soc:UpdateZoneAttributeRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteZoneAttributeRequest" type="soc:DeleteZoneAttributeRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateZoneAttributeRequest" type="soc:CreateZoneAttributeRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateZoneDocumentRequest" type="soc:UpdateZoneDocumentRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteZoneDocumentRequest" type="soc:DeleteZoneDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateZoneDocumentRequest" type="soc:CreateZoneDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateSystemIssueRequest" type="soc:UpdateSystemIssueRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteSystemIssueRequest" type="soc:DeleteSystemIssueRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateSystemIssueRequest" type="soc:CreateSystemIssueRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateSystemAttributeRequest" type="soc:UpdateSystemAttributeRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteSystemAttributeRequest" type="soc:DeleteSystemAttributeRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateSystemAttributeRequest" type="soc:CreateSystemAttributeRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateSystemDocumentRequest" type="soc:UpdateSystemDocumentRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteSystemDocumentRequest" type="soc:DeleteSystemDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateSystemDocumentRequest" type="soc:CreateSystemDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateAssetTypeDocumentRequest" type="soc:UpdateAssetTypeDocumentRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteAssetTypeDocumentRequest" type="soc:DeleteAssetTypeDocumentRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateAssetTypeDocumentRequest" type="soc:CreateAssetTypeDocumentRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateZoneRequest" type="soc:UpdateZoneType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="SystemOperationReadAllResult" type="soc:SystemOperationReadAllType" substitutionGroup="cobiex:ReadAllResult"/>
+	<xs:complexType name="SystemOperationCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:CreateRequestType">
+				<xs:choice>
+					<xs:element ref="soc:CreateSystemRequest"/>
+					<xs:element ref="soc:CreateZoneIssueRequest"/>
+					<xs:element ref="soc:CreateZoneAttributeRequest"/>
+					<xs:element ref="soc:CreateZoneDocumentRequest"/>
+					<xs:element ref="soc:CreateSystemIssueRequest"/>
+					<xs:element ref="soc:CreateSystemAttributeRequest"/>
+					<xs:element ref="soc:CreateSystemDocumentRequest"/>
+					<xs:element ref="soc:CreateAssetTypeDocumentRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SystemOperationDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:DeleteRequestType">
+				<xs:choice>
+					<xs:element ref="soc:DeleteSystemRequest"/>
+					<xs:element ref="soc:DeleteZoneIssueRequest"/>
+					<xs:element ref="soc:DeleteZoneAttributeRequest"/>
+					<xs:element ref="soc:DeleteZoneDocumentRequest"/>
+					<xs:element ref="soc:DeleteSystemIssueRequest"/>
+					<xs:element ref="soc:DeleteSystemAttributeRequest"/>
+					<xs:element ref="soc:DeleteSystemDocumentRequest"/>
+					<xs:element ref="soc:DeleteAssetTypeDocumentRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateSystemOperationRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="soc:UpdateSystemRequest"/>
+					<xs:element ref="soc:UpdateAssetRequest"/>
+					<xs:element ref="soc:UpdateZoneIssueRequest"/>
+					<xs:element ref="soc:UpdateZoneAttributeRequest"/>
+					<xs:element ref="soc:UpdateZoneDocumentRequest"/>
+					<xs:element ref="soc:UpdateSystemIssueRequest"/>
+					<xs:element ref="soc:UpdateSystemAttributeRequest"/>
+					<xs:element ref="soc:UpdateSystemDocumentRequest"/>
+					<xs:element ref="soc:UpdateAssetTypeDocumentRequest"/>
+					<xs:element ref="soc:UpdateZoneRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="SystemOperationUpdateRequest" type="soc:UpdateSystemOperationRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="SystemOperationCreateRequest" type="soc:SystemOperationCreateRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="SystemOperationDeleteRequest" type="soc:SystemOperationDeleteRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="SystemOperation" type="sod:SystemOperationType" substitutionGroup="cobiex:InformationExchange"/>
 	<xs:element name="SystemOperationReadResult" type="soc:SystemOperationReadType" substitutionGroup="cobiex:ReadResult"/>
 	<xs:element name="SystemOperationKey" type="SystemKeyType" substitutionGroup="cobiex:Key"/>
+	<xs:element name="UpdateSystemRequest" type="soc:UpdateSystemRequestType"/>
+	<xs:element name="DeleteSystemRequest" type="soc:DeleteSystemRequestType"/>
+	<xs:element name="CreateSystemRequest" type="soc:CreateSystemRequestType"/>
+	<xs:element name="UpdateAssetRequest" type="soc:UpdateAssetRequestType"/>
+	<xs:element name="UpdateZoneIssueRequest" type="soc:UpdateZoneIssueRequestType"/>
+	<xs:element name="DeleteZoneIssueRequest" type="soc:DeleteZoneIssueRequestType"/>
+	<xs:element name="CreateZoneIssueRequest" type="soc:CreateZoneIssueRequestType"/>
+	<xs:element name="UpdateZoneAttributeRequest" type="soc:UpdateZoneAttributeRequestType"/>
+	<xs:element name="DeleteZoneAttributeRequest" type="soc:DeleteZoneAttributeRequestType"/>
+	<xs:element name="CreateZoneAttributeRequest" type="soc:CreateZoneAttributeRequestType"/>
+	<xs:element name="UpdateZoneDocumentRequest" type="soc:UpdateZoneDocumentRequestType"/>
+	<xs:element name="DeleteZoneDocumentRequest" type="soc:DeleteZoneDocumentRequestType"/>
+	<xs:element name="CreateZoneDocumentRequest" type="soc:CreateZoneDocumentRequestType"/>
+	<xs:element name="UpdateSystemIssueRequest" type="soc:UpdateSystemIssueRequestType"/>
+	<xs:element name="DeleteSystemIssueRequest" type="soc:DeleteSystemIssueRequestType"/>
+	<xs:element name="CreateSystemIssueRequest" type="soc:CreateSystemIssueRequestType"/>
+	<xs:element name="UpdateSystemAttributeRequest" type="soc:UpdateSystemAttributeRequestType"/>
+	<xs:element name="DeleteSystemAttributeRequest" type="soc:DeleteSystemAttributeRequestType"/>
+	<xs:element name="CreateSystemAttributeRequest" type="soc:CreateSystemAttributeRequestType"/>
+	<xs:element name="UpdateSystemDocumentRequest" type="soc:UpdateSystemDocumentRequestType"/>
+	<xs:element name="DeleteSystemDocumentRequest" type="soc:DeleteSystemDocumentRequestType"/>
+	<xs:element name="CreateSystemDocumentRequest" type="soc:CreateSystemDocumentRequestType"/>
+	<xs:element name="UpdateAssetTypeDocumentRequest" type="soc:UpdateAssetTypeDocumentRequestType"/>
+	<xs:element name="DeleteAssetTypeDocumentRequest" type="soc:DeleteAssetTypeDocumentRequestType"/>
+	<xs:element name="CreateAssetTypeDocumentRequest" type="soc:CreateAssetTypeDocumentRequestType"/>
+	<xs:element name="UpdateZoneRequest" type="soc:UpdateZoneType"/>
 	<xs:element name="ZoneKey" type="ZoneKeyType"/>
 	<xs:element name="AssetTypeKey" type="AssetTypeKeyType"/>
 	<xs:element name="AssetKey" type="AssetKeyType"/>

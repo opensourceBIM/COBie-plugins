@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ProductTypeTemplate_090_ServerResponse xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:crud="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:pttcd="http://typetemplate.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pttd="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" xmlns:ptt="http://typetemplate090.lcie.cobielite.cobie.erdc.org" xsi:schemaLocation="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org C:/Users/RDITLACB/git/cobieserver/COBieSchema/LCie/CRUD/090_02_ProductTypeTemplate_CRUD.xsd" xmlns="http://typetemplate.crud.lcie.cobielite.cobie.erdc.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ProductTypeTemplate_090_ServerResponse xmlns:attc="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:crud="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:pttcd="http://typetemplate090.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pttd="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" xmlns:ptt="http://typetemplate090.lcie.cobielite.cobie.erdc.org" xsi:schemaLocation="http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org ../../090_02_ProductTypeTemplate_CRUD.xsd" xmlns="http://typetemplate090.crud.lcie.cobielite.cobie.erdc.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<crud:DeleteResult>
 		<pttd:InformationExchangeID>090.02_ProductTypeTemplate</pttd:InformationExchangeID>
-		<bimsie:RevisionID>206</bimsie:RevisionID>
+		<bimsie:RevisionID>2</bimsie:RevisionID>
 		<crud:DeleteSuccess>true</crud:DeleteSuccess>
-		<crud:DeleteResultMessage>AssetType deleted for 090.02 ProductTypeTemplate at revision 206.</crud:DeleteResultMessage>
+		<crud:DeleteResultMessage>AssetType AC Unit Type 1 deleted for 090.02 ProductTypeTemplate at revision 206.</crud:DeleteResultMessage>
 	</crud:DeleteResult>
 </ProductTypeTemplate_090_ServerResponse>

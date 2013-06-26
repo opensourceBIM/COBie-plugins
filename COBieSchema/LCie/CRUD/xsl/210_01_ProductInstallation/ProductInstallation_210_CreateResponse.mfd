@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
+	<resources/>
+	<component name="defaultmap1" blackbox="0" uid="1" editable="1">
+		<properties SelectedLanguage="java"/>
+		<structure>
+			<children>
+				<component name="210_01_ProductInstallationReport_CRUD" library="xml" uid="17" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1307" lty="292" rbx="1872" rby="888"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://productinstallation210.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://bimsie.bimserver.org"/>
+									<namespace uid="http://crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://productinstallation210.crud.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="4" expanded="1">
+								<entry name="document" ns="4" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductInstallationReport_210_ServerResponse" ns="3" expanded="1">
+										<entry name="CreateResult" ns="2" expanded="1">
+											<entry name="InformationExchangeID" inpkey="210"/>
+											<entry name="RevisionID" ns="1" inpkey="211"/>
+											<entry name="CreateSuccess" ns="2" inpkey="212"/>
+											<entry name="CreateResultMessage" ns="2" inpkey="213"/>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\..\210_01_ProductInstallationReport_CRUD.xsd" outputinstance="..\..\210_01_ProductInstallationReport_CRUD.xml" instanceroot="{http://productinstallation210.crud.lcie.cobielite.cobie.erdc.org}ProductInstallationReport_210_ServerResponse"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="25" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="214"/>
+					</targets>
+					<view ltx="1022" lty="172" rbx="1172" rby="190"/>
+					<data>
+						<constant value="210.01_ProductInstallationReport" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="26" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="215"/>
+					</targets>
+					<view ltx="1070" lty="271" rbx="1108" rby="289"/>
+					<data>
+						<constant value="5" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="27" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="216"/>
+					</targets>
+					<view ltx="942" lty="495" rbx="993" rby="513"/>
+					<data>
+						<constant value="true" datatype="anySimpleType"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="28" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="217"/>
+					</targets>
+					<view ltx="982" lty="546" rbx="1138" rby="564"/>
+					<data>
+						<constant value="New Document Field Test Report-Air Handling Units-Equipment Tests AH1-3" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="214">
+						<edges>
+							<edge vertexkey="210" edgekey="218"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="215">
+						<edges>
+							<edge vertexkey="211" edgekey="219"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="216">
+						<edges>
+							<edge vertexkey="212" edgekey="220"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="217">
+						<edges>
+							<edge vertexkey="213" edgekey="221"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

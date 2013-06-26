@@ -30,7 +30,7 @@
 			<xs:element ref="Assets"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeCreateGroup">
+	<xs:group name="AssetTypeGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeAttributes" minOccurs="0">
 				<xs:annotation>
@@ -112,7 +112,7 @@
 			<xs:extension base="AssetTypeInfoType">
 				<xs:sequence>
 					<xs:group ref="pid:AssetTypeReadOnlyGroup"/>
-					<xs:group ref="pid:AssetTypeCreateGroup"/>
+					<xs:group ref="pid:AssetTypeGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

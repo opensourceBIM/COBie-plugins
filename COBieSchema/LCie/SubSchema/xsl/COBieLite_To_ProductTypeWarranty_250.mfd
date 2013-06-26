@@ -5,104 +5,6 @@
 		<properties SelectedLanguage="java"/>
 		<structure>
 			<children>
-				<component name="250_02_ProductTypeWarranty" library="xml" uid="28" kind="14">
-					<properties XSLTDefaultOutput="1"/>
-					<view ltx="1181" lty="80" rbx="1481" rby="280"/>
-					<data>
-						<root>
-							<header>
-								<namespaces>
-									<namespace uid="http://warranty250.defs.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://document.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://contact.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://warranty250.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="6" expanded="1">
-								<entry name="document" ns="6" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="ProductTypeWarranty" ns="5" expanded="1">
-										<entry name="InformationExchangeID" inpkey="1520"/>
-										<entry name="AssetTypes" ns="1" inpkey="1521">
-											<entry name="AssetType" inpkey="1522">
-												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1523"/>
-												<entry name="externalID" ns="1" type="attribute" inpkey="1524"/>
-												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1525"/>
-												<entry name="AssetTypeName" ns="1" inpkey="1526"/>
-												<entry name="AssetTypeCategory" ns="1" inpkey="1527"/>
-												<entry name="AssetTypeDescription" ns="1" inpkey="1528"/>
-												<entry name="AssetTypeModelNumber" ns="1" inpkey="1529"/>
-												<entry name="AssetTypeManufacturerContactAssignments" ns="1" inpkey="1530"/>
-												<entry name="Warranties" ns="1" inpkey="1531">
-													<entry name="Warranty" ns="1" inpkey="1532">
-														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1533"/>
-														<entry name="externalID" ns="1" type="attribute" inpkey="1534"/>
-														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1535"/>
-														<entry name="WarrantyName" ns="1" inpkey="1536"/>
-														<entry name="WarrantyCategory" ns="1" inpkey="1537"/>
-														<entry name="WarrantyDuration" ns="1" inpkey="1538"/>
-														<entry name="WarrantyGaurantorContactAssignments" ns="1" inpkey="1539"/>
-														<entry name="WarrantyAttributes" ns="1" inpkey="1540">
-															<entry name="Attribute" ns="2" inpkey="1541">
-																<entry name="externalEntityName" ns="1" type="attribute" inpkey="1542"/>
-																<entry name="externalID" ns="1" type="attribute" inpkey="1543"/>
-																<entry name="externalSystemName" ns="1" type="attribute" inpkey="1544"/>
-																<entry name="propertySetName" ns="1" type="attribute" inpkey="1545"/>
-																<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="1546"/>
-																<entry name="AttributeName" ns="1" inpkey="1547"/>
-																<entry name="AttributeCategory" ns="1" inpkey="1548"/>
-																<entry name="AttributeDescription" ns="1" inpkey="1549"/>
-																<entry name="AttributeValue" ns="1" inpkey="1550"/>
-															</entry>
-														</entry>
-														<entry name="WarrantyDocuments" ns="1" inpkey="1551">
-															<entry name="Document" ns="3" inpkey="1552">
-																<entry name="externalEntityName" ns="1" type="attribute" inpkey="1553"/>
-																<entry name="externalID" ns="1" type="attribute" inpkey="1554"/>
-																<entry name="externalSystemName" ns="1" type="attribute" inpkey="1555"/>
-																<entry name="DocumentName" ns="1" inpkey="1556"/>
-																<entry name="DocumentCategory" ns="1" inpkey="1557"/>
-																<entry name="DocumentDescription" ns="1" inpkey="1558"/>
-																<entry name="DocumentURI" ns="1" inpkey="1559"/>
-																<entry name="DocumentReferenceURI" ns="1" inpkey="1560"/>
-															</entry>
-														</entry>
-														<entry name="WarrantyIssues" ns="1" inpkey="1561"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="Contacts" ns="1" inpkey="1562">
-											<entry name="Contact" ns="4" inpkey="1563">
-												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1564"/>
-												<entry name="externalID" ns="1" type="attribute" inpkey="1565"/>
-												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1566"/>
-												<entry name="ContactEmail" ns="1" inpkey="1567"/>
-												<entry name="ContactCategory" ns="1" inpkey="1568"/>
-												<entry name="ContactCompanyName" ns="1" inpkey="1569"/>
-												<entry name="ContactPhoneNumber" ns="1" inpkey="1570"/>
-												<entry name="ContactDepartmentName" ns="1" inpkey="1571"/>
-												<entry name="ContactGivenName" ns="1" inpkey="1572"/>
-												<entry name="ContactFamilyName" ns="1" inpkey="1573"/>
-												<entry name="ContactStreet" ns="1" inpkey="1574"/>
-												<entry name="ContactPostalBoxNumber" ns="1" inpkey="1575"/>
-												<entry name="ContactTownName" ns="1" inpkey="1576"/>
-												<entry name="ContactRegionCode" ns="1" inpkey="1577"/>
-												<entry name="ContactCountryName" ns="1" inpkey="1578"/>
-												<entry name="ContactPostalCode" ns="1" inpkey="1579"/>
-												<entry name="ContactURL" ns="1" inpkey="1580"/>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\250_02_ProductTypeWarranty.xsd" outputinstance="..\250_02_ProductTypeWarranty.xml" instanceroot="{http://warranty250.lcie.cobielite.cobie.erdc.org}ProductTypeWarranty"/>
-						<wsdl/>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="6" kind="2">
 					<properties/>
 					<targets>
@@ -212,6 +114,104 @@
 							</entry>
 						</root>
 						<document schema="..\..\..\COBieLite\xsd\cobielite.xsd" inputinstance="..\..\..\COBieLite\examples\ClinicHandover_COBieLite_RC3.xml" instanceroot="{http://cobielite.cobie.erdc.org}Facility"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="250_02_ProductTypeWarranty" library="xml" uid="28" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1181" lty="80" rbx="1481" rby="280"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://warranty250.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://document.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://contact.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://warranty250.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="6" expanded="1">
+								<entry name="document" ns="6" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductTypeWarranty" ns="5" expanded="1">
+										<entry name="InformationExchangeID" inpkey="1520"/>
+										<entry name="AssetTypes" ns="1" inpkey="1521">
+											<entry name="AssetType" inpkey="1522">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1523"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="1524"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1525"/>
+												<entry name="AssetTypeName" ns="1" inpkey="1526"/>
+												<entry name="AssetTypeCategory" ns="1" inpkey="1527"/>
+												<entry name="AssetTypeDescription" ns="1" inpkey="1528"/>
+												<entry name="AssetTypeModelNumber" ns="1" inpkey="1529"/>
+												<entry name="AssetTypeManufacturerContactAssignments" ns="1" inpkey="1530"/>
+												<entry name="Warranties" ns="1" inpkey="1531">
+													<entry name="Warranty" ns="1" inpkey="1532">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="1533"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="1534"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="1535"/>
+														<entry name="WarrantyName" ns="1" inpkey="1536"/>
+														<entry name="WarrantyCategory" ns="1" inpkey="1537"/>
+														<entry name="WarrantyDuration" ns="1" inpkey="1538"/>
+														<entry name="WarrantyGaurantorContactAssignments" ns="1" inpkey="1539"/>
+														<entry name="WarrantyAttributes" ns="1" inpkey="1540">
+															<entry name="Attribute" ns="2" inpkey="1541">
+																<entry name="externalEntityName" ns="1" type="attribute" inpkey="1542"/>
+																<entry name="externalID" ns="1" type="attribute" inpkey="1543"/>
+																<entry name="externalSystemName" ns="1" type="attribute" inpkey="1544"/>
+																<entry name="propertySetName" ns="1" type="attribute" inpkey="1545"/>
+																<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="1546"/>
+																<entry name="AttributeName" ns="1" inpkey="1547"/>
+																<entry name="AttributeCategory" ns="1" inpkey="1548"/>
+																<entry name="AttributeDescription" ns="1" inpkey="1549"/>
+																<entry name="AttributeValue" ns="1" inpkey="1550"/>
+															</entry>
+														</entry>
+														<entry name="WarrantyDocuments" ns="1" inpkey="1551">
+															<entry name="Document" ns="3" inpkey="1552">
+																<entry name="externalEntityName" ns="1" type="attribute" inpkey="1553"/>
+																<entry name="externalID" ns="1" type="attribute" inpkey="1554"/>
+																<entry name="externalSystemName" ns="1" type="attribute" inpkey="1555"/>
+																<entry name="DocumentName" ns="1" inpkey="1556"/>
+																<entry name="DocumentCategory" ns="1" inpkey="1557"/>
+																<entry name="DocumentDescription" ns="1" inpkey="1558"/>
+																<entry name="DocumentURI" ns="1" inpkey="1559"/>
+																<entry name="DocumentReferenceURI" ns="1" inpkey="1560"/>
+															</entry>
+														</entry>
+														<entry name="WarrantyIssues" ns="1" inpkey="1561"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Contacts" ns="1" inpkey="1562">
+											<entry name="Contact" ns="4" inpkey="1563">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="1564"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="1565"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="1566"/>
+												<entry name="ContactEmail" ns="1" inpkey="1567"/>
+												<entry name="ContactCategory" ns="1" inpkey="1568"/>
+												<entry name="ContactCompanyName" ns="1" inpkey="1569"/>
+												<entry name="ContactPhoneNumber" ns="1" inpkey="1570"/>
+												<entry name="ContactDepartmentName" ns="1" inpkey="1571"/>
+												<entry name="ContactGivenName" ns="1" inpkey="1572"/>
+												<entry name="ContactFamilyName" ns="1" inpkey="1573"/>
+												<entry name="ContactStreet" ns="1" inpkey="1574"/>
+												<entry name="ContactPostalBoxNumber" ns="1" inpkey="1575"/>
+												<entry name="ContactTownName" ns="1" inpkey="1576"/>
+												<entry name="ContactRegionCode" ns="1" inpkey="1577"/>
+												<entry name="ContactCountryName" ns="1" inpkey="1578"/>
+												<entry name="ContactPostalCode" ns="1" inpkey="1579"/>
+												<entry name="ContactURL" ns="1" inpkey="1580"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\250_02_ProductTypeWarranty.xsd" outputinstance="..\250_02_ProductTypeWarranty.xml" instanceroot="{http://warranty250.lcie.cobielite.cobie.erdc.org}ProductTypeWarranty" userdefinedschemalocation="../250_02_ProductTypeWarranty.xsd"/>
 						<wsdl/>
 					</data>
 				</component>

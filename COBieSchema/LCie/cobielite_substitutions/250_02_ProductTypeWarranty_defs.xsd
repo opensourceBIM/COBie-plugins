@@ -13,7 +13,7 @@
 			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeCreateGroup">
+	<xs:group name="AssetTypeGroup">
 		<xs:sequence>
 			<xs:element ref="Warranties">
 				<xs:annotation>
@@ -37,7 +37,7 @@
 			<xs:extension base="AssetTypeInfoType">
 				<xs:sequence>
 					<xs:group ref="pwd:AssetTypeReadOnlyGroup"/>
-					<xs:group ref="pwd:AssetTypeCreateGroup"/>
+					<xs:group ref="pwd:AssetTypeGroup"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

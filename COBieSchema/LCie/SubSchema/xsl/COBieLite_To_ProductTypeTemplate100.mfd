@@ -16,70 +16,6 @@
 						<wsdl/>
 					</data>
 				</component>
-				<component name="100_03_ProductTypeTemplate" library="xml" uid="7" kind="14">
-					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
-					<view ltx="1379" lty="104" rbx="1738" rby="702"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace uid="http://typetemplate100.defs.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://typetemplate100.lcie.cobielite.cobie.erdc.org"/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="4" expanded="1">
-								<entry name="document" ns="4" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="ProductTypeTemplate" ns="3" expanded="1">
-										<entry name="InformationExchangeID" inpkey="571"/>
-										<entry name="AssetTypes" ns="1" inpkey="572" expanded="1">
-											<entry name="AssetType" inpkey="573" expanded="1">
-												<entry name="externalEntityName" ns="1" type="attribute" inpkey="574"/>
-												<entry name="externalID" ns="1" type="attribute" inpkey="575"/>
-												<entry name="externalSystemName" ns="1" type="attribute" inpkey="576"/>
-												<entry name="AssetTypeName" ns="1" inpkey="577"/>
-												<entry name="AssetTypeCategory" ns="1" inpkey="639"/>
-												<entry name="AssetTypeDescription" ns="1" inpkey="578"/>
-												<entry name="AssetTypeAccountingCategory" ns="1" inpkey="579"/>
-												<entry name="AssetTypeNominalLength" ns="1" inpkey="580"/>
-												<entry name="AssetTypeNominalWidth" ns="1" inpkey="581"/>
-												<entry name="AssetTypeNominalHeight" ns="1" inpkey="582"/>
-												<entry name="AssetTypeAccessibilityText" ns="1" inpkey="583"/>
-												<entry name="AssetTypeCodePerformance" ns="1" inpkey="584"/>
-												<entry name="AssetTypeColorCode" ns="1" inpkey="585"/>
-												<entry name="AssetTypeConstituentsDescription" ns="1" inpkey="586"/>
-												<entry name="AssetTypeFeaturesDescription" ns="1" inpkey="587"/>
-												<entry name="AssetTypeFinishDescription" ns="1" inpkey="588"/>
-												<entry name="AssetTypeGradeDescription" ns="1" inpkey="589"/>
-												<entry name="AssetTypeMaterialDescription" ns="1" inpkey="590"/>
-												<entry name="AssetTypeShapeDescription" ns="1" inpkey="591"/>
-												<entry name="AssetTypeSizeDescription" ns="1" inpkey="592"/>
-												<entry name="AssetTypeSustainabilityPerformanceDescription" ns="1" inpkey="593"/>
-												<entry name="AssetTypeAttributes" ns="1" inpkey="594">
-													<entry name="Attribute" ns="2" inpkey="595">
-														<entry name="externalEntityName" ns="1" type="attribute" inpkey="596"/>
-														<entry name="externalID" ns="1" type="attribute" inpkey="597"/>
-														<entry name="externalSystemName" ns="1" type="attribute" inpkey="598"/>
-														<entry name="propertySetName" ns="1" type="attribute" inpkey="599"/>
-														<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="600"/>
-														<entry name="AttributeName" ns="1" inpkey="601"/>
-														<entry name="AttributeCategory" ns="1" inpkey="602"/>
-														<entry name="AttributeDescription" ns="1" inpkey="603"/>
-														<entry name="AttributeValue" ns="1" inpkey="604"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\100_03_ProductTypeTemplate.xsd" outputinstance="..\100_03_ProductTypeTemplate.xml" instanceroot="{http://typetemplate100.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate"/>
-						<wsdl/>
-					</data>
-				</component>
 				<component name="cobielite" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view ltx="-13" lty="15" rbx="833" rby="884"/>
@@ -144,6 +80,70 @@
 							</entry>
 						</root>
 						<document schema="..\..\..\COBieLite\xsd\cobielite.xsd" inputinstance="..\..\..\COBieLite\examples\ClinicHandover_COBieLite_RC3.xml" instanceroot="{http://cobielite.cobie.erdc.org}Facility"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="100_03_ProductTypeTemplate" library="xml" uid="7" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1379" lty="104" rbx="1738" rby="702"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://typetemplate100.defs.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://core.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://attribute.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://typetemplate100.lcie.cobielite.cobie.erdc.org"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="4" expanded="1">
+								<entry name="document" ns="4" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ProductTypeTemplate" ns="3" expanded="1">
+										<entry name="InformationExchangeID" inpkey="571"/>
+										<entry name="AssetTypes" ns="1" inpkey="572" expanded="1">
+											<entry name="AssetType" inpkey="573" expanded="1">
+												<entry name="externalEntityName" ns="1" type="attribute" inpkey="574"/>
+												<entry name="externalID" ns="1" type="attribute" inpkey="575"/>
+												<entry name="externalSystemName" ns="1" type="attribute" inpkey="576"/>
+												<entry name="AssetTypeName" ns="1" inpkey="577"/>
+												<entry name="AssetTypeCategory" ns="1" inpkey="639"/>
+												<entry name="AssetTypeDescription" ns="1" inpkey="578"/>
+												<entry name="AssetTypeAccountingCategory" ns="1" inpkey="579"/>
+												<entry name="AssetTypeNominalLength" ns="1" inpkey="580"/>
+												<entry name="AssetTypeNominalWidth" ns="1" inpkey="581"/>
+												<entry name="AssetTypeNominalHeight" ns="1" inpkey="582"/>
+												<entry name="AssetTypeAccessibilityText" ns="1" inpkey="583"/>
+												<entry name="AssetTypeCodePerformance" ns="1" inpkey="584"/>
+												<entry name="AssetTypeColorCode" ns="1" inpkey="585"/>
+												<entry name="AssetTypeConstituentsDescription" ns="1" inpkey="586"/>
+												<entry name="AssetTypeFeaturesDescription" ns="1" inpkey="587"/>
+												<entry name="AssetTypeFinishDescription" ns="1" inpkey="588"/>
+												<entry name="AssetTypeGradeDescription" ns="1" inpkey="589"/>
+												<entry name="AssetTypeMaterialDescription" ns="1" inpkey="590"/>
+												<entry name="AssetTypeShapeDescription" ns="1" inpkey="591"/>
+												<entry name="AssetTypeSizeDescription" ns="1" inpkey="592"/>
+												<entry name="AssetTypeSustainabilityPerformanceDescription" ns="1" inpkey="593"/>
+												<entry name="AssetTypeAttributes" ns="1" inpkey="594">
+													<entry name="Attribute" ns="2" inpkey="595">
+														<entry name="externalEntityName" ns="1" type="attribute" inpkey="596"/>
+														<entry name="externalID" ns="1" type="attribute" inpkey="597"/>
+														<entry name="externalSystemName" ns="1" type="attribute" inpkey="598"/>
+														<entry name="propertySetName" ns="1" type="attribute" inpkey="599"/>
+														<entry name="propertySetExternalIdentifier" ns="1" type="attribute" inpkey="600"/>
+														<entry name="AttributeName" ns="1" inpkey="601"/>
+														<entry name="AttributeCategory" ns="1" inpkey="602"/>
+														<entry name="AttributeDescription" ns="1" inpkey="603"/>
+														<entry name="AttributeValue" ns="1" inpkey="604"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\100_03_ProductTypeTemplate.xsd" outputinstance="..\100_03_ProductTypeTemplate.xml" instanceroot="{http://typetemplate100.lcie.cobielite.cobie.erdc.org}ProductTypeTemplate" userdefinedschemalocation="../100_03_ProductTypeTemplate.xsd"/>
 						<wsdl/>
 					</data>
 				</component>

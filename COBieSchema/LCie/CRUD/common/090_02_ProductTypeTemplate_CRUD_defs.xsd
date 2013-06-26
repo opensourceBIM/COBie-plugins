@@ -4,14 +4,11 @@
 	<xs:import namespace="http://typetemplate090.defs.lcie.cobielite.cobie.erdc.org" schemaLocation="../../cobielite_substitutions/090_02_ProductTypeTemplate_defs.xsd"/>
 	<xs:import namespace="http://core.cobielite.cobie.erdc.org" schemaLocation="../../../COBieLite/xsd/common/cobielite_core.xsd"/>
 	<xs:import namespace="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Attribute_CRUD_defs.xsd"/>
+	
 	<xs:complexType name="TypeTemplateDeleteRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:DeleteRequestType">
-				<xs:sequence>
-					<xs:element ref="pttc:ProductTypeTemplateKey"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="pttc:ProductTypeTemplateKey"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TypeTemplateReadResultType">
 		<xs:complexContent>
@@ -22,61 +19,31 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="ProductTypeTemplateCreateRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:CreateRequestType">
-				<xs:sequence>
-					<xs:element ref="pttc:ProductTypeTemplateKey"/>
-					<xs:group ref="pttd:AssetTypeCreateGroup"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="TypeTemplateReadAllResultType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:ReadAllResultType">
-				<xs:sequence>
-					<xs:element ref="ptt:ProductTypeTemplate"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+	<xs:complexType name="CreateAssetTypeRequestType">
+		<xs:sequence>
+			<xs:element ref="AssetType"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TypeTemplateUpdateRequestType">
-		<xs:complexContent>
-			<xs:extension base="cobiex:UpdateRequestType">
-				<xs:sequence>
-					<xs:element ref="pttc:ProductTypeTemplateKey"/>
-					<xs:group ref="pttd:AssetTypeUpdateGroup"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="pttc:ProductTypeTemplateKey"/>
+			<xs:group ref="pttd:AssetTypeUpdateGroup"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TypeTemplateUpdateAttributeRequestType">
-		<xs:complexContent>
-			<xs:extension base="attc:UpdateAttributeRequestType">
-				<xs:sequence>
-					<xs:element ref="pttc:ProductTypeTemplateKey"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="pttc:ProductTypeTemplateKey"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TypeTemplateCreateAttributeRequestType">
-		<xs:complexContent>
-			<xs:extension base="attc:CreateAttributeRequestType">
-				<xs:sequence>
-					<xs:element ref="pttc:ProductTypeTemplateKey"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="pttc:ProductTypeTemplateKey"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TypeTemplateDeleteAttributeRequestType">
-		<xs:complexContent>
-			<xs:extension base="attc:DeleteAttributeRequestType">
-				<xs:sequence>
-					<xs:element ref="pttc:ProductTypeTemplateKey"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element ref="pttc:ProductTypeTemplateKey"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ProductTypeTemplateClientRequestType">
 		<xs:complexContent>
@@ -88,13 +55,46 @@
 			<xs:extension base="cobiex:ServerResponseExchangeType"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name="DeleteAssetTypeAttributeRequest" type="pttc:TypeTemplateDeleteAttributeRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="CreateAssetTypeAttributeRequest" type="pttc:TypeTemplateCreateAttributeRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="UpdateAssetTypeAttributeRequest" type="pttc:TypeTemplateUpdateAttributeRequestType" substitutionGroup="cobiex:UpdateRequest"/>
-	<xs:element name="DeleteAssetTypeRequest" type="pttc:TypeTemplateDeleteRequestType" substitutionGroup="cobiex:DeleteRequest"/>
-	<xs:element name="ProductTypeTemplates" type="pttd:ProductTypeTemplateType" substitutionGroup="cobiex:InformationExchange"/>
-	<xs:element name="CreateAssetTypeRequest" type="pttc:ProductTypeTemplateCreateRequestType" substitutionGroup="cobiex:CreateRequest"/>
-	<xs:element name="ProductTypeTemplate" type="pttc:TypeTemplateReadResultType" substitutionGroup="cobiex:ReadResult"/>
-	<xs:element name="UpdateAssetTypeRequest" type="pttc:TypeTemplateUpdateRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:complexType name="ProductTypeTemplateCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:CreateRequestType">
+				<xs:choice>
+					<xs:element ref="pttc:CreateAssetTypeRequest"/>
+					<xs:element ref="pttc:CreateAssetTypeAttributeRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeTemplateUpdateRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="pttc:UpdateAssetTypeRequest"/>
+					<xs:element ref="pttc:UpdateAssetTypeAttributeRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeTemplateDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="cobiex:DeleteRequestType">
+				<xs:choice>
+					<xs:element ref="pttc:DeleteAssetTypeAttributeRequest"/>
+					<xs:element ref="pttc:DeleteAssetTypeRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ProductTypeTemplateCreateRequest" type="pttc:ProductTypeTemplateCreateRequestType" substitutionGroup="cobiex:CreateRequest"/>
+	<xs:element name="ProductTypeTemplateReadResult" type="pttc:TypeTemplateReadResultType" substitutionGroup="cobiex:ReadResult"/>
+	<xs:element name="ProductTypeTemplateUpdateRequest" type="pttc:ProductTypeTemplateUpdateRequestType" substitutionGroup="cobiex:UpdateRequest"/>
+	<xs:element name="ProductTypeTemplateDeleteRequest" type="pttc:ProductTypeTemplateDeleteRequestType" substitutionGroup="cobiex:DeleteRequest"/>
+	<xs:element name="ProductTypeTemplate" type="pttd:ProductTypeTemplateType" substitutionGroup="cobiex:InformationExchange"/>
 	<xs:element name="ProductTypeTemplateKey" type="AssetTypeKeyType" substitutionGroup="cobiex:Key"/>
+	<xs:element name="CreateAssetTypeAttributeRequest" type="pttc:TypeTemplateCreateAttributeRequestType"/>
+	<xs:element name="CreateAssetTypeRequest" type="pttc:CreateAssetTypeRequestType"/>
+	<xs:element name="UpdateAssetTypeAttributeRequest" type="pttc:TypeTemplateUpdateAttributeRequestType"/>
+	<xs:element name="DeleteAssetTypeAttributeRequest" type="pttc:TypeTemplateDeleteAttributeRequestType"/>
+	<xs:element name="DeleteAssetTypeRequest" type="pttc:TypeTemplateDeleteRequestType"/>
+	<xs:element name="UpdateAssetTypeRequest" type="pttc:TypeTemplateUpdateRequestType"/>
 </xs:schema>

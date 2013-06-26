@@ -117,7 +117,7 @@
 					</data>
 				</component>
 				<component name="110_01_ProductTypeCandidate" library="xml" uid="8" kind="14">
-					<properties XSLTDefaultOutput="1"/>
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1238" lty="172" rbx="1538" rby="372"/>
 					<data>
 						<root scrollposition="256">
@@ -213,7 +213,7 @@
 								</entry>
 							</entry>
 						</root>
-						<document schema="..\110_01_ProductTypeCandidate.xsd" outputinstance="..\110_01_ProductTypeCandidate.xml" instanceroot="{http://typecandidate110.lcie.cobielite.cobie.erdc.org}ProductTypeCandidate"/>
+						<document schema="..\110_01_ProductTypeCandidate.xsd" outputinstance="..\110_01_ProductTypeCandidate.xml" instanceroot="{http://typecandidate110.lcie.cobielite.cobie.erdc.org}ProductTypeCandidate" userdefinedschemalocation="../110_01_ProductTypeCandidate.xsd"/>
 						<wsdl/>
 					</data>
 				</component>
