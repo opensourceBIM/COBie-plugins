@@ -30,19 +30,32 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TypeTemplateUpdateAttributeRequestType">
-		<xs:sequence>
-			<xs:element ref="pttc:ProductTypeTemplateKey"/>
-		</xs:sequence>
+		<xs:complexContent>
+			<xs:extension base="attc:UpdateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="pttc:ProductTypeTemplateKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="TypeTemplateCreateAttributeRequestType">
-		<xs:sequence>
-			<xs:element ref="pttc:ProductTypeTemplateKey"/>
-		</xs:sequence>
+		<xs:complexContent>
+			<xs:extension base="attc:CreateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="pttc:ProductTypeTemplateKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="TypeTemplateDeleteAttributeRequestType">
+	<xs:complexContent>
+		<xs:extension base="attc:DeleteAttributeRequestType">
 		<xs:sequence>
 			<xs:element ref="pttc:ProductTypeTemplateKey"/>
 		</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+		
 	</xs:complexType>
 	<xs:complexType name="ProductTypeTemplateClientRequestType">
 		<xs:complexContent>

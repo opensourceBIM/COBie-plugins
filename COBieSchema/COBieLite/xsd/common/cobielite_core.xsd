@@ -38,7 +38,8 @@
 			<xs:documentation>Abstract type used for all COBie keys</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="CobieComplexObjectType"/>
+			<xs:extension base="CobieComplexObjectType">
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="CobieRowAssignmentsType" abstract="true">
@@ -1189,10 +1190,18 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="CobieKeyType">
-				<xs:sequence>
+				<xs:sequence minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If externalIDReference is not provided then SystemName and SystemCategory MUST be provided.</xs:documentation>
+				</xs:annotation>
 					<xs:element ref="SystemName"/>
 					<xs:element ref="SystemCategory"/>
 				</xs:sequence>
+				<xs:attribute ref="externalIDReference" use="optional">
+					<xs:annotation>
+						<xs:documentation>If SystemName and SystemCategory are not provided then externalIDReference MUST be provided.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -1215,11 +1224,18 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="CobieKeyType">
-				<xs:sequence>
+				<xs:sequence minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If externalIDReference is not provided then ZoneName and ZoneCategory MUST be provided.</xs:documentation>
+				</xs:annotation>
 					<xs:element ref="ZoneName"/>
 					<xs:element ref="ZoneCategory"/>
 				</xs:sequence>
-			</xs:extension>
+					<xs:attribute ref="externalIDReference" use="optional">
+					<xs:annotation>
+						<xs:documentation>If ZoneName and ZoneCategory are not provided then externalIDReference MUST be provided.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<!-- attribute definitions -->
@@ -1242,6 +1258,22 @@
 	<xs:attribute name="externalID" type="ExternalIdentifierSimpleType">
 		<xs:annotation>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">A unique id used in an external representation of the specified COBie element. Most commonly ExternalID is used to represent the value of IfcGloballyUniqueID entity.</xs:appinfo>
+			<xs:appinfo source="urn:camed:annotation:documentation:type:Value">1hypqXnMHDlwKZc9bkVjNR|3QYFkhRmzECBGi_FDC88Pu|30b56ZPunCX9x5gIL$UTx9</xs:appinfo>
+			<xs:appinfo source="urn:camed:annotation:documentation:type:ISO16739Mapping">IfcRoot.GloballyUniqueId</xs:appinfo>
+			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Header">ExtIdentifier</xs:appinfo>
+			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Column">Varies</xs:appinfo>
+			<xs:documentation>
+			Definition:  A unique id used in an external representation of the specified COBie element. Most commonly ExternalID is used to represent the value of IfcGloballyUniqueID entity.
+			Value:  1hypqXnMHDlwKZc9bkVjNR|3QYFkhRmzECBGi_FDC88Pu|30b56ZPunCX9x5gIL$UTx9
+			ISO16739Mapping:  IfcRoot.GloballyUniqueId
+			COBie2.4Header:  ExtIdentifier
+			COBie2.4Column:  Varies
+			</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="externalIDReference" type="ExternalIdentifierSimpleType">
+		<xs:annotation>
+			<xs:appinfo source="urn:camed:annotation:documentation:type:Definition">A unique id used in an external representation of the specified COBie element. Most commonly ExternalID is used to represent the value of IfcGloballyUniqueID entity.  The externalIDReference is used as an alternate foreign key reference in System and Zone assignments. </xs:appinfo>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:Value">1hypqXnMHDlwKZc9bkVjNR|3QYFkhRmzECBGi_FDC88Pu|30b56ZPunCX9x5gIL$UTx9</xs:appinfo>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:ISO16739Mapping">IfcRoot.GloballyUniqueId</xs:appinfo>
 			<xs:appinfo source="urn:camed:annotation:documentation:type:COBie2.4Header">ExtIdentifier</xs:appinfo>
@@ -1688,6 +1720,9 @@ COBie.System information is considered to be required only as-specified. Please 
 			<xs:documentation>The assignment of a COBie element to Systems.</xs:documentation>
 		</xs:annotation>
 		<xs:key name="SystemAssignmentKey">
+			<xs:annotation>
+				<xs:documentation>The Key used when Name and Category are used as the SystemKey</xs:documentation>
+			</xs:annotation>
 			<xs:selector xpath="SystemAssignment"/>
 			<xs:field xpath="SystemName"/>
 			<xs:field xpath="SystemCategory"/>

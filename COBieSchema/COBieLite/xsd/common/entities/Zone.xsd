@@ -19,10 +19,16 @@
 					<xs:element ref="ZoneAttributes" minOccurs="0"/>
 					<xs:element ref="ZoneDocuments" minOccurs="0"/>
 					<xs:element ref="ZoneIssues" minOccurs="0"/>
+					<xs:element ref="zone:SubZones" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:element name="SubZones" type="ZoneCollectionType">
+		<xs:annotation>
+			<xs:documentation>SubZones provide a means to hierarchically group Zones.  I SubZones are provided then externalID must be assigned to allow for for SpaceZoneAssignments to reference through externalIDReference.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="Zone" type="zone:ZoneType" substitutionGroup="Zone" id="d2e781">
 		<xs:annotation>
 			<xs:documentation>COBie.Zone information is considered to be required only as-specified. Please refer to the COBie Guide for more information on specific zoning requirements.</xs:documentation>
