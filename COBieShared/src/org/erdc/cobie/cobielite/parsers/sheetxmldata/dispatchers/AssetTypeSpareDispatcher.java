@@ -1,8 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.AssetTypeInfoType;
-import org.erdc.cobie.cobielite.SpareCollectionType;
-import org.erdc.cobie.cobielite.SpareType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AssetTypeInfoType;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.SpareDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.SpareType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SpareCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.SpareParser;
@@ -29,7 +31,7 @@ public class AssetTypeSpareDispatcher extends
     @Override
     protected SpareType createNewTargetElement()
     {
-        return targetCollection.addNewSpare();
+        return (SpareType)targetCollection.addNewSpare().substitute(SpareDocument.type.getDocumentElementName(), SpareType.type);
     }
 
     @Override

@@ -10,15 +10,20 @@ import nl.fountain.xelem.excel.Worksheet;
 
 import org.erdc.cobie.shared.COBieTokenUtility;
 import org.erdc.cobie.shared.COBieTokenUtility.SystemColumnNameLiterals;
-import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.SystemType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SystemParser extends Parser
 {
+
+    public SystemParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
 
     public SystemParser(COBIEType cobie, Workbook workbook)
     {
@@ -122,16 +127,16 @@ public class SystemParser extends Parser
                 {
                     systemDescription = rowData.getCellAt(idxDescription).getData$();
                 }
-                systemCreatedOn = COBieUtility.calendarFromString(systemCreatedOnString);
-                tmpSystem.setName(COBieUtility.getCOBieString(systemName));
-                tmpSystem.setCreatedBy(COBieUtility.getCOBieString(systemCreatedBy));
+                systemCreatedOn = getCobieStringHandler().calendarFromString(systemCreatedOnString);
+                tmpSystem.setName(cobieStringHandler.getCOBieString(systemName));
+                tmpSystem.setCreatedBy(cobieStringHandler.getCOBieString(systemCreatedBy));
                 tmpSystem.setCreatedOn(systemCreatedOn);
-                tmpSystem.setCategory(COBieUtility.getCOBieString(systemCategory));
-                tmpSystem.setComponentNames(COBieUtility.getCOBieString(systemComponentNames));
-                tmpSystem.setExtSystem(COBieUtility.getCOBieString(systemExtSystem));
-                tmpSystem.setExtObject(COBieUtility.getCOBieString(systemExtObject));
-                tmpSystem.setExtIdentifier(COBieUtility.getCOBieString(systemExtIdentifier));
-                tmpSystem.setDescription(COBieUtility.getCOBieString(systemDescription));
+                tmpSystem.setCategory(cobieStringHandler.getCOBieString(systemCategory));
+                tmpSystem.setComponentNames(cobieStringHandler.getCOBieString(systemComponentNames));
+                tmpSystem.setExtSystem(cobieStringHandler.getCOBieString(systemExtSystem));
+                tmpSystem.setExtObject(cobieStringHandler.getCOBieString(systemExtObject));
+                tmpSystem.setExtIdentifier(cobieStringHandler.getCOBieString(systemExtIdentifier));
+                tmpSystem.setDescription(cobieStringHandler.getCOBieString(systemDescription));
             }
         }
     }

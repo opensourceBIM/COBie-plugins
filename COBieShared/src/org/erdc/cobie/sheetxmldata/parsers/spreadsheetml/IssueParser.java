@@ -10,15 +10,20 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
-import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.IssueType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class IssueParser extends Parser
 {
+    public IssueParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
+
     public static enum IssueColumnNameLiterals
     {
         Name, CreatedBy, CreatedOn, Type, Risk, Chance, Impact, SheetName1, RowName1, SheetName2, RowName2, Description, Owner, Mitigation, ExtSystem
@@ -163,15 +168,15 @@ public class IssueParser extends Parser
                 {
                     rowData.getCellAt(idxExtSystem).getData$();
                 }
-                issueCreatedOn = COBieUtility.calendarFromString(issueCreatedOnString);
-                tmpIssue.setName(COBieUtility.getCOBieString(issueName));
-                tmpIssue.setCreatedBy(COBieUtility.getCOBieString(issueCreatedBy));
+                issueCreatedOn = getCobieStringHandler().calendarFromString(issueCreatedOnString);
+                tmpIssue.setName(cobieStringHandler.getCOBieString(issueName));
+                tmpIssue.setCreatedBy(cobieStringHandler.getCOBieString(issueCreatedBy));
                 tmpIssue.setCreatedOn(issueCreatedOn);
-                tmpIssue.setType(COBieUtility.getCOBieString(issueType));
-                tmpIssue.setRisk(COBieUtility.getCOBieString(issueRisk));
-                tmpIssue.setChance(COBieUtility.getCOBieString(issueChance));
-                tmpIssue.setImpact(COBieUtility.getCOBieString(issueImpact));
-                tmpIssue.setSheetName1(COBieUtility.getCOBieString(issueSheetName1));
+                tmpIssue.setType(cobieStringHandler.getCOBieString(issueType));
+                tmpIssue.setRisk(cobieStringHandler.getCOBieString(issueRisk));
+                tmpIssue.setChance(cobieStringHandler.getCOBieString(issueChance));
+                tmpIssue.setImpact(cobieStringHandler.getCOBieString(issueImpact));
+                tmpIssue.setSheetName1(cobieStringHandler.getCOBieString(issueSheetName1));
             }
         }
     }

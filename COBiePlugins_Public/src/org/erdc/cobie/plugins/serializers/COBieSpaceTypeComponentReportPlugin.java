@@ -29,7 +29,7 @@ public class COBieSpaceTypeComponentReportPlugin extends
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new org.erdc.cobie.plugins.serializers.COBieHTMLReportSerializer(
+		return new org.erdc.cobie.serializers.COBieHTMLReportSerializer(
 				configFiles.get(SPACE_REPORT_XSLT_PATH).getAbsolutePath(),
 				configFiles.get(SPACE_REPORT_CSS_PATH).getAbsolutePath());
 	}

@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+import javax.xml.transform.TransformerException;
+
 import org.apache.xmlbeans.XmlException;
 import org.erdc.cobie.report.ReportSerializer;
 import org.erdc.cobie.shared.compare.COBieCompareResult;
@@ -115,7 +117,7 @@ public class CompareTask extends ApplicationTask<Void> implements PropertyChange
     }
 	
 
-	private void executeXslTransform(File saveFile) throws UnsupportedEncodingException, IOException
+	private void executeXslTransform(File saveFile) throws UnsupportedEncodingException, IOException, TransformerException
 	{
 		FileOutputStream fOut = new FileOutputStream(saveFile);
 		ReportSerializer.executeSaxonXSLT(fOut, compareDocument.toString().getBytes(DEFAULT_ENCODING),COMPARE_HTML_XSLT_PATH);
@@ -185,7 +187,7 @@ public class CompareTask extends ApplicationTask<Void> implements PropertyChange
 		}
 		
 	}
-	private void saveComparison() throws ServerException, UserException, XmlException, IOException
+	private void saveComparison() throws ServerException, UserException, XmlException, IOException, TransformerException
 	{
 
 		File reportFile = new File(reportFilePath);

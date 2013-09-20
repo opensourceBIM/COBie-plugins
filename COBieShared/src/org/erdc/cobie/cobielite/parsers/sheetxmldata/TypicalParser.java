@@ -1,13 +1,15 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.CobieBaseType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AttributeDocumentIssueHelper;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.COBIEBaseType;
 
-public abstract class TypicalParser<COBIE_SHEET_XML_DATA_TYPE extends COBIEBaseType, COBIE_LITE_DATA_TYPE extends org.erdc.cobie.cobielite.CobieBaseType>
+public abstract class TypicalParser<COBIE_SHEET_XML_DATA_TYPE extends COBIEBaseType, COBIE_LITE_DATA_TYPE extends CobieBaseType>
         extends COBieLiteCOBIEBaseTypeParser<COBIE_SHEET_XML_DATA_TYPE, COBIE_LITE_DATA_TYPE>
 {
 

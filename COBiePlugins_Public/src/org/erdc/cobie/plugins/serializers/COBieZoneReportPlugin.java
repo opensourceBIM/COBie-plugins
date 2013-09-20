@@ -20,13 +20,12 @@ public class COBieZoneReportPlugin extends AbstractCOBieSerializerPlugin
 	private ArrayList<String> configFilePaths;
 	private HashMap<String, File> configFiles;
 
-
-
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
 
-		return new org.erdc.cobie.plugins.serializers.COBieHTMLReportSerializer(
+		return new org.erdc.cobie.serializers.COBieHTMLReportSerializer(
+
 				configFiles.get(ZONE_REPORT_XSLT_PATH).getAbsolutePath(),
 				configFiles.get(ZONE_REPORT_CSS_PATH).getAbsolutePath());
 	}
@@ -54,7 +53,6 @@ public class COBieZoneReportPlugin extends AbstractCOBieSerializerPlugin
 	{
 		return COBieSerializerPluginInfo.REPORT_ZONE.getDescription();
 	}
-
 
 	@Override
 	public void init(PluginManager pluginManager) throws PluginException
@@ -89,5 +87,4 @@ public class COBieZoneReportPlugin extends AbstractCOBieSerializerPlugin
 	{
 		return false;
 	}
-
 }

@@ -13,11 +13,17 @@ import nl.fountain.xelem.excel.Worksheet;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.ImpactType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ImpactParser extends Parser
 {
+    public ImpactParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
+
     public static enum ImpactColumnNameLiterals
     {
         Name, CreatedBy, CreatedOn, ImpactType, ImpactStage, SheetName, RowName, Value, ImpactUnit, LeadInTime, Duration, LeadOutTime, ExtSystem, ExtObject, ExtIdentifier, Description
@@ -174,15 +180,15 @@ public class ImpactParser extends Parser
                     {
                         rowData.getCellAt(idxDescription).getData$();
                     }
-                    impactCreatedOn = COBieUtility.calendarFromString(impactCreatedOnString);
-                    tmpImpact.setName(COBieUtility.getCOBieString(impactName));
-                    tmpImpact.setCreatedBy(COBieUtility.getCOBieString(impactCreatedBy));
+                    impactCreatedOn = getCobieStringHandler().calendarFromString(impactCreatedOnString);
+                    tmpImpact.setName(cobieStringHandler.getCOBieString(impactName));
+                    tmpImpact.setCreatedBy(cobieStringHandler.getCOBieString(impactCreatedBy));
                     tmpImpact.setCreatedOn(impactCreatedOn);
-                    tmpImpact.setImpactType(COBieUtility.getCOBieString(impactImpactType));
-                    tmpImpact.setImpactStage(COBieUtility.getCOBieString(impactImpactStage));
-                    tmpImpact.setSheetName(COBieUtility.getCOBieString(impactSheetName));
-                    tmpImpact.setRowName(COBieUtility.getCOBieString(impactRowName));
-                    tmpImpact.setValue(COBieUtility.getCOBieString(impactValue));
+                    tmpImpact.setImpactType(cobieStringHandler.getCOBieString(impactImpactType));
+                    tmpImpact.setImpactStage(cobieStringHandler.getCOBieString(impactImpactStage));
+                    tmpImpact.setSheetName(cobieStringHandler.getCOBieString(impactSheetName));
+                    tmpImpact.setRowName(cobieStringHandler.getCOBieString(impactRowName));
+                    tmpImpact.setValue(cobieStringHandler.getCOBieString(impactValue));
                 }
             }
         }

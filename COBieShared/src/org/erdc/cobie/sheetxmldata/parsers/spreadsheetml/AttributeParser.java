@@ -12,11 +12,18 @@ import org.erdc.cobie.shared.COBieTokenUtility.AttributeColumnNameLiterals;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.AttributeType;
 import org.erdc.cobie.sheetxmldata.COBIEType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class AttributeParser extends Parser
 {
+
+    public AttributeParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+        // TODO Auto-generated constructor stub
+    }
 
     public AttributeParser(COBIEType cobie, Workbook workbook)
     {
@@ -147,20 +154,20 @@ public class AttributeParser extends Parser
                 {
                     attributeAllowedValues = rowData.getCellAt(idxAllowedValues).getData$();
                 }
-                attributeCreatedOn = COBieUtility.calendarFromString(attributeCreatedOnString);
-                tmpAttribute.setName(COBieUtility.getCOBieString(attributeName));
-                tmpAttribute.setCreatedBy(COBieUtility.getCOBieString(attributeCreatedBy));
+                attributeCreatedOn = getCobieStringHandler().calendarFromString(attributeCreatedOnString);
+                tmpAttribute.setName(cobieStringHandler.getCOBieString(attributeName));
+                tmpAttribute.setCreatedBy(cobieStringHandler.getCOBieString(attributeCreatedBy));
                 tmpAttribute.setCreatedOn(attributeCreatedOn);
-                tmpAttribute.setCategory(COBieUtility.getCOBieString(attributeCategory));
-                tmpAttribute.setSheetName(COBieUtility.getCOBieString(attributeSheetName));
-                tmpAttribute.setRowName(COBieUtility.getCOBieString(attributeRowName));
-                tmpAttribute.setValue(COBieUtility.getCOBieString(attributeValue));
-                tmpAttribute.setUnit(COBieUtility.getCOBieString(attributeUnit));
-                tmpAttribute.setExtSystem(COBieUtility.getCOBieString(attributeExtSystem));
-                tmpAttribute.setExtObject(COBieUtility.getCOBieString(attributeExtObject));
-                tmpAttribute.setExtIdentifier(COBieUtility.getCOBieString(attributeExtIdentifier));
-                tmpAttribute.setDescription(COBieUtility.getCOBieString(attributeDescription));
-                tmpAttribute.setAllowedValues(COBieUtility.getCOBieString(attributeAllowedValues));
+                tmpAttribute.setCategory(cobieStringHandler.getCOBieString(attributeCategory));
+                tmpAttribute.setSheetName(cobieStringHandler.getCOBieString(attributeSheetName));
+                tmpAttribute.setRowName(cobieStringHandler.getCOBieString(attributeRowName));
+                tmpAttribute.setValue(cobieStringHandler.getCOBieString(attributeValue));
+                tmpAttribute.setUnit(cobieStringHandler.getCOBieString(attributeUnit));
+                tmpAttribute.setExtSystem(cobieStringHandler.getCOBieString(attributeExtSystem));
+                tmpAttribute.setExtObject(cobieStringHandler.getCOBieString(attributeExtObject));
+                tmpAttribute.setExtIdentifier(cobieStringHandler.getCOBieString(attributeExtIdentifier));
+                tmpAttribute.setDescription(cobieStringHandler.getCOBieString(attributeDescription));
+                tmpAttribute.setAllowedValues(cobieStringHandler.getCOBieString(attributeAllowedValues));
             }
         }
     }

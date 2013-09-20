@@ -13,11 +13,17 @@ import org.erdc.cobie.shared.COBieTokenUtility.ConnectionColumnNameLiterals;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.ConnectionType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ConnectionParser extends Parser
 {
+
+    public ConnectionParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
 
     public ConnectionParser(COBIEType cobie, Workbook workbook)
     {
@@ -155,21 +161,21 @@ public class ConnectionParser extends Parser
                 {
                     connectionDescription = rowData.getCellAt(idxDescription).getData$();
                 }
-                connectionCreatedOn = COBieUtility.calendarFromString(connectionCreatedOnString);
-                tmpConnection.setName(COBieUtility.getCOBieString(connectionName));
-                tmpConnection.setCreatedBy(COBieUtility.getCOBieString(connectionCreatedBy));
+                connectionCreatedOn = getCobieStringHandler().calendarFromString(connectionCreatedOnString);
+                tmpConnection.setName(cobieStringHandler.getCOBieString(connectionName));
+                tmpConnection.setCreatedBy(cobieStringHandler.getCOBieString(connectionCreatedBy));
                 tmpConnection.setCreatedOn(connectionCreatedOn);
-                tmpConnection.setConnectionType(COBieUtility.getCOBieString(connectionConnectionType));
-                tmpConnection.setSheetName(COBieUtility.getCOBieString(connectionSheetName));
-                tmpConnection.setRowName1(COBieUtility.getCOBieString(connectionRowName1));
-                tmpConnection.setRowName2(COBieUtility.getCOBieString(connectionRowName2));
-                tmpConnection.setRealizingElement(COBieUtility.getCOBieString(connectionRealizingElement));
-                tmpConnection.setPortName1(COBieUtility.getCOBieString(connectionPortName1));
-                tmpConnection.setPortName2(COBieUtility.getCOBieString(connectionPortName2));
-                tmpConnection.setExtSystem(COBieUtility.getCOBieString(connectionExtSystem));
-                tmpConnection.setExtObject(COBieUtility.getCOBieString(connectionExtObject));
-                tmpConnection.setExtIdentifier(COBieUtility.getCOBieString(connectionExtIdentifier));
-                tmpConnection.setDescription(COBieUtility.getCOBieString(connectionDescription));
+                tmpConnection.setConnectionType(cobieStringHandler.getCOBieString(connectionConnectionType));
+                tmpConnection.setSheetName(cobieStringHandler.getCOBieString(connectionSheetName));
+                tmpConnection.setRowName1(cobieStringHandler.getCOBieString(connectionRowName1));
+                tmpConnection.setRowName2(cobieStringHandler.getCOBieString(connectionRowName2));
+                tmpConnection.setRealizingElement(cobieStringHandler.getCOBieString(connectionRealizingElement));
+                tmpConnection.setPortName1(cobieStringHandler.getCOBieString(connectionPortName1));
+                tmpConnection.setPortName2(cobieStringHandler.getCOBieString(connectionPortName2));
+                tmpConnection.setExtSystem(cobieStringHandler.getCOBieString(connectionExtSystem));
+                tmpConnection.setExtObject(cobieStringHandler.getCOBieString(connectionExtObject));
+                tmpConnection.setExtIdentifier(cobieStringHandler.getCOBieString(connectionExtIdentifier));
+                tmpConnection.setDescription(cobieStringHandler.getCOBieString(connectionDescription));
             }
         }
     }

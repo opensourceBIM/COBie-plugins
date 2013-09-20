@@ -15,35 +15,29 @@ import org.bimserver.plugins.schema.SchemaPlugin;
 import org.bimserver.plugins.serializers.Serializer;
 import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
 import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.enums.SchematronValidationPhase;
+import org.erdc.cobie.utils.serializer.COBieSchematronCheckerSettings;
 
 public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 {
-	public static final String DEFAULT_SERIALIZER_NAME = COBieSerializerPluginInfo.REPORT_QC_CONSTRUCTION
-			.toString();
+	public static final String DEFAULT_SERIALIZER_NAME = COBieSerializerPluginInfo.REPORT_QC_CONSTRUCTION.getPluginName();
 	private boolean initialized = false;
 	private static final String SCHEMATRON_RULEPATH = "lib/COBieRules.sch";
+	private static final String SCHEMATRON_FUNCTIONPATH = "lib/COBieRules_Functions.xsl";
 	private static final String PRE_PROCESSOR_PATH = "lib/iso_svrl_for_xslt2.xsl";
-	private static final String SVRL_XSD_PATH = "lib/SVRL.xsd";
-	private static final String SVRL_HTML_XSLT_PATH = "lib/SVRL_HTML(Construction).xslt";
+	private static final String SVRL_HTML_XSLT_PATH = "lib/SVRL_HTML_altLocation.xslt";
 	private static final String CSS_PATH = "lib/SpaceReport.css";
 	private static final String SCHEMATRON_SAXON_SKELETON_PATH = "lib/iso_schematron_skeleton_for_saxon.xsl";
 	private ArrayList<String> configFilePaths;
 	private HashMap<String, File> configFiles;
-
+	private COBieSchematronCheckerSettings checkerSettings;
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new org.erdc.cobie.plugins.serializers.COBieCheckSerializer(
-				configFiles.get(SCHEMATRON_RULEPATH).getAbsolutePath(),
-				configFiles.get(PRE_PROCESSOR_PATH).getAbsolutePath(),
-				configFiles.get(SVRL_XSD_PATH).getAbsolutePath(), configFiles
-						.get(SVRL_HTML_XSLT_PATH).getAbsolutePath(),
-				configFiles.get(CSS_PATH).getAbsolutePath());
+		return new org.erdc.cobie.serializers.COBieCheckSerializer(checkerSettings);
 	}
 
-	// /////////////////////////////
-	// /need to fix these content and extension functions.
-	// /had to use html to get it to work
+
 	@Override
 	public String getDefaultContentType()
 	{
@@ -53,7 +47,6 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 	@Override
 	public String getDefaultExtension()
 	{
-		// return "xml";//Change this to proper extension
 		return COBieSerializerPluginInfo.REPORT_QC_CONSTRUCTION
 				.getFileExtension();
 	}
@@ -76,7 +69,7 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 		return getClass().getName();
 	}
 
-	// i am unsure of what this function does
+
 	public Set<Class<? extends Plugin>> getRequiredPlugins()
 	{
 		Set<Class<? extends Plugin>> set = new HashSet<Class<? extends Plugin>>();
@@ -92,8 +85,8 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 		configFilePaths.add(PRE_PROCESSOR_PATH);
 		configFilePaths.add(SCHEMATRON_SAXON_SKELETON_PATH);
 		configFilePaths.add(SVRL_HTML_XSLT_PATH);
-		configFilePaths.add(SVRL_XSD_PATH);
 		configFilePaths.add(CSS_PATH);
+		configFilePaths.add(SCHEMATRON_FUNCTIONPATH);
 		pluginManager.requireSchemaDefinition();
 		try
 		{
@@ -105,10 +98,14 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 			e.printStackTrace();
 			throw new PluginException("Could not find configuration files");
 		}
+		
+		checkerSettings = new COBieSchematronCheckerSettings(configFiles.get(SCHEMATRON_RULEPATH).getAbsolutePath(), 
+				configFiles.get(PRE_PROCESSOR_PATH).getAbsolutePath(), configFiles
+				.get(SVRL_HTML_XSLT_PATH).getAbsolutePath(), SchematronValidationPhase.Construction);
 		initialized = true;
 	}
 
-	// ///////////////////////////////////////////////
+
 	@Override
 	public boolean isInitialized()
 	{

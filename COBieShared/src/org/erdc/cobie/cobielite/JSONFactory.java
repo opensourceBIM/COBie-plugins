@@ -7,6 +7,7 @@ import net.sf.json.JSON;
 import net.sf.json.xml.XMLSerializer;
 
 import org.bimserver.emf.IfcModelInterface;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityDocument;
 import org.erdc.cobie.shared.cobiesheetxmldata.COBieFactory;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
 
@@ -54,8 +55,8 @@ public class JSONFactory
         COBIEDocument cobie = cobieFactory.parse(model);
         FacilityFactory facilityFactory = new FacilityFactory();
         FacilityDocument facility = facilityFactory.parse(cobie);
-        JSONFactory jsonFactory = new JSONFactory();
-        json = jsonFactory.parse(facility);
+        JSONFactory jsonFactory = new JSONFactory();        
+        json = jsonFactory.parse(facility);        
         return json;
     }
 

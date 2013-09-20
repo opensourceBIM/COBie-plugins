@@ -52,14 +52,19 @@ public class CobieFileChoser extends JFileChooser
 
 	private void initializeFileFilter()
 	{
+	    boolean filterSet = false;
 		for(OutgingFileType fileType:fileTypes)
 		{
 			COBieFileFilter fileFilter =
 					new COBieFileFilter(fileType);
 			this.addChoosableFileFilter(fileFilter);
+			if (!filterSet)
+			{
+			    this.setFileFilter(fileFilter);
+			    filterSet = true;
+			}
 		}
 		this.setAcceptAllFileFilterUsed(false);
-	
 	}
 	
 	public File getSelectedFileWithFilterExtension()

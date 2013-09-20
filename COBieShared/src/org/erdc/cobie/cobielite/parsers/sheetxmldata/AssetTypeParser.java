@@ -3,16 +3,18 @@ package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.erdc.cobie.cobielite.AssetPortabilitySimpleType;
-import org.erdc.cobie.cobielite.AssetTypeInfoType;
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.ContactAssignmentCollectionType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.IntegerValueType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AssetTypeInfoType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AssetPortabilitySimpleType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ContactAssignmentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IntegerValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.WarrantyCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.WarrantyType;
 import org.erdc.cobie.cobielite.ValueHelper;
-import org.erdc.cobie.cobielite.WarrantyCollectionType;
-import org.erdc.cobie.cobielite.WarrantyType;
+
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AssetTypeAssemblyDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AssetTypeAssetDispatcher;
@@ -51,19 +53,19 @@ public class AssetTypeParser extends DeepParser<TypeType, AssetTypeInfoType>
     @Override
     public AttributeCollectionType getNewAttributes()
     {
-        return targetCOBie.addNewAttributes();
+        return targetCOBie.addNewAssetTypeAttributes();
     }
 
     @Override
     public DocumentCollectionType getNewDocuments()
     {
-        return targetCOBie.addNewDocuments();
+        return targetCOBie.addNewAssetTypeDocuments();
     }
 
     @Override
     public IssueCollectionType getNewIssues()
     {
-        return targetCOBie.addNewIssues();
+        return targetCOBie.addNewAssetTypeIssues();
     }
 
     private void newWarranty(
@@ -76,7 +78,7 @@ public class AssetTypeParser extends DeepParser<TypeType, AssetTypeInfoType>
         WarrantyType warranty = warranties.addNewWarranty();
         warranty.setWarrantyCategory(warrantyNameCategory);
         warranty.setWarrantyName(warrantyNameCategory);
-        ContactAssignmentCollectionType contacts = warranty.addNewContactAssignments();
+        ContactAssignmentCollectionType contacts = warranty.addNewWarrantyGaurantorContactAssignments();
         AssignmentHelper.parseContactAssignments(contacts, warrantyProvider);
         IntegerValueType duration = warranty.addNewWarrantyDuration();
         ValueHelper.assign(warrantyDuration, duration);
@@ -125,7 +127,7 @@ public class AssetTypeParser extends DeepParser<TypeType, AssetTypeInfoType>
             assetPortability = AssetPortabilitySimpleType.FIXED;
         else if (portability.equalsIgnoreCase(AssetPortabilitySimpleType.MOVEABLE.toString()))
             assetPortability = AssetPortabilitySimpleType.MOVEABLE;
-        targetCOBie.setAssetTypePortabilityText(assetPortability);       
+        targetCOBie.setAssetTypeAccountingCategory(assetPortability);       
     }
 
     @Override
@@ -158,7 +160,7 @@ public class AssetTypeParser extends DeepParser<TypeType, AssetTypeInfoType>
         String manufacturer = sourceCOBie.getManufacturer();
         if (!COBieUtility.isNA(manufacturer))
         {
-            AssignmentHelper.parseContactAssignments(targetCOBie.addNewContactAssignments(), manufacturer);
+            AssignmentHelper.parseContactAssignments(targetCOBie.addNewAssetTypeManufacturerContactAssignments(), manufacturer);
         }
     }
 

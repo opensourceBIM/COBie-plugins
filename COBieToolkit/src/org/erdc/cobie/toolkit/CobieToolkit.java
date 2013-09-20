@@ -41,6 +41,12 @@ import org.erdc.cobie.shared.enums.COBieIDMPluginName;
 import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
 import org.erdc.cobie.shared.idm.COBieFilterable;
 import org.erdc.cobie.utils.serializer.BIMServerCOBieSheetXMLDataSerializer;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandlerSettings;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandlerSettings.EmptyStringMode;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandlerSettings.InvalidDateTimeStringMode;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandlerSettings.SpecialCharacterMode;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandlerSettings.TrailingDelimiterMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,7 +66,8 @@ public class CobieToolkit
     private static final String BUILDING_SMART_PLUGIN_PATH = "../buildingSMARTLibrary";
     private static final String PLUGINS_DIRECTORY_NAME = "plugins";
     private static final String TEMP_DIRECTORY_NAME = "tmp";
-
+    private COBieStringHandlerSettings cobieStringHandlerSettings = new COBieStringHandlerSettings(EmptyStringMode.ALLOW, SpecialCharacterMode.REMOVE, TrailingDelimiterMode.ALLOW, InvalidDateTimeStringMode.SET_TO_NULL);
+    private COBieStringHandler cobieStringHandler;
     public static boolean isBaseCOBieXMLPlugin(SerializerPlugin serializerPlugin)
     {
         return serializerPlugin.getDefaultName().equals(COBIE_XMLDATA_SERIALIZER_NAME);
@@ -85,6 +92,7 @@ public class CobieToolkit
 
     public CobieToolkit()
     {
+        setCobieStringHandler(new COBieStringHandler(cobieStringHandlerSettings));
         initializePluginManager();
         try
         {
@@ -535,6 +543,27 @@ public class CobieToolkit
     private void setSelectedIDMPlugin(ObjectIDMPlugin selectedIDMPlugin)
     {
         this.selectedIDMPlugin = selectedIDMPlugin;
+    }
+
+    public COBieStringHandlerSettings getCobieStringWriterSettings()
+    {
+        return cobieStringHandlerSettings;
+    }
+
+    public void setCobieStringWriterSettings(COBieStringHandlerSettings cobieStringHandlerSettings)
+    {
+        this.cobieStringHandlerSettings = cobieStringHandlerSettings;
+        setCobieStringHandler(new COBieStringHandler(cobieStringHandlerSettings));
+    }
+
+    public COBieStringHandler getCobieStringHandler()
+    {
+        return cobieStringHandler;
+    }
+
+    public void setCobieStringHandler(COBieStringHandler cobieStringWriter)
+    {
+        this.cobieStringHandler = cobieStringWriter;
     }
 
 }

@@ -2,10 +2,10 @@ package org.erdc.cobie.sheetxmldata.parsers.cobielite;
 
 import org.erdc.cobie.sheetxmldata.ContactType;
 
-public class ContactParser extends COBieLiteSourceParser<org.erdc.cobie.cobielite.ContactType, ContactType>
+public class ContactParser extends COBieLiteSourceParser<org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ContactType, ContactType>
 {
 
-    public ContactParser(org.erdc.cobie.cobielite.ContactType sourceCOBie, ContactType targetCOBie)
+    public ContactParser(org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ContactType sourceCOBie, ContactType targetCOBie)
     {
         super(sourceCOBie, targetCOBie);
     }

@@ -1,0 +1,323 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://docs.buildingsmartalliance.org/nbims03/lcie/core" xmlns="http://docs.buildingsmartalliance.org/nbims03/cobie/core" xmlns:camed="http://jcam.org.uk/editor" xmlns:pi="http://docs.buildingsmartalliance.org/nbims03/lcie/21001ProductInstallationReport" targetNamespace="http://docs.buildingsmartalliance.org/nbims03/lcie/21001ProductInstallationReport" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC4">
+	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/cobie/core" schemaLocation="../cobie/core.xsd"/>
+	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/lcie/core" schemaLocation="core.xsd"/>
+	<xs:element name="ProductInstallationReport" type="pi:ProductInstallationReportType"/>
+	<xs:group name="AssetTypeReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeCategory"/>
+			<xs:element ref="AssetTypeDescription"/>
+			<xs:element ref="AssetTypeAccountingCategory"/>
+			<xs:element ref="AssetTypeModelNumber"/>
+			<xs:element ref="AssetTypeReplacementCostValue" minOccurs="0"/>
+			<xs:element ref="AssetTypeExpectedLifeValue" minOccurs="0"/>
+			<xs:element ref="AssetTypeNominalLength" minOccurs="0"/>
+			<xs:element ref="AssetTypeNominalWidth" minOccurs="0"/>
+			<xs:element ref="AssetTypeNominalHeight" minOccurs="0"/>
+			<xs:element ref="AssetTypeAccessibilityText" minOccurs="0"/>
+			<xs:element ref="AssetTypeCodePerformance" minOccurs="0"/>
+			<xs:element ref="AssetTypeColorCode" minOccurs="0"/>
+			<xs:element ref="AssetTypeConstituentsDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeFeaturesDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeFinishDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeGradeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeMaterialDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeShapeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeSizeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
+			<xs:element ref="Assets"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetUpdateGroup">
+		<xs:sequence>
+			<xs:element ref="AssetSerialNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetInstallationDate" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetStartDate" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetInstalledModelNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTagNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetBarCode" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetIdentifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetLocationDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetCreateGroup">
+		<xs:sequence>
+			<xs:element ref="AssetSerialNumber">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetInstallationDate">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetStartDate" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetInstalledModelNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTagNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetBarCode" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetIdentifier" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetLocationDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetDescription"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="ProductInstallationReportType">
+		<xs:complexContent>
+			<xs:extension base="lcie:InformationExchangeComplexType">
+				<xs:sequence>
+					<xs:element ref="AssetTypes"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationAssetTypeType">
+		<xs:complexContent>
+			<xs:extension base="AssetTypeInfoType">
+				<xs:sequence>
+					<xs:group ref="pi:AssetTypeReadOnlyGroup"/>
+					<xs:group ref="pi:AssetTypeGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationAssetType">
+		<xs:complexContent>
+			<xs:extension base="AssetInfoType">
+				<xs:sequence>
+					<xs:group ref="pi:AssetReadOnlyGroup"/>
+					<xs:group ref="pi:AssetCreateGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="210.01_ProductInstallationReport"/>
+	<xs:element name="AssetType" type="pi:ProductInstallationAssetTypeType" substitutionGroup="AssetType"/>
+	<xs:element name="Asset" type="pi:ProductInstallationAssetType" substitutionGroup="Asset"/>
+	
+	<xs:complexType name="InstallReadResultType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ReadResultType">
+				<xs:sequence>
+					<xs:element ref="AssetType"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationUpdateAssetInfoType">
+		<xs:sequence>
+			<xs:element ref="pi:ProductInstallationKey"/>
+			<xs:group ref="pi:AssetUpdateGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationUpdateAssetTypeInfoType">
+		<xs:sequence>
+			<xs:element ref="pi:AssetTypeKey"/>
+			<xs:group ref="pi:AssetTypeGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationUpdateAssetTypeAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="pi:AssetTypeKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationUpdateAssetDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pi:ProductInstallationKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationCreateDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pi:ProductInstallationKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationDeleteDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pi:ProductInstallationKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationClientRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateRequestType">
+				<xs:choice>
+					<xs:element ref="pi:CreateAssetDocumentRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationUpdateRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="pi:UpdateAssetRequest"/>
+					<xs:element ref="pi:UpdateAssetTypeRequest"/>
+					<xs:element ref="pi:UpdateAssetDocumentRequest"/>
+					<xs:element ref="pi:UpdateAssetTypeAttributeRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInstallationDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteRequestType">
+				<xs:choice>
+					<xs:element ref="pi:DeleteAssetDocumentRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ProductInstallationCreateRequest" type="pi:ProductInstallationCreateRequestType" substitutionGroup="lcie:CreateRequest">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6258">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6258</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_CreateDocumentRequest.xml">Example File(Local):  ../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_CreateDocumentRequest.xml</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ProductInstallationUpdateRequest" type="pi:ProductInstallationUpdateRequestType" substitutionGroup="lcie:UpdateRequest">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6262">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6262</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_UpdateAssetRequest.xml">Example File(Local):  ../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_UpdateAssetRequest.xml</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ProductInstallationDeleteRequest" type="pi:ProductInstallationDeleteRequestType" substitutionGroup="lcie:DeleteRequest">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6264">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6264</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_DeleteRequest.xml">Example File(Local):  ../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_DeleteRequest.xml</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ProductInstallationReportReadResult" type="pi:InstallReadResultType" substitutionGroup="lcie:ReadResult">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6261">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6261</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_ReadResponse.xml">Example File(Local):  ../examples/210_01_ProductInstallationReport/210_01_01_ProductInstallationReport_ReadResponse.xml</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="ProductInstallationKey" type="AssetKeyType" substitutionGroup="lcie:Key"/>
+	<xs:element name="UpdateAssetRequest" type="pi:ProductInstallationUpdateAssetInfoType">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6258">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6258</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport_UpdateAssetRequest.xml">Example File(Local):  ../examples/210_01_ProductInstallationReport_UpdateAssetRequest.xml
+</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UpdateAssetDocumentRequest" type="pi:ProductInstallationUpdateAssetDocumentRequestType"/>
+	<xs:element name="DeleteAssetDocumentRequest" type="pi:ProductInstallationDeleteDocumentRequestType"/>
+	<xs:element name="CreateAssetDocumentRequest" type="pi:ProductInstallationCreateDocumentRequestType">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6258">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6258</xs:documentation>
+			<xs:documentation source="../examples/210_01_ProductInstallationReport_CreateDocumentRequest.xml">Example File(Local):  examples/210_01_ProductInstallationReport_CreateDocumentRequest.xml
+</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UpdateAssetTypeRequest" type="pi:ProductInstallationUpdateAssetTypeInfoType"/>
+	<xs:element name="UpdateAssetTypeAttributeRequest" type="pi:ProductInstallationUpdateAssetTypeAttributeRequestType"/>
+	<xs:element name="AssetTypeKey" type="AssetTypeKeyType"/>
+	
+		<xs:element name="ProductInstallationReport_210_Request" type="pi:ProductInstallationClientRequestType"/>
+	<xs:element name="ProductInstallationReport_210_ServerResponse" type="pi:ProductInstallationServerResponseType"/>
+</xs:schema>

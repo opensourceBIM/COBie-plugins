@@ -29,11 +29,17 @@ import org.erdc.cobie.shared.COBieTokenUtility.FloorColumnNameLiterals;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.FloorType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FloorParser extends Parser
 {
+
+    public FloorParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
 
     public FloorParser(COBIEType cobie, Workbook workbook)
     {
@@ -146,17 +152,17 @@ public class FloorParser extends Parser
                 {
                     floorHeight = rowData.getCellAt(idxHeight).getData$();
                 }
-                floorCreatedOn = COBieUtility.calendarFromString(floorCreatedOnString);
-                tmpFloor.setName(COBieUtility.getCOBieString(floorName));
-                tmpFloor.setCreatedBy(COBieUtility.getCOBieString(floorCreatedBy));
+                floorCreatedOn = getCobieStringHandler().calendarFromString(floorCreatedOnString);
+                tmpFloor.setName(cobieStringHandler.getCOBieString(floorName));
+                tmpFloor.setCreatedBy(cobieStringHandler.getCOBieString(floorCreatedBy));
                 tmpFloor.setCreatedOn(floorCreatedOn);
-                tmpFloor.setCategory(COBieUtility.getCOBieString(floorCategory));
-                tmpFloor.setExtSystem(COBieUtility.getCOBieString(floorExtSystem));
-                tmpFloor.setExtObject(COBieUtility.getCOBieString(floorExtObject));
-                tmpFloor.setExtIdentifier(COBieUtility.getCOBieString(floorExtIdentifier));
-                tmpFloor.setDescription(COBieUtility.getCOBieString(floorDescription));
-                tmpFloor.setElevation(COBieUtility.getCOBieString(floorElevation));
-                tmpFloor.setHeight(COBieUtility.getCOBieString(floorHeight));
+                tmpFloor.setCategory(cobieStringHandler.getCOBieString(floorCategory));
+                tmpFloor.setExtSystem(cobieStringHandler.getCOBieString(floorExtSystem));
+                tmpFloor.setExtObject(cobieStringHandler.getCOBieString(floorExtObject));
+                tmpFloor.setExtIdentifier(cobieStringHandler.getCOBieString(floorExtIdentifier));
+                tmpFloor.setDescription(cobieStringHandler.getCOBieString(floorDescription));
+                tmpFloor.setElevation(cobieStringHandler.getCOBieString(floorElevation));
+                tmpFloor.setHeight(cobieStringHandler.getCOBieString(floorHeight));
             }
         }
 

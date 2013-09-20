@@ -1,19 +1,21 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ZoneAssignmentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ZoneKeyType;
 import org.erdc.cobie.cobielite.ValueHelper;
-import org.erdc.cobie.cobielite.ZoneAssignmentCollectionType;
-import org.erdc.cobie.cobielite.ZoneKeyType;
+
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.SpaceZonesIndex;
 import org.erdc.cobie.sheetxmldata.SpaceType;
 import org.erdc.cobie.sheetxmldata.ZoneType;
 
-public class SpaceParser extends TypicalParser<SpaceType, org.erdc.cobie.cobielite.SpaceType>
+public class SpaceParser extends TypicalParser<SpaceType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.SpaceType>
 {
-    public SpaceParser(SpaceType cobieSheetXMLData, org.erdc.cobie.cobielite.SpaceType cobieLiteRowData, IndexedCOBie indexedCOBie)
+    public SpaceParser(SpaceType cobieSheetXMLData, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.SpaceType cobieLiteRowData, IndexedCOBie indexedCOBie)
     {
         super(cobieSheetXMLData, cobieLiteRowData, indexedCOBie);
     }
@@ -49,7 +51,7 @@ public class SpaceParser extends TypicalParser<SpaceType, org.erdc.cobie.cobieli
         SpaceZonesIndex spaceZonesIndex = indexedCOBie.getSpaceZones();
         if (spaceZonesIndex.containsKey(spaceName))
         {
-            ZoneAssignmentCollectionType zoneAssignments = targetCOBie.addNewZoneAssignments();
+            ZoneAssignmentCollectionType zoneAssignments = targetCOBie.addNewSpaceZoneAssignments();
             ;
             for (ZoneType zone : spaceZonesIndex.get(spaceName))
             {
@@ -64,19 +66,19 @@ public class SpaceParser extends TypicalParser<SpaceType, org.erdc.cobie.cobieli
     @Override
     public AttributeCollectionType getNewAttributes()
     {
-        return targetCOBie.addNewAttributes();
+        return targetCOBie.addNewSpaceAttributes();
     }
 
     @Override
     public DocumentCollectionType getNewDocuments()
     {
-        return targetCOBie.addNewDocuments();
+        return targetCOBie.addNewSpaceDocuments();
     }
 
     @Override
     public IssueCollectionType getNewIssues()
     {
-        return targetCOBie.addNewIssues();
+        return targetCOBie.addNewSpaceIssues();
     }
 
     @Override

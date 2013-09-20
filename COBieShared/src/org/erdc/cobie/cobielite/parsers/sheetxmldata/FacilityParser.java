@@ -6,16 +6,16 @@ import java.util.List;
 
 import org.bimserver.models.ifc2x3tc1.IfcCurrencyEnum;
 import org.bimserver.models.ifc2x3tc1.IfcUnitEnum;
-import org.erdc.cobie.cobielite.AreaUnitSimpleType;
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.CurrencyUnitSimpleType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.FacilityType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
-import org.erdc.cobie.cobielite.LinearUnitSimpleType;
-import org.erdc.cobie.cobielite.ProjectType;
-import org.erdc.cobie.cobielite.SiteType;
-import org.erdc.cobie.cobielite.VolumeUnitSimpleType;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AreaUnitSimpleType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.CurrencyUnitSimpleType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.LinearUnitSimpleType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ProjectType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SiteType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.VolumeUnitSimpleType;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.FacilityAssetTypeDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.FacilityConnectionDispatcher;
@@ -63,19 +63,19 @@ public class FacilityParser extends DeepParser<org.erdc.cobie.sheetxmldata.Facil
     @Override
     public AttributeCollectionType getNewAttributes()
     {
-        return targetCOBie.addNewAttributes();
+        return targetCOBie.addNewFacilityAttributes();
     }
 
     @Override
     public DocumentCollectionType getNewDocuments()
     {
-        return targetCOBie.addNewDocuments();
+        return targetCOBie.addNewFacilityDocuments();
     }
 
     @Override
     public IssueCollectionType getNewIssues()
     {
-        return targetCOBie.addNewIssues();
+        return targetCOBie.addNewFacilityIssues();
     }
 
     private FacilityAssetTypeDispatcher initializeAssetTypeDispatcher()

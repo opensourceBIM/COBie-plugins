@@ -1,9 +1,10 @@
 package org.erdc.cobie.shared.targetunits;
 import org.bimserver.models.ifc2x3tc1.IfcCurrencyEnum;
-import org.erdc.cobie.cobielite.AreaUnitSimpleType;
-import org.erdc.cobie.cobielite.CurrencyUnitSimpleType;
-import org.erdc.cobie.cobielite.LinearUnitSimpleType;
-import org.erdc.cobie.cobielite.VolumeUnitSimpleType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AreaUnitSimpleType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.CurrencyUnitSimpleType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.LinearUnitSimpleType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.VolumeUnitSimpleType;
+
 import org.erdc.cobie.shared.targetunits.area.AreaUnitSearch;
 import org.erdc.cobie.shared.targetunits.area.SquareCentimetersTextMatcher;
 import org.erdc.cobie.shared.targetunits.area.SquareFeetTextMatcher;

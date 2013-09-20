@@ -4,29 +4,29 @@ import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.IssueType;
 
-public class IssueParser extends COBieLiteCOBIEBaseTypeParser<IssueType, org.erdc.cobie.cobielite.IssueType>
+public class IssueParser extends COBieLiteCOBIEBaseTypeParser<IssueType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.IssueType>
 {
 
-    public IssueParser(IssueType cobieSheetXMLData, org.erdc.cobie.cobielite.IssueType cobieLiteRowData, IndexedCOBie indexedCOBie)
+    public IssueParser(IssueType cobieSheetXMLData, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.IssueType cobieLiteRowData, IndexedCOBie indexedCOBie)
     {
         super(cobieSheetXMLData, cobieLiteRowData, indexedCOBie);
     }
 
-    protected void handleIssueContactAssignments(IssueType sheetXMLDataIssue, org.erdc.cobie.cobielite.IssueType cobieLiteIssue)
+    protected void handleIssueContactAssignments(IssueType sheetXMLDataIssue, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.IssueType cobieLiteIssue)
     {
         String owner = sheetXMLDataIssue.getOwner();
         String createdBy = sheetXMLDataIssue.getChance();
         if (!COBieUtility.isNA(owner))
         {
-            cobieLiteIssue.addNewContactAssignment().setContactEmail(owner);
+            cobieLiteIssue.addNewContactAssignment().setContactEmailReference(owner);
             if (!COBieUtility.isNA(createdBy) && !owner.equals(createdBy))
             {
-                cobieLiteIssue.addNewContactAssignment().setContactEmail(createdBy);
+                cobieLiteIssue.addNewContactAssignment().setContactEmailReference(createdBy);
             }
 
         } else if (!COBieUtility.isNA(createdBy))
         {
-            cobieLiteIssue.addNewContactAssignment().setContactEmail(createdBy);
+            cobieLiteIssue.addNewContactAssignment().setContactEmailReference(createdBy);
         }
     }
 

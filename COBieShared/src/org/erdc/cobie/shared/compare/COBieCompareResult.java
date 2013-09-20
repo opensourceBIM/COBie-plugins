@@ -23,12 +23,11 @@ import org.bimserver.shared.exceptions.ServerException;
 import org.bimserver.shared.exceptions.UserException;
 import org.bimserver.shared.interfaces.PluginInterface;
 import org.bimserver.shared.interfaces.ServiceInterface;
-import org.bimserver.shared.interfaces.bimsie1.Bimsie1ServiceInterface;
 import org.erdc.cobie.shared.COBIERowDictionary;
 import org.erdc.cobie.shared.COBIESheetCollection;
 import org.erdc.cobie.shared.COBIESheetDictionary;
-import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.PluginUtilities;
+import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.compare.COBieCompareState.CompareMode;
 import org.erdc.cobie.shared.compare.COBieCompareState.ComparisonDocument;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
@@ -42,7 +41,7 @@ public class COBieCompareResult// extends SCompareResult
     private COBIESheetDictionary cobie1Lookup, cobie2Lookup;
     private boolean hasBiMServerConnection;
     private long roid1, roid2;
-    private Bimsie1ServiceInterface service;
+    private ServiceInterface service;
     private HashMap<String, ArrayList<COBieCompareItem>> sheetNameToCobieCompareItems;
     private COBieCompareState state;
 
@@ -75,7 +74,7 @@ public class COBieCompareResult// extends SCompareResult
         setHasBiMServerConnection(true);
     }
 
-    public COBieCompareResult(long roid1, long roid2, PluginInterface pluginInterface, Bimsie1ServiceInterface serviceInterface) throws ServerException, UserException, XmlException, IOException
+    public COBieCompareResult(long roid1, long roid2, PluginInterface pluginInterface, ServiceInterface serviceInterface) throws ServerException, UserException, XmlException, IOException
     {
         initializeState();
         this.roid1 = roid1;
@@ -88,10 +87,10 @@ public class COBieCompareResult// extends SCompareResult
         state.setMode(CompareMode.Fetching);
         state.setCurrentDocument(ComparisonDocument.baseline);
         state.setProgress(1);
-        cobie1 = PluginUtilities.getCOBieFromROID(roid1, serviceInterface);
+        cobie1 = PluginUtilities.getCOBieFromROID(roid1, pluginInterface, serviceInterface);
         state.setCurrentDocument(ComparisonDocument.revision);
         state.setProgress(12);
-        cobie2 = PluginUtilities.getCOBieFromROID(roid2, serviceInterface);
+        cobie2 = PluginUtilities.getCOBieFromROID(roid2, pluginInterface, serviceInterface);
         state.setProgress(25);
         setHasBiMServerConnection(true);
         indexDocumentsAndPerformCompare();
@@ -310,7 +309,7 @@ public class COBieCompareResult// extends SCompareResult
 
     }
 
-    public void initializeBiMServerCompare(long roid1, long roid2, Bimsie1ServiceInterface serviceInterface) throws ServerException, UserException, XmlException,
+    public void initializeBiMServerCompare(long roid1, long roid2, PluginInterface pluginInterface, ServiceInterface serviceInterface) throws ServerException, UserException, XmlException,
             IOException
     {
         // initializeState();
@@ -324,10 +323,10 @@ public class COBieCompareResult// extends SCompareResult
         state.setMode(CompareMode.Fetching);
         state.setCurrentDocument(ComparisonDocument.baseline);
         state.setProgress(1);
-        cobie1 = PluginUtilities.getCOBieFromROID(roid1, service);
+        cobie1 = PluginUtilities.getCOBieFromROID(roid1, pluginInterface, service);
         state.setCurrentDocument(ComparisonDocument.revision);
         state.setProgress(12);
-        cobie2 = PluginUtilities.getCOBieFromROID(roid2, service);
+        cobie2 = PluginUtilities.getCOBieFromROID(roid2, pluginInterface, service);
         state.setProgress(25);
         setHasBiMServerConnection(true);
     }

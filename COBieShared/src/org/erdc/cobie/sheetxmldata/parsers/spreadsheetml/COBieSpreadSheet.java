@@ -20,8 +20,10 @@ package org.erdc.cobie.sheetxmldata.parsers.spreadsheetml;
  *****************************************************************************/
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -53,6 +55,7 @@ import nl.fountain.xelem.excel.WorksheetOptions;
 import nl.fountain.xelem.excel.ss.SSRow;
 import nl.fountain.xelem.lex.ExcelReader;
 
+import org.apache.commons.io.input.CloseShieldInputStream;
 import org.bimserver.cobie.cobieserializersettings.COBieExportOptionsDocument;
 import org.erdc.cobie.shared.COBieQuery;
 import org.erdc.cobie.shared.COBieTokenUtility;
@@ -83,6 +86,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 public class COBieSpreadSheet
@@ -1311,5 +1315,41 @@ public class COBieSpreadSheet
             LOGGER.error("", e);
         }
     }
-
+    
+    public static boolean isWorkbook(File candidateWorksheet)
+    {
+        boolean isWorkbook = false;
+        try
+        {
+            nl.fountain.xelem.lex.ExcelReader rdr = new nl.fountain.xelem.lex.ExcelReader();
+            Workbook workbook = rdr.getWorkbook(new InputSource(new FileInputStream(candidateWorksheet)));
+            isWorkbook = (workbook!=null && workbook.hasExcelWorkbook());
+        }
+        catch(Exception ex)
+        {
+            
+        }
+        return isWorkbook;
+    }
+    
+    public static boolean isWorkbook(InputStream candidateWorksheet)
+    {
+        CloseShieldInputStream inputStreamCopy = new CloseShieldInputStream(candidateWorksheet);
+        boolean isWorkbook = false;
+        try
+        {
+            nl.fountain.xelem.lex.ExcelReader rdr = new nl.fountain.xelem.lex.ExcelReader();
+            Workbook workbook = rdr.getWorkbook(new InputSource(inputStreamCopy));
+            isWorkbook = (workbook!=null && workbook.hasExcelWorkbook());
+        }
+        catch(Exception ex)
+        {
+            
+        }
+        finally
+        {
+            inputStreamCopy.close();
+        }
+        return isWorkbook;
+    }
 }

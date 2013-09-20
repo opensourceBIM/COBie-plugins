@@ -1,9 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
-import org.erdc.cobie.cobielite.SystemType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.SystemType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 
 public class SystemParser extends TypicalParser<org.erdc.cobie.sheetxmldata.SystemType, SystemType>
@@ -17,19 +18,19 @@ public class SystemParser extends TypicalParser<org.erdc.cobie.sheetxmldata.Syst
     @Override
     public AttributeCollectionType getNewAttributes()
     {
-        return targetCOBie.addNewAttributes();
+        return targetCOBie.addNewSystemAttributes();
     }
 
     @Override
     public DocumentCollectionType getNewDocuments()
     {
-        return targetCOBie.addNewDocuments();
+        return targetCOBie.addNewSystemDocuments();
     }
 
     @Override
     public IssueCollectionType getNewIssues()
     {
-        return targetCOBie.addNewIssues();
+        return targetCOBie.addNewSystemIssues();
     }
 
     @Override

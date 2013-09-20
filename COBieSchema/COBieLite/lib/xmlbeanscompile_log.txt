@@ -1,3 +1,0 @@
-Time to build schema type system: 1.281 seconds
-Time to generate code: 11.239 seconds
-BUILD FAILED

@@ -1,9 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.ConnectionType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ConnectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 
@@ -18,19 +19,19 @@ public class ConnectionParser extends TypicalParser<org.erdc.cobie.sheetxmldata.
     @Override
     public AttributeCollectionType getNewAttributes()
     {
-        return targetCOBie.addNewAttributes();
+        return targetCOBie.addNewConnectionAttributes();
     }
 
     @Override
     public DocumentCollectionType getNewDocuments()
     {
-        return targetCOBie.addNewDocuments();
+        return targetCOBie.addNewConnectionDocuments();
     }
 
     @Override
     public IssueCollectionType getNewIssues()
     {
-        return targetCOBie.addNewIssues();
+        return targetCOBie.addNewConnectionIssues();
     }
 
     @Override

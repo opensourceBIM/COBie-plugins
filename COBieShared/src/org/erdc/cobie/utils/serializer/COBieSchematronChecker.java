@@ -2,59 +2,49 @@ package org.erdc.cobie.utils.serializer;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
+import java.util.UUID;
 
-import javax.xml.transform.Templates;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 
-import org.erdc.cobie.report.XSLUtils;
+import org.erdc.cobie.report.XSLTransform;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
-import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class COBieSchematronChecker
 {
-    private static final String LOGGER_MESSAGE_RESPONSE_EXCEPTION = "An exception occured while writing COBie Compliance report to response stream:  ";
-    private static final String LOGGER_MESSAGE_TRANSFORM3_DONE = "Transformation 3 of 3: Done transforming SVRL report to HTML.";
-    private static final String LOGGER_MESSAGE_TRANSFORM3_BEGIN = "Transformation 3 of 3: Begin transforming SVRL report to HTML.";
-    private static final String LOGGER_MESSAGE_TRANSFORM2_DONE = "Transformation 2 of 3: Done transforming target COBie model into SVRL report.";
-    private static final String LOGGER_MESSAGE_TRANSFORM2_BEGIN = "Transformation 2 of 3:  Begin transforming target model into Schematron Validation Report Language (SVRL) report.";
-    private static final String LOGGER_MESSAGE_TOOS_DONE = "Done writing COBie Compliance HTML report to response stream.";
-    private static final String LOGGER_MESSAGE_TOOS_BEGIN = "Begin writing COBie Compliance HTML report to outputstream";
-    private static final String LOGGER_MESSAGE_TRANSFORM3_ERROR = "Transformation 3 of 3:  An exception occured while transforming SVRL to HTML:  ";
-    private static final String LOGGER_MESSAGE_TRANSFORM3_PREPARE_ERROR = "Transformation 3 of 3:  An exception occured while preparing to transform SVRL to HTML:  ";
-    private static final String LOGGER_MESSAGE_TRANSFORM2_ERROR = "Transformation 2 of 3:  An exception occured while transforming target COBie model to SVRL XML report:  ";
-    private static final String LOGGER_MESSAGE_TRANSFORM1_DONE = "Transformation 1 of 3:  Done transforming COBie Schematron rules to XSLT.";
-    private static final String LOGGER_MESSAGE_TRANSFORM1_IO_ERROR = "Transformation 1 of 3:  An IOException occured while transforming COBie Schematron rules to XSLT:  ";
-    private static final String LOGGER_MESSAGE_TRANSFORM1_JDOM_ERROR = "Transformation 1 of 3:  A JDOM Exception occured while transforming COBie Schematron rules to XSLT:  ";
-    private static final String LOGGER_MESSAGE_TRANSFORM1_BEGIN = "Transformation 1 of 3:  Begin transforming COBie Schematron rules to XSLT.";
+    private static final String RESPONSE_EXCEPTION = "An exception occured while writing COBie Compliance report to response stream:  ";
+    private static final String MSG_HTML_XSLT_DONE = "Transformation 3 of 3: Done transforming SVRL report to HTML.";
+    private static final String MSG_HTML_XSLT_BEGIN = "Transformation 3 of 3: Begin transforming SVRL report to HTML.";
+    private static final String MSG_SVRL_XSLT_DONE = "Transformation 2 of 3: Done transforming target COBie model into SVRL report.";
+    private static final String MSG_SVRL_XSLT_BEGIN = "Transformation 2 of 3:  Begin transforming target model into Schematron Validation Report Language (SVRL) report. This can take several minutes for files greater than 5 MB.";
+    private static final String MSG_HTML_XSLT_ERROR = "Transformation 3 of 3:  An exception occured while transforming SVRL to HTML:  ";
+    private static final String MSG_SVRL_XSLT_ERROR = "Transformation 2 of 3:  An exception occured while transforming target COBie model to SVRL XML report:  ";
+    private static final String MSG_SCHEMATRON_XSLT_DONE = "Transformation 1 of 3:  Done transforming COBie Schematron rules to XSLT.";
+    private static final String MSG_SCHEMATRON_XSLT_ERROR = "Transformation 1 of 3:  An Exception occured while transforming COBie Schematron rules to XSLT:  ";
+    private static final String MSG_SCHEMATRON_XSLT_BEGIN = "Transformation 1 of 3:  Begin transforming COBie Schematron rules to XSLT.";
     private static final Logger LOGGER = LoggerFactory.getLogger(COBieSchematronChecker.class);
-    private String schematronRulePath;
-    private String preProcessorPath;
-    private String svrlHTMLPath;
+  
     private COBIEDocument COBie;
-
-    public COBieSchematronChecker(String schematronRulePath, String preProcessorPath, String svrlXSDPath, String svrlHTMLPath, String cssPath)
+    private COBieSchematronCheckerSettings settings;
+    private TransformerFactory transformerFactory = TransformerFactory
+            .newInstance("net.sf.saxon.TransformerFactoryImpl", getClass().getClassLoader());
+    private SAXBuilder saxBuilder = new SAXBuilder();
+    private File ruleTransformResult, cobieTransformResult;
+    public COBieSchematronChecker(COBieSchematronCheckerSettings settings)
     {
-        this.schematronRulePath = schematronRulePath;
-        this.preProcessorPath = preProcessorPath;
-        this.svrlHTMLPath = svrlHTMLPath;
+        this(settings, null);
     }
 
-    public COBieSchematronChecker(String schematronRulePath, String preProcessorPath, String svrlXSDPath, String svrlHTMLPath, String cssPath,
+    public COBieSchematronChecker(COBieSchematronCheckerSettings settings,
             COBIEDocument cobie)
     {
-        this.schematronRulePath = schematronRulePath;
-        this.preProcessorPath = preProcessorPath;
-        this.svrlHTMLPath = svrlHTMLPath;
+        this.settings = settings;
         COBie = cobie;
     }
 
@@ -63,88 +53,107 @@ public class COBieSchematronChecker
         return COBie;
     }
 
-    private void schematronReportToOutputStream(OutputStream outputStream) throws UnsupportedEncodingException
+    private void transformSchematronRules(OutputStream outputStream) throws Exception
     {
-        Templates templates1 = null;
-        Templates templates2 = null;
-        Templates templates3 = null;
-        LOGGER.info(LOGGER_MESSAGE_TRANSFORM1_BEGIN);
-        File ruleFile = new File(schematronRulePath);
-        TransformerFactory tfactory = TransformerFactory.newInstance("net.sf.saxon.TransformerFactoryImpl", getClass().getClassLoader());
-        SAXBuilder builder = new SAXBuilder();
-        try
-        {
-            builder.build(new File(preProcessorPath));
-        } catch (JDOMException e1)
-        {
-            // TODO Auto-generated catch block
-            LOGGER.error(LOGGER_MESSAGE_TRANSFORM1_JDOM_ERROR + e1.getMessage());
-            e1.printStackTrace();
-        } catch (IOException e1)
-        {
-            // TODO Auto-generated catch block
-            LOGGER.error(LOGGER_MESSAGE_TRANSFORM1_IO_ERROR + e1.getMessage());
-            e1.printStackTrace();
-        }
-        File preProc = new File(preProcessorPath);
+        LOGGER.info(MSG_SCHEMATRON_XSLT_BEGIN);
 
-        StringWriter schematronXSLBuffer = XSLUtils.transformInputSourceToStringWriter(templates1, new StreamSource(ruleFile), new StreamSource(
-                preProc), tfactory);
-        LOGGER.info(LOGGER_MESSAGE_TRANSFORM1_DONE);
-        LOGGER.info(LOGGER_MESSAGE_TRANSFORM2_BEGIN);
-        ByteArrayInputStream targetDocStream = new ByteArrayInputStream(COBie.toString().getBytes("UTF-8"));
-        StringWriter svrlXSLBuffer = new StringWriter();
+        File ruleFile = new File(getschematronRulePath());
         try
         {
-            svrlXSLBuffer = XSLUtils.transformInputSourceToStringWriter(templates2, new StreamSource(targetDocStream), new StreamSource(
-                    new StringReader(schematronXSLBuffer.toString())), tfactory);
-            LOGGER.info(LOGGER_MESSAGE_TRANSFORM2_DONE);
+            saxBuilder.build(new File(getPreProcessorPath()));
         } catch (Exception e)
         {
-            LOGGER.error(LOGGER_MESSAGE_TRANSFORM2_ERROR + e.getMessage());
+            LOGGER.error(MSG_SCHEMATRON_XSLT_ERROR + e.getMessage());
+            throw e;
         }
-        LOGGER.info(LOGGER_MESSAGE_TRANSFORM3_BEGIN);
-        File svrlHTMLFile = new File(svrlHTMLPath);
+        File preProcessor = new File(getPreProcessorPath());
+        XSLTransform transformer =
+                new XSLTransform(new StreamSource(ruleFile), new StreamSource(preProcessor),
+                transformerFactory);
+        transformer.getTransformer().setParameter(getSettings().getPhase().getSchematronPhaseParameterName().getLocalName(), getSettings().getPhase().getSchematronPhaseParameterValue().getStringValue());
+        transformer.transform(outputStream); 
+        LOGGER.info(MSG_SCHEMATRON_XSLT_DONE);
+    }
+
+    private void transformCOBietoSVRL(OutputStream outputStream) throws Exception
+    {
+        LOGGER.info(MSG_SVRL_XSLT_BEGIN);
+        ByteArrayInputStream targetDocStream;
         try
         {
-            builder.build(svrlHTMLFile);
-        } catch (JDOMException e1)
-        {
-            LOGGER.error(LOGGER_MESSAGE_TRANSFORM3_PREPARE_ERROR + e1.getMessage());
-            e1.printStackTrace();
-        } catch (IOException e1)
-        {
-            LOGGER.error(LOGGER_MESSAGE_TRANSFORM3_PREPARE_ERROR + e1.getMessage());
-            e1.printStackTrace();
-        }
-        StringWriter svrlHTMLBuffer = new StringWriter();
-        try
-        {
-            // PrintWriter prt = new PrintWriter(new File("testsvrl.xml"));
-            // prt.write(svrlXSLBuffer.toString());
-            // prt.flush();
-            // prt.close();
-            svrlHTMLBuffer = XSLUtils.transformInputSourceToStringWriter(templates3, new StreamSource(new StringReader(svrlXSLBuffer.toString())),
-                    new StreamSource(svrlHTMLFile), tfactory);
-            LOGGER.info(LOGGER_MESSAGE_TRANSFORM3_DONE);
+            targetDocStream = new ByteArrayInputStream(COBie.toString().getBytes("UTF-8"));
         } catch (Exception e)
         {
-            LOGGER.info(LOGGER_MESSAGE_TRANSFORM3_ERROR + e.getMessage());
+            LOGGER.error(MSG_SVRL_XSLT_ERROR + e.getMessage());
+            throw e;
         }
 
         try
         {
-            LOGGER.info(LOGGER_MESSAGE_TOOS_BEGIN);
-            String result = svrlHTMLBuffer.toString();
-            OutputStreamWriter wrt = new OutputStreamWriter(outputStream);
-            wrt.write(result);
-            wrt.flush();
-            LOGGER.info(LOGGER_MESSAGE_TOOS_DONE);
-        } catch (IOException e)
+            XSLTransform transformer =
+                    new XSLTransform(new StreamSource(targetDocStream), new StreamSource(
+                    this.ruleTransformResult),
+                    transformerFactory);        
+            transformer.transform(outputStream);
+            LOGGER.info(MSG_SVRL_XSLT_DONE);
+        }
+        catch(Exception e)
         {
-            // TODO Auto-generated catch block
-            LOGGER.error(LOGGER_MESSAGE_RESPONSE_EXCEPTION + e.getMessage());
-            e.printStackTrace();
+            throw e;
+        }
+        
+    }
+
+    
+    private File getTempFile(String extension)
+    {
+        File ruleDirectory = new File(getschematronRulePath()).getParentFile();
+        return new File(ruleDirectory, UUID.randomUUID().toString() +"."+extension);
+    }
+
+    private void transformSVRLtoHTML(OutputStream outputStream) throws Exception
+    {
+        LOGGER.info(MSG_HTML_XSLT_BEGIN);
+        File svrlHTMLFile = new File(getSVRLHtmlPath());
+
+        try
+        {
+            saxBuilder.build(svrlHTMLFile);
+        } catch (Exception e)
+        {
+            LOGGER.error(MSG_HTML_XSLT_ERROR + e.getMessage());
+            throw e;
+        }
+
+        XSLTransform transformer =
+                new XSLTransform(new StreamSource(this.cobieTransformResult),
+                new StreamSource(svrlHTMLFile), transformerFactory);
+        transformer.getTransformer().setParameter(getSettings().getPhase().getTitleParameterName().toString(), 
+                getSettings().getPhase().getTitleParameterValue().getStringValue());
+        transformer.transform(outputStream);
+        LOGGER.info(MSG_HTML_XSLT_DONE);
+    }
+
+    private void schematronReportToOutputStream(OutputStream outputStream) throws Exception
+    {
+        try
+        {
+            this.ruleTransformResult = getTempFile("xsl");
+            transformSchematronRules(new FileOutputStream(this.ruleTransformResult));
+            this.cobieTransformResult = getTempFile("xml");
+            transformCOBietoSVRL(new FileOutputStream(this.cobieTransformResult));
+            transformSVRLtoHTML(outputStream);
+
+        } 
+        catch (IOException e)
+        {
+            LOGGER.error(RESPONSE_EXCEPTION + e.getMessage());
+            throw e;
+        }
+        finally
+        {
+            this.cobieTransformResult.delete();
+            this.ruleTransformResult.delete();
         }
 
     }
@@ -163,5 +172,30 @@ public class COBieSchematronChecker
         {
             throw ex;
         }
+    }
+
+    public COBieSchematronCheckerSettings getSettings()
+    {
+        return settings;
+    }
+
+    public void setSettings(COBieSchematronCheckerSettings settings)
+    {
+        this.settings = settings;
+    }
+    
+    private String getschematronRulePath()
+    {
+        return settings.getSchematronRulePath();
+    }
+    
+    private String getPreProcessorPath()
+    {
+        return settings.getPreProcessorPath();
+    }
+    
+    private String getSVRLHtmlPath()
+    {
+        return settings.getSvrlHTMLPath();
     }
 }

@@ -28,11 +28,18 @@ import org.erdc.cobie.shared.COBieTokenUtility.AssemblyColumnNameLiterals;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.AssemblyType;
 import org.erdc.cobie.sheetxmldata.COBIEType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class AssemblyParser extends Parser
 {
+   
+
+    public AssemblyParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
 
     public AssemblyParser(COBIEType cobie, Workbook workbook)
     {
@@ -150,19 +157,19 @@ public class AssemblyParser extends Parser
                 {
                     assemblyDescription = rowData.getCellAt(idxDescription).getData$();
                 }
-                assemblyCreatedOn = COBieUtility.calendarFromString(assemblyCreatedOnString);
+                assemblyCreatedOn = getCobieStringHandler().calendarFromString(assemblyCreatedOnString);
 
-                tmpAssembly.setName(COBieUtility.getCOBieString(assemblyName));
-                tmpAssembly.setCreatedBy(COBieUtility.getCOBieString(assemblyCreatedBy));
+                tmpAssembly.setName(cobieStringHandler.getCOBieString(assemblyName));
+                tmpAssembly.setCreatedBy(cobieStringHandler.getCOBieString(assemblyCreatedBy));
                 tmpAssembly.setCreatedOn(assemblyCreatedOn);
-                tmpAssembly.setSheetName(COBieUtility.getCOBieString(assemblySheetName));
-                tmpAssembly.setParentName(COBieUtility.getCOBieString(assemblyParentName));
-                tmpAssembly.setChildNames(COBieUtility.getCOBieString(assemblyChildNames));
-                tmpAssembly.setAssemblyType(COBieUtility.getCOBieString(assemblyAssemblyType));
-                tmpAssembly.setExtSystem(COBieUtility.getCOBieString(assemblyExtSystem));
-                tmpAssembly.setExtObject(COBieUtility.getCOBieString(assemblyExtObject));
-                tmpAssembly.setExtIdentifier(COBieUtility.getCOBieString(assemblyExtIdentifier));
-                tmpAssembly.setDescription(COBieUtility.getCOBieString(assemblyDescription));
+                tmpAssembly.setSheetName(cobieStringHandler.getCOBieString(assemblySheetName));
+                tmpAssembly.setParentName(cobieStringHandler.getCOBieString(assemblyParentName));
+                tmpAssembly.setChildNames(cobieStringHandler.getCOBieString(assemblyChildNames));
+                tmpAssembly.setAssemblyType(cobieStringHandler.getCOBieString(assemblyAssemblyType));
+                tmpAssembly.setExtSystem(cobieStringHandler.getCOBieString(assemblyExtSystem));
+                tmpAssembly.setExtObject(cobieStringHandler.getCOBieString(assemblyExtObject));
+                tmpAssembly.setExtIdentifier(cobieStringHandler.getCOBieString(assemblyExtIdentifier));
+                tmpAssembly.setDescription(cobieStringHandler.getCOBieString(assemblyDescription));
             }
         }
 

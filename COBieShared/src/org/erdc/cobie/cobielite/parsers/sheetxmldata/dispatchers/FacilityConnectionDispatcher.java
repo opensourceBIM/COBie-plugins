@@ -1,8 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.ConnectionCollectionType;
-import org.erdc.cobie.cobielite.ConnectionType;
-import org.erdc.cobie.cobielite.FacilityType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ConnectionDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ConnectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ConnectionCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.ConnectionParser;
@@ -29,7 +31,7 @@ public class FacilityConnectionDispatcher extends
     @Override
     protected ConnectionType createNewTargetElement()
     {
-        return targetCollection.addNewConnection();
+        return (ConnectionType)targetCollection.addNewConnection().substitute(ConnectionDocument.type.getDocumentElementName(), ConnectionType.type);
     }
 
     @Override

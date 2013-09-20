@@ -1,8 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.AssetTypeCollectionType;
-import org.erdc.cobie.cobielite.AssetTypeInfoType;
-import org.erdc.cobie.cobielite.FacilityType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AssetTypeDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AssetTypeInfoType;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AssetTypeCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.AssetTypeParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
@@ -27,7 +29,7 @@ public class FacilityAssetTypeDispatcher extends
     @Override
     protected AssetTypeInfoType createNewTargetElement()
     {
-        return targetCollection.addNewAssetType();
+        return (AssetTypeInfoType)targetCollection.addNewAssetType().substitute(AssetTypeDocument.type.getDocumentElementName(), AssetTypeInfoType.type);        
     }
 
     @Override

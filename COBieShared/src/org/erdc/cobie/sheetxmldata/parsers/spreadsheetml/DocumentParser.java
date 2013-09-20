@@ -13,11 +13,17 @@ import org.erdc.cobie.shared.COBieTokenUtility.DocumentColumnNameLiterals;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.DocumentType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DocumentParser extends Parser
 {
+
+    public DocumentParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
 
     public DocumentParser(COBIEType cobie, Workbook workbook)
     {
@@ -163,22 +169,22 @@ public class DocumentParser extends Parser
                     documentReference = rowData.getCellAt(idxReference).getData$();
                 }
 
-                documentCreatedOn = COBieUtility.calendarFromString(documentCreatedOnString);
-                tmpDocument.setName(COBieUtility.getCOBieString(documentName));
-                tmpDocument.setCreatedBy(COBieUtility.getCOBieString(documentCreatedBy));
+                documentCreatedOn = getCobieStringHandler().calendarFromString(documentCreatedOnString);
+                tmpDocument.setName(cobieStringHandler.getCOBieString(documentName));
+                tmpDocument.setCreatedBy(cobieStringHandler.getCOBieString(documentCreatedBy));
                 tmpDocument.setCreatedOn(documentCreatedOn);
-                tmpDocument.setCategory(COBieUtility.getCOBieString(documentCategory));
-                tmpDocument.setApprovalBy(COBieUtility.getCOBieString(documentApprovalBy));
-                tmpDocument.setStage(COBieUtility.getCOBieString(documentStage));
-                tmpDocument.setSheetName(COBieUtility.getCOBieString(documentSheetName));
-                tmpDocument.setRowName(COBieUtility.getCOBieString(documentRowName));
-                tmpDocument.setDirectory(COBieUtility.getCOBieString(documentDirectory));
-                tmpDocument.setFile(COBieUtility.getCOBieString(documentFile));
-                tmpDocument.setExtSystem(COBieUtility.getCOBieString(documentExtSystem));
-                tmpDocument.setExtObject(COBieUtility.getCOBieString(documentExtObject));
-                tmpDocument.setExtIdentifier(COBieUtility.getCOBieString(documentExtIdentifier));
-                tmpDocument.setDescription(COBieUtility.getCOBieString(documentDescription));
-                tmpDocument.setReference(COBieUtility.getCOBieString(documentReference));
+                tmpDocument.setCategory(cobieStringHandler.getCOBieString(documentCategory));
+                tmpDocument.setApprovalBy(cobieStringHandler.getCOBieString(documentApprovalBy));
+                tmpDocument.setStage(cobieStringHandler.getCOBieString(documentStage));
+                tmpDocument.setSheetName(cobieStringHandler.getCOBieString(documentSheetName));
+                tmpDocument.setRowName(cobieStringHandler.getCOBieString(documentRowName));
+                tmpDocument.setDirectory(cobieStringHandler.getCOBieString(documentDirectory));
+                tmpDocument.setFile(cobieStringHandler.getCOBieString(documentFile));
+                tmpDocument.setExtSystem(cobieStringHandler.getCOBieString(documentExtSystem));
+                tmpDocument.setExtObject(cobieStringHandler.getCOBieString(documentExtObject));
+                tmpDocument.setExtIdentifier(cobieStringHandler.getCOBieString(documentExtIdentifier));
+                tmpDocument.setDescription(cobieStringHandler.getCOBieString(documentDescription));
+                tmpDocument.setReference(cobieStringHandler.getCOBieString(documentReference));
             }
         }
     }

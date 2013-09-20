@@ -1,0 +1,45 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://docs.buildingsmartalliance.org/nbims03/lcie/core" xmlns="http://docs.buildingsmartalliance.org/nbims03/cobie/core" xmlns:camed="http://jcam.org.uk/editor"  xmlns:ptw="http://docs.buildingsmartalliance.org/nbims03/lcie/25002ProductTypeWarranty" targetNamespace="http://docs.buildingsmartalliance.org/nbims03/lcie/25002ProductTypeWarranty" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC4">
+	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/cobie/core" schemaLocation="../cobie/core.xsd"/>
+	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/lcie/core" schemaLocation="core.xsd"/>
+	<xs:element name="ProductTypeWarranty" type="ptw:ProductWarrantyType">
+	</xs:element>
+	<xs:group name="AssetTypeReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeCategory"/>
+			<xs:element ref="AssetTypeDescription"/>
+			<xs:element ref="AssetTypeModelNumber"/>
+			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeGroup">
+		<xs:sequence>
+			<xs:element ref="Warranties">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="ProductWarrantyType">
+		<xs:complexContent>
+			<xs:extension base="lcie:InformationExchangeComplexType">
+				<xs:sequence>
+					<xs:element ref="AssetTypes"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductWarrantyAssetTypeType">
+		<xs:complexContent>
+			<xs:extension base="AssetTypeInfoType">
+				<xs:sequence>
+					<xs:group ref="ptw:AssetTypeReadOnlyGroup"/>
+					<xs:group ref="ptw:AssetTypeGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="250.02_ProductTypeWarranty"/>
+	<xs:element name="AssetType" type="ptw:ProductWarrantyAssetTypeType" substitutionGroup="AssetType"/>
+</xs:schema>

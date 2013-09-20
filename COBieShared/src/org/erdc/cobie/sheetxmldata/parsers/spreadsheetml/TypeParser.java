@@ -26,15 +26,20 @@ import nl.fountain.xelem.excel.Worksheet;
 
 import org.erdc.cobie.shared.COBieTokenUtility;
 import org.erdc.cobie.shared.COBieTokenUtility.TypeColumnNameLiterals;
-import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.TypeType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TypeParser extends Parser
 {
+
+    public TypeParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
 
     public TypeParser(COBIEType cobie, Workbook workbook)
     {
@@ -320,42 +325,42 @@ public class TypeParser extends Parser
                 {
                     typeSustainabilityPerformance = rowData.getCellAt(idxSustainabilityPerformance).getData$();
                 }
-                typeCreatedOn = COBieUtility.calendarFromString(typeCreatedOnString);
-                tmpType.setName(COBieUtility.getCOBieString(typeName));
-                tmpType.setCreatedBy(COBieUtility.getCOBieString(typeCreatedBy));
+                typeCreatedOn = getCobieStringHandler().calendarFromString(typeCreatedOnString);
+                tmpType.setName(cobieStringHandler.getCOBieString(typeName));
+                tmpType.setCreatedBy(cobieStringHandler.getCOBieString(typeCreatedBy));
                 tmpType.setCreatedOn(typeCreatedOn);
-                tmpType.setCategory(COBieUtility.getCOBieString(typeCategory));
-                tmpType.setDescription(COBieUtility.getCOBieString(typeDescription));
-                tmpType.setAssetType(COBieUtility.getCOBieString(typeAssetType));
-                tmpType.setManufacturer(COBieUtility.getCOBieString(typeManufacturer));
-                tmpType.setModelNumber(COBieUtility.getCOBieString(typeModelNumber));
-                tmpType.setWarrantyGuarantorParts(COBieUtility.getCOBieString(typeWarrantyGuarantorParts));
-                tmpType.setWarrantyDurationParts(COBieUtility.getCOBieString(typeWarrantyDurationParts));
-                tmpType.setWarrantyGuarantorLabor(COBieUtility.getCOBieString(typeWarrantyGuarantorLabor));
-                tmpType.setWarrantyDurationLabor(COBieUtility.getCOBieString(typeWarrantyDurationLabor));
-                tmpType.setWarrantyDurationUnit(COBieUtility.getCOBieString(typeWarrantyDurationUnit));
-                tmpType.setExtSystem(COBieUtility.getCOBieString(typeExtSystem));
-                tmpType.setExtObject(COBieUtility.getCOBieString(typeExtObject));
-                tmpType.setExtIdentifier(COBieUtility.getCOBieString(typeExtIdentifier));
-                tmpType.setReplacementCost(COBieUtility.getCOBieString(typeReplacementCost));
-                tmpType.setExpectedLife(COBieUtility.getCOBieString(typeExpectedLife));
-                tmpType.setDurationUnit(COBieUtility.getCOBieString(typeDurationUnit));
-                tmpType.setWarrantyDescription(COBieUtility.getCOBieString(typeWarrantyDescription));
-                tmpType.setNominalLength(COBieUtility.getCOBieString(typeNominalLength));
-                tmpType.setNominalWidth(COBieUtility.getCOBieString(typeNominalWidth));
-                tmpType.setNominalHeight(COBieUtility.getCOBieString(typeNominalHeight));
-                tmpType.setModelReference(COBieUtility.getCOBieString(typeModelReference));
-                tmpType.setShape(COBieUtility.getCOBieString(typeShape));
-                tmpType.setSize(COBieUtility.getCOBieString(typeSize));
-                tmpType.setColor(COBieUtility.getCOBieString(typeColor));
-                tmpType.setFinish(COBieUtility.getCOBieString(typeFinish));
-                tmpType.setGrade(COBieUtility.getCOBieString(typeGrade));
-                tmpType.setMaterial(COBieUtility.getCOBieString(typeMaterial));
-                tmpType.setConstituents(COBieUtility.getCOBieString(typeConstituents));
-                tmpType.setFeatures(COBieUtility.getCOBieString(typeFeatures));
-                tmpType.setAccessibilityPerformance(COBieUtility.getCOBieString(typeAccessibilityPerformance));
-                tmpType.setCodePerformance(COBieUtility.getCOBieString(typeCodePerformance));
-                tmpType.setSustainabilityPerformance(COBieUtility.getCOBieString(typeSustainabilityPerformance));
+                tmpType.setCategory(cobieStringHandler.getCOBieString(typeCategory));
+                tmpType.setDescription(cobieStringHandler.getCOBieString(typeDescription));
+                tmpType.setAssetType(cobieStringHandler.getCOBieString(typeAssetType));
+                tmpType.setManufacturer(cobieStringHandler.getCOBieString(typeManufacturer));
+                tmpType.setModelNumber(cobieStringHandler.getCOBieString(typeModelNumber));
+                tmpType.setWarrantyGuarantorParts(cobieStringHandler.getCOBieString(typeWarrantyGuarantorParts));
+                tmpType.setWarrantyDurationParts(cobieStringHandler.getCOBieString(typeWarrantyDurationParts));
+                tmpType.setWarrantyGuarantorLabor(cobieStringHandler.getCOBieString(typeWarrantyGuarantorLabor));
+                tmpType.setWarrantyDurationLabor(cobieStringHandler.getCOBieString(typeWarrantyDurationLabor));
+                tmpType.setWarrantyDurationUnit(cobieStringHandler.getCOBieString(typeWarrantyDurationUnit));
+                tmpType.setExtSystem(cobieStringHandler.getCOBieString(typeExtSystem));
+                tmpType.setExtObject(cobieStringHandler.getCOBieString(typeExtObject));
+                tmpType.setExtIdentifier(cobieStringHandler.getCOBieString(typeExtIdentifier));
+                tmpType.setReplacementCost(cobieStringHandler.getCOBieString(typeReplacementCost));
+                tmpType.setExpectedLife(cobieStringHandler.getCOBieString(typeExpectedLife));
+                tmpType.setDurationUnit(cobieStringHandler.getCOBieString(typeDurationUnit));
+                tmpType.setWarrantyDescription(cobieStringHandler.getCOBieString(typeWarrantyDescription));
+                tmpType.setNominalLength(cobieStringHandler.getCOBieString(typeNominalLength));
+                tmpType.setNominalWidth(cobieStringHandler.getCOBieString(typeNominalWidth));
+                tmpType.setNominalHeight(cobieStringHandler.getCOBieString(typeNominalHeight));
+                tmpType.setModelReference(cobieStringHandler.getCOBieString(typeModelReference));
+                tmpType.setShape(cobieStringHandler.getCOBieString(typeShape));
+                tmpType.setSize(cobieStringHandler.getCOBieString(typeSize));
+                tmpType.setColor(cobieStringHandler.getCOBieString(typeColor));
+                tmpType.setFinish(cobieStringHandler.getCOBieString(typeFinish));
+                tmpType.setGrade(cobieStringHandler.getCOBieString(typeGrade));
+                tmpType.setMaterial(cobieStringHandler.getCOBieString(typeMaterial));
+                tmpType.setConstituents(cobieStringHandler.getCOBieString(typeConstituents));
+                tmpType.setFeatures(cobieStringHandler.getCOBieString(typeFeatures));
+                tmpType.setAccessibilityPerformance(cobieStringHandler.getCOBieString(typeAccessibilityPerformance));
+                tmpType.setCodePerformance(cobieStringHandler.getCOBieString(typeCodePerformance));
+                tmpType.setSustainabilityPerformance(cobieStringHandler.getCOBieString(typeSustainabilityPerformance));
             }
         }
     }

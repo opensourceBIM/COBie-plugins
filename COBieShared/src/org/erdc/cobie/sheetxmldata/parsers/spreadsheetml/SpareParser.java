@@ -10,10 +10,10 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
-import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.SpareType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +36,11 @@ public class SpareParser extends Parser
     protected List<String> getColumnNames()
     {
         return SpareColumnNames;
+    }
+
+    public SpareParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
     }
 
     @Override
@@ -150,19 +155,19 @@ public class SpareParser extends Parser
                 {
                     sparePartNumber = rowData.getCellAt(idxPartNumber).getData$();
                 }
-                spareCreatedOn = COBieUtility.calendarFromString(spareCreatedOnString);
-                tmpSpare.setName(COBieUtility.getCOBieString(spareName));
-                tmpSpare.setCreatedBy(COBieUtility.getCOBieString(spareCreatedBy));
+                spareCreatedOn = getCobieStringHandler().calendarFromString(spareCreatedOnString);
+                tmpSpare.setName(cobieStringHandler.getCOBieString(spareName));
+                tmpSpare.setCreatedBy(cobieStringHandler.getCOBieString(spareCreatedBy));
                 tmpSpare.setCreatedOn(spareCreatedOn);
-                tmpSpare.setCategory(COBieUtility.getCOBieString(spareCategory));
-                tmpSpare.setTypeName(COBieUtility.getCOBieString(spareTypeName));
-                tmpSpare.setSuppliers(COBieUtility.getCOBieString(spareSuppliers));
-                tmpSpare.setExtSystem(COBieUtility.getCOBieString(spareExtSystem));
-                tmpSpare.setExtObject(COBieUtility.getCOBieString(spareExtObject));
-                tmpSpare.setExtIdentifier(COBieUtility.getCOBieString(spareExtIdentifier));
-                tmpSpare.setDescription(COBieUtility.getCOBieString(spareDescription));
-                tmpSpare.setSetNumber(COBieUtility.getCOBieString(spareSetNumber));
-                tmpSpare.setPartNumber(COBieUtility.getCOBieString(sparePartNumber));
+                tmpSpare.setCategory(cobieStringHandler.getCOBieString(spareCategory));
+                tmpSpare.setTypeName(cobieStringHandler.getCOBieString(spareTypeName));
+                tmpSpare.setSuppliers(cobieStringHandler.getCOBieString(spareSuppliers));
+                tmpSpare.setExtSystem(cobieStringHandler.getCOBieString(spareExtSystem));
+                tmpSpare.setExtObject(cobieStringHandler.getCOBieString(spareExtObject));
+                tmpSpare.setExtIdentifier(cobieStringHandler.getCOBieString(spareExtIdentifier));
+                tmpSpare.setDescription(cobieStringHandler.getCOBieString(spareDescription));
+                tmpSpare.setSetNumber(cobieStringHandler.getCOBieString(spareSetNumber));
+                tmpSpare.setPartNumber(cobieStringHandler.getCOBieString(sparePartNumber));
             }
         }
     }

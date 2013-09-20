@@ -29,11 +29,17 @@ import org.erdc.cobie.shared.COBieTokenUtility.ComponentColumnNameLiterals;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.ComponentType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ComponentParser extends Parser
 {
+
+    public ComponentParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
 
     public ComponentParser(COBIEType cobie, Workbook workbook)
     {
@@ -178,22 +184,22 @@ public class ComponentParser extends Parser
                 {
                     componentAssetIdentifier = rowData.getCellAt(idxAssetIdentifier).getData$();
                 }
-                componentCreatedOn = COBieUtility.calendarFromString(componentCreatedOnString);
-                tmpComponent.setName(COBieUtility.getCOBieString(componentName));
-                tmpComponent.setCreatedBy(COBieUtility.getCOBieString(componentCreatedBy));
+                componentCreatedOn = getCobieStringHandler().calendarFromString(componentCreatedOnString);
+                tmpComponent.setName(cobieStringHandler.getCOBieString(componentName));
+                tmpComponent.setCreatedBy(cobieStringHandler.getCOBieString(componentCreatedBy));
                 tmpComponent.setCreatedOn(componentCreatedOn);
-                tmpComponent.setTypeName(COBieUtility.getCOBieString(componentTypeName));
-                tmpComponent.setSpace(COBieUtility.getCOBieString(componentSpace));
-                tmpComponent.setDescription(COBieUtility.getCOBieString(componentDescription));
-                tmpComponent.setExtSystem(COBieUtility.getCOBieString(componentExtSystem));
-                tmpComponent.setExtObject(COBieUtility.getCOBieString(componentExtObject));
-                tmpComponent.setExtIdentifier(COBieUtility.getCOBieString(componentExtIdentifier));
-                tmpComponent.setSerialNumber(COBieUtility.getCOBieString(componentSerialNumber));
-                tmpComponent.setInstallationDate(COBieUtility.getCOBieString(componentInstallationDate));
-                tmpComponent.setWarrantyStartDate(COBieUtility.getCOBieString(componentWarrantyStartDate));
-                tmpComponent.setTagNumber(COBieUtility.getCOBieString(componentTagNumber));
-                tmpComponent.setBarCode(COBieUtility.getCOBieString(componentBarCode));
-                tmpComponent.setAssetIdentifier(COBieUtility.getCOBieString(componentAssetIdentifier));
+                tmpComponent.setTypeName(cobieStringHandler.getCOBieString(componentTypeName));
+                tmpComponent.setSpace(cobieStringHandler.getCOBieString(componentSpace));
+                tmpComponent.setDescription(cobieStringHandler.getCOBieString(componentDescription));
+                tmpComponent.setExtSystem(cobieStringHandler.getCOBieString(componentExtSystem));
+                tmpComponent.setExtObject(cobieStringHandler.getCOBieString(componentExtObject));
+                tmpComponent.setExtIdentifier(cobieStringHandler.getCOBieString(componentExtIdentifier));
+                tmpComponent.setSerialNumber(cobieStringHandler.getCOBieString(componentSerialNumber));
+                tmpComponent.setInstallationDate(cobieStringHandler.getCOBieString(componentInstallationDate));
+                tmpComponent.setWarrantyStartDate(cobieStringHandler.getCOBieString(componentWarrantyStartDate));
+                tmpComponent.setTagNumber(cobieStringHandler.getCOBieString(componentTagNumber));
+                tmpComponent.setBarCode(cobieStringHandler.getCOBieString(componentBarCode));
+                tmpComponent.setAssetIdentifier(cobieStringHandler.getCOBieString(componentAssetIdentifier));
             }
         }
     }

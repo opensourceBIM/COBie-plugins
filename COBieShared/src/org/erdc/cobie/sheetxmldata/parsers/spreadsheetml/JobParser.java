@@ -10,15 +10,20 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
-import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.JobType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class JobParser extends Parser
 {
+    public JobParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
+
     public static enum JobColumnNameLiterals
     {
         Name, CreatedBy, CreatedOn, Category, Status, TypeName, Description, Duration, DurationUnit, Start, TaskStartUnit, Frequency, FrequencyUnit, ExtSystem, ExtObject, ExtIdentifier, TaskNumber, Priors, ResourceNames
@@ -199,26 +204,26 @@ public class JobParser extends Parser
                 {
                     jobResourceNames = rowData.getCellAt(idxResourceNames).getData$();
                 }
-                jobCreatedOn = COBieUtility.calendarFromString(jobCreatedOnString);
-                tmpJob.setName(COBieUtility.getCOBieString(jobName));
-                tmpJob.setCreatedBy(COBieUtility.getCOBieString(jobCreatedBy));
+                jobCreatedOn = getCobieStringHandler().calendarFromString(jobCreatedOnString);
+                tmpJob.setName(cobieStringHandler.getCOBieString(jobName));
+                tmpJob.setCreatedBy(cobieStringHandler.getCOBieString(jobCreatedBy));
                 tmpJob.setCreatedOn(jobCreatedOn);
-                tmpJob.setCategory(COBieUtility.getCOBieString(jobCategory));
-                tmpJob.setStatus(COBieUtility.getCOBieString(jobStatus));
-                tmpJob.setTypeName(COBieUtility.getCOBieString(jobTypeName));
-                tmpJob.setDescription(COBieUtility.getCOBieString(jobDescription));
-                tmpJob.setDuration(COBieUtility.getCOBieString(jobDuration));
-                tmpJob.setDurationUnit(COBieUtility.getCOBieString(jobDurationUnit));
-                tmpJob.setStart(COBieUtility.getCOBieString(jobStart));
-                tmpJob.setTaskStartUnit(COBieUtility.getCOBieString(jobTaskStartUnit));
-                tmpJob.setFrequency(COBieUtility.getCOBieString(jobFrequency));
-                tmpJob.setFrequencyUnit(COBieUtility.getCOBieString(jobFrequencyUnit));
-                tmpJob.setExtSystem(COBieUtility.getCOBieString(jobExtSystem));
-                tmpJob.setExtObject(COBieUtility.getCOBieString(jobExtObject));
-                tmpJob.setExtIdentifier(COBieUtility.getCOBieString(jobExtIdentifier));
-                tmpJob.setTaskNumber(COBieUtility.getCOBieString(jobTaskNumber));
-                tmpJob.setPriors(COBieUtility.getCOBieString(jobPriors));
-                tmpJob.setResourceNames(COBieUtility.getCOBieString(jobResourceNames));
+                tmpJob.setCategory(cobieStringHandler.getCOBieString(jobCategory));
+                tmpJob.setStatus(cobieStringHandler.getCOBieString(jobStatus));
+                tmpJob.setTypeName(cobieStringHandler.getCOBieString(jobTypeName));
+                tmpJob.setDescription(cobieStringHandler.getCOBieString(jobDescription));
+                tmpJob.setDuration(cobieStringHandler.getCOBieString(jobDuration));
+                tmpJob.setDurationUnit(cobieStringHandler.getCOBieString(jobDurationUnit));
+                tmpJob.setStart(cobieStringHandler.getCOBieString(jobStart));
+                tmpJob.setTaskStartUnit(cobieStringHandler.getCOBieString(jobTaskStartUnit));
+                tmpJob.setFrequency(cobieStringHandler.getCOBieString(jobFrequency));
+                tmpJob.setFrequencyUnit(cobieStringHandler.getCOBieString(jobFrequencyUnit));
+                tmpJob.setExtSystem(cobieStringHandler.getCOBieString(jobExtSystem));
+                tmpJob.setExtObject(cobieStringHandler.getCOBieString(jobExtObject));
+                tmpJob.setExtIdentifier(cobieStringHandler.getCOBieString(jobExtIdentifier));
+                tmpJob.setTaskNumber(cobieStringHandler.getCOBieString(jobTaskNumber));
+                tmpJob.setPriors(cobieStringHandler.getCOBieString(jobPriors));
+                tmpJob.setResourceNames(cobieStringHandler.getCOBieString(jobResourceNames));
             }
         }
     }

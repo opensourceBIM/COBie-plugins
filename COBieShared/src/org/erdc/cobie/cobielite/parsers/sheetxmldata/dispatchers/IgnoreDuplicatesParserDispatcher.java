@@ -2,7 +2,8 @@ package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
 import java.util.ArrayList;
 
-import org.erdc.cobie.cobielite.CobieBaseType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.core.CobieBaseType;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;

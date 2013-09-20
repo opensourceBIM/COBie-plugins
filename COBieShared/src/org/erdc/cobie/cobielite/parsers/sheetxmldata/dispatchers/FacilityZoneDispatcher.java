@@ -1,14 +1,16 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.FacilityType;
-import org.erdc.cobie.cobielite.ZoneCollectionType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityType;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ZoneDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ZoneCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.ZoneParser;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.ZoneType;
 
-public class FacilityZoneDispatcher extends TypicalParserDispatcher<ZoneType, ZoneCollectionType, org.erdc.cobie.cobielite.ZoneType, FacilityType>
+public class FacilityZoneDispatcher extends TypicalParserDispatcher<ZoneType, ZoneCollectionType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ZoneType, FacilityType>
 {
 
     public FacilityZoneDispatcher(Iterable<ZoneType> childSourceElements, FacilityType targetParent, IndexedCOBie indexedCOBie)
@@ -17,17 +19,17 @@ public class FacilityZoneDispatcher extends TypicalParserDispatcher<ZoneType, Zo
     }
 
     @Override
-    protected COBieLiteSheetXMLDataParser<ZoneType, org.erdc.cobie.cobielite.ZoneType> createNewParser(
+    protected COBieLiteSheetXMLDataParser<ZoneType,  org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ZoneType> createNewParser(
             ZoneType sourceElement,
-            org.erdc.cobie.cobielite.ZoneType newTargetElement)
+            org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ZoneType newTargetElement)
     {
         return new ZoneParser(sourceElement, newTargetElement, indexedCOBie);
     }
 
     @Override
-    protected org.erdc.cobie.cobielite.ZoneType createNewTargetElement()
+    protected  org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ZoneType createNewTargetElement()
     {
-        return targetCollection.addNewZone();
+        return ( org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ZoneType)targetCollection.addNewZone().substitute(ZoneDocument.type.getDocumentElementName(), org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ZoneType.type);
     }
 
     @Override

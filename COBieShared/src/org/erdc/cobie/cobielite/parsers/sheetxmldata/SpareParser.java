@@ -1,9 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
-import org.erdc.cobie.cobielite.SpareType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.SpareType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AssignmentHelper;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
@@ -19,19 +20,19 @@ public class SpareParser extends TypicalParser<org.erdc.cobie.sheetxmldata.Spare
     @Override
     public AttributeCollectionType getNewAttributes()
     {
-        return targetCOBie.addNewAttributes();
+        return targetCOBie.addNewSpareAttributes();
     }
 
     @Override
     public DocumentCollectionType getNewDocuments()
     {
-        return targetCOBie.addNewDocuments();
+        return targetCOBie.addNewSpareDocuments();
     }
 
     @Override
     public IssueCollectionType getNewIssues()
     {
-        return targetCOBie.addNewIssues();
+        return targetCOBie.addNewSpareIssues();
     }
 
     @Override
@@ -40,7 +41,7 @@ public class SpareParser extends TypicalParser<org.erdc.cobie.sheetxmldata.Spare
         String suppliers = sourceCOBie.getSuppliers();
         if (!COBieUtility.isNA(suppliers))
         {
-            AssignmentHelper.parseContactAssignments(targetCOBie.addNewContactAssignments(), suppliers);
+            AssignmentHelper.parseContactAssignments(targetCOBie.addNewSpareSupplierContactAssignments(), suppliers);
         }
 
     }

@@ -37,9 +37,13 @@ import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
+import java.util.jar.Attributes;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.jar.Manifest;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -183,6 +187,7 @@ public class Expander extends JFrame {
 								File file = expand();
 								startStopButton.setText("Stop");
 								start(file, heapSizeField.getText(), stackSizeField.getText(), permSizeField.getText(), jvmField.getText());
+								//start(file, heapSizeField.getText(), stackSizeField.getText(), permSizeField.getText(), jvmField.getText());
 							} else {
 								JOptionPane.showMessageDialog(Expander.this, "JVM field should contain a valid JVM directory, or 'default' for the default JVM");
 							}
@@ -281,86 +286,7 @@ public class Expander extends JFrame {
 		browserJvm.setEnabled(enabled);
 	}
 	
-	private void start(File destDir, String heapsize, String stacksize, String permsize, String jvmPath) {
-		try {
-			String command = "";
-			if (jvmPath.equalsIgnoreCase("default")) {
-				command = "java";
-			} else {
-				File jvm = new File(jvmPath);
-				if (jvm.exists()) {
-					File jre = new File(jvm, "jre");
-					if (!jre.exists()) {
-						jre = jvm;
-					}
-					command = new File(jre, "bin" + File.separator + "java").getAbsolutePath();
-					File jreLib = new File(jre, "lib");
-					command += " -Xbootclasspath:\"";
-					for (File file : jreLib.listFiles()) {
-						if (file.getName().endsWith(".jar")) {
-							command += file.getAbsolutePath() + File.pathSeparator;
-						}
-					}
-					if (jre != jvm) {
-						command += new File(jvm, "lib" + File.separator + "tools.jar");
-					}
-					command += "\"";
-				}
-			}
-			command += " -Xmx" + heapsize;
-			command += " -Xss" + stacksize;
-			command += " -XX:MaxPermSize=" + permsize;
-			command += " -classpath";
-			command += " lib" + File.pathSeparator;
-			File dir = new File(destDir + File.separator + "lib");
-			for (File lib : dir.listFiles()) {
-				if (lib.isFile()) {
-					command += "lib" + File.separator + lib.getName() + File.pathSeparator;
-				}
-			}
-			if (command.endsWith(File.pathSeparator)) {
-				command = command.substring(0, command.length()-1);
-			}
-			command += COBIE_APPLICATION_GUI_CLASS;
-			System.out.println("Running: " + command);
-			exec = Runtime.getRuntime().exec(command, null, destDir);
 
-			new Thread(new Runnable(){
-				@Override
-				public void run() {
-					BufferedInputStream inputStream = new BufferedInputStream(exec.getInputStream());
-					byte[] buffer = new byte[1024];
-					int red;
-					try {
-						red = inputStream.read(buffer);
-						while (red != -1) {
-							String s = new String(buffer, 0, red);
-							System.out.print(s);
-							red = inputStream.read(buffer);
-						}
-					} catch (IOException e) {
-					}
-				}}).start();
-			new Thread(new Runnable(){
-				@Override
-				public void run() {
-					BufferedInputStream errorStream = new BufferedInputStream(exec.getErrorStream());
-					byte[] buffer = new byte[1024];
-					int red;
-					try {
-						red = errorStream.read(buffer);
-						while (red != -1) {
-							String s = new String(buffer, 0, red);
-							System.out.print(s);
-							red = errorStream.read(buffer);
-						}
-					} catch (IOException e) {
-					}
-				}}).start();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	private File expand() {
 		JarFile jar = null;
@@ -419,6 +345,151 @@ public class Expander extends JFrame {
 			is64Bit=true;
 		return is64Bit;
 	}
+	
+    private void start(File destDir, String heapsize, String stacksize, String permsize, String jvmPath) {
+        List<String> commandAndArgs = new ArrayList<String>();
+        try {
+
+            if (jvmPath.equalsIgnoreCase("default")) 
+            {
+                commandAndArgs.add("java");
+            } 
+            else 
+            {
+                File jvm = new File(jvmPath);
+                if (jvm.exists()) 
+                {
+                    File jre = new File(jvm, "jre");
+                    if (!jre.exists()) {
+                        jre = jvm;
+                    }
+                    commandAndArgs.add(new File(jre, "bin" + File.separator + "java").getAbsolutePath());
+                    
+                    File jreLib = new File(jre, "lib");
+                   // commandAndArgs.add("-Xbootclasspath:");
+                    String xBootClassPath = "";
+                    xBootClassPath += "\"" + jreLib.getAbsolutePath() +"\"";
+                    for (File file : jreLib.listFiles()) {
+                        if (file.getName().endsWith(".jar")) {
+                           if (file.getAbsolutePath().contains(" ")) {
+                               xBootClassPath += "\"" + file.getAbsolutePath() + "\"" + File.pathSeparator;
+                            } else {
+                                xBootClassPath += file.getAbsolutePath() + File.pathSeparator;
+                           }
+                        }
+                    }
+                    if (jre != jvm) 
+                    {
+                        File toolsFile = new File(jvm, "lib" + File.separator + "tools.jar");
+                       if (toolsFile.getAbsolutePath().contains(" ")) {
+                            xBootClassPath += "\"" + toolsFile.getAbsolutePath() + "\"";
+                        } else {
+                            xBootClassPath += toolsFile.getAbsolutePath();
+                        }
+                    }
+                    //commandAndArgs.add(xBootClassPath);
+                } 
+                else 
+                {
+                    System.out.println("Not using selected JVM (directory not found), using default JVM");
+                }
+            }
+            commandAndArgs.add("-Xmx" + heapsize);
+            commandAndArgs.add("-Xss" + stacksize);
+            commandAndArgs.add("-XX:MaxPermSize=" + permsize);
+//          boolean debug = true;
+//          if (debug ) {
+//              command += " -Xdebug -Xrunjdwp:transport=dt_socket,address=8998,server=y";
+//          }
+            commandAndArgs.add("-classpath");
+            String classPath = "";
+            System.out.println(System.getProperty("os.name"));
+            boolean escapeCompletePath = System.getProperty("os.name").toLowerCase().contains("mac");
+            if (escapeCompletePath) 
+            {
+                // OSX fucks up with single jar files escaped, so we try to escape the whole thing
+                classPath += "\"";
+            }
+            classPath += "lib" + File.pathSeparator;
+            File dir = new File(destDir + File.separator + "lib");
+            for (File lib : dir.listFiles()) {
+                if (lib.isFile()) {
+                    if (lib.getName().contains(" ") && !escapeCompletePath) {
+                        classPath += "\"lib" + File.separator + lib.getName() + "\"" + File.pathSeparator;
+                    } else {
+                        classPath += "lib" + File.separator + lib.getName() + File.pathSeparator;
+                    }
+                }
+            }
+            if (classPath.endsWith(File.pathSeparator)) 
+            {
+                classPath = classPath.substring(0, classPath.length()-1);
+            }
+            if (escapeCompletePath) 
+            {
+                // OSX fucks up with single jar files escaped, so we try to escape the whole thing
+                classPath += "\"";
+            }
+            commandAndArgs.add(classPath);
+            Enumeration<URL> resources = getClass().getClassLoader().getResources("META-INF/MANIFEST.MF");
+            String realMainClass = "";
+            while (resources.hasMoreElements()) 
+            {
+                URL url = resources.nextElement();
+                Manifest manifest = new Manifest(url.openStream());
+                Attributes mainAttributes = manifest.getMainAttributes();
+                for (Object key : mainAttributes.keySet()) {
+                    if (key.toString().equals("Real-Main-Class")) {
+                        realMainClass = mainAttributes.get(key).toString();
+                        break;
+                    }
+                }
+            }
+            System.out.println("Main class: " + realMainClass);
+            commandAndArgs.add(realMainClass);
+            System.out.println("Running: ");
+            for(String commandEntry : commandAndArgs)
+                System.out.print(commandEntry+" ");
+            exec = Runtime.getRuntime().exec(commandAndArgs.toArray(new String[commandAndArgs.size()]), null, destDir);
+            
+            new Thread(new Runnable(){
+                @Override
+                public void run() {
+                    BufferedInputStream inputStream = new BufferedInputStream(exec.getInputStream());
+                    byte[] buffer = new byte[1024];
+                    int red;
+                    try {
+                        red = inputStream.read(buffer);
+                        while (red != -1) {
+                            String s = new String(buffer, 0, red);
+                            System.out.print(s);
+                            red = inputStream.read(buffer);
+                        }
+                    } catch (IOException e) {
+                    }
+                }}).start();
+            new Thread(new Runnable(){
+                @Override
+                public void run() {
+                    BufferedInputStream errorStream = new BufferedInputStream(exec.getErrorStream());
+                    byte[] buffer = new byte[1024];
+                    int red;
+                    try {
+                        red = errorStream.read(buffer);
+                        while (red != -1) {
+                            String s = new String(buffer, 0, red);
+                            System.out.print(s);
+                            red = errorStream.read(buffer);
+                        }
+                    } catch (IOException e) {
+                    }
+                }}).start();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
 	
  	private String getJarFileNameNew() {
 		String name = this.getClass().getName().replace(".", "/") + ".class";

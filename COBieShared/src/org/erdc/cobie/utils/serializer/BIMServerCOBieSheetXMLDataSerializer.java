@@ -132,11 +132,15 @@ public abstract class BIMServerCOBieSheetXMLDataSerializer extends EmfSerializer
             {
                 modelToCOBie();
                 writeCOBIE(outputStream);
-                setMode(Mode.FINISHED);
+
                 succeeded = true;
             } catch (Exception e)
             {
                 throw new SerializerException(e);
+            }
+            finally
+            {
+                setMode(Mode.FINISHED);
             }
 
         }

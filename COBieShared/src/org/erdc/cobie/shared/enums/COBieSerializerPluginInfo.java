@@ -14,8 +14,9 @@ public enum COBieSerializerPluginInfo implements PluginInfo
     REPORT_SPATIAL_DECOMPOSITION("COBieSpatialDecompositionReport","Produces a report of spaces by floors.","html"), 
     REPORT_ZONE("COBieZoneReport","A report listing Zones, Spaces in Zones, and Zone COBie fields.","html"), 
     REPORT_SYSTEM("COBieSystemReport","Produces a report of systems and their corresponding components.","html"), 
-    COBIE_LITE("COBieLite RC2","COBie Lite XML Release Candidate 2","xml");
-    
+    COBIE_LITE("COBieLite RC4","COBie Lite XML Release Candidate 4","xml"),
+    DD_1391("DD1391 Form","DD1391 Form","html"),
+    DD_1354("DD1354 Form","DD1354 Form","html");
     public String getDescription()
     {
         return description;

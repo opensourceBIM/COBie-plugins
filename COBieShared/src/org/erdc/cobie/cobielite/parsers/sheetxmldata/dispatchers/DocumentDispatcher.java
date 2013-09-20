@@ -1,8 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.CobieBaseType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.DocumentType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.DocumentDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.DocumentType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.CobieBaseType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.DocumentParser;
@@ -31,7 +33,7 @@ public class DocumentDispatcher extends
     @Override
     protected DocumentType createNewTargetElement()
     {
-        return targetCollection.addNewDocument();
+        return (DocumentType)targetCollection.addNewDocument().substitute(DocumentDocument.type.getDocumentElementName(), DocumentType.type);
     }
 
     @Override

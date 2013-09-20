@@ -26,6 +26,7 @@ import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.SpreadsheetParser;
 import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.SystemParser;
 import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.TypeParser;
 import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.ZoneParser;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 
 public class ThreadedSpreadsheetParser extends SpreadsheetParser
 {
@@ -109,10 +110,14 @@ public class ThreadedSpreadsheetParser extends SpreadsheetParser
 
     public ThreadedSpreadsheetParser(Workbook workbook, COBIEType cobie, DeserializeToCOBieSheetXMLDataTask applicationTask)
     {
-        super(workbook, cobie);
+        this(workbook, cobie, new COBieStringHandler(), applicationTask);
+    }
+    
+    public ThreadedSpreadsheetParser(Workbook workbook, COBIEType cobie, COBieStringHandler cobieStringHandler, DeserializeToCOBieSheetXMLDataTask applicationTask)
+    {
+        super(workbook, cobie, cobieStringHandler);
         this.task = applicationTask;
     }
-
     @Override
     public void parse()
     {          

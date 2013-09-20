@@ -13,11 +13,17 @@ import nl.fountain.xelem.excel.Worksheet;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.CoordinateType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CoordinateParser extends Parser
 {
+    public CoordinateParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
+
     public static enum CoordinateColumnNameLiterals
     {
         Name, CreatedBy, CreatedOn, Category, SheetName, RowName, CoordinateXAxis, CoordinateYAxis, CoordinateZAxis, ExtSystem, ExtObject, ExtIdentifier, ClockwiseRotation, ElevationalRotation, YawRotation
@@ -170,22 +176,22 @@ public class CoordinateParser extends Parser
                 {
                     coordinateYawRotation = rowData.getCellAt(idxYawRotation).getData$();
                 }
-                coordinateCreatedOn = COBieUtility.calendarFromString(coordinateCreatedOnString);
-                tmpCoordinate.setName(COBieUtility.getCOBieString(coordinateName));
-                tmpCoordinate.setCreatedBy(COBieUtility.getCOBieString(coordinateCreatedBy));
+                coordinateCreatedOn = getCobieStringHandler().calendarFromString(coordinateCreatedOnString);
+                tmpCoordinate.setName(cobieStringHandler.getCOBieString(coordinateName));
+                tmpCoordinate.setCreatedBy(cobieStringHandler.getCOBieString(coordinateCreatedBy));
                 tmpCoordinate.setCreatedOn(coordinateCreatedOn);
-                tmpCoordinate.setCategory(COBieUtility.getCOBieString(coordinateCategory));
-                tmpCoordinate.setSheetName(COBieUtility.getCOBieString(coordinateSheetName));
-                tmpCoordinate.setRowName(COBieUtility.getCOBieString(coordinateRowName));
-                tmpCoordinate.setCoordinateXAxis(COBieUtility.getCOBieString(coordinateCoordinateXAxis));
-                tmpCoordinate.setCoordinateYAxis(COBieUtility.getCOBieString(coordinateCoordinateYAxis));
-                tmpCoordinate.setCoordinateZAxis(COBieUtility.getCOBieString(coordinateCoordinateZAxis));
-                tmpCoordinate.setClockwiseRotation(COBieUtility.getCOBieString(coordinateClockwiseRotation));
-                tmpCoordinate.setElevationalRotation(COBieUtility.getCOBieString(coordinateElevationalRotation));
-                tmpCoordinate.setExtIdentifier(COBieUtility.getCOBieString(coordinateExtIdentifier));
-                tmpCoordinate.setExtObject(COBieUtility.getCOBieString(coordinateExtObject));
-                tmpCoordinate.setExtSystem(COBieUtility.getCOBieString(coordinateExtSystem));
-                tmpCoordinate.setYawRotation(COBieUtility.getCOBieString(coordinateYawRotation));
+                tmpCoordinate.setCategory(cobieStringHandler.getCOBieString(coordinateCategory));
+                tmpCoordinate.setSheetName(cobieStringHandler.getCOBieString(coordinateSheetName));
+                tmpCoordinate.setRowName(cobieStringHandler.getCOBieString(coordinateRowName));
+                tmpCoordinate.setCoordinateXAxis(cobieStringHandler.getCOBieString(coordinateCoordinateXAxis));
+                tmpCoordinate.setCoordinateYAxis(cobieStringHandler.getCOBieString(coordinateCoordinateYAxis));
+                tmpCoordinate.setCoordinateZAxis(cobieStringHandler.getCOBieString(coordinateCoordinateZAxis));
+                tmpCoordinate.setClockwiseRotation(cobieStringHandler.getCOBieString(coordinateClockwiseRotation));
+                tmpCoordinate.setElevationalRotation(cobieStringHandler.getCOBieString(coordinateElevationalRotation));
+                tmpCoordinate.setExtIdentifier(cobieStringHandler.getCOBieString(coordinateExtIdentifier));
+                tmpCoordinate.setExtObject(cobieStringHandler.getCOBieString(coordinateExtObject));
+                tmpCoordinate.setExtSystem(cobieStringHandler.getCOBieString(coordinateExtSystem));
+                tmpCoordinate.setYawRotation(cobieStringHandler.getCOBieString(coordinateYawRotation));
             }
         }
     }

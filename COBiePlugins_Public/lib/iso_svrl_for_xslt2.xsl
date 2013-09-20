@@ -146,7 +146,7 @@
    xmlns:schold="http://www.ascc.net/xml/schematron" 
    xmlns:iso="http://purl.oclc.org/dsdl/schematron"
    xmlns:svrl="http://purl.oclc.org/dsdl/svrl" 
-    
+    xmlns:cfn="http://docs.buildingsmartalliance.org/nbims03/cobie/schematron/functions"
 >
 
 <!-- Select the import statement and adjust the path as 
@@ -178,11 +178,11 @@
 	</xsl:choose>
 </xsl:param>
 <xsl:param name="allow-foreign">true</xsl:param>
-<xsl:param name="generate-paths">true</xsl:param>
+<xsl:param name="generate-paths">false</xsl:param>
 <xsl:param name="generate-fired-rule">true</xsl:param>
 <xsl:param name="optimize" />
 <!-- e.g. saxon file.xml file.xsl "sch.exslt.imports=.../string.xsl;.../math.xsl" -->
-<xsl:param name="sch.exslt.imports" />
+<xsl:param name="sch.exslt.imports" >COBieRules_Functions.xsl</xsl:param>
 
 <xsl:param name="terminate" >false</xsl:param>
 
@@ -192,7 +192,8 @@
 <xsl:param name="output-encoding"/>
 
 <!-- Set the default for schematron-select-full-path, i.e. the notation for svrl's @location-->
-<xsl:param name="full-path-notation">1</xsl:param>
+<!--Select Type 3 because it is 2x faster than Type 1 -->
+<xsl:param name="full-path-notation">3</xsl:param>
 
 
 

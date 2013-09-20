@@ -1,8 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.FloorType;
-import org.erdc.cobie.cobielite.SpaceCollectionType;
-import org.erdc.cobie.cobielite.SpaceType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FloorType;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.SpaceDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.SpaceType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SpaceCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.SpaceParser;
@@ -27,7 +29,7 @@ public class FloorSpaceDispatcher extends TypicalParserDispatcher<org.erdc.cobie
     @Override
     protected SpaceType createNewTargetElement()
     {
-        return targetCollection.addNewSpace();
+        return (SpaceType)targetCollection.addNewSpace().substitute(SpaceDocument.type.getDocumentElementName(), SpaceType.type);
     }
 
     @Override

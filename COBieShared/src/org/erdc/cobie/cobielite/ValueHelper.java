@@ -1,8 +1,13 @@
 package org.erdc.cobie.cobielite;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 
+
+import org.buildingsmartalliance.docs.nbims03.cobie.core.BooleanValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DecimalValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IntegerValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.StringValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ValueBaseType;
 import org.erdc.cobie.shared.COBieUtility;
 
 public class ValueHelper
@@ -36,7 +41,7 @@ public class ValueHelper
     private static void assignDecimal(String from, DecimalValueType to)
     {
         double elevationAsDouble = Double.valueOf(from);
-        to.setDecimalValue(BigDecimal.valueOf(elevationAsDouble));
+        to.setDecimalValue(Double.valueOf(elevationAsDouble));
     }
 
     private static void assignInteger(String from, IntegerValueType to)

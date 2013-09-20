@@ -1,6 +1,0 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:ptcc="http://parts250.crud.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:picd="http://parts250.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pic="http://parts250.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://parts250.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
-	<xs:import namespace="http://bimsie.bimserver.org" schemaLocation="common/BIMsieWrapper.xsd"/>
-	<xs:import namespace="http://parts250.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/250_01_ProductTypeParts_CRUD_defs.xsd"/>
-	<xs:element name="ProductTypeParts_250_Request" type="picd:ProductTypePartsClientRequestType"/>
-	<xs:element name="ProductTypeParts_250_ServerResponse" type="picd:ProductTypePartsServerResponseType"/>
-</xs:schema>

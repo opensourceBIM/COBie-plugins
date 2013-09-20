@@ -1,0 +1,132 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://docs.buildingsmartalliance.org/nbims03/lcie/core" xmlns="http://docs.buildingsmartalliance.org/nbims03/cobie/core" xmlns:camed="http://jcam.org.uk/editor"  xmlns:pi="http://docs.buildingsmartalliance.org/nbims03/lcie/23001ProductInspection" targetNamespace="http://docs.buildingsmartalliance.org/nbims03/lcie/23001ProductInspection" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC4">
+	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/cobie/core" schemaLocation="../cobie/core.xsd"/>
+	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/lcie/core" schemaLocation="core.xsd"/>
+	<xs:element name="ProductInspection" type="pi:ProductInspectionType">
+	</xs:element>
+	<xs:group name="AssetTypeReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeCategory"/>
+			<xs:element ref="AssetTypeDescription"/>
+			<xs:element ref="AssetTypeAccountingCategory"/>
+			<xs:element ref="AssetTypeModelNumber"/>
+			<xs:element ref="AssetTypeReplacementCostValue" minOccurs="0"/>
+			<xs:element ref="AssetTypeExpectedLifeValue" minOccurs="0"/>
+			<xs:element ref="AssetTypeNominalLength" minOccurs="0"/>
+			<xs:element ref="AssetTypeNominalWidth" minOccurs="0"/>
+			<xs:element ref="AssetTypeNominalHeight" minOccurs="0"/>
+			<xs:element ref="AssetTypeAccessibilityText" minOccurs="0"/>
+			<xs:element ref="AssetTypeCodePerformance" minOccurs="0"/>
+			<xs:element ref="AssetTypeColorCode" minOccurs="0"/>
+			<xs:element ref="AssetTypeConstituentsDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeFeaturesDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeFinishDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeGradeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeMaterialDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeShapeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeSizeDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
+			<xs:element ref="AssetTypeManufacturerContactAssignments"/>
+			<xs:element ref="Assets"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetTypeGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeIssues" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetUpdateGroup">
+		<xs:sequence>
+			<xs:element ref="AssetSerialNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetInstallationDate" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetWarrantyStartDate" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetCreateGroup">
+		<xs:sequence>
+			<xs:element ref="AssetSerialNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetInstallationDate" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetWarrantyStartDate">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="AssetReadOnlyGroup">
+		<xs:sequence>
+			<xs:element ref="AssetDescription"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="ProductInspectionType">
+		<xs:complexContent>
+			<xs:extension base="lcie:InformationExchangeComplexType">
+				<xs:sequence>
+					<xs:element ref="AssetTypes"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionAssetTypeType">
+		<xs:complexContent>
+			<xs:extension base="AssetTypeInfoType">
+				<xs:sequence>
+					<xs:group ref="pi:AssetTypeReadOnlyGroup"/>
+					<xs:group ref="pi:AssetTypeGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionAssetType">
+		<xs:complexContent>
+			<xs:extension base="AssetInfoType">
+				<xs:sequence>
+					<xs:group ref="pi:AssetReadOnlyGroup"/>
+					<xs:group ref="pi:AssetCreateGroup"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="230.01_ProductInspection"/>
+	<xs:element name="AssetType" type="pi:ProductInspectionAssetTypeType" substitutionGroup="AssetType"/>
+	<xs:element name="Asset" type="pi:ProductInspectionAssetType" substitutionGroup="Asset"/>
+</xs:schema>

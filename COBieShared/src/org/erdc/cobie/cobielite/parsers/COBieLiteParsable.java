@@ -1,6 +1,8 @@
 package org.erdc.cobie.cobielite.parsers;
 
-import org.erdc.cobie.cobielite.CobieBaseType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.CobieBaseType;
+
+
 
 public interface COBieLiteParsable
 {

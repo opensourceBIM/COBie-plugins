@@ -7,7 +7,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 
-import javax.xml.transform.Templates;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 
@@ -27,11 +27,10 @@ public class ReportSerializer
     private static final String LOGGER_MESSAGE_SUFFIX_BEGIN = "Begin XSL Transformation from COBieSheetXMLData to HTML.";
     private static final Logger LOGGER = LoggerFactory.getLogger(ReportSerializer.class);
 
-    public static void executeSaxonXSLT(OutputStream outputStream, byte[] sourceDocument, String reportPath) throws IOException
+    public static void executeSaxonXSLT(OutputStream outputStream, byte[] sourceDocument, String reportPath) throws IOException, TransformerException
     {
 
         LOGGER.info(getBeginLoggerMessage());
-        Templates templates2 = null;
         TransformerFactory tfactory = TransformerFactory.newInstance(TRANSFORMER_FACTORY_CLASS, ReportSerializer.class.getClassLoader());
         SAXBuilder builder = new SAXBuilder();
 
@@ -53,8 +52,9 @@ public class ReportSerializer
         File xsltFile = new File(reportPath);
 
         ByteArrayInputStream targetDocStream = new ByteArrayInputStream(sourceDocument);
-        StringWriter xsltBuffer = XSLUtils.transformInputSourceToStringWriter(templates2, new StreamSource(targetDocStream), new StreamSource(
+        XSLTransform transformer = new XSLTransform(new StreamSource(targetDocStream), new StreamSource(
                 xsltFile), tfactory);
+        StringWriter xsltBuffer = transformer.transform();
         LOGGER.info(LOGGER_MESSAGE_DONE);
         LOGGER.info(LOGGER_MESSAGE_RESPONSE_BEGIN);
         String result = xsltBuffer.toString();

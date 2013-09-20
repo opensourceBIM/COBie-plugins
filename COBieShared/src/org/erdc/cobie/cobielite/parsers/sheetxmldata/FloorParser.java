@@ -2,9 +2,10 @@ package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
 import java.util.ArrayList;
 
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
 import org.erdc.cobie.cobielite.ValueHelper;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.FloorSpaceDispatcher;
@@ -14,14 +15,14 @@ import org.erdc.cobie.shared.cobiesheetxmldata.indices.SpaceZonesIndex;
 import org.erdc.cobie.sheetxmldata.FloorType;
 import org.erdc.cobie.sheetxmldata.SpaceType;
 
-public class FloorParser extends DeepParser<FloorType, org.erdc.cobie.cobielite.FloorType>
+public class FloorParser extends DeepParser<FloorType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FloorType>
 {
 
     protected final FloorSpacesIndex floorSpaces;
     protected final SpaceZonesIndex spaceZones;
     protected ArrayList<SpaceType> sheetXMLSpaces;
 
-    public FloorParser(FloorType cobieSheetXMLData, org.erdc.cobie.cobielite.FloorType cobieLiteRowData, IndexedCOBie indexedCOBie)
+    public FloorParser(FloorType cobieSheetXMLData, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FloorType cobieLiteRowData, IndexedCOBie indexedCOBie)
     {
         super(cobieSheetXMLData, cobieLiteRowData, indexedCOBie);
         floorSpaces = indexedCOBie.getFloorSpaces();
@@ -60,19 +61,19 @@ public class FloorParser extends DeepParser<FloorType, org.erdc.cobie.cobielite.
     @Override
     public AttributeCollectionType getNewAttributes()
     {
-        return targetCOBie.addNewAttributes();
+        return targetCOBie.addNewFloorAttributes();
     }
 
     @Override
     public DocumentCollectionType getNewDocuments()
     {
-        return targetCOBie.addNewDocuments();
+        return targetCOBie.addNewFloorDocuments();
     }
 
     @Override
     public IssueCollectionType getNewIssues()
     {
-        return targetCOBie.addNewIssues();
+        return targetCOBie.addNewFloorIssues();
     }
 
     private void initializeSheetXMLSpaces()

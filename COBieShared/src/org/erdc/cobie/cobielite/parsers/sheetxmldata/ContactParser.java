@@ -6,10 +6,10 @@ import org.erdc.cobie.shared.cobiesheetxmldata.indices.AttributesDocumentsIssues
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.ContactType;
 
-public class ContactParser extends COBieLiteSheetXMLDataParser<ContactType, org.erdc.cobie.cobielite.ContactType>
+public class ContactParser extends COBieLiteSheetXMLDataParser<ContactType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ContactType>
 {
 
-    public ContactParser(ContactType cobieSheetXMLData, org.erdc.cobie.cobielite.ContactType cobieLiteRowData, IndexedCOBie indexedCOBie)
+    public ContactParser(ContactType cobieSheetXMLData, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ContactType cobieLiteRowData, IndexedCOBie indexedCOBie)
     {
         super(cobieSheetXMLData, cobieLiteRowData, indexedCOBie);
     }
@@ -25,7 +25,7 @@ public class ContactParser extends COBieLiteSheetXMLDataParser<ContactType, org.
     @Override
     protected void parseAttributes() throws Exception
     {
-        AttributeDocumentIssueHelper.parseAttributes(targetCOBie.addNewAttributes(), descriptiveData, indexedCOBie);
+        AttributeDocumentIssueHelper.parseAttributes(targetCOBie.addNewContactAttributes(), descriptiveData, indexedCOBie);
 
     }
 
@@ -39,14 +39,14 @@ public class ContactParser extends COBieLiteSheetXMLDataParser<ContactType, org.
     @Override
     protected void parseDocuments() throws Exception
     {
-        AttributeDocumentIssueHelper.parseDocuments(targetCOBie.addNewDocuments(), descriptiveData, indexedCOBie);
+        AttributeDocumentIssueHelper.parseDocuments(targetCOBie.addNewContactDocuments(), descriptiveData, indexedCOBie);
 
     }
 
     @Override
     protected void parseIssues() throws Exception
     {
-        AttributeDocumentIssueHelper.parseIssues(targetCOBie.addNewIssues(), descriptiveData, indexedCOBie);
+        AttributeDocumentIssueHelper.parseIssues(targetCOBie.addNewContactIssues(), descriptiveData, indexedCOBie);
 
     }
 
@@ -54,6 +54,7 @@ public class ContactParser extends COBieLiteSheetXMLDataParser<ContactType, org.
     protected void parseSimpleElements()
     {
         targetCOBie.setContactCompanyName(sourceCOBie.getCompany());
+        targetCOBie.setContactCategory(sourceCOBie.getCategory());
         targetCOBie.setContactCountryName(sourceCOBie.getCountry());
         targetCOBie.setContactDepartmentName(sourceCOBie.getDepartment());
         targetCOBie.setContactEmail(sourceCOBie.getEmail());

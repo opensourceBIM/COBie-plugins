@@ -1,6 +1,0 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:pmc="http://operation250.crud.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:pmcd="http://operation250.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pm="http://operation250.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://operation250.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
-	<xs:import namespace="http://bimsie.bimserver.org" schemaLocation="common/BIMsieWrapper.xsd"/>
-	<xs:import namespace="http://operation250.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/250_04_SystemOperation_CRUD_defs.xsd"/>
-	<xs:element name="SystemOperation_250_Request" type="pmcd:SystemOperationClientRequestType"/>
-	<xs:element name="SystemOperation_250_ServerResponse" type="pmcd:SystemOperationServerResponseType"/>
-</xs:schema>

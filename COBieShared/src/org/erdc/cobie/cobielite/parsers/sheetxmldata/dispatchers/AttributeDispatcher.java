@@ -1,7 +1,9 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.CobieBaseType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.CobieBaseType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.AttributeParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
@@ -9,7 +11,7 @@ import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.AttributeType;
 
 public class AttributeDispatcher extends
-        TypicalParserDispatcher<AttributeType, AttributeCollectionType, org.erdc.cobie.cobielite.AttributeType, CobieBaseType>
+        TypicalParserDispatcher<AttributeType, AttributeCollectionType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeType, CobieBaseType>
 {
 
     private AttributeCollectionType attributeCollection;
@@ -22,17 +24,17 @@ public class AttributeDispatcher extends
     }
 
     @Override
-    protected COBieLiteSheetXMLDataParser<AttributeType, org.erdc.cobie.cobielite.AttributeType> createNewParser(
+    protected COBieLiteSheetXMLDataParser<AttributeType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeType> createNewParser(
             AttributeType sourceElement,
-            org.erdc.cobie.cobielite.AttributeType newTargetElement)
+            org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeType newTargetElement)
     {
         return new AttributeParser(sourceElement, newTargetElement, indexedCOBie);
     }
 
     @Override
-    protected org.erdc.cobie.cobielite.AttributeType createNewTargetElement()
+    protected org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeType createNewTargetElement()
     {
-        return targetCollection.addNewAttribute();
+        return (org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeType)targetCollection.addNewAttribute().substitute(AttributeDocument.type.getAttributeTypeAttributeName(), org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeType.type);
     }
 
     @Override

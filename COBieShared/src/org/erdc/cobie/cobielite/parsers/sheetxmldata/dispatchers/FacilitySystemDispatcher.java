@@ -1,8 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.FacilityType;
-import org.erdc.cobie.cobielite.SystemCollectionType;
-import org.erdc.cobie.cobielite.SystemType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityType;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.SystemDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.SystemType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SystemCollectionType;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.SystemParser;
 import org.erdc.cobie.shared.COBieUtility;
@@ -30,7 +32,7 @@ public class FacilitySystemDispatcher extends
     @Override
     protected SystemType createNewTargetElement()
     {
-        return targetCollection.addNewSystem();
+        return (SystemType)targetCollection.addNewSystem().substitute(SystemDocument.type.getDocumentElementName(), SystemType.type);
     }
 
     @Override

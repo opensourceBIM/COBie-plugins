@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ProductInstallationReport_210_ServerResponse xmlns:attc="http://attribute.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:att="http://attribute.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:conc="http://contact.crud.lcie.cobielite.cobie.erdc.org" xmlns:concd="http://contact.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:con="http://contact.lcie.cobielite.cobie.erdc.org" xmlns:cobie="http://core.cobielite.cobie.erdc.org" xmlns:crud="http://crud.lcie.cobielite.cobie.erdc.org" xmlns:docc="http://document.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:doc="http://document.lcie.cobielite.cobie.erdc.org" xmlns:lcie="http://lcie.cobielite.cobie.erdc.org" xmlns:picd="http://productinstallation210.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pi="http://productinstallation210.defs.lcie.cobielite.cobie.erdc.org" xsi:schemaLocation="http://productinstallation210.crud.lcie.cobielite.cobie.erdc.org ../../210_01_ProductInstallationReport_CRUD.xsd" xmlns="http://productinstallation210.crud.lcie.cobielite.cobie.erdc.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<crud:UpdateResult>
-		<pi:InformationExchangeID>210.01_ProductInstallationReport</pi:InformationExchangeID>
-		<bimsie:RevisionID>5</bimsie:RevisionID>
-		<crud:UpdateSuccess>true</crud:UpdateSuccess>
-		<crud:UpdateResultMessage>Asset AC Unit Type 1 AC-1, AC Unit Type 1, First Floor, 1B21 Updated</crud:UpdateResultMessage>
-	</crud:UpdateResult>
-</ProductInstallationReport_210_ServerResponse>

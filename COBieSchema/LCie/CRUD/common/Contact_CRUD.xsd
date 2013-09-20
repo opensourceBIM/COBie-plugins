@@ -1,6 +1,0 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:conc="http://contact.crud.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:concd="http://contact.defs.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://contact.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
-	<xs:import namespace="http://bimsie.bimserver.org" schemaLocation="BIMsieWrapper.xsd"/>
-	<xs:import namespace="http://contact.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="Contact_CRUD_defs.xsd"/>
-	<xs:element name="Contact_Request" type="concd:ContactClientRequestType"/>
-	<xs:element name="Contact_ServerResponse" type="concd:ContactServerResponseType"/>
-</xs:schema>

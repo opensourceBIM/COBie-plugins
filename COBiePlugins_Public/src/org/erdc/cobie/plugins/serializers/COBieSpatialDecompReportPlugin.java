@@ -107,7 +107,7 @@ private HashMap<String,File> configFiles;
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new org.erdc.cobie.plugins.serializers.COBieHTMLReportSerializer(this.configFiles.get(SPACE_REPORT_XSLT_PATH).getAbsolutePath(),
+		return new org.erdc.cobie.serializers.COBieHTMLReportSerializer(this.configFiles.get(SPACE_REPORT_XSLT_PATH).getAbsolutePath(),
 				this.configFiles.get(SPACE_REPORT_CSS_PATH).getAbsolutePath());
 	}
 }

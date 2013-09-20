@@ -1,8 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.JobType;
-import org.erdc.cobie.cobielite.ResourceCollectionType;
-import org.erdc.cobie.cobielite.ResourceType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.JobType;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ResourceDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ResourceType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ResourceCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.ResourceParser;
@@ -28,7 +30,7 @@ public class JobResourceDispatcher extends TypicalParserDispatcher<org.erdc.cobi
     @Override
     protected ResourceType createNewTargetElement()
     {
-        return targetCollection.addNewResource();
+        return (ResourceType)targetCollection.addNewResource().substitute(ResourceDocument.type.getDocumentElementName(), ResourceType.type);
     }
 
     @Override

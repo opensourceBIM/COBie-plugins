@@ -27,6 +27,7 @@ import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.objectidms.ObjectIDMException;
 import org.bimserver.plugins.serializers.Serializer;
 import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
+import org.erdc.cobie.serializers.COBieSerializer;
 import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
 
 public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin

@@ -10,15 +10,20 @@ import nl.fountain.xelem.excel.Worksheet;
 
 import org.erdc.cobie.shared.COBieTokenUtility;
 import org.erdc.cobie.shared.COBieTokenUtility.ZoneColumnNameLiterals;
-import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.ZoneType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ZoneParser extends Parser
 {
+
+    public ZoneParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
 
     public ZoneParser(COBIEType cobie, Workbook workbook)
     {
@@ -122,16 +127,16 @@ public class ZoneParser extends Parser
                 {
                     zoneDescription = rowData.getCellAt(idxDescription).getData$();
                 }
-                zoneCreatedOn = COBieUtility.calendarFromString(zoneCreatedOnString);
-                tmpZone.setName(COBieUtility.getCOBieString(zoneName));
-                tmpZone.setCreatedBy(COBieUtility.getCOBieString(zoneCreatedBy));
+                zoneCreatedOn = getCobieStringHandler().calendarFromString(zoneCreatedOnString);
+                tmpZone.setName(cobieStringHandler.getCOBieString(zoneName));
+                tmpZone.setCreatedBy(cobieStringHandler.getCOBieString(zoneCreatedBy));
                 tmpZone.setCreatedOn(zoneCreatedOn);
-                tmpZone.setCategory(COBieUtility.getCOBieString(zoneCategory));
-                tmpZone.setSpaceNames(COBieUtility.getCOBieString(zoneSpaceNames));
-                tmpZone.setExtSystem(COBieUtility.getCOBieString(zoneExtSystem));
-                tmpZone.setExtObject(COBieUtility.getCOBieString(zoneExtObject));
-                tmpZone.setExtIdentifier(COBieUtility.getCOBieString(zoneExtIdentifier));
-                tmpZone.setDescription(COBieUtility.getCOBieString(zoneDescription));
+                tmpZone.setCategory(cobieStringHandler.getCOBieString(zoneCategory));
+                tmpZone.setSpaceNames(cobieStringHandler.getCOBieString(zoneSpaceNames));
+                tmpZone.setExtSystem(cobieStringHandler.getCOBieString(zoneExtSystem));
+                tmpZone.setExtObject(cobieStringHandler.getCOBieString(zoneExtObject));
+                tmpZone.setExtIdentifier(cobieStringHandler.getCOBieString(zoneExtIdentifier));
+                tmpZone.setDescription(cobieStringHandler.getCOBieString(zoneDescription));
             }
         }
     }

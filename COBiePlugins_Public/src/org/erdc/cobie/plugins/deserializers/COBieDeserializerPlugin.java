@@ -26,8 +26,7 @@ import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.deserializers.Deserializer;
 import org.bimserver.plugins.deserializers.DeserializerPlugin;
 import org.bimserver.plugins.schema.SchemaException;
-import org.bimserver.plugins.serializers.SerializerPlugin;
-import org.erdc.cobie.plugins.serializers.COBieCheckSerializerPlugin;
+import org.erdc.cobie.deserializers.COBieDeserializer;
 import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
 import org.erdc.cobie.shared.enums.COBieDeserializerPluginName;
 
@@ -38,7 +37,6 @@ public class COBieDeserializerPlugin implements DeserializerPlugin
 	private boolean initialized = false;
 	private File configurationFile;
 	private File preImportFileDirectory;
-	private COBieCheckSerializerPlugin checkSerializer;
 
 	@Override
 	public boolean canHandleExtension(String extension)
@@ -50,8 +48,7 @@ public class COBieDeserializerPlugin implements DeserializerPlugin
 	public Deserializer createDeserializer(
 			PluginConfiguration pluginConfiguration)
 	{
-		return new COBieDeserializer(configurationFile, preImportFileDirectory,
-				checkSerializer);
+		return new COBieDeserializer(configurationFile, preImportFileDirectory);
 	}
 
 	@Override
@@ -82,15 +79,6 @@ public class COBieDeserializerPlugin implements DeserializerPlugin
 	public void init(PluginManager pluginManager) throws SchemaException,
 			PluginException
 	{
-		checkSerializer = null;
-		for (SerializerPlugin plugin : pluginManager
-				.getAllSerializerPlugins(true))
-		{
-			if (plugin instanceof COBieCheckSerializerPlugin)
-			{
-				checkSerializer = (COBieCheckSerializerPlugin) plugin;
-			}
-		}
 		try
 		{
 			configurationFile = PluginRuntimeFileHelper

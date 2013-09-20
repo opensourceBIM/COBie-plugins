@@ -6,12 +6,12 @@ import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.DocumentType;
 
-public class DocumentParser extends COBieLiteCOBIEBaseTypeParser<DocumentType, org.erdc.cobie.cobielite.DocumentType>
+public class DocumentParser extends COBieLiteCOBIEBaseTypeParser<DocumentType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.DocumentType>
 {
 
     private static final String PATHSEPARATOR = "/";
 
-    public DocumentParser(DocumentType cobieSheetXMLData, org.erdc.cobie.cobielite.DocumentType cobieLiteRowData, IndexedCOBie indexedCOBie)
+    public DocumentParser(DocumentType cobieSheetXMLData, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.DocumentType cobieLiteRowData, IndexedCOBie indexedCOBie)
     {
         super(cobieSheetXMLData, cobieLiteRowData, indexedCOBie);
     }
@@ -40,7 +40,7 @@ public class DocumentParser extends COBieLiteCOBIEBaseTypeParser<DocumentType, o
     @Override
     protected void parseAttributes() throws Exception
     {
-        AttributeDocumentIssueHelper.parseAttributes(targetCOBie.addNewAttributes(), descriptiveData, indexedCOBie);
+        AttributeDocumentIssueHelper.parseAttributes(targetCOBie.addNewDocumentAttributes(), descriptiveData, indexedCOBie);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class DocumentParser extends COBieLiteCOBIEBaseTypeParser<DocumentType, o
     @Override
     protected void parseIssues() throws Exception
     {
-        AttributeDocumentIssueHelper.parseIssues(targetCOBie.addNewIssues(), descriptiveData, indexedCOBie);
+        AttributeDocumentIssueHelper.parseIssues(targetCOBie.addNewDocumentIssues(), descriptiveData, indexedCOBie);
 
     }
 

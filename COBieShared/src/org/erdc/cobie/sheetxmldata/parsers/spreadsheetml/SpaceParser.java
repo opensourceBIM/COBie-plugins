@@ -26,15 +26,20 @@ import nl.fountain.xelem.excel.Worksheet;
 
 import org.erdc.cobie.shared.COBieTokenUtility;
 import org.erdc.cobie.shared.COBieTokenUtility.SpaceColumnNameLiterals;
-import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.SpaceType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SpaceParser extends Parser
 {
+
+    public SpaceParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
 
     public SpaceParser(COBIEType cobie, Workbook workbook)
     {
@@ -172,21 +177,21 @@ public class SpaceParser extends Parser
                 {
                     spaceNetArea = rowData.getCellAt(idxNetArea).getData$();
                 }
-                spaceCreatedOn = COBieUtility.calendarFromString(spaceCreatedOnString);
+                spaceCreatedOn = getCobieStringHandler().calendarFromString(spaceCreatedOnString);
 
-                tmpSpace.setName(COBieUtility.getCOBieString(spaceName));
-                tmpSpace.setCreatedBy(COBieUtility.getCOBieString(spaceCreatedBy));
+                tmpSpace.setName(cobieStringHandler.getCOBieString(spaceName));
+                tmpSpace.setCreatedBy(cobieStringHandler.getCOBieString(spaceCreatedBy));
                 tmpSpace.setCreatedOn(spaceCreatedOn);
-                tmpSpace.setCategory(COBieUtility.getCOBieString(spaceCategory));
-                tmpSpace.setFloorName(COBieUtility.getCOBieString(spaceFloorName));
-                tmpSpace.setDescription(COBieUtility.getCOBieString(spaceDescription));
-                tmpSpace.setExtSystem(COBieUtility.getCOBieString(spaceExtSystem));
-                tmpSpace.setExtObject(COBieUtility.getCOBieString(spaceExtObject));
-                tmpSpace.setExtIdentifier(COBieUtility.getCOBieString(spaceExtIdentifier));
-                tmpSpace.setRoomTag(COBieUtility.getCOBieString(spaceRoomTag));
-                tmpSpace.setUsableHeight(COBieUtility.getCOBieString(spaceUsableHeight));
-                tmpSpace.setGrossArea(COBieUtility.getCOBieString(spaceGrossArea));
-                tmpSpace.setNetArea(COBieUtility.getCOBieString(spaceNetArea));
+                tmpSpace.setCategory(cobieStringHandler.getCOBieString(spaceCategory));
+                tmpSpace.setFloorName(cobieStringHandler.getCOBieString(spaceFloorName));
+                tmpSpace.setDescription(cobieStringHandler.getCOBieString(spaceDescription));
+                tmpSpace.setExtSystem(cobieStringHandler.getCOBieString(spaceExtSystem));
+                tmpSpace.setExtObject(cobieStringHandler.getCOBieString(spaceExtObject));
+                tmpSpace.setExtIdentifier(cobieStringHandler.getCOBieString(spaceExtIdentifier));
+                tmpSpace.setRoomTag(cobieStringHandler.getCOBieString(spaceRoomTag));
+                tmpSpace.setUsableHeight(cobieStringHandler.getCOBieString(spaceUsableHeight));
+                tmpSpace.setGrossArea(cobieStringHandler.getCOBieString(spaceGrossArea));
+                tmpSpace.setNetArea(cobieStringHandler.getCOBieString(spaceNetArea));
 
             }
         }

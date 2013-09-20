@@ -10,15 +10,20 @@ import nl.fountain.xelem.excel.Row;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
-import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.ResourceType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ResourceParser extends Parser
 {
+    public ResourceParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
+
     public static enum ResourceColumnNameLiterals
     {
         Name, CreatedBy, CreatedOn, Category, ExtSystem, ExtObject, ExtIdentifier, Description
@@ -121,15 +126,15 @@ public class ResourceParser extends Parser
                 {
                     resourceDescription = rowData.getCellAt(idxDescription).getData$();
                 }
-                resourceCreatedOn = COBieUtility.calendarFromString(resourceCreatedOnString);
-                tmpResource.setName(COBieUtility.getCOBieString(resourceName));
-                tmpResource.setCreatedBy(COBieUtility.getCOBieString(resourceCreatedBy));
+                resourceCreatedOn = getCobieStringHandler().calendarFromString(resourceCreatedOnString);
+                tmpResource.setName(cobieStringHandler.getCOBieString(resourceName));
+                tmpResource.setCreatedBy(cobieStringHandler.getCOBieString(resourceCreatedBy));
                 tmpResource.setCreatedOn(resourceCreatedOn);
-                tmpResource.setCategory(COBieUtility.getCOBieString(resourceCategory));
-                tmpResource.setExtSystem(COBieUtility.getCOBieString(resourceExtSystem));
-                tmpResource.setExtObject(COBieUtility.getCOBieString(resourceExtObject));
-                tmpResource.setExtIdentifier(COBieUtility.getCOBieString(resourceExtIdentifier));
-                tmpResource.setDescription(COBieUtility.getCOBieString(resourceDescription));
+                tmpResource.setCategory(cobieStringHandler.getCOBieString(resourceCategory));
+                tmpResource.setExtSystem(cobieStringHandler.getCOBieString(resourceExtSystem));
+                tmpResource.setExtObject(cobieStringHandler.getCOBieString(resourceExtObject));
+                tmpResource.setExtIdentifier(cobieStringHandler.getCOBieString(resourceExtIdentifier));
+                tmpResource.setDescription(cobieStringHandler.getCOBieString(resourceDescription));
             }
         }
     }

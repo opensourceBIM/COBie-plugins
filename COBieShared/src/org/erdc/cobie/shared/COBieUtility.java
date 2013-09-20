@@ -16,6 +16,8 @@ package org.erdc.cobie.shared;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
+import java.io.File;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.security.MessageDigest;
@@ -34,8 +36,10 @@ import java.util.Map;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
+import org.apache.commons.io.input.CloseShieldInputStream;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.xmlbeans.SchemaStringEnumEntry;
+import org.apache.xmlbeans.SchemaType;
 import org.apache.xmlbeans.XmlCalendar;
 import org.apache.xmlbeans.XmlDateTime;
 import org.apache.xmlbeans.XmlObject;
@@ -72,11 +76,15 @@ import org.bimserver.models.ifc2x3tc1.IfcUnit;
 import org.bimserver.models.ifc2x3tc1.IfcUnitAssignment;
 import org.bimserver.models.ifc2x3tc1.IfcUnitEnum;
 import org.bimserver.models.ifc2x3tc1.impl.IfcTelecomAddressImpl;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityDocument;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.erdc.cobie.shared.enums.DeserializableFileType;
+import org.erdc.cobie.sheetxmldata.COBIEDocument;
+import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.COBieSpreadSheet;
 import org.erdc.cobie.utils.stringwriters.IfcPropertyToCOBieString;
 import org.erdc.cobie.utils.stringwriters.IfcRelationshipsToCOBie;
 import org.erdc.cobie.utils.stringwriters.IfcSingleValueToCOBieString;
@@ -88,8 +96,6 @@ import com.google.common.base.CharMatcher;
 
 public class COBieUtility
 {
-    private static final String SPACE = " ";
-    private static final List<String> DATE_FORMATS = new ArrayList<String>(Arrays.asList("yyyy-MM-dd", "MM-dd-yyyy", "MMM. d, yyyy", "MMMM d, yyyy"));
     protected static enum ClassificationLiterals
     {
         Category, Assembly_Code, Assembly_Description, OmniClass_Number, OmniClass_Title, Uniclass_Code, Uniclass_Description, Category_Code, Category_Description, Classification_Code, Classification_Description
@@ -110,6 +116,10 @@ public class COBieUtility
         Instruction, PickLists
     }
 
+    private static final String SPACE = " ";
+
+    private static final List<String> DATE_FORMATS = new ArrayList<String>(Arrays.asList("yyyy-MM-dd", "MM-dd-yyyy", "MMM. d, yyyy", "MMMM d, yyyy"));
+
     private static final String CATEGORYCODE_CATEGORYDESCRIPTION_SEPARATOR = ": ";
     private static final String WHITESPACE = SPACE;
     private static final String ENUM_SPACE_CHAR = "_";
@@ -120,16 +130,44 @@ public class COBieUtility
     public static final String BIMSERVER_NUMERIC_NULL = "null";
     private static final Logger LOGGER = LoggerFactory.getLogger(COBieUtility.class);
     private static final String DefaultEmailAddress = "anonymous@anonymous.com";
-    protected static final String ImplementationClassSuffix = "impl";;
-    protected static final String COBieDateFormatString = "%1$tY-%1$tm-%1$tdT%1$tH:%1$tM:%1$tS";;
+    protected static final String ImplementationClassSuffix = "impl";
+    protected static final String COBieDateFormatString = "%1$tY-%1$tm-%1$tdT%1$tH:%1$tM:%1$tS";
     public static final Ifc2x3tc1Factory ifcFactory = Ifc2x3tc1Factory.eINSTANCE;
     public static HashMap<CobieSheetName, String> cobieSheetNameToPlural = createPluralCobieSheetMap();
 
-    public static HashMap<String, CobieSheetName> CobiePluralNameToCobieSheetName = createSheetNameToPluralMap();;
+    public static HashMap<String, CobieSheetName> CobiePluralNameToCobieSheetName = createSheetNameToPluralMap();
     public static final String COBieNA = "n/a";
     protected static final String COBieDelim = ",";
     protected static final String COBieUnkown = "unkown";
     private static final String SINGLE_QUOTE_REGEX = "\\b'\\b|\\b’\\b";
+
+    private static String addSpaceAfterClassificationCodeDelim(String classification)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (classification.contains(COBieUtility.CLASSIFICATION_REFERENCE_NAME_SEPARATOR))
+        {
+            char[] classificationSymbols = classification.toCharArray();
+            for (int i = 0; i < classificationSymbols.length; i++)
+            {
+                char classificationSymbol = classificationSymbols[i];
+                stringBuilder.append(classificationSymbol);
+                if ((i + 1) < classificationSymbols.length)
+                {
+                    char nextSymbol = classificationSymbols[i + 1];
+                    if ((CLASSIFICATION_REFERENCE_NAME_SEPARATOR.toCharArray()[0] == classificationSymbol) && (nextSymbol != ' '))
+                    {
+                        stringBuilder.append(SPACE);
+                    }
+                }
+
+            }
+
+        } else
+        {
+            stringBuilder = new StringBuilder(classification);
+        }
+        return stringBuilder.toString();
+    }
 
     public static ArrayList<String> arrayListFromDelimString(String delimString)
     {
@@ -151,6 +189,12 @@ public class COBieUtility
         return splitStrings;
     }
 
+    /**
+     * 
+     *
+     * @deprecated use COBieStringHandler.calendarFromString instead
+     */
+    @Deprecated
     public static Calendar calendarFromString(String dateTimeString)
     {
         String tmpDateTimeString = COBieUtility.getCOBieString(dateTimeString);
@@ -162,30 +206,20 @@ public class COBieUtility
         } catch (Exception e)
         {
             cal = tryParsingCalendar(dateTimeString);
-            if(cal==null)
+            if (cal == null)
+            {
                 cal = currentTimeAsCalendar();
+            }
         }
         return cal;
     }
 
-    private static Calendar tryParsingCalendar(String dateTimeString)
-    {
-        Calendar calendar = null;
-        dateFormatLoop:
-        for(String formatString : DATE_FORMATS)
-        {
-            SimpleDateFormat format = new SimpleDateFormat(formatString);
-            try
-            {
-                calendar = new XmlCalendar(format.parse(dateTimeString));
-                break dateFormatLoop;
-            } catch (ParseException e)
-            {
-            }
-        }
-        return calendar;
-    }
-
+    /**
+     * 
+     *
+     * @deprecated use COBieStringHandler.calendarFromString instead
+     */
+    @Deprecated
     public static Calendar calendarFromStringWithException(String dateTimeString) throws Exception
     {
         String tmpDateTimeString = COBieUtility.getCOBieString(dateTimeString);
@@ -577,6 +611,11 @@ public class COBieUtility
         return Calendar.getInstance();
     }
 
+    public static String DateStringFromMonthDayYear(int month, int day, int year)
+    {
+        return "";
+    }
+
     public static String delimittedStringFromArrayList(ArrayList<String> stringList, boolean allowDuplicates, boolean allowNA)
     {
 
@@ -635,6 +674,50 @@ public class COBieUtility
             strChildren = strChildren.substring(0, strChildren.length() - delimSpaced.length());
         }
         return strChildren;
+    }
+
+    public static DeserializableFileType determineFileType(File incomingFile)
+    {
+        DeserializableFileType incomingFileType = DeserializableFileType.COBIE;
+
+        if (incomingFile.getName().toLowerCase().endsWith("ifc"))
+        {
+            incomingFileType = DeserializableFileType.IFC;
+        } else if (COBieSpreadSheet.isWorkbook(incomingFile))
+        {
+            incomingFileType = DeserializableFileType.COBIE;
+        } else if (isValidSchemaDocument(incomingFile, COBIEDocument.type))
+        {
+            incomingFileType = DeserializableFileType.COBIESHEETXMLDATA;
+        } else if (isValidSchemaDocument(incomingFile, FacilityDocument.type))
+        {
+            incomingFileType = DeserializableFileType.COBIELITE;
+        } else
+        {
+            incomingFileType = DeserializableFileType.UNKNOWN;
+        }
+        return incomingFileType;
+    }
+
+    public static DeserializableFileType determineFileType(InputStream inputStream)
+    {
+        CloseShieldInputStream inputStreamCopy = new CloseShieldInputStream(inputStream);
+        DeserializableFileType incomingFileType = DeserializableFileType.COBIE;
+        if (COBieSpreadSheet.isWorkbook(inputStreamCopy))
+        {
+            incomingFileType = DeserializableFileType.COBIE;
+        } else if (isValidSchemaDocument(inputStreamCopy, COBIEDocument.type))
+        {
+            incomingFileType = DeserializableFileType.COBIESHEETXMLDATA;
+        } else if (isValidSchemaDocument(inputStreamCopy, FacilityDocument.type))
+        {
+            incomingFileType = DeserializableFileType.COBIELITE;
+        } else
+        {
+            incomingFileType = DeserializableFileType.UNKNOWN;
+        }
+        inputStreamCopy.close();
+        return incomingFileType;
     }
 
     static public Map<String, String> elementMapFromXMLObject(XmlObject xml)
@@ -749,6 +832,11 @@ public class COBieUtility
         return returnValue;
     }
 
+    public static String extIdFromRoot(IfcRoot root)
+    {
+        return getCOBieString(root.getGlobalId());
+    }
+
     public static String extObjectFromObjectDef(IfcObjectDefinition obj)
     {
         String className = obj.getClass().getSimpleName();
@@ -769,11 +857,6 @@ public class COBieUtility
         return className;
     }
 
-    public static String extIdFromRoot(IfcRoot root)
-    {
-        return getCOBieString(root.getGlobalId());
-    }
-    
     public static IfcOwnerHistory firstOwnerHistoryFromModel(IfcModelInterface model)
     {
         IfcOwnerHistory oh = null;
@@ -854,15 +937,17 @@ public class COBieUtility
         return strReturn;
     }
 
+    public static Calendar getCurrentTimeCalendar()
+    {
+        Calendar cal = Calendar.getInstance();
+        Date StartTime = cal.getTime();
+        Calendar calStart = new org.apache.xmlbeans.XmlCalendar(StartTime);
+        return calStart;
+    }
+
     public static Calendar getDefaultCalendar()
     {
         return currentTimeAsCalendar();
-    }
-
-    public static String getEmailFromOwnerHistory(IfcOwnerHistory oh)
-    {
-        IfcPersonAndOrganization personOrg = oh.getOwningUser();
-        return getCOBieString(getEmailFromPersonAndOrganization(personOrg));
     }
 
     public static String getEmailFromOrganization(IfcOrganization org)
@@ -873,6 +958,13 @@ public class COBieUtility
         strEmail = organizationEmail;
         return getCOBieString(strEmail);
     }
+
+    public static String getEmailFromOwnerHistory(IfcOwnerHistory oh)
+    {
+        IfcPersonAndOrganization personOrg = oh.getOwningUser();
+        return getCOBieString(getEmailFromPersonAndOrganization(personOrg));
+    }
+
     public static String getEmailFromPersonAndOrganization(IfcPersonAndOrganization personOrg)
     {
         String strEmail = "";
@@ -960,7 +1052,7 @@ public class COBieUtility
 
         } catch (InvocationTargetException ex)
         {
- 
+
         } catch (IllegalArgumentException e)
         {
             e.printStackTrace();
@@ -1064,31 +1156,6 @@ public class COBieUtility
         }
         classification = addSpaceAfterClassificationCodeDelim(classification);
         return COBieUtility.getCOBieString(classification);
-    }
-
-    private static String addSpaceAfterClassificationCodeDelim(String classification)
-    {
-        StringBuilder stringBuilder = new StringBuilder();
-        if(classification.contains(COBieUtility.CLASSIFICATION_REFERENCE_NAME_SEPARATOR))
-        {
-            char[] classificationSymbols = classification.toCharArray();
-            for(int i =0; i < classificationSymbols.length; i++)
-            {
-                char classificationSymbol = classificationSymbols[i];         
-                stringBuilder.append(classificationSymbol);
-                if (i+1 < classificationSymbols.length)
-                {
-                    char nextSymbol = classificationSymbols[i+1];
-                    if(CLASSIFICATION_REFERENCE_NAME_SEPARATOR.toCharArray()[0] == classificationSymbol && nextSymbol!=' ')
-                        stringBuilder.append(SPACE);
-                }
-  
-            }
-                
-        }
-        else
-            stringBuilder = new StringBuilder(classification);
-        return stringBuilder.toString();
     }
 
     public static IfcClassificationReference getObjectClassificationReference(IfcObjectDefinition ifcObj)
@@ -1219,6 +1286,19 @@ public class COBieUtility
         return xmlEncodedString;
     }
 
+    public static String hashFromString(String hash) throws NoSuchAlgorithmException
+    {
+        MessageDigest msgDigest = MessageDigest.getInstance("MD5");
+        byte[] msgContents = hash.getBytes();
+        byte[] hashedContents = msgDigest.digest(msgContents);
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < hashedContents.length; i++)
+        {
+            sb.append(Integer.toString((hashedContents[i] & 0xff) + 0x100, 16).substring(1));
+        }
+        hash = sb.toString();
+        return hash;
+    }
 
     public static String identifierFromObjectDefinition(IfcObjectDefinition objDef)
     {
@@ -1294,6 +1374,36 @@ public class COBieUtility
         return ((str == null) || str.isEmpty());
     }
 
+    public static boolean isValidSchemaDocument(File xmlFile, SchemaType type)
+    {
+        boolean valid = false;
+        try
+        {
+            org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse(xmlFile, type, null);
+            valid = true;
+        } catch (Exception ex)
+        {
+
+        }
+        return valid;
+    }
+
+    public static boolean isValidSchemaDocument(InputStream inputStream, SchemaType type)
+    {
+        boolean valid = false;
+        try
+        {
+            CloseShieldInputStream inputStreamCopy = new CloseShieldInputStream(inputStream);
+            org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse(inputStreamCopy, type, null);
+            valid = true;
+            inputStreamCopy.close();
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return valid;
+    }
+
     public static boolean isValueSetAsStringNA(IfcReal durationReal)
     {
         return (durationReal.getWrappedValueAsString() != null) && durationReal.getWrappedValueAsString().equals(COBieNA);
@@ -1337,7 +1447,7 @@ public class COBieUtility
         return attributeVals;
     }
 
-    private static String replaceSpecialCharacters(String strReturn)
+    public static String replaceSpecialCharacters(String strReturn)
     {
         strReturn = CharMatcher.ASCII.retainFrom(strReturn);
         strReturn = strReturn.replaceAll(SINGLE_QUOTE_REGEX, SINGLE_QUOTE_REPLACEMENT);
@@ -1494,6 +1604,23 @@ public class COBieUtility
         return simpleClassName;
     }
 
+    private static Calendar tryParsingCalendar(String dateTimeString)
+    {
+        Calendar calendar = null;
+        dateFormatLoop: for (String formatString : DATE_FORMATS)
+        {
+            SimpleDateFormat format = new SimpleDateFormat(formatString);
+            try
+            {
+                calendar = new XmlCalendar(format.parse(dateTimeString));
+                break dateFormatLoop;
+            } catch (ParseException e)
+            {
+            }
+        }
+        return calendar;
+    }
+
     public static String valueOfAttribute(EObject root, String attributeName)
     {
         // from Leon/Reuben
@@ -1539,33 +1666,5 @@ public class COBieUtility
 
         return attributeVals;
     }
-
-    public static String DateStringFromMonthDayYear(int month, int day, int year)
-    {
-        return "";
-    }
-
-    public static String hashFromString(String hash) throws NoSuchAlgorithmException
-    {
-        MessageDigest msgDigest = MessageDigest.getInstance("MD5");
-        byte[] msgContents = hash.getBytes();
-        byte[] hashedContents = msgDigest.digest(msgContents);
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < hashedContents.length; i++)
-        {
-            sb.append(Integer.toString((hashedContents[i] & 0xff) + 0x100, 16).substring(1));
-        }
-        hash = sb.toString();
-        return hash;
-    }
-
-    public static Calendar getCurrentTimeCalendar()
-    {
-        Calendar cal = Calendar.getInstance();
-        Date StartTime = cal.getTime();
-        Calendar calStart = new org.apache.xmlbeans.XmlCalendar(StartTime);
-        return calStart;
-    }
-    
 
 }

@@ -29,9 +29,9 @@ import org.erdc.cobie.shared.COBieTokenUtility.ContactColumnNameLiterals;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.ContactType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 public class ContactParser extends Parser
 {
 
@@ -39,6 +39,12 @@ public class ContactParser extends Parser
     {
         super(cobie, workbook);
     }
+    
+    public ContactParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
+    
 
     @Override
     protected List<String> getColumnNames()
@@ -213,27 +219,28 @@ public class ContactParser extends Parser
                     contactCountry = rowData.getCellAt(idxCountry).getData$();
                 }
 
-                contactCreatedOn = COBieUtility.calendarFromString(contactCreatedOnString);
-
-                tmpContact.setEmail(COBieUtility.getCOBieString(contactEmail));
-                tmpContact.setCreatedBy(COBieUtility.getCOBieString(contactCreatedBy));
+                contactCreatedOn = getCobieStringHandler().calendarFromString(contactCreatedOnString);
+                
+                tmpContact.setEmail(cobieStringHandler.getCOBieString(contactEmail));
+                tmpContact.setCreatedBy(cobieStringHandler.getCOBieString(contactCreatedBy));                
                 tmpContact.setCreatedOn(contactCreatedOn);
-                tmpContact.setCategory(COBieUtility.getCOBieString(contactCategory));
-                tmpContact.setCompany(COBieUtility.getCOBieString(contactCompany));
-                tmpContact.setPhone(COBieUtility.getCOBieString(contactPhone));
-                tmpContact.setExternalSystem(COBieUtility.getCOBieString(contactExternalSystem));
-                tmpContact.setExternalObject(COBieUtility.getCOBieString(contactExternalObject));
-                tmpContact.setExternalIdentifier(COBieUtility.getCOBieString(contactExternalIdentifier));
-                tmpContact.setDepartment(COBieUtility.getCOBieString(contactDepartment));
-                tmpContact.setOrganizationCode(COBieUtility.getCOBieString(contactOrganizationCode));
-                tmpContact.setGivenName(COBieUtility.getCOBieString(contactGivenName));
-                tmpContact.setFamilyName(COBieUtility.getCOBieString(contactFamilyName));
-                tmpContact.setStreet(COBieUtility.getCOBieString(contactStreet));
-                tmpContact.setPostalBox(COBieUtility.getCOBieString(contactPostalBox));
-                tmpContact.setTown(COBieUtility.getCOBieString(contactTown));
-                tmpContact.setStateRegion(COBieUtility.getCOBieString(contactStateRegion));
-                tmpContact.setPostalCode(COBieUtility.getCOBieString(contactPostalCode));
-                tmpContact.setCountry(COBieUtility.getCOBieString(contactCountry));
+               
+                tmpContact.setCategory(cobieStringHandler.getCOBieString(contactCategory));
+                tmpContact.setCompany(cobieStringHandler.getCOBieString(contactCompany));
+                tmpContact.setPhone(cobieStringHandler.getCOBieString(contactPhone));
+                tmpContact.setExternalSystem(cobieStringHandler.getCOBieString(contactExternalSystem));
+                tmpContact.setExternalObject(cobieStringHandler.getCOBieString(contactExternalObject));
+                tmpContact.setExternalIdentifier(cobieStringHandler.getCOBieString(contactExternalIdentifier));
+                tmpContact.setDepartment(cobieStringHandler.getCOBieString(contactDepartment));
+                tmpContact.setOrganizationCode(cobieStringHandler.getCOBieString(contactOrganizationCode));
+                tmpContact.setGivenName(cobieStringHandler.getCOBieString(contactGivenName));
+                tmpContact.setFamilyName(cobieStringHandler.getCOBieString(contactFamilyName));
+                tmpContact.setStreet(cobieStringHandler.getCOBieString(contactStreet));
+                tmpContact.setPostalBox(cobieStringHandler.getCOBieString(contactPostalBox));
+                tmpContact.setTown(cobieStringHandler.getCOBieString(contactTown));
+                tmpContact.setStateRegion(cobieStringHandler.getCOBieString(contactStateRegion));
+                tmpContact.setPostalCode(cobieStringHandler.getCOBieString(contactPostalCode));
+                tmpContact.setCountry(cobieStringHandler.getCOBieString(contactCountry));
             }
         }
     }

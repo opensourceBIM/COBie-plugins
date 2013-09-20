@@ -1,15 +1,16 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.ZoneType;
 
-public class ZoneParser extends TypicalParser<ZoneType, org.erdc.cobie.cobielite.ZoneType>
+public class ZoneParser extends TypicalParser<ZoneType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ZoneType>
 {
 
-    public ZoneParser(ZoneType cobieSheetXMLData, org.erdc.cobie.cobielite.ZoneType cobieLiteRowData, IndexedCOBie indexedCOBie)
+    public ZoneParser(ZoneType cobieSheetXMLData, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ZoneType cobieLiteRowData, IndexedCOBie indexedCOBie)
     {
         super(cobieSheetXMLData, cobieLiteRowData, indexedCOBie);
     }
@@ -17,19 +18,19 @@ public class ZoneParser extends TypicalParser<ZoneType, org.erdc.cobie.cobielite
     @Override
     public AttributeCollectionType getNewAttributes()
     {
-        return targetCOBie.addNewAttributes();
+        return targetCOBie.addNewZoneAttributes();
     }
 
     @Override
     public DocumentCollectionType getNewDocuments()
     {
-        return targetCOBie.addNewDocuments();
+        return targetCOBie.addNewZoneDocuments();
     }
 
     @Override
     public IssueCollectionType getNewIssues()
     {
-        return targetCOBie.addNewIssues();
+        return targetCOBie.addNewZoneIssues();
     }
 
     @Override

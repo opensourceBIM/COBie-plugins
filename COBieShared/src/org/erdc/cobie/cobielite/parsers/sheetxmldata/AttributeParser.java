@@ -1,26 +1,25 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 
-import org.erdc.cobie.cobielite.AllowedValueCollectionType;
-import org.erdc.cobie.cobielite.AttributeDecimalValueType;
-import org.erdc.cobie.cobielite.AttributeIntegerValueType;
-import org.erdc.cobie.cobielite.AttributeStringValueType;
-import org.erdc.cobie.cobielite.AttributeValueType;
-import org.erdc.cobie.cobielite.BooleanValueType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AllowedValueCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeDecimalValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeIntegerValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeStringValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.BooleanValueType;
 import org.erdc.cobie.cobielite.ValueHelper;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AttributeDocumentIssueHelper;
-import org.erdc.cobie.cobielite.parsers.sheetxmldata.exceptions.NonExistingDescriptiveElementException;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.AttributeType;
 
-public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType, org.erdc.cobie.cobielite.AttributeType>
+public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeType>
 {
 
-    public AttributeParser(AttributeType cobieSheetXMLData, org.erdc.cobie.cobielite.AttributeType cobieLiteRowData, IndexedCOBie indexedCOBie)
+    public AttributeParser(AttributeType cobieSheetXMLData, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeType cobieLiteRowData, IndexedCOBie indexedCOBie)
     {
         super(cobieSheetXMLData, cobieLiteRowData, indexedCOBie);
     }
@@ -128,8 +127,8 @@ public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType,
                     maxValue = value;
                 }
             }
-            decimalValue.setMinValueDecimal(BigDecimal.valueOf(minValue));
-            decimalValue.setMaxValueDecimal(BigDecimal.valueOf(maxValue));
+            decimalValue.setMinValueDecimal(Double.valueOf(minValue));
+            decimalValue.setMaxValueDecimal(Double.valueOf(maxValue));
         }
 
     }
@@ -219,7 +218,7 @@ public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType,
     @Override
     protected void parseAttributes() throws Exception
     {
-        throw new NonExistingDescriptiveElementException();
+        //throw new NonExistingDescriptiveElementException();
     }
 
     @Override
@@ -233,15 +232,14 @@ public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType,
     @Override
     protected void parseDocuments() throws Exception
     {
-        throw new NonExistingDescriptiveElementException();
+      //  throw new NonExistingDescriptiveElementException();
 
     }
 
     @Override
     protected void parseIssues() throws Exception
     {
-        AttributeDocumentIssueHelper.parseIssues(targetCOBie.addNewIssues(), descriptiveData, indexedCOBie);
-
+        AttributeDocumentIssueHelper.parseIssues(targetCOBie.addNewAttributeIssues(), descriptiveData, indexedCOBie);
     }
 
     @Override
@@ -250,11 +248,25 @@ public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType,
         targetCOBie.setAttributeCategory(sourceCOBie.getCategory());
         targetCOBie.setAttributeDescription(sourceCOBie.getDescription());
         targetCOBie.setAttributeName(sourceCOBie.getName());
+        setExtElements();
+    }
+    
+    private void setExtElements()
+    {
+        String extSystem = sourceCOBie.getExtSystem();
+        if(extSystem.equalsIgnoreCase("AEC3_BimServices"))
+        {
+
+            targetCOBie.setPropertySetName(sourceCOBie.getExtIdentifier());
+        }
+        else
+        {
+            targetCOBie.setPropertySetName(sourceCOBie.getExtObject());
+        }
         targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
         targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
         targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
         targetCOBie.setPropertySetExternalIdentifier(COBieUtility.COBieNA);
-        targetCOBie.setPropertySetName(sourceCOBie.getExtObject());
     }
 
 }

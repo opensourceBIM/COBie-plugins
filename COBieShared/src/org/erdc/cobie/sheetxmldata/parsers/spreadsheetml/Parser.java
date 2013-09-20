@@ -7,22 +7,50 @@ import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
 import org.erdc.cobie.sheetxmldata.COBIEType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 
 public abstract class Parser
 {
+
     private static final String ERROR_PREFIX = "Error converting spreadsheetml to cobie...";
     private final COBIEType cobie;
     private final Workbook workbook;
     private Worksheet worksheet;
     private Map<String, Integer> columnDictionary;
+    public COBieStringHandler getCobieStringHandler()
+    {
+        return cobieStringHandler;
+    }
 
-    public Parser(COBIEType cobie, Workbook workbook)
+    public void setCobieStringHandler(COBieStringHandler cobieStringHandler)
+    {
+        this.cobieStringHandler = cobieStringHandler;
+    }
+
+    public void setWorksheet(Worksheet worksheet)
+    {
+        this.worksheet = worksheet;
+    }
+
+    public void setColumnDictionary(Map<String, Integer> columnDictionary)
+    {
+        this.columnDictionary = columnDictionary;
+    }
+
+    protected COBieStringHandler cobieStringHandler;
+    
+    public Parser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringHandler)
     {
         this.cobie = cobie;
         this.workbook = workbook;
-
+        this.cobieStringHandler = cobieStringHandler;
         init();
+    }
+    
+    public Parser(COBIEType cobie, Workbook workbook)
+    {
+        this(cobie, workbook, new COBieStringHandler());
     }
 
     private void init()
@@ -82,5 +110,5 @@ public abstract class Parser
     }
 
     protected abstract void write();
-
+    
 }

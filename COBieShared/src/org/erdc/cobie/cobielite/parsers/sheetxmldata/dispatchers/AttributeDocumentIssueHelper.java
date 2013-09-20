@@ -1,8 +1,12 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.DocumentDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.IssueDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.AttributeParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.DocumentParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.IssueParser;
@@ -23,10 +27,10 @@ public class AttributeDocumentIssueHelper
         {
             for (AttributeType sheetXMLAttribute : descriptiveDataRows.getAttributes())
             {
-                org.erdc.cobie.cobielite.AttributeType cobieLiteAttribute = null;
+                org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeType cobieLiteAttribute = null;
                 try
                 {
-                    cobieLiteAttribute = cobieLiteAttributes.addNewAttribute();
+                    cobieLiteAttribute = (org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeType)cobieLiteAttributes.addNewAttribute().substitute(AttributeDocument.type.getDocumentElementName(), org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AttributeType.type);
                 } catch (Exception ex)
                 {
                     throw ex;
@@ -46,10 +50,10 @@ public class AttributeDocumentIssueHelper
         {
             for (DocumentType sheetXMLDocument : descriptiveDataRows.getDocuments())
             {
-                org.erdc.cobie.cobielite.DocumentType cobieLiteDocument = null;
+                org.buildingsmartalliance.docs.nbims03.cobie.cobielite.DocumentType cobieLiteDocument = null;
                 try
                 {
-                    cobieLiteDocument = cobieLiteDocuments.addNewDocument();
+                    cobieLiteDocument = (org.buildingsmartalliance.docs.nbims03.cobie.cobielite.DocumentType)cobieLiteDocuments.addNewDocument().substitute(DocumentDocument.type.getDocumentElementName(), org.buildingsmartalliance.docs.nbims03.cobie.cobielite.DocumentType.type);
                 } catch (Exception ex)
                 {
                     throw ex;
@@ -66,10 +70,10 @@ public class AttributeDocumentIssueHelper
         for (IssueType sheetXMLIssue : descriptiveDataRows.getIssues())
         {
 
-            org.erdc.cobie.cobielite.IssueType cobieLiteIssue = null;
+            org.buildingsmartalliance.docs.nbims03.cobie.cobielite.IssueType cobieLiteIssue = null;
             try
             {
-                cobieLiteIssue = cobieLiteIssues.addNewIssue();
+                cobieLiteIssue = (org.buildingsmartalliance.docs.nbims03.cobie.cobielite.IssueType)cobieLiteIssues.addNewIssue().substitute(IssueDocument.type.getDocumentElementName(), org.buildingsmartalliance.docs.nbims03.cobie.cobielite.IssueType.type);
             } catch (Exception ex)
             {
                 throw ex;

@@ -1,12 +1,13 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
+import org.buildingsmartalliance.docs.nbims03.cobie.core.CobieBaseType;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParsable;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.AttributesDocumentsIssues;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.COBIEBaseType;
 
-public abstract class COBieLiteCOBIEBaseTypeParser<COBIE_SHEET_XML_DATA_TYPE extends COBIEBaseType, COBIE_LITE_DATA_TYPE extends org.erdc.cobie.cobielite.CobieBaseType>
+public abstract class COBieLiteCOBIEBaseTypeParser<COBIE_SHEET_XML_DATA_TYPE extends COBIEBaseType, COBIE_LITE_DATA_TYPE extends CobieBaseType>
         extends COBieLiteSheetXMLDataParser<COBIE_SHEET_XML_DATA_TYPE, COBIE_LITE_DATA_TYPE> implements COBieLiteParsable
 {
 
@@ -45,6 +46,7 @@ public abstract class COBieLiteCOBIEBaseTypeParser<COBIE_SHEET_XML_DATA_TYPE ext
             parseSimpleElements();
         } catch (Exception ex)
         {
+            ex.printStackTrace();
             // TODO: log mapping errors
         }
         try
@@ -52,6 +54,7 @@ public abstract class COBieLiteCOBIEBaseTypeParser<COBIE_SHEET_XML_DATA_TYPE ext
             parseDescriptiveElements();
         } catch (Exception ex)
         {
+            ex.printStackTrace();
             // TODO: log mapping errors
         }
 
@@ -60,6 +63,7 @@ public abstract class COBieLiteCOBIEBaseTypeParser<COBIE_SHEET_XML_DATA_TYPE ext
             parseComplexElements();
         } catch (Exception ex)
         {
+            ex.printStackTrace();
             // TODO: log mapping errors
         }
         return targetCOBie;
@@ -77,6 +81,7 @@ public abstract class COBieLiteCOBIEBaseTypeParser<COBIE_SHEET_XML_DATA_TYPE ext
             parseAttributes();
         } catch (Exception ex)
         {
+
             // TODO: log mapping errors
         }
 
@@ -85,6 +90,7 @@ public abstract class COBieLiteCOBIEBaseTypeParser<COBIE_SHEET_XML_DATA_TYPE ext
             parseDocuments();
         } catch (Exception ex)
         {
+
             // TODO: log mapping errors
         }
         try
@@ -92,6 +98,7 @@ public abstract class COBieLiteCOBIEBaseTypeParser<COBIE_SHEET_XML_DATA_TYPE ext
           parseIssues();
         } catch (Exception ex)
         {
+
             // TODO: log mapping errors
         }
 

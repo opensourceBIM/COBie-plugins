@@ -1,8 +1,10 @@
 package org.erdc.cobie.shared.utils;
 
+import java.io.OutputStream;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.xmlbeans.XmlObject;
 import org.erdc.cobie.shared.COBieUtility;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -12,6 +14,33 @@ import org.w3c.dom.NodeList;
 public class XMLUtils
 {
 
+    private static void saveWithNoNamespaces(XmlObject xml, OutputStream outputStream)
+    {
+        Node node = xml.getDomNode();
+        switch(node.getNodeType())
+        {
+            case Node.ATTRIBUTE_NODE:
+            {
+                break;
+            }
+            
+            case Node.ELEMENT_NODE:
+            {
+                break;
+            }
+            
+            case Node.DOCUMENT_NODE:
+            {
+                break;
+            }
+            
+            case Node.TEXT_NODE:
+            {
+                
+            }
+        }
+    }
+    
     private static boolean attributeIsRedundant(Node attribute)
     {
         boolean isRedundant = false;

@@ -1,6 +1,0 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://core.cobielite.cobie.erdc.org" xmlns:ptcc="http://warranty250.crud.lcie.cobielite.cobie.erdc.org" xmlns:bimsie="http://bimsie.bimserver.org" xmlns:picd="http://warranty250.defs.crud.lcie.cobielite.cobie.erdc.org" xmlns:pic="http://warranty250.crud.lcie.cobielite.cobie.erdc.org" targetNamespace="http://warranty250.crud.lcie.cobielite.cobie.erdc.org" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC3">
-	<xs:import namespace="http://bimsie.bimserver.org" schemaLocation="common/BIMsieWrapper.xsd"/>
-	<xs:import namespace="http://warranty250.defs.crud.lcie.cobielite.cobie.erdc.org" schemaLocation="common/250_02_ProductTypeWarranty_CRUD_defs.xsd"/>
-	<xs:element name="ProductTypeWarranty_250_Request" type="picd:ProductTypeWarrantyClientRequestType"/>
-	<xs:element name="ProductTypeWarranty_250_ServerResponse" type="picd:ProductTypeWarrantyServerResponseType"/>
-</xs:schema>

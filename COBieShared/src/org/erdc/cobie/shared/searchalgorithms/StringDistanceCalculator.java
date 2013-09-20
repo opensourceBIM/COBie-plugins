@@ -1,7 +1,5 @@
 package org.erdc.cobie.shared.searchalgorithms;
 
-import org.erdc.cobie.shared.utils.exceptions.NotImplementedException;
-
 public class StringDistanceCalculator
 {
     public enum EditDistanceAlgorithmEnum

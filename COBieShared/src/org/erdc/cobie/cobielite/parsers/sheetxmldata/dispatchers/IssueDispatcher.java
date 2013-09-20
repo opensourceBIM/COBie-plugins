@@ -1,7 +1,8 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.IssueCollectionType;
-import org.erdc.cobie.cobielite.IssueType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.IssueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;

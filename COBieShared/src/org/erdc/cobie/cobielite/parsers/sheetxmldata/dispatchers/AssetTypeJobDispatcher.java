@@ -1,8 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.AssetTypeInfoType;
-import org.erdc.cobie.cobielite.JobCollectionType;
-import org.erdc.cobie.cobielite.JobType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AssetTypeInfoType;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.JobDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.JobType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.JobCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.JobParser;
@@ -28,7 +30,7 @@ public class AssetTypeJobDispatcher extends TypicalParserDispatcher<org.erdc.cob
     @Override
     protected JobType createNewTargetElement()
     {
-        return targetCollection.addNewJob();
+        return (JobType)targetCollection.addNewJob().substitute(JobDocument.type.getDocumentElementName(), JobType.type);
     }
 
     @Override

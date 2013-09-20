@@ -1,8 +1,10 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.FacilityType;
-import org.erdc.cobie.cobielite.FloorCollectionType;
-import org.erdc.cobie.cobielite.FloorType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityType;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FloorDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FloorType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.FloorCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.FloorParser;
@@ -27,8 +29,8 @@ public class FacilityFloorDispatcher extends TypicalParserDispatcher<org.erdc.co
 
     @Override
     protected FloorType createNewTargetElement()
-    {
-        return targetCollection.addNewFloor();
+    { 
+        return (FloorType) targetCollection.addNewFloor().substitute(FloorDocument.type.getDocumentElementName(), FloorType.type);
     }
 
     @Override

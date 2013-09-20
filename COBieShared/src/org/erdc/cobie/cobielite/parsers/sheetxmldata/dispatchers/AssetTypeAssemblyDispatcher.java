@@ -1,8 +1,9 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.AssemblyAssignmentCollectionType;
-import org.erdc.cobie.cobielite.AssemblyType;
-import org.erdc.cobie.cobielite.AssetTypeInfoType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AssemblyType;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AssetTypeInfoType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AssemblyAssignmentCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.AssemblyParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
@@ -29,7 +30,7 @@ public class AssetTypeAssemblyDispatcher extends
     @Override
     protected AssemblyType createNewTargetElement()
     {
-        return targetCollection.addNewAssemblyAssignment();
+        return (AssemblyType)targetCollection.addNewAssemblyAssignment();
     }
 
     @Override

@@ -236,7 +236,7 @@ public class DeserializeToCOBieSheetXMLDataTask extends ApplicationTask<COBIEDoc
         setProgress(5);
         COBIEDocument cobieDocument = COBIEDocument.Factory.newInstance();
         COBIEType cobie = cobieDocument.addNewCOBIE();
-        ThreadedSpreadsheetParser parser = new ThreadedSpreadsheetParser(xlWorkbook, cobie, this);
+        ThreadedSpreadsheetParser parser = new ThreadedSpreadsheetParser(xlWorkbook, cobie, this.cobieToolkit.getCobieStringHandler(), this);
         parser.parse();
         setProgress(100);
         return cobieDocument;

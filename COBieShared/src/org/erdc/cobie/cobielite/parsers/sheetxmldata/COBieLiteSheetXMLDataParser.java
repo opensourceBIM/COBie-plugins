@@ -1,5 +1,6 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
+import org.buildingsmartalliance.docs.nbims03.cobie.core.CobieBaseType;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParsable;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.AttributesDocumentsIssues;
@@ -24,7 +25,7 @@ import org.erdc.cobie.sheetxmldata.SystemType;
 import org.erdc.cobie.sheetxmldata.TypeType;
 import org.erdc.cobie.sheetxmldata.ZoneType;
 
-public abstract class COBieLiteSheetXMLDataParser<COBIE_SHEET_XML_DATA_TYPE extends org.apache.xmlbeans.XmlObject, COBIE_LITE_DATA_TYPE extends org.erdc.cobie.cobielite.CobieBaseType> 
+public abstract class COBieLiteSheetXMLDataParser<COBIE_SHEET_XML_DATA_TYPE extends org.apache.xmlbeans.XmlObject, COBIE_LITE_DATA_TYPE extends CobieBaseType> 
 extends Parser<COBIE_SHEET_XML_DATA_TYPE, COBIE_LITE_DATA_TYPE> implements
         COBieLiteParsable 
 {

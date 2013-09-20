@@ -3,12 +3,13 @@ package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.erdc.cobie.cobielite.ContactAssignmentCollectionType;
-import org.erdc.cobie.cobielite.ContactKeyType;
-import org.erdc.cobie.cobielite.SpaceAssignmentCollectionType;
-import org.erdc.cobie.cobielite.SpaceKeyType;
-import org.erdc.cobie.cobielite.SystemAssignmentCollectionType;
-import org.erdc.cobie.cobielite.SystemKeyType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ContactAssignmentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ContactKeyType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SpaceAssignmentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SpaceKeyType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SystemAssignmentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SystemKeyType;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 
@@ -28,7 +29,7 @@ public class AssignmentHelper
         for (String expression : contactExpressions)
         {
             ContactKeyType newContact = contacts.addNewContactAssignment();
-            newContact.setContactEmail(expression);
+            newContact.setContactEmailReference(expression);
         }
     }
 

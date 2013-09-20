@@ -29,11 +29,17 @@ import org.erdc.cobie.shared.COBieTokenUtility.FacilityColumnNameLiterals;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.FacilityType;
+import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FacilityParser extends Parser
 {
+
+    public FacilityParser(COBIEType cobie, Workbook workbook, COBieStringHandler cobieStringWriter)
+    {
+        super(cobie, workbook, cobieStringWriter);
+    }
 
     public FacilityParser(COBIEType cobie, Workbook workbook)
     {
@@ -233,30 +239,30 @@ public class FacilityParser extends Parser
                     facilityPhase = rowData.getCellAt(idxPhase).getData$();
                 }
 
-                facilityCreatedOn = COBieUtility.calendarFromString(facilityCreatedOnString);
+                facilityCreatedOn = getCobieStringHandler().calendarFromString(facilityCreatedOnString);
 
-                tmpFacility.setName(COBieUtility.getCOBieString(facilityName));
-                tmpFacility.setCreatedBy(COBieUtility.getCOBieString(facilityCreatedBy));
+                tmpFacility.setName(cobieStringHandler.getCOBieString(facilityName));
+                tmpFacility.setCreatedBy(cobieStringHandler.getCOBieString(facilityCreatedBy));
                 tmpFacility.setCreatedOn(facilityCreatedOn);
-                tmpFacility.setCategory(COBieUtility.getCOBieString(facilityCategory));
-                tmpFacility.setProjectName(COBieUtility.getCOBieString(facilityProjectName));
-                tmpFacility.setSiteName(COBieUtility.getCOBieString(facilitySiteName));
-                tmpFacility.setLinearUnits(COBieUtility.getCOBieString(facilityLinearUnits));
-                tmpFacility.setAreaUnits(COBieUtility.getCOBieString(facilityAreaUnits));
-                tmpFacility.setVolumeUnits(COBieUtility.getCOBieString(facilityVolumeUnits));
-                tmpFacility.setCurrencyUnit(COBieUtility.getCOBieString(facilityCurrencyUnit));
-                tmpFacility.setAreaMeasurement(COBieUtility.getCOBieString(facilityAreaMeasurement));
-                tmpFacility.setExternalSystem(COBieUtility.getCOBieString(facilityExternalSystem));
-                tmpFacility.setExternalProjectObject(COBieUtility.getCOBieString(facilityExternalProjectObject));
-                tmpFacility.setExternalProjectIdentifier(COBieUtility.getCOBieString(facilityExternalProjectIdentifier));
-                tmpFacility.setExternalSiteObject(COBieUtility.getCOBieString(facilityExternalSiteObject));
-                tmpFacility.setExternalSiteIdentifier(COBieUtility.getCOBieString(facilityExternalSiteIdentifier));
-                tmpFacility.setExternalFacilityObject(COBieUtility.getCOBieString(facilityExternalFacilityObject));
-                tmpFacility.setExternalFacilityIdentifier(COBieUtility.getCOBieString(facilityExternalFacilityIdentifier));
-                tmpFacility.setDescription(COBieUtility.getCOBieString(facilityDescription));
-                tmpFacility.setProjectDescription(COBieUtility.getCOBieString(facilityProjectDescription));
-                tmpFacility.setSiteDescription(COBieUtility.getCOBieString(facilitySiteDescription));
-                tmpFacility.setPhase(COBieUtility.getCOBieString(facilityPhase));
+                tmpFacility.setCategory(cobieStringHandler.getCOBieString(facilityCategory));
+                tmpFacility.setProjectName(cobieStringHandler.getCOBieString(facilityProjectName));
+                tmpFacility.setSiteName(cobieStringHandler.getCOBieString(facilitySiteName));
+                tmpFacility.setLinearUnits(cobieStringHandler.getCOBieString(facilityLinearUnits));
+                tmpFacility.setAreaUnits(cobieStringHandler.getCOBieString(facilityAreaUnits));
+                tmpFacility.setVolumeUnits(cobieStringHandler.getCOBieString(facilityVolumeUnits));
+                tmpFacility.setCurrencyUnit(cobieStringHandler.getCOBieString(facilityCurrencyUnit));
+                tmpFacility.setAreaMeasurement(cobieStringHandler.getCOBieString(facilityAreaMeasurement));
+                tmpFacility.setExternalSystem(cobieStringHandler.getCOBieString(facilityExternalSystem));
+                tmpFacility.setExternalProjectObject(cobieStringHandler.getCOBieString(facilityExternalProjectObject));
+                tmpFacility.setExternalProjectIdentifier(cobieStringHandler.getCOBieString(facilityExternalProjectIdentifier));
+                tmpFacility.setExternalSiteObject(cobieStringHandler.getCOBieString(facilityExternalSiteObject));
+                tmpFacility.setExternalSiteIdentifier(cobieStringHandler.getCOBieString(facilityExternalSiteIdentifier));
+                tmpFacility.setExternalFacilityObject(cobieStringHandler.getCOBieString(facilityExternalFacilityObject));
+                tmpFacility.setExternalFacilityIdentifier(cobieStringHandler.getCOBieString(facilityExternalFacilityIdentifier));
+                tmpFacility.setDescription(cobieStringHandler.getCOBieString(facilityDescription));
+                tmpFacility.setProjectDescription(cobieStringHandler.getCOBieString(facilityProjectDescription));
+                tmpFacility.setSiteDescription(cobieStringHandler.getCOBieString(facilitySiteDescription));
+                tmpFacility.setPhase(cobieStringHandler.getCOBieString(facilityPhase));
 
             }
 

@@ -3,13 +3,14 @@ package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.DecimalValueType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.IntegerValueType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
-import org.erdc.cobie.cobielite.JobType;
-import org.erdc.cobie.cobielite.ResourceCollectionType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.JobType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DecimalValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IntegerValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ResourceCollectionType;
 import org.erdc.cobie.cobielite.ValueHelper;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.JobResourceDispatcher;
@@ -38,19 +39,19 @@ public class JobParser extends DeepParser<org.erdc.cobie.sheetxmldata.JobType, J
     @Override
     public AttributeCollectionType getNewAttributes()
     {
-        return targetCOBie.addNewAttributes();
+        return targetCOBie.addNewJobAttributes();
     }
 
     @Override
     public DocumentCollectionType getNewDocuments()
     {
-        return targetCOBie.addNewDocuments();
+        return targetCOBie.addNewJobDocuments();
     }
 
     @Override
     public IssueCollectionType getNewIssues()
     {
-        return targetCOBie.addNewIssues();
+        return targetCOBie.addNewJobIssues();
     }
 
     public List<org.erdc.cobie.sheetxmldata.ResourceType> getResources(

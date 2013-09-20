@@ -2,13 +2,14 @@ package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 
 import java.util.ArrayList;
 
-import org.erdc.cobie.cobielite.AssetInfoType;
-import org.erdc.cobie.cobielite.AttributeCollectionType;
-import org.erdc.cobie.cobielite.DocumentCollectionType;
-import org.erdc.cobie.cobielite.IssueCollectionType;
-import org.erdc.cobie.cobielite.SpaceAssignmentCollectionType;
-import org.erdc.cobie.cobielite.SystemAssignmentCollectionType;
-import org.erdc.cobie.cobielite.SystemKeyType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.AssetInfoType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SpaceAssignmentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SystemAssignmentCollectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SystemKeyType;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AssetAssemblyDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AssignmentHelper;
@@ -38,19 +39,19 @@ public class AssetParser extends DeepParser<ComponentType, AssetInfoType>
     @Override
     public AttributeCollectionType getNewAttributes()
     {
-        return targetCOBie.addNewAttributes();
+        return targetCOBie.addNewAssetAttributes();
     }
 
     @Override
     public DocumentCollectionType getNewDocuments()
     {
-        return targetCOBie.addNewDocuments();
+        return targetCOBie.addNewAssetDocuments();
     }
 
     @Override
     public IssueCollectionType getNewIssues()
     {
-        return targetCOBie.addNewIssues();
+        return targetCOBie.addNewAssetIssues();
     }
 
     private void initializeDateTimeValues()
@@ -73,7 +74,7 @@ public class AssetParser extends DeepParser<ComponentType, AssetInfoType>
 
     private void initializeSpaceAssignments()
     {
-        SpaceAssignmentCollectionType spaceAssignments = targetCOBie.addNewSpaceAssignments();
+        SpaceAssignmentCollectionType spaceAssignments = targetCOBie.addNewAssetSpaceAssignments();
         AssignmentHelper.parseSpaceAssignments(spaceAssignments, sourceCOBie.getSpace(), indexedCOBie);
 
     }
@@ -85,7 +86,7 @@ public class AssetParser extends DeepParser<ComponentType, AssetInfoType>
             ArrayList<SystemType> systems = indexedCOBie.getComponentSystems().get(sourceCOBie.getName());
             if (systems != null)
             {
-                SystemAssignmentCollectionType systemAssignmets = targetCOBie.addNewSystemAssignments();
+                SystemAssignmentCollectionType systemAssignmets = targetCOBie.addNewAssetSystemAssignments();
                 for (SystemType system : systems)
                 {
                     SystemKeyType systemKey = systemAssignmets.addNewSystemAssignment();
@@ -130,6 +131,10 @@ public class AssetParser extends DeepParser<ComponentType, AssetInfoType>
         targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
         targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
         targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
+        if(!COBieUtility.isNA(sourceCOBie.getInstallationDate()));
+            targetCOBie.setAssetInstallationDate(COBieUtility.calendarFromString(sourceCOBie.getInstallationDate()));
+        if(!COBieUtility.isNA(sourceCOBie.getWarrantyStartDate()))
+            targetCOBie.setAssetWarrantyStartDate(COBieUtility.calendarFromString(sourceCOBie.getWarrantyStartDate()));
         initializeDateTimeValues();
 
     }

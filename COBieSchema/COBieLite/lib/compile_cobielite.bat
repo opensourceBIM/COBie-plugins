@@ -1,1 +1,0 @@
-scomp -src src -out COBieLite.jar ../xsd/cobielite.xsd -compiler "%Java_Home%\bin\javac.exe"

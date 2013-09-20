@@ -2,24 +2,22 @@ package org.erdc.cobie.sheetxmldata.parsers.cobielite;
 
 import java.util.Calendar;
 
-import org.erdc.cobie.cobielite.AssemblyType;
-import org.erdc.cobie.cobielite.AssetInfoType;
-import org.erdc.cobie.cobielite.AssetTypeInfoType;
-import org.erdc.cobie.cobielite.AttributeType;
-import org.erdc.cobie.cobielite.CobieBaseType;
-import org.erdc.cobie.cobielite.ConnectionType;
-import org.erdc.cobie.cobielite.ContactType;
-import org.erdc.cobie.cobielite.DocumentType;
-import org.erdc.cobie.cobielite.FacilityType;
-import org.erdc.cobie.cobielite.FloorType;
-import org.erdc.cobie.cobielite.IssueType;
-import org.erdc.cobie.cobielite.PolygonCollectionType;
-import org.erdc.cobie.cobielite.PolygonType;
-import org.erdc.cobie.cobielite.ResourceType;
-import org.erdc.cobie.cobielite.SpaceType;
-import org.erdc.cobie.cobielite.SpareType;
-import org.erdc.cobie.cobielite.SystemType;
-import org.erdc.cobie.cobielite.ZoneType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AssemblyType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AssetInfoType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AssetTypeInfoType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.CobieBaseType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ConnectionType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ContactType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.FacilityType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.FloorType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ResourceType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SpaceType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SpareType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.SystemType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ZoneType;
 import org.erdc.cobie.shared.COBieNAFactory;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
@@ -129,10 +127,7 @@ public abstract class COBieLiteSourceParser<SOURCE extends CobieBaseType, TARGET
         } else if (sourceCOBie instanceof ResourceType)
         {
             sheetName = CobieSheetName.Resource;
-        } else if (sourceCOBie instanceof PolygonType || sourceCOBie instanceof PolygonCollectionType)
-        {
-            sheetName = CobieSheetName.Coordinate;
-        }
+        } 
         setCobieSpreadSheetName(sheetName);
 
     }

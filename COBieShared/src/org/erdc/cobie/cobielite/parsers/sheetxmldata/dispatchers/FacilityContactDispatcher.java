@@ -1,7 +1,9 @@
 package org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers;
 
-import org.erdc.cobie.cobielite.ContactCollectionType;
-import org.erdc.cobie.cobielite.FacilityType;
+
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ContactDocument;
+import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.ContactCollectionType;
 import org.erdc.cobie.cobielite.parsers.TypicalParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.COBieLiteSheetXMLDataParser;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.ContactParser;
@@ -9,7 +11,7 @@ import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.ContactType;
 
 public class FacilityContactDispatcher extends
-        TypicalParserDispatcher<ContactType, ContactCollectionType, org.erdc.cobie.cobielite.ContactType, FacilityType>
+        TypicalParserDispatcher<ContactType, ContactCollectionType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ContactType, FacilityType>
 {
 
     public FacilityContactDispatcher(Iterable<ContactType> childSourceElements, FacilityType targetParent, IndexedCOBie indexedCOBie)
@@ -18,17 +20,17 @@ public class FacilityContactDispatcher extends
     }
 
     @Override
-    protected COBieLiteSheetXMLDataParser<ContactType, org.erdc.cobie.cobielite.ContactType> createNewParser(
+    protected COBieLiteSheetXMLDataParser<ContactType, org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ContactType> createNewParser(
             ContactType sourceElement,
-            org.erdc.cobie.cobielite.ContactType newTargetElement)
+            org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ContactType newTargetElement)
     {
         return new ContactParser(sourceElement, newTargetElement, indexedCOBie);
     }
 
     @Override
-    protected org.erdc.cobie.cobielite.ContactType createNewTargetElement()
+    protected org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ContactType createNewTargetElement()
     {
-        return targetCollection.addNewContact();
+        return (org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ContactType)targetCollection.addNewContact().substitute(ContactDocument.type.getDocumentElementName(), org.buildingsmartalliance.docs.nbims03.cobie.cobielite.ContactType.type);
     }
 
     @Override
