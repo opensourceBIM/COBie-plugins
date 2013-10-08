@@ -35,6 +35,20 @@ public class FloorSpace extends Relationship
 		addColumns(columns);
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Column<Integer> getChildKey() 
+	{
+		return (Column<Integer>)getColumn(ColumnName.RefSpace.toString());
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Column<Integer> getParentKey() 
+	{
+		return (Column<Integer>)getColumn(ColumnName.RefFloor.toString());
+	}
+	
 	@Override
 	public String getTableName() 
 	{

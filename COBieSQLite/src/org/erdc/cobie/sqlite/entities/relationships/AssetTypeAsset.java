@@ -35,6 +35,20 @@ public class AssetTypeAsset extends Relationship
     	addColumns(columns);
     }
     
+	@SuppressWarnings("unchecked")
+	@Override
+	public Column<Integer> getChildKey() 
+	{
+		return (Column<Integer>)getColumn(ColumnName.RefAsset.toString());
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Column<Integer> getParentKey() 
+	{
+		return (Column<Integer>)getColumn(ColumnName.RefAssetType.toString());
+	}
+	
 	@Override
 	public String getTableName() 
 	{

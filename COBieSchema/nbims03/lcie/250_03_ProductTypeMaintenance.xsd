@@ -1,8 +1,7 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://docs.buildingsmartalliance.org/nbims03/lcie/core" xmlns="http://docs.buildingsmartalliance.org/nbims03/cobie/core" xmlns:camed="http://jcam.org.uk/editor"  xmlns:ptm="http://docs.buildingsmartalliance.org/nbims03/lcie/25003ProductTypeMaintenance" targetNamespace="http://docs.buildingsmartalliance.org/nbims03/lcie/25003ProductTypeMaintenance" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC4">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://docs.buildingsmartalliance.org/nbims03/lcie/core" xmlns="http://docs.buildingsmartalliance.org/nbims03/cobie/core" xmlns:camed="http://jcam.org.uk/editor" xmlns:ptm="http://docs.buildingsmartalliance.org/nbims03/lcie/25003ProductTypeMaintenance" targetNamespace="http://docs.buildingsmartalliance.org/nbims03/lcie/25003ProductTypeMaintenance" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC4">
 	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/cobie/core" schemaLocation="../cobie/core.xsd"/>
 	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/lcie/core" schemaLocation="core.xsd"/>
-	<xs:element name="ProductTypeMaintenance" type="ptm:ProductMaintenanceType">
-	</xs:element>
+	<xs:element name="ProductTypeMaintenance" type="ptm:ProductMaintenanceType"/>
 	<xs:complexType name="AssetTypeInfoType">
 		<xs:annotation>
 			<xs:documentation>A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.</xs:documentation>
@@ -253,4 +252,268 @@
 	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="250.03_ProductTypeMaintenance"/>
 	<xs:element name="Job" type="ptm:JobType" substitutionGroup="Job"/>
 	<xs:element name="Resource" type="ptm:ResourceType" substitutionGroup="Resource"/>
+	
+		<xs:complexType name="MaintenanceReadResultType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ReadResultType">
+				<xs:sequence>
+					<xs:element ref="AssetType"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CreateJobType">
+		<xs:sequence>
+			<xs:element ref="ptm:AssetTypeKey"/>
+			<xs:element ref="Job"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeleteJobType">
+		<xs:sequence>
+			<xs:element ref="ptm:JobKey"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UpdateJobType">
+		<xs:sequence>
+			<xs:element ref="ptm:JobKey"/>
+			<xs:group ref="ptm:JobUpdateGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CreateResourceType">
+		<xs:sequence>
+			<xs:element ref="ptm:JobKey"/>
+			<xs:element ref="Resource"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeleteResourceType">
+		<xs:sequence>
+			<xs:element ref="ptm:ResourceKey"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UpdateResourceType">
+		<xs:sequence>
+			<xs:element ref="ptm:ResourceKey"/>
+			<xs:group ref="ptm:ResourceUpdateGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UpdateAssetTypeDocumentType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:AssetTypeKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CreateAssetTypeDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:AssetTypeKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeleteAssetTypeDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:AssetTypeKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateJobDocumentType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:JobKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CreateJobDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:JobKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeleteJobDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:JobKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateResourceDocumentType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:ResourceKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CreateResourceDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:ResourceKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeleteResourceDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:ResourceKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateJobAttributeType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:JobKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CreateJobAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:JobKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeleteJobAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:JobKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateResourceAttributeType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:ResourceKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CreateResourceAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:ResourceKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeleteResourceAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptm:ResourceKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeMaintenanceClientRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeMaintenanceServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeMaintenanceCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateRequestType">
+				<xs:choice>
+					<xs:element ref="ptm:CreateAssetTypeDocumentRequest"/>
+					<xs:element ref="ptm:CreateJobDocumentRequest"/>
+					<xs:element ref="ptm:CreateResourceDocumentRequest"/>
+					<xs:element ref="ptm:CreateJobAttributeRequest"/>
+					<xs:element ref="ptm:CreateResourceAttributeRequest"/>
+					<xs:element ref="ptm:CreateJobRequest"/>
+					<xs:element ref="ptm:CreateResourceRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeMaintenanceDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteRequestType">
+				<xs:choice>
+					<xs:element ref="ptm:DeleteAssetTypeDocumentRequest"/>
+					<xs:element ref="ptm:DeleteJobDocumentRequest"/>
+					<xs:element ref="ptm:DeleteResourceDocumentRequest"/>
+					<xs:element ref="ptm:DeleteJobAttributeRequest"/>
+					<xs:element ref="ptm:DeleteResourceAttributeRequest"/>
+					<xs:element ref="ptm:DeleteJobRequest"/>
+					<xs:element ref="ptm:DeleteResourceRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateProductTypeMaintenanceRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="ptm:UpdateAssetTypeDocumentRequest"/>
+					<xs:element ref="ptm:UpdateJobDocumentRequest"/>
+					<xs:element ref="ptm:UpdateResourceDocumentRequest"/>
+					<xs:element ref="ptm:UpdateJobAttributeRequest"/>
+					<xs:element ref="ptm:UpdateResourceAttributeRequest"/>
+					<xs:element ref="ptm:UpdateJobRequest"/>
+					<xs:element ref="ptm:UpdateResourceRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ProductTypeMaintenanceUpdateRequest" type="ptm:UpdateProductTypeMaintenanceRequestType" substitutionGroup="lcie:UpdateRequest"/>
+	<xs:element name="ProductTypeMaintenanceCreateRequest" type="ptm:ProductTypeMaintenanceCreateRequestType" substitutionGroup="lcie:CreateRequest"/>
+	<xs:element name="ProductTypeMaintenanceDeleteRequest" type="ptm:ProductTypeMaintenanceDeleteRequestType" substitutionGroup="lcie:DeleteRequest"/>
+	<xs:element name="AssetTypeKey" type="AssetTypeKeyType" substitutionGroup="lcie:Key"/>
+	<xs:element name="ProductTypeMaintenanceReadResult" type="ptm:MaintenanceReadResultType" substitutionGroup="lcie:ReadResult"/>
+
+	<xs:element name="DeleteAssetTypeDocumentRequest" type="ptm:DeleteAssetTypeDocumentRequestType"/>
+	<xs:element name="CreateAssetTypeDocumentRequest" type="ptm:CreateAssetTypeDocumentRequestType"/>
+	<xs:element name="UpdateAssetTypeDocumentRequest" type="ptm:UpdateAssetTypeDocumentType"/>
+	<xs:element name="DeleteJobDocumentRequest" type="ptm:DeleteJobDocumentRequestType"/>
+	<xs:element name="CreateJobDocumentRequest" type="ptm:CreateJobDocumentRequestType"/>
+	<xs:element name="UpdateJobDocumentRequest" type="ptm:UpdateJobDocumentType"/>
+	<xs:element name="DeleteResourceDocumentRequest" type="ptm:DeleteResourceDocumentRequestType"/>
+	<xs:element name="CreateResourceDocumentRequest" type="ptm:CreateResourceDocumentRequestType"/>
+	<xs:element name="UpdateResourceDocumentRequest" type="ptm:UpdateResourceDocumentType"/>
+	<xs:element name="DeleteJobAttributeRequest" type="ptm:DeleteJobAttributeRequestType"/>
+	<xs:element name="CreateJobAttributeRequest" type="ptm:CreateJobAttributeRequestType"/>
+	<xs:element name="UpdateJobAttributeRequest" type="ptm:UpdateJobAttributeType"/>
+	<xs:element name="DeleteResourceAttributeRequest" type="ptm:DeleteResourceAttributeRequestType"/>
+	<xs:element name="CreateResourceAttributeRequest" type="ptm:CreateResourceAttributeRequestType"/>
+	<xs:element name="UpdateResourceAttributeRequest" type="ptm:UpdateResourceAttributeType"/>
+	<xs:element name="CreateJobRequest" type="ptm:CreateJobType"/>
+	<xs:element name="UpdateJobRequest" type="ptm:UpdateJobType"/>
+	<xs:element name="DeleteJobRequest" type="ptm:DeleteJobType"/>
+	<xs:element name="CreateResourceRequest" type="ptm:CreateResourceType"/>
+	<xs:element name="UpdateResourceRequest" type="ptm:UpdateResourceType"/>
+	<xs:element name="DeleteResourceRequest" type="ptm:DeleteResourceType"/>
+	<xs:element name="JobKey" type="JobKeyType"/>
+	<xs:element name="ResourceKey" type="ResourceKeyType"/>
 </xs:schema>

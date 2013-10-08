@@ -1,16 +1,100 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://docs.buildingsmartalliance.org/nbims03/lcie/core" xmlns="http://docs.buildingsmartalliance.org/nbims03/cobie/core" xmlns:camed="http://jcam.org.uk/editor" xmlns:tt="http://docs.buildingsmartalliance.org/nbims03/lcie/10003ProductTypeTemplate" targetNamespace="http://docs.buildingsmartalliance.org/nbims03/lcie/10003ProductTypeTemplate" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC4">
 	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/cobie/core" schemaLocation="../cobie/core.xsd"/>
 	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/lcie/core" schemaLocation="core.xsd"/>
-	<xs:element name="ProductTypeTemplate" type="tt:ProductTypeTemplateType"/>
-	<xs:complexType name="ProductTypeTemplateType">
-		<xs:complexContent>
-			<xs:extension base="lcie:InformationExchangeComplexType">
-				<xs:sequence>
-					<xs:element ref="AssetTypes"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
+	<xs:group name="AssetTypeGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeCategory">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeDescription">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeAccountingCategory">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeNominalLength" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeNominalWidth" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeNominalHeight" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeAccessibilityText" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeCodePerformance" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeColorCode" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeConstituentsDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeFeaturesDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeFinishDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeGradeDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeMaterialDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeShapeDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeSizeDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
 	<xs:group name="AssetTypeUpdateGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeName" minOccurs="0">
@@ -110,100 +194,6 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeGroup">
-		<xs:sequence>
-			<xs:element ref="AssetTypeCategory">
-				<xs:annotation>
-					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeDescription">
-				<xs:annotation>
-					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeAccountingCategory">
-				<xs:annotation>
-					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeNominalLength" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeNominalWidth" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeNominalHeight" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeAccessibilityText" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeCodePerformance" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeColorCode" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeConstituentsDescription" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeFeaturesDescription" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeFinishDescription" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeGradeDescription" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeMaterialDescription" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeShapeDescription" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeSizeDescription" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeAttributes" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lciepi:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:group>
 	<xs:complexType name="AssetTypeInfoType">
 		<xs:annotation>
 			<xs:documentation>A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.</xs:documentation>
@@ -216,43 +206,57 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name="AssetType" type="tt:AssetTypeInfoType" substitutionGroup="AssetType">
-		<xs:annotation>
-			<xs:documentation>A minimum of one AssetType record is required for all COBie deliverables related to equipment Type information. AssetType is associated with one or more Assets.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="100.03_ProductTypeTemplate"/>
-	<xs:complexType name="TypeTemplateDeleteRequestType">
-		<xs:sequence>
-			<xs:element ref="tt:ProductTypeTemplateKey"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TypeTemplateReadResultType">
-		<xs:complexContent>
-			<xs:extension base="lcie:ReadResultType">
-				<xs:sequence>
-					<xs:element ref="tt:AssetType"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="CreateAssetTypeRequestType">
 		<xs:sequence>
 			<xs:element ref="AssetType"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="TypeTemplateUpdateRequestType">
-		<xs:sequence>
-			<xs:element ref="tt:ProductTypeTemplateKey"/>
-			<xs:group ref="tt:AssetTypeUpdateGroup"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TypeTemplateUpdateAttributeRequestType">
+	<xs:complexType name="ProductTypeTemplateClientRequestType">
 		<xs:complexContent>
-			<xs:extension base="lcie:UpdateAttributeRequestType">
+			<xs:extension base="lcie:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeTemplateCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateRequestType">
+				<xs:choice>
+					<xs:element ref="tt:CreateAssetTypeRequest"/>
+					<xs:element ref="tt:CreateAssetTypeAttributeRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeTemplateDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteRequestType">
+				<xs:choice>
+					<xs:element ref="tt:DeleteAssetTypeAttributeRequest"/>
+					<xs:element ref="tt:DeleteAssetTypeRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeTemplateServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeTemplateType">
+		<xs:complexContent>
+			<xs:extension base="lcie:InformationExchangeComplexType">
 				<xs:sequence>
-					<xs:element ref="tt:ProductTypeTemplateKey"/>
+					<xs:element ref="AssetTypes"/>
 				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeTemplateUpdateRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="tt:UpdateAssetTypeRequest"/>
+					<xs:element ref="tt:UpdateAssetTypeAttributeRequest"/>
+				</xs:choice>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -274,62 +278,60 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="ProductTypeTemplateClientRequestType">
-		<xs:complexContent>
-			<xs:extension base="lcie:ClientRequestExchangeType"/>
-		</xs:complexContent>
+	<xs:complexType name="TypeTemplateDeleteRequestType">
+		<xs:sequence>
+			<xs:element ref="tt:ProductTypeTemplateKey"/>
+		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="ProductTypeTemplateServerResponseType">
+	<xs:complexType name="TypeTemplateReadResultType">
 		<xs:complexContent>
-			<xs:extension base="lcie:ServerResponseExchangeType"/>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="ProductTypeTemplateCreateRequestType">
-		<xs:complexContent>
-			<xs:extension base="lcie:CreateRequestType">
-				<xs:choice>
-					<xs:element ref="tt:CreateAssetTypeRequest"/>
-					<xs:element ref="tt:CreateAssetTypeAttributeRequest"/>
-				</xs:choice>
+			<xs:extension base="lcie:ReadResultType">
+				<xs:sequence>
+					<xs:element ref="tt:AssetType"/>
+				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="ProductTypeTemplateUpdateRequestType">
+	<xs:complexType name="TypeTemplateUpdateAttributeRequestType">
 		<xs:complexContent>
-			<xs:extension base="lcie:UpdateRequestType">
-				<xs:choice>
-					<xs:element ref="tt:UpdateAssetTypeRequest"/>
-					<xs:element ref="tt:UpdateAssetTypeAttributeRequest"/>
-				</xs:choice>
+			<xs:extension base="lcie:UpdateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="tt:ProductTypeTemplateKey"/>
+				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="ProductTypeTemplateDeleteRequestType">
-		<xs:complexContent>
-			<xs:extension base="lcie:DeleteRequestType">
-				<xs:choice>
-					<xs:element ref="tt:DeleteAssetTypeAttributeRequest"/>
-					<xs:element ref="tt:DeleteAssetTypeRequest"/>
-				</xs:choice>
-			</xs:extension>
-		</xs:complexContent>
+	<xs:complexType name="TypeTemplateUpdateRequestType">
+		<xs:sequence>
+			<xs:element ref="tt:ProductTypeTemplateKey"/>
+			<xs:group ref="tt:AssetTypeUpdateGroup"/>
+		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ProductTypeTemplateCreateRequest" type="tt:ProductTypeTemplateCreateRequestType" substitutionGroup="lcie:CreateRequest">
+	<xs:element name="AssetType" type="tt:AssetTypeInfoType" substitutionGroup="AssetType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one AssetType record is required for all COBie deliverables related to equipment Type information. AssetType is associated with one or more Assets.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CreateAssetTypeAttributeRequest" type="tt:TypeTemplateCreateAttributeRequestType"/>
+	<xs:element name="CreateAssetTypeRequest" type="tt:CreateAssetTypeRequestType">
 		<xs:annotation>
 			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6246">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6246</xs:documentation>
 			<xs:documentation source="../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_CreateRequest.xml">Example File(Local):  ../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_CreateRequest.xml</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="ProductTypeTemplateReadResult" type="tt:TypeTemplateReadResultType" substitutionGroup="lcie:ReadResult">
+	<xs:element name="DeleteAssetTypeAttributeRequest" type="tt:TypeTemplateDeleteAttributeRequestType"/>
+	<xs:element name="DeleteAssetTypeRequest" type="tt:TypeTemplateDeleteRequestType">
 		<xs:annotation>
-			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6251">Example File (WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6251</xs:documentation>
-			<xs:documentation source="../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_ReadResponse.xml">Example File(Local):  ../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_ReadResponse.xml</xs:documentation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6252">Example File (WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6252</xs:documentation>
+			<xs:documentation source="../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_DeleteRequest.xml">Example File(Local):  ../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_DeleteRequest.xml</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="ProductTypeTemplateUpdateRequest" type="tt:ProductTypeTemplateUpdateRequestType" substitutionGroup="lcie:UpdateRequest">
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="100.03_ProductTypeTemplate"/>
+	<xs:element name="ProductTypeTemplate" type="tt:ProductTypeTemplateType"/>
+	<xs:element name="ProductTypeTemplateCreateRequest" type="tt:ProductTypeTemplateCreateRequestType" substitutionGroup="lcie:CreateRequest">
 		<xs:annotation>
-			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6248">Example File (WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6248</xs:documentation>
-			<xs:documentation source="../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_UpdateRequest.xml">Example File(Local):  ../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_UpdateRequest.xml</xs:documentation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6246">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6246</xs:documentation>
+			<xs:documentation source="../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_CreateRequest.xml">Example File(Local):  ../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_CreateRequest.xml</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="ProductTypeTemplateDeleteRequest" type="tt:ProductTypeTemplateDeleteRequestType" substitutionGroup="lcie:DeleteRequest">
@@ -338,28 +340,26 @@
 			<xs:documentation source="../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_DeleteRequest.xml">Example File(Local):  ../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_DeleteRequest.xml</xs:documentation>
 		</xs:annotation>
 	</xs:element>
+	<xs:element name="ProductTypeTemplateReadResult" type="tt:TypeTemplateReadResultType" substitutionGroup="lcie:ReadResult">
+		<xs:annotation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6251">Example File (WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6251</xs:documentation>
+			<xs:documentation source="../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_ReadResponse.xml">Example File(Local):  ../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_ReadResponse.xml</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="ProductTypeTemplateKey" type="AssetTypeKeyType" substitutionGroup="lcie:Key"/>
-	<xs:element name="CreateAssetTypeAttributeRequest" type="tt:TypeTemplateCreateAttributeRequestType"/>
-	<xs:element name="CreateAssetTypeRequest" type="tt:CreateAssetTypeRequestType">
+	<xs:element name="ProductTypeTemplateUpdateRequest" type="tt:ProductTypeTemplateUpdateRequestType" substitutionGroup="lcie:UpdateRequest">
 		<xs:annotation>
-			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6246">Example File(WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6246</xs:documentation>
-			<xs:documentation source="../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_CreateRequest.xml">Example File(Local):  ../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_CreateRequest.xml</xs:documentation>
+			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6248">Example File (WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6248</xs:documentation>
+			<xs:documentation source="../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_UpdateRequest.xml">Example File(Local):  ../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_UpdateRequest.xml</xs:documentation>
 		</xs:annotation>
 	</xs:element>
+	<xs:element name="ProductTypeTemplate_100_Request" type="tt:ProductTypeTemplateClientRequestType"/>
+	<xs:element name="ProductTypeTemplate_100_ServerResponse" type="tt:ProductTypeTemplateServerResponseType"/>
 	<xs:element name="UpdateAssetTypeAttributeRequest" type="tt:TypeTemplateUpdateAttributeRequestType"/>
-	<xs:element name="DeleteAssetTypeAttributeRequest" type="tt:TypeTemplateDeleteAttributeRequestType"/>
-	<xs:element name="DeleteAssetTypeRequest" type="tt:TypeTemplateDeleteRequestType">
-		<xs:annotation>
-			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6252">Example File (WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6252</xs:documentation>
-			<xs:documentation source="../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_DeleteRequest.xml">Example File(Local):  ../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_DeleteRequest.xml</xs:documentation>
-		</xs:annotation>
-	</xs:element>
 	<xs:element name="UpdateAssetTypeRequest" type="tt:TypeTemplateUpdateRequestType">
 		<xs:annotation>
 			<xs:documentation source="http://projects.buildingsmartalliance.org/files/?artifact_id=6248">Example File (WWW):  http://projects.buildingsmartalliance.org/files/?artifact_id=6248</xs:documentation>
 			<xs:documentation source="../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_UpdateRequest.xml">Example File(Local):  ../examples/090_02_ProductTypeTemplate_CRUD/090_02_ProductTypeTemplate_UpdateRequest.xml</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-		<xs:element name="ProductTypeTemplate_100_Request" type="tt:ProductTypeTemplateClientRequestType"/>
-	<xs:element name="ProductTypeTemplate_100_ServerResponse" type="tt:ProductTypeTemplateServerResponseType"/>
 </xs:schema>

@@ -16,7 +16,7 @@ public class Pset_ManufacturerOccurence extends IfcPropertySetImpl
         SerialNumber, BarCode
     }
 
-    public static final String pSetName = "Pset_ManufacturerOccurence";
+    public static final String pSetName = " Pset_ManufacturerOccurrence";
     public static final String pSetDescription = "Defines properties of individual instances of manufactured products that may be given by the manufacturer.";
     private static final Map<ManufacturerOccurenceField, String> PropertyDescriptions = new HashMap<ManufacturerOccurenceField, String>()
     {

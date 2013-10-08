@@ -415,7 +415,42 @@ public class COBieSpreadSheet
         return isPopulated;
     }
 
+    public static boolean isWorkbook(File candidateWorksheet)
+    {
+        boolean isWorkbook = false;
+        try
+        {
+            nl.fountain.xelem.lex.ExcelReader rdr = new nl.fountain.xelem.lex.ExcelReader();
+            Workbook workbook = rdr.getWorkbook(new InputSource(new FileInputStream(candidateWorksheet)));
+            isWorkbook = ((workbook != null) && workbook.hasExcelWorkbook());
+        } catch (Exception ex)
+        {
+
+        }
+        return isWorkbook;
+    }
+
+    public static boolean isWorkbook(InputStream candidateWorksheet)
+    {
+        CloseShieldInputStream inputStreamCopy = new CloseShieldInputStream(candidateWorksheet);
+        boolean isWorkbook = false;
+        try
+        {
+            nl.fountain.xelem.lex.ExcelReader rdr = new nl.fountain.xelem.lex.ExcelReader();
+            Workbook workbook = rdr.getWorkbook(new InputSource(inputStreamCopy));
+            isWorkbook = ((workbook != null) && workbook.hasExcelWorkbook());
+        } catch (Exception ex)
+        {
+
+        } finally
+        {
+            inputStreamCopy.close();
+        }
+        return isWorkbook;
+    }
+
     private COBieExportOptionsDocument exportSettings;
+
     // filename for the new file to be created
     private String fileName = "cobie.xml";
     private long sheetRowLimit;
@@ -425,17 +460,28 @@ public class COBieSpreadSheet
     Document spreadsheetMLDocument;
     // create the required tools in order to read the template file
     ExcelReader reader = null;
-
     // put all sheet data into one monster object,
     // data will be modified by the genericsheetTool function
     public Map<String, ArrayList<Map<String, String>>> sheetData;
+
     // Default path to the xml template file
     private String templateFilePath;
+
     // map will contain all sheet tab names mapped to string array containing
     // column headings
     public HashMap<String, String[]> templateMap = new HashMap<String, String[]>();
 
     Workbook xlWorkbook = null;
+
+    public Workbook getXlWorkbook()
+    {
+        return xlWorkbook;
+    }
+
+    public void setXlWorkbook(Workbook xlWorkbook)
+    {
+        this.xlWorkbook = xlWorkbook;
+    }
 
     // Begin constructors
     // user does not provide new file name or name of template file path to be
@@ -502,6 +548,8 @@ public class COBieSpreadSheet
 
     }
 
+    // end constructors
+
     private void clearAllRows()
     {
         for (Worksheet sheet : xlWorkbook.getWorksheets())
@@ -557,7 +605,7 @@ public class COBieSpreadSheet
         }
     }
 
-    // end constructors
+    // ///////End file creation functions
 
     public void createFile(String myFileName)
     {
@@ -606,7 +654,9 @@ public class COBieSpreadSheet
         }
     }
 
-    // ///////End file creation functions
+    // end getters and setters for private functions
+
+    // start file creation functions
 
     private ArrayList<String> distinctCategoryValuesFromSheetName(CobieSheetName sheetName)
     {
@@ -647,10 +697,6 @@ public class COBieSpreadSheet
         spreadsheetMLDocument = null;
         sheetData.clear();
     }
-
-    // end getters and setters for private functions
-
-    // start file creation functions
 
     public String getConfigurationFileName()
     {
@@ -895,6 +941,8 @@ public class COBieSpreadSheet
 
     } // print(Node)
 
+    // end file creation functions
+
     /** Normalizes the given string. */
     protected String normalize(String s)
     {
@@ -966,8 +1014,6 @@ public class COBieSpreadSheet
             }
         }
     }
-
-    // end file creation functions
 
     // ////////////////////////////////////////////////////////////////////////////////
     // //functions pulled from generic sheet tool
@@ -1314,42 +1360,5 @@ public class COBieSpreadSheet
         {
             LOGGER.error("", e);
         }
-    }
-    
-    public static boolean isWorkbook(File candidateWorksheet)
-    {
-        boolean isWorkbook = false;
-        try
-        {
-            nl.fountain.xelem.lex.ExcelReader rdr = new nl.fountain.xelem.lex.ExcelReader();
-            Workbook workbook = rdr.getWorkbook(new InputSource(new FileInputStream(candidateWorksheet)));
-            isWorkbook = (workbook!=null && workbook.hasExcelWorkbook());
-        }
-        catch(Exception ex)
-        {
-            
-        }
-        return isWorkbook;
-    }
-    
-    public static boolean isWorkbook(InputStream candidateWorksheet)
-    {
-        CloseShieldInputStream inputStreamCopy = new CloseShieldInputStream(candidateWorksheet);
-        boolean isWorkbook = false;
-        try
-        {
-            nl.fountain.xelem.lex.ExcelReader rdr = new nl.fountain.xelem.lex.ExcelReader();
-            Workbook workbook = rdr.getWorkbook(new InputSource(inputStreamCopy));
-            isWorkbook = (workbook!=null && workbook.hasExcelWorkbook());
-        }
-        catch(Exception ex)
-        {
-            
-        }
-        finally
-        {
-            inputStreamCopy.close();
-        }
-        return isWorkbook;
     }
 }

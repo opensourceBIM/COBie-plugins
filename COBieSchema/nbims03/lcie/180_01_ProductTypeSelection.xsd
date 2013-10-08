@@ -1,17 +1,20 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://docs.buildingsmartalliance.org/nbims03/lcie/core" xmlns="http://docs.buildingsmartalliance.org/nbims03/cobie/core" xmlns:camed="http://jcam.org.uk/editor" xmlns:ts="http://docs.buildingsmartalliance.org/nbims03/lcie/18001ProductTypeSelection" targetNamespace="http://docs.buildingsmartalliance.org/nbims03/lcie/18001ProductTypeSelection" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC4">
 	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/cobie/core" schemaLocation="../cobie/core.xsd"/>
 	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/lcie/core" schemaLocation="core.xsd"/>
-	<xs:element name="ProductTypeSelection" type="ts:ProductTypeSelectionType"/>
-	<xs:complexType name="ProductTypeSelectionType">
-		<xs:complexContent>
-			<xs:extension base="lcie:InformationExchangeComplexType">
-				<xs:sequence>
-					<xs:element ref="AssetTypes"/>
-					<xs:element ref="Contacts"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
+	<xs:group name="AssetTypeGroup">
+		<xs:sequence>
+			<xs:element ref="AssetTypeAttributes" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypeDocuments" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
 	<xs:group name="AssetTypeReadOnlyGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeCategory"/>
@@ -35,21 +38,6 @@
 			<xs:element ref="AssetTypeSustainabilityPerformanceDescription" minOccurs="0"/>
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="AssetTypeGroup">
-		<xs:sequence>
-			<xs:element ref="AssetTypeAttributes" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="AssetTypeDocuments" minOccurs="0">
-				<xs:annotation>
-					<xs:appinfo source="urn:lcie:ReadOnly">false</xs:appinfo>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:group>
-	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="180.01_ProductTypeSelection"/>
 	<xs:complexType name="AssetTypeInfoType">
 		<xs:annotation>
 			<xs:documentation>A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.</xs:documentation>
@@ -63,58 +51,65 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name="AssetType" type="ts:AssetTypeInfoType" substitutionGroup="AssetType">
-		<xs:annotation>
-			<xs:documentation>A minimum of one AssetType record is required for all COBie deliverables related to equipment Type information. AssetType is associated with one or more Assets.</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-		<xs:complexType name="TypeSelectReadResultType">
+	<xs:complexType name="ProductTypeSelectionClientRequestType">
 		<xs:complexContent>
-			<xs:extension base="lcie:ReadResultType">
+			<xs:extension base="lcie:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeSelectionCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateRequestType">
+				<xs:choice>
+					<xs:element ref="ts:CreateAssetTypeAttributeRequest"/>
+					<xs:element ref="ts:CreateAssetTypeDocumentRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeSelectionDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteRequestType">
+				<xs:choice>
+					<xs:element ref="ts:DeleteAssetTypeDocumentRequest"/>
+					<xs:element ref="ts:DeleteAssetTypeAttributeRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeSelectionServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypeSelectionType">
+		<xs:complexContent>
+			<xs:extension base="lcie:InformationExchangeComplexType">
 				<xs:sequence>
-					<xs:element ref="AssetType"/>
+					<xs:element ref="AssetTypes"/>
 					<xs:element ref="Contacts"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="TypeSelectUpdateRequestType">
-		<xs:sequence>
-			<xs:element ref="ts:ProductTypeSelectionKey"/>
-			<xs:element ref="AssetTypeAttributes" minOccurs="0"/>
-			<xs:element ref="AssetTypeDocuments" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TypeSelectUpdateAttributeRequestType">
+	<xs:complexType name="ProductTypeSelectionUpdateRequestType">
 		<xs:complexContent>
-			<xs:extension base="lcie:UpdateAttributeRequestType">
-				<xs:sequence>
-					<xs:element ref="ts:ProductTypeSelectionKey"/>
-				</xs:sequence>
+			<xs:extension base="lcie:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="ts:UpdateAssetTypeAttributeRequest"/>
+					<xs:element ref="ts:UpdateAssetTypeDocumentRequest"/>
+					<xs:element ref="ts:UpdateAssetTypeRequest"/>
+				</xs:choice>
 			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TypeSelectClientRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ClientRequestExchangeType"/>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="TypeSelectCreateAttributeRequestType">
 		<xs:complexContent>
 			<xs:extension base="lcie:CreateAttributeRequestType">
-				<xs:sequence>
-					<xs:element ref="ts:ProductTypeSelectionKey"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="TypeSelectDeleteAttributeRequestType">
-		<xs:complexContent>
-			<xs:extension base="lcie:DeleteAttributeRequestType">
-				<xs:sequence>
-					<xs:element ref="ts:ProductTypeSelectionKey"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="TypeSelectUpdateDocumentRequestType">
-		<xs:complexContent>
-			<xs:extension base="lcie:UpdateDocumentRequestType">
 				<xs:sequence>
 					<xs:element ref="ts:ProductTypeSelectionKey"/>
 				</xs:sequence>
@@ -130,6 +125,15 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="TypeSelectDeleteAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ts:ProductTypeSelectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:complexType name="TypeSelectDeleteDocumentRequestType">
 		<xs:complexContent>
 			<xs:extension base="lcie:DeleteDocumentRequestType">
@@ -139,9 +143,14 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="TypeSelectClientRequestType">
+	<xs:complexType name="TypeSelectReadResultType">
 		<xs:complexContent>
-			<xs:extension base="lcie:ClientRequestExchangeType"/>
+			<xs:extension base="lcie:ReadResultType">
+				<xs:sequence>
+					<xs:element ref="AssetType"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="TypeSelectServerResponseType">
@@ -149,52 +158,42 @@
 			<xs:extension base="lcie:ServerResponseExchangeType"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="ProductTypeSelectionClientRequestType">
+	<xs:complexType name="TypeSelectUpdateAttributeRequestType">
 		<xs:complexContent>
-			<xs:extension base="lcie:ClientRequestExchangeType"/>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="ProductTypeSelectionServerResponseType">
-		<xs:complexContent>
-			<xs:extension base="lcie:ServerResponseExchangeType"/>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="ProductTypeSelectionCreateRequestType">
-		<xs:complexContent>
-			<xs:extension base="lcie:CreateRequestType">
-				<xs:choice>
-					<xs:element ref="ts:CreateAssetTypeAttributeRequest"/>
-					<xs:element ref="ts:CreateAssetTypeDocumentRequest"/>
-				</xs:choice>
+			<xs:extension base="lcie:UpdateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ts:ProductTypeSelectionKey"/>
+				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="ProductTypeSelectionUpdateRequestType">
+	<xs:complexType name="TypeSelectUpdateDocumentRequestType">
 		<xs:complexContent>
-			<xs:extension base="lcie:UpdateRequestType">
-				<xs:choice>
-					<xs:element ref="ts:UpdateAssetTypeAttributeRequest"/>
-					<xs:element ref="ts:UpdateAssetTypeDocumentRequest"/>
-					<xs:element ref="ts:UpdateAssetTypeRequest"/>
-				</xs:choice>
+			<xs:extension base="lcie:UpdateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ts:ProductTypeSelectionKey"/>
+				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="ProductTypeSelectionDeleteRequestType">
-		<xs:complexContent>
-			<xs:extension base="lcie:DeleteRequestType">
-				<xs:choice>
-					<xs:element ref="ts:DeleteAssetTypeDocumentRequest"/>
-					<xs:element ref="ts:DeleteAssetTypeAttributeRequest"/>
-				</xs:choice>
-			</xs:extension>
-		</xs:complexContent>
+	<xs:complexType name="TypeSelectUpdateRequestType">
+		<xs:sequence>
+			<xs:element ref="ts:ProductTypeSelectionKey"/>
+			<xs:element ref="AssetTypeAttributes" minOccurs="0"/>
+			<xs:element ref="AssetTypeDocuments" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="ProductTypeSelection" type="ts:ProductTypeSelectionType"/>
+	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="180.01_ProductTypeSelection"/>
+	<xs:element name="AssetType" type="ts:AssetTypeInfoType" substitutionGroup="AssetType">
+		<xs:annotation>
+			<xs:documentation>A minimum of one AssetType record is required for all COBie deliverables related to equipment Type information. AssetType is associated with one or more Assets.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
 	<xs:element name="ProductTypeSelectionCreateRequest" type="ts:ProductTypeSelectionCreateRequestType" substitutionGroup="lcie:CreateRequest"/>
 	<xs:element name="ProductTypeSelectionUpdateRequest" type="ts:ProductTypeSelectionUpdateRequestType" substitutionGroup="lcie:UpdateRequest"/>
 	<xs:element name="ProductTypeSelectionDeleteRequest" type="ts:ProductTypeSelectionDeleteRequestType" substitutionGroup="lcie:DeleteRequest"/>
 	<xs:element name="ProductTypeSelectionReadResult" type="ts:TypeSelectReadResultType" substitutionGroup="lcie:ReadResult"/>
-
 	<xs:element name="ProductTypeSelectionKey" type="AssetTypeKeyType" substitutionGroup="lcie:Key"/>
 	<xs:element name="DeleteAssetTypeAttributeRequest" type="ts:TypeSelectDeleteAttributeRequestType"/>
 	<xs:element name="CreateAssetTypeAttributeRequest" type="ts:TypeSelectCreateAttributeRequestType"/>

@@ -1,8 +1,7 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://docs.buildingsmartalliance.org/nbims03/lcie/core" xmlns="http://docs.buildingsmartalliance.org/nbims03/cobie/core" xmlns:camed="http://jcam.org.uk/editor"  xmlns:ptp="http://docs.buildingsmartalliance.org/nbims03/lcie/25001ProductTypeParts" targetNamespace="http://docs.buildingsmartalliance.org/nbims03/lcie/25001ProductTypeParts" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC4">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://docs.buildingsmartalliance.org/nbims03/lcie/core" xmlns="http://docs.buildingsmartalliance.org/nbims03/cobie/core" xmlns:camed="http://jcam.org.uk/editor" xmlns:ptp="http://docs.buildingsmartalliance.org/nbims03/lcie/25001ProductTypeParts" targetNamespace="http://docs.buildingsmartalliance.org/nbims03/lcie/25001ProductTypeParts" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC4">
 	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/cobie/core" schemaLocation="../cobie/core.xsd"/>
 	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/lcie/core" schemaLocation="core.xsd"/>
-	<xs:element name="ProductTypeParts" type="ptp:ProductPartsType">
-	</xs:element>
+	<xs:element name="ProductTypeParts" type="ptp:ProductPartsType"/>
 	<xs:group name="AssetTypeReadOnlyGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeCategory"/>
@@ -82,4 +81,147 @@
 	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="250.01_ProductTypeParts"/>
 	<xs:element name="AssetType" type="ptp:ProductPartsAssetTypeType" substitutionGroup="AssetType"/>
 	<xs:element name="Spare" type="ptp:ProductPartsSpareType" substitutionGroup="Spare"/>
+	
+		<xs:complexType name="InstallReadResultType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ReadResultType">
+				<xs:sequence>
+					<xs:element ref="AssetType"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CreateSpareType">
+		<xs:sequence>
+			<xs:element ref="ptp:ProductTypePartsKey"/>
+			<xs:group ref="ptp:SpareCreateGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeleteSpareType">
+		<xs:sequence>
+			<xs:element ref="ptp:ProductTypePartsKey"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UpdateAssetTypeInfoType">
+		<xs:sequence>
+			<xs:element ref="ptp:AssetTypeKey"/>
+			<xs:element ref="AssetTypeDocuments"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UpdateSpareType">
+		<xs:sequence>
+			<xs:element ref="ptp:ProductTypePartsKey"/>
+			<xs:group ref="ptp:SpareUpdateGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UpdateDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptp:ProductTypePartsKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CreateDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptp:ProductTypePartsKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeleteDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="ptp:ProductTypePartsKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptp:ProductTypePartsKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CreateAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptp:ProductTypePartsKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeleteAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="ptp:ProductTypePartsKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypePartsClientRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypePartsServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypePartsCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateRequestType">
+				<xs:choice>
+					<xs:element ref="ptp:CreateSpareDocumentRequest"/>
+					<xs:element ref="ptp:CreateSpareRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductTypePartsDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteRequestType">
+				<xs:choice>
+					<xs:element ref="ptp:DeleteSpareDocumentRequest"/>
+					<xs:element ref="ptp:DeleteSpareRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateProductTypePartsRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="ptp:UpdateSpareRequest"/>
+					<xs:element ref="ptp:UpdateAssetTypeRequest"/>
+					<xs:element ref="ptp:UpdateSpareDocumentRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ProductTypePartsUpdateRequest" type="ptp:UpdateProductTypePartsRequestType" substitutionGroup="lcie:UpdateRequest"/>
+	<xs:element name="ProductTypePartsCreateRequest" type="ptp:ProductTypePartsCreateRequestType" substitutionGroup="lcie:CreateRequest"/>
+	<xs:element name="ProductTypePartsDeleteRequest" type="ptp:ProductTypePartsDeleteRequestType" substitutionGroup="lcie:DeleteRequest"/>
+
+	<xs:element name="ProductTypePartsReadResult" type="ptp:InstallReadResultType" substitutionGroup="lcie:ReadResult"/>
+	<xs:element name="ProductTypePartsKey" type="SpareKeyType" substitutionGroup="lcie:Key"/>
+	<xs:element name="UpdateSpareDocumentRequest" type="ptp:UpdateDocumentRequestType"/>
+	<xs:element name="DeleteSpareDocumentRequest" type="ptp:DeleteDocumentRequestType"/>
+	<xs:element name="CreateSpareDocumentRequest" type="ptp:CreateDocumentRequestType"/>
+	<xs:element name="DeleteSpareRequest" type="ptp:DeleteSpareType"/>
+	<xs:element name="CreateSpareRequest" type="ptp:CreateSpareType"/>
+	<xs:element name="UpdateSpareRequest" type="ptp:UpdateSpareType"/>
+	<xs:element name="UpdateAssetTypeRequest" type="ptp:UpdateAssetTypeInfoType"/>
+	<xs:element name="AssetTypeKey" type="AssetTypeKeyType"/>
 </xs:schema>

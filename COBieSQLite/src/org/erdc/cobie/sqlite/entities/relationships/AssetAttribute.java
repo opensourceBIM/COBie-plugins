@@ -40,4 +40,18 @@ public class AssetAttribute extends Relationship
 	{
 		return "AssetAttribute";
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Column<Integer> getChildKey() 
+	{
+		return (Column<Integer>)getColumn(ColumnName.RefAttribute.toString());
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Column<Integer> getParentKey() 
+	{
+		return (Column<Integer>)getColumn(ColumnName.RefAsset.toString());
+	}
 }

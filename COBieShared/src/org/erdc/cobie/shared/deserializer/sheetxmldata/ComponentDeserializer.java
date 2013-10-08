@@ -31,6 +31,7 @@ import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.shared.deserializer.sheetxmldata.modelhandlers.IfcCommonHandler;
 import org.erdc.cobie.shared.deserializer.sheetxmldata.propertysets.Pset_Component;
+import org.erdc.cobie.shared.deserializer.sheetxmldata.propertysets.Pset_ManufacturerOccurence;
 import org.erdc.cobie.shared.VendorExtHandler;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.ComponentType;
@@ -172,7 +173,9 @@ public class ComponentDeserializer
                         newProduct.setOwnerHistory(ownerHistory);
                         newProduct.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(externalId).getWrappedValue());
                         Pset_Component psetComponent = new Pset_Component(component);
+                        Pset_ManufacturerOccurence psetOccurence = new Pset_ManufacturerOccurence(component);
                         ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToObject(newProduct, psetComponent, true);
+                        ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToObject(newProduct, psetOccurence, false);
                         model.addComponent(newProduct, component, ifcCommonHandler);
                     }
                 } catch (Exception e)

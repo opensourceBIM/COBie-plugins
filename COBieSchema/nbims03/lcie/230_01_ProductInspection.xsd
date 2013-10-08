@@ -1,8 +1,7 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://docs.buildingsmartalliance.org/nbims03/lcie/core" xmlns="http://docs.buildingsmartalliance.org/nbims03/cobie/core" xmlns:camed="http://jcam.org.uk/editor"  xmlns:pi="http://docs.buildingsmartalliance.org/nbims03/lcie/23001ProductInspection" targetNamespace="http://docs.buildingsmartalliance.org/nbims03/lcie/23001ProductInspection" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC4">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:lcie="http://docs.buildingsmartalliance.org/nbims03/lcie/core" xmlns="http://docs.buildingsmartalliance.org/nbims03/cobie/core" xmlns:camed="http://jcam.org.uk/editor" xmlns:pi="http://docs.buildingsmartalliance.org/nbims03/lcie/23001ProductInspection" targetNamespace="http://docs.buildingsmartalliance.org/nbims03/lcie/23001ProductInspection" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="RC4">
 	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/cobie/core" schemaLocation="../cobie/core.xsd"/>
 	<xs:import namespace="http://docs.buildingsmartalliance.org/nbims03/lcie/core" schemaLocation="core.xsd"/>
-	<xs:element name="ProductInspection" type="pi:ProductInspectionType">
-	</xs:element>
+	<xs:element name="ProductInspection" type="pi:ProductInspectionType"/>
 	<xs:group name="AssetTypeReadOnlyGroup">
 		<xs:sequence>
 			<xs:element ref="AssetTypeCategory"/>
@@ -129,4 +128,151 @@
 	<xs:element name="InformationExchangeID" type="lcie:InformationExchangeSimpleType" substitutionGroup="lcie:InformationExchangeID" fixed="230.01_ProductInspection"/>
 	<xs:element name="AssetType" type="pi:ProductInspectionAssetTypeType" substitutionGroup="AssetType"/>
 	<xs:element name="Asset" type="pi:ProductInspectionAssetType" substitutionGroup="Asset"/>
+	
+
+<xs:complexType name="InstallReadResultType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ReadResultType">
+				<xs:sequence>
+					<xs:element ref="AssetType"/>
+					<xs:element ref="Contacts"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionUpdateAssetInfoType">
+		<xs:sequence>
+			<xs:element ref="pi:ProductInspectionKey"/>
+			<xs:group ref="pi:AssetUpdateGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionUpdateAssetTypeInfoType">
+		<xs:sequence>
+			<xs:element ref="pi:AssetTypeKey"/>
+			<xs:group ref="pi:AssetTypeGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionUpdateAssetTypeAttributeRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateAttributeRequestType">
+				<xs:sequence>
+					<xs:element ref="pi:AssetTypeKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionUpdateAssetTypeIssueRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateIssueRequestType">
+				<xs:sequence>
+					<xs:element ref="pi:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionCreateAssetTypeIssueRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateIssueRequestType">
+				<xs:sequence>
+					<xs:element ref="pi:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionDeleteAssetTypeIssueRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteIssueRequestType">
+				<xs:sequence>
+					<xs:element ref="pi:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionClientRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ClientRequestExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionServerResponseType">
+		<xs:complexContent>
+			<xs:extension base="lcie:ServerResponseExchangeType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionUpdateAssetDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pi:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionCreateDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pi:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionDeleteDocumentRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteDocumentRequestType">
+				<xs:sequence>
+					<xs:element ref="pi:ProductInspectionKey"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionCreateRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:CreateRequestType">
+				<xs:choice>
+					<xs:element ref="pi:CreateAssetDocumentRequest"/>
+					<xs:element ref="pi:CreateAssetTypeIssueRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionUpdateRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:UpdateRequestType">
+				<xs:choice>
+					<xs:element ref="pi:UpdateAssetRequest"/>
+					<xs:element ref="pi:UpdateAssetTypeRequest"/>
+					<xs:element ref="pi:UpdateAssetDocumentRequest"/>
+					<xs:element ref="pi:UpdateAssetTypeIssueRequest"/>
+					<xs:element ref="pi:UpdateAssetTypeAttributeRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductInspectionDeleteRequestType">
+		<xs:complexContent>
+			<xs:extension base="lcie:DeleteRequestType">
+				<xs:choice>
+					<xs:element ref="pi:DeleteAssetDocumentRequest"/>
+					<xs:element ref="pi:DeleteAssetTypeIssueRequest"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ProductInspectionCreateRequest" type="pi:ProductInspectionCreateRequestType" substitutionGroup="lcie:CreateRequest"/>
+	<xs:element name="ProductInspectionUpdateRequest" type="pi:ProductInspectionUpdateRequestType" substitutionGroup="lcie:UpdateRequest"/>
+	<xs:element name="ProductInspectionDeleteRequest" type="pi:ProductInspectionDeleteRequestType" substitutionGroup="lcie:DeleteRequest"/>
+	<xs:element name="ProductInspectionReadResult" type="pi:InstallReadResultType" substitutionGroup="lcie:ReadResult"/>
+
+	<xs:element name="ProductInspectionKey" type="AssetKeyType" substitutionGroup="lcie:Key"/>
+	<xs:element name="UpdateAssetDocumentRequest" type="pi:ProductInspectionUpdateAssetDocumentRequestType"/>
+	<xs:element name="DeleteAssetDocumentRequest" type="pi:ProductInspectionDeleteDocumentRequestType"/>
+	<xs:element name="CreateAssetDocumentRequest" type="pi:ProductInspectionCreateDocumentRequestType"/>
+	<xs:element name="UpdateAssetTypeIssueRequest" type="pi:ProductInspectionUpdateAssetTypeIssueRequestType"/>
+	<xs:element name="DeleteAssetTypeIssueRequest" type="pi:ProductInspectionDeleteAssetTypeIssueRequestType"/>
+	<xs:element name="CreateAssetTypeIssueRequest" type="pi:ProductInspectionCreateAssetTypeIssueRequestType"/>
+	<xs:element name="UpdateAssetTypeAttributeRequest" type="pi:ProductInspectionUpdateAssetTypeAttributeRequestType"/>
+	<xs:element name="UpdateAssetRequest" type="pi:ProductInspectionUpdateAssetInfoType"/>
+	<xs:element name="UpdateAssetTypeRequest" type="pi:ProductInspectionUpdateAssetTypeInfoType"/>
+	<xs:element name="AssetTypeKey" type="AssetTypeKeyType"/>	
+	
 </xs:schema>

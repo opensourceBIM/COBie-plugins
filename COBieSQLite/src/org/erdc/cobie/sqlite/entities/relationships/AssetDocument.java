@@ -35,6 +35,20 @@ public class AssetDocument extends Relationship
     	addColumns(columns);
     }
     
+	@SuppressWarnings("unchecked")
+	@Override
+	public Column<Integer> getChildKey() 
+	{
+		return (Column<Integer>)getColumn(ColumnName.RefDocument.toString());
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Column<Integer> getParentKey() 
+	{
+		return (Column<Integer>)getColumn(ColumnName.RefAsset.toString());
+	}
+	
 	@Override
 	public String getTableName() 
 	{
