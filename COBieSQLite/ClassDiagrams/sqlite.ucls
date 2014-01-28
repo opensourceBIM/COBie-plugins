@@ -1,0 +1,85 @@
+<class-diagram version="1.0.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="org.erdc.cobie.sqlite.Column" project="COBieSQLite" 
+    file="/COBieSQLite/src/org/erdc/cobie/sqlite/Column.java" binary="false">    
+    <position height="289" width="169" x="1287" y="596"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="2" corner="BOTTOM_RIGHT" language="java" name="org.erdc.cobie.sqlite.QueryResultType" 
+    project="COBieSQLite" file="/COBieSQLite/src/org/erdc/cobie/sqlite/QueryResultType.java" binary="false">    
+    <position height="-1" width="-1" x="700" y="755"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="org.erdc.cobie.sqlite.CobieSQLiteException" 
+    project="COBieSQLite" file="/COBieSQLite/src/org/erdc/cobie/sqlite/CobieSQLiteException.java" binary="false">    
+    <position height="153" width="319" x="425" y="29"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="org.erdc.cobie.sqlite.Row" project="COBieSQLite" 
+    file="/COBieSQLite/src/org/erdc/cobie/sqlite/Row.java" binary="false">    
+    <position height="255" width="221" x="1287" y="29"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="org.erdc.cobie.sqlite.Query" project="COBieSQLite" 
+    file="/COBieSQLite/src/org/erdc/cobie/sqlite/Query.java" binary="false">    
+    <position height="527" width="239" x="784" y="29"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="org.erdc.cobie.sqlite.Connector" project="COBieSQLite" 
+    file="/COBieSQLite/src/org/erdc/cobie/sqlite/Connector.java" binary="false">    
+    <position height="170" width="184" x="1063" y="29"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="org.erdc.cobie.sqlite.ColumnSet" project="COBieSQLite" 
+    file="/COBieSQLite/src/org/erdc/cobie/sqlite/ColumnSet.java" binary="false">    
+    <position height="-1" width="-1" x="1369" y="412"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <generalization id="8">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="9">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="10" name="resultType"/>      
+      <multiplicity id="11" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="12">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="13" name="columns"/>      
+      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

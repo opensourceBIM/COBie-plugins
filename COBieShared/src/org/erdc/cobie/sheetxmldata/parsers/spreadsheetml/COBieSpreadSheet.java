@@ -344,7 +344,7 @@ public class COBieSpreadSheet
         return columnMappings;
     }
 
-    public static Map<String, Integer> GetWorksheetColumnDictionary(Worksheet sheet, List<String> list)
+    public static Map<String, Integer> getWorksheetColumnDictionary(Worksheet sheet, List<String> list)
     {
         ArrayList<String> upperCaseColumnNames = new ArrayList<String>();
         for (int idx = 0; idx < list.size(); idx++)
@@ -357,13 +357,18 @@ public class COBieSpreadSheet
         int tmpColIndex;
         String tmpColName;
         sheet.getTable();
-
+        String workSheetName = sheet.getName();
+        boolean isContactSheet = CobieSheetName.Contact.name().equalsIgnoreCase(workSheetName);
         for (Cell tmpCell : firstRow.getCells())
         {
             tmpColIndex = tmpCell.getIndex();
             if (tmpCell.hasData())
             {
                 tmpColName = tmpCell.getData$();
+                if(isContactSheet)
+                {
+                	tmpColName = correctExtFields(tmpColName);
+                }
                 if (upperCaseColumnNames.contains(tmpColName.toUpperCase()) && !colMap.containsKey(tmpColName))
                 {
                     colMap.put(tmpColName, tmpColIndex);
@@ -389,6 +394,30 @@ public class COBieSpreadSheet
         }
         return colMap;
     }
+
+	/**
+	 * @param columnName
+	 * @return Returns a string that replaces ExtIdentifier, ExtObject, and ExtSystem with ExternalIdentifier, ExternalObject, and ExternalSystem 
+	 * respectively
+	 */
+	private static String correctExtFields(String columnName)
+	{
+		if(columnName.equalsIgnoreCase(COBieTokenUtility.FloorColumnNameLiterals.ExtObject.name()))
+		{
+			columnName = COBieTokenUtility.ContactColumnNameLiterals.ExternalObject.name();
+		}
+		
+		else if (columnName.equalsIgnoreCase(COBieTokenUtility.FloorColumnNameLiterals.ExtIdentifier.name()))
+		{
+			columnName = COBieTokenUtility.ContactColumnNameLiterals.ExternalIdentifier.name();
+		}
+		
+		else if (columnName.equalsIgnoreCase(COBieTokenUtility.FloorColumnNameLiterals.ExtSystem.name()))
+		{
+			columnName = COBieTokenUtility.ContactColumnNameLiterals.ExternalSystem.name();
+		}
+		return columnName;
+	}
 
     public static boolean isRowPopulated(Row rowData, int startColumnIndex, int endColumnIndex)
     {
@@ -666,7 +695,7 @@ public class COBieSpreadSheet
         try
         {
             ArrayList<String> sheetColNames = getCategorizedCobieSheetNameToColumnNames().get(sheetName);
-            Map<String, Integer> dictionaryMap = GetWorksheetColumnDictionary(targetSheet, sheetColNames);
+            Map<String, Integer> dictionaryMap = getWorksheetColumnDictionary(targetSheet, sheetColNames);
             int categoryIndex = dictionaryMap.get(COBieSpreadSheet.CLASSIFICATION_FIELD_NAME);
             if (categoryIndex > -1)
             {
@@ -1054,7 +1083,7 @@ public class COBieSpreadSheet
     {
         ArrayList<String> pickListColumnNames = new ArrayList<String>();
         pickListColumnNames.add(pickListColumnName);
-        Map<String, Integer> pickListMap = GetWorksheetColumnDictionary(pickListSheet, pickListColumnNames);
+        Map<String, Integer> pickListMap = getWorksheetColumnDictionary(pickListSheet, pickListColumnNames);
         int pickListColIndex = pickListMap.get(pickListColumnName);
         if (pickListColIndex > -1)
         {

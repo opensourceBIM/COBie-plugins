@@ -48,7 +48,7 @@ public class COBieDeserializerPlugin implements DeserializerPlugin
 	public Deserializer createDeserializer(
 			PluginConfiguration pluginConfiguration)
 	{
-		return new COBieDeserializer(configurationFile, preImportFileDirectory);
+		return new COBieDeserializer(configurationFile);
 	}
 
 	@Override

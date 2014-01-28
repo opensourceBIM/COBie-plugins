@@ -82,7 +82,7 @@ public class AssetTypeParser extends DeepParser<TypeType, AssetTypeInfoType>
         AssignmentHelper.parseContactAssignments(contacts, warrantyProvider);
         IntegerValueType duration = warranty.addNewWarrantyDuration();
         ValueHelper.assign(warrantyDuration, duration);
-        duration.setUnitName(warrantyDurationUnit);
+        duration.addNewUnitName().setStringValue(warrantyDurationUnit);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class COBieIDMWithoutProxyObjectsPlugin extends IDMPlugin
 	@Override
 	public String getIgnoreFilePath()
 	{
-		return "lib/BPieIgnore.xml";
+		return "lib/COBieIgnorePlusProxyObjects.xml";
 	}
 
 }

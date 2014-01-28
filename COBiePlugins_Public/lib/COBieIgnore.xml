@@ -39,7 +39,7 @@
 	<ClassDefinition name="IfcRamp"/>
 	<ClassDefinition name="IfcRampFlight"/>
 	<ClassDefinition name="IfcRoof"/>
-	<ClassDefinition name="IfcSlab"/>
+
 	<ClassDefinition name="IfcSlabElementedCase"/>
 	<ClassDefinition name="IfcSlabStandardCase"/>
 	<ClassDefinition name="IfcStair"/>
@@ -92,5 +92,4 @@
 <ClassDefinition name="IfcStructuralCurveMemberVarying"/>
 <ClassDefinition name="IfcStructuralSurfaceMember"/>
 <ClassDefinition name="IfcStructuralSurfaceMemberVarying"/>
- 	
 </PackageDefinition>

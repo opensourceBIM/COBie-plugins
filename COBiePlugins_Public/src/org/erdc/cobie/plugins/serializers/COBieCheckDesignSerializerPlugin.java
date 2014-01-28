@@ -15,7 +15,7 @@ import org.bimserver.plugins.schema.SchemaPlugin;
 import org.bimserver.plugins.serializers.Serializer;
 import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
 import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
-import org.erdc.cobie.shared.enums.SchematronValidationPhase;
+import org.erdc.cobie.shared.enums.COBieQCValidationPhase;
 import org.erdc.cobie.utils.serializer.COBieSchematronCheckerSettings;
 
 public class COBieCheckDesignSerializerPlugin extends AbstractCOBieSerializerPlugin
@@ -97,7 +97,7 @@ public class COBieCheckDesignSerializerPlugin extends AbstractCOBieSerializerPlu
 		}
 		checkerSettings = new COBieSchematronCheckerSettings(configFiles.get(SCHEMATRON_RULEPATH).getAbsolutePath(), 
 				configFiles.get(PRE_PROCESSOR_PATH).getAbsolutePath(), configFiles
-				.get(SVRL_HTML_XSLT_PATH).getAbsolutePath(), SchematronValidationPhase.Design);
+				.get(SVRL_HTML_XSLT_PATH).getAbsolutePath(), COBieQCValidationPhase.Design);
 		initialized = true;
 	}
 

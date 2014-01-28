@@ -211,7 +211,7 @@ public class FacilityParser extends DeepParser<org.erdc.cobie.sheetxmldata.Facil
         IfcCurrencyEnum ifcCurrency = monetaryMatcher.getMatchingCurrency();
         CurrencyUnitSimpleType.Enum currency = UnitSearchToCOBieLiteUnits.getCurrencyUnit(ifcCurrency);
         if(currency != null)
-            targetCOBie.setFacilityDefaultCurrencyUnit(currency);
+            targetCOBie.addNewFacilityDefaultCurrencyUnit().setStringValue(currency.toString());
         
     }
 
@@ -225,7 +225,7 @@ public class FacilityParser extends DeepParser<org.erdc.cobie.sheetxmldata.Facil
         if(unitSearch instanceof VolumeUnitSearch)
            volumeUnit = UnitSearchToCOBieLiteUnits.getVolumeUnit((VolumeUnitSearch) unitSearch);
         if(volumeUnit != null)
-            targetCOBie.setFacilityDefaultVolumeUnit(volumeUnit);
+            targetCOBie.addNewFacilityDefaultVolumeUnit().setStringValue(volumeUnit.toString());
         
     }
 
@@ -239,7 +239,7 @@ public class FacilityParser extends DeepParser<org.erdc.cobie.sheetxmldata.Facil
         if(unitSearch instanceof AreaUnitSearch)
            areaUnit = UnitSearchToCOBieLiteUnits.getAreaUnit((AreaUnitSearch) unitSearch);
         if(areaUnit != null)
-            targetCOBie.setFacilityDefaultAreaUnit(areaUnit);
+            targetCOBie.addNewFacilityDefaultAreaUnit().setStringValue(areaUnit.toString());
         
     }
 
@@ -253,7 +253,7 @@ public class FacilityParser extends DeepParser<org.erdc.cobie.sheetxmldata.Facil
         if(unitSearch instanceof LengthUnitSearch)
            linearUnit = UnitSearchToCOBieLiteUnits.getLengthUnit((LengthUnitSearch) unitSearch);
         if(linearUnit != null)
-            targetCOBie.setFacilityDefaultLinearUnit(linearUnit);
+            targetCOBie.addNewFacilityDefaultLinearUnit().setStringValue(linearUnit.toString());
     }
 
     @Override

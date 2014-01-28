@@ -1,0 +1,96 @@
+<class-diagram version="1.0.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" 
+    name="org.erdc.cobie.sqlite.service.attribute.SpaceAttributeService" project="COBieSQLite" 
+    file="/COBieSQLite/src/org/erdc/cobie/sqlite/service/attribute/SpaceAttributeService.java" binary="false">    
+    <position height="102" width="364" x="770" y="299"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" 
+    name="org.erdc.cobie.sqlite.service.attribute.AssetTypeAttributeService" project="COBieSQLite" 
+    file="/COBieSQLite/src/org/erdc/cobie/sqlite/service/attribute/AssetTypeAttributeService.java" binary="false">    
+    <position height="102" width="412" x="1174" y="299"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" 
+    name="org.erdc.cobie.sqlite.service.attribute.AssetAttributeService" project="COBieSQLite" 
+    file="/COBieSQLite/src/org/erdc/cobie/sqlite/service/attribute/AssetAttributeService.java" binary="false">    
+    <position height="102" width="358" x="1626" y="299"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" 
+    name="org.erdc.cobie.sqlite.service.attribute.FacilityAttributeService" project="COBieSQLite" 
+    file="/COBieSQLite/src/org/erdc/cobie/sqlite/service/attribute/FacilityAttributeService.java" binary="false">    
+    <position height="102" width="374" x="2024" y="299"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" 
+    name="org.erdc.cobie.sqlite.service.attribute.ZoneAttributeService" project="COBieSQLite" 
+    file="/COBieSQLite/src/org/erdc/cobie/sqlite/service/attribute/ZoneAttributeService.java" binary="false">    
+    <position height="102" width="346" x="2438" y="299"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="org.erdc.cobie.sqlite.service.attribute.AttributeService" 
+    project="COBieSQLite" file="/COBieSQLite/src/org/erdc/cobie/sqlite/service/attribute/AttributeService.java" 
+    binary="false">    
+    <position height="101" width="319" x="1810" y="158"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" 
+    name="org.erdc.cobie.sqlite.service.attribute.FloorAttributeService" project="COBieSQLite" 
+    file="/COBieSQLite/src/org/erdc/cobie/sqlite/service/attribute/FloorAttributeService.java" binary="false">    
+    <position height="102" width="348" x="2824" y="299"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <generalization id="8">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="9">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="10">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="11">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="12">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="13">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

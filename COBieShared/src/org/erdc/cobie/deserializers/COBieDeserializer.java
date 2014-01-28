@@ -55,8 +55,7 @@ public class COBieDeserializer extends EmfDeserializer implements
 	private static final String LOGGER_STATUS_SPREADSHEET_BEGIN_MSG = "Deserializing COBie SpreadsheetML to COBie Sheet XML Data.";
 	private static final String LOGGER_STATUS_SPREADSHEET_END_MSG = "COBie SpreadsheetML converted to COBie Sheet XML Data.";
 
-	public COBieDeserializer(File configurationFile,
-			File preImportComplianceReportDirectory)
+	public COBieDeserializer(File configurationFile)
 	{
 		this.configurationFile = configurationFile;
 	}
@@ -109,7 +108,7 @@ public class COBieDeserializer extends EmfDeserializer implements
 	}
 
 	// general initialize function that any of the constructors will call
-	public void initCOBie(InputStream in) throws DeserializeException
+	private void initCOBie(InputStream in) throws DeserializeException
 	{
 
 		try
@@ -164,26 +163,9 @@ public class COBieDeserializer extends EmfDeserializer implements
 	}
 
 	private void spreadsheetToCOBie(InputStream in)
-			throws DeserializeException, IOException, SAXException,
-			ParserConfigurationException
+			throws Exception
 	{
-		COBie = COBIEDocument.Factory.newInstance();
-		templateFilePath = configurationFile.getAbsolutePath();
-
-		XFactory.setConfigurationFileName(templateFilePath);
-
-		reader = new ExcelReader();
-		xlWorkbook = getWorkBookFromInputStream(in);
-		if ((xlWorkbook != null) || xlWorkbook.hasExcelWorkbook())
-		{
-			populateCobieDocument();
-		}
-		else
-		{
-			throw new DeserializeException(
-					"Input stream not a valid spreadsheetml file.");
-		}
-
+		toCOBieSheetXMLData(getWorkBookFromInputStream(in));
 	}
 
 	@Override
@@ -192,11 +174,41 @@ public class COBieDeserializer extends EmfDeserializer implements
 	{
 		try
 		{
-			initCOBie(new FileInputStream(incomingFile));
+			return toCOBieSheetXMLData(new FileInputStream(incomingFile));
 		}
 		catch (Exception ex)
 		{
 			throw ex;
+		}
+	}
+	
+	public COBIEDocument toCOBieSheetXMLData(InputStream inputStream) throws Exception
+	{
+		try
+		{
+			initCOBie(inputStream);
+		}
+		catch (Exception ex)
+		{
+			throw ex;
+		}
+		return COBie;
+	}
+	
+	public COBIEDocument toCOBieSheetXMLData(Workbook workbook) throws Exception
+	{
+		COBie = COBIEDocument.Factory.newInstance();
+		templateFilePath = configurationFile.getAbsolutePath();
+		XFactory.setConfigurationFileName(templateFilePath);
+		this.xlWorkbook = workbook;
+		if ((xlWorkbook != null) || xlWorkbook.hasExcelWorkbook())
+		{
+			populateCobieDocument();
+		}
+		else
+		{
+			throw new DeserializeException(
+					"Input stream not a valid spreadsheetml file.");
 		}
 		return COBie;
 	}

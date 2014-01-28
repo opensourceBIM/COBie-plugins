@@ -64,12 +64,15 @@ public class IfcToComponent
     private static ArrayList<String> tagNumberStrings = new ArrayList<String>(Arrays.asList("TagNumber"));
     private static ArrayList<String> barCodeStrings = new ArrayList<String>(Arrays.asList("BarCode"));
     private static ArrayList<String> assetIdentifierStrings = new ArrayList<String>(Arrays.asList("AssetIdentifier"));
-    private static ArrayList<String> AssetComponentExcludeStrings = new ArrayList<String>(Arrays.asList("IfcAnnotation", "IfcDistributionPort",
+/*    private static ArrayList<String> AssetComponentExcludeStrings = new ArrayList<String>(Arrays.asList("IfcAnnotation", "IfcDistributionPort",
             "IfcSpace", "IfcBuildingStorey", "IfcBuilding", "IfcSite", "IfcVirtualElement", "IfcBeam", "IfcBuildingElementPart", "IfcColumn",
             "IfcCurtainWall", "IfcElementAssembly", "IfcFastener", "IfcFeatureElement", "IfcFlowFitting", "IfcFlowSegment", "IfcFooting",
             "IfcMechanicalFastener", "IfcMember", "IfcPile", "IfcPlate", "IfcRailing", "IfcRamp", "IfcRampFlight", "IfcReinforcingBar",
             "IfcReinforcingMesh", "IfcRoof", "IfcSlab", "IfcStair", "IfcStairFlight", "IfcTendon", "IfcTendonAnchor", "IfcWall",
-            "IfcWallStandardCase", "IfcCovering"));
+            "IfcWallStandardCase", "IfcCovering"));*/
+    //NOTE:  This revision was made on 10/28/2013 in response to an issue with the COBieToolkit where user was using "None" as the selected 
+    // idm.  So, the redundant entries in that IDM ignore list are now removed from the AssetComponentExcludeStrings list.
+    private static ArrayList<String> AssetComponentExcludeStrings = new ArrayList<String>(Arrays.asList("IfcSpace", "IfcBuildingStorey", "IfcBuilding", "IfcSite"));
 
     protected static String assetIdentifierFromProduct(IfcProduct product)
     {

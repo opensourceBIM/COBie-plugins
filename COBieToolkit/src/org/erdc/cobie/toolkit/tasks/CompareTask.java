@@ -11,6 +11,8 @@ import javax.xml.transform.TransformerException;
 
 import org.apache.xmlbeans.XmlException;
 import org.erdc.cobie.report.ReportSerializer;
+import org.erdc.cobie.shared.COBieTaskProgress;
+import org.erdc.cobie.shared.Informable;
 import org.erdc.cobie.shared.compare.COBieCompareResult;
 import org.erdc.cobie.shared.compare.COBieCompareState;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;

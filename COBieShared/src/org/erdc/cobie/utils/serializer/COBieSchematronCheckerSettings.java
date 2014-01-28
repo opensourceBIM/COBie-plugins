@@ -1,15 +1,15 @@
 package org.erdc.cobie.utils.serializer;
 
-import org.erdc.cobie.shared.enums.SchematronValidationPhase;
+import org.erdc.cobie.shared.enums.COBieQCValidationPhase;
 
 public class COBieSchematronCheckerSettings
 {
     private String schematronRulePath;
     private String preProcessorPath;
     private String svrlHTMLPath;
-    private SchematronValidationPhase phase;
+    private COBieQCValidationPhase phase;
     
-    public COBieSchematronCheckerSettings(String schematronRulePath, String preProcessorPath, String svrlHTMLPath, SchematronValidationPhase phase)
+    public COBieSchematronCheckerSettings(String schematronRulePath, String preProcessorPath, String svrlHTMLPath, COBieQCValidationPhase phase)
     {
         setSchematronRulePath(schematronRulePath);
         setPreProcessorPath(preProcessorPath);
@@ -41,11 +41,11 @@ public class COBieSchematronCheckerSettings
     {
         this.svrlHTMLPath = svrlHTMLPath;
     }
-    public SchematronValidationPhase getPhase()
+    public COBieQCValidationPhase getPhase()
     {
         return phase;
     }
-    public void setPhase(SchematronValidationPhase phase)
+    public void setPhase(COBieQCValidationPhase phase)
     {
         this.phase = phase;
     }

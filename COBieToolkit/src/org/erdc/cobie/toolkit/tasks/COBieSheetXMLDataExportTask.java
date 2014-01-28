@@ -8,6 +8,8 @@ import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.EmfSerializer;
 import org.bimserver.plugins.serializers.SerializerPlugin;
+import org.erdc.cobie.shared.COBieTaskProgress;
+import org.erdc.cobie.shared.Informable;
 import org.erdc.cobie.shared.deserializer.sheetxmldata.COBieIfcModel;
 import org.erdc.cobie.shared.deserializer.sheetxmldata.FromCOBieToIfc;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;

@@ -1,41 +1,28 @@
 package org.erdc.cobie.sqlite;
 
-public class CobieSQLiteException extends Exception 
+import org.erdc.cobie.shared.exceptions.CobieException;
+
+public class CobieSQLiteException extends CobieException 
 {
-	private static final long serialVersionUID = 1L;	
-	private final Class<?> throwerClass;
-	
-    public static String buildFancyDressMessage(String message, CobieSQLiteException e)
-    {
-    	return "\n***" + message + "***\nSOURCE: " + e.getThrower().getName() + "\nREASON: " + e.getMessage(); 
-    }
-    
+	private static final long serialVersionUID = 1L;
+
 	public CobieSQLiteException(Class<?> throwerClass)
 	{
-		super();
-		this.throwerClass = throwerClass;
+		super(throwerClass);
 	}
 	
 	public CobieSQLiteException(Class<?> throwerClass, String message)
 	{
-		super(message);
-		this.throwerClass = throwerClass;
+		super(throwerClass, message);
 	}
 	
 	public CobieSQLiteException(Class<?> throwerClass, Throwable e)
 	{
-		super(e);
-		this.throwerClass = throwerClass;
+		super(throwerClass, e);
 	}
 	
 	public CobieSQLiteException(Class<?> throwerClass, String message, Throwable e)
 	{
-		super(message, e);
-		this.throwerClass = throwerClass;
-	}
-	
-	public final Class<?> getThrower()
-	{
-		return throwerClass;
+		super(throwerClass, message, e);
 	}
 }

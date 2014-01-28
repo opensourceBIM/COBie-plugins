@@ -102,7 +102,7 @@ public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType,
         ValueHelper.assign(sheetXMLAttributeValue, decimalValue);
         if (!COBieUtility.isNA(sheetXMLAttributeUnits))
         {
-            decimalValue.setUnitName(sheetXMLAttributeUnits);
+            decimalValue.addNewUnitName().setStringValue(sheetXMLAttributeUnits);
         }
         handleDecimalValueBounds(decimalValue, sheetXMLAttributeAllowedValues);
     }
@@ -143,7 +143,7 @@ public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType,
         ValueHelper.assign(sheetXMLAttributeValue, integerValue);
         if (!COBieUtility.isNA(sheetXMLAttributeUnits))
         {
-            integerValue.setUnitName(sheetXMLAttributeUnits);
+            integerValue.addNewUnitName().setStringValue(sheetXMLAttributeUnits);
         }
         handleIntegerValueBounds(integerValue, sheetXMLAttributeAllowedValues);
     }
@@ -200,7 +200,7 @@ public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType,
         ValueHelper.assign(sheetXMLAttributeValue, stringValue);
         if (!COBieUtility.isNA(sheetXMLAttributeUnits))
         {
-            stringValue.setUnitName(sheetXMLAttributeUnits);
+            stringValue.addNewUnitName().setStringValue(sheetXMLAttributeUnits);
         }
         handleStringAllowedValues(stringValue, sheetXMLAttributeAllowedValues);
     }

@@ -11,7 +11,7 @@ import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.AbstractSerializerPlugin;
 import org.bimserver.plugins.serializers.Serializer;
 import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
-import org.erdc.cobie.shared.sqlite.serializers.CobieSQLiteSerializer;
+import org.erdc.cobie.sqlite.service.CobieSQLiteSerializer;
 
 public class COBieSQLiteSerializerPlugin extends AbstractSerializerPlugin
 {

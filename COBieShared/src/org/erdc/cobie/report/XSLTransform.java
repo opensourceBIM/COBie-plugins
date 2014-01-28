@@ -71,8 +71,8 @@ public class XSLTransform
 
     public void transform(OutputStream outputStream) throws TransformerException
     {
-        Result gResult = new StreamResult(outputStream);
-        transformer.transform(targetFile, gResult);
+        Result result = new StreamResult(outputStream);
+        transformer.transform(targetFile, result);        
     }
 
 

@@ -3,6 +3,8 @@ package org.erdc.cobie.toolkit.tasks;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import org.erdc.cobie.shared.COBieTaskProgress;
+import org.erdc.cobie.shared.Informable;
 import org.erdc.cobie.shared.merge.COBieIDMMerger;
 import org.erdc.cobie.shared.merge.COBieMergeIDMItem;
 import org.erdc.cobie.shared.merge.COBieMergeState;

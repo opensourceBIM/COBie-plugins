@@ -131,10 +131,6 @@ public class AssetParser extends DeepParser<ComponentType, AssetInfoType>
         targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
         targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
         targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
-        if(!COBieUtility.isNA(sourceCOBie.getInstallationDate()));
-            targetCOBie.setAssetInstallationDate(COBieUtility.calendarFromString(sourceCOBie.getInstallationDate()));
-        if(!COBieUtility.isNA(sourceCOBie.getWarrantyStartDate()))
-            targetCOBie.setAssetWarrantyStartDate(COBieUtility.calendarFromString(sourceCOBie.getWarrantyStartDate()));
         initializeDateTimeValues();
 
     }

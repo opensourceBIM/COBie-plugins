@@ -1,16 +1,10 @@
-9/20/2013 - COBieToolkit Release 1.4 - BimServer Dependencies should be gathered from rev 2547 when building the plugins or toolkit
+1/28/2014 - COBieToolkit Release 1.4 - Posting Updated Code for BIMServer.org to use to compile 1.3 and 1.2 compatible plugins
 
 WHAT’S NEW?
 NEW FEATURES
-•	Updated to work with Java 7
+•	Updated COBieLite Serializer for NBIMS v03
 •	Updated checking reports to NBIMS v03 COBie ballot
-•	Optimized checking reports
-•	New SQLite Serializer (experimental)
-•	COBieLite export updated for RC4 per the COBie NBIMS v03 ballot
-BUG FIXES
-•	CreatedOn values not being checked on COBie Import
-•	Incorrect rule names in QC report
-•	Room Data, Zone, System, and Spatial Decomposition reports were blank
+
 KNOWN BUGS AND LIMITATIONS
 •	The Impacts and Issues spreadsheets are not yet populated from IFC imports.
 •	There are known issues with the COBie Coordinate Import and Export that may result in incorrect geometry.  This issues may be addressed in a future release.

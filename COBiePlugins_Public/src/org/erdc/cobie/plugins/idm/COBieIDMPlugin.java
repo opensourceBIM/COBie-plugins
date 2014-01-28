@@ -20,7 +20,7 @@ public class COBieIDMPlugin extends IDMPlugin
 	@Override
 	public String getIgnoreFilePath()
 	{
-		return "lib/BPieIgnore.xml";
+		return "lib/COBieIgnore.xml";
 	}
 
 }

@@ -53,8 +53,29 @@
 	</xsl:function>
 	<xsl:function name="cfn:canComponentBeInTwoSpaces" as="xs:boolean">
 		<xsl:param name="extObject" as="xs:string"/>
+		<xsl:param name="Name" as="xs:string"/>
+		<xsl:param name="Description" as="xs:string"/>
+		<xsl:param name="TypeName" as="xs:string"/>
 		<xsl:choose>
-			<xsl:when test="(lower-case($extObject)='ifcwindow' or lower-case($extObject)='ifcdoor') or lower-case($extObject)='autodesk.revit.db.familyinstance:ost_windows' or lower-case($extObject)='autodesk.revit.db.familyinstance:ost_doors' or not(cfn:validString($extObject))">
+			<!--Need to check for name containing door or window...also need to check for is external -->
+			<xsl:when test="(lower-case($extObject)='ifcwindow' or lower-case($extObject)='ifcdoor') or 
+				cfn:stringContainsWindowOrDoor($Name) or
+				cfn:stringContainsWindowOrDoor($Description) or
+				cfn:stringContainsWindowOrDoor($TypeName) or  
+				lower-case($extObject)='autodesk.revit.db.familyinstance:ost_windows' or 
+				lower-case($extObject)='autodesk.revit.db.familyinstance:ost_doors' or 
+				not(cfn:validString($extObject))">
+				<xsl:value-of select="true()"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="false()"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:function>
+	<xsl:function name="cfn:stringContainsWindowOrDoor" as="xs:boolean">
+		<xsl:param name="text" as="xs:string"/>
+		<xsl:choose>
+			<xsl:when test="contains(lower-case($text),'window') or contains(lower-case($text),'door')">
 				<xsl:value-of select="true()"/>
 			</xsl:when>
 			<xsl:otherwise>
@@ -75,13 +96,14 @@
 	<xsl:function name="cfn:componentSpaceKeyMatch" as="xs:boolean">
 		<xsl:param name="space" as="xs:string"/>
 		<xsl:param name="extObject" as="xs:string"/>
-		<xsl:param name="context"/>
+		<xsl:param name="RootContext"/>
+		<xsl:param name="ItemContext"/>
 		<xsl:choose>
-			<xsl:when test="cfn:canComponentBeInTwoSpaces($extObject)">
-				<xsl:value-of select="cfn:delimPairInKeys($space,'Space',$context)"/>
+			<xsl:when test="cfn:canComponentBeInTwoSpaces($extObject, $ItemContext/@Name, $ItemContext/Description, $ItemContext/TypeName)">
+				<xsl:value-of select="cfn:delimPairInKeys($space,'Space',$RootContext)"/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:value-of select="cfn:keyMatch('Space',$space,$context)"/>
+				<xsl:value-of select="cfn:keyMatch('Space',$space,$RootContext)"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:function>

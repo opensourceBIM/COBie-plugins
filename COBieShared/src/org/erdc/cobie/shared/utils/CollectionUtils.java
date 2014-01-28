@@ -53,4 +53,19 @@ public class CollectionUtils
 
         return list;
     }
+    
+    public static <T> T getFirst(List<T> collection)
+    {
+    	return collection.get(0);
+    }
+    
+    public static <T> T getSingle(List<T> collection)
+    {
+    	if (collection.size() != 1)
+    	{
+    		throw new IllegalArgumentException("The supplied collection must contain exactly one item.");
+    	}
+    	
+    	return getFirst(collection);
+    }
 }

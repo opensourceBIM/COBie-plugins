@@ -107,7 +107,7 @@ public class JobParser extends DeepParser<org.erdc.cobie.sheetxmldata.JobType, J
         if(targetCOBie.getJobFrequencyValue() != null && !COBieUtility.isNA(frequencyUnitName))
         {
             DecimalValueType jobFrequency = targetCOBie.getJobFrequencyValue();
-            jobFrequency.setUnitName(frequencyUnitName);
+            jobFrequency.addNewUnitName().setStringValue(frequencyUnitName);
         }
     }
 
@@ -118,7 +118,7 @@ public class JobParser extends DeepParser<org.erdc.cobie.sheetxmldata.JobType, J
         if(targetCOBie.getJobDuration()!=null && !COBieUtility.isNA(durationUnitName))
         {
             IntegerValueType jobDuration = targetCOBie.getJobDuration();
-            jobDuration.setUnitName(durationUnitName);
+            jobDuration.addNewUnitName().setStringValue(durationUnitName);
         }
     }
 

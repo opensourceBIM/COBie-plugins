@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.swing.SwingWorker;
 
+import org.erdc.cobie.shared.COBieTaskProgress;
+import org.erdc.cobie.shared.Informable;
+
 public abstract class ApplicationTask<T> extends SwingWorker<T, COBieTaskProgress>
 {
 

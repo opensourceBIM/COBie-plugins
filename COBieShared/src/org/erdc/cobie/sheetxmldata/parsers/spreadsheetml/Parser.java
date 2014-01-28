@@ -58,7 +58,7 @@ public abstract class Parser
         try
         {
             worksheet = getWorkbook().getWorksheet(getWorksheetName());
-            columnDictionary = COBieSpreadSheet.GetWorksheetColumnDictionary(worksheet, getColumnNames());
+            columnDictionary = COBieSpreadSheet.getWorksheetColumnDictionary(worksheet, getColumnNames());
         }
 
         catch (Exception e)

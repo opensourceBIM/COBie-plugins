@@ -24,6 +24,8 @@ import org.bimserver.plugins.deserializers.Deserializer;
 import org.bimserver.plugins.objectidms.ObjectIDM;
 import org.bimserver.plugins.serializers.SerializerException;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.erdc.cobie.shared.COBieTaskProgress;
+import org.erdc.cobie.shared.Informable;
 import org.erdc.cobie.shared.PluginUtilities.OutgingFileType;
 import org.erdc.cobie.shared.cobiesheetxmldata.COBieFactory;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;

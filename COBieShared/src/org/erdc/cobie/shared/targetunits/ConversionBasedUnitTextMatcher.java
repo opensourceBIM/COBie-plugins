@@ -8,7 +8,7 @@ import org.bimserver.models.ifc2x3tc1.IfcReal;
 import org.bimserver.models.ifc2x3tc1.IfcUnit;
 import org.bimserver.models.ifc2x3tc1.IfcUnitEnum;
 import org.erdc.cobie.shared.COBieUtility;
-import org.erdc.cobie.shared.utils.exceptions.NotImplementedException;
+import org.erdc.cobie.shared.exceptions.NotImplementedException;
 
 public abstract class ConversionBasedUnitTextMatcher extends UnitTextMatcher
 {

@@ -1,19 +1,23 @@
 package org.erdc.cobie.sqlite;
 
+import org.erdc.cobie.sqlite.string.Error;
+
 public class Column<T>
 {
 	private final String name;
 	private T value;
+	private final Class<T> valueClass;
 	private boolean key;
 	private boolean fresh;
 
-	public Column(final String name, final T value)
+	public Column(Class<T> valueClass, String name, T value)
 	{
-		this(name, value, false);
+		this(valueClass, name, value, false);
 	}
 
-	public Column(final String name, final T value, final boolean key)
+	public Column(Class<T> valueClass, String name, T value, boolean key)
 	{
+		this.valueClass = valueClass;			
 		this.name = name;
 		this.value = value;
 		this.key = key;
@@ -33,7 +37,12 @@ public class Column<T>
 
 	public final T getValue()
 	{
-		return this.value;
+		return value;
+	}
+	
+	public final Class<T> getValueClass()
+	{
+		return valueClass;
 	}
 
 	public final boolean isFresh()
@@ -51,26 +60,23 @@ public class Column<T>
 		fresh = true;
 	}
 
-	// Thank you Java, for sucking.
-	// public void update(final T newValue)
-	// {
-	// value = newValue;
-	// fresh = false;
-	// }
-
 	@SuppressWarnings("unchecked")
-	public void update(final Object newValue)
+	// This parameter cannot be type "T" b/c Java generics are crap.
+	public void update(Object newValue)
 	{
+		T lastValue;
+		
 		try
 		{
-			value = (T) newValue;
+			lastValue = value;
+			value = (T)newValue;
 		}
 
 		catch (final Exception e)
 		{
-			throw new ClassCastException("The supplied parameter does not match the type stored in this column.");
+			throw new ClassCastException(Error.INVALID_COLUMN_VALUE.format(newValue.toString(), value.getClass()));
 		}
-
-		fresh = false;
+		
+		fresh = (lastValue != null) ? lastValue.equals(value) : true;
 	}
 }

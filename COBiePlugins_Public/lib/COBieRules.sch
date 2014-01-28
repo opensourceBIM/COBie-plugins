@@ -340,7 +340,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="ExternalSystem.NotEmpty" test="cfn:validStringOrNA(ExternalSystem)" flag="ExternalSystem">
+			<iso:assert id="ExternalSystem.NotEmpty" test="cfn:validStringOrNA(ExternalSystem) or cfn:validStringOrNA(ExtSystem)" flag="ExternalSystem">
 				<value-of select="cfn:notEmptyMessage(.,'ExternalSystem')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -351,7 +351,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Contact.ExternalObject.NotEmpty" test="cfn:validStringOrNA(ExternalObject)" flag="ExternalObject">
+			<iso:assert id="Contact.ExternalObject.NotEmpty" test="cfn:validStringOrNA(ExternalObject) or cfn:validStringOrNA(ExtObject)" flag="ExternalObject">
 				<value-of select="cfn:notEmptyMessage(.,'ExternalObject')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -362,7 +362,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Contact.ExternalIdentifier.NotEmpty" test="cfn:validStringOrNA(ExternalIdentifier)" flag="ExternalIdentifier">
+			<iso:assert id="Contact.ExternalIdentifier.NotEmpty" test="cfn:validStringOrNA(ExternalIdentifier) or cfn:validStringOrNA(ExtIdentifier)" flag="ExternalIdentifier">
 				<value-of select="cfn:notEmptyMessage(.,'ExternalIdentifier')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -1231,7 +1231,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 		<iso:rule context="//Components/Component" id="COBie.Components.Component" role="WorksheetErrors">
 			<iso:extends rule="COBie.Abstract.Name"/>
 			<iso:extends rule="COBie.Abstract.Created"/>
-			<iso:extends rule="COBie.Abstract.External"/>	
+			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:report id="Component.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference (Type Worksheet)
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -1260,7 +1260,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Component.Space.CrossReference" test="cfn:componentSpaceKeyMatch(Space,ExtObject,/)" flag="Space">
+			<iso:assert id="Component.Space.CrossReference" test="cfn:componentSpaceKeyMatch(Space,ExtObject,/,.)" flag="Space">
 				<value-of select="cfn:componentSpaceForeignKeyMessage(.,'Space','Space','Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -2207,7 +2207,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="ExternalSystem.NotEmpty" test="cfn:validStringOrNA(ExternalSystem)" flag="ExternalSystem">
+			<iso:assert id="ExternalSystem.NotEmpty" test="cfn:validStringOrNA(ExternalSystem) or cfn:validStringOrNA(ExtSystem)" flag="ExternalSystem">
 				<value-of select="cfn:notEmptyMessage(.,'ExternalSystem')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -2218,7 +2218,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Contact.ExternalObject.NotEmpty" test="cfn:validStringOrNA(ExternalObject)" flag="ExternalObject">
+			<iso:assert id="Contact.ExternalObject.NotEmpty" test="cfn:validStringOrNA(ExternalObject) or cfn:validStringOrNA(ExtObject)" flag="ExternalObject">
 				<value-of select="cfn:notEmptyMessage(.,'ExternalObject')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -2229,7 +2229,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Contact.ExternalIdentifier.NotEmpty" test="cfn:validStringOrNA(ExternalIdentifier)" flag="ExternalIdentifier">
+			<iso:assert id="Contact.ExternalIdentifier.NotEmpty" test="cfn:validStringOrNA(ExternalIdentifier) or cfn:validStringOrNA(ExtIdentifier)" flag="ExternalIdentifier">
 				<value-of select="cfn:notEmptyMessage(.,'ExternalIdentifier')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -3109,7 +3109,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Component.Space.CrossReference" test="cfn:componentSpaceKeyMatch(Space,ExtObject,/)" flag="Space">
+			<iso:assert id="Component.Space.CrossReference" test="cfn:componentSpaceKeyMatch(Space,ExtObject,/,.)" flag="Space">
 				<value-of select="cfn:componentSpaceForeignKeyMessage(.,'Space','Space','Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -3206,14 +3206,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			
 			<iso:assert id="System.PrimaryKey.Unique" test="cfn:isKeyUnique(.)" flag="PrimaryKey">
 				<value-of select="cfn:uniqueNameMessage(.,'Name,Category,ComponentNames')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-						<iso:report id="System.Name.Check" test="true()" flag="Name"> Name.NotNull
+			<iso:report id="System.Name.Check" test="true()" flag="Name"> Name.NotNull
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>

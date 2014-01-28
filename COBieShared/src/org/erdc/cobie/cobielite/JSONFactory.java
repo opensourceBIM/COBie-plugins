@@ -2,6 +2,7 @@ package org.erdc.cobie.cobielite;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import net.sf.json.JSON;
 import net.sf.json.xml.XMLSerializer;
@@ -23,6 +24,15 @@ public class JSONFactory
     
     public JSON parse(FacilityDocument facility)
     {
+    	try
+		{
+			facility.save(new File("bigcobielite.xml"));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         JSON json =  xmlSerializer.readFromStream(facility.newInputStream());
         return json;
               
