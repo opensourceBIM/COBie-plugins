@@ -8,11 +8,11 @@ import javax.swing.JTable;
 import org.bimserver.interfaces.objects.SProject;
 import org.bimserver.shared.exceptions.ServerException;
 import org.bimserver.shared.exceptions.UserException;
-import org.bimserver.shared.interfaces.ServiceInterface;
+import org.bimserver.shared.interfaces.bimsie1.Bimsie1ServiceInterface;
 
 public class CobieToolkitGuiHelper
 {
-    public static List<SProject> getSubProjectsFromOids(List<Long> projectOids, ServiceInterface service)
+    public static List<SProject> getSubProjectsFromOids(List<Long> projectOids, Bimsie1ServiceInterface service)
     {
         ArrayList<SProject> projects = new ArrayList<SProject>();
         for (long oid : projectOids)
@@ -34,13 +34,13 @@ public class CobieToolkitGuiHelper
         return projects;
     }
 
-    public static List<SProject> getTopLevelProjects(ServiceInterface serviceInterface) throws ServerException, UserException
+    public static List<SProject> getTopLevelProjects(Bimsie1ServiceInterface serviceInterface) throws ServerException, UserException
     {
-        List<SProject> projects = serviceInterface.getAllProjects(true);
+        List<SProject> projects = serviceInterface.getAllProjects(true, true);
         return projects;
     }
 
-    public static void populateRevisionTable(JTable table, ServiceInterface serviceInterface, SProject project)
+    public static void populateRevisionTable(JTable table, Bimsie1ServiceInterface serviceInterface, SProject project)
     {
         for (long revisionId : project.getRevisions())
         {

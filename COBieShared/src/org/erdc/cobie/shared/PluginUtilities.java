@@ -13,7 +13,7 @@ import org.bimserver.interfaces.objects.SDownloadResult;
 import org.bimserver.shared.exceptions.ServerException;
 import org.bimserver.shared.exceptions.UserException;
 import org.bimserver.shared.interfaces.PluginInterface;
-import org.bimserver.shared.interfaces.ServiceInterface;
+import org.bimserver.shared.interfaces.bimsie1.Bimsie1ServiceInterface;
 import org.erdc.cobie.shared.enums.COBieDeserializerPluginName;
 import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
@@ -92,10 +92,10 @@ public class PluginUtilities
         return cobieFileExtensions;
     }
 
-    public static COBIEDocument getCOBieFromROID(long roid, PluginInterface pluginInterface, ServiceInterface serviceInterface)
+    public static COBIEDocument getCOBieFromROID(long roid, PluginInterface pluginInterface, Bimsie1ServiceInterface serviceInterface)
             throws ServerException, UserException, XmlException, IOException
     {
-        long serializerOid = pluginInterface.getSerializerByName(COBIE_SHEETXMLDATA_SERIALIZER_DEFAULT_NAME).getOid();
+        long serializerOid = pluginInterface.getSerializerByPluginClassName("org.erdc.cobie.plugins.serializers.COBieSheetXMLDataSerializerPlugin").getOid();
         long actionId = serviceInterface.download(roid, serializerOid, true, true);
         SDownloadResult downloadResult = serviceInterface.getDownloadData(actionId);
 
