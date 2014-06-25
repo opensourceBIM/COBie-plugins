@@ -53,23 +53,38 @@ public class ContactParser extends COBieLiteSheetXMLDataParser<ContactType, org.
     @Override
     protected void parseSimpleElements()
     {
-        targetCOBie.setContactCompanyName(sourceCOBie.getCompany());
-        targetCOBie.setContactCategory(sourceCOBie.getCategory());
-        targetCOBie.setContactCountryName(sourceCOBie.getCountry());
-        targetCOBie.setContactDepartmentName(sourceCOBie.getDepartment());
-        targetCOBie.setContactEmail(sourceCOBie.getEmail());
-        targetCOBie.setContactFamilyName(sourceCOBie.getFamilyName());
-        targetCOBie.setContactGivenName(sourceCOBie.getGivenName());
-        targetCOBie.setContactPhoneNumber(sourceCOBie.getPhone());
-        targetCOBie.setContactPostalBoxNumber(sourceCOBie.getPostalBox());
-        targetCOBie.setContactPostalCode(sourceCOBie.getPostalCode());
-        targetCOBie.setContactRegionCode(sourceCOBie.getStateRegion());
-        targetCOBie.setContactStreet(sourceCOBie.getStreet());
-        targetCOBie.setContactTownName(sourceCOBie.getStreet());
-        targetCOBie.setContactURL(COBieUtility.COBieNA);
-        targetCOBie.setExternalEntityName(sourceCOBie.getExternalObject());
-        targetCOBie.setExternalID(sourceCOBie.getExternalIdentifier());
-        targetCOBie.setExternalSystemName(sourceCOBie.getExternalSystem());
+    	if(!COBieUtility.isNA(sourceCOBie.getCompany()))
+    		targetCOBie.setContactCompanyName(sourceCOBie.getCompany());
+    	if(!COBieUtility.isNA(sourceCOBie.getCategory()))
+    		targetCOBie.setContactCategory(sourceCOBie.getCategory());
+    	if(!COBieUtility.isNA(sourceCOBie.getCountry()))
+    		targetCOBie.setContactCountryName(sourceCOBie.getCountry());
+    	if(!COBieUtility.isNA(sourceCOBie.getDepartment()))
+    		targetCOBie.setContactDepartmentName(sourceCOBie.getDepartment());
+    	if(!COBieUtility.isNA(sourceCOBie.getEmail()))
+    		targetCOBie.setContactEmail(sourceCOBie.getEmail());
+    	if(!COBieUtility.isNA(sourceCOBie.getFamilyName()))
+    		targetCOBie.setContactFamilyName(sourceCOBie.getFamilyName());
+    	if(!COBieUtility.isNA(sourceCOBie.getGivenName()))
+    		targetCOBie.setContactGivenName(sourceCOBie.getGivenName());
+    	if(!COBieUtility.isNA(sourceCOBie.getPhone()))
+    		targetCOBie.setContactPhoneNumber(sourceCOBie.getPhone());
+    	if(!COBieUtility.isNA(sourceCOBie.getPostalBox()))
+    		targetCOBie.setContactPostalBoxNumber(sourceCOBie.getPostalBox());
+    	if(!COBieUtility.isNA(sourceCOBie.getPostalCode()))
+    		targetCOBie.setContactPostalCode(sourceCOBie.getPostalCode());
+    	if(!COBieUtility.isNA(sourceCOBie.getStateRegion()))
+    		targetCOBie.setContactRegionCode(sourceCOBie.getStateRegion());
+    	if(!COBieUtility.isNA(sourceCOBie.getStreet()))
+    		targetCOBie.setContactStreet(sourceCOBie.getStreet());
+    	if(!COBieUtility.isNA(sourceCOBie.getStreet()))
+    		targetCOBie.setContactTownName(sourceCOBie.getStreet());
+    	if(!COBieUtility.isNA(sourceCOBie.getExternalObject()))
+    		targetCOBie.setExternalEntityName(sourceCOBie.getExternalObject());
+    	if(!COBieUtility.isNA(sourceCOBie.getExternalIdentifier()))
+    		targetCOBie.setExternalID(sourceCOBie.getExternalIdentifier());
+    	if(!COBieUtility.isNA(sourceCOBie.getExternalSystem()))
+    		targetCOBie.setExternalSystemName(sourceCOBie.getExternalSystem());
     }
 
 }

@@ -33,10 +33,8 @@ import org.erdc.cobie.shared.enums.COBieDeserializerPluginName;
 public class COBieDeserializerPlugin implements DeserializerPlugin
 {
 	private static String localConfigFilePath = "lib/COBieExcelTemplate.xml";
-	private static String COBIE_PREIMPORT_CHECK_DIRECTORY_NAME = "COBiePreImportComplianceReports";
 	private boolean initialized = false;
 	private File configurationFile;
-	private File preImportFileDirectory;
 
 	@Override
 	public boolean canHandleExtension(String extension)
@@ -90,8 +88,6 @@ public class COBieDeserializerPlugin implements DeserializerPlugin
 			e.printStackTrace();
 			throw new PluginException("Could not find configuration files");
 		}
-		preImportFileDirectory = PluginRuntimeFileHelper.getDirectory(
-				pluginManager, COBIE_PREIMPORT_CHECK_DIRECTORY_NAME);
 		initialized = true;
 	}
 

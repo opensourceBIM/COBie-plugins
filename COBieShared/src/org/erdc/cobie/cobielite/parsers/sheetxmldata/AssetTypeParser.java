@@ -88,11 +88,16 @@ public class AssetTypeParser extends DeepParser<TypeType, AssetTypeInfoType>
     @Override
     protected void parseChildLeaves()
     {
-        ValueHelper.assign(sourceCOBie.getExpectedLife(), targetCOBie.addNewAssetTypeExpectedLifeValue());
-        ValueHelper.assign(sourceCOBie.getNominalHeight(), targetCOBie.addNewAssetTypeNominalHeight());
-        ValueHelper.assign(sourceCOBie.getNominalLength(), targetCOBie.addNewAssetTypeNominalLength());
-        ValueHelper.assign(sourceCOBie.getNominalWidth(), targetCOBie.addNewAssetTypeNominalWidth());
-        ValueHelper.assign(sourceCOBie.getReplacementCost(), targetCOBie.addNewAssetTypeReplacementCostValue());
+    	if(!COBieUtility.isNA(sourceCOBie.getExpectedLife()))
+    		ValueHelper.assign(sourceCOBie.getExpectedLife(), targetCOBie.addNewAssetTypeExpectedLifeValue());
+    	if(!COBieUtility.isNA(sourceCOBie.getNominalHeight()))
+    		ValueHelper.assign(sourceCOBie.getNominalHeight(), targetCOBie.addNewAssetTypeNominalHeight());
+    	if(!COBieUtility.isNA(sourceCOBie.getNominalLength()))
+    		ValueHelper.assign(sourceCOBie.getNominalLength(), targetCOBie.addNewAssetTypeNominalLength());
+    	if(!COBieUtility.isNA(sourceCOBie.getNominalWidth()))
+    		ValueHelper.assign(sourceCOBie.getNominalWidth(), targetCOBie.addNewAssetTypeNominalWidth());
+    	if(!COBieUtility.isNA(sourceCOBie.getReplacementCost()))
+    		ValueHelper.assign(sourceCOBie.getReplacementCost(), targetCOBie.addNewAssetTypeReplacementCostValue());
         try
         {
             processWarranties();
@@ -133,26 +138,42 @@ public class AssetTypeParser extends DeepParser<TypeType, AssetTypeInfoType>
     @Override
     protected void parseSimpleElements()
     {
-        targetCOBie.setAssetTypeAccessibilityText(sourceCOBie.getAccessibilityPerformance());
-        targetCOBie.setAssetTypeCategory(sourceCOBie.getCategory());
-        targetCOBie.setAssetTypeCodePerformance(sourceCOBie.getCodePerformance());
-        targetCOBie.setAssetTypeColorCode(sourceCOBie.getColor());
-        targetCOBie.setAssetTypeConstituentsDescription(sourceCOBie.getConstituents());
-        targetCOBie.setAssetTypeDescription(sourceCOBie.getDescription());
-        targetCOBie.setAssetTypeFeaturesDescription(sourceCOBie.getFeatures());
-        targetCOBie.setAssetTypeFinishDescription(sourceCOBie.getFinish());
-        targetCOBie.setAssetTypeGradeDescription(sourceCOBie.getGrade());
-        targetCOBie.setAssetTypeMaterialDescription(sourceCOBie.getMaterial());
-        targetCOBie.setAssetTypeModelNumber(sourceCOBie.getModelNumber());
-        targetCOBie.setAssetTypeName(sourceCOBie.getName());
-        
-        targetCOBie.setAssetTypeShapeDescription(sourceCOBie.getShape());
-        targetCOBie.setAssetTypeSizeDescription(sourceCOBie.getSize());
-        targetCOBie.setAssetTypeSustainabilityPerformanceDescription(sourceCOBie.getSustainabilityPerformance());
-        targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
-        targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
-        targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
-
+    	if(!COBieUtility.isNA(sourceCOBie.getAccessibilityPerformance()))
+    		targetCOBie.setAssetTypeAccessibilityText(sourceCOBie.getAccessibilityPerformance());
+    	if(!COBieUtility.isNA(sourceCOBie.getCategory()))
+    		targetCOBie.setAssetTypeCategory(sourceCOBie.getCategory());
+    	if(!COBieUtility.isNA(sourceCOBie.getCodePerformance()))
+    		targetCOBie.setAssetTypeCodePerformance(sourceCOBie.getCodePerformance());
+    	if(!COBieUtility.isNA(sourceCOBie.getColor()))
+    		targetCOBie.setAssetTypeColorCode(sourceCOBie.getColor());
+    	if(!COBieUtility.isNA(sourceCOBie.getConstituents()))
+    		targetCOBie.setAssetTypeConstituentsDescription(sourceCOBie.getConstituents());
+    	if(!COBieUtility.isNA(sourceCOBie.getDescription()))
+    		targetCOBie.setAssetTypeDescription(sourceCOBie.getDescription());
+    	if(!COBieUtility.isNA(sourceCOBie.getFeatures()))
+    		targetCOBie.setAssetTypeFeaturesDescription(sourceCOBie.getFeatures());
+    	if(!COBieUtility.isNA(sourceCOBie.getFinish()))
+    		targetCOBie.setAssetTypeFinishDescription(sourceCOBie.getFinish());
+    	if(!COBieUtility.isNA(sourceCOBie.getGrade()))
+    		targetCOBie.setAssetTypeGradeDescription(sourceCOBie.getGrade());
+    	if(!COBieUtility.isNA(sourceCOBie.getMaterial()))
+    		targetCOBie.setAssetTypeMaterialDescription(sourceCOBie.getMaterial());
+    	if(!COBieUtility.isNA(sourceCOBie.getModelNumber()))
+    		targetCOBie.setAssetTypeModelNumber(sourceCOBie.getModelNumber());
+    	if(!COBieUtility.isNA(sourceCOBie.getName()))
+    		targetCOBie.setAssetTypeName(sourceCOBie.getName());
+    	if(!COBieUtility.isNA(sourceCOBie.getShape()))
+    		targetCOBie.setAssetTypeShapeDescription(sourceCOBie.getShape());
+    	if(!COBieUtility.isNA(sourceCOBie.getSize()))
+    		targetCOBie.setAssetTypeSizeDescription(sourceCOBie.getSize());
+    	if(!COBieUtility.isNA(sourceCOBie.getSustainabilityPerformance()))
+    		targetCOBie.setAssetTypeSustainabilityPerformanceDescription(sourceCOBie.getSustainabilityPerformance());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtObject()))
+    		targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtIdentifier()))
+    		targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtSystem()))
+    		targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
     }
 
     private void processManufacturer()

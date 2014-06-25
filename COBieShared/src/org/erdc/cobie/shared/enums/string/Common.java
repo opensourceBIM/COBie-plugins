@@ -4,18 +4,27 @@ import org.erdc.cobie.shared.utils.StringTable;
 import org.erdc.cobie.shared.utils.StringUtils;
 
 public enum Common implements StringTable
-{
-	EMPTY_STRING(""),
+{	
 	TEXT_SEPARATOR(" "),
-	NULL("null"),
-	FILE_EXTENSION_PREFIX("."),
+	
 	BACKSLASH("\\"),
 	COMMA(","),
 	COMMA_TEXT(COMMA.toString() + TEXT_SEPARATOR.toString()),
+	CONTENT_TYPE_PREFIX("application/" ),
+	EMPTY_STRING(""),
 	EQUALS("="),
+	EXCEPTION_MESSAGE("***%s***\nSOURCE: %s\nREASON: %s\nINNER EXCEPTION: %s"),
+	FILE_EXTENSION_PREFIX("."),
+	FILE_NAME_DELIMITER("_"),
+	NONE("none"),
+	NOT_AVAILABLE("n/a"),
 	NOT_EQUALS("!="),
+	NULL("null"),
+	PATH_PARENT("../"),
 	PATH_SEPARATOR("/"),
 	PERCENT("%"),
+	PICKLIST_SHEETNAME("Picklists"),
+	SYSTEM_TEMP_DIRECTORY_PROPERTY("java.io.tmpdir"),
 	QUESTION_MARK("?"),
 	QUESTION_MARK_TEXT(QUESTION_MARK.toString() + TEXT_SEPARATOR.toString()),
 	QUOTE_DOUBLE("\""),

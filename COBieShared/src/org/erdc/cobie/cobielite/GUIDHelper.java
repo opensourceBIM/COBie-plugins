@@ -5,10 +5,10 @@ import java.util.UUID;
 import org.apache.commons.collections.map.CaseInsensitiveMap;
 import org.apache.xmlbeans.SchemaGlobalElement;
 import org.apache.xmlbeans.SchemaType;
+import org.apache.xmlbeans.XmlAnySimpleType;
 import org.apache.xmlbeans.XmlObject;
 import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityDocument;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.AreaUnitComplexObjectType;
-import org.buildingsmartalliance.docs.nbims03.cobie.core.CobieBaseType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.CobieComplexObjectType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.CurrencyUnitComplexObjectType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.LinearUnitComplexObjectType;
@@ -45,11 +45,11 @@ public class GUIDHelper
 
 		if (xmlObject instanceof UnitNameComplexObjectType)
 		{
-			((UnitNameComplexObjectType)xmlObject).setGUID(newUnitGUID(((UnitNameComplexObjectType)xmlObject).getStringValue()));
+			((UnitNameComplexObjectType)xmlObject).setGUID(newUnitGUID(((XmlAnySimpleType)xmlObject).getStringValue()));
 		}
 		else if(xmlObject instanceof AreaUnitComplexObjectType)
 		{
-			((AreaUnitComplexObjectType)xmlObject).setGUID(newUnitGUID(((AreaUnitComplexObjectType)xmlObject).getStringValue()));
+			((AreaUnitComplexObjectType)xmlObject).setGUID(newUnitGUID(((XmlAnySimpleType)xmlObject).getStringValue()));
 		}
 		else if(xmlObject instanceof ValueBaseType)
 		{
@@ -57,15 +57,15 @@ public class GUIDHelper
 		}
 		else if(xmlObject instanceof LinearUnitComplexObjectType)
 		{
-			((LinearUnitComplexObjectType)xmlObject).setGUID(newUnitGUID(((LinearUnitComplexObjectType)xmlObject).getStringValue()));
+			((LinearUnitComplexObjectType)xmlObject).setGUID(newUnitGUID(((XmlAnySimpleType)xmlObject).getStringValue()));
 		}
 		else if(xmlObject instanceof VolumeUnitComplexObjectType)
 		{
-			((VolumeUnitComplexObjectType)xmlObject).setGUID(newUnitGUID(((VolumeUnitComplexObjectType)xmlObject).getStringValue()));
+			((VolumeUnitComplexObjectType)xmlObject).setGUID(newUnitGUID(((XmlAnySimpleType)xmlObject).getStringValue()));
 		}
 		else if(xmlObject instanceof CurrencyUnitComplexObjectType)
 		{
-			((CurrencyUnitComplexObjectType)xmlObject).setGUID(newUnitGUID(((CurrencyUnitComplexObjectType)xmlObject).getStringValue()));
+			((CurrencyUnitComplexObjectType)xmlObject).setGUID(newUnitGUID(((XmlAnySimpleType)xmlObject).getStringValue()));
 		}
 		else if(xmlObject instanceof CobieComplexObjectType)
 		{

@@ -138,6 +138,7 @@ public class COBieSchematronChecker
     {
         try
         {
+        	COBie.save(new File("incoming.xml"));
             this.ruleTransformResult = getTempFile("xsl");
             transformSchematronRules(new FileOutputStream(this.ruleTransformResult));
             this.cobieTransformResult = getTempFile("xml");

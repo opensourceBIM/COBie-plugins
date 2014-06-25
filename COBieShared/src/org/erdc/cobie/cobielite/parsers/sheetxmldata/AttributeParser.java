@@ -4,12 +4,14 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 
+
 import org.buildingsmartalliance.docs.nbims03.cobie.core.AllowedValueCollectionType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeDecimalValueType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeIntegerValueType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeStringValueType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeValueType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.BooleanValueType;
+import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
 import org.erdc.cobie.cobielite.ValueHelper;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.AttributeDocumentIssueHelper;
 import org.erdc.cobie.shared.COBieUtility;
@@ -212,7 +214,6 @@ public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType,
         String sheetXMLAttributeUnits = sourceCOBie.getUnit();
         determineAttributeValueTypeAndSetValues(cobieLiteAttributeValue, sheetXMLAttributeValue, sheetXMLAttributeAllowedValues,
                 sheetXMLAttributeUnits);
-
     }
 
     @Override
@@ -224,9 +225,12 @@ public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType,
     @Override
     protected void parseComplexElements()
     {
-        AttributeValueType cobieLiteAttributeValue = targetCOBie.addNewAttributeValue();
-        initializeCobieLiteAttributeValue(cobieLiteAttributeValue);
-
+    	String sheetXMLAttributeValue = sourceCOBie.getValue();
+    	if(!COBieUtility.isNA(sheetXMLAttributeValue))
+    	{
+    		        AttributeValueType cobieLiteAttributeValue = targetCOBie.addNewAttributeValue();
+    		        initializeCobieLiteAttributeValue(cobieLiteAttributeValue);
+    	}
     }
 
     @Override
@@ -239,15 +243,23 @@ public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType,
     @Override
     protected void parseIssues() throws Exception
     {
-        AttributeDocumentIssueHelper.parseIssues(targetCOBie.addNewAttributeIssues(), descriptiveData, indexedCOBie);
+    	IssueCollectionType issues = targetCOBie.addNewAttributeIssues();
+        AttributeDocumentIssueHelper.parseIssues(issues, descriptiveData, indexedCOBie);
+        if(issues == null || issues.isNil() || issues.sizeOfIssueArray() == 0)
+        {
+        	targetCOBie.getDomNode().removeChild(issues.getDomNode());
+        }
     }
 
     @Override
     protected void parseSimpleElements()
     {
-        targetCOBie.setAttributeCategory(sourceCOBie.getCategory());
-        targetCOBie.setAttributeDescription(sourceCOBie.getDescription());
-        targetCOBie.setAttributeName(sourceCOBie.getName());
+    	if(!COBieUtility.isNA(sourceCOBie.getCategory()))
+    		targetCOBie.setAttributeCategory(sourceCOBie.getCategory());
+    	if(!COBieUtility.isNA(sourceCOBie.getDescription()))
+    		targetCOBie.setAttributeDescription(sourceCOBie.getDescription());
+    	if(!COBieUtility.isNA(sourceCOBie.getName()))
+    		targetCOBie.setAttributeName(sourceCOBie.getName());
         setExtElements();
     }
     
@@ -256,17 +268,19 @@ public class AttributeParser extends COBieLiteCOBIEBaseTypeParser<AttributeType,
         String extSystem = sourceCOBie.getExtSystem();
         if(extSystem.equalsIgnoreCase("AEC3_BimServices"))
         {
-
             targetCOBie.setPropertySetName(sourceCOBie.getExtIdentifier());
         }
         else
         {
             targetCOBie.setPropertySetName(sourceCOBie.getExtObject());
         }
-        targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
-        targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
-        targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
-        targetCOBie.setPropertySetExternalIdentifier(COBieUtility.COBieNA);
+        if(!COBieUtility.isNA(sourceCOBie.getExtObject()))
+        	targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
+        if(!COBieUtility.isNA(sourceCOBie.getExtIdentifier()))
+        	targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
+        if(!COBieUtility.isNA(sourceCOBie.getExtSystem()))
+        	targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
+      //  targetCOBie.setPropertySetExternalIdentifier(COBieUtility.COBieNA);
     }
 
 }

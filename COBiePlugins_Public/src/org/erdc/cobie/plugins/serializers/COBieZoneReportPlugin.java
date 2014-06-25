@@ -31,30 +31,6 @@ public class COBieZoneReportPlugin extends AbstractCOBieSerializerPlugin
 	}
 
 	@Override
-	public String getDefaultContentType()
-	{
-		return "appliction/html";
-	}
-
-	@Override
-	public String getDefaultExtension()
-	{
-		return COBieSerializerPluginInfo.REPORT_ZONE.getFileExtension();
-	}
-
-	@Override
-	public String getDefaultName()
-	{
-		return COBieSerializerPluginInfo.REPORT_ZONE.toString();
-	}
-
-	@Override
-	public String getDescription()
-	{
-		return COBieSerializerPluginInfo.REPORT_ZONE.getDescription();
-	}
-
-	@Override
 	public void init(PluginManager pluginManager) throws PluginException
 	{
 		configFilePaths = new ArrayList<String>();
@@ -86,5 +62,11 @@ public class COBieZoneReportPlugin extends AbstractCOBieSerializerPlugin
 	public boolean needsGeometry()
 	{
 		return false;
+	}
+
+	@Override
+	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
+	{
+		return COBieSerializerPluginInfo.REPORT_ZONE;
 	}
 }

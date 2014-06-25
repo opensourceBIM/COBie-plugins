@@ -28,21 +28,36 @@ public abstract class TypicalParser<COBIE_SHEET_XML_DATA_TYPE extends COBIEBaseT
     @Override
     protected final void parseAttributes() throws Exception
     {
-        AttributeDocumentIssueHelper.parseAttributes(getNewAttributes(), descriptiveData, indexedCOBie);
+    	AttributeCollectionType attributes = getNewAttributes();
+        AttributeDocumentIssueHelper.parseAttributes(attributes, descriptiveData, indexedCOBie);
+        if(attributes == null || attributes.isNil() || attributes.sizeOfAttributeArray() == 0)
+        {
+        	targetCOBie.getDomNode().removeChild(attributes.getDomNode());
+        }
+        	
     }
 
     @Override
     protected final void parseDocuments() throws Exception
     {
-        AttributeDocumentIssueHelper.parseDocuments(getNewDocuments(), descriptiveData, indexedCOBie);
+    	DocumentCollectionType documents = getNewDocuments();
+        AttributeDocumentIssueHelper.parseDocuments(documents, descriptiveData, indexedCOBie);
+        if(documents == null || documents.isNil() || documents.sizeOfDocumentArray() == 0)
+        {
+        	targetCOBie.getDomNode().removeChild(documents.getDomNode());
+        }
 
     }
 
     @Override
     protected final void parseIssues() throws Exception
     {
-        AttributeDocumentIssueHelper.parseIssues(getNewIssues(), descriptiveData, indexedCOBie);
-
+    	IssueCollectionType issues = getNewIssues();
+        AttributeDocumentIssueHelper.parseIssues(issues, descriptiveData, indexedCOBie);
+        if(issues == null || issues.isNil() || issues.sizeOfIssueArray() == 0)
+        {
+        	targetCOBie.getDomNode().removeChild(issues.getDomNode());
+        }
     }
 
 }

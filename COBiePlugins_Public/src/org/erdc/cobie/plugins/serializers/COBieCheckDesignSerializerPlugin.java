@@ -20,8 +20,6 @@ import org.erdc.cobie.utils.serializer.COBieSchematronCheckerSettings;
 
 public class COBieCheckDesignSerializerPlugin extends AbstractCOBieSerializerPlugin
 {
-	public static final String DEFAULT_SERIALIZER_NAME = COBieSerializerPluginInfo.REPORT_QC_DESIGN
-			.toString();
 	private boolean initialized = false;
 	private static final String SCHEMATRON_RULEPATH = "lib/COBieRules.sch";
 	private static final String SCHEMATRON_FUNCTIONPATH = "lib/COBieRules_Functions.xsl";
@@ -38,29 +36,6 @@ public class COBieCheckDesignSerializerPlugin extends AbstractCOBieSerializerPlu
 		return new org.erdc.cobie.serializers.COBieCheckSerializer(checkerSettings);
 	}
 
-	@Override
-	public String getDefaultContentType()
-	{
-		return "appliction/html";
-	}
-
-	@Override
-	public String getDefaultExtension()
-	{
-		return COBieSerializerPluginInfo.REPORT_QC_DESIGN.getFileExtension();
-	}
-
-	@Override
-	public String getDefaultName()
-	{
-		return DEFAULT_SERIALIZER_NAME;
-	}
-
-	@Override
-	public String getDescription()
-	{
-		return COBieSerializerPluginInfo.REPORT_QC_DESIGN.getDescription();
-	}
 
 	public String getName()
 	{
@@ -112,5 +87,11 @@ public class COBieCheckDesignSerializerPlugin extends AbstractCOBieSerializerPlu
 	public boolean needsGeometry()
 	{
 		return false;
+	}
+
+	@Override
+	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
+	{
+		return COBieSerializerPluginInfo.REPORT_QC_DESIGN;
 	}
 }

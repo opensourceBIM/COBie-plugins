@@ -25,7 +25,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import nl.fountain.xelem.XFactory;
 import nl.fountain.xelem.excel.Workbook;
-import nl.fountain.xelem.lex.ExcelReader;
 
 import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.plugins.deserializers.DeserializeException;
@@ -48,7 +47,6 @@ public class COBieDeserializer extends EmfDeserializer implements
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(COBieDeserializer.class);
 	private String templateFilePath;
-	private ExcelReader reader = null;
 	private Workbook xlWorkbook = null;
 	private COBIEDocument COBie;
 	private final File configurationFile;

@@ -7,11 +7,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import org.erdc.cobie.shared.enums.string.Common;
 
 public class FileUtils
 {
+	public static boolean doesFileExist(File file)
+	{
+		return (file != null) && file.exists();
+	}
+	
+	public static String getFileNameSafely(File file)
+	{
+		return (file == null) ? Common.NULL.toString() : file.getName();
+	}
+
 	public static void copyfile(String fromFilePath, String toFilePath) throws IOException
     {
 		File from = new File(fromFilePath);

@@ -29,9 +29,9 @@
 	<xsl:key name="ZoneKey" match="Zones/Zone" use="concat(@Name,',',Category,',',SpaceNames)"/>
 	<xsl:key name="ZoneKeyAlternate" match="Zones/Zone" use="@Name"/>
 	<xsl:function name="cfn:assertMsgPrefix" as="xs:string">
-		<xsl:param name="SheetName" as="xs:string"/>
-		<xsl:param name="RowKey" as="xs:string"/>
-		<xsl:param name="FieldName" as="xs:string"/>
+		<xsl:param name="SheetName" as="xs:string?"/>
+		<xsl:param name="RowKey" as="xs:string?"/>
+		<xsl:param name="FieldName" as="xs:string?"/>
 		<xsl:choose>
 			<xsl:when test="$RowKey">
 				<xsl:value-of select="concat($SheetName,'.',$RowKey,':  ',cfn:assertMsgSubject($SheetName,$FieldName))"/>
@@ -47,15 +47,15 @@
 		<xsl:value-of select="concat($SheetName,'.',$FieldName)"/>
 	</xsl:function>
 	<xsl:function name="cfn:atLeastOneMessage" as="xs:string">
-		<xsl:param name="SheetNameSingular" as="xs:string"/>
-		<xsl:param name="SheetNamePlural" as="xs:string"/>
+		<xsl:param name="SheetNameSingular" as="xs:string?"/>
+		<xsl:param name="SheetNamePlural" as="xs:string?"/>
 		<xsl:value-of select="concat($SheetNamePlural,' must have at least one ',$SheetNameSingular)"/>
 	</xsl:function>
 	<xsl:function name="cfn:canComponentBeInTwoSpaces" as="xs:boolean">
-		<xsl:param name="extObject" as="xs:string"/>
-		<xsl:param name="Name" as="xs:string"/>
-		<xsl:param name="Description" as="xs:string"/>
-		<xsl:param name="TypeName" as="xs:string"/>
+		<xsl:param name="extObject" as="xs:string?"/>
+		<xsl:param name="Name" as="xs:string?"/>
+		<xsl:param name="Description" as="xs:string?"/>
+		<xsl:param name="TypeName" as="xs:string?"/>
 		<xsl:choose>
 			<!--Need to check for name containing door or window...also need to check for is external -->
 			<xsl:when test="(lower-case($extObject)='ifcwindow' or lower-case($extObject)='ifcdoor') or 
@@ -73,7 +73,7 @@
 		</xsl:choose>
 	</xsl:function>
 	<xsl:function name="cfn:stringContainsWindowOrDoor" as="xs:boolean">
-		<xsl:param name="text" as="xs:string"/>
+		<xsl:param name="text" as="xs:string?"/>
 		<xsl:choose>
 			<xsl:when test="contains(lower-case($text),'window') or contains(lower-case($text),'door')">
 				<xsl:value-of select="true()"/>
@@ -85,17 +85,17 @@
 	</xsl:function>
 	<xsl:function name="cfn:componentSpaceForeignKeyMessage" as="xs:string">
 		<xsl:param name="Context"/>
-		<xsl:param name="FieldName" as="xs:string"/>
-		<xsl:param name="FSheet" as="xs:string"/>
-		<xsl:param name="FKey" as="xs:string"/>
+		<xsl:param name="FieldName" as="xs:string?"/>
+		<xsl:param name="FSheet" as="xs:string?"/>
+		<xsl:param name="FKey" as="xs:string?"/>
 		<xsl:variable name="SheetName" select="cfn:WorksheetName($Context)"/>
 		<xsl:variable name="RowKey" select="cfn:getKeyValue($Context)"/>
-		<xsl:variable name="MsgPrefix" as="xs:string" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
+		<xsl:variable name="MsgPrefix" as="xs:string?" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat($MsgPrefix,' must exist in ',$FSheet,'.',$FKey,'.  If component is a window or door it may be placed in up to two spaces, but only one otherwise.')"/>
 	</xsl:function>
 	<xsl:function name="cfn:componentSpaceKeyMatch" as="xs:boolean">
-		<xsl:param name="space" as="xs:string"/>
-		<xsl:param name="extObject" as="xs:string"/>
+		<xsl:param name="space" as="xs:string?"/>
+		<xsl:param name="extObject" as="xs:string?"/>
 		<xsl:param name="RootContext"/>
 		<xsl:param name="ItemContext"/>
 		<xsl:choose>
@@ -109,15 +109,15 @@
 	</xsl:function>
 	<xsl:function name="cfn:dateTimeFormatMessage" as="xs:string">
 		<xsl:param name="Context"/>
-		<xsl:param name="FieldName" as="xs:string"/>
+		<xsl:param name="FieldName" as="xs:string?"/>
 		<xsl:variable name="SheetName" select="cfn:WorksheetName($Context)"/>
 		<xsl:variable name="RowKey" select="cfn:getKeyValue($Context)"/>
-		<xsl:variable name="MsgPrefix" as="xs:string" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
+		<xsl:variable name="MsgPrefix" as="xs:string?" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat($MsgPrefix,' must be in the correct format (YYYY-MM-DDTHH:MM:SS)')"/>
 	</xsl:function>
 	<xsl:function xmlns="http://purl.oclc.org/dsdl/schematron" name="cfn:delimListInKeys" as="xs:boolean">
-		<xsl:param name="delimString" as="xs:string"/>
-		<xsl:param name="keyName" as="xs:string"/>
+		<xsl:param name="delimString" as="xs:string?"/>
+		<xsl:param name="keyName" as="xs:string?"/>
 		<xsl:param name="context"/>
 		<xsl:choose>
 			<xsl:when test="contains($delimString,',')">
@@ -156,8 +156,8 @@
 		</xsl:choose>
 	</xsl:function>
 	<xsl:function xmlns="http://purl.oclc.org/dsdl/schematron" name="cfn:delimPairInKeys" as="xs:boolean">
-		<xsl:param name="delimString" as="xs:string"/>
-		<xsl:param name="keyName" as="xs:string"/>
+		<xsl:param name="delimString" as="xs:string?"/>
+		<xsl:param name="keyName" as="xs:string?"/>
 		<xsl:param name="context"/>
 		<xsl:choose>
 			<xsl:when test="contains($delimString,',')">
@@ -197,22 +197,22 @@
 	</xsl:function>
 	<xsl:function name="cfn:foreignKeyMessage" as="xs:string">
 		<xsl:param name="Context"/>
-		<xsl:param name="FieldName" as="xs:string"/>
-		<xsl:param name="FSheet" as="xs:string"/>
-		<xsl:param name="FKey" as="xs:string"/>
+		<xsl:param name="FieldName" as="xs:string?"/>
+		<xsl:param name="FSheet" as="xs:string?"/>
+		<xsl:param name="FKey" as="xs:string?"/>
 		<xsl:variable name="SheetName" select="cfn:WorksheetName($Context)"/>
 		<xsl:variable name="RowKey" select="cfn:getKeyValue($Context)"/>
-		<xsl:variable name="MsgPrefix" as="xs:string" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
+		<xsl:variable name="MsgPrefix" as="xs:string?" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat($MsgPrefix,' must exist in ',$FSheet,'.',$FKey)"/>
 	</xsl:function>
 	<xsl:function name="cfn:foreignKeysMessage" as="xs:string">
 		<xsl:param name="Context"/>
-		<xsl:param name="FieldName" as="xs:string"/>
-		<xsl:param name="FSheet" as="xs:string"/>
-		<xsl:param name="FKey" as="xs:string"/>
+		<xsl:param name="FieldName" as="xs:string?"/>
+		<xsl:param name="FSheet" as="xs:string?"/>
+		<xsl:param name="FKey" as="xs:string?"/>
 		<xsl:variable name="SheetName" select="cfn:WorksheetName($Context)"/>
 		<xsl:variable name="RowKey" select="cfn:getKeyValue($Context)"/>
-		<xsl:variable name="MsgPrefix" as="xs:string" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
+		<xsl:variable name="MsgPrefix" as="xs:string?" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat($MsgPrefix,' must exist in ',$FSheet,'.',$FKey, ' (comma delimitted list for multiple entries is acceptable)')"/>
 	</xsl:function>
 	<xsl:function name="cfn:getKeyAlternateValue" as="xs:string">
@@ -544,38 +544,38 @@
 	</xsl:function>
 	<xsl:function name="cfn:notEmptyMessage" as="xs:string">
 		<xsl:param name="Context"/>
-		<xsl:param name="FieldName" as="xs:string"/>
+		<xsl:param name="FieldName" as="xs:string?"/>
 		<xsl:variable name="SheetName" select="cfn:WorksheetName($Context)"/>
 		<xsl:variable name="RowKey" select="cfn:getKeyValue($Context)"/>
-		<xsl:variable name="MsgPrefix" as="xs:string" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
+		<xsl:variable name="MsgPrefix" as="xs:string?" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat($MsgPrefix,' must be provided (n/a is acceptable)')"/>
 	</xsl:function>
 	<xsl:function name="cfn:notEmptyNumberMessage" as="xs:string">
 		<xsl:param name="Context"/>
-		<xsl:param name="FieldName" as="xs:string"/>
+		<xsl:param name="FieldName" as="xs:string?"/>
 		<xsl:variable name="SheetName" select="cfn:WorksheetName($Context)"/>
 		<xsl:variable name="RowKey" select="cfn:getKeyValue($Context)"/>
-		<xsl:variable name="MsgPrefix" as="xs:string" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
+		<xsl:variable name="MsgPrefix" as="xs:string?" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat($MsgPrefix,' must be provided (n/a should be used if value is unknown, further restrictions may apply to some fields, e.g. lengths>=0)')"/>
 	</xsl:function>
 	<xsl:function name="cfn:notNullNumberMessage" as="xs:string">
-		<xsl:param name="SheetName" as="xs:string"/>
-		<xsl:param name="RowKey" as="xs:string"/>
-		<xsl:param name="FieldName" as="xs:string"/>
-		<xsl:variable name="MsgPrefix" as="xs:string" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
+		<xsl:param name="SheetName" as="xs:string?"/>
+		<xsl:param name="RowKey" as="xs:string?"/>
+		<xsl:param name="FieldName" as="xs:string?"/>
+		<xsl:variable name="MsgPrefix" as="xs:string?" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat($MsgPrefix,' must be provided (n/a is not acceptable, further restrictions may apply to some fields, e.g. lengths>=0)')"/>
 	</xsl:function>
 	<xsl:function name="cfn:notNullMessage" as="xs:string">
 		<xsl:param name="Context"/>
-		<xsl:param name="FieldName" as="xs:string"/>
+		<xsl:param name="FieldName" as="xs:string?"/>
 		<xsl:variable name="SheetName" select="cfn:WorksheetName($Context)"/>
 		<xsl:variable name="RowKey" select="cfn:getKeyValue($Context)"/>
-		<xsl:variable name="MsgPrefix" as="xs:string" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
+		<xsl:variable name="MsgPrefix" as="xs:string?" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat($MsgPrefix,' must be provided (n/a is unacceptable)')"/>
 	</xsl:function>
 	<xsl:function name="cfn:onlyOneMessage" as="xs:string">
-		<xsl:param name="SheetNameSingular" as="xs:string"/>
-		<xsl:param name="SheetNamePlural" as="xs:string"/>
+		<xsl:param name="SheetNameSingular" as="xs:string?"/>
+		<xsl:param name="SheetNamePlural" as="xs:string?"/>
 		<xsl:variable name="Msg" select="' must have exactly one '"/>
 		<xsl:value-of select="concat($SheetNamePlural,' must have exactly one ',$SheetNameSingular)"/>
 	</xsl:function>
@@ -594,24 +594,24 @@
 		<xsl:value-of select="concat(string($RowCount),' ',$SheetNamePlural)"/>
 	</xsl:function>
 	<xsl:function name="cfn:titleCase" as="xs:string">
-		<xsl:param name="str" as="xs:string"/>
+		<xsl:param name="str" as="xs:string?"/>
 		<xsl:sequence select="string-join(for $x in tokenize($str,'\s') return
 concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 	</xsl:function>
 	<xsl:function name="cfn:uniqueNameMessage" as="xs:string">
 		<xsl:param name="Context"/>
-		<xsl:param name="FieldName" as="xs:string"/>
+		<xsl:param name="FieldName" as="xs:string?"/>
 		<xsl:variable name="SheetName" select="cfn:WorksheetName($Context)"/>
 		<xsl:variable name="RowKey" select="cfn:getKeyValue($Context)"/>
-		<xsl:variable name="MsgPrefix" as="xs:string" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
+		<xsl:variable name="MsgPrefix" as="xs:string?" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat($MsgPrefix,' must be unique')"/>
 	</xsl:function>
 	<xsl:function name="cfn:uniqueNameWarningMessage" as="xs:string">
-		<xsl:param name="SheetName" as="xs:string"/>
-		<xsl:param name="RowKey" as="xs:string"/>
-		<xsl:param name="FieldName" as="xs:string"/>
-		<xsl:param name="AltKey" as="xs:string"/>
-		<xsl:variable name="MsgPrefix" as="xs:string" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
+		<xsl:param name="SheetName" as="xs:string?"/>
+		<xsl:param name="RowKey" as="xs:string?"/>
+		<xsl:param name="FieldName" as="xs:string?"/>
+		<xsl:param name="AltKey" as="xs:string?"/>
+		<xsl:variable name="MsgPrefix" as="xs:string?" select="cfn:assertMsgPrefix($SheetName,$RowKey,$FieldName)"/>
 		<xsl:value-of select="concat('Warning:  ',$MsgPrefix,' must be unique, but ',$AltKey,' is acceptable')"/>
 	</xsl:function>
 	<xsl:function name="cfn:validDateTime" as="xs:boolean">
@@ -626,7 +626,7 @@ concat(upper-case(substring($x, 1, 1)), lower-case(substring($x, 2))), ' ')"/>
 		</xsl:choose>
 	</xsl:function>
 	<xsl:function name="cfn:validEmail" as="xs:boolean">
-		<xsl:param name="text" as="xs:string"/>
+		<xsl:param name="text" as="xs:string?"/>
 		<xsl:choose>
 			<xsl:when test="$text">
 				<xsl:variable name="regExMatch" as="xs:boolean">

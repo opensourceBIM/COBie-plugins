@@ -35,31 +35,6 @@ public class COBieSpaceTypeComponentReportPlugin extends
 	}
 
 
-	@Override
-	public String getDefaultContentType()
-	{
-		return "appliction/html";
-	}
-
-	@Override
-	public String getDefaultExtension()
-	{
-		return COBieSerializerPluginInfo.REPORT_ROOM_DATASHEET
-				.getFileExtension();
-	}
-
-	@Override
-	public String getDefaultName()
-	{
-		return COBieSerializerPluginInfo.REPORT_ROOM_DATASHEET.toString();
-	}
-
-	@Override
-	public String getDescription()
-	{
-		return COBieSerializerPluginInfo.REPORT_ROOM_DATASHEET.getDescription();
-	}
-
 	public String getName()
 	{
 		return getClass().getName();
@@ -105,5 +80,12 @@ public class COBieSpaceTypeComponentReportPlugin extends
 	public boolean needsGeometry()
 	{
 		return false;
+	}
+
+
+	@Override
+	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
+	{
+		return COBieSerializerPluginInfo.REPORT_ROOM_DATASHEET;
 	}
 }

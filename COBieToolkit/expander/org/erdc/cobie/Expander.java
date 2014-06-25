@@ -65,7 +65,7 @@ public class Expander extends JFrame {
 	private static final String JAVA_64_BIT_ARCHITECTURE_PROPERTY_VALUE = "64";
 	private static final String SUN_ARCH_DATA_MODEL_PROPERTYNAME = "sun.arch.data.model";
 	private static final String WINDOW_TITLE = "COBie Toolkit Starter";
-	private static final String COBIE_APPLICATION_GUI_CLASS = " org.erdc.cobie.toolkit.gui.CobieToolkitGui";
+
 	private static final long serialVersionUID = 5356018168589837130L;
 	private Process exec;
 	private JarSettings jarSettings = JarSettings.readFromFile();
@@ -367,7 +367,8 @@ public class Expander extends JFrame {
                     
                     File jreLib = new File(jre, "lib");
                    // commandAndArgs.add("-Xbootclasspath:");
-                    String xBootClassPath = "";
+                    @SuppressWarnings("unused")
+					String xBootClassPath = "";
                     xBootClassPath += "\"" + jreLib.getAbsolutePath() +"\"";
                     for (File file : jreLib.listFiles()) {
                         if (file.getName().endsWith(".jar")) {

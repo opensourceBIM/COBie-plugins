@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CollectionUtils
 {
-    public static <T> void appendList(List<T> list, T... items)
+    public static <T> void appendList(List<T> list, @SuppressWarnings("unchecked") T... items)
     {
         for (T item : items)
         {
@@ -42,7 +42,15 @@ public class CollectionUtils
         }
     }
 
-    public static <T> List<T> makeList(T... items)
+    private static <T> void checkIsNull(List<T> collection)
+    {
+    	if (collection == null)
+    	{
+    		throw new NullPointerException("The supplied collection is null.");
+    	}
+    }
+    
+    public static <T> List<T> makeList(@SuppressWarnings("unchecked") T... items)
     {
         List<T> list = new ArrayList<T>();
 
@@ -56,11 +64,20 @@ public class CollectionUtils
     
     public static <T> T getFirst(List<T> collection)
     {
+    	checkIsNull(collection);
+    	
+    	if (collection.size() < 1)
+    	{
+    		throw new IndexOutOfBoundsException("The supplied collection is null or empty.");
+    	}
+    	
     	return collection.get(0);
     }
     
     public static <T> T getSingle(List<T> collection)
     {
+    	checkIsNull(collection);
+    	
     	if (collection.size() != 1)
     	{
     		throw new IllegalArgumentException("The supplied collection must contain exactly one item.");

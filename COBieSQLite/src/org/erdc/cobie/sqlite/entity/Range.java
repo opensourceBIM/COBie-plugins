@@ -35,11 +35,13 @@ public abstract class Range<T extends Number> extends CobieEntity
 		super(row);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public final T getMaximum() throws CobieSQLiteException
 	{
 		return (T)getColumn(ColumnName.Maximum.toString()).getValue();
 	}
 
+	@SuppressWarnings("unchecked")
 	public final T getMinimum() throws CobieSQLiteException
 	{
 		return (T)getColumn(ColumnName.Minimum.toString()).getValue();

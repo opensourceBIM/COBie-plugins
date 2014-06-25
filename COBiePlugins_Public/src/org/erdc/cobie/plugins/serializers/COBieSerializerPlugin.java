@@ -34,11 +34,7 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 {
 
 	private static final String CONFIGURATION_FILE_ERROR = "Could not find configuration files";
-	private static final String DEFAULT_CONTENT_TYPE = "application/COBIE";
-	private static final String DEFAULT_EXTENSION = COBieSerializerPluginInfo.SPREADSHEET
-			.getFileExtension();
-	private static final String DEFAULT_NAME = COBieSerializerPluginInfo.SPREADSHEET
-			.toString();
+
 	private static final String REPORT_FILES_TMP_DIRECTORY_NAME = "COBieReportFiles";
 	private static final String TMP_FOLDER_NAME = "COBieSerializer";
 	private boolean initialized = false;
@@ -60,31 +56,6 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 		configFilePaths.add(COBIE_SPREADSHEET_TEMPLATE_PATH);
 		return configFilePaths;
 	}
-
-	@Override
-	public String getDefaultContentType()
-	{
-		return DEFAULT_CONTENT_TYPE;
-	}
-
-	@Override
-	public String getDefaultExtension()
-	{
-		return DEFAULT_EXTENSION;
-	}
-
-	@Override
-	public String getDefaultName()
-	{
-		return DEFAULT_NAME;
-	}
-
-	@Override
-	public String getDescription()
-	{
-		return COBieSerializerPluginInfo.SPREADSHEET.getDescription();
-	}
-
 
 	@Override
 	public void init(PluginManager pluginManager) throws PluginException
@@ -137,5 +108,11 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 	public boolean needsGeometry()
 	{
 		return false;
+	}
+
+	@Override
+	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
+	{
+		return COBieSerializerPluginInfo.SPREADSHEET;
 	}
 }

@@ -30,6 +30,14 @@
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.erdc.cobie.plugins.serializers.AsInstalledEquipmentSerializerPlugin</implementationClass>
+	</PluginImplementation>
+		<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.erdc.cobie.plugins.serializers.ProductTypeWarrantySerializerPlugin</implementationClass>
+	</PluginImplementation>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.COBieCheckSerializerPlugin</implementationClass>
 	</PluginImplementation>
 	<PluginImplementation>

@@ -22,12 +22,12 @@ import org.bimserver.shared.cobie.compare.CompareMetadataType;
 import org.bimserver.shared.exceptions.ServerException;
 import org.bimserver.shared.exceptions.UserException;
 import org.bimserver.shared.interfaces.PluginInterface;
-import org.bimserver.shared.interfaces.ServiceInterface;
+import org.bimserver.shared.interfaces.bimsie1.Bimsie1ServiceInterface;
 import org.erdc.cobie.shared.COBIERowDictionary;
 import org.erdc.cobie.shared.COBIESheetCollection;
 import org.erdc.cobie.shared.COBIESheetDictionary;
-import org.erdc.cobie.shared.PluginUtilities;
 import org.erdc.cobie.shared.COBieUtility;
+import org.erdc.cobie.shared.PluginUtilities;
 import org.erdc.cobie.shared.compare.COBieCompareState.CompareMode;
 import org.erdc.cobie.shared.compare.COBieCompareState.ComparisonDocument;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
@@ -41,7 +41,7 @@ public class COBieCompareResult// extends SCompareResult
     private COBIESheetDictionary cobie1Lookup, cobie2Lookup;
     private boolean hasBiMServerConnection;
     private long roid1, roid2;
-    private ServiceInterface service;
+    private Bimsie1ServiceInterface service;
     private HashMap<String, ArrayList<COBieCompareItem>> sheetNameToCobieCompareItems;
     private COBieCompareState state;
 
@@ -74,7 +74,7 @@ public class COBieCompareResult// extends SCompareResult
         setHasBiMServerConnection(true);
     }
 
-    public COBieCompareResult(long roid1, long roid2, PluginInterface pluginInterface, ServiceInterface serviceInterface) throws ServerException, UserException, XmlException, IOException
+    public COBieCompareResult(long roid1, long roid2, PluginInterface pluginInterface, Bimsie1ServiceInterface serviceInterface) throws ServerException, UserException, XmlException, IOException
     {
         initializeState();
         this.roid1 = roid1;
@@ -309,7 +309,7 @@ public class COBieCompareResult// extends SCompareResult
 
     }
 
-    public void initializeBiMServerCompare(long roid1, long roid2, PluginInterface pluginInterface, ServiceInterface serviceInterface) throws ServerException, UserException, XmlException,
+    public void initializeBiMServerCompare(long roid1, long roid2, PluginInterface pluginInterface, Bimsie1ServiceInterface serviceInterface) throws ServerException, UserException, XmlException,
             IOException
     {
         // initializeState();

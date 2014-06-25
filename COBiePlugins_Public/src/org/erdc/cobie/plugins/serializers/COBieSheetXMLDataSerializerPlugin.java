@@ -13,41 +13,11 @@ public class COBieSheetXMLDataSerializerPlugin extends
 {
 	private boolean initialized = false;
 
-	// private File configurationFile;
 
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
 		return new COBieSheetXMLDataSerializer();
-	}
-
-	// /////////////////////////////
-	// /need to fix these content and extension functions.
-	// /had to use html to get it to work
-	@Override
-	public String getDefaultContentType()
-	{
-		// return "appliction/COBIE";
-		return "application/XML";
-	}
-
-	@Override
-	public String getDefaultExtension()
-	{
-		// return "xml";//Change this to proper extension
-		return COBieSerializerPluginInfo.SHEET_XMLDATA.getFileExtension();
-	}
-
-	@Override
-	public String getDefaultName()
-	{
-		return COBieSerializerPluginInfo.SHEET_XMLDATA.toString();
-	}
-
-	@Override
-	public String getDescription()
-	{
-		return COBieSerializerPluginInfo.SHEET_XMLDATA.getDescription();
 	}
 
 	@Override
@@ -77,5 +47,11 @@ public class COBieSheetXMLDataSerializerPlugin extends
 	public boolean needsGeometry()
 	{
 		return false;
+	}
+
+	@Override
+	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
+	{
+		return COBieSerializerPluginInfo.SHEET_XMLDATA;
 	}
 }

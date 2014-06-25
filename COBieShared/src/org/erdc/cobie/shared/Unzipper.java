@@ -6,12 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.Enumeration;
-import java.util.Scanner;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-import java.util.zip.ZipInputStream;
-
-import javax.ws.rs.core.UriBuilder;
 
 import org.apache.cxf.helpers.IOUtils;
 
@@ -42,6 +38,37 @@ public class Unzipper
 			}
 		}
 		return result;
+	}
+	
+	public void unzipTo(String destination) throws IOException
+	{
+		ZipEntry zipEntry;
+		Enumeration<? extends ZipEntry> entries = getZipFile().entries();
+		while (entries.hasMoreElements())
+		{
+			zipEntry = entries.nextElement();
+			InputStream inputStream = zipFile.getInputStream(zipEntry);
+			File destinationFile = new File(zipEntry.getName());
+			createNewFileAndDirectories(destinationFile);
+			FileOutputStream destinationStream = new FileOutputStream(destinationFile);
+			IOUtils.copy(inputStream, destinationStream);
+		}
+	}
+
+	/**
+	 * @param destinationFile
+	 * @throws IOException
+	 */
+	public void createNewFileAndDirectories(File destinationFile) throws IOException
+	{
+		if(!destinationFile.exists())
+		{
+			if(destinationFile.getParentFile() != null)
+			{
+				destinationFile.getParentFile().mkdirs();
+			}
+			destinationFile.createNewFile();
+		}
 	}
 	
 	public File getEntry(String entryPath, String destinationPath) throws IOException

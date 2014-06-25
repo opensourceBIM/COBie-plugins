@@ -2,6 +2,8 @@ package org.erdc.cobie.shared.utils;
 
 import java.net.URI;
 
+import org.erdc.cobie.shared.enums.string.Common;
+
 public class URIUtils
 {    
     public static String fixPath(String path, char[] delimiters, char desiredDelimiter)
@@ -25,6 +27,11 @@ public class URIUtils
         return path.substring(path.lastIndexOf('/') + 1, path.length());
     }
     
+    public static boolean isDirectory(URI resource)
+    {
+    	return !URIUtils.getFileName(resource).contains(Common.FILE_EXTENSION_PREFIX.toString());
+    }
+    
     public static String makeDOSPath(String uriPath)
     {
         return fixPath(uriPath, new char[] {'/'}, '\\');
@@ -35,14 +42,14 @@ public class URIUtils
         return makeDOSPath(uri.getPath());
     }
     
-    public static String makeSimplePath(String uriPath)
+    public static String makeJarPath(String uriPath)
     {
         return fixPath(uriPath, new char[] {'/', '\\'}, '.');
     }
     
-    public static String makeSimplePath(URI uri)
+    public static String makeJarPath(URI uri)
     {
-        return makeSimplePath(uri.getPath());
+        return makeJarPath(uri.getPath());
     }
     
     public static String makeStandardPath(String uriPath)

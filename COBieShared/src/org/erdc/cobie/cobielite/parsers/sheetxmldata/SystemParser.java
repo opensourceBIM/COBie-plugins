@@ -5,6 +5,7 @@ import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.SystemType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
+import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 
 public class SystemParser extends TypicalParser<org.erdc.cobie.sheetxmldata.SystemType, SystemType>
@@ -43,12 +44,18 @@ public class SystemParser extends TypicalParser<org.erdc.cobie.sheetxmldata.Syst
     @Override
     protected void parseSimpleElements()
     {
-        targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
-        targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
-        targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
-        targetCOBie.setSystemCategory(sourceCOBie.getCategory());
-        targetCOBie.setSystemDescription(sourceCOBie.getDescription());
-        targetCOBie.setSystemName(sourceCOBie.getName());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtObject()))
+    		targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtIdentifier()))
+    		targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtSystem()))
+    		targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
+    	if(!COBieUtility.isNA(sourceCOBie.getCategory()))
+    		targetCOBie.setSystemCategory(sourceCOBie.getCategory());
+    	if(!COBieUtility.isNA(sourceCOBie.getDescription()))
+    		targetCOBie.setSystemDescription(sourceCOBie.getDescription());
+    	if(!COBieUtility.isNA(sourceCOBie.getName()))
+    		targetCOBie.setSystemName(sourceCOBie.getName());
 
     }
 

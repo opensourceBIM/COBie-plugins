@@ -19,6 +19,7 @@ package org.erdc.cobie.utils.serializer.sheetserializers;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.bimserver.emf.IfcModelInterface;
@@ -455,7 +456,7 @@ public class IfcToZone
     {
         LogHandler loggerHandler = new LogHandler(sheetName, LOGGER);
         loggerHandler.sheetWriteBegin();
-        ArrayList<IfcZone> zones = (ArrayList<IfcZone>)model.getAll(IfcZone.class);
+        List<IfcZone> zones = model.getAll(IfcZone.class);
         COBIEType.Zones cZones = cType.addNewZones();
         if (!zones.isEmpty())
         {
@@ -478,7 +479,7 @@ public class IfcToZone
         return ZoneDeserializer.getZoneKeyFromZone(zone);
     }
 
-    private static void zonesToCOBieZonesSpacePerRow(LogHandler loggerHandler, ArrayList<IfcZone> zones, COBIEType.Zones cZones)
+    private static void zonesToCOBieZonesSpacePerRow(LogHandler loggerHandler, List<IfcZone> zones, COBIEType.Zones cZones)
     {
         ArrayList<String> zoneNamesAdded = new ArrayList<String>();
         for (IfcZone zone : zones)

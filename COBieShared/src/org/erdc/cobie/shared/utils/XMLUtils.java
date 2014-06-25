@@ -1,20 +1,32 @@
 package org.erdc.cobie.shared.utils;
 
+import java.io.IOException;
 import java.io.OutputStream;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map.Entry;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.apache.xmlbeans.SchemaProperty;
+import org.apache.xmlbeans.SchemaType;
+import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlObject;
 import org.erdc.cobie.shared.COBieUtility;
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public class XMLUtils
 {
 
-    private static void saveWithNoNamespaces(XmlObject xml, OutputStream outputStream)
+
+	@SuppressWarnings("unused")
+	private static void saveWithNoNamespaces(XmlObject xml, OutputStream outputStream)
     {
         Node node = xml.getDomNode();
         switch(node.getNodeType())
@@ -141,5 +153,121 @@ public class XMLUtils
     {
         // TODO Auto-generated constructor stub
     }
+    
+    public static void populateFixedValues(XmlObject root, Document document) throws ParserConfigurationException, SAXException, IOException, XmlException
+    {
+    	if (root != null)
+    	{
+    		SchemaType schemaType = root.schemaType();
+        	if(schemaType.isSimpleType() && schemaType.getSimpleVariety() == SchemaType.ATOMIC && 
+        			schemaType.getContainerField()!=null && 
+        			schemaType.getContainerField().isFixed() &&
+        			root.isNil())
+        	{
+        		root.getDomNode().setNodeValue(schemaType.getContainerField().getDefaultText());
+        	}
+        	else
+        	{
+        		LinkedHashMap<SchemaProperty, XmlObject[]> childMap = mapExistenceOfProperties(root, schemaType);
+        		populateMissingFixedValues(root, document, childMap);
+        	}
+    	}
+    }
 
+	/**
+	 * @param root
+	 * @param document
+	 * @param childMap
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws XmlException
+	 */
+	private static void populateMissingFixedValues(XmlObject root, Document document, LinkedHashMap<SchemaProperty, XmlObject[]> childMap) throws ParserConfigurationException, SAXException, IOException, XmlException
+	{
+		Node lastExistingNode = null;
+		for(Entry<SchemaProperty, XmlObject[]> entry : childMap.entrySet())
+		{
+			SchemaProperty childProperty = entry.getKey();
+			XmlObject[] children = entry.getValue();
+			boolean exists = (children!=null & children.length>0);
+			if(exists)
+			{
+				XmlObject[] existingChildren = root.selectChildren(childProperty.getName());
+				lastExistingNode = existingChildren[existingChildren.length-1].getDomNode();
+				for(XmlObject child : existingChildren)
+				{
+					populateFixedValues(child, document);
+				}
+			}
+			else if(childProperty.getMinOccurs().longValue() > 0)
+			{
+				Element missingElement = document.createElementNS(childProperty.getName().getNamespaceURI(), childProperty.getName().getLocalPart());
+				missingElement.appendChild(document.createTextNode(childProperty.getDefaultText()));
+				
+				if(lastExistingNode == null)
+				{
+					insertNodeBeforeFirstChild(root, missingElement);		
+				}
+				else if(lastExistingNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					insertNodeAfterLastExistingNode(root, lastExistingNode, missingElement);			
+				}
+				lastExistingNode = missingElement;
+				XmlObject newXmlObject = root.selectChildren(childProperty.getName())[0];
+				populateFixedValues(newXmlObject, document);
+			}		
+		}
+	}
+
+	/**
+	 * @param root
+	 * @param lastExistingNode
+	 * @param missingElement
+	 */
+	private static void insertNodeAfterLastExistingNode(XmlObject root, Node lastExistingNode, Element missingElement)
+	{
+		Element lastExistingElement = (Element) lastExistingNode;
+		
+		if(lastExistingElement.getNextSibling() != null)
+		{
+			root.getDomNode().insertBefore(missingElement, lastExistingElement.getNextSibling());
+		}
+		else
+		{
+			root.getDomNode().appendChild(missingElement);
+		}
+	}
+
+	/**
+	 * @param root
+	 * @param missingElement
+	 */
+	private static void insertNodeBeforeFirstChild(XmlObject root, Element missingElement)
+	{
+		if(root.getDomNode().hasChildNodes())
+		{
+			root.getDomNode().insertBefore(missingElement, root.getDomNode().getFirstChild());
+		}
+		else
+		{
+			root.getDomNode().appendChild(missingElement);
+		}
+	}
+
+	/**
+	 * @param root
+	 * @param schemaType
+	 * @return
+	 */
+	private static LinkedHashMap<SchemaProperty, XmlObject[]> mapExistenceOfProperties(XmlObject root, SchemaType schemaType)
+	{
+		LinkedHashMap<SchemaProperty, XmlObject[]> childMap = new LinkedHashMap<SchemaProperty, XmlObject[]>();
+		for(SchemaProperty property : schemaType.getProperties())
+		{
+			XmlObject[] children = root.selectChildren(property.getName());
+			childMap.put(property, children);
+		}
+		return childMap;
+	}
 }

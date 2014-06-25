@@ -121,16 +121,26 @@ public class AssetParser extends DeepParser<ComponentType, AssetInfoType>
     @Override
     protected void parseSimpleElements()
     {
-        targetCOBie.setAssetBarCode(sourceCOBie.getBarCode());
-        targetCOBie.setAssetDescription(sourceCOBie.getDescription());
-        targetCOBie.setAssetIdentifier(sourceCOBie.getAssetIdentifier());
-        targetCOBie.setAssetLocationDescription(sourceCOBie.getDescription());
-        targetCOBie.setAssetName(sourceCOBie.getName());
-        targetCOBie.setAssetSerialNumber(sourceCOBie.getSerialNumber());
-        targetCOBie.setAssetTagNumber(sourceCOBie.getTagNumber());
-        targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
-        targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
-        targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
+    	if(!COBieUtility.isNA(sourceCOBie.getBarCode()))
+    		targetCOBie.setAssetBarCode(sourceCOBie.getBarCode());
+    	if(!COBieUtility.isNA(sourceCOBie.getDescription()))
+    		targetCOBie.setAssetDescription(sourceCOBie.getDescription());
+    	if(!COBieUtility.isNA(sourceCOBie.getAssetIdentifier()))
+    		targetCOBie.setAssetIdentifier(sourceCOBie.getAssetIdentifier());
+    	if(!COBieUtility.isNA(sourceCOBie.getDescription()))
+    		targetCOBie.setAssetLocationDescription(sourceCOBie.getDescription());
+    	if(!COBieUtility.isNA(sourceCOBie.getName()))
+    		targetCOBie.setAssetName(sourceCOBie.getName());
+    	if(!COBieUtility.isNA(sourceCOBie.getSerialNumber()))
+    		targetCOBie.setAssetSerialNumber(sourceCOBie.getSerialNumber());
+    	if(!COBieUtility.isNA(sourceCOBie.getTagNumber()))
+    		targetCOBie.setAssetTagNumber(sourceCOBie.getTagNumber());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtObject()))
+    		targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtIdentifier()))
+    		targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtSystem()))
+    		targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
         initializeDateTimeValues();
 
     }

@@ -6,18 +6,18 @@ import java.util.List;
 import org.bimserver.interfaces.objects.SProject;
 import org.bimserver.shared.exceptions.ServerException;
 import org.bimserver.shared.exceptions.UserException;
-import org.bimserver.shared.interfaces.ServiceInterface;
+import org.bimserver.shared.interfaces.bimsie1.Bimsie1ServiceInterface;
 
 public class ProjectQueryUtility
 {
     public static final int UNASSIGNED_OID_VAL = -1;
 
-    public static long getAnyRootProjectIdByName(String projectName, ServiceInterface service)
+    public static long getAnyRootProjectIdByName(String projectName, Bimsie1ServiceInterface service)
     {
         long poid = -1;
         try
         {
-            List<SProject> projects = service.getAllProjects(true);
+            List<SProject> projects = service.getAllProjects(true, true);
             for (SProject project : projects)
             {
                 if (project.getName().equals(projectName))
@@ -41,7 +41,7 @@ public class ProjectQueryUtility
         return poid;
     }
 
-    public static long getRootProjectIdByName(String projectName, ServiceInterface service) throws ServerException, UserException
+    public static long getRootProjectIdByName(String projectName, Bimsie1ServiceInterface service) throws ServerException, UserException
     {
         ArrayList<Long> poids = new ArrayList<Long>();
         long returnPoid = UNASSIGNED_OID_VAL;
@@ -61,7 +61,7 @@ public class ProjectQueryUtility
         return returnPoid;
     }
 
-    public static long getSubprojectIdByParentIdAndSubprojectName(long parentOid, String subprojectName, ServiceInterface service)
+    public static long getSubprojectIdByParentIdAndSubprojectName(long parentOid, String subprojectName, Bimsie1ServiceInterface service)
             throws ServerException, UserException
     {
         long subProjectOid = UNASSIGNED_OID_VAL;

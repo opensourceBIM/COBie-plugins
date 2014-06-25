@@ -16,25 +16,30 @@ public class JSONFactory
 {
 
     private XMLSerializer xmlSerializer;
-    
+    private boolean ignoreNonAssets = false;
     public JSONFactory()
     {
         setSerializer(newXMLSerializer());
     }
     
+    public JSONFactory(boolean ignoreNonAssets)
+    {
+    	this();
+    	this.ignoreNonAssets = ignoreNonAssets;
+    }
+    
     public JSON parse(FacilityDocument facility)
     {
-    	try
-		{
-			facility.save(new File("bigcobielite.xml"));
-		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        JSON json =  xmlSerializer.readFromStream(facility.newInputStream());
-        return json;
+//    	try
+//		{
+//			facility.save(new File("bigcobielite.xml"));
+//		}
+//		catch (IOException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+        return  xmlSerializer.readFromStream(facility.newInputStream());
               
     }
 
@@ -47,7 +52,7 @@ public class JSONFactory
     
     public JSON parse(File file) throws FileNotFoundException
     {
-        JSON json =  xmlSerializer.readFromFile(file);        
+        JSON json =  xmlSerializer.readFromFile(file);   
         return json;
               
     }
@@ -61,14 +66,19 @@ public class JSONFactory
     public JSON parse(IfcModelInterface model)
     {
         JSON json = null;
-        COBieFactory cobieFactory = new COBieFactory();
+        FacilityDocument facility = getFacility(model);     
+        json =parse(facility);        
+        return json;
+    }
+
+	private FacilityDocument getFacility(IfcModelInterface model) 
+	{
+		COBieFactory cobieFactory = new COBieFactory(ignoreNonAssets);
         COBIEDocument cobie = cobieFactory.parse(model);
         FacilityFactory facilityFactory = new FacilityFactory();
         FacilityDocument facility = facilityFactory.parse(cobie);
-        JSONFactory jsonFactory = new JSONFactory();        
-        json = jsonFactory.parse(facility);        
-        return json;
-    }
+		return facility;
+	}
 
     public XMLSerializer getSerializer()
     {

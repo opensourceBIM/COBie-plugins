@@ -32,6 +32,7 @@ import org.slf4j.LoggerFactory;
 public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<ComponentType, COBIEType.Components, IfcProduct>
 {
 
+	private boolean ignoreNonAssets = false;
     private static void getRidOfNASpaceNamesIfOthersExist(ArrayList<String> spaceNames)
     {
         if (spaceNames.size() > 1)
@@ -47,10 +48,9 @@ public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<Compone
                 && !(obj instanceof IfcBuilding) && !(obj instanceof IfcSite);
     }
 
-    private static boolean shouldWriteComponent(IfcProduct product)
+    private boolean shouldWriteComponent(IfcProduct product)
     {
-        boolean shouldWrite = IfcToComponent.isAssetComponent(product);
-        return shouldWrite;
+       return (IfcToComponent.isNotAnotherSheetIfcProductType(product)) && (!ignoreNonAssets || IfcToComponent.isAssetComponent(product));
     }
 
     private Map<String, ArrayList<String>> componentToSpaceDictionary;
@@ -61,6 +61,12 @@ public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<Compone
         setComponentNameToSpaceNameDictionary(new HashMap<String, ArrayList<String>>());
         setLOGGER(LoggerFactory.getLogger(IfcProductToComponentsSerializer.class));
 
+    }
+    
+    public IfcProductToComponentsSerializer(Components cobieSection, IfcModelInterface model, boolean ignoreNonAssets)
+    {
+    	this(cobieSection, model);
+    	this.ignoreNonAssets = ignoreNonAssets;
     }
 
     private void addNewOrUpdateComponentSpaceDictionary(String Name, String SpaceName)

@@ -7,7 +7,7 @@ import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.ZoneAssignmentCollectionType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.ZoneKeyType;
 import org.erdc.cobie.cobielite.ValueHelper;
-
+import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.SpaceZonesIndex;
 import org.erdc.cobie.sheetxmldata.SpaceType;
@@ -23,14 +23,15 @@ public class SpaceParser extends TypicalParser<SpaceType, org.buildingsmartallia
     private void assignGrossArea()
     {
         String grossArea = sourceCOBie.getGrossArea();
-        ValueHelper.assign(grossArea, targetCOBie.addNewSpaceGrossAreaValue());
-
+        if(!COBieUtility.isNA(grossArea))
+        	ValueHelper.assign(grossArea, targetCOBie.addNewSpaceGrossAreaValue());
     }
 
     private void assignNetArea()
     {
         String netArea = sourceCOBie.getNetArea();
-        ValueHelper.assign(netArea, targetCOBie.addNewSpaceNetAreaValue());
+        if(!COBieUtility.isNA(netArea))
+        	ValueHelper.assign(netArea, targetCOBie.addNewSpaceNetAreaValue());
     }
 
     private void assignSpacePerimeter()
@@ -42,7 +43,8 @@ public class SpaceParser extends TypicalParser<SpaceType, org.buildingsmartallia
     private void assignUsableHeight()
     {
         String sheetUsableHeight = sourceCOBie.getUsableHeight();
-        ValueHelper.assign(sheetUsableHeight, targetCOBie.addNewSpaceUsableHeightValue());
+        if(!COBieUtility.isNA(sheetUsableHeight))
+        	ValueHelper.assign(sheetUsableHeight, targetCOBie.addNewSpaceUsableHeightValue());
     }
 
     private void assignZones()
@@ -125,13 +127,20 @@ public class SpaceParser extends TypicalParser<SpaceType, org.buildingsmartallia
     @Override
     protected void parseSimpleElements()
     {
-        targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
-        targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
-        targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
-        targetCOBie.setSpaceCategory(sourceCOBie.getCategory());
-        targetCOBie.setSpaceDescription(sourceCOBie.getDescription());
-        targetCOBie.setSpaceName(sourceCOBie.getName());
-        targetCOBie.setSpaceSignageName(sourceCOBie.getRoomTag());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtObject()))
+    		targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtIdentifier()))
+    		targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtSystem()))
+    		targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
+    	if(!COBieUtility.isNA(sourceCOBie.getCategory()))
+    		targetCOBie.setSpaceCategory(sourceCOBie.getCategory());
+    	if(!COBieUtility.isNA(sourceCOBie.getDescription()))
+    		targetCOBie.setSpaceDescription(sourceCOBie.getDescription());
+    	if(!COBieUtility.isNA(sourceCOBie.getName()))
+    		targetCOBie.setSpaceName(sourceCOBie.getName());
+    	if(!COBieUtility.isNA(sourceCOBie.getRoomTag()))
+    		targetCOBie.setSpaceSignageName(sourceCOBie.getRoomTag());
     }
 
 }

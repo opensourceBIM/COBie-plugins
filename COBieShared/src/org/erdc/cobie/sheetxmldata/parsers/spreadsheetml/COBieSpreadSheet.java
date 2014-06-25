@@ -27,6 +27,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -57,6 +58,8 @@ import nl.fountain.xelem.lex.ExcelReader;
 
 import org.apache.commons.io.input.CloseShieldInputStream;
 import org.bimserver.cobie.cobieserializersettings.COBieExportOptionsDocument;
+import org.bimserver.utils.UTF8PrintWriter;
+import org.erdc.cobie.plugins.utils.CP1252Printwriter;
 import org.erdc.cobie.shared.COBieQuery;
 import org.erdc.cobie.shared.COBieTokenUtility;
 import org.erdc.cobie.shared.COBieUtility;
@@ -815,7 +818,7 @@ public class COBieSpreadSheet
         garbageCollection();
     }
 
-    public void nodeToStream(Node node, PrintWriter out)
+    public static void nodeToStream(Node node, PrintWriter out)
     {
         String workSheetName = "";
         boolean canonical = false;
@@ -973,7 +976,7 @@ public class COBieSpreadSheet
     // end file creation functions
 
     /** Normalizes the given string. */
-    protected String normalize(String s)
+    protected static String normalize(String s)
     {
         boolean canonical = false;
         StringBuffer str = new StringBuffer();
@@ -1157,7 +1160,7 @@ public class COBieSpreadSheet
         populateAllPickListCategoryValues();
     }
 
-    protected String printCOBieSheetDataValidation(String sheetName)
+    protected static String printCOBieSheetDataValidation(String sheetName)
     {
         String dataValidation = "";
         if (sheetName.equalsIgnoreCase("contact"))
@@ -1334,7 +1337,7 @@ public class COBieSpreadSheet
         return sheetLimit;
     }
 
-    protected Attr[] sortAttributes(NamedNodeMap attrs)
+    protected static Attr[] sortAttributes(NamedNodeMap attrs)
     {
 
         int len = (attrs != null) ? attrs.getLength() : 0;
@@ -1373,11 +1376,19 @@ public class COBieSpreadSheet
         return xlWorkbook.getWorksheet(sheetName.name());
     }
 
-    public void writeNodeDeep(Node node, PrintWriter wrt)
+    public static void writeNodeDeep(Node node, PrintWriter wrt)
     {
         nodeToStream(node, wrt);
     }
 
+    public static void writeToOutputStream(OutputStream out, Workbook workbook) throws ParserConfigurationException
+    {
+    	PrintWriter wrt = createPrintWriter(out);
+    	writeNodeDeep(workbook.createDocument(), wrt);
+    	wrt.flush();
+    	wrt.close();
+    }
+    
     public void writeToOutputStream(PrintWriter wrt)
     {
         try
@@ -1390,4 +1401,17 @@ public class COBieSpreadSheet
             LOGGER.error("", e);
         }
     }
+    
+	public static PrintWriter createPrintWriter(OutputStream outputStream)
+	{
+//		try
+//		{
+//			return new CP1252Printwriter(outputStream);
+//		}
+//		catch (UnsupportedEncodingException e)
+//		{
+//			return new UTF8PrintWriter(outputStream);
+//		}
+		return new UTF8PrintWriter(outputStream);
+	}
 }

@@ -102,38 +102,55 @@ public class JobParser extends DeepParser<org.erdc.cobie.sheetxmldata.JobType, J
 
     private void handleFrequency()
     {
-        ValueHelper.assign(sourceCOBie.getFrequency(), targetCOBie.addNewJobFrequencyValue());
-        String frequencyUnitName = sourceCOBie.getFrequencyUnit();
-        if(targetCOBie.getJobFrequencyValue() != null && !COBieUtility.isNA(frequencyUnitName))
-        {
-            DecimalValueType jobFrequency = targetCOBie.getJobFrequencyValue();
-            jobFrequency.addNewUnitName().setStringValue(frequencyUnitName);
-        }
+    	if(!COBieUtility.isNA(sourceCOBie.getFrequency()))
+    	{
+    		 ValueHelper.assign(sourceCOBie.getFrequency(), targetCOBie.addNewJobFrequencyValue());
+    		 String frequencyUnitName = sourceCOBie.getFrequencyUnit();
+	        if(targetCOBie.getJobFrequencyValue() != null && !COBieUtility.isNA(frequencyUnitName))
+	        {
+	            DecimalValueType jobFrequency = targetCOBie.getJobFrequencyValue();
+	            jobFrequency.addNewUnitName().setStringValue(frequencyUnitName);
+	        }
+    	}
+       
     }
 
     private void handleDuration()
     {
-        ValueHelper.assign(sourceCOBie.getDuration(), targetCOBie.addNewJobDuration());
-        String durationUnitName = sourceCOBie.getDurationUnit();
-        if(targetCOBie.getJobDuration()!=null && !COBieUtility.isNA(durationUnitName))
-        {
-            IntegerValueType jobDuration = targetCOBie.getJobDuration();
-            jobDuration.addNewUnitName().setStringValue(durationUnitName);
-        }
+    	if(!COBieUtility.isNA(sourceCOBie.getDuration()))
+    	{
+    		ValueHelper.assign(sourceCOBie.getDuration(), targetCOBie.addNewJobDuration());
+            String durationUnitName = sourceCOBie.getDurationUnit();
+            if(targetCOBie.getJobDuration()!=null && !COBieUtility.isNA(durationUnitName))
+            {
+                IntegerValueType jobDuration = targetCOBie.getJobDuration();
+                jobDuration.addNewUnitName().setStringValue(durationUnitName);
+            }
+    	}
+        
     }
 
     @Override
     protected void parseSimpleElements()
     {
-        targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
-        targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
-        targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
-        targetCOBie.setJobCategory(sourceCOBie.getCategory());
-        targetCOBie.setJobDescription(sourceCOBie.getDescription());
-        targetCOBie.setJobName(sourceCOBie.getName());
-        targetCOBie.setJobStartConditionDescription(sourceCOBie.getTaskStartUnit());       
-        targetCOBie.setJobStatus(sourceCOBie.getStatus());
-        targetCOBie.setJobTaskID(sourceCOBie.getTaskNumber());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtObject()))
+    		targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtIdentifier()))
+    		targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtSystem()))
+    		targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
+    	if(!COBieUtility.isNA(sourceCOBie.getCategory()))
+    		targetCOBie.setJobCategory(sourceCOBie.getCategory());
+    	if(!COBieUtility.isNA(sourceCOBie.getDescription()))
+    		targetCOBie.setJobDescription(sourceCOBie.getDescription());
+    	if(!COBieUtility.isNA(sourceCOBie.getName()))
+    		targetCOBie.setJobName(sourceCOBie.getName());
+    	if(!COBieUtility.isNA(sourceCOBie.getTaskStartUnit()))
+    		targetCOBie.setJobStartConditionDescription(sourceCOBie.getTaskStartUnit());       
+    	if(!COBieUtility.isNA(sourceCOBie.getStatus()))
+    		targetCOBie.setJobStatus(sourceCOBie.getStatus());
+    	if(!COBieUtility.isNA(sourceCOBie.getTaskNumber()))
+    		targetCOBie.setJobTaskID(sourceCOBie.getTaskNumber());
 
     }
 

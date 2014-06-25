@@ -3,12 +3,14 @@ package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 import java.util.ArrayList;
 
 
+
 import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
 import org.erdc.cobie.cobielite.ValueHelper;
 import org.erdc.cobie.cobielite.parsers.COBieLiteParserDispatcher;
 import org.erdc.cobie.cobielite.parsers.sheetxmldata.dispatchers.FloorSpaceDispatcher;
+import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.FloorSpacesIndex;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.SpaceZonesIndex;
@@ -103,12 +105,18 @@ public class FloorParser extends DeepParser<FloorType, org.buildingsmartalliance
     @Override
     protected void parseSimpleElements()
     {
-        targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
-        targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
-        targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
-        targetCOBie.setFloorCategory(sourceCOBie.getCategory());
-        targetCOBie.setFloorDescription(sourceCOBie.getDescription());
-        targetCOBie.setFloorName(sourceCOBie.getName());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtObject()))
+    		targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtIdentifier()))
+    		targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtSystem()))
+    		targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
+    	if(!COBieUtility.isNA(sourceCOBie.getCategory()))
+    		targetCOBie.setFloorCategory(sourceCOBie.getCategory());
+    	if(!COBieUtility.isNA(sourceCOBie.getDescription()))
+    		targetCOBie.setFloorDescription(sourceCOBie.getDescription());
+    	if(!COBieUtility.isNA(sourceCOBie.getName()))
+    		targetCOBie.setFloorName(sourceCOBie.getName());
 
     }
 }

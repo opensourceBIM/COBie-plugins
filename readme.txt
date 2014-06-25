@@ -1,9 +1,10 @@
-1/28/2014 - COBieToolkit Release 1.4 - Posting Updated Code for BIMServer.org to use to compile 1.3 and 1.2 compatible plugins
+6/25/2014 
 
 WHAT’S NEW?
 NEW FEATURES
-•	Updated COBieLite Serializer for NBIMS v03
-•	Updated checking reports to NBIMS v03 COBie ballot
+•	Various Bug Fixes in COBie Transformations
+•	BIMServer 1.3 Compatibility
+•	Various Refactoring
 
 KNOWN BUGS AND LIMITATIONS
 •	The Impacts and Issues spreadsheets are not yet populated from IFC imports.

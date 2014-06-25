@@ -35,7 +35,7 @@ import org.bimserver.plugins.objectidms.ObjectIDM;
 import org.bimserver.plugins.objectidms.ObjectIDMPlugin;
 import org.bimserver.plugins.serializers.SerializerPlugin;
 import org.bimserver.shared.cobie.generated.merge.COBieMergeIDMDocument;
-import org.bimserver.shared.interfaces.NotificationInterface;
+import org.bimserver.shared.interfaces.bimsie1.Bimsie1NotificationInterface;
 import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.enums.COBieIDMPluginName;
 import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
@@ -207,7 +207,7 @@ public class CobieToolkit
         return initializeDeserializerByName(IFC_XML_DESERIALIZER_NAME);
     }
 
-    public void disconnect(NotificationInterface... notificationInterfaces)
+    public void disconnect(Bimsie1NotificationInterface... notificationInterfaces)
     {
 
         // bimServerClient.disconnect();

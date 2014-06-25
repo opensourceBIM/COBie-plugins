@@ -17,25 +17,18 @@ package org.erdc.cobie.serializers;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.util.UUID;
 
-import org.apache.commons.io.IOUtils;
 import org.bimserver.cobie.cobieserializersettings.COBieExportOptionsDocument;
 import org.bimserver.plugins.serializers.SerializerException;
 import org.bimserver.utils.UTF8PrintWriter;
-import org.dom4j.io.XMLWriter;
 import org.erdc.cobie.plugins.utils.CP1252Printwriter;
 import org.erdc.cobie.shared.COBieSheetXMLDataTransformable;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
 import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.COBieSpreadSheet;
-import org.w3c.dom.Document;
 
 /**
  * @author chrisbogen This class is a sub-class of

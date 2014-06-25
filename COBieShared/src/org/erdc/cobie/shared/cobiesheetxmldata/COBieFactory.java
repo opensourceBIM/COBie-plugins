@@ -29,6 +29,7 @@ public class COBieFactory implements LoggerUser
     private static final String BEGIN_MESSAGE = "Transforming IFC to COBie.";
     private static final String END_MESSAGE = "Transform Complete.";
     private COBIEDocument cobieDocument;
+    private boolean ignoreNonAssets = false;
     Logger LOGGER = LoggerFactory.getLogger(COBieFactory.class);
     
     public COBieFactory()
@@ -36,6 +37,11 @@ public class COBieFactory implements LoggerUser
         newDocument();
     }
     
+    public COBieFactory(boolean ignoreNonAssets)
+    {
+    	this();
+    	this.ignoreNonAssets = ignoreNonAssets;
+    }
     private void newDocument()
     {
         cobieDocument = COBIEDocument.Factory.newInstance();
@@ -132,7 +138,7 @@ public class COBieFactory implements LoggerUser
     private void writeTypes(IfcModelInterface model)
     {
         IfcTypeToCOBieTypeSerializer typeSerializer =
-                new IfcTypeToCOBieTypeSerializer(this.GetCobie().addNewTypes(), model);
+                new IfcTypeToCOBieTypeSerializer(this.GetCobie().addNewTypes(), model, ignoreNonAssets);
         typeSerializer.serializeIfc();
     }
     
@@ -146,7 +152,7 @@ public class COBieFactory implements LoggerUser
         if(components==null)
             components = this.GetCobie().addNewComponents();
         IfcProductToComponentsSerializer componentSerializer =
-                new IfcProductToComponentsSerializer(this.GetCobie().getComponents(), model);
+                new IfcProductToComponentsSerializer(this.GetCobie().getComponents(), model, ignoreNonAssets);
         componentSerializer.serializeIfc();
     }
     

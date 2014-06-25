@@ -30,8 +30,8 @@ public class SerializerFileChooser extends CobieFileChoser
 
 		for(SerializerPlugin serializer:serializers)
 		{
-			boolean isCOBieXMLDataSerializer =
-					CobieToolkit.isBaseCOBieXMLPlugin(serializer);
+//			boolean isCOBieXMLDataSerializer =
+//					CobieToolkit.isBaseCOBieXMLPlugin(serializer);
 			if(serializer.isInitialized())
 				this.addChoosableFileFilter(new SerializerFileFilter((AbstractSerializerPlugin)serializer));
 		}

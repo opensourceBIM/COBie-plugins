@@ -21,6 +21,7 @@ import org.erdc.cobie.utils.stringwriters.IfcSingleValueToCOBieString;
 
 public class IfcTypeToCOBieTypeSerializer extends IfcCOBieSerializer<TypeType, COBIEType.Types, IfcTypeObject>
 {
+	private boolean ignoreNonAssets = false;
     public enum WarrantyType
     {
         PARTS, LABOR
@@ -32,6 +33,12 @@ public class IfcTypeToCOBieTypeSerializer extends IfcCOBieSerializer<TypeType, C
     public IfcTypeToCOBieTypeSerializer(Types cobieSection, IfcModelInterface model)
     {
         super(cobieSection, model);
+    }
+    
+    public IfcTypeToCOBieTypeSerializer(Types cobieSection, IfcModelInterface model, boolean ignoreNonAssets)
+    {
+    	this(cobieSection, model);
+    	this.ignoreNonAssets = ignoreNonAssets;
     }
 
     private void assignFromWarranty(WarrantyType warrantyType, Pset_Warranty warranty, TypeType newType, boolean assignOnlyOnNulls)
@@ -319,7 +326,7 @@ public class IfcTypeToCOBieTypeSerializer extends IfcCOBieSerializer<TypeType, C
         List<TypeType> newTypes = new ArrayList<TypeType>();
 
         IfcOwnerHistory oh = type.getOwnerHistory();
-        if (type != null)
+        if (type != null && (!ignoreNonAssets || IfcToType.isAssetType(type)))
         {
             TypeType newType = cobieSection.addNewType();
             handleCommonFields(type, oh, newType);

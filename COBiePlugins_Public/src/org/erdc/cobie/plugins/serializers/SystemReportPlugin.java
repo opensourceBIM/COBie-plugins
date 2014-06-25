@@ -24,12 +24,7 @@ public class SystemReportPlugin extends AbstractCOBieSerializerPlugin
 	private static final String SYSTEM_REPORT_XSLT_PATH="lib/SystemReport.xslt";
 	private ArrayList<String> configFilePaths;
 	private HashMap<String,File> configFiles;
-		@Override
-		public String getDescription() {
-			return COBieSerializerPluginInfo.REPORT_SYSTEM.getDescription();
-		}
 
-		
 		public String getName() {
 			return getClass().getName();
 		}
@@ -62,26 +57,6 @@ public class SystemReportPlugin extends AbstractCOBieSerializerPlugin
 			return set;
 		}
 
-
-		@Override
-		public String getDefaultName() {
-			//return "COBIE";
-			return COBieSerializerPluginInfo.REPORT_SYSTEM.toString();
-		}
-
-		///////////////////////////////
-		///need to fix these content and extension functions.
-		///had to use html to get it to work
-		@Override
-		public String getDefaultContentType() {
-			return "appliction/html";
-		}
-
-		@Override
-		public String getDefaultExtension() {
-			//return "xml";//Change this to proper extension
-			return COBieSerializerPluginInfo.REPORT_SYSTEM.getFileExtension();
-		}
 	 /////////////////////////////////////////////////
 		@Override
 		public boolean isInitialized() {
@@ -100,6 +75,13 @@ public class SystemReportPlugin extends AbstractCOBieSerializerPlugin
 	{
 		return new org.erdc.cobie.serializers.COBieHTMLReportSerializer(this.configFiles.get(SYSTEM_REPORT_XSLT_PATH).getAbsolutePath(),
 				this.configFiles.get(SYSTEM_REPORT_CSS_PATH).getAbsolutePath());
+	}
+
+
+	@Override
+	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
+	{
+		return COBieSerializerPluginInfo.REPORT_SYSTEM;
 	}
 
 }

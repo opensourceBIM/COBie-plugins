@@ -28,6 +28,7 @@ import org.bimserver.models.ifc2x3tc1.IfcMaterial;
 import org.bimserver.models.ifc2x3tc1.IfcMaterialLayerSet;
 import org.bimserver.models.ifc2x3tc1.IfcMaterialLayerSetUsage;
 import org.bimserver.models.ifc2x3tc1.IfcMaterialSelect;
+import org.bimserver.models.ifc2x3tc1.IfcObjectDefinition;
 import org.bimserver.models.ifc2x3tc1.IfcRelAssociatesMaterial;
 import org.bimserver.models.ifc2x3tc1.IfcRelDefinesByType;
 import org.bimserver.models.ifc2x3tc1.IfcTypeObject;
@@ -765,6 +766,24 @@ public class IfcToType
         pString = getTypePropertySearchResult(type, typePNames);
 
         return COBieUtility.getCOBieString(pString);
+    }
+    
+    protected static boolean isAssetType(IfcObjectDefinition objDef)
+    {
+
+        boolean isAsset = true;
+        ArrayList<String> excludeStrings = getExcludeAssetStrings();
+        for (@SuppressWarnings("rawtypes")
+        Class iClass : objDef.getClass().getInterfaces())
+        {
+            if (excludeStrings.contains(iClass.getSimpleName()))
+            {
+                isAsset = false;
+            }
+        }
+        // if(objDef instanceof IfcElement)
+        // isAsset=true;
+        return isAsset;
     }
 
 }

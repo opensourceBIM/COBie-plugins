@@ -10,17 +10,7 @@ import org.apache.commons.io.FileUtils;
 
 public class Zipper
 {
-    private ZipOutputStream zip;
-    
-//    public Zipper(String archiveName) throws FileNotFoundException
-//    {
-//        this(archiveName, false);
-//    }
-//    
-//    public Zipper(String archiveName, boolean deleteOriginalFiles) throws FileNotFoundException
-//    {
-//        this(new FileOutputStream(archiveName), deleteOriginalFiles);
-//    }
+    private final ZipOutputStream zip;
     
     public Zipper(OutputStream outputStream)
     {
@@ -31,9 +21,9 @@ public class Zipper
     {
         ZipEntry entry = new ZipEntry(file.getPath());
         
-        this.getZipOutputStream().putNextEntry(entry);              
-        this.getZipOutputStream().write(FileUtils.readFileToByteArray(file));
-        this.getZipOutputStream().closeEntry();
+        getZipOutputStream().putNextEntry(entry); 
+        getZipOutputStream().write(FileUtils.readFileToByteArray(file));
+        getZipOutputStream().closeEntry();
         
         if (deleteOriginalFile)
         {
@@ -45,9 +35,9 @@ public class Zipper
     {
         ZipEntry entry = new ZipEntry(relativePath);
         
-        this.getZipOutputStream().putNextEntry(entry);              
-        this.getZipOutputStream().write(FileUtils.readFileToByteArray(file));
-        this.getZipOutputStream().closeEntry();
+        getZipOutputStream().putNextEntry(entry);              
+        getZipOutputStream().write(FileUtils.readFileToByteArray(file));
+        getZipOutputStream().closeEntry();
         
         if (deleteOriginalFile)
         {
@@ -59,10 +49,9 @@ public class Zipper
     {
         ZipEntry entry = new ZipEntry(relativePath);
         
-        this.getZipOutputStream().putNextEntry(entry);              
-        this.getZipOutputStream().write(data);
-        this.getZipOutputStream().closeEntry();
-
+        getZipOutputStream().putNextEntry(entry);              
+        getZipOutputStream().write(data);
+        getZipOutputStream().closeEntry();
     }
        
     public void addEntry(File file) throws IOException
@@ -77,11 +66,11 @@ public class Zipper
 
     public final ZipOutputStream getZipOutputStream()
     {
-        return this.zip;
+        return zip;
     }
     
     public void writeZipArchive() throws IOException
     {
-        this.getZipOutputStream().close();
+        getZipOutputStream().close();
     }
 }

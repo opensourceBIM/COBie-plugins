@@ -4,6 +4,7 @@ package org.erdc.cobie.cobielite.parsers.sheetxmldata;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.AttributeCollectionType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.DocumentCollectionType;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.IssueCollectionType;
+import org.erdc.cobie.shared.COBieUtility;
 import org.erdc.cobie.shared.cobiesheetxmldata.indices.IndexedCOBie;
 import org.erdc.cobie.sheetxmldata.ZoneType;
 
@@ -42,12 +43,18 @@ public class ZoneParser extends TypicalParser<ZoneType, org.buildingsmartallianc
     @Override
     protected void parseSimpleElements()
     {
-        targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
-        targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
-        targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
-        targetCOBie.setZoneCategory(sourceCOBie.getCategory());
-        targetCOBie.setZoneDescription(sourceCOBie.getDescription());
-        targetCOBie.setZoneName(sourceCOBie.getName());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtObject()))
+    		targetCOBie.setExternalEntityName(sourceCOBie.getExtObject());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtIdentifier()))
+    		targetCOBie.setExternalID(sourceCOBie.getExtIdentifier());
+    	if(!COBieUtility.isNA(sourceCOBie.getExtSystem()))
+    		targetCOBie.setExternalSystemName(sourceCOBie.getExtSystem());
+    	if(!COBieUtility.isNA(sourceCOBie.getCategory()))
+    		targetCOBie.setZoneCategory(sourceCOBie.getCategory());
+        if(!COBieUtility.isNA(sourceCOBie.getDescription()))
+        	targetCOBie.setZoneDescription(sourceCOBie.getDescription());
+        if(!COBieUtility.isNA(sourceCOBie.getName()))
+        	targetCOBie.setZoneName(sourceCOBie.getName());
 
     }
 
