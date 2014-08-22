@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingWorker;
 
-import org.erdc.cobie.shared.PluginUtilities.OutgingFileType;
+import org.erdc.cobie.shared.bimserver.PluginUtilities.OutgingFileType;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
 import org.erdc.cobie.toolkit.CobieToolkit;
 import org.erdc.cobie.toolkit.tasks.DeserializeToCOBieSheetXMLDataTask;

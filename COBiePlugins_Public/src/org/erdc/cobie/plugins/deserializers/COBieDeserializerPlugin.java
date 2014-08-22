@@ -26,9 +26,9 @@ import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.deserializers.Deserializer;
 import org.bimserver.plugins.deserializers.DeserializerPlugin;
 import org.bimserver.plugins.schema.SchemaException;
-import org.erdc.cobie.deserializers.COBieDeserializer;
-import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
-import org.erdc.cobie.shared.enums.COBieDeserializerPluginName;
+import org.erdc.cobie.shared.bimserver.deserialization.COBieDeserializer;
+import org.erdc.cobie.shared.bimserver.deserialization.COBieDeserializerPluginName;
+import org.erdc.cobie.shared.bimserver.utility.PluginRuntimeFileHelper;
 
 public class COBieDeserializerPlugin implements DeserializerPlugin
 {

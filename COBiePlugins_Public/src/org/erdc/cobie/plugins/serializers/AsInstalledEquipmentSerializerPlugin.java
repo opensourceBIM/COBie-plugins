@@ -1,9 +1,9 @@
 package org.erdc.cobie.plugins.serializers;
 
 import org.apache.poi.ss.usermodel.Workbook;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
-import org.erdc.cobie.shared.mapping.AsInstalledEquipmentTemplateMapper;
-import org.erdc.cobie.shared.mapping.COBieLiteTemplateMapper;
+import org.erdc.cobie.shared.altova.mapping.AsInstalledEquipmentTemplateMapper;
+import org.erdc.cobie.shared.altova.mapping.COBieLiteTemplateMapper;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
 
 public class AsInstalledEquipmentSerializerPlugin extends COBieTemplateSerializerPlugin
 {

@@ -68,9 +68,5 @@
 		<interfaceClass>org.bimserver.plugins.deserializers.DeserializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.deserializers.COBieSheetXMLDataDeserializerPlugin</implementationClass>
 	</PluginImplementation>
-		<PluginImplementation>
-		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
-		<implementationClass>org.erdc.cobie.plugins.serializers.COBieSQLiteSerializerPlugin</implementationClass>
-	</PluginImplementation>
 </PluginDescriptor>
 

@@ -4,8 +4,8 @@ import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.Serializer;
-import org.erdc.cobie.serializers.COBieLiteSerializer;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieLiteSerializer;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
 
 public class COBieLiteSerializerPlugin extends AbstractCOBieSerializerPlugin
 {

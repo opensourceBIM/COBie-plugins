@@ -12,7 +12,7 @@ import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.objectidms.ObjectIDM;
 import org.bimserver.plugins.objectidms.ObjectIDMPlugin;
 import org.bimserver.utils.CollectionUtils;
-import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
+import org.erdc.cobie.shared.bimserver.utility.PluginRuntimeFileHelper;
 
 public abstract class IDMPlugin implements ObjectIDMPlugin
 {

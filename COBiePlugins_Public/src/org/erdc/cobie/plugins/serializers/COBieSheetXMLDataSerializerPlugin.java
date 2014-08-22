@@ -5,8 +5,8 @@ import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.objectidms.ObjectIDMException;
 import org.bimserver.plugins.serializers.Serializer;
-import org.erdc.cobie.serializers.COBieSheetXMLDataSerializer;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieTabXMLSerializer;
 
 public class COBieSheetXMLDataSerializerPlugin extends
 		AbstractCOBieSerializerPlugin
@@ -17,7 +17,7 @@ public class COBieSheetXMLDataSerializerPlugin extends
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new COBieSheetXMLDataSerializer();
+		return new COBieTabXMLSerializer();
 	}
 
 	@Override

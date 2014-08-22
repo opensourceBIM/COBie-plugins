@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.erdc.cobie.plugins.idm.ignoreschema.ClassDefinition;
 import org.erdc.cobie.plugins.idm.ignoreschema.PackageDefinition;
 import org.erdc.cobie.shared.COBieUtility;
-import org.erdc.cobie.shared.idm.COBieFilterable;
+import org.erdc.cobie.shared.bimserver.idm.COBieFilterable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

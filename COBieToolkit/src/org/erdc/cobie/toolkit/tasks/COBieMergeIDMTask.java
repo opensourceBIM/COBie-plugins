@@ -3,11 +3,11 @@ package org.erdc.cobie.toolkit.tasks;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import org.erdc.cobie.shared.COBieTaskProgress;
-import org.erdc.cobie.shared.Informable;
-import org.erdc.cobie.shared.merge.COBieIDMMerger;
-import org.erdc.cobie.shared.merge.COBieMergeIDMItem;
-import org.erdc.cobie.shared.merge.COBieMergeState;
+import org.erdc.cobie.shared.bimserver.COBieTaskProgress;
+import org.erdc.cobie.shared.bimserver.Informable;
+import org.erdc.cobie.shared.bimserver.merge.COBieIDMMerger;
+import org.erdc.cobie.shared.bimserver.merge.COBieMergeIDMItem;
+import org.erdc.cobie.shared.bimserver.merge.COBieMergeState;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
 
 public class COBieMergeIDMTask extends ApplicationTask<COBIEDocument> implements PropertyChangeListener

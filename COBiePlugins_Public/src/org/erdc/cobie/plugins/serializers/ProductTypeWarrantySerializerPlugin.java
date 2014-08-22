@@ -4,9 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.Workbook;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
-import org.erdc.cobie.shared.mapping.COBieLiteTemplateMapper;
-import org.erdc.cobie.shared.mapping.ProductTypeWarrantyTemplateMapper;
+import org.erdc.cobie.shared.altova.mapping.COBieLiteTemplateMapper;
+import org.erdc.cobie.shared.altova.mapping.ProductTypeWarrantyTemplateMapper;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
 
 public class ProductTypeWarrantySerializerPlugin extends COBieTemplateSerializerPlugin
 {

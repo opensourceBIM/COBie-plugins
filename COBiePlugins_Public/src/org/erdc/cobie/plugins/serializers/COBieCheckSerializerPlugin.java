@@ -13,10 +13,10 @@ import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.schema.SchemaPlugin;
 import org.bimserver.plugins.serializers.Serializer;
-import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
-import org.erdc.cobie.shared.enums.COBieQCValidationPhase;
-import org.erdc.cobie.utils.serializer.COBieSchematronCheckerSettings;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.utility.PluginRuntimeFileHelper;
+import org.erdc.cobie.shared.reporting.COBieQCValidationPhase;
+import org.erdc.cobie.shared.reporting.COBieSchematronCheckerSettings;
 
 public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 {
@@ -33,7 +33,7 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new org.erdc.cobie.serializers.COBieCheckSerializer(checkerSettings);
+		return new org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieCheckSerializer(checkerSettings);
 	}
 
 	public String getName()

@@ -2,7 +2,7 @@ package org.erdc.cobie.plugins.serializers;
 
 import org.bimserver.plugins.serializers.AbstractSerializerPlugin;
 import org.bimserver.plugins.serializers.Serializer;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
 
 public abstract class AbstractCOBieSerializerPlugin extends
 		AbstractSerializerPlugin

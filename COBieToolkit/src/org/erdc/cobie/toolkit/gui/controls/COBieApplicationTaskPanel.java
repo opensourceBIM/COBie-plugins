@@ -11,8 +11,8 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
-import org.erdc.cobie.shared.COBieTaskProgress;
-import org.erdc.cobie.shared.Informable;
+import org.erdc.cobie.shared.bimserver.COBieTaskProgress;
+import org.erdc.cobie.shared.bimserver.Informable;
 import org.erdc.cobie.toolkit.tasks.ApplicationTask;
 import org.erdc.cobie.toolkit.utils.JComponentCollection;
 import org.slf4j.Logger;

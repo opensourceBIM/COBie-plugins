@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import org.erdc.cobie.shared.PluginUtilities.OutgingFileType;
+import org.erdc.cobie.shared.bimserver.PluginUtilities.OutgingFileType;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
 import org.erdc.cobie.toolkit.CobieToolkit;
 import org.erdc.cobie.toolkit.tasks.CompareTask;

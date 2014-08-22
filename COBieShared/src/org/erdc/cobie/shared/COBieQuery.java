@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.xmlbeans.SchemaParticle;
-import org.bimserver.models.ifc2x3tc1.IfcProduct;
 import org.erdc.cobie.shared.COBieUtility.CobieSheetName;
 import org.erdc.cobie.sheetxmldata.COBIEType;
 import org.erdc.cobie.sheetxmldata.CategoryPickLists;
@@ -85,27 +84,7 @@ public class COBieQuery
         return sheetNames;
     }
 
-    public static boolean isComponentInCOBie(IfcProduct product, COBIEType cobie)
-    {
-        boolean isInCOBie = false;
-        String componentName = product.getName();
-        String guid = "";
-        try
-        {
-            guid = product.getGlobalId();
-        } catch (Exception e)
-        {
 
-        }
-        for (ComponentType component : cobie.getComponents().getComponentArray())
-        {
-            if (component.getName().equals(componentName) && component.getExtIdentifier().equals(guid))
-            {
-                isInCOBie = true;
-            }
-        }
-        return isInCOBie;
-    }
 
     public static boolean isNameInComponent(String name, COBIEType cobie)
     {

@@ -9,7 +9,7 @@ import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import org.apache.cxf.helpers.IOUtils;
+import org.apache.commons.io.IOUtils;
 
 public class Unzipper
 {
@@ -47,11 +47,23 @@ public class Unzipper
 		while (entries.hasMoreElements())
 		{
 			zipEntry = entries.nextElement();
-			InputStream inputStream = zipFile.getInputStream(zipEntry);
-			File destinationFile = new File(zipEntry.getName());
-			createNewFileAndDirectories(destinationFile);
-			FileOutputStream destinationStream = new FileOutputStream(destinationFile);
-			IOUtils.copy(inputStream, destinationStream);
+			if(zipEntry.isDirectory())
+			{
+				File directory = new File(zipEntry.getName());
+				if(!directory.exists())
+				{
+					directory.mkdirs();
+				}
+			}
+			else
+			{
+				InputStream inputStream = zipFile.getInputStream(zipEntry);
+				File destinationFile = new File(zipEntry.getName());
+				createNewFileAndDirectories(destinationFile);
+				FileOutputStream destinationStream = new FileOutputStream(destinationFile);
+				IOUtils.copy(inputStream, destinationStream);
+			}
+
 		}
 	}
 

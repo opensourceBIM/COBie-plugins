@@ -13,8 +13,8 @@ import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.schema.SchemaPlugin;
 import org.bimserver.plugins.serializers.Serializer;
-import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.utility.PluginRuntimeFileHelper;
 
 public class SystemReportPlugin extends AbstractCOBieSerializerPlugin
 {
@@ -73,7 +73,7 @@ public class SystemReportPlugin extends AbstractCOBieSerializerPlugin
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new org.erdc.cobie.serializers.COBieHTMLReportSerializer(this.configFiles.get(SYSTEM_REPORT_XSLT_PATH).getAbsolutePath(),
+		return new org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieHTMLReportSerializer(this.configFiles.get(SYSTEM_REPORT_XSLT_PATH).getAbsolutePath(),
 				this.configFiles.get(SYSTEM_REPORT_CSS_PATH).getAbsolutePath());
 	}
 

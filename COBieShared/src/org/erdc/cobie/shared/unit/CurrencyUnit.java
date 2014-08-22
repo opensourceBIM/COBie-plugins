@@ -1,0 +1,100 @@
+package org.erdc.cobie.shared.unit;
+
+public enum CurrencyUnit implements Unit
+{
+	AED(new Measurable("AED", "United Arab Emirates", "UAE dirham", "AED", "UAE dirhams")), 
+	AES(new Measurable("AES", "Argentina", "Argentine peso", "AES", "Argentine pesos")), 
+	ATS(new Measurable("ATS", "Austria", "European euro", "ATS", "European euros")), 
+	AUD(new Measurable("AUD", "Australia", "Australian dollar", "AUD", "Australian dollars")), 
+	BBD(new Measurable("BBD", "Barbados", "Barbadian dollar", "BBD", "Barbadian dollars")), 
+	BEG(new Measurable("BEG", "Belgium", "European euro", "BEG", "European euros")), 
+	BGL(new Measurable("BGL", "Bulgaria", "Bulgarian lev", "BGL", "Bulgarian levs")), 
+	BHD(new Measurable("BHD", "Bahrain", "Bahraini dinar", "BHD", "Bahraini dinars")), 
+	BMD(new Measurable("BMD", "Bermuda", "BMD", "BMDs")), 
+	BND(new Measurable("BND", "Brunei", "Brunei dollar", "BND", "Brunei dollars")), 
+	BRL(new Measurable("BRL", "Brazil", "Brazilian real", "BRL", "Brazilian reals")), 
+	BSD(new Measurable("BSD", "Bahamas", "Bahamian dollar", "BSD", "Bahamian dollars")), 
+	BWP(new Measurable("BWP", "Botswana", "Botswana pula", "BWP", "Botswana pulas")), 
+	BZD(new Measurable("BZD", "Belize", "Belize dollar", "BZD", "Belize dollars")), 
+	CAD(new Measurable("CAD", "Canada", "Canadian dollar", "CAD", "Canadian dollars")), 
+	CBD(new Measurable("CBD", "Carribean", "CBD", "CBDs")), 
+	CHF(new Measurable("CHF", "Switzerland", "Swiss franc", "CHF", "Swiss francs")), 
+	CLP(new Measurable("CLP", "Chile", "Chilean peso", "CLP", "Chilean pesos")), 
+	CNY(new Measurable("CNY", "China", "Chinese renminbi", "CNY", "Chinese renminbis")), 
+	CYS(new Measurable("CYS", "Cyprus", "European euro", "CYS", "European euros")), 
+	CZK(new Measurable("CZK", "Czech Republic", "Czech koruna", "CZK", "Czech korunas")), 
+	DDP(new Measurable("DDP", "Dominican Republic", "Dominican peso", "DDP", "Dominican pesos")), 
+	DEM(new Measurable("DEM", "Germany", "European euro", "DEM", "European euros")), 
+	DKK(new Measurable("DKK", "Denmark", "Danish krone", "DKK", "Danish krones")), 
+	EGL(new Measurable("EGL", "Egypt", "Egyptian pound", "EGL", "Egyptian pounds")), 
+	EST(new Measurable("EST", "Spain", "European euro", "EST", "European euros")), 
+	EUR(new Measurable("EUR", "Europe currency", "EUR", "EURs")), 
+	FAK(new Measurable("FAK", "Faroe Islands", "FAK", "FAKs")), 
+	FIM(new Measurable("FIM", "Finland", "European euro", "FIM", "European euros")), 
+	FJD(new Measurable("FJD", "Fiji", "Fijian dollar", "FJD", "Fijian dollars")), 
+	FKP(new Measurable("FKP", "Falkland Islands", "Falkland Islands pound", "FKP", "Falkland Islands pounds")), 
+	FRF(new Measurable("FRF", "France", "European euro", "FRF", "European euros")), 
+	GBP(new Measurable("GBP", "United Kingdom", "British pound", "GBP", "British pounds", "pound", "pounds")), 
+	GIP(new Measurable("GIP", "Gibraltar", "Gibraltar pound", "GIP", "Gibraltar pounds")), 
+	GMD(new Measurable("GMD", "Gambia", "Gambian dalasi", "GMD", "Gambian dalasis")), 
+	GRX(new Measurable("GRX", "Greece", "European euro", "GRX", "European euros")), 
+	HKD(new Measurable("HKD", "Hong Kong", "Hong Kong dollar", "HKD", "Hong Kong dollars")), 
+	HUF(new Measurable("HUF", "Hungary", "Hungarian forint", "HUF", "Hungarian forints")), 
+	ICK(new Measurable("ICK", "Iceland", "Icelandic krona", "ICK", "Icelandic kronas")), 
+	IDR(new Measurable("IDR", "Indonesia", "Indonesian rupiah", "IDR", "Indonesian rupiahs")), 
+	ILS(new Measurable("ILS", "Israel", "Israeli new sheqel", "ILS", "Israeli new sheqels")), 
+	INR(new Measurable("INR", "India", "Indian rupee", "INR", "Indian rupees")), 
+	IRP(new Measurable("IRP", "Ireland", "European euro", "IRP", "European euros")), 
+	ITL(new Measurable("ITL", "Italy", "European euro", "ITL", "European euros")), 
+	JMD(new Measurable("JMD", "Jamaica", "Jamaican dollar", "JMD", "Jamaican dollars")), 
+	JOD(new Measurable("JOD", "Jordan", "Jordanian dinar", "JOD", "Jordanian dinars")), 
+	JPY(new Measurable("JPY", "Japan", "Japanese yen", "JPY", "Japanese yens")), 
+	KES(new Measurable("KES", "Kenya", "Kenyan shilling", "KES", "Kenyan shillings")), 
+	KRW(new Measurable("KRW", "Republic of Korea", "KRW", "KRWs")), 
+	KWD(new Measurable("KWD", "Kuwait", "Kuwaiti dinar", "KWD", "Kuwaiti dinars")), 
+	KYD(new Measurable("KYD", "Cayman Islands", "Cayman Islands dollar", "KYD", "Cayman Islands dollars")), 
+	LKR(new Measurable("LKR", "Sri Lanka", "Sri Lankan rupee", "LKR", "Sri Lankan rupees")), 
+	LUF(new Measurable("LUF", "Luxembourg", "European euro", "LUF","European euros")), 
+	MTL(new Measurable("MTL", "Malta", "European Euro", "MTL", "European Euros")), 
+	MUR(new Measurable("MUR", "Mauritius", "Mauritian rupee", "MUR", "Mauritian rupees")), 
+	MXN(new Measurable("MXN", "Mexico", "Mexican peso", "MXN", "Mexican pesos")), 
+	MYR(new Measurable("MYR", "Malaysia", "Malaysian ringgit", "MYR", "Malaysian ringgits")), 
+	NLG(new Measurable("NLG", "Netherlands", "European euro", "NLG", "European euros")), 
+	NOK(new Measurable("NOK", "Norway", "Norwegian krone", "NOK", "Norwegian krones")), 
+	NZD(new Measurable("NZD", "New Zealand", "New Zealand dollar", "NZD", "New Zealand dollars")), 
+	OMR(new Measurable("OMR", "Oman", "Omani rial", "OMR", "Omani rials")), 
+	PGK(new Measurable("PGK", "Papua New Guinea", "Papua New Guinean kina", "PGK", "Papua New Guinean kinas")), 
+	PHP(new Measurable("PHP", "Philipines", "PHP", "PHPs")), 
+	PKR(new Measurable("PKR", "Pakistan", "Pakistani rupee", "PKR", "Pakistani rupees")), 
+	PLN(new Measurable("PLN", "Poland","Polish zloty", "PLN", "Polish zlotys")), 
+	PTN(new Measurable("PTN", "Portugal", "European euro", "PTN", "European euros")), 
+	QAR(new Measurable("QAR", "Qatar", "Qatari riyal", "QAR", "Qatari riyals")), 
+	RUR(new Measurable("RUR", "Russia", "Russian ruble", "RUR", "Russian rubles")), 
+	SAR(new Measurable("SAR", "Saudi Arabia", "Saudi riyal", "SAR", "Saudi riyals")), 
+	SCR(new Measurable("SCR", "Seychelles", "Seychellois rupee", "SCR", "Seychellois rupees")), 
+	SEK(new Measurable("SEK", "Sweden", "Swedish krona","SEK", "Swedish kronas")), 
+	SGD(new Measurable("SGD", "Singapore", "Singapore dollar>", "SGD", "Singapore dollar>s")), 
+	SKP(new Measurable("SKP", "St.Helena", "SKP", "SKPs")), 
+	THB(new Measurable("THB", "Thailand", "Thai baht", "THB", "Thai bahts")), 
+	TRL(new Measurable("TRL", "Turkey", "Turkish new lira", "TRL", "Turkish new liras")), 
+	TTD(new Measurable("TTD", "Trinidad and Tobago", "Trinidad and Tobago dollar", "TTD", "Trinidad and Tobago dollars")), 
+	TWD(new Measurable("TWD", "Taiwan", "New Taiwan dollar", "TWD", "New Taiwan dollars")), 
+	USD(new Measurable("USD", "United States of America", "United States dollar", "USD", "United States dollars", "dollar", "dollars")), 
+	VEB(new Measurable("VEB", "Venezuela", "Venezuelan bolivar", "VEB", "Venezuelan bolivars")), 
+	VND(new Measurable("VND", "Viet-Nam", "VND", "VNDs")), 
+	XEU(new Measurable("XEU", "Europe (States of the European Union)", "XEU", "XEUs")), 
+	ZAR(new Measurable("ZAR", "South Africa", "South African rand", "ZAR", "South African rands")), ZWD(new Measurable("ZWD","Zimbabwe", "Zimbabwean dollar", "ZWD", "Zimbabwean dollars"));
+
+	private final Measurable measurable;
+
+	private CurrencyUnit(Measurable measurable)
+	{
+		this.measurable = measurable;
+	}
+
+	@Override
+	public Measurable getMeasurable()
+	{
+		return measurable;
+	}
+}

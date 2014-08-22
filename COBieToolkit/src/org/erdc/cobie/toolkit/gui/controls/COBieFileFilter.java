@@ -5,8 +5,8 @@ import java.io.File;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import org.erdc.cobie.shared.PluginUtilities;
-import org.erdc.cobie.shared.PluginUtilities.OutgingFileType;
+import org.erdc.cobie.shared.bimserver.PluginUtilities;
+import org.erdc.cobie.shared.bimserver.PluginUtilities.OutgingFileType;
 
 public class COBieFileFilter extends FileFilter
 {

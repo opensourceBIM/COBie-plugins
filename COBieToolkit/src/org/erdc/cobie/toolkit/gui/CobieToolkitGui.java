@@ -40,7 +40,7 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.log4j.LogManager;
 import org.bimserver.utils.SwingUtil;
-import org.erdc.cobie.shared.utils.FileUtils;
+import org.erdc.cobie.shared.utility.FileUtils;
 import org.erdc.cobie.toolkit.CobieToolkit;
 import org.erdc.cobie.toolkit.CobieToolkitSettings;
 import org.erdc.cobie.toolkit.CustomFileAppender;

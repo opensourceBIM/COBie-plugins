@@ -16,7 +16,6 @@ package org.erdc.cobie.shared;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
-import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -44,51 +43,6 @@ import org.apache.xmlbeans.XmlCalendar;
 import org.apache.xmlbeans.XmlDateTime;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlString;
-import org.bimserver.emf.IfcModelInterface;
-import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
-import org.bimserver.models.ifc2x3tc1.IfcAddress;
-import org.bimserver.models.ifc2x3tc1.IfcApplication;
-import org.bimserver.models.ifc2x3tc1.IfcClassification;
-import org.bimserver.models.ifc2x3tc1.IfcClassificationNotationSelect;
-import org.bimserver.models.ifc2x3tc1.IfcClassificationReference;
-import org.bimserver.models.ifc2x3tc1.IfcDerivedUnit;
-import org.bimserver.models.ifc2x3tc1.IfcDerivedUnitEnum;
-import org.bimserver.models.ifc2x3tc1.IfcNamedUnit;
-import org.bimserver.models.ifc2x3tc1.IfcObject;
-import org.bimserver.models.ifc2x3tc1.IfcObjectDefinition;
-import org.bimserver.models.ifc2x3tc1.IfcOrganization;
-import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
-import org.bimserver.models.ifc2x3tc1.IfcPerson;
-import org.bimserver.models.ifc2x3tc1.IfcPersonAndOrganization;
-import org.bimserver.models.ifc2x3tc1.IfcProject;
-import org.bimserver.models.ifc2x3tc1.IfcPropertySet;
-import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
-import org.bimserver.models.ifc2x3tc1.IfcReal;
-import org.bimserver.models.ifc2x3tc1.IfcRelAssociates;
-import org.bimserver.models.ifc2x3tc1.IfcRelAssociatesClassification;
-import org.bimserver.models.ifc2x3tc1.IfcRelDefines;
-import org.bimserver.models.ifc2x3tc1.IfcRelDefinesByType;
-import org.bimserver.models.ifc2x3tc1.IfcRelationship;
-import org.bimserver.models.ifc2x3tc1.IfcRoot;
-import org.bimserver.models.ifc2x3tc1.IfcTelecomAddress;
-import org.bimserver.models.ifc2x3tc1.IfcTypeObject;
-import org.bimserver.models.ifc2x3tc1.IfcUnit;
-import org.bimserver.models.ifc2x3tc1.IfcUnitAssignment;
-import org.bimserver.models.ifc2x3tc1.IfcUnitEnum;
-import org.bimserver.models.ifc2x3tc1.impl.IfcTelecomAddressImpl;
-import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityDocument;
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.erdc.cobie.shared.enums.DeserializableFileType;
-import org.erdc.cobie.sheetxmldata.COBIEDocument;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.COBieSpreadSheet;
-import org.erdc.cobie.utils.stringwriters.IfcPropertyToCOBieString;
-import org.erdc.cobie.utils.stringwriters.IfcRelationshipsToCOBie;
-import org.erdc.cobie.utils.stringwriters.IfcSingleValueToCOBieString;
-import org.erdc.cobie.utils.stringwriters.IfcUnitToCOBieString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -116,7 +70,7 @@ public class COBieUtility
         Instruction, PickLists
     }
 
-    private static final String SPACE = " ";
+    public static final String SPACE = " ";
 
     private static final List<String> DATE_FORMATS = new ArrayList<String>(Arrays.asList("yyyy-MM-dd", "MM-dd-yyyy", "MMM. d, yyyy", "MMMM d, yyyy"));
 
@@ -129,45 +83,15 @@ public class COBieUtility
     private static final String SINGLE_QUOTE_REPLACEMENT = "''";
     public static final String BIMSERVER_NUMERIC_NULL = "null";
     private static final Logger LOGGER = LoggerFactory.getLogger(COBieUtility.class);
-    private static final String DefaultEmailAddress = "anonymous@anonymous.com";
-    protected static final String ImplementationClassSuffix = "impl";
+    public static final String ImplementationClassSuffix = "impl";
     protected static final String COBieDateFormatString = "%1$tY-%1$tm-%1$tdT%1$tH:%1$tM:%1$tS";
-    public static final Ifc2x3tc1Factory ifcFactory = Ifc2x3tc1Factory.eINSTANCE;
     public static HashMap<CobieSheetName, String> cobieSheetNameToPlural = createPluralCobieSheetMap();
 
     public static HashMap<String, CobieSheetName> CobiePluralNameToCobieSheetName = createSheetNameToPluralMap();
     public static final String COBieNA = "n/a";
-    protected static final String COBieDelim = ",";
-    protected static final String COBieUnkown = "unkown";
+    public static final String COBieDelim = ",";
+    public static final String COBieUnkown = "unkown";
     private static final String SINGLE_QUOTE_REGEX = "\\b'\\b|\\b’\\b";
-
-    private static String addSpaceAfterClassificationCodeDelim(String classification)
-    {
-        StringBuilder stringBuilder = new StringBuilder();
-        if (classification.contains(COBieUtility.CLASSIFICATION_REFERENCE_NAME_SEPARATOR))
-        {
-            char[] classificationSymbols = classification.toCharArray();
-            for (int i = 0; i < classificationSymbols.length; i++)
-            {
-                char classificationSymbol = classificationSymbols[i];
-                stringBuilder.append(classificationSymbol);
-                if ((i + 1) < classificationSymbols.length)
-                {
-                    char nextSymbol = classificationSymbols[i + 1];
-                    if ((CLASSIFICATION_REFERENCE_NAME_SEPARATOR.toCharArray()[0] == classificationSymbol) && (nextSymbol != ' '))
-                    {
-                        stringBuilder.append(SPACE);
-                    }
-                }
-
-            }
-
-        } else
-        {
-            stringBuilder = new StringBuilder(classification);
-        }
-        return stringBuilder.toString();
-    }
 
     public static ArrayList<String> arrayListFromDelimString(String delimString)
     {
@@ -189,12 +113,8 @@ public class COBieUtility
         return splitStrings;
     }
 
-    /**
-     * 
-     *
-     * @deprecated use COBieStringHandler.calendarFromString instead
-     */
-    @Deprecated
+
+
     public static Calendar calendarFromString(String dateTimeString)
     {
         String tmpDateTimeString = COBieUtility.getCOBieString(dateTimeString);
@@ -214,12 +134,7 @@ public class COBieUtility
         return cal;
     }
 
-    /**
-     * 
-     *
-     * @deprecated use COBieStringHandler.calendarFromString instead
-     */
-    @Deprecated
+
     public static Calendar calendarFromStringWithException(String dateTimeString) throws Exception
     {
         String tmpDateTimeString = COBieUtility.getCOBieString(dateTimeString);
@@ -235,52 +150,7 @@ public class COBieUtility
         return cal;
     }
 
-    private static String categoryStringFromClassificationReference(IfcClassificationReference classificationReference)
-    {
-        String classification = "";
-        boolean itemReferenceSet = classificationReference.isSetItemReference();
-        String name = COBieUtility.getCOBieString(classificationReference.getName());
-        String itemReference = "";
-        String referencedSource = "";
-        if (classificationReference.isSetReferencedSource())
-        {
-            referencedSource = COBieUtility.getCOBieString(classificationReference.getReferencedSource().getName());
-        }
-        String location = "";
-        if (classificationReference.isSetLocation())
-        {
-            location = COBieUtility.getCOBieString(classificationReference.getLocation());
-        }
-        if (itemReferenceSet)
-        {
-            itemReference = COBieUtility.getCOBieString(classificationReference.getItemReference());
-        }
-        boolean locationIsNA = COBieUtility.isNA(location);
-        boolean referencedSourceIsNA = COBieUtility.isNA(referencedSource);
-        boolean nameIsNA = COBieUtility.isNA(name);
-        boolean nameEqualsItemReference = itemReferenceSet && name.equals(itemReference);
-
-        boolean itemReferenceIsNA = COBieUtility.isNA(itemReference);
-        if (!nameIsNA && !itemReferenceIsNA && !nameEqualsItemReference)
-        {
-            classification = itemReference + CLASSIFICATION_REFERENCE_NAME_SEPARATOR + name;
-        } else if (itemReferenceIsNA && !nameIsNA)
-        {
-            classification = name;
-        } else if (!itemReferenceIsNA)
-        {
-            classification = itemReference;
-        } else if (!referencedSourceIsNA)
-        {
-            classification = referencedSource;
-        } else if (!locationIsNA)
-        {
-            classification = location;
-        }
-        return COBieUtility.getCOBieString(classification);
-    }
-
-    static protected String categoryStringFromPropertyNameValueMap(
+    public static String categoryStringFromPropertyNameValueMap(
             Map<String, String> propertyNamePropertyValue,
             Map<String, String> categoryCodeToCategoryDescriptionPropertyNames)
     {
@@ -319,22 +189,6 @@ public class COBieUtility
         return category;
     }
 
-    private static String categoryStringFromRelAssociatesClassification(IfcRelAssociates assoc)
-    {
-        String classification = "";
-        IfcRelAssociatesClassification relAssoClass = (IfcRelAssociatesClassification)assoc;
-        IfcClassificationNotationSelect classificationNotationSelect = relAssoClass.getRelatingClassification();
-        if (classificationNotationSelect instanceof IfcClassification)
-        {
-            IfcClassification ifcClass = (IfcClassification)classificationNotationSelect;
-            classification = ifcClass.getName();
-        } else if (classificationNotationSelect instanceof IfcClassificationReference)
-        {
-            classification = categoryStringFromClassificationReference((IfcClassificationReference)classificationNotationSelect);
-        }
-        return COBieUtility.getCOBieString(classification);
-    }
-
     static protected boolean classHasField(Object o, String fieldName)
     {
 
@@ -347,101 +201,7 @@ public class COBieUtility
             }
         }
         return hasField;
-    }
-
-    private static String classificationFromPropertySets(IfcObjectDefinition ifcObj)
-    {
-        Map<String, String> classificationTuples = getClassificationTuples();
-        ArrayList<String> classificationNames = getClassificationPropertyNames();
-        String classification = "";
-        if (ifcObj instanceof IfcObject)
-        {
-            Map<String, String> masterMap = new HashMap<String, String>();
-
-            IfcObject obj = (IfcObject)ifcObj;
-            for (IfcRelDefines def : obj.getIsDefinedBy())
-            {
-                Map<String, String> tmpValueMap = IfcRelationshipsToCOBie.propertyStringsFromRelDefines(def, classificationNames);
-                if (!tmpValueMap.isEmpty())
-                {
-                    for (String key : tmpValueMap.keySet())
-                    {
-                        if (!masterMap.containsKey(key))
-                        {
-                            masterMap.put(key, tmpValueMap.get(key));
-                        }
-                    }
-                }
-            }
-            classification = COBieUtility.categoryStringFromPropertyNameValueMap(masterMap, classificationTuples);
-        } else if (IfcTypeObject.class.isInstance(ifcObj) && COBieUtility.isNA(classification))
-        {
-            Map<String, String> masterMap = new HashMap<String, String>();
-            IfcTypeObject obj = (IfcTypeObject)ifcObj;
-            masterMap = IfcRelationshipsToCOBie.propertyStringsFromTypeObject(obj, classificationNames);
-            classification = COBieUtility.categoryStringFromPropertyNameValueMap(masterMap, classificationTuples);
-        }
-        return classification;
-    }
-
-    public static IfcPropertyToCOBieString cobiePsetStringFromStringMap(
-            Map<String, IfcPropertyToCOBieString> valMap,
-            ArrayList<String> prioritizedPropertyNames)
-    {
-        IfcPropertyToCOBieString cString = null;
-        IfcPropertyToCOBieString tmpVal = null;
-        for (String prioritizedPropertyName : prioritizedPropertyNames)
-        {
-            if (valMap.keySet().contains(prioritizedPropertyName))
-            {
-                tmpVal = valMap.get(prioritizedPropertyName);
-                if ((tmpVal != null) && (tmpVal.getValueString().length() > 0) && (cString == null))
-                {
-                    cString = tmpVal;
-                }
-            }
-        }
-        return cString;
-    }
-
-    public static IfcPropertyToCOBieString cobiePsetStringFromStringMapAllowNA(
-            Map<String, IfcPropertyToCOBieString> valMap,
-            ArrayList<String> prioritizedPropertyNames)
-    {
-        IfcPropertyToCOBieString cString = null;
-        IfcPropertyToCOBieString tmpVal = null;
-        for (String prioritizedPropertyName : prioritizedPropertyNames)
-        {
-            if (valMap.keySet().contains(prioritizedPropertyName))
-            {
-                tmpVal = valMap.get(prioritizedPropertyName);
-                if ((tmpVal != null) && (cString == null))
-                {
-                    cString = tmpVal;
-                }
-            }
-        }
-        return cString;
-    }
-
-    public static int cobiePsetStringRankingFromStringMap(Map<String, IfcPropertyToCOBieString> valMap, ArrayList<String> prioritizedPropertyNames)
-    {
-        int rank = -1;
-
-        String cString = "";
-        String tmpVal = "";
-        for (String prioritizedPropertyName : prioritizedPropertyNames)
-        {
-            if (valMap.keySet().contains(prioritizedPropertyName))
-            {
-                tmpVal = valMap.get(prioritizedPropertyName).getValueString();
-                if ((tmpVal.length() > 0) && (cString.length() == 0))
-                {
-                    rank = prioritizedPropertyNames.size() - prioritizedPropertyNames.indexOf(prioritizedPropertyName);
-                }
-            }
-        }
-        return rank;
+        
     }
 
     public static CobieSheetName CobieSheetNameEnumFromString(String sheetName) throws Exception
@@ -472,27 +232,7 @@ public class COBieUtility
         return cobieSheetName;
     }
 
-    static protected String cobieStringFromFeature(EObject root, EStructuralFeature sf)
-    {
-        String attributeVal = null;
-        if (sf != null)
-        {
-            Object value = root.eGet(sf);
-            if (value instanceof String)
-            {
-                attributeVal = (String)value;
-
-            }
-
-            if (value instanceof org.eclipse.emf.common.util.Enumerator)
-            {
-                Enumerator enumeratorValue = (Enumerator)value;
-                attributeVal = enumeratorValue.getLiteral();
-            }
-        }
-
-        return attributeVal;
-    }
+   
 
     public static String cobieStringFromStringMap(Map<String, String> valMap)
     {
@@ -676,50 +416,6 @@ public class COBieUtility
         return strChildren;
     }
 
-    public static DeserializableFileType determineFileType(File incomingFile)
-    {
-        DeserializableFileType incomingFileType = DeserializableFileType.COBIE;
-
-        if (incomingFile.getName().toLowerCase().endsWith("ifc"))
-        {
-            incomingFileType = DeserializableFileType.IFC;
-        } else if (COBieSpreadSheet.isWorkbook(incomingFile))
-        {
-            incomingFileType = DeserializableFileType.COBIE;
-        } else if (isValidSchemaDocument(incomingFile, COBIEDocument.type))
-        {
-            incomingFileType = DeserializableFileType.COBIESHEETXMLDATA;
-        } else if (isValidSchemaDocument(incomingFile, FacilityDocument.type))
-        {
-            incomingFileType = DeserializableFileType.COBIELITE;
-        } else
-        {
-            incomingFileType = DeserializableFileType.UNKNOWN;
-        }
-        return incomingFileType;
-    }
-
-    public static DeserializableFileType determineFileType(InputStream inputStream)
-    {
-        CloseShieldInputStream inputStreamCopy = new CloseShieldInputStream(inputStream);
-        DeserializableFileType incomingFileType = DeserializableFileType.COBIE;
-        if (COBieSpreadSheet.isWorkbook(inputStreamCopy))
-        {
-            incomingFileType = DeserializableFileType.COBIE;
-        } else if (isValidSchemaDocument(inputStreamCopy, COBIEDocument.type))
-        {
-            incomingFileType = DeserializableFileType.COBIESHEETXMLDATA;
-        } else if (isValidSchemaDocument(inputStreamCopy, FacilityDocument.type))
-        {
-            incomingFileType = DeserializableFileType.COBIELITE;
-        } else
-        {
-            incomingFileType = DeserializableFileType.UNKNOWN;
-        }
-        inputStreamCopy.close();
-        return incomingFileType;
-    }
-
     static public Map<String, String> elementMapFromXMLObject(XmlObject xml)
     {
         Map<String, String> elementMap = new HashMap<String, String>();
@@ -832,51 +528,7 @@ public class COBieUtility
         return returnValue;
     }
 
-    public static String extIdFromRoot(IfcRoot root)
-    {
-        return getCOBieString(root.getGlobalId());
-    }
-
-    public static String extObjectFromObjectDef(IfcObjectDefinition obj)
-    {
-        String className = obj.getClass().getSimpleName();
-        if (className.toLowerCase().endsWith(ImplementationClassSuffix))
-        {
-            className = className.substring(0, className.length() - ImplementationClassSuffix.length());
-        }
-        return className;
-    }
-
-    public static String extObjectFromRelationship(IfcRelationship obj)
-    {
-        String className = obj.getClass().getSimpleName();
-        if (className.toLowerCase().endsWith(ImplementationClassSuffix))
-        {
-            className = className.substring(0, className.length() - ImplementationClassSuffix.length());
-        }
-        return className;
-    }
-
-    public static IfcOwnerHistory firstOwnerHistoryFromModel(IfcModelInterface model)
-    {
-        IfcOwnerHistory oh = null;
-        ArrayList<IfcOwnerHistory> histories = (ArrayList<IfcOwnerHistory>)model.getAll(IfcOwnerHistory.class);
-        if (histories.size() > 0)
-        {
-            oh = histories.get(0);
-        }
-        return oh;
-    }
-
-    public static String getApplicationName(IfcOwnerHistory oh)
-    {
-        String strApp = "";
-        IfcApplication ifcApp = oh.getOwningApplication();
-        strApp = ifcApp.getApplicationFullName();
-        return getCOBieString(strApp);
-    }
-
-    static private ArrayList<String> getClassificationPropertyNames()
+    public static ArrayList<String> getClassificationPropertyNames()
     {
         ArrayList<String> names = new ArrayList<String>();
         for (ClassificationLiterals classificationLiteral : ClassificationLiterals.values())
@@ -886,7 +538,7 @@ public class COBieUtility
         return names;
     }
 
-    static private Map<String, String> getClassificationTuples()
+    public static Map<String, String> getClassificationTuples()
     {
         String A1 = ClassificationLiterals.Assembly_Code.toString().replace(ENUM_SPACE_CHAR, WHITESPACE);
         String A2 = ClassificationLiterals.Assembly_Description.toString().replace(ENUM_SPACE_CHAR, WHITESPACE);
@@ -950,89 +602,6 @@ public class COBieUtility
         return currentTimeAsCalendar();
     }
 
-    public static String getEmailFromOrganization(IfcOrganization org)
-    {
-        String strEmail = "";
-        EList<IfcAddress> organizationAddresses = org.getAddresses();
-        String organizationEmail = getEmailsFromAddresses(organizationAddresses);
-        strEmail = organizationEmail;
-        return getCOBieString(strEmail);
-    }
-
-    public static String getEmailFromOwnerHistory(IfcOwnerHistory oh)
-    {
-        IfcPersonAndOrganization personOrg = oh.getOwningUser();
-        return getCOBieString(getEmailFromPersonAndOrganization(personOrg));
-    }
-
-    public static String getEmailFromPersonAndOrganization(IfcPersonAndOrganization personOrg)
-    {
-        String strEmail = "";
-        IfcPerson person = personOrg.getThePerson();
-        String givenName = person.getGivenName();
-        if ((givenName == null) || (givenName.length() == 0))
-        {
-            givenName = COBieUnkown;
-        }
-        String familyName = person.getFamilyName();
-        if ((familyName == null) || (familyName.length() == 0))
-        {
-            familyName = COBieUnkown;
-        }
-        IfcOrganization org = personOrg.getTheOrganization();
-        String orgName = org.getName();
-        if ((orgName == null) || (orgName.length() == 0))
-        {
-            orgName = COBieUnkown;
-        }
-        EList<IfcAddress> pAddresses = person.getAddresses();
-        EList<IfcAddress> oAddresses = org.getAddresses();
-        String pEmail = getEmailsFromAddresses(pAddresses);
-        String oEmail = getEmailsFromAddresses(oAddresses);
-        String pID = person.getId();
-        String oID = org.getId();
-        if ((pEmail != null) && (pEmail.length() > 0) && (pEmail != COBieNA))
-        {
-            strEmail = pEmail;
-        } else if ((oEmail != null) && (oEmail.length() > 0) && (oEmail != COBieNA))
-        {
-            strEmail = oEmail;
-        } else if ((pID != null) && (pID.length() > 0))
-        {
-            strEmail = pID;
-        } else if ((oID != null) && (oID.length() > 0))
-        {
-            strEmail = oID;
-        } else if ((givenName != null) && (familyName != null) && (orgName != null))
-        {
-            strEmail = givenName + familyName + "@" + orgName + ".com";
-        }
-        if (strEmail.length() == 0)
-        {
-            strEmail = DefaultEmailAddress;
-        }
-        return getCOBieString(strEmail);
-    }
-
-    static protected String getEmailsFromAddresses(EList<IfcAddress> addresses)
-    {
-        String emailAddress = "";
-        for (IfcAddress address : addresses)
-        {
-            if (address.getClass() == IfcTelecomAddressImpl.class)
-            {
-                IfcTelecomAddress tAddress = (IfcTelecomAddress)address;
-                EList<String> eAddresses = tAddress.getElectronicMailAddresses();
-                if (eAddresses.size() > 0)
-                {
-                    emailAddress = eAddresses.get(0);
-                }
-            }
-        }
-        return getCOBieString(emailAddress);
-
-    }
-
     public static <T extends Enum<T>> List<String> getEnumLiteralsAsStringList(Class<T> enumClass)
     {
         ArrayList<String> names = null;
@@ -1074,204 +643,6 @@ public class COBieUtility
         return values;
     }
 
-    public static String getFirstDerivedUnitStringInProjectContext(IfcModelInterface model, IfcDerivedUnitEnum unitType)
-    {
-        String unitString = COBieNA;
-        for (IfcProject project : model.getAll(IfcProject.class))
-        {
-            if (project.getUnitsInContext() != null)
-            {
-                IfcUnitAssignment unitAssignment = project.getUnitsInContext();
-                if (unitAssignment != null)
-                {
-                    for (IfcUnit unit : unitAssignment.getUnits())
-                    {
-                        if (unit instanceof IfcDerivedUnit)
-                        {
-                            IfcDerivedUnit derivedUnit = (IfcDerivedUnit)unit;
-                            if ((derivedUnit.getUnitType() == unitType) && isNA(unitString))
-                            {
-                                unitString = IfcUnitToCOBieString.stringFromUnit(derivedUnit);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return unitString;
-    }
-
-    public static String getFirstNamedUnitStringInProjectContext(IfcModelInterface model, IfcUnitEnum unitType)
-    {
-        String unitString = COBieNA;
-        for (IfcProject project : model.getAll(IfcProject.class))
-        {
-            if (project.getUnitsInContext() != null)
-            {
-                IfcUnitAssignment unitAssignment = project.getUnitsInContext();
-                if (unitAssignment != null)
-                {
-                    for (IfcUnit unit : unitAssignment.getUnits())
-                    {
-                        if (unit instanceof IfcNamedUnit)
-                        {
-                            IfcNamedUnit namedUnit = (IfcNamedUnit)unit;
-                            if ((namedUnit.getUnitType() == unitType) && isNA(unitString))
-                            {
-                                unitString = IfcUnitToCOBieString.stringFromUnit(namedUnit);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return unitString;
-    }
-
-    public static String getObjectClassificationCategoryString(IfcObjectDefinition ifcObj)
-    {
-        String classification = "";
-
-        EList<IfcRelAssociates> associations = ifcObj.getHasAssociations();
-        ArrayList<String> classificationAssociationStrings = new ArrayList<String>();
-        for (IfcRelAssociates assoc : associations)
-        {
-            if (assoc instanceof IfcRelAssociatesClassification)
-            {
-                String tmpClassification = categoryStringFromRelAssociatesClassification(assoc);
-                if (!COBieUtility.isNA(tmpClassification))
-                {
-                    classificationAssociationStrings.add(tmpClassification);
-                }
-            }
-
-        }
-        classification = COBieUtility.delimittedStringFromArrayList(classificationAssociationStrings);
-        if (COBieUtility.isNA(classification))
-        {
-            classification = classificationFromPropertySets(ifcObj);
-        } else if (COBieUtility.isNA(classification) && (ifcObj instanceof IfcObject))
-        {
-            classification = ((IfcObject)ifcObj).getObjectType();
-        }
-        classification = addSpaceAfterClassificationCodeDelim(classification);
-        return COBieUtility.getCOBieString(classification);
-    }
-
-    public static IfcClassificationReference getObjectClassificationReference(IfcObjectDefinition ifcObj)
-    {
-        IfcClassificationReference classificationReference = null;
-        getClassificationTuples();
-        getClassificationPropertyNames();
-        EList<IfcRelAssociates> associations = ifcObj.getHasAssociations();
-        for (IfcRelAssociates assoc : associations)
-        {
-            if ((assoc instanceof IfcRelAssociatesClassification) && (classificationReference == null))
-            {
-                IfcRelAssociatesClassification relAssoClass = (IfcRelAssociatesClassification)assoc;
-                IfcClassificationNotationSelect classNot = relAssoClass.getRelatingClassification();
-                if (classNot instanceof IfcClassificationReference)
-                {
-                    IfcClassificationReference classRef = (IfcClassificationReference)classNot;
-                    classificationReference = classRef;
-
-                }
-            }
-
-        }
-        return classificationReference;
-
-    }
-
-    public static String getPropertySetClassification(IfcPropertySet ifcObj, IfcModelInterface model)
-    {
-        String classification = "";
-        Map<String, String> classificationTuples = getClassificationTuples();
-        ArrayList<String> classificationNames = getClassificationPropertyNames();
-        EList<IfcRelAssociates> associations = ifcObj.getHasAssociations();
-        if ((associations == null) || (associations.size() <= 0))
-        {
-            associations = searchAllClassificationReferencesForPropertySetAssociation(ifcObj, model);
-        }
-        for (IfcRelAssociates assoc : associations)
-        {
-            if (assoc instanceof IfcRelAssociatesClassification)
-            {
-                IfcRelAssociatesClassification relAssoClass = (IfcRelAssociatesClassification)assoc;
-                IfcClassificationNotationSelect classNot = relAssoClass.getRelatingClassification();
-                if (classNot instanceof IfcClassification)
-                {
-                    IfcClassification ifcClass = (IfcClassification)classNot;
-                    classification += ifcClass.getName() + COBieDelim;
-                } else if (classNot instanceof IfcClassificationReference)
-                {
-                    IfcClassificationReference classRef = (IfcClassificationReference)classNot;
-                    String referencedSource = COBieUtility.COBieNA;
-                    if (classRef.isSetReferencedSource())
-                    {
-                        referencedSource = classRef.getReferencedSource().getName();
-                        classification += classRef.getReferencedSource().getName() + COBieDelim;
-                    } else if (COBieUtility.isNA(referencedSource))
-                    {
-                        classification += classRef.getItemReference() + COBieDelim;
-                    }
-                }
-            }
-        }
-        if ((ifcObj instanceof IfcObject) && ((classification == null) || (classification.length() <= 0)))
-        {
-            Map<String, String> masterMap = new HashMap<String, String>();
-
-            IfcObject obj = (IfcObject)ifcObj;
-            for (IfcRelDefines def : obj.getIsDefinedBy())
-            {
-                Map<String, String> tmpValueMap = IfcRelationshipsToCOBie.propertyStringsFromRelDefines(def, classificationNames);
-                if (!tmpValueMap.isEmpty())
-                {
-                    for (String key : tmpValueMap.keySet())
-                    {
-                        if (!masterMap.containsKey(key))
-                        {
-                            masterMap.put(key, tmpValueMap.get(key));
-                        }
-                    }
-                }
-            }
-            classification = COBieUtility.categoryStringFromPropertyNameValueMap(masterMap, classificationTuples);
-        } else if (IfcTypeObject.class.isInstance(ifcObj) && ((classification == null) || (classification.length() <= 0)))
-        {
-            Map<String, String> masterMap = new HashMap<String, String>();
-            IfcTypeObject obj = (IfcTypeObject)ifcObj;
-            masterMap = IfcRelationshipsToCOBie.propertyStringsFromTypeObject(obj, classificationNames);
-            classification = COBieUtility.categoryStringFromPropertyNameValueMap(masterMap, classificationTuples);
-        }
-        return COBieUtility.getCOBieString(classification);
-    }
-
-    public static String getRelDefinesByTypeClassification(IfcRelDefinesByType relDefType)
-    {
-        String classification = "";
-        Map<String, String> masterMap = new HashMap<String, String>();
-        Map<String, String> classificationTuples = getClassificationTuples();
-        ArrayList<String> classificationNames = getClassificationPropertyNames();
-
-        Map<String, String> tmpValueMap = IfcRelationshipsToCOBie.propertyStringsFromRelDefines(relDefType, classificationNames);
-        if (!tmpValueMap.isEmpty())
-        {
-            for (String key : tmpValueMap.keySet())
-            {
-                if (!masterMap.containsKey(key))
-                {
-                    masterMap.put(key, tmpValueMap.get(key));
-                }
-            }
-        }
-
-        classification = COBieUtility.categoryStringFromPropertyNameValueMap(masterMap, classificationTuples);
-
-        return COBieUtility.getCOBieString(classification);
-    }
-
     public static String getXMLDecodedString(String text)
     {
         String xmlEncodedString = "";
@@ -1298,19 +669,6 @@ public class COBieUtility
         }
         hash = sb.toString();
         return hash;
-    }
-
-    public static String identifierFromObjectDefinition(IfcObjectDefinition objDef)
-    {
-        String ID = "";
-        ID = objDef.getGlobalId();
-        return COBieUtility.getCOBieString(ID);
-    }
-
-    public static String identifierFromRelationship(IfcRelationship rel)
-    {
-        String id = rel.getGlobalId();
-        return COBieUtility.getCOBieString(id);
     }
 
     public static Calendar ifcTimeStampAsCalendar(int timestamp)
@@ -1374,20 +732,7 @@ public class COBieUtility
         return ((str == null) || str.isEmpty());
     }
 
-    public static boolean isValidSchemaDocument(File xmlFile, SchemaType type)
-    {
-        boolean valid = false;
-        try
-        {
-            org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse(xmlFile, type, null);
-            valid = true;
-        } catch (Exception ex)
-        {
-
-        }
-        return valid;
-    }
-
+ 
     public static boolean isValidSchemaDocument(InputStream inputStream, SchemaType type)
     {
         boolean valid = false;
@@ -1402,49 +747,6 @@ public class COBieUtility
             ex.printStackTrace();
         }
         return valid;
-    }
-
-    public static boolean isValueSetAsStringNA(IfcReal durationReal)
-    {
-        return (durationReal.getWrappedValueAsString() != null) && durationReal.getWrappedValueAsString().equals(COBieNA);
-    }
-
-    public static Map<String, IfcPropertyToCOBieString> psetStringsFromAttributes(EObject root, ArrayList<String> attributeNames, boolean exclusive)
-    {
-        Map<String, IfcPropertyToCOBieString> attributeVals = new HashMap<String, IfcPropertyToCOBieString>();
-        String attributeVal = null;
-        if (exclusive)
-        {
-            EList<EStructuralFeature> classFeatures = root.eClass().getEAllStructuralFeatures();
-            for (EStructuralFeature feature : classFeatures)
-            {
-                String featureName = feature.getName();
-                if (!attributeNames.contains(featureName))
-                {
-                    attributeVal = COBieUtility.cobieStringFromFeature(root, feature);
-                    if ((attributeVal != null) && !attributeVals.containsKey(featureName))
-                    {
-                        if (feature instanceof IfcPropertySingleValue)
-                        {
-                            IfcPropertySingleValue sVal = (IfcPropertySingleValue)feature;
-                            IfcSingleValueToCOBieString sValStr = new IfcSingleValueToCOBieString(sVal);
-                            attributeVals.put(featureName, sValStr);
-                        }
-
-                    }
-                }
-
-            }
-        } else
-        {
-            // for(String attributeName : attributeNames)
-            // {
-            // attributeVals.put(attributeName,
-            // COBieUtility.valueOfAttribute(root, attributeName));
-            // }
-        }
-
-        return attributeVals;
     }
 
     public static String replaceSpecialCharacters(String strReturn)
@@ -1462,24 +764,6 @@ public class COBieUtility
         // strReturn = strReturn.replace(FORWARD_SLASH, FORWARD_SLASH_REPLACE);
         // strReturn = strReturn.replace(NON_STANDARD_DASH, DASH);
         return strReturn;
-    }
-
-    private static EList<IfcRelAssociates> searchAllClassificationReferencesForPropertySetAssociation(IfcPropertySet ifcObj, IfcModelInterface model)
-    {
-        EList<IfcRelAssociates> associations = new BasicEList<IfcRelAssociates>();
-        for (IfcRelAssociatesClassification relAssociates : model.getAllWithSubTypes(IfcRelAssociatesClassification.class))
-        {
-            for (IfcRoot relatedObject : relAssociates.getRelatedObjects())
-            {
-                if ((relatedObject != null) && (relatedObject.getGlobalId() != null) && (ifcObj != null) && (ifcObj.getGlobalId() != null)
-                        && relatedObject.getGlobalId().equals(ifcObj.getGlobalId()))
-                {
-                    associations.add(relAssociates);
-                }
-            }
-
-        }
-        return associations;
     }
 
     /**
@@ -1621,50 +905,8 @@ public class COBieUtility
         return calendar;
     }
 
-    public static String valueOfAttribute(EObject root, String attributeName)
-    {
-        // from Leon/Reuben
-        // EStructuralFeature predifinedTypeField =
-        // product.eClass.getEStructuralFeature("PredefinedType");
-        // if (predifinedTypeField != null) {
-        // Object value = product.eGet(predifinedTypeField); // This will
-        // contain the enum
-        // }
-        String attributeVal = null;
-        EStructuralFeature sf = root.eClass().getEStructuralFeature(attributeName);
-        attributeVal = cobieStringFromFeature(root, sf);
-        return attributeVal;
-    }
 
-    static protected Map<String, String> valuesOfAttributes(EObject root, ArrayList<String> attributeNames, boolean exclusive)
-    {
-        Map<String, String> attributeVals = new HashMap<String, String>();
-        String attributeVal = null;
-        if (exclusive)
-        {
-            EList<EStructuralFeature> classFeatures = root.eClass().getEAllStructuralFeatures();
-            for (EStructuralFeature feature : classFeatures)
-            {
-                String featureName = feature.getName();
-                if (!attributeNames.contains(featureName))
-                {
-                    attributeVal = COBieUtility.cobieStringFromFeature(root, feature);
-                    if ((attributeVal != null) && !attributeVals.containsKey(featureName))
-                    {
-                        attributeVals.put(featureName, attributeVal);
-                    }
-                }
 
-            }
-        } else
-        {
-            for (String attributeName : attributeNames)
-            {
-                attributeVals.put(attributeName, COBieUtility.valueOfAttribute(root, attributeName));
-            }
-        }
-
-        return attributeVals;
-    }
+   
 
 }

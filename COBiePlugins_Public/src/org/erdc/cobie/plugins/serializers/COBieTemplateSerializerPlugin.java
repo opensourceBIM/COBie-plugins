@@ -11,10 +11,10 @@ import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.Serializer;
-import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
-import org.erdc.cobie.serializers.COBieTemplateSerializer;
-import org.erdc.cobie.shared.mapping.COBieLiteTemplateMapper;
-import org.erdc.cobie.shared.utils.POIUtils;
+import org.erdc.cobie.shared.altova.mapping.COBieLiteTemplateMapper;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieTemplateSerializer;
+import org.erdc.cobie.shared.bimserver.utility.PluginRuntimeFileHelper;
+import org.erdc.cobie.shared.utility.POIUtils;
 
 public abstract class COBieTemplateSerializerPlugin extends AbstractCOBieSerializerPlugin
 {

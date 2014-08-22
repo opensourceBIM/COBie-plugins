@@ -8,12 +8,12 @@ import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.EmfSerializer;
 import org.bimserver.plugins.serializers.SerializerPlugin;
-import org.erdc.cobie.shared.COBieTaskProgress;
-import org.erdc.cobie.shared.Informable;
-import org.erdc.cobie.shared.deserializer.sheetxmldata.COBieIfcModel;
-import org.erdc.cobie.shared.deserializer.sheetxmldata.FromCOBieToIfc;
+import org.erdc.cobie.shared.bimserver.COBieTaskProgress;
+import org.erdc.cobie.shared.bimserver.Informable;
+import org.erdc.cobie.shared.bimserver.cobietab.deserialization.COBieIfcModel;
+import org.erdc.cobie.shared.bimserver.cobietab.deserialization.FromCOBieToIfc;
+import org.erdc.cobie.shared.bimserver.ifc.serialization.BIMServerCOBieTabSerializer;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
-import org.erdc.cobie.utils.serializer.BIMServerCOBieSheetXMLDataSerializer;
 
 public class COBieSheetXMLDataExportTask extends ApplicationTask<Void>
 {
@@ -52,7 +52,7 @@ public class COBieSheetXMLDataExportTask extends ApplicationTask<Void>
 		try
 		{
 			EmfSerializer emfSerializer = (EmfSerializer) serializerPlugin.createSerializer(new PluginConfiguration());
-			if(model==null && !(emfSerializer instanceof BIMServerCOBieSheetXMLDataSerializer))
+			if(model==null && !(emfSerializer instanceof BIMServerCOBieTabSerializer))
 			{
 				model = deserializeCOBieSheetXMLDataToIfc();
 				super.publish(new COBieTaskProgress(PROGRESS_MESSAGE_DESERIALIZE));
@@ -61,9 +61,9 @@ public class COBieSheetXMLDataExportTask extends ApplicationTask<Void>
 
 			super.publish(new COBieTaskProgress(PROGRESS_MESSAGE_INITIALIZE_SERIALIZER));
 			
-			if(emfSerializer instanceof BIMServerCOBieSheetXMLDataSerializer)
+			if(emfSerializer instanceof BIMServerCOBieTabSerializer)
 			{
-				((BIMServerCOBieSheetXMLDataSerializer)emfSerializer).init(cobieSheetXMLData);
+				((BIMServerCOBieTabSerializer)emfSerializer).init(cobieSheetXMLData);
 			}
 			else
 			{

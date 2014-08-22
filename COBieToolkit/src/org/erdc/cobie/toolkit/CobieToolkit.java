@@ -37,16 +37,16 @@ import org.bimserver.plugins.serializers.SerializerPlugin;
 import org.bimserver.shared.cobie.generated.merge.COBieMergeIDMDocument;
 import org.bimserver.shared.interfaces.bimsie1.Bimsie1NotificationInterface;
 import org.erdc.cobie.shared.COBieUtility;
-import org.erdc.cobie.shared.enums.COBieIDMPluginName;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
-import org.erdc.cobie.shared.idm.COBieFilterable;
-import org.erdc.cobie.utils.serializer.BIMServerCOBieSheetXMLDataSerializer;
-import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
-import org.erdc.cobie.utils.stringwriters.COBieStringHandlerSettings;
-import org.erdc.cobie.utils.stringwriters.COBieStringHandlerSettings.EmptyStringMode;
-import org.erdc.cobie.utils.stringwriters.COBieStringHandlerSettings.InvalidDateTimeStringMode;
-import org.erdc.cobie.utils.stringwriters.COBieStringHandlerSettings.SpecialCharacterMode;
-import org.erdc.cobie.utils.stringwriters.COBieStringHandlerSettings.TrailingDelimiterMode;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.idm.COBieFilterable;
+import org.erdc.cobie.shared.bimserver.idm.COBieIDMPluginName;
+import org.erdc.cobie.shared.bimserver.ifc.serialization.BIMServerCOBieTabSerializer;
+import org.erdc.cobie.shared.utility.COBieStringHandler;
+import org.erdc.cobie.shared.utility.COBieStringHandlerSettings;
+import org.erdc.cobie.shared.utility.COBieStringHandlerSettings.EmptyStringMode;
+import org.erdc.cobie.shared.utility.COBieStringHandlerSettings.InvalidDateTimeStringMode;
+import org.erdc.cobie.shared.utility.COBieStringHandlerSettings.SpecialCharacterMode;
+import org.erdc.cobie.shared.utility.COBieStringHandlerSettings.TrailingDelimiterMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,7 +57,7 @@ public class CobieToolkit
     // private ServerInfoManager serverInfoManager;
     // private PublicInterfaceFactory serviceFactory;
     private static final String COBIE_XMLDATA_SERIALIZER_NAME = COBieSerializerPluginInfo.SHEET_XMLDATA.toString();;
-    private static final String TMPDIRECTORY_COBIESERIALIZER = "/COBieSerializer/";
+    private static final String TMPDIRECTORY_COBIESERIALIZER = "/COBieSpreadsheetMLSerializer/";
     private static final String COBIE_EXPORT_SETTINGS_FILENAME = "COBieExportSettings.xml";
     private static final String IFC_STEP_DESERIALIZER_NAME = "IfcStepDeserializer";
     private static final String IFC_XML_DESERIALIZER_NAME = "IfcXmlDeserializer";
@@ -87,7 +87,7 @@ public class CobieToolkit
     private File lastDirectoryAccessed;
     private Logger LOGGER = LoggerFactory.getLogger(CobieToolkit.class);
 
-    private BIMServerCOBieSheetXMLDataSerializer cobieSheetXMLDataSerializer;
+    private BIMServerCOBieTabSerializer cobieSheetXMLDataSerializer;
     private HashMap<ControlTextItem, COBieMergeIDMDocument> mergeRules;
 
     public CobieToolkit()
@@ -179,9 +179,9 @@ public class CobieToolkit
         return txtItem;
     }
 
-    private BIMServerCOBieSheetXMLDataSerializer createCOBieSheetXMLDataSerialzier() throws PluginException
+    private BIMServerCOBieTabSerializer createCOBieSheetXMLDataSerialzier() throws PluginException
     {
-        BIMServerCOBieSheetXMLDataSerializer cobieSheetXMLDataSerializer = null;
+        BIMServerCOBieTabSerializer cobieSheetXMLDataSerializer = null;
         for (SerializerPlugin serializerPlugin : pluginManager.getAllSerializerPlugins(true))
         {
             if (serializerPlugin.getDefaultName().equals(COBIE_XMLDATA_SERIALIZER_NAME))
@@ -190,7 +190,7 @@ public class CobieToolkit
                 {
                     serializerPlugin.init(pluginManager);
                 }
-                cobieSheetXMLDataSerializer = (BIMServerCOBieSheetXMLDataSerializer)serializerPlugin.createSerializer(null);
+                cobieSheetXMLDataSerializer = (BIMServerCOBieTabSerializer)serializerPlugin.createSerializer(null);
 
             }
         }
@@ -224,7 +224,7 @@ public class CobieToolkit
         return cobieExportOptionsFile;
     }
 
-    public BIMServerCOBieSheetXMLDataSerializer getCOBieSheetXMLDataSerializer()
+    public BIMServerCOBieTabSerializer getCOBieSheetXMLDataSerializer()
     {
         return cobieSheetXMLDataSerializer;
     }
@@ -492,7 +492,7 @@ public class CobieToolkit
         this.cobieExportOptionsFile = cobieExportOptionsFile;
     }
 
-    private void setCOBieSheetXMLDataSerializer(BIMServerCOBieSheetXMLDataSerializer cobieSheetXMLDataSerializer)
+    private void setCOBieSheetXMLDataSerializer(BIMServerCOBieTabSerializer cobieSheetXMLDataSerializer)
     {
         this.cobieSheetXMLDataSerializer = cobieSheetXMLDataSerializer;
     }

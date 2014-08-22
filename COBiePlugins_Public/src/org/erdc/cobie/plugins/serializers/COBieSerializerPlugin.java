@@ -26,9 +26,9 @@ import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.objectidms.ObjectIDMException;
 import org.bimserver.plugins.serializers.Serializer;
-import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
-import org.erdc.cobie.serializers.COBieSerializer;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSpreadsheetMLSerializer;
+import org.erdc.cobie.shared.bimserver.utility.PluginRuntimeFileHelper;
 
 public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 {
@@ -36,7 +36,7 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 	private static final String CONFIGURATION_FILE_ERROR = "Could not find configuration files";
 
 	private static final String REPORT_FILES_TMP_DIRECTORY_NAME = "COBieReportFiles";
-	private static final String TMP_FOLDER_NAME = "COBieSerializer";
+	private static final String TMP_FOLDER_NAME = "COBieSpreadsheetMLSerializer";
 	private boolean initialized = false;
 	private File spreadSheetTemplate, settingsFile;
 	public static final String COBIE_EXPORT_SETTINGS_PATH = "lib/COBieExportSettings.xml";
@@ -46,7 +46,7 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new COBieSerializer(spreadSheetTemplate, settingsFile);
+		return new COBieSpreadsheetMLSerializer(spreadSheetTemplate, settingsFile);
 	}
 
 	private ArrayList<String> getConfigFilePaths()

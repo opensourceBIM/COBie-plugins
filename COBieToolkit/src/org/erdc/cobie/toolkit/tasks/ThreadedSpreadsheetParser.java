@@ -5,28 +5,28 @@ import java.util.Map;
 
 import nl.fountain.xelem.excel.Workbook;
 
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.AssemblyParser;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.AssemblyTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.AttributeTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.ComponentTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.ConnectionTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.ContactTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.CoordinateTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.DocumentTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.FacilityTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.FloorTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.ImpactTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.IssueTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.JobTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.SpreadsheetMLTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.ResourceTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.SpaceTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.SpareTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.SpreadsheetParser;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.SystemTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.TypeTransformer;
+import org.erdc.cobie.shared.spreadsheetml.transformation.cobietab.ZoneTransformer;
+import org.erdc.cobie.shared.utility.COBieStringHandler;
 import org.erdc.cobie.sheetxmldata.COBIEType;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.AttributeParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.ComponentParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.ConnectionParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.ContactParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.CoordinateParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.DocumentParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.FacilityParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.FloorParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.ImpactParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.IssueParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.JobParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.Parser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.ResourceParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.SpaceParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.SpareParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.SpreadsheetParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.SystemParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.TypeParser;
-import org.erdc.cobie.sheetxmldata.parsers.spreadsheetml.ZoneParser;
-import org.erdc.cobie.utils.stringwriters.COBieStringHandler;
 
 public class ThreadedSpreadsheetParser extends SpreadsheetParser
 {
@@ -43,59 +43,59 @@ public class ThreadedSpreadsheetParser extends SpreadsheetParser
             {
 
                 case Assembly:
-                    parserClass = AssemblyParser.class;
+                    parserClass = AssemblyTransformer.class;
                     break;
                 case Attribute:
-                    parserClass = AttributeParser.class;
+                    parserClass = AttributeTransformer.class;
                     break;
                 case Component:
-                    parserClass = ComponentParser.class;
+                    parserClass = ComponentTransformer.class;
                     break;
                 case Connection:
-                    parserClass = ConnectionParser.class;
+                    parserClass = ConnectionTransformer.class;
                     break;
                 case Contact:
-                    parserClass = ContactParser.class;
+                    parserClass = ContactTransformer.class;
                     break;
                 case Coordinate:
-                    parserClass = CoordinateParser.class;
+                    parserClass = CoordinateTransformer.class;
                     break;
                 case Document:
-                    parserClass = DocumentParser.class;
+                    parserClass = DocumentTransformer.class;
                     break;
                 case Facility:
-                    parserClass = FacilityParser.class;
+                    parserClass = FacilityTransformer.class;
                     break;
                 case Floor:
-                    parserClass = FloorParser.class;
+                    parserClass = FloorTransformer.class;
                     break;
                 case Impact:
-                    parserClass = ImpactParser.class;
+                    parserClass = ImpactTransformer.class;
                     break;
 
                 case Issue:
-                    parserClass = IssueParser.class;
+                    parserClass = IssueTransformer.class;
                     break;
                 case Job:
-                    parserClass = JobParser.class;
+                    parserClass = JobTransformer.class;
                     break;
                 case Resource:
-                    parserClass = ResourceParser.class;
+                    parserClass = ResourceTransformer.class;
                     break;
                 case Space:
-                    parserClass = SpaceParser.class;
+                    parserClass = SpaceTransformer.class;
                     break;
                 case Spare:
-                    parserClass = SpareParser.class;
+                    parserClass = SpareTransformer.class;
                     break;
                 case System:
-                    parserClass = SystemParser.class;
+                    parserClass = SystemTransformer.class;
                     break;
                 case Type:
-                    parserClass = TypeParser.class;
+                    parserClass = TypeTransformer.class;
                     break;
                 case Zone:
-                    parserClass = ZoneParser.class;
+                    parserClass = ZoneTransformer.class;
                     break;
                 default:// no code needed
                     break;
@@ -123,14 +123,14 @@ public class ThreadedSpreadsheetParser extends SpreadsheetParser
     {          
         for(int i=0; i < getParsers().size(); i++)
         {
-            Parser parser = getParsers().get(i);
-            parser.parse();
+            SpreadsheetMLTransformer parser = getParsers().get(i);
+            parser.transform();
             publish(parser);
         }
     }
 
 
-    private void publish(Parser parser)
+    private void publish(SpreadsheetMLTransformer parser)
     {
         task.publish(parserTaskSteps.get(parser.getClass()));
 

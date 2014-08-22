@@ -1,6 +1,6 @@
 package org.erdc.cobie.plugins.idm;
 
-import org.erdc.cobie.shared.enums.COBieIDMPluginName;
+import org.erdc.cobie.shared.bimserver.idm.COBieIDMPluginName;
 
 public class COBieIDMWithoutProxyObjectsPlugin extends IDMPlugin
 {

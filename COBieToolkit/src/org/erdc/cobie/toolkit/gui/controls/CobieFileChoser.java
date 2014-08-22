@@ -7,7 +7,7 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
-import org.erdc.cobie.shared.PluginUtilities.OutgingFileType;
+import org.erdc.cobie.shared.bimserver.PluginUtilities.OutgingFileType;
 import org.erdc.cobie.toolkit.CobieToolkit;
 
 public class CobieFileChoser extends JFileChooser

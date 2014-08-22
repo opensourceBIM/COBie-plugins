@@ -10,11 +10,11 @@ import java.io.UnsupportedEncodingException;
 import javax.xml.transform.TransformerException;
 
 import org.apache.xmlbeans.XmlException;
-import org.erdc.cobie.report.ReportSerializer;
-import org.erdc.cobie.shared.COBieTaskProgress;
-import org.erdc.cobie.shared.Informable;
-import org.erdc.cobie.shared.compare.COBieCompareResult;
-import org.erdc.cobie.shared.compare.COBieCompareState;
+import org.erdc.cobie.shared.bimserver.COBieTaskProgress;
+import org.erdc.cobie.shared.bimserver.Informable;
+import org.erdc.cobie.shared.bimserver.compare.COBieCompareResult;
+import org.erdc.cobie.shared.bimserver.compare.COBieCompareState;
+import org.erdc.cobie.shared.reporting.SaxonTransformer;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
 import org.bimserver.shared.exceptions.ServerException;
 import org.bimserver.shared.exceptions.UserException;
@@ -122,7 +122,7 @@ public class CompareTask extends ApplicationTask<Void> implements PropertyChange
 	private void executeXslTransform(File saveFile) throws UnsupportedEncodingException, IOException, TransformerException
 	{
 		FileOutputStream fOut = new FileOutputStream(saveFile);
-		ReportSerializer.executeSaxonXSLT(fOut, compareDocument.toString().getBytes(DEFAULT_ENCODING),COMPARE_HTML_XSLT_PATH);
+		SaxonTransformer.executeSaxonXSLT(fOut, compareDocument.toString().getBytes(DEFAULT_ENCODING),COMPARE_HTML_XSLT_PATH);
 	}
 
 	public COBIEDocument getBaselineDocument()

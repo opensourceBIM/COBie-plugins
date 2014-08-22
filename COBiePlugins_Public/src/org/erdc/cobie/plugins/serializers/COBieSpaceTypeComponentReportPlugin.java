@@ -13,8 +13,8 @@ import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.schema.SchemaPlugin;
 import org.bimserver.plugins.serializers.Serializer;
-import org.erdc.cobie.plugins.utils.PluginRuntimeFileHelper;
-import org.erdc.cobie.shared.enums.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
+import org.erdc.cobie.shared.bimserver.utility.PluginRuntimeFileHelper;
 
 public class COBieSpaceTypeComponentReportPlugin extends
 		AbstractCOBieSerializerPlugin
@@ -29,7 +29,7 @@ public class COBieSpaceTypeComponentReportPlugin extends
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new org.erdc.cobie.serializers.COBieHTMLReportSerializer(
+		return new org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieHTMLReportSerializer(
 				configFiles.get(SPACE_REPORT_XSLT_PATH).getAbsolutePath(),
 				configFiles.get(SPACE_REPORT_CSS_PATH).getAbsolutePath());
 	}

@@ -7,8 +7,8 @@ import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.deserializers.Deserializer;
 import org.bimserver.plugins.deserializers.DeserializerPlugin;
 import org.bimserver.plugins.schema.SchemaException;
-import org.erdc.cobie.deserializers.COBieSheetXMLDataDeserializer;
-import org.erdc.cobie.shared.enums.COBieDeserializerPluginName;
+import org.erdc.cobie.shared.bimserver.deserialization.COBieDeserializerPluginName;
+import org.erdc.cobie.shared.bimserver.deserialization.COBieSheetXMLDataDeserializer;
 
 public class COBieSheetXMLDataDeserializerPlugin implements DeserializerPlugin
 {

@@ -8,7 +8,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="lib/xml-apis.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/COBieSerializerSettings.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/COBieSQLite"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/COBieServer"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/COBieBIMServerShared"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
