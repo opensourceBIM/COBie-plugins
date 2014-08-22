@@ -1,12 +1,11 @@
-6/25/2014 
+8/22/2014 
 
 WHAT’S NEW?
 NEW FEATURES
-•	Various Bug Fixes in COBie Transformations
-•	BIMServer 1.3 Compatibility
 •	Various Refactoring
-
+•	PluginJar for BimServer 1.3 included
 KNOWN BUGS AND LIMITATIONS
+•	The COBie Deserializer seems to be broken on BIMServer 1.3
 •	The Impacts and Issues spreadsheets are not yet populated from IFC imports.
 •	There are known issues with the COBie Coordinate Import and Export that may result in incorrect geometry.  This issues may be addressed in a future release.
 •	The COBie html reports (excluding the design and construction QC reports) have a minimal amount of formatting and may not be practical for large models.  The reports are provided as a baseline capability and spring-board for improvements.
