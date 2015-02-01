@@ -2,8 +2,10 @@ package org.erdc.cobie.plugins.serializers;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Workbook;
+import org.bimserver.emf.Schema;
 import org.erdc.cobie.shared.altova.mapping.COBieLiteTemplateMapper;
 import org.erdc.cobie.shared.altova.mapping.ProductTypeWarrantyTemplateMapper;
 import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
@@ -27,6 +29,12 @@ public class ProductTypeWarrantySerializerPlugin extends COBieTemplateSerializer
 	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
 	{
 		return COBieSerializerPluginInfo.PRODUCT_TYPE_WARRANTY;
+	}
+
+	@Override
+	public Set<Schema> getSupportedSchemas() 
+	{
+		return Schema.IFC2X3TC1.toSet();
 	}
 
 }

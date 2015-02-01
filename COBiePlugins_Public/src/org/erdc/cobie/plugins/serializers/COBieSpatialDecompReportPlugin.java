@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bimserver.emf.Schema;
 import org.bimserver.plugins.Plugin;
 import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
@@ -46,7 +47,7 @@ private HashMap<String,File> configFiles;
 
 		configFilePaths.add(SPACE_REPORT_XSLT_PATH);
 		configFilePaths.add(SPACE_REPORT_CSS_PATH);
-		pluginManager.requireSchemaDefinition();
+		pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name().toString());
 		try
 		{
 			this.configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, getDefaultName(), this, configFilePaths);
@@ -109,5 +110,12 @@ private HashMap<String,File> configFiles;
 	{
 		return new org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieHTMLReportSerializer(this.configFiles.get(SPACE_REPORT_XSLT_PATH).getAbsolutePath(),
 				this.configFiles.get(SPACE_REPORT_CSS_PATH).getAbsolutePath());
+	}
+
+
+	@Override
+	public Set<Schema> getSupportedSchemas() 
+	{
+		return Schema.IFC2X3TC1.toSet();
 	}
 }

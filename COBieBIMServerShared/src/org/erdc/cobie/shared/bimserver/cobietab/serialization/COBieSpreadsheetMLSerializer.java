@@ -69,7 +69,7 @@ public class COBieSpreadsheetMLSerializer extends COBieTabXMLSerializer implemen
 	}
 
 	@Override
-	protected void finalize()
+	protected void finalize() throws Throwable
 	{
 		super.finalize();
 		cobieSpreadsheet = new COBieSpreadSheet(getConfigurationFile(),

@@ -3,12 +3,14 @@ package org.erdc.cobie.shared.bimserver.ifc.serialization;
 import java.io.OutputStream;
 
 import org.bimserver.emf.IfcModelInterface;
+import org.bimserver.emf.PackageMetaData;
 import org.bimserver.models.ifc2x3tc1.IfcObjectDefinition;
 import org.bimserver.models.ifc2x3tc1.IfcRelAssociates;
 import org.bimserver.models.ifc2x3tc1.IfcRoot;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.renderengine.RenderEnginePlugin;
 import org.bimserver.plugins.serializers.EmfSerializer;
+import org.bimserver.plugins.serializers.ProgressReporter;
 import org.bimserver.plugins.serializers.ProjectInfo;
 import org.bimserver.plugins.serializers.SerializerException;
 import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieFactory;
@@ -50,30 +52,51 @@ public abstract class BIMServerCOBieTabSerializer extends EmfSerializer implemen
     @Override
     public void init(COBIEDocument cobie) throws SerializerException
     {
-        super.init(null, null, null, null, true);
+ 
+        super.init(null, null, null, null, null, true);
         setCOBie(cobie);
-        finalize();
     }
 
     @Override
-    public final void init(
-            IfcModelInterface model,
-            ProjectInfo projectInfo,
-            PluginManager pluginManager,
-            RenderEnginePlugin renderEnginePlugin,
-            boolean normalizeOids) throws SerializerException
+	public void init(IfcModelInterface model, ProjectInfo projectInfo,
+			PluginManager pluginManager, RenderEnginePlugin renderEnginePlugin,
+			PackageMetaData packageMetaData, boolean normalizeOids)
+			throws SerializerException 
+    
     {
-        super.init(model, projectInfo, pluginManager, renderEnginePlugin, normalizeOids);
+
+		super.init(model, projectInfo, pluginManager, renderEnginePlugin,
+				packageMetaData, normalizeOids);
         setCOBie(COBIEDocument.Factory.newInstance());
         initializeModelInverseSlots();
-        finalize();
-    }
+	}
 
-    protected void finalize()
-    {
-        
-    }
-    
+	@Override
+	protected boolean write(OutputStream outputStream,
+			ProgressReporter progressReporter) throws SerializerException 
+	{
+		boolean succeeded = false;
+        if (getMode() != Mode.FINISHED)
+        {
+            try
+            {
+                modelToCOBie();
+                writeCOBIE(outputStream);
+
+                succeeded = true;
+            } catch (Exception e)
+            {
+                throw new SerializerException(e);
+            }
+            finally
+            {
+                setMode(Mode.FINISHED);
+            }
+
+        }
+        return succeeded;
+	}
+
     private void initializeModelInverseSlots()
     {
         for (IfcRelAssociates assoc : model.getAllWithSubTypes(IfcRelAssociates.class))
@@ -122,30 +145,9 @@ public abstract class BIMServerCOBieTabSerializer extends EmfSerializer implemen
         cobieDocument = cobie;
     }
 
-    @Override
     public final boolean write(OutputStream outputStream) throws SerializerException
     {
-        boolean succeeded = false;
-        if (getMode() != Mode.FINISHED)
-        {
-            try
-            {
-                modelToCOBie();
-                writeCOBIE(outputStream);
-
-                succeeded = true;
-            } catch (Exception e)
-            {
-                throw new SerializerException(e);
-            }
-            finally
-            {
-                setMode(Mode.FINISHED);
-            }
-
-        }
-        return succeeded;
-
+        return write(outputStream, null);
     }
 
     protected abstract void writeCOBIE(OutputStream outputStream) throws SerializerException;

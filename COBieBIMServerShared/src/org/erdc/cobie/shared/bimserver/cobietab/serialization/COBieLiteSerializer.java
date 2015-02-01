@@ -41,7 +41,7 @@ public class COBieLiteSerializer extends COBieTabXMLSerializer implements
 	}
 
 	@Override
-	protected void finalize()
+	protected void finalize() throws Throwable
 	{
 		super.finalize();
 		setFacilityDocument(FacilityDocument.Factory.newInstance());

@@ -1,5 +1,8 @@
 package org.erdc.cobie.plugins.serializers;
 
+import java.util.Set;
+
+import org.bimserver.emf.Schema;
 import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
@@ -44,6 +47,12 @@ public class COBieLiteSerializerPlugin extends AbstractCOBieSerializerPlugin
 	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
 	{
 		return COBieSerializerPluginInfo.COBIE_LITE;
+	}
+
+	@Override
+	public Set<Schema> getSupportedSchemas() 
+	{
+		return Schema.IFC2X3TC1.toSet();
 	}
 
 }

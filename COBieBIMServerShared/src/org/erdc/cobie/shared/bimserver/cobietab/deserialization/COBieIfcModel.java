@@ -137,14 +137,16 @@ public class COBieIfcModel extends IfcModel
 
     public COBieIfcModel()
     {
-        super();
+        super(null, null);
+        //TODO:  Find out what new superclass constructor does
         initializeHashMaps();
     }
 
     public COBieIfcModel(int size)
     {
-        super(size);
+        super(null, null, size);
         initializeHashMaps();
+        //TODO: find out what new superclass constructor does
 
     }
 

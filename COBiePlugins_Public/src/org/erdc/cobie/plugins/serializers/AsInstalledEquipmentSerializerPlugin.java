@@ -1,6 +1,9 @@
 package org.erdc.cobie.plugins.serializers;
 
+import java.util.Set;
+
 import org.apache.poi.ss.usermodel.Workbook;
+import org.bimserver.emf.Schema;
 import org.erdc.cobie.shared.altova.mapping.AsInstalledEquipmentTemplateMapper;
 import org.erdc.cobie.shared.altova.mapping.COBieLiteTemplateMapper;
 import org.erdc.cobie.shared.bimserver.cobietab.serialization.COBieSerializerPluginInfo;
@@ -29,6 +32,12 @@ public class AsInstalledEquipmentSerializerPlugin extends COBieTemplateSerialize
 	public String getTemplateFilePath()
 	{
 		return TEMPLATE_PATH;
+	}
+
+	@Override
+	public Set<Schema> getSupportedSchemas() 
+	{
+		return Schema.IFC2X3TC1.toSet();
 	}
 
 

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.InputStream;
 
 import org.bimserver.emf.IfcModelInterface;
+import org.bimserver.plugins.deserializers.ByteProgressReporter;
 import org.bimserver.plugins.deserializers.DeserializeException;
 import org.bimserver.plugins.deserializers.EmfDeserializer;
 import org.bimserver.plugins.schema.SchemaDefinition;
@@ -24,13 +25,6 @@ public class COBieSheetXMLDataDeserializer extends EmfDeserializer implements
 	}
 
 	@Override
-	public void init(SchemaDefinition schema)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public IfcModelInterface read(InputStream in, String filename, long fileSize)
 			throws DeserializeException
 	{
@@ -47,6 +41,14 @@ public class COBieSheetXMLDataDeserializer extends EmfDeserializer implements
 		}
 
 		return cobieModel;
+	}
+
+	@Override
+	public IfcModelInterface read(InputStream in, String filename,
+			long fileSize, ByteProgressReporter progressReporter)
+			throws DeserializeException 
+	{
+		return read(in, filename, fileSize);
 	}
 
 }

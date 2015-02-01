@@ -18,6 +18,7 @@ package org.erdc.cobie.shared.bimserver.cobietab.serialization;
  *****************************************************************************/
 import java.io.OutputStream;
 
+import org.bimserver.plugins.serializers.ProgressReporter;
 import org.bimserver.plugins.serializers.SerializerException;
 import org.erdc.cobie.shared.bimserver.ifc.serialization.BIMServerCOBieTabSerializer;
 import org.erdc.cobie.sheetxmldata.COBIEDocument;
@@ -63,6 +64,15 @@ public class COBieTabXMLSerializer extends
 			throw new SerializerException(e);
 		}
 
+	}
+
+	@Override
+	protected boolean write(OutputStream outputStream,
+			ProgressReporter progressReporter) throws SerializerException 
+	{
+		write(outputStream);
+		return true;
+		///TODO: redirect all the logger messages to progressReporter
 	}
 
 }

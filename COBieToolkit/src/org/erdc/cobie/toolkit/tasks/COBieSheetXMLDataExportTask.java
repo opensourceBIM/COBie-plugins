@@ -7,6 +7,7 @@ import org.bimserver.ifc.IfcModel;
 import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.EmfSerializer;
+import org.bimserver.plugins.serializers.ProgressReporter;
 import org.bimserver.plugins.serializers.SerializerPlugin;
 import org.erdc.cobie.shared.bimserver.COBieTaskProgress;
 import org.erdc.cobie.shared.bimserver.Informable;
@@ -67,12 +68,20 @@ public class COBieSheetXMLDataExportTask extends ApplicationTask<Void>
 			}
 			else
 			{
-				emfSerializer.init(model, null, pluginManager, null,true);
+				emfSerializer.init(model, null, pluginManager, null,null, true);
 			}
 			super.setProgress(PROGRESS_VALUE_INITIALIZE_SERIALIZER);
 			super.publish(new COBieTaskProgress(PROGRESS_MESSAGE_SERIALIZING));
 			super.setProgress(PROGRESS_VALUE_SERIALIZING);
-			emfSerializer.writeToFile(outputFile);
+			emfSerializer.writeToFile(outputFile, new ProgressReporter() {
+				
+				@Override
+				public void update(long progress, long max) 
+				{
+					// TODO Auto-generated method stub
+					
+				}
+			});
 			publish(new COBieTaskProgress(PROGRESS_MESSAGE_DONE));
 			setProgress(100);
 			sleep();

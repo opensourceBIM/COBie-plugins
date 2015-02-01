@@ -18,7 +18,9 @@ package org.erdc.cobie.plugins.deserializers;
  *****************************************************************************/
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Set;
 
+import org.bimserver.emf.Schema;
 import org.bimserver.models.store.ObjectDefinition;
 import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
@@ -95,5 +97,11 @@ public class COBieDeserializerPlugin implements DeserializerPlugin
 	public boolean isInitialized()
 	{
 		return initialized;
+	}
+
+	@Override
+	public Set<Schema> getSupportedSchemas() 
+	{
+		return Schema.IFC2X3TC1.toSet();
 	}
 }

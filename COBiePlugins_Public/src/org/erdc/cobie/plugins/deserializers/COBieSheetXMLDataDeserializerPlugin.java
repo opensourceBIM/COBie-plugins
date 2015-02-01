@@ -1,5 +1,8 @@
 package org.erdc.cobie.plugins.deserializers;
 
+import java.util.Set;
+
+import org.bimserver.emf.Schema;
 import org.bimserver.models.store.ObjectDefinition;
 import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
@@ -63,5 +66,11 @@ public class COBieSheetXMLDataDeserializerPlugin implements DeserializerPlugin
 	public boolean isInitialized()
 	{
 		return initialized;
+	}
+
+	@Override
+	public Set<Schema> getSupportedSchemas() 
+	{
+		return Schema.IFC2X3TC1.toSet();
 	}
 }

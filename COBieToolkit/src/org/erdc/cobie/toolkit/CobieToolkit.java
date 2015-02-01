@@ -26,6 +26,7 @@ import java.util.Map;
 
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlOptions;
+import org.bimserver.emf.Schema;
 import org.bimserver.plugins.Plugin;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
@@ -243,7 +244,9 @@ public class CobieToolkit
 
     public Deserializer getIfcStepDeserializer() throws PluginException
     {
-        ifcStepDeserializer.init(pluginManager.requireSchemaDefinition());
+    	pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name().toLowerCase());
+        ifcStepDeserializer.init(null);
+        ///TODO:  find out about PackageMetadata parameter
         return ifcStepDeserializer;
     }
 

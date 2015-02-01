@@ -9,6 +9,6 @@
 	<classpathentry kind="lib" path="lib/xelem.jar"/>
 	<classpathentry kind="lib" path="lib/COBieSerializerSettings.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/COBieBIMServerShared"/>
-	<classpathentry kind="lib" path="/BimServer/lib/COBieSheetXMLData.jar"/>
+	<classpathentry kind="lib" path="lib/COBieSheetXMLData.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -27,6 +27,7 @@ import nl.fountain.xelem.XFactory;
 import nl.fountain.xelem.excel.Workbook;
 
 import org.bimserver.emf.IfcModelInterface;
+import org.bimserver.plugins.deserializers.ByteProgressReporter;
 import org.bimserver.plugins.deserializers.DeserializeException;
 import org.bimserver.plugins.deserializers.EmfDeserializer;
 import org.bimserver.plugins.schema.SchemaDefinition;
@@ -97,12 +98,6 @@ public class COBieDeserializer extends EmfDeserializer implements
 		}
 		return cobieWorkBook;
 
-	}
-
-	@Override
-	public void init(SchemaDefinition schema)
-	{
-		// TODO Auto-generated method stub
 	}
 
 	// general initialize function that any of the constructors will call
@@ -209,6 +204,15 @@ public class COBieDeserializer extends EmfDeserializer implements
 					"Input stream not a valid spreadsheetml file.");
 		}
 		return COBie;
+	}
+
+	@Override
+	public IfcModelInterface read(InputStream in, String filename,
+			long fileSize, ByteProgressReporter progressReporter)
+			throws DeserializeException 
+	{
+		return read(in, filename, fileSize);
+		///TODO:  redirect all messages to progress reporter
 	}
 
 }

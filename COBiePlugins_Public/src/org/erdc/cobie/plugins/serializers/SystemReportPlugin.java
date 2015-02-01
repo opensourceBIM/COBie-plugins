@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bimserver.emf.Schema;
 import org.bimserver.plugins.Plugin;
 import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
@@ -36,7 +37,7 @@ public class SystemReportPlugin extends AbstractCOBieSerializerPlugin
 
 			configFilePaths.add(SYSTEM_REPORT_XSLT_PATH);
 			configFilePaths.add(SYSTEM_REPORT_CSS_PATH);
-			pluginManager.requireSchemaDefinition();
+			pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name().toLowerCase());
 			try
 			{
 				this.configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, getDefaultName(), this, configFilePaths);
@@ -82,6 +83,13 @@ public class SystemReportPlugin extends AbstractCOBieSerializerPlugin
 	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
 	{
 		return COBieSerializerPluginInfo.REPORT_SYSTEM;
+	}
+
+
+	@Override
+	public Set<Schema> getSupportedSchemas() 
+	{
+		return Schema.IFC2X3TC1.toSet();
 	}
 
 }

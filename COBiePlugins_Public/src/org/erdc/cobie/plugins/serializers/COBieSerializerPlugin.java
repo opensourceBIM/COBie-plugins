@@ -20,7 +20,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
+import org.bimserver.emf.Schema;
 import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
@@ -60,7 +62,7 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 	@Override
 	public void init(PluginManager pluginManager) throws PluginException
 	{
-		pluginManager.requireSchemaDefinition();
+		pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name().toLowerCase());
 		try
 		{
 			pluginManager.requireObjectIDM();
@@ -114,5 +116,11 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
 	{
 		return COBieSerializerPluginInfo.SPREADSHEET;
+	}
+
+	@Override
+	public Set<Schema> getSupportedSchemas() 
+	{
+		return Schema.IFC2X3TC1.toSet();
 	}
 }
