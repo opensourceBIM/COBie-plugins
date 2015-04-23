@@ -93,7 +93,6 @@ public class COBieSpaceTypeComponentReportPlugin extends
 
 	@Override
 	public Set<Schema> getSupportedSchemas() {
-		// TODO Auto-generated method stub
-		return null;
+		return Schema.IFC2X3TC1.toSet();
 	}
 }

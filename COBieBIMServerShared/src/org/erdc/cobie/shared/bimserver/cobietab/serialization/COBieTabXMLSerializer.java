@@ -65,14 +65,4 @@ public class COBieTabXMLSerializer extends
 		}
 
 	}
-
-	@Override
-	protected boolean write(OutputStream outputStream,
-			ProgressReporter progressReporter) throws SerializerException 
-	{
-		write(outputStream);
-		return true;
-		///TODO: redirect all the logger messages to progressReporter
-	}
-
 }

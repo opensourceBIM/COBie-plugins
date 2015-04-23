@@ -145,9 +145,14 @@ public abstract class BIMServerCOBieTabSerializer extends EmfSerializer implemen
         cobieDocument = cobie;
     }
 
-    public final boolean write(OutputStream outputStream) throws SerializerException
+    public final boolean write(OutputStream outputStream)
     {
-        return write(outputStream, null);
+        try {
+			return write(outputStream, null);
+		} catch (SerializerException e) {
+			e.printStackTrace();
+		}
+        return false;
     }
 
     protected abstract void writeCOBIE(OutputStream outputStream) throws SerializerException;

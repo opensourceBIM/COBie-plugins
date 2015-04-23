@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.cxf.helpers.IOUtils;
+import org.apache.commons.io.IOUtils;
 import org.bimserver.plugins.PluginContext;
 import org.bimserver.plugins.VirtualFile;
 import org.bimserver.plugins.classloaders.EclipsePluginClassloader;

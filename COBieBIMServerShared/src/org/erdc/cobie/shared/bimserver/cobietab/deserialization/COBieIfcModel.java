@@ -1247,4 +1247,7 @@ public class COBieIfcModel extends IfcModel
         return documentKeyToOid.containsKey(new KeyedDocumentType(document).getCOBieSheetXMLDataElementKey());
     }
 
+	@Override
+	public void load(IdEObject idEObject) {
+	}
 }

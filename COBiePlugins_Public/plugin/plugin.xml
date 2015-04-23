@@ -1,72 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PluginDescriptor>
+	<dependencies>
+		<Dependency path="COBieShared"></Dependency>
+		<Dependency path="COBieBIMServerShared"></Dependency>
+	</dependencies>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.objectidms.ObjectIDMPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.idm.COBieIDMPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.objectidms.ObjectIDMPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.idm.COBieIDMWithoutProxyObjectsPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.objectidms.ObjectIDMPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.idm.BPieIDMPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.objectidms.ObjectIDMPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.idm.BAMieIDMPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.COBieSerializerPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.COBieLiteSerializerPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.COBieSheetXMLDataSerializerPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.AsInstalledEquipmentSerializerPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 		<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.ProductTypeWarrantySerializerPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.COBieCheckSerializerPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.COBieCheckDesignSerializerPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.COBieSpaceTypeComponentReportPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.COBieSpatialDecompReportPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.SystemReportPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.serializers.COBieZoneReportPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.deserializers.DeserializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.deserializers.COBieDeserializerPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.deserializers.DeserializerPlugin</interfaceClass>
 		<implementationClass>org.erdc.cobie.plugins.deserializers.COBieSheetXMLDataDeserializerPlugin</implementationClass>
+		<enabled>true</enabled>
 	</PluginImplementation>
 </PluginDescriptor>
-
