@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginDescriptor>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.objectidms.ObjectIDMPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugin.idm.COBieIDMPlugin</implementationClass>
+	</PluginImplementation>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.objectidms.ObjectIDMPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugin.idm.COBieIDMWithoutProxyObjectsPlugin</implementationClass>
+	</PluginImplementation>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugin.serializers.COBieXLSXSerializerPlugin</implementationClass>
+	</PluginImplementation>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugin.serializers.COBieCheckSerializerPlugin</implementationClass>
+	</PluginImplementation>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugin.serializers.COBieCheckDesignSerializerPlugin</implementationClass>
+	</PluginImplementation>
+	<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.deserializers.DeserializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugin.deserializers.COBieDeserializerPlugin</implementationClass>
+	</PluginImplementation>
+</PluginDescriptor>
+

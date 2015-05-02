@@ -1,0 +1,82 @@
+<project name="COBieServer Public Common">
+	<import file="one-jar-ant-task.xml" />
+	<fileset id="lib" dir="../../BimServerLib">
+		<include name="dep/*.jar" />
+		<include name="lib/*.jar" />
+		<include name="plugins/*.jar"/>
+	</fileset>
+	<fileset id="buildlib" dir="builds/lib">
+		<include name="**/*.jar" />
+	</fileset>
+
+	<target name="COBieShared">
+		<mkdir dir="builds/cobieshared" />
+		<mkdir dir="builds/cobieshared/lib" />
+		<copy todir="builds/cobieshared/lib">
+			<fileset dir="../../COBieShared/lib" />
+		</copy>
+		<copy todir="builds/lib">
+			<fileset dir="../../COBieShared/lib" />
+		</copy>
+		 <pathconvert pathsep="${line.separator}|   |-- "             
+					        property="echo.path.compile"             
+					        refid="lib">
+					    </pathconvert>
+					    <echo>${echo.path.compile}</echo>
+		 <pathconvert pathsep="${line.separator}|   |-- "             
+					        property="echo.path.compileshared"             
+					        refid="buildlib">
+					    </pathconvert>
+					    <echo>${echo.path.compileshared}</echo>
+		<javac destdir="builds/cobieshared" debug="on" includeantruntime="true">
+			<src path="../../COBieShared/src" />
+			<classpath>
+				<path>
+					<fileset refid="lib" />
+					<fileset refid="buildlib" />
+				</path>
+			</classpath>
+		</javac>
+
+		<jar destfile="builds/lib/bimserver-${version}-cobieshared.jar">
+			<fileset dir="builds/cobieshared" />
+		</jar>
+	</target>
+
+	<target name="COBiePlugins">
+		<mkdir dir="builds/cobieplugins" />
+		<javac destdir="builds/cobieplugins" includeantruntime="false" debug="on">
+			<src path="../../COBiePlugins/src" />
+			<src path="../../COBieShared/src" />
+			<classpath>
+				<path>
+					<fileset dir="../../COBiePlugins/lib" />
+				</path>
+				<path>
+					<fileset refid="lib" />
+					<fileset refid="buildlib" />
+				</path>
+				<path>
+					<fileset dir="../../COBieShared/lib" />
+				</path>
+			</classpath>
+		</javac>
+		<mkdir dir="builds/cobieplugins/lib" />
+		<copy todir="builds/cobieplugins/lib">
+			<fileset dir="../../COBiePlugins/lib" />
+		</copy>
+		<copy todir="builds/cobieplugins/lib">
+			<fileset dir="../../COBieShared/lib" />
+		</copy>
+		<mkdir dir="builds/cobieplugins/plugin" />
+		<copy todir="builds/cobieplugins/plugin">
+			<fileset dir="../../COBiePlugins/plugin">
+			</fileset>
+		</copy>
+		<jar destfile="builds/lib/bimserver-cobieplugins-${version}.jar">
+			<fileset dir="builds/cobieplugins" />
+		</jar>
+	</target>
+	<property name="buildtargets" value="../build/targets" />
+	<property name="defaultsettings" value="../defaultsettings" />
+</project>

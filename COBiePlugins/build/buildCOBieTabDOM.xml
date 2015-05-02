@@ -1,0 +1,14 @@
+<project name="COBieTabDOM">
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../../BimServerLib/dep/xmlbeans-2.6.0.jar"/>
+	<target name="generateCOBieTabJar">
+		<delete dir="builds" includes="**/*" includeemptydirs="true" />
+	<xmlbean javasource="1.5" destfile="builds/cobietab.jar" srcgendir="builds/xmlbeansclasses" classpath="../../BimServerLib/dep/xmlbeans-2.6.0.jar">
+		<fileset dir="../lib" includes="cobieTab.xsd"/>
+		
+	</xmlbean>
+	<copy file="builds/cobietab.jar" todir="../../COBieShared/lib"/>
+</target>
+	</project>
+
+
+

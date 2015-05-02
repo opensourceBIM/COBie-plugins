@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="lib/COBieSerializerSettings.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/COBieShared"/>
+	<classpathentry kind="lib" path="/BIMServerLib/dep/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="/BIMServerLib/lib/bimserver-1.3.4-FINAL-2014-10-17-shared.jar"/>
+	<classpathentry kind="lib" path="/BIMServerLib/lib/bimserver-1.3.4-FINAL-2014-10-17-client-lib.jar"/>
+	<classpathentry kind="lib" path="/BIMServerLib/dep/org.eclipse.emf.common_2.9.1.v20130827-0309.jar"/>
+	<classpathentry kind="lib" path="/BIMServerLib/dep/slf4j-api-1.6.2.jar"/>
+	<classpathentry kind="lib" path="/BIMServerLib/dep/org.eclipse.emf.ecore_2.9.1.v20130827-0309.jar"/>
+	<classpathentry kind="lib" path="/BIMServerLib/lib/bimserver-1.3.4-FINAL-2014-10-17-utils.jar"/>
+	<classpathentry kind="lib" path="/BIMServerLib/lib/bimserver-1.3.4-FINAL-2014-10-17-ifc.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
