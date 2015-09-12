@@ -27,7 +27,8 @@ public class COBieTabSerializer implements LoggerUser
     private static final String BEGIN_MESSAGE = "Transforming IFC to COBie.";
     private static final String END_MESSAGE = "Transform Complete.";
     private COBIEDocument cobieDocument;
-    private boolean ignoreNonAssets = false;
+    ///TODO: Create settings for serializer plugin so that user can pick export
+    private boolean ignoreNonAssets = true;
     Logger LOGGER = LoggerFactory.getLogger(COBieTabSerializer.class);
     
     public COBieTabSerializer()

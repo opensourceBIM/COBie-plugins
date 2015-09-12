@@ -4,6 +4,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="lib/COBieSerializerSettings.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/COBieShared"/>
-	<classpathentry kind="lib" path="/BIMServerLib/dep/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

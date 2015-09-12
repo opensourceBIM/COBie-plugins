@@ -351,11 +351,6 @@ public class COBieUtility
         return Calendar.getInstance();
     }
 
-    public static String DateStringFromMonthDayYear(int month, int day, int year)
-    {
-        return "";
-    }
-
     public static String delimittedStringFromArrayList(ArrayList<String> stringList, boolean allowDuplicates, boolean allowNA)
     {
 
@@ -854,7 +849,14 @@ public class COBieUtility
             if ((selectedObj instanceof Calendar) || (selectedObj instanceof XmlCalendar) || (selectedObj instanceof XmlDateTime))
             {
                 XmlDateTime xDateTime = (XmlDateTime)selectedObj;
-                formattedDate = String.format(COBieDateFormatString, xDateTime.getCalendarValue());
+                if (xDateTime.getCalendarValue().getTimeInMillis() == 0)
+                {
+                	formattedDate = COBieUtility.COBieNA;
+                }
+                else
+                {
+                	formattedDate = String.format(COBieDateFormatString, xDateTime.getCalendarValue());
+                }
             }
         }
         return formattedDate;

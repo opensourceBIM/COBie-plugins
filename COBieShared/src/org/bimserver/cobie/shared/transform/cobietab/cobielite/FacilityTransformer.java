@@ -82,8 +82,7 @@ public class FacilityTransformer extends ParentTransformer<org.nibs.cobie.tab.Fa
     private FacilityContactDispatcher initializeFacilityContactDispatcher()
     {
         COBIEType.Contacts sheetXMLDataContacts = cobieSheetXMLAll.getContacts();
-        @SuppressWarnings("deprecation")
-		FacilityContactDispatcher contactDispatcher = new FacilityContactDispatcher(Arrays.asList(sheetXMLDataContacts.getContactArray()),
+		FacilityContactDispatcher contactDispatcher = new FacilityContactDispatcher(sheetXMLDataContacts.getContactList(),
                 target, indexedCOBie);
         return contactDispatcher;
     }

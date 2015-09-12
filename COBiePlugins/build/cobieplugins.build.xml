@@ -19,4 +19,43 @@
 		</jar>
 		<delete dir="builds/BuildJar" failonerror="false" />
 	</target>
+	
+	<target name="Build CobieShared">
+		<property name="target" value="cobiesharedjar"/>
+		<delete dir="builds"/>
+		<mkdir dir="builds" />
+		<copy todir="builds/BuildJar">
+			<fileset file="${buildtargets}/shared/license.txt" />
+		</copy>
+		<mkdir dir="builds/lib" />
+		<mkdir dir="builds/pluginlibs" />
+		<antcall target="COBieShared"/>
+		<jar jarfile="builds/bimserver-cobieshared-${version}.jar" manifest="${buildtargets}/${target}/MANIFEST.MF">
+			<fileset dir="builds/cobieshared">
+				<exclude name="*.svn" />
+				<exclude name="*.git" />
+			</fileset>
+		</jar>
+		<delete dir="builds/BuildJar" failonerror="false" />
+	</target>
+	
+	<target name="Build FloorPlanPlugin">
+		<property name="target" value="floorplanpluginjar"/>
+		<delete dir="builds"/>
+		<mkdir dir="builds" />
+		<copy todir="builds/BuildJar">
+			<fileset file="${buildtargets}/shared/license.txt" />
+		</copy>
+		<mkdir dir="builds/lib" />
+		<mkdir dir="builds/pluginlibs" />
+		<antcall target="COBieShared"/>
+		<antcall target="FloorPlanGenerator"/>	
+		<jar jarfile="builds/bimserver-floorplanplugin-${version}.jar" manifest="${buildtargets}/${target}/MANIFEST.MF">
+			<fileset dir="builds/floorplangenerator">
+				<exclude name="*.svn" />
+				<exclude name="*.git" />
+			</fileset>
+		</jar>
+		<delete dir="builds/BuildJar" failonerror="false" />
+	</target>
 </project>

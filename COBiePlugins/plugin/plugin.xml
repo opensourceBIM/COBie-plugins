@@ -9,7 +9,6 @@
 		<interfaceClass>org.bimserver.plugins.objectidms.ObjectIDMPlugin</interfaceClass>
 		<implementationClass>org.bimserver.cobie.plugin.idm.COBieIDMWithoutProxyObjectsPlugin</implementationClass>
 		<enabled>true</enabled>
-		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>

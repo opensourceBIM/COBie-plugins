@@ -87,6 +87,66 @@
 			<fileset dir="builds/cobieplugins" />
 		</jar>
 	</target>
+	
+	<target name="FloorPlanGenerator">
+			<mkdir dir="builds/floorplangenerator" />
+			<javac destdir="builds/floorplangenerator" includeantruntime="false" debug="on">
+				<src path="../../floorplan-generator/src" />
+				<src path="../../COBieShared/src" />
+				<classpath>
+					<path>
+						<fileset dir="../../floorplan-generator/lib" />
+					</path>
+					<path>
+						<fileset refid="lib" />
+						<fileset refid="buildlib" />
+						<fileset refid="otherlib" />
+					</path>
+					<path>
+						<fileset dir="../../COBieShared/lib" />
+					</path>
+				</classpath>
+			</javac>
+			<mkdir dir="builds/floorplangenerator/lib" />
+			<copy todir="builds/floorplangenerator/lib">
+				<fileset dir="../../floorplan-generator/lib" />
+			</copy>
+			<mkdir dir="builds/floorplangenerator/html"/>
+			<copy todir="builds/floorplangenerator/html">
+				<fileset dir="../../floorplan-generator/html">
+				</fileset>
+			</copy>	
+		
+		<mkdir dir="builds/floorplangenerator/scripts"/>
+		<copy todir="builds/floorplangenerator/scripts">
+			<fileset dir="../../floorplan-generator/scripts">
+			</fileset>
+		</copy>
+		
+		<mkdir dir="builds/floorplangenerator/styles"/>
+		<copy todir="builds/floorplangenerator/styles">
+			<fileset dir="../../floorplan-generator/styles">
+			</fileset>
+		</copy>
+		
+		<mkdir dir="builds/floorplangenerator/templates"/>
+		<copy todir="builds/floorplangenerator/templates">
+			<fileset dir="../../floorplan-generator/templates">
+			</fileset>
+		</copy>
+		
+			<copy todir="builds/floorplangenerator/lib">
+				<fileset dir="../../COBieShared/lib" />
+			</copy>
+			<mkdir dir="builds/floorplangenerator/plugin" />
+			<copy todir="builds/floorplangenerator/plugin">
+				<fileset dir="../../floorplan-generator/plugin">
+				</fileset>
+			</copy>
+			<jar destfile="builds/lib/bimserver-floorplangenerator-${version}.jar">
+				<fileset dir="builds/floorplangenerator" />
+			</jar>
+		</target>
 	<property name="buildtargets" value="../build/targets" />
 	<property name="defaultsettings" value="../defaultsettings" />
 </project>

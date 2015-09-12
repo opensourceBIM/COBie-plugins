@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="lib/xelem_src.3.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xelem.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/COBieCompare.jar"/>
@@ -9,33 +9,32 @@
 	<classpathentry exported="true" kind="lib" path="lib/COBieMergeIDM.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/COBieSerializerSettings.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/lcie.jar"/>
-	<classpathentry kind="lib" path="lib/poi-excelant-3.9-20121203.jar"/>
-	<classpathentry kind="lib" path="lib/poi-ooxml-3.9-20121203.jar"/>
-	<classpathentry kind="lib" path="lib/poi-ooxml-schemas-3.9-20121203.jar"/>
-	<classpathentry kind="lib" path="lib/poi-scratchpad-3.9-20121203.jar"/>
-	<classpathentry kind="lib" path="lib/jdom.jar"/>
-	<classpathentry kind="lib" path="lib/poi-3.9-20121203.jar"/>
-	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/poi-excelant-3.9-20121203.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/poi-ooxml-3.9-20121203.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/poi-ooxml-schemas-3.9-20121203.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/poi-scratchpad-3.9-20121203.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jdom.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/poi-3.9-20121203.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/dom4j-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/cobietab.jar"/>
-	<classpathentry exported="true" kind="lib" path="/BIMServerLib/lib/bimserver-1.4.0-FINAL-2015-05-14-client-lib.jar"/>
-	<classpathentry exported="true" kind="lib" path="/BIMServerLib/lib/bimserver-1.4.0-FINAL-2015-05-14-ifc.jar"/>
-	<classpathentry exported="true" kind="lib" path="/BIMServerLib/lib/bimserver-1.4.0-FINAL-2015-05-14-shared.jar"/>
-	<classpathentry exported="true" kind="lib" path="/BIMServerLib/lib/bimserver-1.4.0-FINAL-2015-05-14-xsltserializer.jar"/>
-	<classpathentry exported="true" kind="lib" path="/BIMServerLib/lib/bimserver-1.4.0-FINAL-2015-05-14.jar"/>
-	<classpathentry exported="true" kind="lib" path="/BIMServerLib/dep/xmlbeans-2.6.0.jar"/>
-	<classpathentry kind="lib" path="NonExportedLib/commons-beanutils-1.8.3.jar"/>
-	<classpathentry kind="lib" path="NonExportedLib/commons-collections-3.2.1.jar"/>
-	<classpathentry kind="lib" path="NonExportedLib/commons-io-1.4.jar"/>
-	<classpathentry kind="lib" path="NonExportedLib/commons-lang-2.4.jar"/>
-	<classpathentry kind="lib" path="NonExportedLib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="NonExportedLib/guava-18.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="NonExportedLib/log4j-1.2.16.jar"/>
-	<classpathentry exported="true" kind="lib" path="NonExportedLib/org.eclipse.emf.common_2.9.1.v20130827-0309.jar"/>
-	<classpathentry exported="true" kind="lib" path="NonExportedLib/org.eclipse.emf.ecore_2.9.1.v20130827-0309.jar"/>
-	<classpathentry exported="true" kind="lib" path="NonExportedLib/slf4j-api-1.6.2.jar"/>
-	<classpathentry kind="lib" path="NonExportedLib/jackson-annotations-2.5.0.jar"/>
-	<classpathentry kind="lib" path="NonExportedLib/jackson-core-2.5.1.jar"/>
-	<classpathentry kind="lib" path="NonExportedLib/jackson-databind-2.5.1.jar"/>
-	<classpathentry kind="lib" path="/BIMServerLib/dep/cxf-core-3.0.3.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/logging/log4j-1.2.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/logging/slf4j-api-1.6.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/logging/slf4j-log4j12-1.6.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/commons/commons-beanutils-1.8.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/commons/commons-collections-3.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/commons/commons-io-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/commons/commons-lang-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/commons/commons-logging-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/BimServer/lib/cxf/cxf-core-3.0.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/other/jackson-annotations-2.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/other/guava-18.0.jar" sourcepath="/BimServer/libsrc/guava-16.0.1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/other/jackson-core-2.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/other/jackson-databind-2.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/emf/org.eclipse.emf.common_2.9.1.v20130827-0309.jar" sourcepath="/BimServer/libsrc/org.eclipse.emf.common.source_2.9.1.v20130827-0309.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Shared/lib/emf/org.eclipse.emf.ecore_2.9.1.v20130827-0309.jar" sourcepath="/BimServer/libsrc/org.eclipse.emf.ecore.source_2.9.1.v20130827-0309.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/BimServerClientLib"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Ifc"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Shared"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -19,8 +19,7 @@ public class FacilityFactory
         FacilityDocument facilityDocument = FacilityDocument.Factory.newInstance();
         FacilityType targetFacility = facilityDocument.addNewFacility2();
         COBIEType sheetXMLCOBie = cobieXMLSheetDataDocument.getCOBIE();
-        @SuppressWarnings("deprecation")
-		org.nibs.cobie.tab.FacilityType sourceFacility = sheetXMLCOBie.getFacilities().getFacilityArray()[0];
+		org.nibs.cobie.tab.FacilityType sourceFacility = sheetXMLCOBie.getFacilities().getFacilityList().get(0);
         IndexedCOBie indexedCOBie = new IndexedCOBie(sheetXMLCOBie);
         FacilityTransformer facilityParser = new FacilityTransformer(sourceFacility, targetFacility, indexedCOBie);
         facilityParser.transform();
