@@ -27,6 +27,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -44,24 +45,13 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import nl.fountain.xelem.XFactory;
-import nl.fountain.xelem.XSerializer;
-import nl.fountain.xelem.XelemException;
-import nl.fountain.xelem.excel.Cell;
-import nl.fountain.xelem.excel.Row;
-import nl.fountain.xelem.excel.Workbook;
-import nl.fountain.xelem.excel.Worksheet;
-import nl.fountain.xelem.excel.WorksheetOptions;
-import nl.fountain.xelem.excel.ss.SSRow;
-import nl.fountain.xelem.lex.ExcelReader;
-
 import org.apache.commons.io.input.CloseShieldInputStream;
 import org.bimserver.cobie.cobieserializersettings.COBieExportOptionsDocument;
 import org.bimserver.cobie.shared.COBieTokenUtility;
 import org.bimserver.cobie.shared.search.COBieQuery;
 import org.bimserver.cobie.shared.utility.COBieUtility;
-import org.bimserver.cobie.shared.utility.UTF8PrintWriter;
 import org.bimserver.cobie.shared.utility.COBieUtility.CobieSheetName;
+import org.bimserver.cobie.shared.utility.UTF8PrintWriter;
 import org.nibs.cobie.tab.AssemblyType;
 import org.nibs.cobie.tab.AttributeType;
 import org.nibs.cobie.tab.COBIEDocument;
@@ -89,6 +79,17 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import nl.fountain.xelem.XFactory;
+import nl.fountain.xelem.XSerializer;
+import nl.fountain.xelem.XelemException;
+import nl.fountain.xelem.excel.Cell;
+import nl.fountain.xelem.excel.Row;
+import nl.fountain.xelem.excel.Workbook;
+import nl.fountain.xelem.excel.Worksheet;
+import nl.fountain.xelem.excel.WorksheetOptions;
+import nl.fountain.xelem.excel.ss.SSRow;
+import nl.fountain.xelem.lex.ExcelReader;
 @SuppressWarnings({ "unchecked", "deprecation" })
 public class COBieSpreadSheet
 {
@@ -516,14 +517,14 @@ public class COBieSpreadSheet
     // Begin constructors
     // user does not provide new file name or name of template file path to be
     // used
-    public COBieSpreadSheet(File configurationFile)
+    public COBieSpreadSheet(Path configurationFile)
     {
 
         exportSettings = null;
         sheetRowLimit = getSheetRowLimit();
         try
         {
-            templateFilePath = configurationFile.getAbsolutePath();
+            templateFilePath = configurationFile.toString();
             init();
         } catch (IOException e)
         {
@@ -531,13 +532,13 @@ public class COBieSpreadSheet
         }
     }
 
-    public COBieSpreadSheet(File configurationFile, COBieExportOptionsDocument exportSettings)
+    public COBieSpreadSheet(Path configurationFile, COBieExportOptionsDocument exportSettings)
     {
         this.exportSettings = exportSettings;
         sheetRowLimit = getSheetRowLimit();
         try
         {
-            templateFilePath = configurationFile.getAbsolutePath();
+            templateFilePath = configurationFile.toString();
             init();
         } catch (IOException e)
         {

@@ -1,10 +1,10 @@
 package org.bimserver.cobie.shared.utility;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.GeneralSecurityException;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -33,18 +33,18 @@ public class POIUtils
 		return workbook;
 	}
 		
-	public static Workbook getWorkbook(File file)
+	public static Workbook getWorkbook(Path file)
 	{
 		Workbook workbook;
 		try
 		{
-			workbook = getUnprotectedWorkbook(new FileInputStream(file));
+			workbook = getUnprotectedWorkbook(Files.newInputStream(file));
 		}
 		catch (Exception e)
 		{
 			try
 			{
-				workbook = decryptWorkbook(new FileInputStream(file));
+				workbook = decryptWorkbook(Files.newInputStream(file));
 			}
 			catch (Exception e1)
 			{

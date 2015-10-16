@@ -1,7 +1,6 @@
 package org.bimserver.cobie.plugin.serializers;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,7 +9,6 @@ import java.util.Set;
 import org.bimserver.cobie.shared.reporting.COBieQCValidationPhase;
 import org.bimserver.cobie.shared.reporting.COBieSchematronCheckerSettings;
 import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
-import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
 import org.bimserver.emf.Schema;
 import org.bimserver.plugins.Plugin;
 import org.bimserver.plugins.PluginConfiguration;
@@ -29,7 +27,7 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 	private static final String CSS_PATH = "lib/SpaceReport.css";
 	private static final String SCHEMATRON_SAXON_SKELETON_PATH = "lib/iso_schematron_skeleton_for_saxon.xsl";
 	private ArrayList<String> configFilePaths;
-	private HashMap<String, File> configFiles;
+	private HashMap<String, Path> configFiles;
 	private COBieSchematronCheckerSettings checkerSettings;
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
@@ -61,20 +59,9 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 		configFilePaths.add(CSS_PATH);
 		configFilePaths.add(SCHEMATRON_FUNCTIONPATH);
 		pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name());
-		try
-		{
-			configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(
-					pluginManager, getDefaultName(), this, configFilePaths);
-		}
-		catch (FileNotFoundException e)
-		{
-			e.printStackTrace();
-			throw new PluginException("Could not find configuration files");
-		}
-		
-		checkerSettings = new COBieSchematronCheckerSettings(configFiles.get(SCHEMATRON_RULEPATH).getAbsolutePath(), 
-				configFiles.get(PRE_PROCESSOR_PATH).getAbsolutePath(), configFiles
-				.get(SVRL_HTML_XSLT_PATH).getAbsolutePath(), COBieQCValidationPhase.Construction);
+		checkerSettings = new COBieSchematronCheckerSettings(configFiles.get(SCHEMATRON_RULEPATH).toString(), 
+				configFiles.get(PRE_PROCESSOR_PATH).toString(), configFiles
+				.get(SVRL_HTML_XSLT_PATH).toString(), COBieQCValidationPhase.Construction);
 		initialized = true;
 	}
 

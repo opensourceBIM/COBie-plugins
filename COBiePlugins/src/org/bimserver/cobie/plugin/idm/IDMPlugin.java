@@ -1,13 +1,12 @@
 package org.bimserver.cobie.plugin.idm;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
-import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
 import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Package;
 import org.bimserver.models.store.ObjectDefinition;
 import org.bimserver.plugins.PluginConfiguration;
+import org.bimserver.plugins.PluginContext;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.objectidms.ObjectIDM;
@@ -18,7 +17,7 @@ public abstract class IDMPlugin implements ObjectIDMPlugin
 {
 	protected boolean initialized;
 	protected COBieIDM cobieObjectIDM;
-	protected File ignoreFile;
+	protected Path ignoreFile;
 	private static final String FILE_BASED_OBJECT_IDM_PLUGIN_NAME = "FileBasedObjectIDMPlugin";
 
 	public abstract String getIgnoreFilePath();
@@ -44,15 +43,8 @@ public abstract class IDMPlugin implements ObjectIDMPlugin
 	@Override
 	public void init(PluginManager pluginManager) throws PluginException
 	{
-		try
-		{
-			ignoreFile = PluginRuntimeFileHelper.prepareSerializerConfigFile(
-					pluginManager, getDefaultName(), this, getIgnoreFilePath());
-		}
-		catch (FileNotFoundException e)
-		{
-			throw new PluginException("Could not find configuration files");
-		}
+		PluginContext pluginContext = pluginManager.getPluginContext(this);
+		ignoreFile = pluginContext.getRootPath().resolve(getIgnoreFilePath());
 		
 		ObjectIDMPlugin idmPlugin = null;
 		ArrayList<ObjectIDMPlugin> idmplugins = (ArrayList<ObjectIDMPlugin>) pluginManager

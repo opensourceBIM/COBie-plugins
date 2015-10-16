@@ -1,6 +1,6 @@
 package org.bimserver.cobie.plugin.idm;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -30,7 +30,7 @@ public class COBieIDM implements ObjectIDM, COBieFilterable
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(COBieIDM.class);
 	private JAXBContext jaxbContext;
-	private File cobieIgnoreFile;
+	private Path cobieIgnoreFile;
 	private ObjectIDMPlugin defaultIDM;
 	private ArrayList<String> ignoreClassNames;
 	private String pluginName;
@@ -40,7 +40,7 @@ public class COBieIDM implements ObjectIDM, COBieFilterable
 		ignoreClassNames = new ArrayList<String>();
 	}
 
-	public COBieIDM(File ignoreFile, Set<Ifc2x3tc1Package> set,
+	public COBieIDM(Path ignoreFile, Set<Ifc2x3tc1Package> set,
 			PluginContext pluginContext, ObjectIDMPlugin fileBasedIDM)
 	{
 		this();
@@ -51,11 +51,11 @@ public class COBieIDM implements ObjectIDM, COBieFilterable
 
 			defaultIDM = fileBasedIDM;
 			LOGGER.info(LOGGER_MESSAGE_START_IGNORE_READ_PREFIX
-					+ ignoreFile.getName());
+					+ ignoreFile.getFileName().toString());
 			jaxbContext = JAXBContext.newInstance(PackageDefinition.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			PackageDefinition packageDefinition = (PackageDefinition) unmarshaller
-					.unmarshal(cobieIgnoreFile);
+					.unmarshal(cobieIgnoreFile.toFile());
 			for (ClassDefinition classDefinition : packageDefinition
 					.getClassDefinitions())
 			{
@@ -98,7 +98,7 @@ public class COBieIDM implements ObjectIDM, COBieFilterable
 		}
 		else
 		{
-			LOGGER.info("Ignore file " + cobieIgnoreFile.getName()
+			LOGGER.info("Ignore file " + cobieIgnoreFile.getFileName().toString()
 					+ " is empty");
 		}
 	}

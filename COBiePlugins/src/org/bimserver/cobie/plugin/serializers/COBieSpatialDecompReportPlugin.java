@@ -1,39 +1,25 @@
 package org.bimserver.cobie.plugin.serializers;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 
-
-
-
-
-
-
-
 import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
-import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
 import org.bimserver.emf.Schema;
-//import org.bimserver.emf.Schema;
-import org.bimserver.plugins.Plugin;
 import org.bimserver.plugins.PluginConfiguration;
+import org.bimserver.plugins.PluginContext;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
-import org.bimserver.plugins.schema.SchemaPlugin;
 import org.bimserver.plugins.serializers.AbstractSerializerPlugin;
 import org.bimserver.plugins.serializers.Serializer;
 
 public class COBieSpatialDecompReportPlugin extends AbstractSerializerPlugin 
 {
 private boolean initialized = false;
-private static final String SPACE_REPORT_CSS_PATH =
-"lib/SpaceReport.css";
+private static final String SPACE_REPORT_CSS_PATH = "lib/SpaceReport.css";
 private static final String SPACE_REPORT_XSLT_PATH="lib/SpatialDecompReport.xslt";
-private ArrayList<String> configFilePaths;
-private HashMap<String,File> configFiles;
+private HashMap<String,Path> configFiles;
 	@Override
 	public String getDescription() {
 		return COBieSerializerPluginInfo.REPORT_SPATIAL_DECOMPOSITION.getDescription();
@@ -51,31 +37,16 @@ private HashMap<String,File> configFiles;
 
 	@Override
 	public void init(PluginManager pluginManager) throws PluginException {
-		configFilePaths = new ArrayList<String>();
+		PluginContext pluginContext = pluginManager.getPluginContext(this);
+		
+		configFiles = new HashMap<String, Path>();
+		
+		configFiles.put(SPACE_REPORT_XSLT_PATH, pluginContext.getRootPath().resolve(SPACE_REPORT_XSLT_PATH));
+		configFiles.put(SPACE_REPORT_CSS_PATH, pluginContext.getRootPath().resolve(SPACE_REPORT_CSS_PATH));
 
-		configFilePaths.add(SPACE_REPORT_XSLT_PATH);
-		configFilePaths.add(SPACE_REPORT_CSS_PATH);
-	//	pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name().toString());
-		try
-		{
-			this.configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, getDefaultName(), this, configFilePaths);
-		}
-		catch (FileNotFoundException e)
-		{
-			e.printStackTrace();
-			throw new PluginException("Could not find configuration files");
-		}
 		initialized = true;
 	}
-
 	
-	//i am unsure of what this function does 
-	public Set<Class<? extends Plugin>> getRequiredPlugins() {
-		Set<Class<? extends Plugin>> set = new HashSet<Class<? extends Plugin>>();
-		set.add(SchemaPlugin.class);
-		return set;
-	}
-
 	public Serializer createSerializer() {
 		return createSerializer(null);
 
@@ -116,8 +87,8 @@ private HashMap<String,File> configFiles;
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new org.bimserver.cobie.shared.serialization.COBieHTMLReportSerializer(this.configFiles.get(SPACE_REPORT_XSLT_PATH).getAbsolutePath(),
-				this.configFiles.get(SPACE_REPORT_CSS_PATH).getAbsolutePath());
+		return new org.bimserver.cobie.shared.serialization.COBieHTMLReportSerializer(this.configFiles.get(SPACE_REPORT_XSLT_PATH).toString(),
+				this.configFiles.get(SPACE_REPORT_CSS_PATH).toString());
 	}
 
 
