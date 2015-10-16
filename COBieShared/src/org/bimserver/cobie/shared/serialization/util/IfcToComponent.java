@@ -535,7 +535,7 @@ public class IfcToComponent
         String pString = null;
         ArrayList<String> typePNames = IfcToComponent.getInstallationDateStrings();
         pString = IfcRelationshipsToCOBie.getHighestRankingPropertyStringFromRelDefinesList(product.getIsDefinedBy(), typePNames, false);
-        return COBieUtility.getCOBieString(pString);
+        return COBieUtility.NormalizeDateString(COBieUtility.getCOBieString(pString));
     }
 
     protected static boolean isAssetComponent(IfcObjectDefinition objDef)
@@ -734,7 +734,7 @@ public class IfcToComponent
         String pString = null;
         ArrayList<String> typePNames = IfcToComponent.getWarrantyStartDateStrings();
         pString = IfcRelationshipsToCOBie.getHighestRankingPropertyStringFromRelDefinesList(product.getIsDefinedBy(), typePNames, false);
-        return COBieUtility.getCOBieString(pString);
+        return COBieUtility.NormalizeDateString(COBieUtility.getCOBieString(pString));
     }
 
     public static COBIEType writeComponentsToCOBie(COBIEType cType, IfcModelInterface model)

@@ -849,7 +849,7 @@ public class COBieUtility
             if ((selectedObj instanceof Calendar) || (selectedObj instanceof XmlCalendar) || (selectedObj instanceof XmlDateTime))
             {
                 XmlDateTime xDateTime = (XmlDateTime)selectedObj;
-                if (xDateTime.getCalendarValue().getTimeInMillis() == 0)
+                if (xDateTime.getCalendarValue().getTimeInMillis() <= 0)
                 {
                 	formattedDate = COBieUtility.COBieNA;
                 }
@@ -906,6 +906,31 @@ public class COBieUtility
         }
         return calendar;
     }
+
+
+    /***
+     * This function checks the string to see if it is a valid date.  If it is a valid date then
+     * it will be set to n/a if it is equal to or before the Java Epoch datetime (1969)
+     * @param dateString
+     * @return
+     */
+	public static String NormalizeDateString(String dateString) 
+	{
+		String returnValue = dateString;
+		try 
+		{
+			Calendar calendar = COBieUtility.calendarFromStringWithException(dateString);
+			if(calendar.getTimeInMillis() <=0)
+			{
+				returnValue = COBieUtility.COBieNA;
+			}
+			
+		} catch (Exception e) 
+		{
+			//do nothing
+		}
+		return returnValue;
+	}
 
 
 
