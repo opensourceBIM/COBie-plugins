@@ -1,14 +1,15 @@
 package org.bimserver.cobie.shared.reporting;
 
+import java.nio.file.Path;
 
 public class COBieSchematronCheckerSettings
 {
-    private String schematronRulePath;
-    private String preProcessorPath;
-    private String svrlHTMLPath;
+    private Path schematronRulePath;
+    private Path preProcessorPath;
+    private Path svrlHTMLPath;
     private COBieQCValidationPhase phase;
     
-    public COBieSchematronCheckerSettings(String schematronRulePath, String preProcessorPath, String svrlHTMLPath, COBieQCValidationPhase phase)
+    public COBieSchematronCheckerSettings(Path schematronRulePath, Path preProcessorPath, Path svrlHTMLPath, COBieQCValidationPhase phase)
     {
         setSchematronRulePath(schematronRulePath);
         setPreProcessorPath(preProcessorPath);
@@ -16,27 +17,27 @@ public class COBieSchematronCheckerSettings
         setPhase(phase);
     }
     
-    public String getSchematronRulePath()
+    public Path getSchematronRulePath()
     {
         return schematronRulePath;
     }
-    public void setSchematronRulePath(String schematronRulePath)
+    public void setSchematronRulePath(Path schematronRulePath)
     {
         this.schematronRulePath = schematronRulePath;
     }
-    public String getPreProcessorPath()
+    public Path getPreProcessorPath()
     {
         return preProcessorPath;
     }
-    public void setPreProcessorPath(String preProcessorPath)
+    public void setPreProcessorPath(Path preProcessorPath)
     {
         this.preProcessorPath = preProcessorPath;
     }
-    public String getSvrlHTMLPath()
+    public Path getSvrlHTMLPath()
     {
         return svrlHTMLPath;
     }
-    public void setSvrlHTMLPath(String svrlHTMLPath)
+    public void setSvrlHTMLPath(Path svrlHTMLPath)
     {
         this.svrlHTMLPath = svrlHTMLPath;
     }

@@ -12,6 +12,7 @@ import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
 import org.bimserver.emf.Schema;
 import org.bimserver.plugins.Plugin;
 import org.bimserver.plugins.PluginConfiguration;
+import org.bimserver.plugins.PluginContext;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.schema.SchemaPlugin;
@@ -27,8 +28,10 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 	private static final String CSS_PATH = "lib/SpaceReport.css";
 	private static final String SCHEMATRON_SAXON_SKELETON_PATH = "lib/iso_schematron_skeleton_for_saxon.xsl";
 	private ArrayList<String> configFilePaths;
-	private HashMap<String, Path> configFiles;
 	private COBieSchematronCheckerSettings checkerSettings;
+	private Path schematronRulePath;
+	private Path preProcessorPath;
+	private Path svrlHtmlXsltPath;
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
@@ -59,9 +62,13 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 		configFilePaths.add(CSS_PATH);
 		configFilePaths.add(SCHEMATRON_FUNCTIONPATH);
 		pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name());
-		checkerSettings = new COBieSchematronCheckerSettings(configFiles.get(SCHEMATRON_RULEPATH).toString(), 
-				configFiles.get(PRE_PROCESSOR_PATH).toString(), configFiles
-				.get(SVRL_HTML_XSLT_PATH).toString(), COBieQCValidationPhase.Construction);
+		
+		PluginContext pluginContext = pluginManager.getPluginContext(this);
+		schematronRulePath = pluginContext.getRootPath().resolve(SCHEMATRON_RULEPATH);
+		preProcessorPath = pluginContext.getRootPath().resolve(PRE_PROCESSOR_PATH);
+		svrlHtmlXsltPath = pluginContext.getRootPath().resolve(SVRL_HTML_XSLT_PATH);
+		
+		checkerSettings = new COBieSchematronCheckerSettings(schematronRulePath, preProcessorPath, svrlHtmlXsltPath, COBieQCValidationPhase.Construction);
 		initialized = true;
 	}
 

@@ -5,13 +5,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Path;
 import java.util.UUID;
 
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 
-import org.nibs.cobie.tab.COBIEDocument;
 import org.jdom.input.SAXBuilder;
+import org.nibs.cobie.tab.COBIEDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,16 +57,16 @@ public class COBieSchematronChecker
     {
         LOGGER.info(MSG_SCHEMATRON_XSLT_BEGIN);
 
-        File ruleFile = new File(getschematronRulePath());
+        File ruleFile = getschematronRulePath().toFile();
         try
         {
-            saxBuilder.build(new File(getPreProcessorPath()));
+            saxBuilder.build(getPreProcessorPath().toFile());
         } catch (Exception e)
         {
             LOGGER.error(MSG_SCHEMATRON_XSLT_ERROR + e.getMessage());
             throw e;
         }
-        File preProcessor = new File(getPreProcessorPath());
+        File preProcessor = getPreProcessorPath().toFile();
         XSLTransform transformer =
                 new XSLTransform(new StreamSource(ruleFile), new StreamSource(preProcessor),
                 transformerFactory);
@@ -106,14 +107,14 @@ public class COBieSchematronChecker
     
     private File getTempFile(String extension)
     {
-        File ruleDirectory = new File(getschematronRulePath()).getParentFile();
+        File ruleDirectory = getschematronRulePath().toFile().getParentFile();
         return new File(ruleDirectory, UUID.randomUUID().toString() +"."+extension);
     }
 
     private void transformSVRLtoHTML(OutputStream outputStream) throws Exception
     {
         LOGGER.info(MSG_HTML_XSLT_BEGIN);
-        File svrlHTMLFile = new File(getSVRLHtmlPath());
+        File svrlHTMLFile = getSVRLHtmlPath().toFile();
 
         try
         {
@@ -184,17 +185,17 @@ public class COBieSchematronChecker
         this.settings = settings;
     }
     
-    private String getschematronRulePath()
+    private Path getschematronRulePath()
     {
         return settings.getSchematronRulePath();
     }
     
-    private String getPreProcessorPath()
+    private Path getPreProcessorPath()
     {
         return settings.getPreProcessorPath();
     }
     
-    private String getSVRLHtmlPath()
+    private Path getSVRLHtmlPath()
     {
         return settings.getSvrlHTMLPath();
     }
