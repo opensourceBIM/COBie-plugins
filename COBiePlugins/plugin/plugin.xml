@@ -30,5 +30,8 @@
 		<implementationClass>org.bimserver.cobie.plugin.deserializers.COBieDeserializerPlugin</implementationClass>
 		<enabled>true</enabled>
 	</PluginImplementation>
+	<dependencies>
+		<Dependency path="COBieShared"></Dependency>
+	</dependencies>
 </PluginDescriptor>
 
