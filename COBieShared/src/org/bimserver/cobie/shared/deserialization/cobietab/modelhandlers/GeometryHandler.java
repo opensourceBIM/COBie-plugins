@@ -100,10 +100,10 @@ public class GeometryHandler
 
     private IfcGuidHandler cobieGuidHandler;
 
-    private OidProvider<Long> cobieOidProvider;
+    private OidProvider cobieOidProvider;
     private COBieIfcModel model;
 
-    public GeometryHandler(OidProvider<Long> oidProvider, COBieIfcModel model, IfcGuidHandler guidHandler)
+    public GeometryHandler(OidProvider oidProvider, COBieIfcModel model, IfcGuidHandler guidHandler)
     {
         setCobieOidProvider(oidProvider);
         setModel(model);
@@ -115,7 +115,7 @@ public class GeometryHandler
         return cobieGuidHandler;
     }
 
-    public OidProvider<Long> getCobieOidProvider()
+    public OidProvider getCobieOidProvider()
     {
         return cobieOidProvider;
     }
@@ -251,7 +251,7 @@ public class GeometryHandler
         this.cobieGuidHandler = cobieGuidHandler;
     }
 
-    private void setCobieOidProvider(OidProvider<Long> cobieOidProvider)
+    private void setCobieOidProvider(OidProvider cobieOidProvider)
     {
         this.cobieOidProvider = cobieOidProvider;
     }

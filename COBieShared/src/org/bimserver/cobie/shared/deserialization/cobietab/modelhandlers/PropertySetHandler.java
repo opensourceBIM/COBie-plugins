@@ -57,7 +57,7 @@ public class PropertySetHandler
         return propertySetHeight;
     }
 
-    private OidProvider<Long> cobieOidProvider;
+    private OidProvider cobieOidProvider;
     private COBieIfcModel model;
     private IfcGuidHandler guidProvider;
     private OwnerHistoryHandler ownerHistoryProvider;
@@ -69,7 +69,7 @@ public class PropertySetHandler
 
     protected static final String relDefByPropertiesCOBieNameDescription = "Associated COBie Attributes";
 
-    public PropertySetHandler(COBieIfcModel cobieIfcModel, OidProvider<Long> oidProvider, IfcGuidHandler IfcGuidProvider,
+    public PropertySetHandler(COBieIfcModel cobieIfcModel, OidProvider oidProvider, IfcGuidHandler IfcGuidProvider,
             OwnerHistoryHandler ownerHistoryProvider)
     {
         model = cobieIfcModel;

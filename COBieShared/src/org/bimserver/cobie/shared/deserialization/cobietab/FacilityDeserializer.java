@@ -147,7 +147,7 @@ public class FacilityDeserializer
     private IfcCommonHandler ifcCommonHandler;
     private COBieIfcModel model;
     private IfcGuidHandler guidProvider;
-    private OidProvider<Long> cobieOidProvider;
+    private OidProvider cobieOidProvider;
 
     private OwnerHistoryHandler ownerHistoryProvider;
 

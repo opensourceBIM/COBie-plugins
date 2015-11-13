@@ -149,7 +149,7 @@ public class COBieIfcModel extends IfcModel
         initializeHashMaps();
     }
 
-    public long add(IdEObject eObject, OidProvider<Long> oidProvider) throws IfcModelInterfaceException
+    public long add(IdEObject eObject, OidProvider oidProvider) throws IfcModelInterfaceException
     {
         long oid;
 
@@ -197,7 +197,7 @@ public class COBieIfcModel extends IfcModel
     }
 
     // up to TWO coordinates per productDefinitionShape
-    public long addCoordinates(List<CoordinateType> coordinates, IfcProductDefinitionShape productDefinitionShape, OidProvider<Long> oidProvider)
+    public long addCoordinates(List<CoordinateType> coordinates, IfcProductDefinitionShape productDefinitionShape, OidProvider oidProvider)
             throws IfcModelInterfaceException
     {
         long oid = oidProvider.newOid(null);
