@@ -22,7 +22,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bimserver.cobie.shared.deserialization.cobietab.ConnectionDeserializer;
 import org.bimserver.cobie.shared.utility.COBieIfcUtility;
 import org.bimserver.cobie.shared.utility.COBieUtility;
 import org.bimserver.cobie.shared.utility.ifc.IfcRelationshipsToCOBie;
@@ -47,7 +46,7 @@ public class IfcToType
     private static final String NONFIXED_ASSET_TYPE_LCASE = "nonfixed";
     private static final String MOVEABLE_ASSET_TYPE_LCASE = "moveable";
     private static final ArrayList<String> excludeAssetStrings = new ArrayList<String>(Arrays.asList("IfcBeamType", "IfcMaterial",
-            "IfcMaterialLayerSet", "IfcCableCarrierSegmentType", "IfcCableSegmentType", "IfcColumnType", "IfcCurtainWallType", "IfcDuctFittingType",
+            "IfcMaterialLayerSet", "IfcCableCarrierSegmentType", "IfcCableSegmentType", "IfcColumnType", "IfcCoveringType","IfcCurtainWallType", "IfcDuctFittingType",
             "IfcDuctSegmentType", "IfcFastenerType", "IfcJunctionBoxType", "IfcMemberType", "IfcPipeFittingType", "IfcPipeSegmentType",
             "IfcPlateType", "IfcRailingType", "IfcRampFlightType", "IfcRampType", "IfcSlabType", "IfcSpaceType", "IfcStairFlightType",
             "IfcStairType", "IfcWallType", "IfcTypeObject", "IfcTypeProduct", "IfcElementType"));
@@ -348,12 +347,9 @@ public class IfcToType
             {
                 IfcTypeObject type = defByType.getRelatingType();
                 name = IfcToType.nameFromTypeObject(type);
-                if (!selectedTypes.contains(name))
+                if (!selectedTypes.contains(name) && IfcToType.isAssetType(type))
                 {
-                    if (!isBAMieVirtualControllerTypeDefinition(defByType))
-                    {
-                        relTypes.add(defByType);
-                    }
+                	relTypes.add(defByType);
                 }
             } catch (Exception e)
             {
@@ -517,16 +513,6 @@ public class IfcToType
         pString = getTypePropertySearchResult(type, typePNames);
 
         return COBieUtility.getCOBieString(pString);
-    }
-
-    private static boolean isBAMieVirtualControllerTypeDefinition(IfcRelDefinesByType defByType)
-    {
-        boolean isBAMie = false;
-        if (defByType.isSetName() && !COBieUtility.isNA(defByType.getName()))
-        {
-            isBAMie = (defByType.getName().startsWith(ConnectionDeserializer.BAMIE_VIRTUAL_CONTROLLER_TYPE_RELATION_PREFIX));
-        }
-        return isBAMie;
     }
 
     protected static String manufacturerFromTypeObject(IfcTypeObject type)

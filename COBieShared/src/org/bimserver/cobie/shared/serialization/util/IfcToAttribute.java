@@ -711,7 +711,11 @@ public class IfcToAttribute
 
             for (IfcObject obj : defByType.getRelatedObjects())
             {
-                if (obj instanceof IfcProduct)
+            	//Because the BIMServer IDM plugins are no longer supported, filtering of components
+            	//and types must occur wherever they are references (until the code is refactored with
+            	//a better solution in mind, e.g. adding a IDM-like filtering stage at the beginning of the transform).
+            	//https://github.com/opensourceBIM/COBie-plugins/issues/15
+                if (obj instanceof IfcProduct && IfcToComponent.isAssetComponent(obj))
                 {
                     tempProduct = (IfcProduct)obj;
                     name = IfcToComponent.nameFromProduct(tempProduct);

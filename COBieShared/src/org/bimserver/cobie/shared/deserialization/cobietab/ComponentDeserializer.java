@@ -274,9 +274,17 @@ public class ComponentDeserializer
     {
         try
         {
-            IfcLocalPlacement spacePlacement = ifcCommonHandler.getGeometryHandler().getSpaceLocalPlacement(component.getSpace());
-            IfcLocalPlacement componentPlacement = ifcCommonHandler.getGeometryHandler().newDefaultLocalPlacement(spacePlacement);
-            product.setObjectPlacement(componentPlacement);
+        	if(!COBieUtility.isNA(component.getSpace()))
+        	{
+        		 IfcLocalPlacement spacePlacement = ifcCommonHandler.getGeometryHandler().getSpaceLocalPlacement(component.getSpace());
+                 if(spacePlacement != null)
+                 {
+            		 IfcLocalPlacement componentPlacement = ifcCommonHandler.getGeometryHandler().newDefaultLocalPlacement(spacePlacement);
+                     product.setObjectPlacement(componentPlacement);
+                 }
+
+        	}
+           
         } catch (Exception ex)
         {
             LOGGER.error(ERROR_PREFIX_LOCAL_PLACEMENT, component.getName());
