@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title></title>
+      <meta name="generator" content="Altova StyleVision Enterprise Edition 2013 rel. 2 sp2 (x64) (http://www.altova.com)" />
+      <meta http-equiv="X-UA-Compatible" content="IE=7" /><style type="text/css">
+/*<![CDATA[/* */
+body { background:#fff;
+font:76%/160% "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+ }
+ table { border-right:1px solid #e5eff8;
+border-top:1px solid #e5eff8;
+width:90%;
+ }
+ tr.odd td { background:#f7fbff;
+ }
+ tr.odd .column1 { background:#f4f9fe;
+ }
+ .column1 { background:#f9fcfe;
+ }
+ td { border-bottom:1px solid #e5eff8;
+border-left:1px solid #e5eff8;
+color:#678197;
+padding:1em 1em;
+text-align:center;
+ }
+ th { border-bottom:1px solid #e5eff8;
+border-left:1px solid #e5eff8;
+color:#678197;
+font-weight:normal;
+padding:.3em 1em;
+text-align:left;
+ }
+ thead th { background:#f4f9fe;
+color:#66a3d3;
+font:bold 1.2em/2em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+text-align:center;
+ }
+ tfoot th { background:#f4f9fe;
+text-align:center;
+ }
+ tfoot th strong { color:#66a3d3;
+font:bold 1.2em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+margin:.5em .5em .5em 0;
+ }
+ tfoot th em { color:#f03b58;
+font-size:1.1em;
+font-style:normal;
+font-weight:bold;
+ }
+ table a, table a:link, table a:visited { border:none;
+ }
+ a:hover,a:focus { border-bottom:1px solid #f03b58;
+color:#f03b58;
+text-decoration:none;
+ }
+ a:visited { border-bottom:none;
+color:rgb(0, 138, 255);
+text-decoration:none;
+ }
+ a:link { border-bottom:1px dotted rgb(0, 138, 255);
+color:rgb(0, 138, 255);
+text-decoration:none;
+ }
+ html, body, form, fieldset, h1, h2, h3, h4, h5, h6, pre, blockquote, ul, ol, dl, address { margin:10px;
+padding:0;
+ }
+ p { font-size:small;
+margin-left:20px;
+ }
+ h2 { font-size:xx-large;
+ }
+ h3 { font-size:x-large;
+ }
+ h4 { font-size:large;
+ }
+ h5 { font-size:medium;
+ }
+/*]]>/* */
+</style>
+      <!--[if IE]><STYLE type="text/css">.altova-rotate-left-textbox{filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3)} .altova-rotate-right-textbox{filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1)} </STYLE><![endif]-->
+      <!--[if !IE]><!--><style type="text/css">.altova-rotate-left-textbox{-webkit-transform: rotate(-90deg) translate(-100%, 0%); -webkit-transform-origin: 0% 0%;-moz-transform: rotate(-90deg) translate(-100%, 0%); -moz-transform-origin: 0% 0%;-ms-transform: rotate(-90deg) translate(-100%, 0%); -ms-transform-origin: 0% 0%;}.altova-rotate-right-textbox{-webkit-transform: rotate(90deg) translate(0%, -100%); -webkit-transform-origin: 0% 0%;-moz-transform: rotate(90deg) translate(0%, -100%); -moz-transform-origin: 0% 0%;-ms-transform: rotate(90deg) translate(0%, -100%); -ms-transform-origin: 0% 0%;}</style>
+      <!--<![endif]--><style type="text/css">@page { margin-left:0.60in; margin-right:0.60in; margin-top:0.79in; margin-bottom:0.79in } @media print { br.altova-page-break { page-break-before: always; } }</style></head>
+   <body>
+      <h1>COBie QC report - Design Deliverable</h1>
+      <p><span>2016-02-07T11:12:50</span></p>
+      <hr />
+      <h2></h2>
+      <h4><span style="font-weight:bold; ">Instructions</span></h4>
+      <p style="text-align:justify; "><span>Save a new copy of your COBie spreadsheet to a new file. The errors in this report will match by Worksheet Name, Row Number, and object name to the data in your file.&nbsp; For example, a problem with the fifth space, named "Vestibule," willbe listed as Space[5]:Vestibule.&nbsp; Once each relevant issue is fixed, re-run your file. </span></p>
+      <div style="text-align:left; ">
+         <hr /><a name="d20930e34"></a><span>&nbsp;</span><h4><span>1</span><span> COBie Summary Table</span></h4>
+         <p><span>Note: Row/Column checks are only listed for worksheets containing at least one row,
+               but row count checks are listed for Contact, Facility, Space, Type, and Component
+               (worksheets that must contain data) regardless of row count. </span></p><br /><a name="TOC">
+            <table border="1">
+               <thead>
+                  <tr>
+                     <th><span>Worksheet</span></th>
+                     <th><span>Has Rows?</span></th>
+                     <th><span>Row Count</span></th>
+                     <th><span>Row Warning Count</span></th>
+                     <th><span>Row Error Count</span></th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td><a href="#COBie.Contacts.Contact">Contact</a></td>
+                     <td><a href="#countContacts">true</a></td>
+                     <td>1</td>
+                     <td><a href="#detailsCOBie.Contacts.Contact">0</a></td>
+                     <td><a href="#detailsCOBie.Contacts.Contact">0</a></td>
+                  </tr>
+                  <tr>
+                     <td><a href="#COBie.Facilities.Facility">Facility</a></td>
+                     <td><a href="#countFacilities">true</a></td>
+                     <td>1</td>
+                     <td><a href="#detailsCOBie.Facilities.Facility">0</a></td>
+                     <td><a href="#detailsCOBie.Facilities.Facility">0</a></td>
+                  </tr>
+                  <tr>
+                     <td><a href="#COBie.Floors.Floor">Floor</a></td>
+                     <td><a href="#countFloors">true</a></td>
+                     <td>4</td>
+                     <td><a href="#detailsCOBie.Floors.Floor">0</a></td>
+                     <td><a href="#detailsCOBie.Floors.Floor">0</a></td>
+                  </tr>
+                  <tr>
+                     <td><a href="#COBie.Spaces.Space">Space</a></td>
+                     <td><a href="#countSpaces">true</a></td>
+                     <td>63</td>
+                     <td><a href="#detailsCOBie.Spaces.Space">0</a></td>
+                     <td><a href="#detailsCOBie.Spaces.Space">0</a></td>
+                  </tr>
+                  <tr>
+                     <td><a href="#COBie.Zones.Zone">Zone</a></td>
+                     <td><a href="#countZones">true</a></td>
+                     <td>63</td>
+                     <td><a href="#detailsCOBie.Zones.Zone">0</a></td>
+                     <td><a href="#detailsCOBie.Zones.Zone">0</a></td>
+                  </tr>
+                  <tr>
+                     <td><a href="#COBie.Types.Type">Type</a></td>
+                     <td><a href="#countTypes">true</a></td>
+                     <td>99</td>
+                     <td><a href="#detailsCOBie.Types.Type">0</a></td>
+                     <td><a href="#detailsCOBie.Types.Type">0</a></td>
+                  </tr>
+                  <tr>
+                     <td><a href="#COBie.Components.Component">Component</a></td>
+                     <td><a href="#countComponents">true</a></td>
+                     <td>397</td>
+                     <td><a href="#detailsCOBie.Components.Component">0</a></td>
+                     <td><a href="#detailsCOBie.Components.Component">0</a></td>
+                  </tr>
+                  <tr>
+                     <td>System</td>
+                     <td><a href="#countSystems">false</a></td>
+                     <td><span>0</span></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                  </tr>
+                  <tr>
+                     <td>Assembly</td>
+                     <td><a href="#countAssemblies">false</a></td>
+                     <td><span>0</span></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                  </tr>
+                  <tr>
+                     <td>Connection</td>
+                     <td><a href="#countConnections">false</a></td>
+                     <td><span>0</span></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                  </tr>
+                  <tr>
+                     <td>Spare</td>
+                     <td><a href="#countSpares">false</a></td>
+                     <td><span>0</span></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                  </tr>
+                  <tr>
+                     <td>Resource</td>
+                     <td><a href="#countResources">false</a></td>
+                     <td><span>0</span></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                  </tr>
+                  <tr>
+                     <td>Job</td>
+                     <td><a href="#countJobs">false</a></td>
+                     <td><span>0</span></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                     <td><a href="#detailsn/a">n/a</a></td>
+                  </tr>
+                  <tr>
+                     <td><a href="#COBie.Documents.Document">Document</a></td>
+                     <td><a href="#countDocuments">true</a></td>
+                     <td>99</td>
+                     <td><a href="#detailsCOBie.Documents.Document">0</a></td>
+                     <td><a href="#detailsCOBie.Documents.Document">0</a></td>
+                  </tr>
+                  <tr>
+                     <td><a href="#COBie.Attributes.Attribute">Attribute</a></td>
+                     <td><a href="#countAttributes">true</a></td>
+                     <td>10361</td>
+                     <td><a href="#detailsCOBie.Attributes.Attribute">0</a></td>
+                     <td><a href="#detailsCOBie.Attributes.Attribute">0</a></td>
+                  </tr>
+               </tbody>
+            </table></a><br /><br /><br /><span>&nbsp;</span><a name="d20930e298"></a><span>&nbsp;</span><a name="COBie.Contacts">
+            <h4><span>1.1</span><span>&nbsp;</span>COBie.Contacts<span>&nbsp; </span><a name="countContacts"><span>(row count check)</span></a></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Contacts</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>1<span style="font-style:italic; "> of </span><span style="font-style:italic; ">1</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">Contacts.AtLeastOneRowPresent
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">ContactSheet: 0</p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">ContactSheet: 0</p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e363"></a><span>&nbsp;</span><a name="COBie.Contacts.Contact">
+            <h4><span>1.2</span><span>&nbsp;</span>COBie.Contacts.Contact<span>&nbsp; </span><span>(checked </span>1<span> row)</span></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Contacts.Contact</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>1<span style="font-style:italic; "> of </span><span style="font-style:italic; ">1</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">Email.Unique, Email.NotNull, Email.Format
+            			<span>, </span>CreatedBy.CrossReference, CreatedBy.NotNull
+            			<span>, </span>CreatedOn.NotNull, CreatedOn.Valid (ISO DateTime)
+            			<span>, </span>ExternalSystem.NotEmpty
+            			<span>, </span>ExternalObject.NotEmpty
+            			<span>, </span>ExternalIdentifier.NotEmpty
+            			<span>, </span>Category.NotNull
+            			<span>, </span>Company.NotNull
+            			<span>, </span>Phone.NotNull
+            			<span>, </span>Department.NotEmpty
+            			<span>, </span>OrganizationCode.NotEmpty
+            			<span>, </span>GivenName.NotEmpty
+            			<span>, </span>FamilyName.NotEmpty
+            			<span>, </span>Street.NotEmpty
+            			<span>, </span>PostalBox.NotEmpty
+            			<span>, </span>Town.NotEmpty
+            			<span>, </span>StateRegion.NotEmpty
+            			<span>, </span>PostalCode.NotEmpty
+            			<span>, </span>Country.NotEmpty
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">Email: 0<span>, </span>CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExternalSystem: 0<span>, </span>ExternalObject: 0<span>, </span>ExternalIdentifier: 0<span>, </span>Category: 0<span>, </span>Company: 0<span>, </span>Phone: 0<span>, </span>Department: 0<span>, </span>OrganizationCode: 0<span>, </span>GivenName: 0<span>, </span>FamilyName: 0<span>, </span>Street: 0<span>, </span>PostalBox: 0<span>, </span>Town: 0<span>, </span>StateRegion: 0<span>, </span>PostalCode: 0<span>, </span>Country: 0
+         </p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">Email: 0<span>, </span>CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExternalSystem: 0<span>, </span>ExternalObject: 0<span>, </span>ExternalIdentifier: 0<span>, </span>Category: 0<span>, </span>Company: 0<span>, </span>Phone: 0<span>, </span>Department: 0<span>, </span>OrganizationCode: 0<span>, </span>GivenName: 0<span>, </span>FamilyName: 0<span>, </span>Street: 0<span>, </span>PostalBox: 0<span>, </span>Town: 0<span>, </span>StateRegion: 0<span>, </span>PostalCode: 0<span>, </span>Country: 0
+         </p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e600"></a><span>&nbsp;</span><a name="COBie.Facilities">
+            <h4><span>1.3</span><span>&nbsp;</span>COBie.Facilities<span>&nbsp; </span><a name="countFacilities"><span>(row count check)</span></a></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Facilities</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>1<span style="font-style:italic; "> of </span><span style="font-style:italic; ">1</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">Facilities.OneAndOnlyOneFacilityFound
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">FacilitySheet: 0</p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">FacilitySheet: 0</p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e664"></a><span>&nbsp;</span><a name="COBie.Facilities.Facility">
+            <h4><span>1.4</span><span>&nbsp;</span>COBie.Facilities.Facility<span>&nbsp; </span><span>(checked </span>1<span> row)</span></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Facilities.Facility</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>1<span style="font-style:italic; "> of </span><span style="font-style:italic; ">1</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">Name.NotNotNull, Name.Unique<span>, </span>CreatedBy.CrossReference (ToContact), CreatedBy.NotNull<span>, </span>CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime)<span>, </span>Category.NotNull
+            			<span>, </span>Description.NotEmpty
+            			<span>, </span>ProjectName.NotNull
+            			<span>, </span>SiteName.NotNull
+            			<span>, </span>LinearUnits.NotNull
+            			<span>, </span>AreaUnits.NotNull
+            			<span>, </span>VolumeUnits.NotNull
+            			<span>, </span>Currency.NotNull
+            			<span>, </span>AreaMeasurement.NotNull
+            			<span>, </span>ExternalSystem.NotEmpty
+            			<span>, </span>ExternalProjectObject.NotEmpty
+            			<span>, </span>ExternalProjectIdentifier.NotEmpty
+            			<span>, </span>ExternalSiteObject.NotEmpty
+            			<span>, </span>ExternalSiteIdentifier.NotEmpty
+            			<span>, </span>ExternalFacilityObject.NotEmpty
+            			<span>, </span>ExternalFacilityIdentifier.NotEmpty
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">Name: 0<span>, </span>CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>Category: 0<span>, </span>Description: 0<span>, </span>ProjectName: 0<span>, </span>SiteName: 0<span>, </span>LinearUnits: 0<span>, </span>AreaUnits: 0<span>, </span>VolumeUnits: 0<span>, </span>CurrencyUnit: 0<span>, </span>AreaMeasurement: 0<span>, </span>ExternalSystem: 0<span>, </span>ExternalProjectObject: 0<span>, </span>ExternalProjectIdentifier: 0<span>, </span>ExternalSiteObject: 0<span>, </span>ExternalSiteIdentifier: 0<span>, </span>ExternalFacilityObject: 0<span>, </span>ExternalFacilityIdentifier: 0
+         </p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">Name: 0<span>, </span>CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>Category: 0<span>, </span>Description: 0<span>, </span>ProjectName: 0<span>, </span>SiteName: 0<span>, </span>LinearUnits: 0<span>, </span>AreaUnits: 0<span>, </span>VolumeUnits: 0<span>, </span>CurrencyUnit: 0<span>, </span>AreaMeasurement: 0<span>, </span>ExternalSystem: 0<span>, </span>ExternalProjectObject: 0<span>, </span>ExternalProjectIdentifier: 0<span>, </span>ExternalSiteObject: 0<span>, </span>ExternalSiteIdentifier: 0<span>, </span>ExternalFacilityObject: 0<span>, </span>ExternalFacilityIdentifier: 0
+         </p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e901"></a><span>&nbsp;</span><a name="COBie.Floors">
+            <h4><span>1.5</span><span>&nbsp;</span>COBie.Floors<span>&nbsp; </span><a name="countFloors"><span>(row count check)</span></a></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Floors</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>1<span style="font-style:italic; "> of </span><span style="font-style:italic; ">1</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">Floors.AtLeastOneRowPresent
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">FloorSheet: 0</p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">FloorSheet: 0</p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e966"></a><span>&nbsp;</span><a name="COBie.Floors.Floor">
+            <h4><span>1.6</span><span>&nbsp;</span>COBie.Floors.Floor<span>&nbsp; </span><span>(checked </span>4<span> rows)</span></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Floors.Floor</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>4<span style="font-style:italic; "> of </span><span style="font-style:italic; ">4</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">Name.NotNotNull, Name.Unique<span>, </span>CreatedBy.CrossReference (ToContact), CreatedBy.NotNull<span>, </span>CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime)<span>, </span>ExternalSystem.NotEmpty<span>, </span>ExternalObject.NotEmpty
+            			<span>, </span>ExtIdentifier.NotEmpty
+            			<span>, </span>Category.NotNull
+            			<span>, </span>Floor.Elevation.ValidNumberOrNA
+            			<span>, </span>Floor.Height.ZeroOrGreaterOrNA
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">Name: 0<span>, </span>CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Category: 0<span>, </span>Elevation: 0<span>, </span>Height: 0
+         </p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">Name: 0<span>, </span>CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Category: 0<span>, </span>Elevation: 0<span>, </span>Height: 0
+         </p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e1107"></a><span>&nbsp;</span><a name="COBie.Spaces">
+            <h4><span>1.7</span><span>&nbsp;</span>COBie.Spaces<span>&nbsp; </span><a name="countSpaces"><span>(row count check)</span></a></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Spaces</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>1<span style="font-style:italic; "> of </span><span style="font-style:italic; ">1</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">Spaces.AtLeastOneRowPresent
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">SpaceSheet: 0</p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">SpaceSheet: 0</p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e1171"></a><span>&nbsp;</span><a name="COBie.Spaces.Space">
+            <h4><span>1.8</span><span>&nbsp;</span>COBie.Spaces.Space<span>&nbsp; </span><span>(checked </span>63<span> rows)</span></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Spaces.Space</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>63<span style="font-style:italic; "> of </span><span style="font-style:italic; ">63</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">CreatedBy.CrossReference (ToContact), CreatedBy.NotNull<span>, </span>CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime)<span>, </span>ExternalSystem.NotEmpty<span>, </span>ExternalObject.NotEmpty
+            			<span>, </span>ExtIdentifier.NotEmpty
+            			<span>, </span>Category.NotNull
+            			<span>, </span>Name.NotNotNull, Name.Unique<span>, </span>FloorName.NotNull, FloorName.CrossReference
+            			<span>, </span>Description.NotNull
+            			<span>, </span>RoomTag.NotEmpty
+            			<span>, </span>UsableHeight.ZeroOrGreaterOrNA
+            			<span>, </span>GrossArea.ZeroOrGreaterOrNA
+            			<span>, </span>NetArea.ZeroOrGreaterOrNA
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Category: 0<span>, </span>Name: 0<span>, </span>FloorName: 0<span>, </span>Description: 0<span>, </span>RoomTag: 0<span>, </span>UsableHeight: 0<span>, </span>GrossArea: 0<span>, </span>NetArea: 0
+         </p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Category: 0<span>, </span>Name: 0<span>, </span>FloorName: 0<span>, </span>Description: 0<span>, </span>RoomTag: 0<span>, </span>UsableHeight: 0<span>, </span>GrossArea: 0<span>, </span>NetArea: 0
+         </p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e1351"></a><span>&nbsp;</span><a name="COBie.Zones.Zone">
+            <h4><span>1.9</span><span>&nbsp;</span>COBie.Zones.Zone<span>&nbsp; </span><span>(checked </span>63<span> rows)</span></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Zones.Zone</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>63<span style="font-style:italic; "> of </span><span style="font-style:italic; ">63</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">CreatedBy.CrossReference (ToContact), CreatedBy.NotNull<span>, </span>CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime)<span>, </span>Category.NotNull
+            			<span>, </span>Description.NotEmpty
+            			<span>, </span>ExternalSystem.NotEmpty<span>, </span>ExternalObject.NotEmpty
+            			<span>, </span>ExtIdentifier.NotEmpty
+            			<span>, </span>Name.NotNull
+            			<span>, </span> PrimaryKey.Unique (Name, Category, SpaceNames)
+            			<span>, </span>SpaceNames.NotNull, SpaceNames.CrossReference
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>Category: 0<span>, </span>Description: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Name: 0<span>, </span>PrimaryKey: 0<span>, </span>SpaceNames: 0
+         </p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>Category: 0<span>, </span>Description: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Name: 0<span>, </span>PrimaryKey: 0<span>, </span>SpaceNames: 0
+         </p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e1502"></a><span>&nbsp;</span><a name="COBie.Types">
+            <h4><span>1.10</span><span>&nbsp;</span>COBie.Types<span>&nbsp; </span><a name="countTypes"><span>(row count check)</span></a></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Types</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>1<span style="font-style:italic; "> of </span><span style="font-style:italic; ">1</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">Types.AtLeastOneRowPresent
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">TypeSheet: 0</p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">TypeSheet: 0</p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e1566"></a><span>&nbsp;</span><a name="COBie.Types.Type">
+            <h4><span>1.11</span><span>&nbsp;</span>COBie.Types.Type<span>&nbsp; </span><span>(checked </span>99<span> rows)</span></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Types.Type</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>99<span style="font-style:italic; "> of </span><span style="font-style:italic; ">99</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">Name.NotNotNull, Name.Unique<span>, </span>CreatedBy.CrossReference (ToContact), CreatedBy.NotNull<span>, </span>CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime)<span>, </span>Category.NotNull
+            			<span>, </span>ExternalSystem.NotEmpty<span>, </span>ExternalObject.NotEmpty
+            			<span>, </span>ExtIdentifier.NotEmpty
+            			<span>, </span>Type.Component.AComponentForEachType
+            			<span>, </span>AssetType.NotNull
+            			<span>, </span>Manufacturer.CrossReferenceOrNA(Contact Sheet)
+            			<span>, </span>ModelNumber.NotEmpty
+            			<span>, </span>WarrantyGuarantorParts.CrossReferenceOrNA (Contact Sheet)
+            			<span>, </span>WarrantyDurationParts.validNumberZeroOrGreaterOrNA
+            			<span>, </span>WarrantyGuarantorLabor.CrossReferenceOrNA (Contact Sheet)
+            			<span>, </span>WarrantyDurationLabor.ZeroOrGreaterOrNA
+            			<span>, </span>WarrantyDurationUnit.NotEmpty
+            			<span>, </span>ReplacementCost.ZeroOrGreaterOrNAr
+            			<span>, </span>ExpectedLife.ZeroOrGreaterOrNA
+            			<span>, </span>DurationUnit.NotNull
+            			<span>, </span>WarrantyDescription.NotEmpty
+            			<span>, </span>NominalLength.ZeroOrGreaterOrNA
+            			<span>, </span>NominalWidth.ZeroOrGreaterOrNA"
+            			<span>, </span>NominalHeight.ZeroOrGreater
+            			<span>, </span>ModelReference.NotEmpty
+            			<span>, </span>Shape.NotEmpty
+            			<span>, </span>Size.NotEmpty
+            			<span>, </span>Color.NotEmpty
+            			<span>, </span>Finish.NotEmpty
+            			<span>, </span>Grade.NotEmpty
+            			<span>, </span>Material.NotEmpty
+            			<span>, </span>Constituents.NotEmpty
+            			<span>, </span>Features.NotEmpty
+            			<span>, </span>AccessibilityPerformance.NotEmpty
+            			<span>, </span>CodePerformance.NotEmpty
+            			<span>, </span>SustainabilityPerformance.NotEmpty
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">Name: 0<span>, </span>CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>Category: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>TypeComponentSheets: 0<span>, </span>AssetType: 0<span>, </span>Manufacturer: 0<span>, </span>ModelNumber: 0<span>, </span>WarrantyGuarantorParts: 0<span>, </span>WarrantyDurationParts: 0<span>, </span>WarrantyGuarantorLabor: 0<span>, </span>WarrantyDurationLabor: 0<span>, </span>WarrantyDurationUnit: 0<span>, </span>ReplacementCost: 0<span>, </span>ExpectedLife: 0<span>, </span>DurationUnit: 0<span>, </span>WarrantyDescription: 0<span>, </span>NominalLength: 0<span>, </span>NominalWidth: 0<span>, </span>NominalHeight: 0<span>, </span>ModelReference: 0<span>, </span>Shape: 0<span>, </span>Size: 0<span>, </span>Color: 0<span>, </span>Finish: 0<span>, </span>Grade: 0<span>, </span>Material: 0<span>, </span>Constituents: 0<span>, </span>Features: 0<span>, </span>AccessibilityPerformance: 0<span>, </span>CodePerformance: 0<span>, </span>SustainabilityPerformance: 0
+         </p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">Name: 0<span>, </span>CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>Category: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>TypeComponentSheets: 0<span>, </span>AssetType: 0<span>, </span>Manufacturer: 0<span>, </span>ModelNumber: 0<span>, </span>WarrantyGuarantorParts: 0<span>, </span>WarrantyDurationParts: 0<span>, </span>WarrantyGuarantorLabor: 0<span>, </span>WarrantyDurationLabor: 0<span>, </span>WarrantyDurationUnit: 0<span>, </span>ReplacementCost: 0<span>, </span>ExpectedLife: 0<span>, </span>DurationUnit: 0<span>, </span>WarrantyDescription: 0<span>, </span>NominalLength: 0<span>, </span>NominalWidth: 0<span>, </span>NominalHeight: 0<span>, </span>ModelReference: 0<span>, </span>Shape: 0<span>, </span>Size: 0<span>, </span>Color: 0<span>, </span>Finish: 0<span>, </span>Grade: 0<span>, </span>Material: 0<span>, </span>Constituents: 0<span>, </span>Features: 0<span>, </span>AccessibilityPerformance: 0<span>, </span>CodePerformance: 0<span>, </span>SustainabilityPerformance: 0
+         </p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e1953"></a><span>&nbsp;</span><a name="COBie.Components">
+            <h4><span>1.12</span><span>&nbsp;</span>COBie.Components<span>&nbsp; </span><a name="countComponents"><span>(row count check)</span></a></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Components</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>1<span style="font-style:italic; "> of </span><span style="font-style:italic; ">1</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">Components.AtLeastOneRowPresent
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">ComponentSheet: 0</p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">ComponentSheet: 0</p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e2018"></a><span>&nbsp;</span><a name="COBie.Components.Component">
+            <h4><span>1.13</span><span>&nbsp;</span>COBie.Components.Component<span>&nbsp; </span><span>(checked </span>397<span> rows)</span></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Components.Component</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>397<span style="font-style:italic; "> of </span><span style="font-style:italic; ">397</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">CreatedBy.CrossReference (ToContact), CreatedBy.NotNull<span>, </span>CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime)<span>, </span>ExternalSystem.NotEmpty<span>, </span>ExternalObject.NotEmpty
+            			<span>, </span>ExtIdentifier.NotEmpty
+            			<span>, </span>Name.NotNotNull, Name.Unique<span>, </span>TypeName.NotNull, TypeName.CrossReference (Type Worksheet)
+            			<span>, </span>Space.NotNull, Space.CrossReference (Component Worksheet)
+            			<span>, </span>Description.NotNull
+            			<span>, </span>SerialNumber.NotEmpty
+            			<span>, </span>InstallationDate.NotEmpty
+            			<span>, </span>WarrantyStartDate.NotEmpty
+            			<span>, </span>TagNumber.NotEmpty
+            			<span>, </span>BarCode.NotEmpty
+            			<span>, </span>AssetIdentifier.NotEmpty
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Name: 0<span>, </span>TypeName: 0<span>, </span>Space: 0<span>, </span>Description: 0<span>, </span>SerialNumber: 0<span>, </span>InstallationDate: 0<span>, </span>WarrantyStartDate: 0<span>, </span>TagNumber: 0<span>, </span>BarCode: 0<span>, </span>AssetIdentifier: 0
+         </p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Name: 0<span>, </span>TypeName: 0<span>, </span>Space: 0<span>, </span>Description: 0<span>, </span>SerialNumber: 0<span>, </span>InstallationDate: 0<span>, </span>WarrantyStartDate: 0<span>, </span>TagNumber: 0<span>, </span>BarCode: 0<span>, </span>AssetIdentifier: 0
+         </p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e2216"></a><span>&nbsp;</span><a name="COBie.Documents.Document">
+            <h4><span>1.14</span><span>&nbsp;</span>COBie.Documents.Document<span>&nbsp; </span><span>(checked </span>99<span> rows)</span></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Documents.Document</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>99<span style="font-style:italic; "> of </span><span style="font-style:italic; ">99</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">CreatedBy.CrossReference (ToContact), CreatedBy.NotNull<span>, </span>CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime)<span>, </span>ExternalSystem.NotEmpty<span>, </span>ExternalObject.NotEmpty
+            			<span>, </span>ExtIdentifier.NotEmpty
+            			<span>, </span>Description.NotEmpty
+            			<span>, </span>Category.NotNull
+            			<span>, </span>PrimaryKey.Unique (Name, Stage, SheetName, RowName)
+            			<span>, </span>Name.NotNull
+            			<span>, </span>ApprovalBy.NotEmpty
+            			<span>, </span>Stage.NotNull
+            			<span>, </span>SheetName.NotNull, SheetNameRowName.CrossReference
+            			<span>, </span>RowName.NotNull
+            			<span>, </span>Directory.NotEmpty
+            			<span>, </span>File.NotEmpty
+            			<span>, </span>Reference.NotEmpty
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Description: 0<span>, </span>Category: 0<span>, </span>PrimaryKey: 0<span>, </span>Name: 0<span>, </span>ApprovalBy: 0<span>, </span>Stage: 0<span>, </span>SheetName: 0<span>, </span>RowName: 0<span>, </span>Directory: 0<span>, </span>File: 0<span>, </span>Reference: 0
+         </p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Description: 0<span>, </span>Category: 0<span>, </span>PrimaryKey: 0<span>, </span>Name: 0<span>, </span>ApprovalBy: 0<span>, </span>Stage: 0<span>, </span>SheetName: 0<span>, </span>RowName: 0<span>, </span>Directory: 0<span>, </span>File: 0<span>, </span>Reference: 0
+         </p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><a name="d20930e2423"></a><span>&nbsp;</span><a name="COBie.Attributes.Attribute">
+            <h4><span>1.15</span><span>&nbsp;</span>COBie.Attributes.Attribute<span>&nbsp; </span><span>(checked </span>10361<span> rows)</span></h4></a><p style="text-align:left; "><span style="font-style:italic; ">Total </span><span style="font-style:italic; ">correct </span><span style="font-style:italic; ">COBie.Attributes.Attribute</span><span> items</span><span style="font-style:italic; ">&nbsp;</span><span style="font-style:italic; "> = </span>10361<span style="font-style:italic; "> of </span><span style="font-style:italic; ">10361</span><span style="font-style:italic; "> (</span><span style="font-style:italic; ">100</span><span style="font-style:italic; ">% correct</span><span style="font-style:italic; ">)</span></p>
+         <h5><span style="text-decoration:underline; ">Checks Performed</span></h5>
+         <p style="text-align:left; ">CreatedBy.CrossReference (ToContact), CreatedBy.NotNull<span>, </span>CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime)<span>, </span>ExternalSystem.NotEmpty<span>, </span>ExternalObject.NotEmpty
+            			<span>, </span>ExtIdentifier.NotEmpty
+            			<span>, </span>Description.NotEmpty
+            			<span>, </span>Category.NotNull
+            			<span>, </span>PrimaryKey.Unique (Name, SheetName, RowName)
+            			<span>, </span>Name.NotNull
+            			<span>, </span>SheetNameRowName.CrossReference
+            			<span>, </span>Value.NotEmpty
+            			<span>, </span>Unit.NotEmpty
+            			<span>, </span>AllowedValues.NotEmpty
+            			
+         </p>
+         <h5><span style="text-decoration:underline; ">Field Error Counts</span></h5>
+         <p style="text-align:left; ">CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Description: 0<span>, </span>Category: 0<span>, </span>PrimaryKey: 0<span>, </span>Name: 0<span>, </span>SheetNameRowName: 0<span>, </span>Value: 0<span>, </span>Unit: 0<span>, </span>AllowedValues: 0
+         </p><br /><h5><span style="text-decoration:underline; ">Field Warning Counts</span></h5>
+         <p style="text-align:left; ">CreatedBy: 0<span>, </span>CreatedOn: 0<span>, </span>ExtSystem: 0<span>, </span>ExtObject: 0<span>, </span>ExtIdentifier: 0<span>, </span>Description: 0<span>, </span>Category: 0<span>, </span>PrimaryKey: 0<span>, </span>Name: 0<span>, </span>SheetNameRowName: 0<span>, </span>Value: 0<span>, </span>Unit: 0<span>, </span>AllowedValues: 0
+         </p>
+         <p style="text-align:left; "><a href="#TOC"><span style="padding-left:25px; ">Table of Contents</span></a></p>
+         <hr /><span>&nbsp;</span><span>&nbsp;</span><a name="d20930e2607"></a><span>&nbsp;</span><h4><span>2</span><span> Detailed Error Report Grouped by Error/Warning Type</span></h4>
+         <p><span>No Errors</span></p><span>&nbsp;</span><a name="d20930e2621"></a><span>&nbsp;</span><h4><span>3</span><span> Detailed Error Report Grouped by Row</span></h4>
+         <p><span>No Errors</span></p>
+      </div>
+   </body>
+</html>
