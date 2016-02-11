@@ -8,7 +8,7 @@ import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.objectidms.ObjectIDMException;
 import org.bimserver.plugins.serializers.Serializer;
 
-public class COBieSheetXMLDataSerializerPlugin extends
+public class COBieTabXMLSerializerPlugin extends
 		AbstractCOBieSerializerPlugin
 {
 	private boolean initialized = false;
@@ -51,6 +51,6 @@ public class COBieSheetXMLDataSerializerPlugin extends
 	@Override
 	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
 	{
-		return COBieSerializerPluginInfo.SHEET_XMLDATA;
+		return COBieSerializerPluginInfo.COBieTabXML;
 	}
 }

@@ -1,4 +1,4 @@
-package org.bimserver.cobie.shared.transform.spreadsheetml;
+package org.bimserver.cobie.shared.transform;
 
 public abstract class Transformer<TSource, TTarget>
 {

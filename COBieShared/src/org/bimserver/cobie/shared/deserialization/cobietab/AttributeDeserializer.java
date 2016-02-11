@@ -454,7 +454,7 @@ public class AttributeDeserializer
         String allowedVals = attribute.getAllowedValues();
         String unit = attribute.getUnit();
         IfcProperty newProperty;
-        if (PropertyUtility.isCandidateEnumeration(valStr, allowedVals))
+        if (allowedVals != null && PropertyUtility.isCandidateEnumeration(valStr, allowedVals))
         {
             try
             {

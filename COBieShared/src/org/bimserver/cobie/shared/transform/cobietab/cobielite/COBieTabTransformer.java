@@ -2,7 +2,7 @@ package org.bimserver.cobie.shared.transform.cobietab.cobielite;
 
 import org.bimserver.cobie.shared.cobietab.AttributesDocumentsIssues;
 import org.bimserver.cobie.shared.cobietab.IndexedCOBie;
-import org.bimserver.cobie.shared.transform.spreadsheetml.Transformer;
+import org.bimserver.cobie.shared.transform.Transformer;
 import org.bimserver.cobie.shared.utility.COBieUtility.CobieSheetName;
 import org.buildingsmartalliance.docs.nbims03.cobie.core.CobieBaseType;
 import org.nibs.cobie.tab.AssemblyType;

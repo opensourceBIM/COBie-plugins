@@ -39,7 +39,7 @@ public class PluginUtilities
     private static final String IFC_DESCRIPTION = "STEP";
     private static final String IFC_XML_DESCRIPTION = "IFCXML";
     public static final String IFC_EXTENSION = ".ifc";;
-    public static final String COBIE_SHEETXMLDATA_SERIALIZER_DEFAULT_NAME = COBieSerializerPluginInfo.SHEET_XMLDATA.toString();
+    public static final String COBIE_SHEETXMLDATA_SERIALIZER_DEFAULT_NAME = COBieSerializerPluginInfo.COBieTabXML.toString();
     public static final String COBIE_SERIALIZER_DEFAULT_NAME = COBieSerializerPluginInfo.SPREADSHEET.toString();
     public static final String COBIE_COMPLIANCE_SERIALIZER_DEFAULT_NAME = COBieSerializerPluginInfo.REPORT_QC_CONSTRUCTION.toString();
     public static final String COBIE_COMPLIANCE_DESIGN_SERIALIZER_DEFAULT_NAME = COBieSerializerPluginInfo.REPORT_QC_DESIGN.toString();
@@ -61,7 +61,7 @@ public class PluginUtilities
     {
         HashMap<OutgingFileType, String> cobieFileDescriptions = new HashMap<OutgingFileType, String>();
         cobieFileDescriptions.put(OutgingFileType.COBie, COBieSerializerPluginInfo.SPREADSHEET.getDescription());
-        cobieFileDescriptions.put(OutgingFileType.COBieSheetXMLData, COBieSerializerPluginInfo.SHEET_XMLDATA.getDescription());
+        cobieFileDescriptions.put(OutgingFileType.COBieSheetXMLData, COBieSerializerPluginInfo.COBieTabXML.getDescription());
         cobieFileDescriptions.put(OutgingFileType.COBieCompareReport, "");
         cobieFileDescriptions.put(OutgingFileType.COBieCompliance, "");
         cobieFileDescriptions.put(OutgingFileType.COBieRoomDataSheet, COBieSerializerPluginInfo.REPORT_ROOM_DATASHEET.getDescription());
@@ -78,7 +78,7 @@ public class PluginUtilities
     {
         HashMap<OutgingFileType, String> cobieFileExtensions = new HashMap<OutgingFileType, String>();
         cobieFileExtensions.put(OutgingFileType.COBie, COBieSerializerPluginInfo.SPREADSHEET.getFileExtension());
-        cobieFileExtensions.put(OutgingFileType.COBieSheetXMLData, COBieSerializerPluginInfo.SHEET_XMLDATA.getFileExtension());
+        cobieFileExtensions.put(OutgingFileType.COBieSheetXMLData, COBieSerializerPluginInfo.COBieTabXML.getFileExtension());
         cobieFileExtensions.put(OutgingFileType.COBieCompareReport, REPORT_FILES_EXTENSION);
         cobieFileExtensions.put(OutgingFileType.COBieCompliance, REPORT_FILES_EXTENSION);
         cobieFileExtensions.put(OutgingFileType.COBieRoomDataSheet, COBieSerializerPluginInfo.REPORT_ROOM_DATASHEET.getFileExtension());
@@ -94,7 +94,7 @@ public class PluginUtilities
     public static COBIEDocument getCOBieFromROID(long roid, PluginInterface pluginInterface, Bimsie1ServiceInterface  serviceInterface)
             throws ServerException, UserException, XmlException, IOException
     {
-        long serializerOid = pluginInterface.getSerializerByPluginClassName(COBieSerializerPluginInfo.SHEET_XMLDATA.getImplementationClassname()).getOid();
+        long serializerOid = pluginInterface.getSerializerByPluginClassName(COBieSerializerPluginInfo.COBieTabXML.getImplementationClassname()).getOid();
         long actionId = serviceInterface.download(roid, serializerOid, true, true);
         
         SDownloadResult downloadResult = serviceInterface.getDownloadData(actionId);

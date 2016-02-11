@@ -6,7 +6,7 @@ import java.util.Map;
 import nl.fountain.xelem.excel.Workbook;
 import nl.fountain.xelem.excel.Worksheet;
 
-import org.bimserver.cobie.shared.transform.spreadsheetml.Transformer;
+import org.bimserver.cobie.shared.transform.Transformer;
 import org.bimserver.cobie.shared.utility.COBieStringHandler;
 import org.nibs.cobie.tab.COBIEType;
 import org.slf4j.Logger;
