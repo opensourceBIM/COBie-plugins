@@ -28,10 +28,8 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 	private static final String CSS_PATH = "lib/SpaceReport.css";
 	private static final String SCHEMATRON_SAXON_SKELETON_PATH = "lib/iso_schematron_skeleton_for_saxon.xsl";
 	private ArrayList<String> configFilePaths;
+	private HashMap<String, Path> configFiles;
 	private COBieSchematronCheckerSettings checkerSettings;
-	private Path schematronRulePath;
-	private Path preProcessorPath;
-	private Path svrlHtmlXsltPath;
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
@@ -62,13 +60,18 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 		configFilePaths.add(CSS_PATH);
 		configFilePaths.add(SCHEMATRON_FUNCTIONPATH);
 		pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name());
+		configFiles = new HashMap<String, Path>();
+		PluginContext cntxt = pluginManager.getPluginContext(this);
+		configFiles.put(SCHEMATRON_RULEPATH, cntxt.getRootPath().resolve(SCHEMATRON_RULEPATH));
+		configFiles.put(PRE_PROCESSOR_PATH, cntxt.getRootPath().resolve(PRE_PROCESSOR_PATH));
+		configFiles.put(SCHEMATRON_SAXON_SKELETON_PATH, cntxt.getRootPath().resolve(SCHEMATRON_SAXON_SKELETON_PATH));
+		configFiles.put(SVRL_HTML_XSLT_PATH, cntxt.getRootPath().resolve(SVRL_HTML_XSLT_PATH));
+		configFiles.put(CSS_PATH, cntxt.getRootPath().resolve(CSS_PATH));
+		configFiles.put(SCHEMATRON_FUNCTIONPATH, cntxt.getRootPath().resolve(SCHEMATRON_FUNCTIONPATH));
 		
-		PluginContext pluginContext = pluginManager.getPluginContext(this);
-		schematronRulePath = pluginContext.getRootPath().resolve(SCHEMATRON_RULEPATH);
-		preProcessorPath = pluginContext.getRootPath().resolve(PRE_PROCESSOR_PATH);
-		svrlHtmlXsltPath = pluginContext.getRootPath().resolve(SVRL_HTML_XSLT_PATH);
-		
-		checkerSettings = new COBieSchematronCheckerSettings(schematronRulePath, preProcessorPath, svrlHtmlXsltPath, COBieQCValidationPhase.Construction);
+		checkerSettings = new COBieSchematronCheckerSettings(configFiles.get(SCHEMATRON_RULEPATH), 
+				configFiles.get(PRE_PROCESSOR_PATH), configFiles
+				.get(SVRL_HTML_XSLT_PATH), COBieQCValidationPhase.Construction);
 		initialized = true;
 	}
 

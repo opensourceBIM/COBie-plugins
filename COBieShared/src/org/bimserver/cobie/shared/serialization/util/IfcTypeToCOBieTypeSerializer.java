@@ -2,6 +2,7 @@ package org.bimserver.cobie.shared.serialization.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.bimserver.cobie.shared.deserialization.cobietab.propertysets.Pset_Warranty;
 import org.bimserver.cobie.shared.serialization.IfcCOBieSerializer;
@@ -239,7 +240,10 @@ public class IfcTypeToCOBieTypeSerializer extends IfcCOBieSerializer<TypeType, C
     @Override
     protected List<IfcTypeObject> getTopLevelModelObjects()
     {
-        return model.getAllWithSubTypes(IfcTypeObject.class);
+    	//The IDM plugins are no longer supported, so filtering must occur in the serializers
+    	//This partially fixes issue #12, https://github.com/opensourceBIM/COBie-plugins/issues/12
+        return model.getAllWithSubTypes(IfcTypeObject.class).stream().filter
+        		(p -> IfcToType.isAssetType(p)).collect(Collectors.toList());
     }
 
     private Pset_Warranty getWarrantyWithWarrantyIdentifierContaining(List<Pset_Warranty> psetWarranties, String searchString)
@@ -326,7 +330,7 @@ public class IfcTypeToCOBieTypeSerializer extends IfcCOBieSerializer<TypeType, C
         List<TypeType> newTypes = new ArrayList<TypeType>();
 
         IfcOwnerHistory oh = type.getOwnerHistory();
-        if (type != null && (!ignoreNonAssets || IfcToType.isAssetType(type)))
+        if (type != null)
         {
             TypeType newType = cobieSection.addNewType();
             handleCommonFields(type, oh, newType);

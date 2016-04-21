@@ -25,13 +25,13 @@ public class OwnerHistoryHandler
     public static final String UNKNOWN_APPLICATION_NAME = "Unknown";
     private static final String UNKNOWN_ORGANIZATION_NAME = "Unknown Organization";
     private long defaultApplicationOid;
-    private OidProvider cobieOidProvider;
+    private OidProvider<Long> cobieOidProvider;
     private long defaultOwnerHistoryOid;
     private COBieIfcModel model;
     private long organizationOid;
     private int transformTimestamp;
 
-    public OwnerHistoryHandler(COBieIfcModel model, OidProvider cobieOidProvider) throws IfcModelInterfaceException
+    public OwnerHistoryHandler(COBieIfcModel model, OidProvider<Long> cobieOidProvider) throws IfcModelInterfaceException
     {
         this.model = model;
         this.cobieOidProvider = cobieOidProvider;

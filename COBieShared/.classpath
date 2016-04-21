@@ -26,6 +26,7 @@
 	<classpathentry exported="true" kind="lib" path="/Shared/lib/commons/commons-io-1.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Shared/lib/commons/commons-lang-2.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Shared/lib/commons/commons-logging-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/BimServer/lib/cxf/cxf-core-3.0.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Shared/lib/other/jackson-annotations-2.5.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Shared/lib/other/guava-18.0.jar" sourcepath="/BimServer/libsrc/guava-16.0.1-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Shared/lib/other/jackson-core-2.5.1.jar"/>

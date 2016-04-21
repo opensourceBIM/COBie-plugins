@@ -1,5 +1,21 @@
 package org.bimserver.cobie.plugin.serializers;
 
+/******************************************************************************
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *****************************************************************************/
+import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +24,6 @@ import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
 import org.bimserver.cobie.shared.serialization.COBieSpreadsheetMLSerializer;
 import org.bimserver.emf.Schema;
 import org.bimserver.plugins.PluginConfiguration;
-import org.bimserver.plugins.PluginContext;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.objectidms.ObjectIDMException;
@@ -16,16 +31,10 @@ import org.bimserver.plugins.serializers.Serializer;
 
 public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 {
-
-	private static final String CONFIGURATION_FILE_ERROR = "Could not find configuration files";
-
-	private static final String REPORT_FILES_TMP_DIRECTORY_NAME = "COBieReportFiles";
-	private static final String TMP_FOLDER_NAME = "COBieSpreadsheetMLSerializer";
 	private boolean initialized = false;
-	private Path spreadSheetTemplate, settingsFile;
+	private File spreadSheetTemplate, settingsFile;
 	public static final String COBIE_EXPORT_SETTINGS_PATH = "lib/COBieExportSettings.xml";
 	private static final String COBIE_SPREADSHEET_TEMPLATE_PATH = "lib/COBieExcelTemplate.xml";
-	private static final String COBIE_COMPARE_XSLT_PATH = "lib/CompareReport.xslt";
 
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
@@ -55,11 +64,13 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 			e.printStackTrace();
 		}
 
-		PluginContext pluginContext = pluginManager.getPluginContext(this);
-		
-		HashMap<String, Path> configFiles;
-		spreadSheetTemplate = pluginContext.getRootPath().resolve(COBIE_SPREADSHEET_TEMPLATE_PATH);
-		settingsFile = pluginContext.getRootPath().resolve(COBIE_EXPORT_SETTINGS_PATH);
+		HashMap<String, Path> configFiles = new HashMap<>();
+		for(String path : getConfigFilePaths())
+		{
+			configFiles.put(path, pluginManager.getPluginContext(this).getRootPath().resolve(path));
+		}
+		spreadSheetTemplate = configFiles.get(COBIE_SPREADSHEET_TEMPLATE_PATH).toFile();
+		settingsFile = configFiles.get(COBIE_EXPORT_SETTINGS_PATH).toFile();
 		initialized = true;
 	}
 

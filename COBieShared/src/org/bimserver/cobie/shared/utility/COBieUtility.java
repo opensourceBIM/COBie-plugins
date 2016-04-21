@@ -31,6 +31,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -43,6 +46,8 @@ import org.apache.xmlbeans.XmlCalendar;
 import org.apache.xmlbeans.XmlDateTime;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlString;
+import org.nibs.cobie.tab.AttributeType;
+import org.nibs.cobie.tab.COBIEType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -170,14 +175,18 @@ public class COBieUtility
                 {
                     categoryDescription = propertyNamePropertyValue.get(categoryCodeToCategoryDescriptionPropertyNames.get(key));
                 }
-                if ((categoryCode.length() > 0) && (categoryDescription.length() > 0))
+                if (!COBieUtility.isNA(categoryCode) && !COBieUtility.isNA(categoryDescription))
                 {
                     category += categoryCode + CATEGORYCODE_CATEGORYDESCRIPTION_SEPARATOR + categoryDescription;
-                } else if (categoryCode.length() > 0)
+                } 
+                else if (!COBieUtility.isNA(categoryCode))
                 {
                     category += categoryCode;
                 }
-                categories.add(category);
+                if(!COBieUtility.isNA(category))
+                {
+                	categories.add(category);
+                }
             }
         }
         category = COBieUtility.delimittedStringFromArrayList(categories);
@@ -849,7 +858,7 @@ public class COBieUtility
             if ((selectedObj instanceof Calendar) || (selectedObj instanceof XmlCalendar) || (selectedObj instanceof XmlDateTime))
             {
                 XmlDateTime xDateTime = (XmlDateTime)selectedObj;
-                if (xDateTime.getCalendarValue().getTimeInMillis() == 0)
+                if (xDateTime.getCalendarValue().getTimeInMillis() <= 0)
                 {
                 	formattedDate = COBieUtility.COBieNA;
                 }
@@ -860,6 +869,24 @@ public class COBieUtility
             }
         }
         return formattedDate;
+    }
+    
+    static public String StringFromCalendar(Calendar calendar)
+    {
+    	String formattedDate = "";
+    	if(calendar != null)
+    	{
+    		if (calendar.getTime().getTime() <= 0)
+            {
+            	formattedDate = COBieUtility.COBieNA;
+            }
+            else
+            {
+            	formattedDate = String.format(COBieDateFormatString, calendar);
+            }
+    	}
+    	 
+    	return formattedDate;
     }
 
     public static String ToCOBieCase(String string)
@@ -908,7 +935,53 @@ public class COBieUtility
     }
 
 
+    /***
+     * This function checks the string to see if it is a valid date.  If it is a valid date then
+     * it will be set to n/a if it is equal to or before the Java Epoch datetime (1969)
+     * @param dateString
+     * @return
+     */
+	public static String NormalizeDateString(String dateString) 
+	{
+		String returnValue = dateString;
+		try 
+		{
+			Calendar calendar = COBieUtility.calendarFromStringWithException(dateString);
+			if(calendar.getTimeInMillis() <=0)
+			{
+				returnValue = COBieUtility.COBieNA;
+			}
+			
+		} catch (Exception e) 
+		{
+			//do nothing
+		}
+		return returnValue;
+	}
 
+	public static Predicate<AttributeType> getAttributeSheetRowFilter(String sheetName, String rowName)
+	{
+		return p -> p.getSheetName() != null && p.getSheetName().equalsIgnoreCase(sheetName) &&
+				p.getRowName() != null && p.getRowName().equalsIgnoreCase(rowName);
+	}
+
+   public static Predicate<AttributeType> getAttributeNameSheetRowFilter(String attributeName, String sheetName, String rowName)
+   {
+	   return getAttributeSheetRowFilter(sheetName, rowName).and(p -> p.getName() != null && p.getName().equalsIgnoreCase(attributeName));
+   }
    
+   public static Optional<AttributeType> getSheetRowAttribute(String attributeName, String sheetName, String rowName, COBIEType cobie)
+   {
+	   return getFirstAttributeMatch(getAttributeNameSheetRowFilter(attributeName, sheetName, rowName), cobie);
+   }
+   public static List<AttributeType> getAllAttributeMatches(Predicate<AttributeType> predicate, COBIEType cobie)
+   {
+	   return cobie.getAttributes().getAttributeList().stream().filter(predicate).collect(Collectors.toList());
+   }
+   
+   public static Optional<AttributeType> getFirstAttributeMatch(Predicate<AttributeType> predicate, COBIEType cobie)
+   {
+	   return cobie.getAttributes().getAttributeList().stream().filter(predicate).findFirst();
+   }
 
 }

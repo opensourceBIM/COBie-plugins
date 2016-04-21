@@ -11,10 +11,10 @@ public class IfcCommonHandler
     private OwnerHistoryHandler ownerHistoryHandler;
     private PropertySetHandler propertySetHandler;
     private ClassificationHandler classificationHandler;
-    private OidProvider oidHandler;
+    private OidProvider<Long> oidHandler;
     private COBieIfcModel model;
 
-    public IfcCommonHandler(COBieIfcModel cobieIfcmodel, OidProvider oidProvider) throws IfcModelInterfaceException
+    public IfcCommonHandler(COBieIfcModel cobieIfcmodel, OidProvider<Long> oidProvider) throws IfcModelInterfaceException
     {
         oidHandler = oidProvider;
         model = cobieIfcmodel;
@@ -40,7 +40,7 @@ public class IfcCommonHandler
         return guidHandler;
     }
 
-    public OidProvider getOidProvider()
+    public OidProvider<Long> getOidProvider()
     {
         return oidHandler;
     }

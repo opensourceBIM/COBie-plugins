@@ -2,6 +2,7 @@ package org.bimserver.cobie.shared.reporting;
 
 import java.nio.file.Path;
 
+
 public class COBieSchematronCheckerSettings
 {
     private Path schematronRulePath;

@@ -218,13 +218,13 @@ public class WorkbookCopier
 
 			case Cell.CELL_TYPE_STRING:
 			{
-				output.setCellValue(input.getStringCellValue());
+				output.setCellValue(input.getStringCellValue().trim());
 				break;
 			}
 
 			default:
 			{
-				output.setCellValue(input.getStringCellValue());
+				output.setCellValue(input.getStringCellValue().trim());
 				break;
 			}
 		}

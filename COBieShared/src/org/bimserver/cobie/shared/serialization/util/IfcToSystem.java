@@ -43,7 +43,8 @@ import org.nibs.cobie.tab.COBIEType;
 import org.nibs.cobie.tab.SystemType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+//TODO:  Create a new class that implements the IfcCOBieSerialzer class
+//TODO: Filter the components so that only asset types are included in the Systems.
 public class IfcToSystem
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(IfcToSystem.class);

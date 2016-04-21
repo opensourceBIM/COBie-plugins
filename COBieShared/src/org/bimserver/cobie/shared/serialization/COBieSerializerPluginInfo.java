@@ -6,7 +6,8 @@ import org.bimserver.cobie.shared.plugininfo.PluginInfo;
 
 public enum COBieSerializerPluginInfo implements PluginInfo
 {
-    SHEET_XMLDATA("COBie Spreadsheet as Simple XML Document Elements","XML based on a schema derived from the COBie spreadsheet columns.", SerializableFileType.XML,"org.bimserver.cobie.plugin.serializers.COBieSheetXMLDataSerializerPlugin"), 
+	GENERAL_PRODUCT_TEMPLATE("COBie Template - General Product","An XLSX file tailored for entry of installed equipment data",SerializableFileType.XLSX, "org.bimserver.cobie.shared.bimserver.plugins.serializers.GeneralProductsTemplatePlugin"),
+    COBieTabXML("COBie Spreadsheet as Simple XML Document Elements","XML based on a schema derived from the COBie spreadsheet columns.", SerializableFileType.XML,"org.bimserver.cobie.plugin.serializers.COBieSheetXMLDataSerializerPlugin"), 
     SPREADSHEET("COBie SpreadsheetXML (2003)","Construction Operators Building information exchange spreadsheetML format.", SerializableFileType.SPREADSHEETML,"org.bimserver.cobie.shared.bimserver.plugins.serializers.COBieSerializerPlugin"), 
     SPREADSHEET_XLSX("COBie Spreadsheet (XLSX)","Construction Operators Building information exchange spreadsheetML format.", SerializableFileType.XLSX,"org.bimserver.cobie.shared.bimserver.plugins.serializers.COBieXLSXSerializerPlugin"),
     REPORT_QC_DESIGN("COBie QC Report - Design Deliverable",

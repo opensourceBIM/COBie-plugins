@@ -2,6 +2,8 @@ package org.bimserver.cobie.shared.transform.spreadsheetml;
 
 import java.util.ArrayList;
 
+import org.bimserver.cobie.shared.transform.Transformer;
+
 
 public abstract class TransformerDispatcher<TSource, TTargetCollection, TTarget, TTargetParent>
 {

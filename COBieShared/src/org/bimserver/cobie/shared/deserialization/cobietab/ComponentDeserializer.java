@@ -158,28 +158,32 @@ public class ComponentDeserializer
         Calendar createdOn;
         if (components != null)
         {
-            for (ComponentType component : components.getComponentArray())
+            for (ComponentType component : components.getComponentList())
             {
                 try
                 {
                     name = component.getName();
                     component.getExtObject();
-                    IfcProduct newProduct = productFromComponent(component);
-                    if ((newProduct != null) && !model.containsComponent(name))
+                    if(!COBieUtility.isNA(name) && !model.containsComponent(name))
                     {
-                        createdBy = component.getCreatedBy();
-                        externalId = component.getExtIdentifier();
-                        createdOn = component.getCreatedOn();
-                        IfcOwnerHistory ownerHistory = ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(
-                                createdBy, createdOn, component.getExtSystem());
-                        newProduct.setOwnerHistory(ownerHistory);
-                        newProduct.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(externalId).getWrappedValue());
-                        Pset_Component psetComponent = new Pset_Component(component);
-                        Pset_ManufacturerOccurence psetOccurence = new Pset_ManufacturerOccurence(component);
-                        ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToObject(newProduct, psetComponent, true);
-                        ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToObject(newProduct, psetOccurence, false);
-                        model.addComponent(newProduct, component, ifcCommonHandler);
+                    	 IfcProduct newProduct = productFromComponent(component);
+                         if ((newProduct != null))
+                         {
+                             createdBy = component.getCreatedBy();
+                             externalId = component.getExtIdentifier();
+                             createdOn = component.getCreatedOn();
+                             IfcOwnerHistory ownerHistory = ifcCommonHandler.getOwnerHistoryHandler().ownerHistoryFromEmailTimestampAndApplication(
+                                     createdBy, createdOn, component.getExtSystem());
+                             newProduct.setOwnerHistory(ownerHistory);
+                             newProduct.setGlobalId(ifcCommonHandler.getGuidHandler().guidFromExternalIdentifier(externalId).getWrappedValue());
+                             Pset_Component psetComponent = new Pset_Component(component);
+                             Pset_ManufacturerOccurence psetOccurence = new Pset_ManufacturerOccurence(component);
+                             ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToObject(newProduct, psetComponent, true);
+                             ifcCommonHandler.getPropertySetHandler().addPropertiesAndPropertySetToObject(newProduct, psetOccurence, false);
+                             model.addComponent(newProduct, component, ifcCommonHandler);
+                         }
                     }
+                   
                 } catch (Exception e)
                 {
                     LOGGER.error("An exception occured while adding a component to the model " + name + "..." + e.getMessage());
@@ -274,9 +278,17 @@ public class ComponentDeserializer
     {
         try
         {
-            IfcLocalPlacement spacePlacement = ifcCommonHandler.getGeometryHandler().getSpaceLocalPlacement(component.getSpace());
-            IfcLocalPlacement componentPlacement = ifcCommonHandler.getGeometryHandler().newDefaultLocalPlacement(spacePlacement);
-            product.setObjectPlacement(componentPlacement);
+        	if(!COBieUtility.isNA(component.getSpace()))
+        	{
+        		 IfcLocalPlacement spacePlacement = ifcCommonHandler.getGeometryHandler().getSpaceLocalPlacement(component.getSpace());
+                 if(spacePlacement != null)
+                 {
+            		 IfcLocalPlacement componentPlacement = ifcCommonHandler.getGeometryHandler().newDefaultLocalPlacement(spacePlacement);
+                     product.setObjectPlacement(componentPlacement);
+                 }
+
+        	}
+           
         } catch (Exception ex)
         {
             LOGGER.error(ERROR_PREFIX_LOCAL_PLACEMENT, component.getName());

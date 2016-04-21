@@ -1,5 +1,6 @@
 package org.bimserver.cobie.plugin.idm;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,7 @@ public class COBieIDM implements ObjectIDM, COBieFilterable
 
 			defaultIDM = fileBasedIDM;
 			LOGGER.info(LOGGER_MESSAGE_START_IGNORE_READ_PREFIX
-					+ ignoreFile.getFileName().toString());
+					+ ignoreFile.toString());
 			jaxbContext = JAXBContext.newInstance(PackageDefinition.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			PackageDefinition packageDefinition = (PackageDefinition) unmarshaller
@@ -98,7 +99,7 @@ public class COBieIDM implements ObjectIDM, COBieFilterable
 		}
 		else
 		{
-			LOGGER.info("Ignore file " + cobieIgnoreFile.getFileName().toString()
+			LOGGER.info("Ignore file " + cobieIgnoreFile.toString()
 					+ " is empty");
 		}
 	}

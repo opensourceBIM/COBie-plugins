@@ -247,7 +247,7 @@ public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<Compone
             barCode = IfcToComponent.barCodeFromProduct(product);
             assetIdentifier = IfcToComponent.assetIdentifierFromProduct(product);
             newComponent = cobieSection.addNewComponent();
-
+            
             newComponent.setName(productName);
             newComponent.setCreatedBy(createdBy);
             newComponent.setCreatedOn(createdOn);

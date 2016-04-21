@@ -110,7 +110,7 @@ public class ContactDeserializer
 
     private COBieIfcModel model;
 
-    private OidProvider oidProvider;
+    private OidProvider<Long> oidProvider;
 
     private OwnerHistoryHandler ownerHistoryProvider;
 

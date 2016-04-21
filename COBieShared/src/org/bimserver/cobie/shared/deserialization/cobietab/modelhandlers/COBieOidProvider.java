@@ -31,8 +31,9 @@ public class COBieOidProvider implements OidProvider
     }
 
     @Override
-    public long newOid(EClass eClass)
+    public Long newOid(EClass eClass)
     {
         return new Long(model.size() + 1);
     }
+
 }

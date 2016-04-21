@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
 import org.bimserver.plugins.PluginConfiguration;
-import org.bimserver.plugins.PluginContext;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.Serializer;
@@ -16,6 +15,7 @@ public class COBieZoneReportPlugin extends AbstractCOBieSerializerPlugin
 	private boolean initialized = false;
 	private static final String ZONE_REPORT_CSS_PATH = "lib/SpaceReport.css";
 	private static final String ZONE_REPORT_XSLT_PATH = "lib/ZoneReport.xslt";
+	private ArrayList<String> configFilePaths;
 	private HashMap<String, Path> configFiles;
 
 	@Override
@@ -31,14 +31,17 @@ public class COBieZoneReportPlugin extends AbstractCOBieSerializerPlugin
 	@Override
 	public void init(PluginManager pluginManager) throws PluginException
 	{
-		PluginContext pluginContext = pluginManager.getPluginContext(this);
-		
-		configFiles = new HashMap<String, Path>();
-		
-		configFiles.put(ZONE_REPORT_XSLT_PATH, pluginContext.getRootPath().resolve(ZONE_REPORT_XSLT_PATH));
-		configFiles.put(ZONE_REPORT_CSS_PATH, pluginContext.getRootPath().resolve(ZONE_REPORT_CSS_PATH));
+		configFilePaths = new ArrayList<String>();
 
+		configFilePaths.add(ZONE_REPORT_XSLT_PATH);
+		configFilePaths.add(ZONE_REPORT_CSS_PATH);
+		configFiles = new HashMap<>();
+		for(String path : configFilePaths)
+		{
+			configFiles.put(path, pluginManager.getPluginContext(this).getRootPath().resolve(path));
+		}
 		initialized = true;
+
 	}
 
 	@Override

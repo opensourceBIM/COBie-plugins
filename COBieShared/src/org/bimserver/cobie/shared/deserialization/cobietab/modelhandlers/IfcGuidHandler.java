@@ -29,7 +29,7 @@ public class IfcGuidHandler
 
     private HashMap<String, Long> guidToOid;
 
-    public IfcGuidHandler(COBieIfcModel ifcModel, OidProvider oidProvider)
+    public IfcGuidHandler(COBieIfcModel ifcModel, OidProvider<Long> oidProvider)
     {
         model = ifcModel;
         guidToOid = (HashMap<String, Long>)model.getGuidToOid();

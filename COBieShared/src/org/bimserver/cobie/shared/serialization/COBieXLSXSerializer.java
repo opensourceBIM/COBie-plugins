@@ -1,7 +1,7 @@
 package org.bimserver.cobie.shared.serialization;
 
+import java.io.File;
 import java.io.OutputStream;
-import java.nio.file.Path;
 
 import org.bimserver.cobie.shared.transform.spreadsheetml.cobietab.COBieSpreadSheet;
 import org.bimserver.cobie.shared.transform.spreadsheetml.xlsx.SpreadsheetMLToXLSXMapper;
@@ -10,14 +10,14 @@ import org.bimserver.plugins.serializers.SerializerException;
 
 public class COBieXLSXSerializer extends COBieSpreadsheetMLSerializer 
 {
-	private final Path xlsxTemplate;
-	public COBieXLSXSerializer(Path spreadsheetMLTemplate, Path xlsxTemplate, Path exportSettingsFile)
+	private final File xlsxTemplate;
+	public COBieXLSXSerializer(File spreadsheetMLTemplate, File xlsxTemplate, File exportSettingsFile)
 	{
 		super(spreadsheetMLTemplate, exportSettingsFile);
 		this.xlsxTemplate = xlsxTemplate;
 	}
 	
-	public Path getXlsxTemplate() 
+	public File getXlsxTemplate() 
 	{
 		return xlsxTemplate;
 	}

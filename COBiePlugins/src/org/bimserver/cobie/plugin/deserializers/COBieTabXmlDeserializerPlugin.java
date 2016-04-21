@@ -13,7 +13,7 @@ import org.bimserver.plugins.deserializers.Deserializer;
 import org.bimserver.plugins.deserializers.DeserializerPlugin;
 import org.bimserver.plugins.schema.SchemaException;
 
-public class COBieSheetXMLDataDeserializerPlugin implements DeserializerPlugin
+public class COBieTabXmlDeserializerPlugin implements DeserializerPlugin
 {
 	private boolean initialized = false;
 

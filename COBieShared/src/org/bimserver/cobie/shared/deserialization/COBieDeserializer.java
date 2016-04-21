@@ -21,10 +21,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
 import java.util.UUID;
 
 import javax.xml.parsers.ParserConfigurationException;
+
+import nl.fountain.xelem.XFactory;
+import nl.fountain.xelem.excel.Workbook;
 
 import org.apache.commons.io.IOUtils;
 import org.bimserver.cobie.shared.COBieException;
@@ -47,9 +49,6 @@ import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import nl.fountain.xelem.XFactory;
-import nl.fountain.xelem.excel.Workbook;
-
 public class COBieDeserializer extends EmfDeserializer implements
 		COBieTabProducable
 {
@@ -58,10 +57,10 @@ public class COBieDeserializer extends EmfDeserializer implements
 	private String templateFilePath;
 	private Workbook xlWorkbook = null;
 	private COBIEDocument COBie;
-	private final Path configurationFile;
+	private final File configurationFile;
 	private static final String LOGGER_STATUS_SPREADSHEET_BEGIN_MSG = "Deserializing COBie SpreadsheetML to COBie Sheet XML Data.";
 	private static final String LOGGER_STATUS_SPREADSHEET_END_MSG = "COBie SpreadsheetML converted to COBie Sheet XML Data.";
-	public COBieDeserializer(Path configurationFile, PackageMetaData packageMetadata)
+	public COBieDeserializer(File configurationFile, PackageMetaData packageMetadata)
 	{
 		this.configurationFile = configurationFile;
 	}
@@ -223,7 +222,7 @@ public class COBieDeserializer extends EmfDeserializer implements
 	public COBIEDocument toCOBieSheetXMLData(Workbook workbook) throws Exception
 	{
 		COBie = COBIEDocument.Factory.newInstance();
-		templateFilePath = configurationFile.toString();
+		templateFilePath = configurationFile.getAbsolutePath();
 		XFactory.setConfigurationFileName(templateFilePath);
 		this.xlWorkbook = workbook;
 		if ((xlWorkbook != null) || xlWorkbook.hasExcelWorkbook())

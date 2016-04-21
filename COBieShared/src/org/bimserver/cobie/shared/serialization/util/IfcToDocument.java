@@ -315,7 +315,9 @@ public class IfcToDocument
                 try
                 {
                     IfcTypeObject type = defByType.getRelatingType();
-                    if (type != null)
+                    //Since the BIMServer IDM plugins are no longer supported, the types must be filtered here
+                    //https://github.com/opensourceBIM/COBie-plugins/issues/14
+                    if (type != null && IfcToType.isAssetType(type))
                     {
                         name = IfcToDocument.nameFromTypeObject(type);
                         if (!typeNames.contains(name))
