@@ -1,5 +1,5 @@
-4/20/2016
+4/21/2016
 
 WHAT’S NEW?
 NEW FEATURES
-•	Attempting to update for compatibility with the last 1.4 release of BIMServer
+•	Updated for compatibility with BIMServer 1.4 11-04-2015

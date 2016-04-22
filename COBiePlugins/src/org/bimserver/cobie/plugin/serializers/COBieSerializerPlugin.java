@@ -16,12 +16,13 @@ package org.bimserver.cobie.plugin.serializers;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
 import java.io.File;
-import java.nio.file.Path;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
 import org.bimserver.cobie.shared.serialization.COBieSpreadsheetMLSerializer;
+import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
 import org.bimserver.emf.Schema;
 import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
@@ -64,13 +65,16 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 			e.printStackTrace();
 		}
 
-		HashMap<String, Path> configFiles = new HashMap<>();
-		for(String path : getConfigFilePaths())
+		HashMap<String, File> configFiles;
+		try 
 		{
-			configFiles.put(path, pluginManager.getPluginContext(this).getRootPath().resolve(path));
+			configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, getClass().getSimpleName(), this, getConfigFilePaths());
+		} catch (IOException e) 
+		{
+			throw new PluginException(e);
 		}
-		spreadSheetTemplate = configFiles.get(COBIE_SPREADSHEET_TEMPLATE_PATH).toFile();
-		settingsFile = configFiles.get(COBIE_EXPORT_SETTINGS_PATH).toFile();
+		spreadSheetTemplate = configFiles.get(COBIE_SPREADSHEET_TEMPLATE_PATH);
+		settingsFile = configFiles.get(COBIE_EXPORT_SETTINGS_PATH);
 		initialized = true;
 	}
 

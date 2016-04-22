@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Path;
 
 import org.bimserver.cobie.cobieserializersettings.COBieExportOptionsDocument;
 import org.bimserver.cobie.shared.cobietab.COBieTabTransformable;
@@ -53,6 +54,11 @@ public class COBieSpreadsheetMLSerializer extends COBieTabXMLSerializer implemen
 		{
 			exportOptions = null;
 		}
+	}
+	
+	public COBieSpreadsheetMLSerializer(Path configurationFile, Path exportSettingsFile)
+	{
+		this(configurationFile.toFile(), exportSettingsFile.toFile());
 	}
 
 	private PrintWriter createPrintWriter(OutputStream outputStream)

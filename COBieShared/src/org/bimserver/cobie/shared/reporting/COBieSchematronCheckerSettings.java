@@ -1,46 +1,48 @@
 package org.bimserver.cobie.shared.reporting;
 
-import java.nio.file.Path;
+import java.io.File;
+
+
 
 
 public class COBieSchematronCheckerSettings
 {
-    private Path schematronRulePath;
-    private Path preProcessorPath;
-    private Path svrlHTMLPath;
+    private File schematronRuleFile;
+    private File preProcessorFile;
+    private File svrlHTMLFile;
     private COBieQCValidationPhase phase;
     
-    public COBieSchematronCheckerSettings(Path schematronRulePath, Path preProcessorPath, Path svrlHTMLPath, COBieQCValidationPhase phase)
+    public COBieSchematronCheckerSettings(File schematronRuleFile, File preProcessorFile, File svrlHTMLFile, COBieQCValidationPhase phase)
     {
-        setSchematronRulePath(schematronRulePath);
-        setPreProcessorPath(preProcessorPath);
-        setSvrlHTMLPath(svrlHTMLPath);
+        setSchematronRuleFile(schematronRuleFile);
+        setPreProcessorFile(preProcessorFile);
+        setSvrlHTMLFile(svrlHTMLFile);
         setPhase(phase);
     }
     
-    public Path getSchematronRulePath()
+    public File getSchematronRuleFile()
     {
-        return schematronRulePath;
+        return schematronRuleFile;
     }
-    public void setSchematronRulePath(Path schematronRulePath)
+    public void setSchematronRuleFile(File schematronRuleFile)
     {
-        this.schematronRulePath = schematronRulePath;
+        this.schematronRuleFile = schematronRuleFile;
     }
-    public Path getPreProcessorPath()
+    public File getPreProcessorFile()
     {
-        return preProcessorPath;
+        return preProcessorFile;
     }
-    public void setPreProcessorPath(Path preProcessorPath)
+    public void setPreProcessorFile(File preProcessorFile)
     {
-        this.preProcessorPath = preProcessorPath;
+        this.preProcessorFile = preProcessorFile;
     }
-    public Path getSvrlHTMLPath()
+    public File getSvrlHTMLFile()
     {
-        return svrlHTMLPath;
+        return svrlHTMLFile;
     }
-    public void setSvrlHTMLPath(Path svrlHTMLPath)
+    public void setSvrlHTMLFile(File svrlHTMLFile)
     {
-        this.svrlHTMLPath = svrlHTMLPath;
+        this.svrlHTMLFile = svrlHTMLFile;
     }
     public COBieQCValidationPhase getPhase()
     {

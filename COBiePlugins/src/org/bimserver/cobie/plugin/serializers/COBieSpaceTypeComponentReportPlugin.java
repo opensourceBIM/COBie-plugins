@@ -1,12 +1,14 @@
 package org.bimserver.cobie.plugin.serializers;
 
-import java.nio.file.Path;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
+import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
 //import org.bimserver.emf.Schema;
 import org.bimserver.plugins.Plugin;
 import org.bimserver.plugins.PluginConfiguration;
@@ -22,15 +24,15 @@ public class COBieSpaceTypeComponentReportPlugin extends
 	private static final String SPACE_REPORT_CSS_PATH = "lib/SpaceReport.css";
 	private static final String SPACE_REPORT_XSLT_PATH = "lib/SpaceReport.xslt";
 	private ArrayList<String> configFilePaths;
-	private HashMap<String, Path> configFiles = new HashMap<>();
+	private HashMap<String, File> configFiles = new HashMap<>();
 
 
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
 		return new org.bimserver.cobie.shared.serialization.COBieHTMLReportSerializer(
-				configFiles.get(SPACE_REPORT_XSLT_PATH).toString(),
-				configFiles.get(SPACE_REPORT_CSS_PATH).toString());
+				configFiles.get(SPACE_REPORT_XSLT_PATH).getAbsolutePath(),
+				configFiles.get(SPACE_REPORT_CSS_PATH).getAbsolutePath());
 	}
 
 
@@ -56,10 +58,14 @@ public class COBieSpaceTypeComponentReportPlugin extends
 		configFilePaths.add(SPACE_REPORT_XSLT_PATH);
 		configFilePaths.add(SPACE_REPORT_CSS_PATH);
 		//pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name().toLowerCase());
-		for(String path : configFilePaths)
+		try 
 		{
-			configFiles.put(path, pluginManager.getPluginContext(this).getRootPath().resolve(path));
+			configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, getClass().getSimpleName(), this, configFilePaths);
+		} catch (IOException e) 
+		{
+			throw new PluginException(e);
 		}
+		
 		initialized = true;
 	}
 

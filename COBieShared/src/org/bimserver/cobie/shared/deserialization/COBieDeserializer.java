@@ -21,6 +21,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
 import java.util.UUID;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -60,6 +61,7 @@ public class COBieDeserializer extends EmfDeserializer implements
 	private final File configurationFile;
 	private static final String LOGGER_STATUS_SPREADSHEET_BEGIN_MSG = "Deserializing COBie SpreadsheetML to COBie Sheet XML Data.";
 	private static final String LOGGER_STATUS_SPREADSHEET_END_MSG = "COBie SpreadsheetML converted to COBie Sheet XML Data.";
+
 	public COBieDeserializer(File configurationFile, PackageMetaData packageMetadata)
 	{
 		this.configurationFile = configurationFile;
