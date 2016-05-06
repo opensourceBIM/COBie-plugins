@@ -19,7 +19,7 @@ package org.bimserver.cobie.shared.serialization.util;
 import org.bimserver.cobie.shared.utility.ifc.IfcUnitToCOBieString;
 import org.bimserver.models.ifc2x3tc1.IfcPhysicalSimpleQuantity;
 
-public class IfcPhysicalQuantityToCOBieString extends IfcPropertyToCOBieString
+public class IfcPhysicalQuantityToCOBieString extends IfcPropertyStringTransformer
 {
     private String unitString;
 

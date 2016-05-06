@@ -285,7 +285,7 @@ public class IfcToZone
                                             spaceList = zoneSpaces.get(name);
 
                                         }
-                                        spaceList.add(IfcToSpace.nameFromSpace(space));
+                                        spaceList.add(IfcSpaceSerializer.nameFromSpace(space));
                                         zoneSpaces.put(name, spaceList);
                                     }
                                 }

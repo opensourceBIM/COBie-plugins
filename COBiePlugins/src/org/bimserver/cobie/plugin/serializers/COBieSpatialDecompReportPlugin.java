@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
 import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
+import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper.Persistence;
 import org.bimserver.emf.Schema;
 //import org.bimserver.emf.Schema;
 import org.bimserver.plugins.Plugin;
@@ -19,6 +20,8 @@ import org.bimserver.plugins.schema.SchemaPlugin;
 import org.bimserver.plugins.serializers.AbstractSerializerPlugin;
 import org.bimserver.plugins.serializers.Serializer;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 public class COBieSpatialDecompReportPlugin extends AbstractSerializerPlugin 
 {
 private boolean initialized = false;
@@ -26,6 +29,7 @@ private static final String SPACE_REPORT_CSS_PATH =
 "lib/SpaceReport.css";
 private static final String SPACE_REPORT_XSLT_PATH="lib/SpatialDecompReport.xslt";
 private ArrayList<String> configFilePaths;
+private SettingsType transformSettings;
 private HashMap<String, File> configFiles = new HashMap<>();
 	@Override
 	public String getDescription() {
@@ -51,7 +55,7 @@ private HashMap<String, File> configFiles = new HashMap<>();
 	//	pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name().toString());
 		try 
 		{
-			configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, getClass().getSimpleName(), this, configFilePaths);
+			configFiles = PluginRuntimeFileHelper.prepareSerializerResource(pluginManager, getClass().getSimpleName(), this, configFilePaths, Persistence.TEMP);
 		} 
 		catch (IOException e) 
 		{
@@ -109,7 +113,7 @@ private HashMap<String, File> configFiles = new HashMap<>();
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
 		return new org.bimserver.cobie.shared.serialization.COBieHTMLReportSerializer(this.configFiles.get(SPACE_REPORT_XSLT_PATH).getAbsolutePath(),
-				this.configFiles.get(SPACE_REPORT_CSS_PATH).getAbsolutePath());
+				this.configFiles.get(SPACE_REPORT_CSS_PATH).getAbsolutePath(), getTransformSettings());
 	}
 
 
@@ -117,6 +121,16 @@ private HashMap<String, File> configFiles = new HashMap<>();
 	public Set<Schema> getSupportedSchemas() 
 	{
 		return Schema.IFC2X3TC1.toSet();
+	}
+
+
+	public SettingsType getTransformSettings() {
+		return transformSettings;
+	}
+
+
+	public void setTransformSettings(SettingsType transformSettings) {
+		this.transformSettings = transformSettings;
 	}
 
 }

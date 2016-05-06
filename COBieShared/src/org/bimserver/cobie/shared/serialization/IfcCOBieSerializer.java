@@ -11,6 +11,8 @@ import org.bimserver.emf.IfcModelInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class IfcCOBieSerializer.
@@ -23,10 +25,11 @@ import org.slf4j.LoggerFactory;
  * @param <IFCTYPE>
  *            the entry level ifc type
  */
-public abstract class IfcCOBieSerializer<COBIEROWTYPE extends XmlObject, COBIEROWCONTAINERTYPE extends XmlObject, IFCTYPE extends IdEObject>
+public abstract class IfcCobieSerializer<COBIEROWTYPE extends XmlObject, COBIEROWCONTAINERTYPE extends XmlObject, IFCTYPE extends IdEObject>
 {
 
     private static final String INTERFACE_IMPL_SUFFIX = "Impl";
+    private final SettingsType settings;
     protected COBIEROWCONTAINERTYPE cobieSection;
     private Logger LOGGER;
 
@@ -44,8 +47,9 @@ public abstract class IfcCOBieSerializer<COBIEROWTYPE extends XmlObject, COBIERO
      * @param model
      *            the model
      */
-    public IfcCOBieSerializer(COBIEROWCONTAINERTYPE cobieSection, IfcModelInterface model)
+    public IfcCobieSerializer(COBIEROWCONTAINERTYPE cobieSection, IfcModelInterface model, SettingsType settings)
     {
+    	this.settings = settings;
         setCobieSection(cobieSection);
         setModel(model);
         init();
@@ -138,5 +142,9 @@ public abstract class IfcCOBieSerializer<COBIEROWTYPE extends XmlObject, COBIERO
     {
         this.sheetName = sheetName;
     }
+
+	public SettingsType getSettings() {
+		return settings;
+	}
 
 }

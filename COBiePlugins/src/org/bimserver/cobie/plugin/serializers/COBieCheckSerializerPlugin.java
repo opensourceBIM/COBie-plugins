@@ -11,6 +11,7 @@ import org.bimserver.cobie.shared.reporting.COBieQCValidationPhase;
 import org.bimserver.cobie.shared.reporting.COBieSchematronCheckerSettings;
 import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
 import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
+import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper.Persistence;
 import org.bimserver.emf.Schema;
 import org.bimserver.plugins.Plugin;
 import org.bimserver.plugins.PluginConfiguration;
@@ -21,7 +22,6 @@ import org.bimserver.plugins.serializers.Serializer;
 
 public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 {
-	private boolean initialized = false;
 	private static final String SCHEMATRON_RULEPATH = "lib/COBieRules.sch";
 	private static final String SCHEMATRON_FUNCTIONPATH = "lib/COBieRules_Functions.xsl";
 	private static final String PRE_PROCESSOR_PATH = "lib/iso_svrl_for_xslt2.xsl";
@@ -34,7 +34,7 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new org.bimserver.cobie.shared.serialization.COBieCheckSerializer(checkerSettings);
+		return new org.bimserver.cobie.shared.serialization.COBieCheckSerializer(checkerSettings, getTransformSettings());
 	}
 
 	public String getName()
@@ -50,39 +50,7 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 		return set;
 	}
 
-	@Override
-	public void init(PluginManager pluginManager) throws PluginException
-	{
-		configFilePaths = new ArrayList<String>();
-		configFilePaths.add(SCHEMATRON_RULEPATH);
-		configFilePaths.add(PRE_PROCESSOR_PATH);
-		configFilePaths.add(SCHEMATRON_SAXON_SKELETON_PATH);
-		configFilePaths.add(SVRL_HTML_XSLT_PATH);
-		configFilePaths.add(CSS_PATH);
-		configFilePaths.add(SCHEMATRON_FUNCTIONPATH);
-		pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name());
-		try 
-		{
-			configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager,
-					getClass().getSimpleName(), this, configFilePaths);
-		} 
-		catch (IOException e) 
-		{
-			throw new PluginException(e);
-		}
-		
-		checkerSettings = new COBieSchematronCheckerSettings(configFiles.get(SCHEMATRON_RULEPATH), 
-				configFiles.get(PRE_PROCESSOR_PATH), configFiles
-				.get(SVRL_HTML_XSLT_PATH), COBieQCValidationPhase.Construction);
-		initialized = true;
-	}
 
-
-	@Override
-	public boolean isInitialized()
-	{
-		return initialized;
-	}
 
 	@Override
 	public boolean needsGeometry()
@@ -95,6 +63,33 @@ public class COBieCheckSerializerPlugin extends AbstractCOBieSerializerPlugin
 	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
 	{
 		return COBieSerializerPluginInfo.REPORT_QC_CONSTRUCTION;
+	}
+
+	@Override
+	protected void onInit(PluginManager pluginManager) throws Exception 
+	{
+		configFilePaths = new ArrayList<String>();
+		configFilePaths.add(SCHEMATRON_RULEPATH);
+		configFilePaths.add(PRE_PROCESSOR_PATH);
+		configFilePaths.add(SCHEMATRON_SAXON_SKELETON_PATH);
+		configFilePaths.add(SVRL_HTML_XSLT_PATH);
+		configFilePaths.add(CSS_PATH);
+		configFilePaths.add(SCHEMATRON_FUNCTIONPATH);
+		pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name());
+		try 
+		{
+			configFiles = PluginRuntimeFileHelper.prepareSerializerResource(pluginManager,
+					getClass().getSimpleName(), this, configFilePaths, Persistence.TEMP);
+		} 
+		catch (IOException e) 
+		{
+			throw new PluginException(e);
+		}
+		
+		checkerSettings = new COBieSchematronCheckerSettings(configFiles.get(SCHEMATRON_RULEPATH), 
+				configFiles.get(PRE_PROCESSOR_PATH), configFiles
+				.get(SVRL_HTML_XSLT_PATH), COBieQCValidationPhase.Construction);
+		
 	}
 
 }

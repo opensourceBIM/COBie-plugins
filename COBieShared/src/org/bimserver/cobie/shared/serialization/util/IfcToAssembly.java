@@ -43,6 +43,8 @@ import org.nibs.cobie.tab.COBIEType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 public class IfcToAssembly
 {
 
@@ -115,7 +117,7 @@ public class IfcToAssembly
         return children;
     }
 
-    protected static ArrayList<String> childNameArrayFromRelationship(IfcRelationship relationship)
+    protected static ArrayList<String> childNameArrayFromRelationship(IfcRelationship relationship, SettingsType settings)
     {
         ArrayList<String> children = new ArrayList<String>();
         if (relationship instanceof IfcRelAggregates)
@@ -123,7 +125,7 @@ public class IfcToAssembly
             IfcRelAggregates relAgg = (IfcRelAggregates)relationship;
             for (IfcObjectDefinition objDef : relAgg.getRelatedObjects())
             {
-                if (IfcToComponent.isAssetComponent(objDef) || (objDef instanceof IfcSpace))
+                if (IfcProductToComponentsSerializer.isAssetComponent(objDef, settings) || (objDef instanceof IfcSpace))
                 {
                     children.add(objDef.getName());
                 }
@@ -134,7 +136,7 @@ public class IfcToAssembly
             IfcRelNests relNests = (IfcRelNests)relationship;
             for (IfcObjectDefinition objDef : relNests.getRelatedObjects())
             {
-                if (IfcToComponent.isAssetComponent(objDef) || (objDef instanceof IfcSpace))
+                if (IfcProductToComponentsSerializer.isAssetComponent(objDef, settings) || (objDef instanceof IfcSpace))
                 {
                     children.add(objDef.getName());
                 }
@@ -160,7 +162,7 @@ public class IfcToAssembly
         return COBieUtility.getCOBieString(strChildren);
     }
 
-    protected static String childNamesFromRelationship(IfcRelationship relationship)
+    protected static String childNamesFromRelationship(IfcRelationship relationship, SettingsType settings)
     {
         String strChildren = "";
         ArrayList<String> children = new ArrayList<String>();
@@ -169,7 +171,7 @@ public class IfcToAssembly
             IfcRelAggregates relAgg = (IfcRelAggregates)relationship;
             for (IfcObjectDefinition objDef : relAgg.getRelatedObjects())
             {
-                if (IfcToComponent.isAssetComponent(objDef) || (objDef instanceof IfcSpace))
+                if (IfcProductToComponentsSerializer.isAssetComponent(objDef, settings) || (objDef instanceof IfcSpace))
                 {
                     children.add(objDef.getName());
                 }
@@ -180,7 +182,7 @@ public class IfcToAssembly
             IfcRelNests relNests = (IfcRelNests)relationship;
             for (IfcObjectDefinition objDef : relNests.getRelatedObjects())
             {
-                if (IfcToComponent.isAssetComponent(objDef) || (objDef instanceof IfcSpace))
+                if (IfcProductToComponentsSerializer.isAssetComponent(objDef, settings) || (objDef instanceof IfcSpace))
                 {
                     children.add(objDef.getName());
                 }
@@ -372,7 +374,7 @@ public class IfcToAssembly
             LogHandler loggerStrings,
             IfcOwnerHistory oh,
             COBIEType cobie,
-            ArrayList<IfcRelationship> relationships)
+            ArrayList<IfcRelationship> relationships, SettingsType settings)
     {
         COBIEType.Assemblies assemblies = cobie.getAssemblies();
         String name;
@@ -389,7 +391,7 @@ public class IfcToAssembly
         {
             try
             {
-                ArrayList<String> children = IfcToAssembly.childNameArrayFromRelationship(relationship);
+                ArrayList<String> children = IfcToAssembly.childNameArrayFromRelationship(relationship, settings);
                 sheetName = IfcToAssembly.sheetNameFromRelationship(relationship);
                 parentName = IfcToAssembly.parentNameFromRelationship(relationship);
                 if (parentIntegrityValid(parentName, cobie, sheetName))
@@ -462,7 +464,7 @@ public class IfcToAssembly
         return COBieUtility.getCOBieString(sheetName);
     }
 
-    public static void writeAssembliesToCOBie(COBIEType cobie, IfcModelInterface model)
+    public static void writeAssembliesToCOBie(COBIEType cobie, IfcModelInterface model, SettingsType settings)
     {
         LogHandler loggerStrings = new LogHandler(SheetName, LOGGER);
         loggerStrings.sheetWriteBegin();
@@ -483,7 +485,7 @@ public class IfcToAssembly
         serializeMaterialLayerAssembliesOneRelationPairPerRow(model, loggerStrings, cobie);
         ArrayList<IfcRelationship> relationships = assemblyRelationshipsFromModel(model);
         IfcOwnerHistory oh = COBieIfcUtility.firstOwnerHistoryFromModel(model);
-        serializeRelationshipAssembliesOneRelationPairPerRow(loggerStrings, oh, cobie, relationships);
+        serializeRelationshipAssembliesOneRelationPairPerRow(loggerStrings, oh, cobie, relationships, settings);
         loggerStrings.sheetWritten();
 
     }

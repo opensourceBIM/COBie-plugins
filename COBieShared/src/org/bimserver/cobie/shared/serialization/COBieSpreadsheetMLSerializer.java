@@ -30,6 +30,8 @@ import org.bimserver.cobie.shared.utility.CP1252Printwriter;
 import org.bimserver.plugins.serializers.SerializerException;
 import org.nibs.cobie.tab.COBIEDocument;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 /**
  * @author chrisbogen This class is a sub-class of
  *         COBieSheetXMLDataTransformable and its purpose is to provide standard
@@ -42,8 +44,9 @@ public class COBieSpreadsheetMLSerializer extends COBieTabXMLSerializer implemen
 	protected COBieExportOptionsDocument exportOptions;
 	private final File configurationFile;
 
-	public COBieSpreadsheetMLSerializer(File configurationFile, File exportSettingsFile)
+	public COBieSpreadsheetMLSerializer(File configurationFile, File exportSettingsFile, SettingsType settings)
 	{
+		super(settings);
 		this.configurationFile = configurationFile;
 		try
 		{
@@ -56,9 +59,9 @@ public class COBieSpreadsheetMLSerializer extends COBieTabXMLSerializer implemen
 		}
 	}
 	
-	public COBieSpreadsheetMLSerializer(Path configurationFile, Path exportSettingsFile)
+	public COBieSpreadsheetMLSerializer(Path configurationFile, Path exportSettingsFile, SettingsType settings)
 	{
-		this(configurationFile.toFile(), exportSettingsFile.toFile());
+		this(configurationFile.toFile(), exportSettingsFile.toFile(), settings);
 	}
 
 	private PrintWriter createPrintWriter(OutputStream outputStream)

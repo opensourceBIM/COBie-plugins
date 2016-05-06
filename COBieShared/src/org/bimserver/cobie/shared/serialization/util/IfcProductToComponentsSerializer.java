@@ -6,9 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.bimserver.cobie.shared.serialization.IfcCOBieSerializer;
+import org.bimserver.cobie.shared.serialization.IfcCobieSerializer;
 import org.bimserver.cobie.shared.utility.COBieIfcUtility;
 import org.bimserver.cobie.shared.utility.COBieUtility;
+import org.bimserver.cobie.shared.utility.CaseInsensitiveStringList;
 import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.models.ifc2x3tc1.IfcBuilding;
 import org.bimserver.models.ifc2x3tc1.IfcBuildingStorey;
@@ -30,10 +31,11 @@ import org.nibs.cobie.tab.COBIEType.Components;
 import org.nibs.cobie.tab.ComponentType;
 import org.slf4j.LoggerFactory;
 
-public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<ComponentType, COBIEType.Components, IfcProduct>
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
+public class IfcProductToComponentsSerializer extends IfcCobieSerializer<ComponentType, COBIEType.Components, IfcProduct>
 {
 
-	private boolean ignoreNonAssets = false;
     private static void getRidOfNASpaceNamesIfOthersExist(ArrayList<String> spaceNames)
     {
         if (spaceNames.size() > 1)
@@ -51,23 +53,17 @@ public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<Compone
 
     private boolean shouldWriteComponent(IfcProduct product)
     {
-       return (IfcToComponent.isNotAnotherSheetIfcProductType(product)) && (!ignoreNonAssets || IfcToComponent.isAssetComponent(product));
+       return (IfcToComponent.isNotAnotherSheetIfcProductType(product)) && (isAssetComponent(product));
     }
 
     private Map<String, ArrayList<String>> componentToSpaceDictionary;
 
-    public IfcProductToComponentsSerializer(Components cobieSection, IfcModelInterface model)
+    public IfcProductToComponentsSerializer(Components cobieSection, IfcModelInterface model, SettingsType settings)
     {
-        super(cobieSection, model);
+        super(cobieSection, model, settings);
         setComponentNameToSpaceNameDictionary(new HashMap<String, ArrayList<String>>());
         setLOGGER(LoggerFactory.getLogger(IfcProductToComponentsSerializer.class));
 
-    }
-    
-    public IfcProductToComponentsSerializer(Components cobieSection, IfcModelInterface model, boolean ignoreNonAssets)
-    {
-    	this(cobieSection, model);
-    	this.ignoreNonAssets = ignoreNonAssets;
     }
 
     private void addNewOrUpdateComponentSpaceDictionary(String Name, String SpaceName)
@@ -103,10 +99,10 @@ public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<Compone
                 String spaceName = COBieUtility.COBieNA;
                 if (space != null)
                 {
-                    spaceName = IfcToSpace.nameFromSpace(relBoundary.getRelatingSpace());
+                    spaceName = IfcSpaceSerializer.nameFromSpace(relBoundary.getRelatingSpace());
                 }
                 componentExistsWithNASpace(componentKey);
-                if (IfcToComponent.isAssetComponent(product))
+                if (isAssetComponent(product))
                 {
                     updateExistingComponentSpaceDictionaryElement(componentKey, spaceName);
                 }
@@ -142,7 +138,7 @@ public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<Compone
             {
                 String componentKey = IfcToComponent.keyFromProduct(product);
                 String SpaceName = IfcToComponent.spaceFromRelContainedInSpatialStructure(relCont);
-                if (IfcToComponent.isAssetComponent(product))
+                if (isAssetComponent(product))
                 {
                     addNewOrUpdateComponentSpaceDictionary(componentKey, SpaceName);
                     if (!containedInSpatialStructureComponents.contains(product))
@@ -154,8 +150,43 @@ public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<Compone
         }
         return containedInSpatialStructureComponents;
     }
+    
+    private boolean isAssetComponent(IfcProduct product) 
+    {
+    	return IfcProductToComponentsSerializer.isAssetComponent(product, getSettings());
+	}
 
-    private List<IfcProduct> findRelAggregatesComponents()
+	protected static boolean isAssetComponent(IfcObjectDefinition objDef, SettingsType settings)
+    {
+
+        boolean isAsset = true;
+        CaseInsensitiveStringList excludeStrings = getExcludeAssetComponentStrings(settings);
+        for (@SuppressWarnings("rawtypes")
+        Class iClass : objDef.getClass().getInterfaces())
+        {
+            if (excludeStrings.contains(iClass.getSimpleName()))
+            {
+                isAsset = false;
+            }
+        }
+        return isAsset;
+    }
+
+    private static CaseInsensitiveStringList getExcludeAssetComponentStrings(
+			SettingsType settings) 
+    {
+    	CaseInsensitiveStringList exclude = new CaseInsensitiveStringList(new ArrayList<String>());
+    	if(settings != null && settings.getComponentSettings() != null && settings.getComponentSettings().getIfcProductExclusions() != null)
+    	{
+    		for(String name : settings.getComponentSettings().getIfcProductExclusions().getName())
+    		{
+    			exclude.add(name);
+    		}
+    	}
+    	return exclude;
+	}
+
+	private List<IfcProduct> findRelAggregatesComponents()
     {
         List<IfcProduct> relAggregateComponents = new ArrayList<IfcProduct>();
         for (IfcRelAggregates relAgg : model.getAll(IfcRelAggregates.class))
@@ -168,7 +199,7 @@ public class IfcProductToComponentsSerializer extends IfcCOBieSerializer<Compone
                     IfcProduct product = (IfcProduct)obj;
                     String componentKey = IfcToComponent.keyFromProduct(product);
                     String spaceName = IfcToComponent.spaceFromObjectDef(product);
-                    if (IfcToComponent.isAssetComponent(product))
+                    if (isAssetComponent(product))
                     {
                         addNewOrUpdateComponentSpaceDictionary(componentKey, spaceName);
                         relAggregateComponents.add(product);

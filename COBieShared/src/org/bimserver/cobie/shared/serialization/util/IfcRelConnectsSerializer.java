@@ -1,26 +1,12 @@
 package org.bimserver.cobie.shared.serialization.util;
 
-/******************************************************************************
-
- * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- * 
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *****************************************************************************/
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
+import org.bimserver.cobie.shared.serialization.IfcCobieSerializer;
 import org.bimserver.cobie.shared.utility.COBieIfcUtility;
 import org.bimserver.cobie.shared.utility.COBieUtility;
-import org.bimserver.cobie.shared.utility.COBieUtility.CobieSheetName;
 import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.models.ifc2x3tc1.IfcElement;
 import org.bimserver.models.ifc2x3tc1.IfcOwnerHistory;
@@ -30,15 +16,92 @@ import org.bimserver.models.ifc2x3tc1.IfcRelConnectsElements;
 import org.bimserver.models.ifc2x3tc1.IfcRelConnectsPortToElement;
 import org.bimserver.models.ifc2x3tc1.IfcRelConnectsPorts;
 import org.nibs.cobie.tab.COBIEType;
+import org.nibs.cobie.tab.COBIEType.Connections;
 import org.nibs.cobie.tab.ConnectionType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public class IfcToConnection
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
+public class IfcRelConnectsSerializer extends
+		IfcCobieSerializer<ConnectionType, COBIEType.Connections, IfcRelConnects> 
 {
-    private static final CobieSheetName sheetName = CobieSheetName.Connection;
-    private static final Logger LOGGER = LoggerFactory.getLogger(IfcToConnection.class);
 
+	public IfcRelConnectsSerializer(Connections cobieSection,
+			IfcModelInterface model, SettingsType settings) 
+	{
+		super(cobieSection, model, settings);
+	}
+
+	@Override
+	protected List<IfcRelConnects> getTopLevelModelObjects() 
+	{
+		List<IfcRelConnects> relConnects = new ArrayList<>();
+		  for (IfcRelConnects rel : model.getAllWithSubTypes(IfcRelConnects.class))
+	        {
+	            if ((rel instanceof IfcRelConnectsPorts)
+	                    || ((rel instanceof IfcRelConnectsPortToElement) && shouldIncludeConnectsPortToElement((IfcRelConnectsPortToElement)rel)))
+	            {
+	            	relConnects.add(rel);
+	            }
+	        }
+		  return relConnects;
+	}
+
+	@Override
+	protected List<ConnectionType> serializeModelObject(
+			IfcRelConnects rel) 
+	{
+		List<ConnectionType> connections =
+				new ArrayList<>();
+        String name = "";
+        String createdBy = "";
+        Calendar createdOn;
+        String connectionType = "";
+        String sheetName = "";
+        String realizingElement = "";
+        String rowName1 = "";
+        String rowName2 = "";
+        String portName1 = "";
+        String portName2 = "";
+        String extSystem = "";
+        String extObject = "";
+        String extIdentifier = "";
+        String description = "";
+        IfcOwnerHistory oh;
+        oh = rel.getOwnerHistory();
+        name = COBieUtility.getCOBieString(rel.getName());
+        createdBy = COBieIfcUtility.getEmailFromOwnerHistory(oh);
+        createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
+        connectionType = IfcRelConnectsSerializer.connectionTypeFromRelConnects(rel);
+        sheetName = IfcRelConnectsSerializer.sheetNameFromRelConnects(rel);
+        rowName1 = IfcRelConnectsSerializer.rowName1FromRelConnects(rel);
+        rowName2 = IfcRelConnectsSerializer.rowName2FromRelConnects(rel);
+        realizingElement = IfcRelConnectsSerializer.realizingElementFromRelConnects(rel);
+        portName1 = IfcRelConnectsSerializer.portName1FromRelConnects(rel);
+        portName2 = IfcRelConnectsSerializer.portName2FromRelConnects(rel);
+        extSystem = COBieIfcUtility.getApplicationName(oh);
+        extObject = COBieIfcUtility.extObjectFromRelationship(rel);
+        extIdentifier = COBieIfcUtility.identifierFromRelationship(rel);
+        description = IfcRelConnectsSerializer.descriptionFromRelConnects(rel);
+
+        ConnectionType tempConnection = getCobieSection().addNewConnection();
+        tempConnection.setName(name);
+        tempConnection.setCreatedBy(createdBy);
+        tempConnection.setCreatedOn(createdOn);
+        tempConnection.setConnectionType(connectionType);
+        tempConnection.setSheetName(sheetName);
+        tempConnection.setRowName1(rowName1);
+        tempConnection.setRowName2(rowName2);
+        tempConnection.setRealizingElement(realizingElement);
+        tempConnection.setPortName1(portName1);
+        tempConnection.setPortName2(portName2);
+        tempConnection.setExtSystem(extSystem);
+        tempConnection.setExtObject(extObject);
+        tempConnection.setExtIdentifier(extIdentifier);
+        tempConnection.setDescription(description);
+        connections.add(tempConnection);
+        return connections;
+	}
+	
     protected static String connectionTypeFromRelConnects(IfcRelConnects connects)
     {
         String connectionType = "";
@@ -282,89 +345,6 @@ public class IfcToConnection
         String rowName1 = relatedElementNameFromConnectsPortToElement(rel);
         String rowName2 = getRelatingPortElementNameFromRelConnectsPortToElement(rel);
         return !((rowName1 == null) || (rowName2 == null) || rowName1.equals(rowName2));
-    }
-
-    public static void writeConnections(COBIEType cType, IfcModelInterface model)
-    {
-        LogHandler loggerHandler = new LogHandler(sheetName, LOGGER);
-        loggerHandler.sheetWriteBegin();
-        COBIEType.Connections connections;
-        String name = "";
-        String createdBy = "";
-        Calendar createdOn;
-        String connectionType = "";
-        String sheetName = "";
-        String realizingElement = "";
-        String rowName1 = "";
-        String rowName2 = "";
-        String portName1 = "";
-        String portName2 = "";
-        String extSystem = "";
-        String extObject = "";
-        String extIdentifier = "";
-        String description = "";
-        IfcOwnerHistory oh;
-        ConnectionType tempConnection;
-        try
-        {
-            connections = cType.getConnections();
-            if ((connections == null) || connections.isNil())
-            {
-                connections = cType.addNewConnections();
-            }
-        } catch (Exception ex)
-        {
-            connections = cType.addNewConnections();
-        }
-        for (IfcRelConnects rel : model.getAllWithSubTypes(IfcRelConnects.class))
-        {
-            if ((rel instanceof IfcRelConnectsPorts)
-                    || ((rel instanceof IfcRelConnectsPortToElement) && shouldIncludeConnectsPortToElement((IfcRelConnectsPortToElement)rel)))
-            {
-                try
-                {
-                    oh = rel.getOwnerHistory();
-                    name = COBieUtility.getCOBieString(rel.getName());
-                    createdBy = COBieIfcUtility.getEmailFromOwnerHistory(oh);
-                    createdOn = IfcToContact.getCreatedOn(oh.getCreationDate());
-                    connectionType = IfcToConnection.connectionTypeFromRelConnects(rel);
-                    sheetName = IfcToConnection.sheetNameFromRelConnects(rel);
-                    rowName1 = IfcToConnection.rowName1FromRelConnects(rel);
-                    rowName2 = IfcToConnection.rowName2FromRelConnects(rel);
-                    realizingElement = IfcToConnection.realizingElementFromRelConnects(rel);
-                    portName1 = IfcToConnection.portName1FromRelConnects(rel);
-                    portName2 = IfcToConnection.portName2FromRelConnects(rel);
-                    extSystem = COBieIfcUtility.getApplicationName(oh);
-                    extObject = COBieIfcUtility.extObjectFromRelationship(rel);
-                    extIdentifier = COBieIfcUtility.identifierFromRelationship(rel);
-                    description = IfcToConnection.descriptionFromRelConnects(rel);
-
-                    tempConnection = connections.addNewConnection();
-                    tempConnection.setName(name);
-                    tempConnection.setCreatedBy(createdBy);
-                    tempConnection.setCreatedOn(createdOn);
-                    tempConnection.setConnectionType(connectionType);
-                    tempConnection.setSheetName(sheetName);
-                    tempConnection.setRowName1(rowName1);
-                    tempConnection.setRowName2(rowName2);
-                    tempConnection.setRealizingElement(realizingElement);
-                    tempConnection.setPortName1(portName1);
-                    tempConnection.setPortName2(portName2);
-                    tempConnection.setExtSystem(extSystem);
-                    tempConnection.setExtObject(extObject);
-                    tempConnection.setExtIdentifier(extIdentifier);
-                    tempConnection.setDescription(description);
-                    loggerHandler.rowWritten();
-                } catch (Exception ex)
-                {
-                    ex.printStackTrace();
-                    loggerHandler.error(ex);
-
-                }
-
-            }
-        }
-        loggerHandler.sheetWritten();
     }
 
 }

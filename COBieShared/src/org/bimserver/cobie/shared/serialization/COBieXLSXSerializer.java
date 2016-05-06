@@ -9,18 +9,20 @@ import org.bimserver.cobie.shared.transform.spreadsheetml.xlsx.SpreadsheetMLToXL
 import org.bimserver.cobie.shared.utility.POIUtils;
 import org.bimserver.plugins.serializers.SerializerException;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 public class COBieXLSXSerializer extends COBieSpreadsheetMLSerializer 
 {
 	private final File xlsxTemplate;
-	public COBieXLSXSerializer(File spreadsheetMLTemplate, File xlsxTemplate, File exportSettingsFile)
+	public COBieXLSXSerializer(File spreadsheetMLTemplate, File xlsxTemplate, File exportSettingsFile, SettingsType settings)
 	{
-		super(spreadsheetMLTemplate, exportSettingsFile);
+		super(spreadsheetMLTemplate, exportSettingsFile, settings);
 		this.xlsxTemplate = xlsxTemplate;
 	}
 	
-	public COBieXLSXSerializer(Path spreadsheetMLTemplate, Path xlsxTemplate, Path exportSettingsFile)
+	public COBieXLSXSerializer(Path spreadsheetMLTemplate, Path xlsxTemplate, Path exportSettingsFile, SettingsType settings)
 	{
-		this(spreadsheetMLTemplate.toFile(), xlsxTemplate.toFile(), exportSettingsFile.toFile());
+		this(spreadsheetMLTemplate.toFile(), xlsxTemplate.toFile(), exportSettingsFile.toFile(), settings);
 	}
 	
 	public File getXlsxTemplate() 

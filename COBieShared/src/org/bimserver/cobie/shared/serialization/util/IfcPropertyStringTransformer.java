@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bimserver.cobie.shared.utility.COBieUtility;
-import org.bimserver.cobie.shared.utility.ifc.IfcRelationshipsToCOBie;
+import org.bimserver.cobie.shared.utility.ifc.IfcRelationshipUtility;
 import org.bimserver.models.ifc2x3tc1.IfcAmountOfSubstanceMeasure;
 import org.bimserver.models.ifc2x3tc1.IfcAreaMeasure;
 import org.bimserver.models.ifc2x3tc1.IfcBoolean;
@@ -77,7 +77,9 @@ import org.bimserver.models.ifc2x3tc1.IfcTimeMeasure;
 import org.bimserver.models.ifc2x3tc1.IfcValue;
 import org.bimserver.models.ifc2x3tc1.IfcVolumeMeasure;
 
-public class IfcPropertyToCOBieString
+import com.prairiesky.transform.cobieifc.settings.PropertyExclusionType;
+
+public class IfcPropertyStringTransformer
 {
     private static final String DECIMAL_STRING_FORMAT = "0.000";
     private static final String COBIE_NA_NUMERICAL = COBieUtility.COBieNA;
@@ -340,12 +342,42 @@ public class IfcPropertyToCOBieString
 
     }
 
+    protected static boolean isPropertySearchStringAHit(PropertyExclusionType propertyExclusion, String compareString)
+    {
+    	boolean matches = false;
+    	if(compareString != null && propertyExclusion != null && propertyExclusion.getValue() != null && propertyExclusion.getComparison() != null)
+    	{
+    		String value = propertyExclusion.getValue().trim().toLowerCase();
+    		String cleanComparisonString = compareString.trim().toLowerCase();
+    		switch(propertyExclusion.getComparison())
+    		{
+			case CONTAINS:
+				matches = cleanComparisonString.contains(value);
+				break;
+			case ENDSWITH:
+				matches = cleanComparisonString.endsWith(value);
+				break;
+			case EQUALS:
+				matches = cleanComparisonString.equalsIgnoreCase(value);
+				break;
+			case STARTSWITH:
+				matches = cleanComparisonString.startsWith(value);
+				break;
+			default:
+				matches = false;
+				break;
+    		
+    		}
+    	}
+    	return false;
+    }
+    
     static protected boolean isPropertySearchStringAHit(String searchString, String compareString)
     {
         boolean hit = false;
         String searchStringLower = searchString.toLowerCase().trim();
         String compareStringLower = compareString.toLowerCase();
-        IfcRelationshipsToCOBie.ComparisonType compareType = IfcRelationshipsToCOBie.getComparisonTypeFromPropertySearchString(searchString);
+        IfcRelationshipUtility.ComparisonType compareType = IfcRelationshipUtility.getComparisonTypeFromPropertySearchString(searchString);
         switch (compareType)
         {
             case StartsWith:
@@ -381,7 +413,7 @@ public class IfcPropertyToCOBieString
 
     static public Map<String, String> mergePropertyStrings(Map<String, String> tmpPropertyMap, Map<String, String> propertyMap)
     {
-        Map<String, String> clonePMap = IfcRelationshipsToCOBie.clonePropertyMap(propertyMap);
+        Map<String, String> clonePMap = IfcRelationshipUtility.clonePropertyMap(propertyMap);
         String tmpVal1 = "";
         String tmpVal2 = "";
         if (!tmpPropertyMap.isEmpty())
@@ -441,7 +473,7 @@ public class IfcPropertyToCOBieString
 
             for (String ki : keyMatchStrings)
             {
-                valStr = IfcPropertyToCOBieString.stringFromIfcPhysicalSimpleQuantity(psq);
+                valStr = IfcPropertyStringTransformer.stringFromIfcPhysicalSimpleQuantity(psq);
                 propertyVals.put(ki, valStr);
                 copyPropertyNames.remove(ki);
             }
@@ -506,7 +538,7 @@ public class IfcPropertyToCOBieString
 
             for (String ki : keyMatchStrings)
             {
-                valStr = IfcPropertyToCOBieString.stringFromIfcPhysicalSimpleQuantity(psq);
+                valStr = IfcPropertyStringTransformer.stringFromIfcPhysicalSimpleQuantity(psq);
                 propertyVals.put(ki, valStr);
                 copyPropertyNames.remove(ki);
             }
@@ -558,14 +590,14 @@ public class IfcPropertyToCOBieString
                 }
                 if (simpleProperty instanceof IfcPropertyEnumeratedValue)
                 {
-                    valStr = IfcPropertyToCOBieString.stringFromPropertyEnumeratedValue((IfcPropertyEnumeratedValue)simpleProperty);
+                    valStr = IfcPropertyStringTransformer.stringFromPropertyEnumeratedValue((IfcPropertyEnumeratedValue)simpleProperty);
                     ((PropertyNameStringValueMap)propertyVals).put(keyMatch, valStr, simpleProperty);
                     copyPropertyNames.remove(keyMatch);
 
                 }
                 if (simpleProperty instanceof IfcPropertyReferenceValue)
                 {
-                   valStr = IfcPropertyToCOBieString.stringFromReferenceValue((IfcPropertyReferenceValue) simpleProperty);
+                   valStr = IfcPropertyStringTransformer.stringFromReferenceValue((IfcPropertyReferenceValue) simpleProperty);
                    ((PropertyNameStringValueMap)propertyVals).put(keyMatch, valStr, simpleProperty);
                    copyPropertyNames.remove(keyMatch);
                 }
@@ -642,7 +674,8 @@ public class IfcPropertyToCOBieString
                 {
                     keyMatchStrings.add(spName);
                 }
-            } else
+            } 
+            else
             {
                 for (String searchP : copyPropertyNames)
                 {
@@ -668,7 +701,7 @@ public class IfcPropertyToCOBieString
                 }
                 if (sProperty instanceof IfcPropertyEnumeratedValue)
                 {
-                    valStr = IfcPropertyToCOBieString.stringFromPropertyEnumeratedValue((IfcPropertyEnumeratedValue)sProperty);
+                    valStr = IfcPropertyStringTransformer.stringFromPropertyEnumeratedValue((IfcPropertyEnumeratedValue)sProperty);
                     propertyVals.put(ki, valStr);
                     copyPropertyNames.remove(ki);
                 }
@@ -691,13 +724,13 @@ public class IfcPropertyToCOBieString
     }
 
     @SuppressWarnings("unchecked")
-    static public Map<String, IfcPropertyToCOBieString> psetStringsFromPhysicalQuantity(
+    static public Map<String, IfcPropertyStringTransformer> psetStringsFromPhysicalQuantity(
             IfcPhysicalQuantity quantity,
             ArrayList<String> propertyNames,
             boolean exclusive)
     {
         boolean testProperty = false;
-        Map<String, IfcPropertyToCOBieString> propertyVals = new HashMap<String, IfcPropertyToCOBieString>();
+        Map<String, IfcPropertyStringTransformer> propertyVals = new HashMap<String, IfcPropertyStringTransformer>();
         ArrayList<String> copyPropertyNames = (ArrayList<String>)propertyNames.clone();
         IfcPhysicalSimpleQuantity psq;
         IfcPhysicalComplexQuantity pcq;
@@ -760,10 +793,10 @@ public class IfcPropertyToCOBieString
 
     @SuppressWarnings("unchecked")
 	public
-    static Map<String, IfcPropertyToCOBieString> psetStringsFromProperty(IfcProperty property, ArrayList<String> propertyNames, boolean exclusive)
+    static Map<String, IfcPropertyStringTransformer> psetStringsFromProperty(IfcProperty property, ArrayList<String> propertyNames, boolean exclusive)
     {
         boolean testProperty = false;
-        Map<String, IfcPropertyToCOBieString> propertyVals = new HashMap<String, IfcPropertyToCOBieString>();
+        Map<String, IfcPropertyStringTransformer> propertyVals = new HashMap<String, IfcPropertyStringTransformer>();
         ArrayList<String> copyPropertyNames = (ArrayList<String>)propertyNames.clone();
         IfcComplexProperty cProperty;
         IfcSimpleProperty sProperty;
@@ -816,14 +849,14 @@ public class IfcPropertyToCOBieString
             {
                 if (IfcPropertySingleValue.class.isInstance(sProperty))
                 {
-                    IfcSingleValueToCOBieString svStr = IfcPropertyToCOBieString
+                    IfcSingleValueToCOBieString svStr = IfcPropertyStringTransformer
                             .psetSingleValueStringFromPropertySingleValue((IfcPropertySingleValue)sProperty);
                     propertyVals.put(ki, svStr);
                     copyPropertyNames.remove(ki);
                 }
                 if (sProperty instanceof IfcPropertyEnumeratedValue)
                 {
-                    IfcEnumeratedValueToCOBieString enStr = IfcPropertyToCOBieString
+                    IfcEnumeratedValueToCOBieString enStr = IfcPropertyStringTransformer
                             .psetEnumeratedValueStringFromEnumeratedValue((IfcPropertyEnumeratedValue)sProperty);
 
                     propertyVals.put(ki, enStr);
@@ -863,7 +896,7 @@ public class IfcPropertyToCOBieString
 
     static private String stringFromPropertyEnumeratedValue(IfcPropertyEnumeratedValue enumVal)
     {
-        IfcEnumeratedValueToCOBieString enumStr = IfcPropertyToCOBieString.psetEnumeratedValueStringFromEnumeratedValue(enumVal);
+        IfcEnumeratedValueToCOBieString enumStr = IfcPropertyStringTransformer.psetEnumeratedValueStringFromEnumeratedValue(enumVal);
         return enumStr.getValueString();
     }
 
@@ -887,13 +920,13 @@ public class IfcPropertyToCOBieString
 
     private String valueString;
 
-    public IfcPropertyToCOBieString()
+    public IfcPropertyStringTransformer()
     {
         super();
 
     }
 
-    public IfcPropertyToCOBieString(IfcPhysicalSimpleQuantity sQuantity)
+    public IfcPropertyStringTransformer(IfcPhysicalSimpleQuantity sQuantity)
     {
         super();
         setQuantity(sQuantity);
@@ -901,7 +934,7 @@ public class IfcPropertyToCOBieString
         setValueString(sQuantity);
     }
 
-    public IfcPropertyToCOBieString(IfcSimpleProperty property)
+    public IfcPropertyStringTransformer(IfcSimpleProperty property)
     {
         super();
         setProperty(property);

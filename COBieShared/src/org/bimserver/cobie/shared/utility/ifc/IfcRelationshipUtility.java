@@ -18,9 +18,10 @@ package org.bimserver.cobie.shared.utility.ifc;
  *****************************************************************************/
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import org.bimserver.cobie.shared.serialization.util.IfcPropertyToCOBieString;
+import org.bimserver.cobie.shared.serialization.util.IfcPropertyStringTransformer;
 import org.bimserver.cobie.shared.utility.COBieIfcUtility;
 import org.bimserver.cobie.shared.utility.COBieUtility;
 import org.bimserver.models.ifc2x3tc1.IfcElementQuantity;
@@ -40,7 +41,7 @@ import org.bimserver.models.ifc2x3tc1.IfcRoot;
 import org.bimserver.models.ifc2x3tc1.IfcTypeObject;
 import org.eclipse.emf.common.util.EList;
 
-public class IfcRelationshipsToCOBie
+public class IfcRelationshipUtility
 {
     public static enum ComparisonType
     {
@@ -132,7 +133,7 @@ public class IfcRelationshipsToCOBie
         for (IfcPropertySetDefinition propertySetDefinition : propertySets)
         {
 
-            Map<String, String> searchHitMap = IfcRelationshipsToCOBie.stringMapFromPropertySetDefinition(prioritizedSearchStrings,
+            Map<String, String> searchHitMap = IfcRelationshipUtility.stringMapFromPropertySetDefinition(prioritizedSearchStrings,
                     propertySetDefinition);
             String tmpHit = COBieUtility.cobieStringFromStringMap(searchHitMap, prioritizedSearchStrings);
             int previousRank = searchRank;
@@ -160,7 +161,7 @@ public class IfcRelationshipsToCOBie
         {
             if (((def instanceof IfcRelDefinesByType) && includeRelDefinesByType) || !(def instanceof IfcRelDefinesByType))
             {
-                Map<String, String> searchHitMap = IfcRelationshipsToCOBie.propertyStringsFromRelDefines(def, prioritizedSearchStrings);
+                Map<String, String> searchHitMap = IfcRelationshipUtility.propertyStringsFromRelDefines(def, prioritizedSearchStrings);
                 String tmpHit = COBieUtility.cobieStringFromStringMap(searchHitMap, prioritizedSearchStrings);
                 int previousRank = searchRank;
                 if (!COBieUtility.isNA(tmpHit))
@@ -177,18 +178,18 @@ public class IfcRelationshipsToCOBie
         return highestRankingSearchHit;
     }
 
-    public static IfcPropertyToCOBieString getHighestRankingPsetStringFromRelDefinesList(
+    public static IfcPropertyStringTransformer getHighestRankingPsetStringFromRelDefinesList(
             EList<IfcRelDefines> relDefinesList,
             ArrayList<String> prioritizedSearchStrings,
             boolean excludeNAValues)
     {
-        IfcPropertyToCOBieString highestRankingSearchHit = null;
+        IfcPropertyStringTransformer highestRankingSearchHit = null;
         int searchRank = -1;
         for (IfcRelDefines def : relDefinesList)
         {
-            Map<String, IfcPropertyToCOBieString> searchHitMap = IfcRelationshipsToCOBie.psetStringsFromRelDefines(def, prioritizedSearchStrings,
+            Map<String, IfcPropertyStringTransformer> searchHitMap = IfcRelationshipUtility.psetStringsFromRelDefines(def, prioritizedSearchStrings,
                     false);
-            IfcPropertyToCOBieString tmpHit = COBieIfcUtility.cobiePsetStringFromStringMap(searchHitMap, prioritizedSearchStrings);
+            IfcPropertyStringTransformer tmpHit = COBieIfcUtility.cobiePsetStringFromStringMap(searchHitMap, prioritizedSearchStrings);
             int previousRank = searchRank;
             if (excludeNAValues)
             {
@@ -223,8 +224,8 @@ public class IfcRelationshipsToCOBie
             {
                 if (!(def instanceof IfcRelDefinesByType) && !(def == rel))
                 {
-                    tmpPropertyMap = IfcRelationshipsToCOBie.propertyStringsFromRelDefines(def, propertyNamesClone);
-                    propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                    tmpPropertyMap = IfcRelationshipUtility.propertyStringsFromRelDefines(def, propertyNamesClone);
+                    propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
                 }
             }
         }
@@ -245,8 +246,8 @@ public class IfcRelationshipsToCOBie
             {
                 if (!(def == rel))
                 {
-                    tmpPropertyMap = IfcRelationshipsToCOBie.propertyStringsFromRelDefines(def, propertyNamesClone, exclusive);
-                    propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                    tmpPropertyMap = IfcRelationshipUtility.propertyStringsFromRelDefines(def, propertyNamesClone, exclusive);
+                    propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
                 }
             }
         }
@@ -310,8 +311,8 @@ public class IfcRelationshipsToCOBie
             IfcPropertySet pSet = (IfcPropertySet)pSetDef;
             for (IfcProperty property : pSet.getHasProperties())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.propertyStringsFromProperty(property, copyPNames, exclusive);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                tmpPropertyMap = IfcPropertyStringTransformer.propertyStringsFromProperty(property, copyPNames, exclusive);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
 
             }
         } else if (pSetDef instanceof IfcElementQuantity)
@@ -319,8 +320,8 @@ public class IfcRelationshipsToCOBie
             IfcElementQuantity elQ = (IfcElementQuantity)pSetDef;
             for (IfcPhysicalQuantity quantity : elQ.getQuantities())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.propertyStringsFromPhysicalQuantity(quantity, copyPNames, exclusive);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                tmpPropertyMap = IfcPropertyStringTransformer.propertyStringsFromPhysicalQuantity(quantity, copyPNames, exclusive);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
             }
 
         }
@@ -342,13 +343,13 @@ public class IfcRelationshipsToCOBie
             for (IfcPropertySetDefinition pSet : rType.getHasPropertySets())
             {
                 tmpPropertyMap = IfcPropertySetToCOBieString.propertyStringsFromPropertySetDefinition(pSet, propertyNamesClone);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
             }
             if (!propertyNamesClone.isEmpty())
             {
 
-                tmpPropertyMap = IfcRelationshipsToCOBie.propertyStringsFromFirstRelatedObject(relDefinesByType, propertyNamesClone);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                tmpPropertyMap = IfcRelationshipUtility.propertyStringsFromFirstRelatedObject(relDefinesByType, propertyNamesClone);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
                 // if (firstInstance != null) {
                 // for (IfcRelDefines def : firstInstance.getIsDefinedBy()) {
                 // if (!(def instanceof IfcRelDefinesByType)) {
@@ -383,7 +384,7 @@ public class IfcRelationshipsToCOBie
         for (IfcPropertySetDefinition pSet : pSets)
         {
             tmpPropertyMap = IfcPropertySetToCOBieString.propertyStringsFromPropertySetDefinition(pSet, propertyNamesClone, exclusive);
-            propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+            propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
         }
         if (!propertyNamesClone.isEmpty())
         {
@@ -391,7 +392,7 @@ public class IfcRelationshipsToCOBie
             // tmpPropertyMap =
             // IfcRelationshipsToCOBie.propertyStringsFromFirstRelatedObject(relDefinesByType,
             // propertyNamesClone,exclusive);
-            propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+            propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
             // if (firstInstance != null) {
             // for (IfcRelDefines def : firstInstance.getIsDefinedBy()) {
             // if (!(def instanceof IfcRelDefinesByType)) {
@@ -423,13 +424,13 @@ public class IfcRelationshipsToCOBie
         if (!defByTypes.isEmpty())
         {
             IfcRelDefinesByType firstAssociation = defByTypes.get(0);
-            propertyMap = IfcRelationshipsToCOBie.propertyStringsFromRelDefines(firstAssociation, propertyNamesClone);
+            propertyMap = IfcRelationshipUtility.propertyStringsFromRelDefines(firstAssociation, propertyNamesClone);
         } else
         {
             for (IfcPropertySetDefinition pSet : pSets)
             {
                 tmpPropertyMap = IfcPropertySetToCOBieString.propertyStringsFromPropertySetDefinition(pSet, propertyNamesClone);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
 
             }
         }
@@ -447,27 +448,27 @@ public class IfcRelationshipsToCOBie
         if (!defByTypes.isEmpty())
         {
             IfcRelDefinesByType firstAssociation = defByTypes.get(0);
-            propertyMap = IfcRelationshipsToCOBie.propertyStringsFromRelDefines(firstAssociation, propertyNamesClone, exclusive);
+            propertyMap = IfcRelationshipUtility.propertyStringsFromRelDefines(firstAssociation, propertyNamesClone, exclusive);
         } else
         {
             for (IfcPropertySetDefinition pSet : pSets)
             {
                 tmpPropertyMap = IfcPropertySetToCOBieString.propertyStringsFromPropertySetDefinition(pSet, propertyNamesClone, exclusive);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
             }
         }
         return propertyMap;
     }
 
-    static public Map<String, IfcPropertyToCOBieString> psetStringsFromFirstRelatedObject(
+    static public Map<String, IfcPropertyStringTransformer> psetStringsFromFirstRelatedObject(
             IfcRelationship rel,
             ArrayList<String> propertyNames,
             boolean exclusive)
     {
-        Map<String, IfcPropertyToCOBieString> propertyMap = new HashMap<String, IfcPropertyToCOBieString>();
+        Map<String, IfcPropertyStringTransformer> propertyMap = new HashMap<String, IfcPropertyStringTransformer>();
         @SuppressWarnings("unchecked")
         ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
-        Map<String, IfcPropertyToCOBieString> tmpPropertyMap = new HashMap<String, IfcPropertyToCOBieString>();
+        Map<String, IfcPropertyStringTransformer> tmpPropertyMap = new HashMap<String, IfcPropertyStringTransformer>();
         IfcObject firstInstance = firstRelatedObjectFromRelationship(rel);
 
         if (firstInstance != null)
@@ -476,7 +477,7 @@ public class IfcRelationshipsToCOBie
             {
                 if (!(def == rel))
                 {
-                    tmpPropertyMap = IfcRelationshipsToCOBie.psetStringsFromRelDefines(def, propertyNamesClone, exclusive);
+                    tmpPropertyMap = IfcRelationshipUtility.psetStringsFromRelDefines(def, propertyNamesClone, exclusive);
                     propertyMap = IfcPropertySetToCOBieString.mergePsetStrings(tmpPropertyMap, propertyMap);
                 }
             }
@@ -484,13 +485,13 @@ public class IfcRelationshipsToCOBie
         return propertyMap;
     }
 
-    static public Map<String, IfcPropertyToCOBieString> psetStringsFromRelDefines(
+    static public Map<String, IfcPropertyStringTransformer> psetStringsFromRelDefines(
             IfcRelDefines relDefines,
             ArrayList<String> propertyNames,
             boolean exclusive)
     {
 
-        Map<String, IfcPropertyToCOBieString> propertyMap = new HashMap<String, IfcPropertyToCOBieString>();
+        Map<String, IfcPropertyStringTransformer> propertyMap = new HashMap<String, IfcPropertyStringTransformer>();
         if (IfcRelDefinesByProperties.class.isInstance(relDefines))
         {
             propertyMap = psetStringsFromRelDefinesByProperties((IfcRelDefinesByProperties)relDefines, propertyNames, exclusive);
@@ -501,13 +502,13 @@ public class IfcRelationshipsToCOBie
         return propertyMap;
     }
 
-    static private Map<String, IfcPropertyToCOBieString> psetStringsFromRelDefinesByProperties(
+    static private Map<String, IfcPropertyStringTransformer> psetStringsFromRelDefinesByProperties(
             IfcRelDefinesByProperties relDefinesByProperties,
             ArrayList<String> propertyNames,
             boolean exclusive)
     {
-        Map<String, IfcPropertyToCOBieString> propertyMap = new HashMap<String, IfcPropertyToCOBieString>();
-        Map<String, IfcPropertyToCOBieString> tmpPropertyMap = new HashMap<String, IfcPropertyToCOBieString>();
+        Map<String, IfcPropertyStringTransformer> propertyMap = new HashMap<String, IfcPropertyStringTransformer>();
+        Map<String, IfcPropertyStringTransformer> tmpPropertyMap = new HashMap<String, IfcPropertyStringTransformer>();
         @SuppressWarnings("unchecked")
         ArrayList<String> copyPNames = (ArrayList<String>)propertyNames.clone();
         IfcPropertySetDefinition pSetDef = relDefinesByProperties.getRelatingPropertyDefinition();
@@ -516,7 +517,7 @@ public class IfcRelationshipsToCOBie
             IfcPropertySet pSet = (IfcPropertySet)pSetDef;
             for (IfcProperty property : pSet.getHasProperties())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.psetStringsFromProperty(property, copyPNames, exclusive);
+                tmpPropertyMap = IfcPropertyStringTransformer.psetStringsFromProperty(property, copyPNames, exclusive);
                 propertyMap = IfcPropertySetToCOBieString.mergePsetStrings(tmpPropertyMap, propertyMap);
             }
         } else if (pSetDef instanceof IfcElementQuantity)
@@ -524,7 +525,7 @@ public class IfcRelationshipsToCOBie
             IfcElementQuantity elQ = (IfcElementQuantity)pSetDef;
             for (IfcPhysicalQuantity quantity : elQ.getQuantities())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.psetStringsFromPhysicalQuantity(quantity, copyPNames, exclusive);
+                tmpPropertyMap = IfcPropertyStringTransformer.psetStringsFromPhysicalQuantity(quantity, copyPNames, exclusive);
                 propertyMap = IfcPropertySetToCOBieString.mergePsetStrings(tmpPropertyMap, propertyMap);
             }
 
@@ -536,15 +537,15 @@ public class IfcRelationshipsToCOBie
         return propertyMap;
     }
 
-    static private Map<String, IfcPropertyToCOBieString> psetStringsFromRelDefinesByType(
+    static private Map<String, IfcPropertyStringTransformer> psetStringsFromRelDefinesByType(
             IfcRelDefinesByType relDefinesByType,
             ArrayList<String> propertyNames,
             boolean exclusive)
     {
         @SuppressWarnings("unchecked")
-        ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
-        Map<String, IfcPropertyToCOBieString> propertyMap = new HashMap<String, IfcPropertyToCOBieString>();
-        Map<String, IfcPropertyToCOBieString> tmpPropertyMap = new HashMap<String, IfcPropertyToCOBieString>();
+        ArrayList<String> propertyNamesClone = (ArrayList<String>) propertyNames.clone();
+        Map<String, IfcPropertyStringTransformer> propertyMap = new HashMap<String, IfcPropertyStringTransformer>();
+        Map<String, IfcPropertyStringTransformer> tmpPropertyMap = new HashMap<String, IfcPropertyStringTransformer>();
         IfcTypeObject rType = relDefinesByType.getRelatingType();
         EList<IfcPropertySetDefinition> pSets = rType.getHasPropertySets();
         for (IfcPropertySetDefinition pSet : pSets)
@@ -569,21 +570,21 @@ public class IfcRelationshipsToCOBie
         return propertyMap;
     }
 
-    static public Map<String, IfcPropertyToCOBieString> psetStringsFromTypeObject(
+    static public Map<String, IfcPropertyStringTransformer> psetStringsFromTypeObject(
             IfcTypeObject rType,
             ArrayList<String> propertyNames,
             boolean exclusive)
     {
         @SuppressWarnings("unchecked")
         ArrayList<String> propertyNamesClone = (ArrayList<String>)propertyNames.clone();
-        Map<String, IfcPropertyToCOBieString> propertyMap = new HashMap<String, IfcPropertyToCOBieString>();
-        Map<String, IfcPropertyToCOBieString> tmpPropertyMap = new HashMap<String, IfcPropertyToCOBieString>();
+        Map<String, IfcPropertyStringTransformer> propertyMap = new HashMap<String, IfcPropertyStringTransformer>();
+        Map<String, IfcPropertyStringTransformer> tmpPropertyMap = new HashMap<String, IfcPropertyStringTransformer>();
         EList<IfcPropertySetDefinition> pSets = rType.getHasPropertySets();
         EList<IfcRelDefinesByType> defByTypes = rType.getObjectTypeOf();
         if (!defByTypes.isEmpty())
         {
             IfcRelDefinesByType firstAssociation = defByTypes.get(0);
-            propertyMap = IfcRelationshipsToCOBie.psetStringsFromRelDefines(firstAssociation, propertyNamesClone, exclusive);
+            propertyMap = IfcRelationshipUtility.psetStringsFromRelDefines(firstAssociation, propertyNamesClone, exclusive);
         } else
         {
             for (IfcPropertySetDefinition pSet : pSets)
@@ -604,16 +605,16 @@ public class IfcRelationshipsToCOBie
             IfcPropertySet pSet = (IfcPropertySet)pSetDef;
             for (IfcProperty property : pSet.getHasProperties())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.propertyStringsFromProperty(property, copyPNames);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                tmpPropertyMap = IfcPropertyStringTransformer.propertyStringsFromProperty(property, copyPNames);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
             }
         } else if (pSetDef instanceof IfcElementQuantity)
         {
             IfcElementQuantity elQ = (IfcElementQuantity)pSetDef;
             for (IfcPhysicalQuantity quantity : elQ.getQuantities())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.propertyStringsFromPhysicalQuantity(quantity, copyPNames);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                tmpPropertyMap = IfcPropertyStringTransformer.propertyStringsFromPhysicalQuantity(quantity, copyPNames);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
             }
 
         }

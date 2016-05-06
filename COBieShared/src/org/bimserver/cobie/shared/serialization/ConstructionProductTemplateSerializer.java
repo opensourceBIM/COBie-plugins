@@ -8,13 +8,15 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.bimserver.plugins.serializers.SerializerException;
 import org.slf4j.LoggerFactory;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
 import com.prairiesky.transform.template.CobieToGeneralProductXLSXTransform;
 
 public class ConstructionProductTemplateSerializer extends
 		COBieTabXMLSerializer
 {
-	public ConstructionProductTemplateSerializer(Workbook blankTemplate)
+	public ConstructionProductTemplateSerializer(Workbook blankTemplate, SettingsType settings)
 	{
+		super(settings);
 		this.blankTemplate = blankTemplate;
 	}
 	

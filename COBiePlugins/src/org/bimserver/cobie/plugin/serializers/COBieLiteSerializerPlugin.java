@@ -3,7 +3,6 @@ package org.bimserver.cobie.plugin.serializers;
 import org.bimserver.cobie.shared.serialization.COBieLiteSerializer;
 import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
 import org.bimserver.plugins.PluginConfiguration;
-import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.serializers.Serializer;
 
@@ -12,25 +11,13 @@ public class COBieLiteSerializerPlugin extends AbstractCOBieSerializerPlugin
 
 	protected static final String VERSION = "1.1";
 	protected static final boolean NEEDS_GEOMETRY = false;
-	private boolean isInitialized;
 
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new COBieLiteSerializer();
+		return new COBieLiteSerializer(getTransformSettings());
 	}
 
-	@Override
-	public void init(PluginManager pluginManager) throws PluginException
-	{
-		isInitialized = true;
-	}
-
-	@Override
-	public boolean isInitialized()
-	{
-		return isInitialized;
-	}
 
 	@Override
 	public boolean needsGeometry()
@@ -42,5 +29,12 @@ public class COBieLiteSerializerPlugin extends AbstractCOBieSerializerPlugin
 	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
 	{
 		return COBieSerializerPluginInfo.COBIE_LITE;
+	}
+
+	@Override
+	protected void onInit(PluginManager pluginManager) throws Exception 
+	{
+		// NOTHING TO DO
+		
 	}
 }

@@ -28,10 +28,10 @@ import org.bimserver.cobie.shared.cobietab.key.KeyedJobType;
 import org.bimserver.cobie.shared.deserialization.DeserializerStaticStrings;
 import org.bimserver.cobie.shared.deserialization.cobietab.modelhandlers.ClassificationHandler;
 import org.bimserver.cobie.shared.deserialization.cobietab.modelhandlers.IfcCommonHandler;
-import org.bimserver.cobie.shared.serialization.util.IfcToFacility;
-import org.bimserver.cobie.shared.serialization.util.IfcToFloor;
-import org.bimserver.cobie.shared.serialization.util.IfcToSpace;
-import org.bimserver.cobie.shared.serialization.util.IfcToType;
+import org.bimserver.cobie.shared.serialization.util.IfcBuildingFacilitySerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcBuildingStoreyFloorSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcSpaceSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcTypeToCOBieTypeSerializer;
 import org.bimserver.cobie.shared.utility.COBieIfcUtility;
 import org.bimserver.cobie.shared.utility.COBieUtility;
 import org.bimserver.emf.IdEObject;
@@ -316,8 +316,8 @@ public class COBieIfcModel extends IfcModel
     private void assignSpaceToFloor(IfcSpace space, IfcBuildingStorey floor)
     {
         ArrayList<String> floorSpaces = new ArrayList<String>();
-        String spaceName = IfcToSpace.nameFromSpace(space);
-        String floorName = IfcToFloor.nameFromBuildingStorey(floor);
+        String spaceName = IfcSpaceSerializer.nameFromSpace(space);
+        String floorName = IfcBuildingStoreyFloorSerializer.nameFromBuildingStorey(floor);
         if ((floorName != null) && (floorName.length() > 0) && containsFloor(floorName))
         {
             if (FloorNameToSpaceNames.containsKey(floorName))
@@ -503,7 +503,7 @@ public class COBieIfcModel extends IfcModel
 
     private void facilityAdded(IfcBuilding facility, Long oid)
     {
-        String name = IfcToFacility.nameFromBuildign(facility);
+        String name = IfcBuildingFacilitySerializer.nameFromBuilding(facility);
         if (getFacilityCount() == 0)
         {
             firstFacilityOid = oid;
@@ -990,7 +990,7 @@ public class COBieIfcModel extends IfcModel
             defByType.setOwnerHistory(ifcCommonHandler.getOwnerHistoryHandler().DefaultOwnerHistory());
             defByType.setGlobalId(ifcCommonHandler.getGuidHandler().newGuid().getWrappedValue());
             defByType.setRelatingType(typeObject);
-            String category = IfcToType.categoryFromTypeObject(typeObject);
+            String category = IfcTypeToCOBieTypeSerializer.categoryFromTypeObject(typeObject);
             String objectType = ClassificationHandler.objectTypeFromCategoryString(category);
             if (ComponentNames != null)
             {

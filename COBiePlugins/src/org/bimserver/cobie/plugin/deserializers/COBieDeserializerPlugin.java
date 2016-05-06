@@ -27,6 +27,7 @@ import java.util.Set;
 import org.bimserver.cobie.shared.deserialization.COBieDeserializer;
 import org.bimserver.cobie.shared.deserialization.COBieDeserializerPluginName;
 import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
+import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper.Persistence;
 import org.bimserver.emf.PackageMetaData;
 import org.bimserver.emf.Schema;
 import org.bimserver.models.store.ObjectDefinition;
@@ -91,8 +92,8 @@ public class COBieDeserializerPlugin implements DeserializerPlugin
 		configurationFilePath = pluginManager.getPluginContext(this).getRootPath().resolve(localConfigFilePath);
 		try 
 		{
-			configFile = PluginRuntimeFileHelper.prepareSerializerConfigFile(pluginManager, 
-					getClass().getSimpleName(), this, configurationFilePath.toString());
+			configFile = PluginRuntimeFileHelper.prepareSerializerResource(pluginManager, 
+					getClass().getSimpleName(), this, configurationFilePath.toString(), Persistence.TEMP);
 		} catch (IOException e1) 
 		{
 			throw new PluginException(e1);

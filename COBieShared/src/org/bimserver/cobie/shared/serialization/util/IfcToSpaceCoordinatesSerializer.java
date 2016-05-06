@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
 
-import org.bimserver.cobie.shared.serialization.IfcCOBieSerializer;
+import org.bimserver.cobie.shared.serialization.IfcCobieSerializer;
 import org.bimserver.cobie.shared.serialization.RectangleCoordinatesCalculator;
 import org.bimserver.cobie.shared.utility.COBieIfcUtility;
 import org.bimserver.cobie.shared.utility.COBieUtility;
@@ -18,7 +18,9 @@ import org.nibs.cobie.tab.COBIEType;
 import org.nibs.cobie.tab.COBIEType.Coordinates;
 import org.nibs.cobie.tab.CoordinateType;
 
-public class IfcToSpaceCoordinatesSerializer extends IfcCOBieSerializer<CoordinateType, COBIEType.Coordinates, IfcSpace>
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
+public class IfcToSpaceCoordinatesSerializer extends IfcCobieSerializer<CoordinateType, COBIEType.Coordinates, IfcSpace>
 {
 
     private enum CoordinateCategory
@@ -32,9 +34,9 @@ public class IfcToSpaceCoordinatesSerializer extends IfcCOBieSerializer<Coordina
     private static final String CATEGORY_POINT = "point";;
     private static final int THREE_D_DIMENSION_COUNT = 3;
 
-    public IfcToSpaceCoordinatesSerializer(Coordinates cobieSection, IfcModelInterface model)
+    public IfcToSpaceCoordinatesSerializer(Coordinates cobieSection, IfcModelInterface model, SettingsType settings)
     {
-        super(cobieSection, model);
+        super(cobieSection, model, settings);
     }
 
     @Override
@@ -99,7 +101,7 @@ public class IfcToSpaceCoordinatesSerializer extends IfcCOBieSerializer<Coordina
         }
         String name = getCoordinateName(ifcSpace, category);
         String sheetName = COBieUtility.CobieSheetName.Space.name();
-        String rowName = IfcToSpace.nameFromSpace(ifcSpace);
+        String rowName = IfcSpaceSerializer.nameFromSpace(ifcSpace);
         String coordinateXAxis = COBieUtility.COBieNA;
         String coordinateYAxis = COBieUtility.COBieNA;
         String coordinateZAxis = COBieUtility.COBieNA;
@@ -123,7 +125,7 @@ public class IfcToSpaceCoordinatesSerializer extends IfcCOBieSerializer<Coordina
 
     private String getCoordinateName(IfcSpace ifcSpace, String category)
     {
-        return IfcToSpace.nameFromSpace(ifcSpace) + "-" + category;
+        return IfcSpaceSerializer.nameFromSpace(ifcSpace) + "-" + category;
     }
 
     /*

@@ -20,9 +20,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import org.bimserver.cobie.shared.OwnerHistoryList;
-import org.bimserver.cobie.shared.utility.COBieIfcUtility;
 import org.bimserver.cobie.shared.utility.COBieUtility;
-import org.bimserver.cobie.shared.utility.COBieUtility.CobieSheetName;
 import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.models.ifc2x3tc1.IfcActorRole;
 import org.bimserver.models.ifc2x3tc1.IfcAddress;
@@ -37,15 +35,10 @@ import org.bimserver.models.ifc2x3tc1.IfcTelecomAddress;
 import org.bimserver.models.ifc2x3tc1.impl.IfcPostalAddressImpl;
 import org.bimserver.models.ifc2x3tc1.impl.IfcTelecomAddressImpl;
 import org.eclipse.emf.common.util.EList;
-import org.nibs.cobie.tab.COBIEType;
-import org.nibs.cobie.tab.ContactType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class IfcToContact
 {
-    private static CobieSheetName SheetName = CobieSheetName.Contact;
-    private static final Logger LOGGER = LoggerFactory.getLogger(IfcToContact.class);
+
     static protected final String getExternalObject = IfcPersonAndOrganization.class.getSimpleName();
 
     static public String categoryFromActorRole(IfcActorRole role)
@@ -369,191 +362,5 @@ public class IfcToContact
         return COBieUtility.getCOBieString(town);
     }
 
-    public static COBIEType writeContactsToCOBie(COBIEType cobie, IfcModelInterface model)
-    {
-        return writePersonOrganizationsToCOBie(cobie, model);
-    }
-
-    public static COBIEType writeOwnerHistoriesToCOBie(COBIEType cobie, IfcModelInterface model)
-    {
-
-        LogHandler loggerStrings = new LogHandler(SheetName, LOGGER);
-        loggerStrings.sheetWriteBegin();
-        COBIEType.Contacts contacts;
-        if ((cobie.getContacts() == null) || cobie.getContacts().isNil())
-        {
-            contacts = cobie.addNewContacts();
-        } else
-        {
-            contacts = cobie.getContacts();
-        }
-        String contactEmail = "";
-        String contactCreatedBy = "";
-        String contactFamilyName;
-        String contactGivenName;
-        String contactCategory;
-        String contactCompany;
-        String contactStreet;
-        String contactPostalBox;
-        String contactTown;
-        String contactStateRegion;
-        String contactDepartment;
-        String contactPostalCode;
-        String contactCountry;
-        String contactPhone;
-        String contactExternalSystem;
-        String contactExternalObject;
-        for (IfcOwnerHistory ownerHistory : model.getAll(IfcOwnerHistory.class))
-        {
-            try
-            {
-                IfcPersonAndOrganization owningUser = ownerHistory.getOwningUser();
-                IfcPerson person = owningUser.getThePerson();
-                IfcOrganization org = owningUser.getTheOrganization();
-                int creationDate = ownerHistory.getCreationDate();
-                IfcPostalAddress postalAddress = IfcToContact.personOrganizationPostalAddress(owningUser);
-                contactDepartment = departmentFromPostalAddress(postalAddress);
-
-                Calendar cal = IfcToContact.getCreatedOn(creationDate);
-                contactEmail = COBieIfcUtility.getEmailFromPersonAndOrganization(owningUser);
-                contactCreatedBy = COBieIfcUtility.getEmailFromOwnerHistory(IfcToContact.getLatestOwnerHistory(model));
-                contactCategory = IfcToContact.categoryFromPersonAndOrganization(owningUser);
-                contactCompany = IfcToContact.companyFromOrganization(org);
-                if (COBieUtility.isNA(contactDepartment))
-                {
-                    contactDepartment = contactCompany;
-                }
-
-                contactPhone = IfcToContact.phoneFromPersonAndOrganization(owningUser);
-                contactExternalSystem = COBieIfcUtility.getApplicationName(ownerHistory);
-                contactExternalObject = IfcToContact.getExternalObject;
-                contactGivenName = IfcToContact.givenNameFromPerson(person);
-                contactFamilyName = IfcToContact.familyNameFromPerson(person);
-                contactStreet = IfcToContact.streetFromPostalAddress(postalAddress);
-                contactPostalBox = COBieUtility.COBieNA;
-                contactTown = IfcToContact.townFromPostalAddress(postalAddress);
-                contactStateRegion = IfcToContact.stateRegionFromPostalAddress(postalAddress);
-                contactPostalCode = IfcToContact.postalCodeFromPostalAddress(postalAddress);
-                contactCountry = IfcToContact.countryFromPostalAddress(postalAddress);
-
-                ContactType tmpContact = contacts.addNewContact();
-                tmpContact.setEmail(contactEmail);
-                tmpContact.setCreatedBy(contactCreatedBy);
-                tmpContact.setCreatedOn(cal);
-                tmpContact.setCategory(contactCategory);
-                tmpContact.setCompany(contactCompany);
-                tmpContact.setPhone(contactPhone);
-                tmpContact.setExternalSystem(contactExternalSystem);
-                tmpContact.setExternalObject(contactExternalObject);
-                tmpContact.setExternalIdentifier(contactEmail);
-                tmpContact.setDepartment(contactDepartment);
-                tmpContact.setOrganizationCode(contactCompany);
-                tmpContact.setGivenName(contactGivenName);
-                tmpContact.setFamilyName(contactFamilyName);
-                tmpContact.setStreet(contactStreet);
-                tmpContact.setPostalBox(contactPostalBox);
-                tmpContact.setTown(contactTown);
-                tmpContact.setStateRegion(contactStateRegion);
-                tmpContact.setPostalCode(contactPostalCode);
-                tmpContact.setCountry(contactCountry);
-                contactEmail = "";
-                loggerStrings.rowWritten();
-
-            } catch (Exception ex)
-            {
-                loggerStrings.error(ex);
-            }
-
-        }
-        loggerStrings.sheetWritten();
-        return cobie;
-    }
-
-    public static COBIEType writePersonOrganizationsToCOBie(COBIEType cType, IfcModelInterface model)
-    {
-
-        LogHandler loggerStrings = new LogHandler(SheetName, LOGGER);
-        loggerStrings.sheetWriteBegin();
-        COBIEType.Contacts contacts = cType.addNewContacts();
-        String contactEmail = "";
-        String contactCreatedBy = "";
-        String contactFamilyName;
-        String contactGivenName;
-        String contactCategory;
-        String contactCompany;
-        String contactStreet;
-        String contactPostalBox;
-        String contactTown;
-        String contactStateRegion;
-        String contactPostalCode;
-        String contactCountry;
-        String contactPhone;
-        String contactExternalSystem;
-        String contactExternalObject;
-        String contactDepartment;
-        String contactOrganizationCode;
-        for (IfcPersonAndOrganization personOrg : model.getAll(IfcPersonAndOrganization.class))
-        {
-            try
-            {
-                IfcPerson person = personOrg.getThePerson();
-                IfcOrganization org = personOrg.getTheOrganization();
-                IfcOwnerHistory ownerHistory = IfcToContact.getLatestOwnerHistory(model);
-                int creationDate = ownerHistory.getCreationDate();
-                IfcPostalAddress postalAddress = IfcToContact.personOrganizationPostalAddress(personOrg);
-
-                Calendar cal = IfcToContact.getCreatedOn(creationDate);
-                contactEmail = COBieIfcUtility.getEmailFromPersonAndOrganization(personOrg);
-                contactCreatedBy = COBieIfcUtility.getEmailFromOwnerHistory(IfcToContact.getLatestOwnerHistory(model));
-                contactCategory = IfcToContact.categoryFromPersonAndOrganization(personOrg);
-                contactCompany = IfcToContact.companyFromOrganization(org);
-                contactPhone = IfcToContact.phoneFromPersonAndOrganization(personOrg);
-                contactExternalSystem = COBieIfcUtility.getApplicationName(ownerHistory);
-                contactExternalObject = IfcToContact.getExternalObject;
-                contactGivenName = IfcToContact.givenNameFromPerson(person);
-                contactFamilyName = IfcToContact.familyNameFromPerson(person);
-                contactStreet = IfcToContact.streetFromPostalAddress(postalAddress);
-                contactPostalBox = IfcToContact.postalBoxFromPostalAddress(postalAddress);
-                contactTown = IfcToContact.townFromPostalAddress(postalAddress);
-                contactStateRegion = IfcToContact.stateRegionFromPostalAddress(postalAddress);
-                contactPostalCode = IfcToContact.postalCodeFromPostalAddress(postalAddress);
-                contactCountry = IfcToContact.countryFromPostalAddress(postalAddress);
-                contactDepartment = IfcToContact.departmentFromPostalAddress(postalAddress);
-                if (COBieUtility.isNA(contactDepartment))
-                {
-                    contactDepartment = contactCompany;
-                }
-                contactOrganizationCode = IfcToContact.orgCodeFromOrganization(personOrg.getTheOrganization());
-
-                ContactType tmpContact = contacts.addNewContact();
-                tmpContact.setEmail(contactEmail);
-                tmpContact.setCreatedBy(contactCreatedBy);
-                tmpContact.setCreatedOn(cal);
-                tmpContact.setCategory(contactCategory);
-                tmpContact.setCompany(contactCompany);
-                tmpContact.setPhone(contactPhone);
-                tmpContact.setExternalSystem(contactExternalSystem);
-                tmpContact.setExternalObject(contactExternalObject);
-                tmpContact.setExternalIdentifier(contactEmail);
-                tmpContact.setDepartment(contactDepartment);
-                tmpContact.setOrganizationCode(contactOrganizationCode);
-                tmpContact.setGivenName(contactGivenName);
-                tmpContact.setFamilyName(contactFamilyName);
-                tmpContact.setStreet(contactStreet);
-                tmpContact.setPostalBox(contactPostalBox);
-                tmpContact.setTown(contactTown);
-                tmpContact.setStateRegion(contactStateRegion);
-                tmpContact.setPostalCode(contactPostalCode);
-                tmpContact.setCountry(contactCountry);
-                contactEmail = "";
-                loggerStrings.rowWritten();
-            } catch (Exception ex)
-            {
-                loggerStrings.error(ex);
-            }
-        }
-
-        loggerStrings.sheetWritten();
-        return cType;
-    }
+   
 }

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="settings.cobieifc.transform.prairiesky.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="settings.cobieifc.transform.prairiesky.com IfcCobieTransformSettings.xsd">
+	<FacilitySettings>
+		<FacilityDefaultProjectName>Default Project</FacilityDefaultProjectName>
+		<FacilitySiteDefaultName>Default Site</FacilitySiteDefaultName>
+	</FacilitySettings>
+	<FloorSettings>
+		<FloorHeightPropertyNames>
+			<Name>Height</Name>
+			<Name>NetHeight</Name>
+			<Name>GrossHeight</Name>
+			<Name>Net Height</Name>
+			<Name>Gross Height</Name>
+			<Name>StoreyHeight</Name>
+			<Name>Storey Height</Name>
+			<Name>FloorHeight</Name>
+			<Name>Floor Height</Name>
+		</FloorHeightPropertyNames>
+	</FloorSettings>
+	<TypeSettings>
+		<IfcTypeExclusions>
+			<Name>IfcBeamType</Name>
+			<Name>IfcMaterial</Name>
+			<Name>IfcMaterialLayerSet</Name>
+			<Name>IfcCableCarrierSegmentType</Name>
+			<Name>IfcCableSegmentType</Name>
+			<Name>IfcColumnType</Name>
+			<Name>IfcCoveringType</Name>
+			<Name>IfcCurtainWallType</Name>
+			<Name>IfcDuctFittingType</Name>
+			<Name>IfcDuctSegmentType</Name>
+			<Name>IfcFastenerType</Name>
+			<Name>IfcJunctionBoxType</Name>
+			<Name>IfcMemberType</Name>
+			<Name>IfcPipeFittingType</Name>
+			<Name>IfcPipeSegmentType</Name>
+			<Name>IfcPlateType</Name>
+			<Name>IfcRailingType</Name>
+			<Name>IfcRampFlightType</Name>
+			<Name>IfcRampType</Name>
+			<Name>IfcSlabType</Name>
+			<Name>IfcSpaceType</Name>
+			<Name>IfcStairFlightType</Name>
+			<Name>IfcStairType</Name>
+			<Name>IfcWallType</Name>
+			<Name>IfcTypeObject</Name>
+			<Name>IfcTypeProduct</Name>
+			<Name>IfcElementType</Name>
+		</IfcTypeExclusions>
+		<AssetTypePropertyNames>
+			<Name>AssetType</Name>
+			<Name>AssetAccountingType</Name>
+		</AssetTypePropertyNames>
+		<ManufacturerPropertyNames>
+			<Name>Manufacturer</Name>
+		</ManufacturerPropertyNames>
+		<ModelNumberPropertyNames>
+			<Name>ModelNumber</Name>
+			<Name>ArticleNumber</Name>
+			<Name>ModelLabel</Name>
+		</ModelNumberPropertyNames>
+		<WarrantyGuarantorPartsPropertyNames>
+			<Name>WarrantyGuarantorParts</Name>
+			<Name>PointOfContact</Name>
+		</WarrantyGuarantorPartsPropertyNames>
+		<WarrantyDurationPartsPropertyNames>
+			<Name>WarrantyDurationParts</Name>
+			<Name>WarrantyPeriod</Name>
+		</WarrantyDurationPartsPropertyNames>
+		<WarrantyGuarantorLaborPropertyNames>
+			<Name>WarrantyGuarantorLabor</Name>
+			<Name>PointOfContact</Name>
+		</WarrantyGuarantorLaborPropertyNames>
+		<WarrantyDurationLaborPropertyNames>
+			<Name>WarrantyDurationLabor</Name>
+			<Name>WarrantyPeriod</Name>
+		</WarrantyDurationLaborPropertyNames>
+		<ReplacementCostPropertyNames>
+			<Name>ReplacementCost</Name>
+			<Name>Replacement Cost</Name>
+			<Name>Cost</Name>
+			<Name>Replacement</Name>
+		</ReplacementCostPropertyNames>
+		<ExpectedLifePropertyNames>
+			<Name>ExpectedLife</Name>
+			<Name>Expected Life</Name>
+			<Name>ServiceLifeDuration</Name>
+			<Name>Expected</Name>
+		</ExpectedLifePropertyNames>
+		<WarrantyDescriptionPropertyNames>
+			<Name>WarrantyDescription</Name>
+			<Name>WarrantyIdentifier</Name>
+		</WarrantyDescriptionPropertyNames>
+		<NominalLengthPropertyNames>
+			<Name>NominalLength</Name>
+			<Name>OverallLength</Name>
+		</NominalLengthPropertyNames>
+		<NominalWidthPropertyNames>
+			<Name>NominalWidth</Name>
+			<Name>Width</Name>
+		</NominalWidthPropertyNames>
+		<NominalHeightPropertyNames>
+			<Name>NominalHeight</Name>
+			<Name>Heght</Name>
+		</NominalHeightPropertyNames>
+		<ModelReferencePropertyNames>
+			<Name>ModelReference</Name>
+			<Name>Reference</Name>
+		</ModelReferencePropertyNames>
+		<ShapePropertyNames>
+			<Name>Shape</Name>
+		</ShapePropertyNames>
+		<SizePropertyNames>
+			<Name>Size</Name>
+		</SizePropertyNames>
+		<ColorPropertyNames>
+			<Name>Color</Name>
+			<Name>Colour</Name>
+		</ColorPropertyNames>
+		<FinishPropertyNames>
+			<Name>Finish</Name>
+		</FinishPropertyNames>
+		<GradePropertyNames>
+			<Name>Grade</Name>
+		</GradePropertyNames>
+		<MaterialPropertyNames>
+			<Name>Material</Name>
+		</MaterialPropertyNames>
+		<ConstituentsPropertyNames>
+			<Name>Constituents</Name>
+			<Name>Parts</Name>
+		</ConstituentsPropertyNames>
+		<FeaturesPropertyNames>
+			<Name>Features</Name>
+		</FeaturesPropertyNames>
+		<AccessibilityPerformancePropertyNames>
+			<Name>AccessibilityPerformance</Name>
+			<Name>Access</Name>
+		</AccessibilityPerformancePropertyNames>
+		<CodePerformancePropertyNames>
+			<Name>CodePerformance</Name>
+			<Name>Regulation</Name>
+		</CodePerformancePropertyNames>
+		<SustainabilityPerformancePropertyNames>
+			<Name>SustainabilityPerformance</Name>
+			<Name>Environmental</Name>
+		</SustainabilityPerformancePropertyNames>
+		<DefaultWarrantyDurationUnit>year</DefaultWarrantyDurationUnit>
+	</TypeSettings>
+	<ComponentSettings>
+		<IfcProductExclusions>
+			<Name>IfcAnnotation</Name>
+			<Name>IfcDistributionPort</Name>
+			<Name>IfcSpace</Name>
+			<Name>IfcBuildingStorey</Name>
+			<Name>IfcBuilding</Name>
+			<Name>IfcSite</Name>
+			<Name>IfcVirtualElement</Name>
+			<Name>IfcBeam</Name>
+			<Name>IfcBuildingElementPart</Name>
+			<Name>IfcColumn</Name>
+			<Name>IfcCurtainWall</Name>
+			<Name>IfcElementAssembly</Name>
+			<Name>IfcFastener</Name>
+			<Name>IfcFeatureElement</Name>
+			<Name>IfcFlowFitting</Name>
+			<Name>IfcFlowSegment</Name>
+			<Name>IfcFooting</Name>
+			<Name>IfcMechanicalFastener</Name>
+			<Name>IfcMember</Name>
+			<Name>IfcPile</Name>
+			<Name>IfcPlate</Name>
+			<Name>IfcRailing</Name>
+			<Name>IfcRamp</Name>
+			<Name>IfcRampFlight</Name>
+			<Name>IfcReinforcingBar</Name>
+			<Name>IfcReinforcingMesh</Name>
+			<Name>IfcRoof</Name>
+			<Name>IfcSlab</Name>
+			<Name>IfcStair</Name>
+			<Name>IfcStairFlight</Name>
+			<Name>IfcTendon</Name>
+			<Name>IfcTendonAnchor</Name>
+			<Name>IfcWall</Name>
+			<Name>IfcWallStandardCase</Name>
+			<Name>IfcCovering</Name>
+		</IfcProductExclusions>
+	</ComponentSettings>
+	<SpareSettings>
+		<SetNumberPropertyNames>
+			<Name>SetNumber</Name>
+		</SetNumberPropertyNames>
+		<PartNumberPropertyNames>
+			<Name>PartNumber</Name>
+		</PartNumberPropertyNames>
+		<SupplierPropertyNames>
+			<Name>Suppliers</Name>
+		</SupplierPropertyNames>
+	</SpareSettings>
+	<JobSettings>
+		<DurationPropertyNames>
+			<Name>TaskDuration</Name>
+		</DurationPropertyNames>
+		<FrequencyPropertyNames>
+			<Name>TaskInterval</Name>
+		</FrequencyPropertyNames>
+		<StartPropertyNames>
+			<Name>TaskStartDate</Name>
+		</StartPropertyNames>
+	</JobSettings>
+	<AttributeSettings>
+		<AttributeCountDefaultUnit>each</AttributeCountDefaultUnit>
+		<FacilityAttributeCategory>Requirement</FacilityAttributeCategory>
+		<FloorAttributeCategory>Requirement</FloorAttributeCategory>
+		<SpaceAttributeCategory>Requirement</SpaceAttributeCategory>
+		<TypeAttributeCategory>Requirement</TypeAttributeCategory>
+		<ComponentAttributeCategory>Requirement</ComponentAttributeCategory>
+		<PropertyExclusions>
+			<ExcludePropertiesOnNameEqValue>true</ExcludePropertiesOnNameEqValue>
+			<NameEqValueExceptions>
+				<Name>Fire Rating</Name>
+			</NameEqValueExceptions>
+			<ValueExclusions>
+				<Exclude comparison="equals">default</Exclude>
+			</ValueExclusions>
+			<GlobalPropertyNameExclusions>
+				<Exclude comparison="equals">Category</Exclude>
+				<Exclude comparison="equals">MethodOfMeasurement</Exclude>
+				<Exclude comparison="equals">Omniclass Number</Exclude>
+				<Exclude comparison="equals">Omniclass Title</Exclude>
+				<Exclude comparison="equals">Assembly Code</Exclude>
+				<Exclude comparison="equals">Assembly Description</Exclude>
+				<Exclude comparison="equals">Uniclass Code</Exclude>
+				<Exclude comparison="equals">Uniclass Description</Exclude>
+				<Exclude comparison="equals">Category Code</Exclude>
+				<Exclude comparison="equals">Category Description</Exclude>
+				<Exclude comparison="equals">Classification Code</Exclude>
+				<Exclude comparison="equals">Classification Description</Exclude>
+				<Exclude comparison="equals">Name</Exclude>
+				<Exclude comparison="equals">Description</Exclude>
+				<Exclude comparison="contains">AssetAccountingType</Exclude>
+				<Exclude comparison="contains">GSA BIM Area</Exclude>
+				<Exclude comparison="startswith">Half Oval</Exclude>
+				<Exclude comparison="contains">Height</Exclude>
+				<Exclude comparison="contains">Length</Exclude>
+				<Exclude comparison="equals">Hot Water Radius</Exclude>
+				<Exclude comparison="equals">Host</Exclude>
+				<Exclude comparison="startswith">Level</Exclude>
+				<Exclude comparison="contains">Size</Exclude>
+				<Exclude comparison="contains">Lighting Calculation Workplan</Exclude>
+				<Exclude comparison="equals">Limit Offset</Exclude>
+				<Exclude comparison="equals">Recepticles</Exclude>
+				<Exclude comparison="equals">Mark</Exclude>
+				<Exclude comparison="contains">Offset</Exclude>
+				<Exclude comparison="contains">Omniclass</Exclude>
+				<Exclude comparison="startswith">Outside Diameter</Exclude>
+				<Exclude comparison="startswith">Outside Radius</Exclude>
+				<Exclude comparison="equals">Phase</Exclude>
+				<Exclude comparison="equals">Phase Created</Exclude>
+				<Exclude comparison="contains">Radius</Exclude>
+				<Exclude comparison="equals">Window Inset</Exclude>
+				<Exclude comparison="startswith">Width</Exclude>
+				<Exclude comparison="equals">Symbol</Exclude>
+				<Exclude comparison="equals">Line Pattern</Exclude>
+				<Exclude comparison="equals">Roomtag</Exclude>
+				<Exclude comparison="equals">Upper Limit</Exclude>
+				<Exclude comparison="equals">Base Offset</Exclude>
+				<Exclude comparison="contains">Zone</Exclude>
+				<Exclude comparison="equals"/>
+			</GlobalPropertyNameExclusions>
+			<FacilityPropertyNameExclusions>
+				<Exclude comparison="equals">Phase</Exclude>
+			</FacilityPropertyNameExclusions>
+			<FloorPropertyNameExclusions>
+				<Exclude comparison="equals">Elevation</Exclude>
+			</FloorPropertyNameExclusions>
+			<SpacePropertySetNameExclusions>
+				<Exclude comparison="equals">BaseQuantities</Exclude>
+			</SpacePropertySetNameExclusions>
+			<SpacePropertyNameExclusions>
+				<Exclude comparison="equals">GrossArea</Exclude>
+				<Exclude comparison="equals">NetArea</Exclude>
+				<Exclude comparison="equals">UsableHeight</Exclude>
+				<Exclude comparison="equals">FloorName</Exclude>
+				<Exclude comparison="endswith">Area</Exclude>
+				<Exclude comparison="equals">Number</Exclude>
+				<Exclude comparison="equals">ZoneName</Exclude>
+			</SpacePropertyNameExclusions>
+			<TypePropertyNameExclusions>
+				<Exclude comparison="equals">AssetType</Exclude>
+				<Exclude comparison="equals">IsFixed</Exclude>
+				<Exclude comparison="equals">Manufacturer</Exclude>
+				<Exclude comparison="equals">ModelNumber</Exclude>
+				<Exclude comparison="equals">ModelLabel</Exclude>
+				<Exclude comparison="equals">WarrantyGuarantorParts</Exclude>
+				<Exclude comparison="equals">WarrantyDurationParts</Exclude>
+				<Exclude comparison="equals">WarrantyGuarantorLabor</Exclude>
+				<Exclude comparison="equals">WarrantyDurationLabor</Exclude>
+				<Exclude comparison="equals">WarrantyDurationUnit</Exclude>
+				<Exclude comparison="equals">ReplacementCost</Exclude>
+				<Exclude comparison="equals">Cost</Exclude>
+				<Exclude comparison="equals">LifeCyclePhase</Exclude>
+				<Exclude comparison="equals">ExpectedLife</Exclude>
+				<Exclude comparison="equals">ServiceLifeDuration</Exclude>
+				<Exclude comparison="equals">ServiceLifeType</Exclude>
+				<Exclude comparison="equals">DurationUnit</Exclude>
+				<Exclude comparison="equals">WarrantyDescription</Exclude>
+				<Exclude comparison="equals">WarrantyName</Exclude>
+				<Exclude comparison="equals">NominalLength</Exclude>
+				<Exclude comparison="equals">NominalWidth</Exclude>
+				<Exclude comparison="equals">NominalHeight</Exclude>
+				<Exclude comparison="equals">ModelReference</Exclude>
+				<Exclude comparison="equals">Shape</Exclude>
+				<Exclude comparison="equals">Size</Exclude>
+				<Exclude comparison="equals">Color</Exclude>
+				<Exclude comparison="equals">Finish</Exclude>
+				<Exclude comparison="equals">Grade</Exclude>
+				<Exclude comparison="equals">Material</Exclude>
+				<Exclude comparison="equals">Constituents</Exclude>
+				<Exclude comparison="equals">Features</Exclude>
+				<Exclude comparison="equals">AccessibilityPerformance</Exclude>
+				<Exclude comparison="equals">CodePerformance</Exclude>
+				<Exclude comparison="equals">SustainabilityPerformance</Exclude>
+			</TypePropertyNameExclusions>
+			<ComponentPropertyNameExclusions>
+				<Exclude comparison="equals">SerialNumber</Exclude>
+				<Exclude comparison="equals">InstallationDate</Exclude>
+				<Exclude comparison="equals">WarrantyStartDate</Exclude>
+				<Exclude comparison="equals">TagNumber</Exclude>
+				<Exclude comparison="equals">BarCode</Exclude>
+				<Exclude comparison="equals">AssetIdentifier</Exclude>
+				<Exclude comparison="equals">System Name</Exclude>
+				<Exclude comparison="equals">System Type</Exclude>
+				<Exclude comparison="equals">Circuit Number</Exclude>
+			</ComponentPropertyNameExclusions>
+		</PropertyExclusions>
+	</AttributeSettings>
+</Settings>

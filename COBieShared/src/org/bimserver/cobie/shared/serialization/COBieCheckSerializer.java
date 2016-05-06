@@ -14,6 +14,8 @@ import org.bimserver.plugins.serializers.SerializerException;
 import org.nibs.cobie.tab.COBIEDocument;
 import org.slf4j.LoggerFactory;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 public class COBieCheckSerializer extends COBieTabXMLSerializer implements
 		COBieTabTransformable
 {
@@ -26,8 +28,9 @@ public class COBieCheckSerializer extends COBieTabXMLSerializer implements
 
 	private COBieSchematronChecker checker;
 
-	public COBieCheckSerializer(COBieSchematronCheckerSettings settings)
+	public COBieCheckSerializer(COBieSchematronCheckerSettings settings, SettingsType transformSettings)
 	{
+		super(transformSettings);
 		checker = new COBieSchematronChecker(settings);
 	}
 

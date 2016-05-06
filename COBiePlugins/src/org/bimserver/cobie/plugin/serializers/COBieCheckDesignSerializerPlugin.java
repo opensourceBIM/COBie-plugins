@@ -11,6 +11,7 @@ import org.bimserver.cobie.shared.reporting.COBieQCValidationPhase;
 import org.bimserver.cobie.shared.reporting.COBieSchematronCheckerSettings;
 import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
 import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
+import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper.Persistence;
 import org.bimserver.emf.Schema;
 import org.bimserver.plugins.Plugin;
 import org.bimserver.plugins.PluginConfiguration;
@@ -21,7 +22,6 @@ import org.bimserver.plugins.serializers.Serializer;
 
 public class COBieCheckDesignSerializerPlugin extends AbstractCOBieSerializerPlugin
 {
-	private boolean initialized = false;
 	private static final String SCHEMATRON_RULEPATH = "lib/COBieRules.sch";
 	private static final String SCHEMATRON_FUNCTIONPATH = "lib/COBieRules_Functions.xsl";
 	private static final String PRE_PROCESSOR_PATH = "lib/iso_svrl_for_xslt2.xsl";
@@ -34,7 +34,7 @@ public class COBieCheckDesignSerializerPlugin extends AbstractCOBieSerializerPlu
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new org.bimserver.cobie.shared.serialization.COBieCheckSerializer(checkerSettings);
+		return new org.bimserver.cobie.shared.serialization.COBieCheckSerializer(checkerSettings, getTransformSettings());
 	}
 
 
@@ -53,6 +53,27 @@ public class COBieCheckDesignSerializerPlugin extends AbstractCOBieSerializerPlu
 	@Override
 	public void init(PluginManager pluginManager) throws PluginException
 	{
+
+
+	}
+
+
+	@Override
+	public boolean needsGeometry()
+	{
+		return false;
+	}
+
+	@Override
+	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
+	{
+		return COBieSerializerPluginInfo.REPORT_QC_DESIGN;
+	}
+
+
+	@Override
+	protected void onInit(PluginManager pluginManager) throws PluginException 
+	{
 		configFilePaths = new ArrayList<String>();
 		configFilePaths.add(SCHEMATRON_RULEPATH);
 		configFilePaths.add(PRE_PROCESSOR_PATH);
@@ -65,8 +86,8 @@ public class COBieCheckDesignSerializerPlugin extends AbstractCOBieSerializerPlu
 		try 
 		{
 			configFiles = 
-			PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, 
-					getClass().getSimpleName(), this, configFilePaths);
+			PluginRuntimeFileHelper.prepareSerializerResource(pluginManager, 
+					getClass().getSimpleName(), this, configFilePaths, Persistence.TEMP);
 		} catch (IOException e) 
 		{
 			throw new PluginException(e);
@@ -74,26 +95,7 @@ public class COBieCheckDesignSerializerPlugin extends AbstractCOBieSerializerPlu
 		checkerSettings = new COBieSchematronCheckerSettings(configFiles.get(SCHEMATRON_RULEPATH), 
 				configFiles.get(PRE_PROCESSOR_PATH), configFiles
 				.get(SVRL_HTML_XSLT_PATH), COBieQCValidationPhase.Design);
-		initialized = true;
-	}
-
-	// ///////////////////////////////////////////////
-	@Override
-	public boolean isInitialized()
-	{
-		return initialized;
-	}
-
-	@Override
-	public boolean needsGeometry()
-	{
-		return false;
-	}
-
-	@Override
-	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
-	{
-		return COBieSerializerPluginInfo.REPORT_QC_DESIGN;
+		
 	}
 
 }

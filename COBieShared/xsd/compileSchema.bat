@@ -1,0 +1,1 @@
+xjc -d c:\temp -p com.prairiesky.transform.cobieifc.settings "C:\Users\Bogen\Documents\Java\BIMserver-1.4.0-FINAL-2015-11-04\COBieShared\xsd\IfcCobieTransformSettings.xsd"

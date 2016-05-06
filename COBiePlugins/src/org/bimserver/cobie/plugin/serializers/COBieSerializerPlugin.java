@@ -23,6 +23,7 @@ import java.util.HashMap;
 import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
 import org.bimserver.cobie.shared.serialization.COBieSpreadsheetMLSerializer;
 import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
+import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper.Persistence;
 import org.bimserver.emf.Schema;
 import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
@@ -32,7 +33,6 @@ import org.bimserver.plugins.serializers.Serializer;
 
 public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 {
-	private boolean initialized = false;
 	private File spreadSheetTemplate, settingsFile;
 	public static final String COBIE_EXPORT_SETTINGS_PATH = "lib/COBieExportSettings.xml";
 	private static final String COBIE_SPREADSHEET_TEMPLATE_PATH = "lib/COBieExcelTemplate.xml";
@@ -40,7 +40,7 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new COBieSpreadsheetMLSerializer(spreadSheetTemplate, settingsFile);
+		return new COBieSpreadsheetMLSerializer(spreadSheetTemplate, settingsFile, getTransformSettings());
 	}
 
 	private ArrayList<String> getConfigFilePaths()
@@ -52,7 +52,19 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 	}
 
 	@Override
-	public void init(PluginManager pluginManager) throws PluginException
+	public boolean needsGeometry()
+	{
+		return false;
+	}
+
+	@Override
+	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
+	{
+		return COBieSerializerPluginInfo.SPREADSHEET;
+	}
+
+	@Override
+	protected void onInit(PluginManager pluginManager) throws Exception 
 	{
 		pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name().toLowerCase());
 		try
@@ -68,32 +80,14 @@ public class COBieSerializerPlugin extends AbstractCOBieSerializerPlugin
 		HashMap<String, File> configFiles;
 		try 
 		{
-			configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, getClass().getSimpleName(), this, getConfigFilePaths());
+			configFiles = PluginRuntimeFileHelper.prepareSerializerResource(pluginManager, getClass().getSimpleName(), this, getConfigFilePaths(),Persistence.TEMP);
 		} catch (IOException e) 
 		{
 			throw new PluginException(e);
 		}
 		spreadSheetTemplate = configFiles.get(COBIE_SPREADSHEET_TEMPLATE_PATH);
 		settingsFile = configFiles.get(COBIE_EXPORT_SETTINGS_PATH);
-		initialized = true;
-	}
-
-	@Override
-	public boolean isInitialized()
-	{
-		return initialized;
-	}
-
-	@Override
-	public boolean needsGeometry()
-	{
-		return false;
-	}
-
-	@Override
-	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
-	{
-		return COBieSerializerPluginInfo.SPREADSHEET;
+		
 	}
 
 }
