@@ -1,13 +1,14 @@
-package com.prairiesky.transform.template.schema;
+package com.prairiesky.transform.template.schema.productinstallation;
 
 import org.nibs.cobie.tab.ContactType;
 
 import com.prairiesky.lang.Property;
 import com.prairiesky.transform.template.meta.ExcelReference;
 import com.prairiesky.transform.template.meta.ExcelReference.ColumnAddress;
+import com.prairiesky.transform.template.schema.SpreadsheetTemplateRow;
 
 @ExcelReference(spreadsheetName="Contact")
-public class ContactLookupRow extends ConstructionTemplateRow
+public class ContactLookupRow extends SpreadsheetTemplateRow
 {
 //Email	Category	Company	Phone	Department	OrganizationCode	GivenName	FamilyName	Street	PostalBox	Town	StateRegion	PostalCode	Country
 	private final Property<String> email = new Property<>(String.class);

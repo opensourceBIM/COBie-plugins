@@ -6,6 +6,7 @@ import java.io.InputStream;
 import org.bimserver.cobie.shared.cobietab.COBieTabProducable;
 import org.bimserver.cobie.shared.deserialization.cobietab.COBieIfcModel;
 import org.bimserver.cobie.shared.deserialization.cobietab.FromCOBieToIfc;
+import org.bimserver.cobie.shared.utility.COBieStringHandler;
 import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.plugins.deserializers.ByteProgressReporter;
 import org.bimserver.plugins.deserializers.DeserializeException;
@@ -18,7 +19,7 @@ public class COBieTabDeserializer extends EmfDeserializer implements
 {
 
 	@Override
-	public COBIEDocument toCOBieSheetXMLData(File incomingFile)
+	public COBIEDocument toCOBieSheetXMLData(File incomingFile, COBieStringHandler handler)
 			throws Exception
 	{
 		return COBIEDocument.Factory.parse(incomingFile);

@@ -20,8 +20,8 @@ import org.bimserver.cobie.shared.utility.WorkbookCopierOptions;
 import com.prairiesky.lang.Property;
 import com.prairiesky.transform.template.meta.ExcelReference;
 import com.prairiesky.transform.template.meta.ExcelReference.ColumnAddress;
-import com.prairiesky.transform.template.schema.ConstructionTemplateTable;
-import com.prairiesky.transform.template.schema.TableCollection;
+import com.prairiesky.transform.template.schema.SpreadsheetTemplateTable;
+import com.prairiesky.transform.template.schema.productinstallation.TableCollection;
 
 public class TableWorkbookTransform extends Transformer<TableCollection, Workbook>
 {
@@ -34,7 +34,7 @@ public class TableWorkbookTransform extends Transformer<TableCollection, Workboo
 
 	private void populateTableWorkbook() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{	
-		for(ConstructionTemplateTable table : getSource().getTables())
+		for(SpreadsheetTemplateTable table : getSource().getTables())
 		{
 			int rowCount = 0;
 			ExcelReference annotation = table.getRowSupplier().get().getClass().getAnnotation(ExcelReference.class);

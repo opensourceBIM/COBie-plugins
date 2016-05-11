@@ -1,13 +1,14 @@
-package com.prairiesky.transform.template.schema;
+package com.prairiesky.transform.template.schema.productinstallation;
 
 import org.nibs.cobie.tab.SpaceType;
 
 import com.prairiesky.lang.Property;
 import com.prairiesky.transform.template.meta.ExcelReference;
 import com.prairiesky.transform.template.meta.ExcelReference.ColumnAddress;
+import com.prairiesky.transform.template.schema.SpreadsheetTemplateRow;
 
 @ExcelReference(spreadsheetName="Space")
-public class SpaceLookupRow extends ConstructionTemplateRow
+public class SpaceLookupRow extends SpreadsheetTemplateRow
 {
 	private final Property<String> roomNumber = new Property<>(String.class);
 	private final Property<String> floorName = new Property<>(String.class);

@@ -139,9 +139,13 @@ public class COBieSchematronChecker
         {
         	COBie.save(new File("incoming.xml"));
             this.ruleTransformResult = getTempFile("xsl");
-            transformSchematronRules(new FileOutputStream(this.ruleTransformResult));
+            FileOutputStream rOut = new FileOutputStream(this.ruleTransformResult);
+            transformSchematronRules(rOut);
+            rOut = null;
             this.cobieTransformResult = getTempFile("xml");
-            transformCOBietoSVRL(new FileOutputStream(this.cobieTransformResult));
+            FileOutputStream tOut = new FileOutputStream(this.cobieTransformResult);
+            transformCOBietoSVRL(tOut);
+            tOut = null;
             transformSVRLtoHTML(outputStream);
 
         } 
@@ -152,6 +156,7 @@ public class COBieSchematronChecker
         }
         finally
         {
+        	System.gc();
             this.cobieTransformResult.delete();
             this.ruleTransformResult.delete();
         }

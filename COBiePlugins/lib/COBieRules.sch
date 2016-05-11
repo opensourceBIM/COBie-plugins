@@ -1527,13 +1527,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Connection.RealizingElement.Check" test="true()" flag="RealizingElement">RealizingElement.NotNull
+			<iso:report id="Connection.RealizingElement.Check" test="true()" flag="RealizingElement">RealizingElement.NotEmpty, RealizingElement.CrossReference
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Connection.RealizingElement.NotNull" test="cfn:validString(RealizingElement)" flag="RealizingElement">
-				<value-of select="cfn:notNullMessage(.,'RealizingElement')"/>
+			<iso:assert id="Connection.RealizingElement.NotEmpty" test="cfn:validStringOrNA(RealizingElement)" flag="RealizingElement">
+				<value-of select="cfn:notEmptyMessage(.,'RealizingElement')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Connection.RealizingElement.CrossReference" test="cfn:keyMatch(SheetName,RealizingElement,/) or lower-case(RealizingElement)='n/a'" flag="RealizingElement">
+				<value-of select="cfn:foreignKeyMessage(.,'RealizingElement',SheetName,'Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3381,13 +3387,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Connection.RealizingElement.Check" test="true()" flag="RealizingElement">RealizingElement.NotNull
+			<iso:report id="Connection.RealizingElement.Check" test="true()" flag="RealizingElement">RealizingElement.NotEmpty, RealizingElement.CrossReference
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Connection.RealizingElement.NotNull" test="cfn:validString(RealizingElement)" flag="RealizingElement">
-				<value-of select="cfn:notNullMessage(.,'RealizingElement')"/>
+			<iso:assert id="Connection.RealizingElement.NotEmpty" test="cfn:validStringOrNA(RealizingElement)" flag="RealizingElement">
+				<value-of select="cfn:notEmptyMessage(.,'RealizingElement')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Connection.RealizingElement.CrossReference" test="cfn:keyMatch(SheetName,RealizingElement,/) or lower-case(RealizingElement)='n/a'" flag="RealizingElement">
+				<value-of select="cfn:foreignKeyMessage(.,'RealizingElement',SheetName,'Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>

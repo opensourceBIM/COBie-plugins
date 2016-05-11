@@ -21,13 +21,13 @@ import com.prairiesky.lang.Property;
 import com.prairiesky.transform.template.meta.ExcelReference;
 import com.prairiesky.transform.template.meta.ExcelReference.ColumnAddress;
 
-public abstract class ConstructionTemplateRow 
+public abstract class SpreadsheetTemplateRow 
 {
 
 	protected final Map<ColumnAddress, String> columnNames = new HashMap<>();
 	protected final Map<ColumnAddress, Method> columnProperties = new HashMap<>();
 
-	public ConstructionTemplateRow()
+	public SpreadsheetTemplateRow()
 	{
 		initializePropertyMaps();
 	}
@@ -84,7 +84,7 @@ public abstract class ConstructionTemplateRow
 	private void setPropertyFromCell(Property<?> property, Cell cell)
 	{
 		Class valueType = property.getValueType();
-		Object cellValue = getCellValue(cell);
+		Object cellValue = getCellValue(cell, valueType);
 		//boolean -> boolean or string
 		//number -> double, int, long or string
 		//string -> any
@@ -203,7 +203,7 @@ public abstract class ConstructionTemplateRow
 		}
 	}
 
-	private Object getCellValue(Cell cell)
+	private Object getCellValue(Cell cell, Class valueType)
 	{
 		Object value = null;
 		switch(cell.getCellType())
@@ -212,14 +212,22 @@ public abstract class ConstructionTemplateRow
 				value = cell.getBooleanCellValue();
 				break;
 			case Cell.CELL_TYPE_NUMERIC:
-				try
+				if(valueType == Calendar.class)
 				{
-					value = cell.getDateCellValue();
+					try
+					{
+						value = cell.getDateCellValue();
+					}
+					catch(Exception  e)
+					{
+						value = cell.getNumericCellValue();
+					}
 				}
-				catch(NumberFormatException e)
+				else
 				{
 					value = cell.getNumericCellValue();
 				}
+				
 				break;
 			case Cell.CELL_TYPE_STRING:
 				value = cell.getStringCellValue();

@@ -1,4 +1,4 @@
-package com.prairiesky.transform.template.schema;
+package com.prairiesky.transform.template.schema.productinstallation;
 
 import java.util.Optional;
 
@@ -8,8 +8,10 @@ import org.nibs.cobie.tab.COBIEDocument;
 import org.nibs.cobie.tab.ComponentType;
 import org.nibs.cobie.tab.TypeType;
 
+import com.prairiesky.transform.template.schema.SpreadsheetTemplateTable;
+
 public abstract class ConstructionProductTemplateTable<T_ROW extends ConstructionTemplateProductRow> extends
-		ConstructionTemplateTable<T_ROW>
+		SpreadsheetTemplateTable<T_ROW>
 {
 
 	@Override

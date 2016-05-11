@@ -1,4 +1,4 @@
-package com.prairiesky.transform.template.schema;
+package com.prairiesky.transform.template.schema.productinstallation;
 
 import java.util.function.Supplier;
 

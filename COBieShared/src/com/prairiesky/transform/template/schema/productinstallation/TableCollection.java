@@ -1,4 +1,4 @@
-package com.prairiesky.transform.template.schema;
+package com.prairiesky.transform.template.schema.productinstallation;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -13,28 +13,29 @@ import org.bimserver.cobie.shared.transform.Transformer;
 import com.prairiesky.lang.Property;
 import com.prairiesky.transform.template.meta.ExcelReference;
 import com.prairiesky.transform.template.meta.ExcelReference.ColumnAddress;
+import com.prairiesky.transform.template.schema.SpreadsheetTemplateTable;
 
 public class TableCollection
 {
 
-	protected final List<ConstructionTemplateTable> tables;
+	protected final List<SpreadsheetTemplateTable> tables;
 	protected HashMap<String,HashMap<ColumnAddress, Method>> columnGetters = new HashMap<>();
 	protected HashMap<String,HashMap<ColumnAddress, String>> columnHeaders = new HashMap<>();
 
-	public TableCollection(List<ConstructionTemplateTable> tables)
+	public TableCollection(List<SpreadsheetTemplateTable> tables)
 	{
 		this.tables = tables;
 		initColumnGetters();
 	}
 	
-	public TableCollection(ConstructionTemplateTable table)
+	public TableCollection(SpreadsheetTemplateTable table)
 	{
 		this(Arrays.asList(table));
 	}
 
 	protected void initColumnGetters()
 	{
-		for(ConstructionTemplateTable table : tables)
+		for(SpreadsheetTemplateTable table : tables)
 		{
 			String spreadSheetName = "";
 			HashMap<ColumnAddress, Method> getters = new HashMap<>();
@@ -63,7 +64,7 @@ public class TableCollection
 		
 	}
 
-	public List<ConstructionTemplateTable> getTables()
+	public List<SpreadsheetTemplateTable> getTables()
 	{
 		return tables;
 	}

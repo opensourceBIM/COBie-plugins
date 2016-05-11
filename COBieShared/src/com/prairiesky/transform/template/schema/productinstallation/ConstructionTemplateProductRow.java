@@ -1,4 +1,4 @@
-package com.prairiesky.transform.template.schema;
+package com.prairiesky.transform.template.schema.productinstallation;
 
 import java.util.Calendar;
 import java.util.List;
@@ -13,8 +13,9 @@ import org.nibs.cobie.tab.ComponentType;
 import org.nibs.cobie.tab.TypeType;
 
 import com.prairiesky.transform.template.meta.AttributeName;
+import com.prairiesky.transform.template.schema.SpreadsheetTemplateRow;
 
-public abstract class ConstructionTemplateProductRow extends ConstructionTemplateRow 
+public abstract class ConstructionTemplateProductRow extends SpreadsheetTemplateRow 
 {
 	public abstract void populateFromCOBie(ComponentType component, TypeType type, IndexedCOBie cobie);
 	

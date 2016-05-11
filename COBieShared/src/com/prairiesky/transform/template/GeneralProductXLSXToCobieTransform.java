@@ -34,16 +34,16 @@ import org.nibs.cobie.tab.TypeType;
 import com.prairiesky.transform.template.meta.AttributeName;
 import com.prairiesky.transform.template.meta.ImportMode;
 import com.prairiesky.transform.template.meta.StringTable;
-import com.prairiesky.transform.template.schema.ConstructionTemplateTable;
-import com.prairiesky.transform.template.schema.ContactLookupRow;
-import com.prairiesky.transform.template.schema.ContactLookupTable;
-import com.prairiesky.transform.template.schema.GeneralInstalledProduct;
-import com.prairiesky.transform.template.schema.GeneralInstalledProductTable;
-import com.prairiesky.transform.template.schema.SpaceLookupRow;
-import com.prairiesky.transform.template.schema.SpaceLookupTable;
-import com.prairiesky.transform.template.schema.TableCollection;
-import com.prairiesky.transform.template.schema.TypeLookupRow;
-import com.prairiesky.transform.template.schema.TypeLookupTable;
+import com.prairiesky.transform.template.schema.SpreadsheetTemplateTable;
+import com.prairiesky.transform.template.schema.productinstallation.ContactLookupRow;
+import com.prairiesky.transform.template.schema.productinstallation.ContactLookupTable;
+import com.prairiesky.transform.template.schema.productinstallation.GeneralInstalledProduct;
+import com.prairiesky.transform.template.schema.productinstallation.GeneralInstalledProductTable;
+import com.prairiesky.transform.template.schema.productinstallation.SpaceLookupRow;
+import com.prairiesky.transform.template.schema.productinstallation.SpaceLookupTable;
+import com.prairiesky.transform.template.schema.productinstallation.TableCollection;
+import com.prairiesky.transform.template.schema.productinstallation.TypeLookupRow;
+import com.prairiesky.transform.template.schema.productinstallation.TypeLookupTable;
 
 public class GeneralProductXLSXToCobieTransform extends
 		Transformer<Workbook, COBIEDocument>
@@ -80,7 +80,7 @@ public class GeneralProductXLSXToCobieTransform extends
 		{
 			initializeFacility();
 		}
-		for(ConstructionTemplateTable table : tables.getTables())
+		for(SpreadsheetTemplateTable table : tables.getTables())
 		{
 			if(table instanceof GeneralInstalledProductTable)
 			{

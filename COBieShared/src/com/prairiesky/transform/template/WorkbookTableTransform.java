@@ -10,9 +10,9 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.bimserver.cobie.shared.transform.Transformer;
 
 import com.prairiesky.transform.template.meta.ExcelReference;
-import com.prairiesky.transform.template.schema.ConstructionTemplateRow;
-import com.prairiesky.transform.template.schema.ConstructionTemplateTable;
-import com.prairiesky.transform.template.schema.TableCollection;
+import com.prairiesky.transform.template.schema.SpreadsheetTemplateRow;
+import com.prairiesky.transform.template.schema.SpreadsheetTemplateTable;
+import com.prairiesky.transform.template.schema.productinstallation.TableCollection;
 
 public class WorkbookTableTransform extends Transformer<Workbook, TableCollection>
 {
@@ -39,7 +39,7 @@ public class WorkbookTableTransform extends Transformer<Workbook, TableCollectio
 	
 	private void populateTableWorkbook() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{	
-		for(ConstructionTemplateTable table : getTarget().getTables())
+		for(SpreadsheetTemplateTable table : getTarget().getTables())
 		{
 			int rowCount = 0;
 			ExcelReference annotation = table.getRowSupplier().get().getClass().getAnnotation(ExcelReference.class);
@@ -54,8 +54,8 @@ public class WorkbookTableTransform extends Transformer<Workbook, TableCollectio
 					{
 						if(rowCount > 0 && !isEmptyRow(sheetRow))
 						{
-							ConstructionTemplateRow tableRow = table.newRow();
-						    ((ConstructionTemplateRow)tableRow).populateFromXLSXRow(sheetRow);
+							SpreadsheetTemplateRow tableRow = table.newRow();
+						    ((SpreadsheetTemplateRow)tableRow).populateFromXLSXRow(sheetRow);
 						    table.getRows().add(tableRow);
 						}
 						rowCount++;

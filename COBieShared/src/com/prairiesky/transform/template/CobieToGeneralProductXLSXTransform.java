@@ -8,12 +8,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.bimserver.cobie.shared.transform.Transformer;
 import org.nibs.cobie.tab.COBIEDocument;
 
-import com.prairiesky.transform.template.schema.ConstructionTemplateTable;
-import com.prairiesky.transform.template.schema.ContactLookupTable;
-import com.prairiesky.transform.template.schema.GeneralInstalledProductTable;
-import com.prairiesky.transform.template.schema.SpaceLookupTable;
-import com.prairiesky.transform.template.schema.TableCollection;
-import com.prairiesky.transform.template.schema.TypeLookupTable;
+import com.prairiesky.transform.template.schema.SpreadsheetTemplateTable;
+import com.prairiesky.transform.template.schema.productinstallation.ContactLookupTable;
+import com.prairiesky.transform.template.schema.productinstallation.GeneralInstalledProductTable;
+import com.prairiesky.transform.template.schema.productinstallation.SpaceLookupTable;
+import com.prairiesky.transform.template.schema.productinstallation.TableCollection;
+import com.prairiesky.transform.template.schema.productinstallation.TypeLookupTable;
 
 public class CobieToGeneralProductXLSXTransform extends
 		Transformer<COBIEDocument, Workbook>
@@ -31,7 +31,7 @@ public class CobieToGeneralProductXLSXTransform extends
 	public Workbook transform()
 	{
 		Workbook result = null;
-		List<ConstructionTemplateTable> tables = new ArrayList<>();
+		List<SpreadsheetTemplateTable> tables = new ArrayList<>();
 		GeneralInstalledProductTable products =
 				new GeneralInstalledProductTable();
 		products.populateFromCobie(getSource());

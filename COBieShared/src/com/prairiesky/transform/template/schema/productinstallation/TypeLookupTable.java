@@ -1,11 +1,13 @@
-package com.prairiesky.transform.template.schema;
+package com.prairiesky.transform.template.schema.productinstallation;
 
 import java.util.function.Supplier;
 
 import org.nibs.cobie.tab.COBIEDocument;
 import org.nibs.cobie.tab.TypeType;
 
-public class TypeLookupTable extends ConstructionTemplateTable<TypeLookupRow>
+import com.prairiesky.transform.template.schema.SpreadsheetTemplateTable;
+
+public class TypeLookupTable extends SpreadsheetTemplateTable<TypeLookupRow>
 {
 
 	@Override

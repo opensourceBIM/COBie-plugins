@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.nibs.cobie.tab.COBIEDocument;
 
-public abstract class ConstructionTemplateTable<T_ROW extends ConstructionTemplateRow>
+public abstract class SpreadsheetTemplateTable<T_ROW extends SpreadsheetTemplateRow>
 {
 	private List<T_ROW> rows = new ArrayList<>();
 	
