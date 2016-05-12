@@ -51,14 +51,6 @@ public class COBieCheckDesignSerializerPlugin extends AbstractCOBieSerializerPlu
 	}
 
 	@Override
-	public void init(PluginManager pluginManager) throws PluginException
-	{
-
-
-	}
-
-
-	@Override
 	public boolean needsGeometry()
 	{
 		return false;

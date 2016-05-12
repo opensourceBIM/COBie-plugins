@@ -137,10 +137,10 @@ public class IfcToContact
                 }
             }
         }
-        if (COBieUtility.isNA(department) && (theOrganization != null))
+/*        if (COBieUtility.isNA(department) && (theOrganization != null))
         {
             department = theOrganization.getDescription();
-        }
+        }*/
         return COBieUtility.getCOBieString(department);
     }
 

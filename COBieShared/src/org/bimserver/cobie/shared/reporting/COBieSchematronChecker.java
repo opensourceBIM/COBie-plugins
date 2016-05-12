@@ -156,9 +156,16 @@ public class COBieSchematronChecker
         }
         finally
         {
-        	System.gc();
-            this.cobieTransformResult.delete();
-            this.ruleTransformResult.delete();
+        	try
+        	{
+	        	System.gc();
+	            this.cobieTransformResult.delete();
+	            this.ruleTransformResult.delete();
+        	}
+        	catch(Exception e)
+        	{
+        		
+        	}
         }
 
     }
