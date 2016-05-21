@@ -7,7 +7,12 @@
 	</PluginImplementation>
 	<PluginImplementation>
 		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
-		<implementationClass>org.bimserver.cobie.plugin.serializers.COBieXLSXSerializerPlugin</implementationClass>
+		<implementationClass>org.bimserver.cobie.plugin.serializers.COBieDesignXLSXSerializerPlugin</implementationClass>
+		<enabled>true</enabled>
+	</PluginImplementation>
+		<PluginImplementation>
+		<interfaceClass>org.bimserver.plugins.serializers.SerializerPlugin</interfaceClass>
+		<implementationClass>org.bimserver.cobie.plugin.serializers.COBieConstructionXLSXSerializerPlugin</implementationClass>
 		<enabled>true</enabled>
 	</PluginImplementation>
 	<PluginImplementation>

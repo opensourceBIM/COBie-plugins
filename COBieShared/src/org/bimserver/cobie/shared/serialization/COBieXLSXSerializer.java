@@ -4,25 +4,26 @@ import java.io.File;
 import java.io.OutputStream;
 import java.nio.file.Path;
 
-import org.bimserver.cobie.shared.transform.spreadsheetml.cobietab.COBieSpreadSheet;
-import org.bimserver.cobie.shared.transform.spreadsheetml.xlsx.SpreadsheetMLToXLSXMapper;
-import org.bimserver.cobie.shared.utility.POIUtils;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.bimserver.plugins.serializers.SerializerException;
 
 import com.prairiesky.transform.cobieifc.settings.SettingsType;
+import com.prairiesky.transform.template.CobieTabToCobieXLSXTransformer;
 
-public class COBieXLSXSerializer extends COBieSpreadsheetMLSerializer 
+public class COBieXLSXSerializer extends COBieTabXMLSerializer 
 {
 	private final File xlsxTemplate;
-	public COBieXLSXSerializer(File spreadsheetMLTemplate, File xlsxTemplate, File exportSettingsFile, SettingsType settings)
+	public COBieXLSXSerializer(File xlsxTemplate, File exportSettingsFile, SettingsType settings)
 	{
-		super(spreadsheetMLTemplate, exportSettingsFile, settings);
+		super(settings);
 		this.xlsxTemplate = xlsxTemplate;
 	}
 	
-	public COBieXLSXSerializer(Path spreadsheetMLTemplate, Path xlsxTemplate, Path exportSettingsFile, SettingsType settings)
+	public COBieXLSXSerializer( Path xlsxTemplate, Path exportSettingsFile, SettingsType settings)
 	{
-		this(spreadsheetMLTemplate.toFile(), xlsxTemplate.toFile(), exportSettingsFile.toFile(), settings);
+		this(xlsxTemplate.toFile(), exportSettingsFile.toFile(), settings);
 	}
 	
 	public File getXlsxTemplate() 
@@ -36,13 +37,10 @@ public class COBieXLSXSerializer extends COBieSpreadsheetMLSerializer
 	{
 		try 
 		{
-			cobieSpreadsheet = new COBieSpreadSheet(getConfigurationFile(),
-					exportOptions);
-			cobieSpreadsheet.loadCOBie(getCOBieDocument());
-			SpreadsheetMLToXLSXMapper mapper = 
-					new SpreadsheetMLToXLSXMapper(cobieSpreadsheet, POIUtils.getWorkbook(getXlsxTemplate()));
-			mapper.run();
-			mapper.getOutput().write(outputStream);
+			CobieTabToCobieXLSXTransformer transformer =
+					new CobieTabToCobieXLSXTransformer(getCOBieDocument(), new XSSFWorkbook(), WorkbookFactory.create(getXlsxTemplate()));
+			Workbook result = transformer.transform();
+			result.write(outputStream);
 		} 
 		catch (Exception e) 
 		{

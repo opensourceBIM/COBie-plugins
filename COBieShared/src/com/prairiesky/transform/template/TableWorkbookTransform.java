@@ -1,12 +1,8 @@
 package com.prairiesky.transform.template;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -20,6 +16,7 @@ import org.bimserver.cobie.shared.utility.WorkbookCopierOptions;
 import com.prairiesky.lang.Property;
 import com.prairiesky.transform.template.meta.ExcelReference;
 import com.prairiesky.transform.template.meta.ExcelReference.ColumnAddress;
+import com.prairiesky.transform.template.meta.StringTable;
 import com.prairiesky.transform.template.schema.SpreadsheetTemplateTable;
 import com.prairiesky.transform.template.schema.productinstallation.TableCollection;
 
@@ -34,7 +31,7 @@ public class TableWorkbookTransform extends Transformer<TableCollection, Workboo
 
 	private void populateTableWorkbook() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{	
-		for(SpreadsheetTemplateTable table : getSource().getTables())
+		for(@SuppressWarnings("rawtypes") SpreadsheetTemplateTable table : getSource().getTables())
 		{
 			int rowCount = 0;
 			ExcelReference annotation = table.getRowSupplier().get().getClass().getAnnotation(ExcelReference.class);
@@ -103,7 +100,9 @@ public class TableWorkbookTransform extends Transformer<TableCollection, Workboo
 			populateTableWorkbook();
 			WorkbookCopierOptions options = new WorkbookCopierOptions();
 			options.setEvaluatePickLists(false);
-			options.setNullInputCellPolicy(NullInputCellPolicy.PRESERVE_OUTPUT_VALUE);
+			options.setNullInputCellPolicy(NullInputCellPolicy.CLEAR_EXISTING_OUTPUT_VALUES);
+			
+			options.getPreserveOutputWorksheets().add(StringTable.INSTRUCTION_SHEETNAME.toString());
 			WorkbookCopier copier = new WorkbookCopier(getTarget(), getBlankTemplate(), options);
 			returnValue = copier.copyWorkbookValues();
 		}
