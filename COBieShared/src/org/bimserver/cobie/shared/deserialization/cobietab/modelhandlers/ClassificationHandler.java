@@ -128,7 +128,7 @@ public class ClassificationHandler
         return classificationName;
     }
 
-    private OidProvider<Long> CobieOidProvider;
+    private OidProvider CobieOidProvider;
     private COBieIfcModel model;
 
     private OwnerHistoryHandler ownerHistoryHandler;
@@ -140,7 +140,7 @@ public class ClassificationHandler
 
     private IfcClassification bamieClassification;
 
-    public ClassificationHandler(COBieIfcModel cobieIfcModel, IfcGuidHandler ifcGuidProvider, OidProvider<Long> oidProvider,
+    public ClassificationHandler(COBieIfcModel cobieIfcModel, IfcGuidHandler ifcGuidProvider, OidProvider oidProvider,
             OwnerHistoryHandler ownerHistoryHandler) throws IfcModelInterfaceException
     {
         model = cobieIfcModel;

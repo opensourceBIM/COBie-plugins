@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.bimserver.cobie.shared.deserialization.cobietab.modelhandlers.GeometryHandler;
-import org.bimserver.cobie.shared.serialization.IfcCOBieSerializer;
+import org.bimserver.cobie.shared.serialization.IfcCobieSerializer;
 import org.bimserver.cobie.shared.utility.COBieIfcUtility;
 import org.bimserver.cobie.shared.utility.COBieUtility;
 import org.bimserver.emf.IfcModelInterface;
@@ -16,15 +16,17 @@ import org.nibs.cobie.tab.COBIEType;
 import org.nibs.cobie.tab.COBIEType.Coordinates;
 import org.nibs.cobie.tab.CoordinateType;
 
-public class IfcToFloorCoordinatesSerializer extends IfcCOBieSerializer<CoordinateType, COBIEType.Coordinates, IfcBuildingStorey>
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
+public class IfcToFloorCoordinatesSerializer extends IfcCobieSerializer<CoordinateType, COBIEType.Coordinates, IfcBuildingStorey>
 {
     private static final String COORDINATE_FORMAT_STRING = "%.3f%n";
     private static final int THREE_D_DIMENSIONS = 3;
     private static final String CATEGORY_POINT = "point";
 
-    public IfcToFloorCoordinatesSerializer(Coordinates cobieSection, IfcModelInterface model)
+    public IfcToFloorCoordinatesSerializer(Coordinates cobieSection, IfcModelInterface model, SettingsType settings)
     {
-        super(cobieSection, model);
+        super(cobieSection, model, settings);
     }
 
     @Override
@@ -71,7 +73,7 @@ public class IfcToFloorCoordinatesSerializer extends IfcCOBieSerializer<Coordina
     private CoordinateType newFloorCoordinate(Vector<Double> pointVector, IfcBuildingStorey ifcBuildingStorey)
     {
         CoordinateType newCoordinate = cobieSection.addNewCoordinate();
-        String name = IfcToFloor.nameFromBuildingStorey(ifcBuildingStorey);
+        String name = IfcBuildingStoreyFloorSerializer.nameFromBuildingStorey(ifcBuildingStorey);
         String createdBy = COBieIfcUtility.getEmailFromOwnerHistory(ifcBuildingStorey.getOwnerHistory());
         Calendar createdOn = IfcToContact.getCreatedOn(ifcBuildingStorey.getOwnerHistory().getCreationDate());
         String category = CATEGORY_POINT;

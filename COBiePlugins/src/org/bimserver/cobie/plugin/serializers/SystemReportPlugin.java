@@ -1,53 +1,30 @@
 package org.bimserver.cobie.plugin.serializers;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.bimserver.cobie.shared.serialization.COBieSerializerPluginInfo;
-import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
 import org.bimserver.plugins.Plugin;
 import org.bimserver.plugins.PluginConfiguration;
-import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
 import org.bimserver.plugins.schema.SchemaPlugin;
 import org.bimserver.plugins.serializers.Serializer;
 
 public class SystemReportPlugin extends AbstractCOBieSerializerPlugin
 {
-	private boolean initialized = false;
 	private static final String SYSTEM_REPORT_CSS_PATH =
 	"lib/SpaceReport.css";
 	private static final String SYSTEM_REPORT_XSLT_PATH="lib/SystemReport.xslt";
 	private ArrayList<String> configFilePaths;
-	private HashMap<String,File> configFiles;
+	private HashMap<String,Path> configFiles = new HashMap<>();
 
 		public String getName() {
 			return getClass().getName();
 		}
 
-
-		@Override
-		public void init(PluginManager pluginManager) throws PluginException {
-			configFilePaths = new ArrayList<String>();
-
-			configFilePaths.add(SYSTEM_REPORT_XSLT_PATH);
-			configFilePaths.add(SYSTEM_REPORT_CSS_PATH);
-			//pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name().toLowerCase());
-			try
-			{
-				this.configFiles = PluginRuntimeFileHelper.prepareSerializerConfigFiles(pluginManager, getDefaultName(), this, configFilePaths);
-			}
-			catch (FileNotFoundException e)
-			{
-				e.printStackTrace();
-				throw new PluginException("Could not find configuration files");
-			}
-			initialized = true;
-		}
 
 		public Set<Class<? extends Plugin>> getRequiredPlugins() 
 		{
@@ -56,11 +33,6 @@ public class SystemReportPlugin extends AbstractCOBieSerializerPlugin
 			return set;
 		}
 
-	 /////////////////////////////////////////////////
-		@Override
-		public boolean isInitialized() {
-			return initialized;
-		}
 
 	@Override
 	public boolean needsGeometry()
@@ -72,8 +44,8 @@ public class SystemReportPlugin extends AbstractCOBieSerializerPlugin
 	@Override
 	public Serializer createSerializer(PluginConfiguration plugin)
 	{
-		return new org.bimserver.cobie.shared.serialization.COBieHTMLReportSerializer(this.configFiles.get(SYSTEM_REPORT_XSLT_PATH).getAbsolutePath(),
-				this.configFiles.get(SYSTEM_REPORT_CSS_PATH).getAbsolutePath());
+		return new org.bimserver.cobie.shared.serialization.COBieHTMLReportSerializer(this.configFiles.get(SYSTEM_REPORT_XSLT_PATH).toString(),
+				this.configFiles.get(SYSTEM_REPORT_CSS_PATH).toString(), getTransformSettings());
 	}
 
 
@@ -81,6 +53,22 @@ public class SystemReportPlugin extends AbstractCOBieSerializerPlugin
 	protected COBieSerializerPluginInfo getCOBieSerializerInfo()
 	{
 		return COBieSerializerPluginInfo.REPORT_SYSTEM;
+	}
+
+
+	@Override
+	protected void onInit(PluginManager pluginManager) throws Exception 
+	{
+		configFilePaths = new ArrayList<String>();
+
+		configFilePaths.add(SYSTEM_REPORT_XSLT_PATH);
+		configFilePaths.add(SYSTEM_REPORT_CSS_PATH);
+		//pluginManager.requireSchemaDefinition(Schema.IFC2X3TC1.name().toLowerCase());
+		for(String path : configFilePaths)
+		{
+			configFiles.put(path, pluginManager.getPluginContext(this).getRootPath().resolve(path));
+		}
+		
 	}
 
 }

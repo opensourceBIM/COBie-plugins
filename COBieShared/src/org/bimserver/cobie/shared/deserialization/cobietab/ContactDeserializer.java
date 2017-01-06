@@ -69,7 +69,7 @@ public class ContactDeserializer
         String OrganizationCode = contact.getOrganizationCode();
         tmpOrg.setName(Company);
         tmpOrg.setId(OrganizationCode);
-        tmpOrg.setDescription(Department);
+        tmpOrg.setDescription(COBieUtility.COBieNA);
         return tmpOrg;
     }
 

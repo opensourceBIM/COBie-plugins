@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.bimserver.cobie.shared.search.algorithm.StringDistanceCalculator;
 import org.bimserver.cobie.shared.search.algorithm.StringDistanceCalculator.EditDistanceAlgorithmEnum;
-import org.bimserver.cobie.shared.utility.ifc.IfcRelationshipsToCOBie.ComparisonType;
+import org.bimserver.cobie.shared.utility.ifc.IfcRelationshipUtility.ComparisonType;
 import org.bimserver.models.ifc2x3tc1.IfcObject;
 import org.bimserver.models.ifc2x3tc1.IfcProperty;
 import org.bimserver.models.ifc2x3tc1.IfcPropertySet;
@@ -63,7 +63,7 @@ public class COBiePropertySearch extends ModelSearchEngine<IfcRoot, String, IfcP
         {
             String searchStringLower = bestMatch.getSearchTerm().toLowerCase().trim();
             String compareStringLower = bestMatch.getSearchHit().getName().toLowerCase();
-            ComparisonType compareType = org.bimserver.cobie.shared.utility.ifc.IfcRelationshipsToCOBie
+            ComparisonType compareType = org.bimserver.cobie.shared.utility.ifc.IfcRelationshipUtility
                     .getComparisonTypeFromPropertySearchString((bestMatch.getSearchTerm()));
             switch (compareType)
             {

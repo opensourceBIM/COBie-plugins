@@ -66,8 +66,13 @@ public class WorkbookCopier
 		boolean isRelevant = (dataWorksheet != null && 
 				(!dataWorksheet.getSheetName().equalsIgnoreCase(Common.PICKLIST_SHEETNAME.toString()) || 
 						(dataWorksheet.getSheetName().equalsIgnoreCase(Common.PICKLIST_SHEETNAME.toString()) && getOptions().isEvaluatePickLists())));
+		if(isRelevant && getOptions().getPreserveOutputWorksheets() != null)
+		{
+			isRelevant = !getOptions().getPreserveOutputWorksheets().contains(dataWorksheet.getSheetName());
+		}
 		return isRelevant;
 	}
+	
 	private void clearWorkbookValues(Workbook workbook)
 	{
 		for(int i=0; i < workbook.getNumberOfSheets(); i++)

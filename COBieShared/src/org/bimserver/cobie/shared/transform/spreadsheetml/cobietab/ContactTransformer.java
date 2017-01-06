@@ -130,7 +130,7 @@ public class ContactTransformer extends SpreadsheetMLTransformer
         int rowIdx;
         int firstRowIdx = Worksheet.firstRow;
         for (Row rowData : sheet.getRows())
-        {
+        {	
             rowIdx = rowData.getIndex();
             if ((rowIdx > firstRowIdx) && COBieSpreadSheet.isRowPopulated(rowData, 1, 100))
             {

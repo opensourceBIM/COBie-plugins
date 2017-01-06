@@ -46,6 +46,12 @@ import org.apache.xmlbeans.XmlCalendar;
 import org.apache.xmlbeans.XmlDateTime;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlString;
+import org.bimserver.models.ifc2x3tc1.IfcBuilding;
+import org.bimserver.models.ifc2x3tc1.IfcBuildingStorey;
+import org.bimserver.models.ifc2x3tc1.IfcProduct;
+import org.bimserver.models.ifc2x3tc1.IfcRoot;
+import org.bimserver.models.ifc2x3tc1.IfcSpace;
+import org.bimserver.models.ifc2x3tc1.IfcTypeObject;
 import org.nibs.cobie.tab.AttributeType;
 import org.nibs.cobie.tab.COBIEType;
 import org.slf4j.Logger;
@@ -74,7 +80,8 @@ public class COBieUtility
     {
         Instruction, PickLists
     }
-
+    
+ 
     public static final String SPACE = " ";
 
     private static final List<String> DATE_FORMATS = new ArrayList<String>(Arrays.asList("yyyy-MM-dd", "MM-dd-yyyy", "MMM. d, yyyy", "MMMM d, yyyy"));

@@ -14,18 +14,21 @@ import org.bimserver.plugins.serializers.SerializerException;
 import org.buildingsmartalliance.docs.nbims03.cobie.cobielite.FacilityDocument;
 import org.nibs.cobie.tab.COBIEDocument;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 public class COBieLiteHTMLReportSerializer extends COBieHTMLReportSerializer
 {
 
 	private FacilityDocument facilityDocument = null;
-    public COBieLiteHTMLReportSerializer(String reportXSLTPath)
+    public COBieLiteHTMLReportSerializer(String reportXSLTPath, SettingsType settings)
     {
-       this(reportXSLTPath, null);
+       this(reportXSLTPath, null, settings);
     }
     
-    public COBieLiteHTMLReportSerializer(String reportXSLPath, FacilityDocument facilityDocument)
+    public COBieLiteHTMLReportSerializer(String reportXSLPath, 
+    		FacilityDocument facilityDocument, SettingsType settings)
     {
-    	super(reportXSLPath);
+    	super(reportXSLPath, settings);
     	COBIEDocument document = COBIEDocument.Factory.newInstance();
     	document.addNewCOBIE();
     	this.setCOBie(document);

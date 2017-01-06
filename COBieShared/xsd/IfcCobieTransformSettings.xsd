@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="settings.cobieifc.transform.prairiesky.com" targetNamespace="settings.cobieifc.transform.prairiesky.com" elementFormDefault="unqualified" attributeFormDefault="qualified">
+	<xs:complexType name="AttributeSettingsType">
+		<xs:annotation>
+			<xs:documentation>Settings for the various IfcProperty to COBie Attribute transformations include settings for the default count unit (e.g. "each"), Facility Attributes, Floor Attributes, Space Attributes, Type Attributes, and Component Attributes.  There are also settings for the Category value assigned per COBie sheet.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AttributeCountDefaultUnit">
+				<xs:annotation>
+					<xs:documentation>The default Attribute.Unit value to use for IfcQuantityCount property values.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FacilityAttributeCategory">
+				<xs:annotation>
+					<xs:documentation>The value to assign to Attribute.Category when SheetName=Facility</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FloorAttributeCategory">
+				<xs:annotation>
+					<xs:documentation>The value to assign to Attribute.Category when SheetName=Floor</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SpaceAttributeCategory">
+				<xs:annotation>
+					<xs:documentation>The value to assign to Attribute.Category when SheetName=Space</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="TypeAttributeCategory">
+				<xs:annotation>
+					<xs:documentation>The value to assign to Attribute.Category when SheetName=Type</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ComponentAttributeCategory">
+				<xs:annotation>
+					<xs:documentation>The value to assign to Attribute.Category when SheetName=Component</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="PropertyExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Various settings for determining which IfcProperty values will appear as rows in the COBie Attribute worksheet.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ComponentSettingsType">
+		<xs:annotation>
+			<xs:documentation>Settings for the IfcProduct to COBie Component transformation in the COBie Serializers include a list of Ifc entity types (IfcProductExclusions) that will not be included in the resulting output.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="IfcProductExclusions">
+				<xs:annotation>
+					<xs:documentation>A list of IFC entity types (for example, IfcSlab) that will be ignored and not included in the serialized output. Each entity type name is encapsulated by a "Name" tag.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FacilitySettingsType">
+		<xs:annotation>
+			<xs:documentation>Settings for the IfcBuilding to COBie Facility transformation in the COBie Serializers include the default project and site names that are used if the model does not include names for (or does not include) an IfcProject and IfcSite.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="FacilityDefaultProjectName">
+				<xs:annotation>
+					<xs:documentation>The default name assigned to Facility.ProjectName field if the Ifc model does not include an IfcProject or the IfcProject does not have a specified name.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FacilitySiteDefaultName">
+				<xs:annotation>
+					<xs:documentation>The default name assigned to Facility.SiteName field if the Ifc model does not include an IfcSite or the IfcSite does not have a specified name.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FloorSettingsType">
+		<xs:annotation>
+			<xs:documentation>The settings for the IfcBuildingStorey to COBie Floor transformation in the COBie Serializers includes a list of property names that are used to search for the Floor.Height field.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="FloorHeightPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of property names used to search IfcBuildingStorey property sets for the Floor.Height field. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="JobSettingsType">
+		<xs:annotation>
+			<xs:documentation>Settings for the IfcTask to COBie Job transformation in the COBie Plugins include a lists of property names used to find the Job.Duration, Job.Frequency, and Job.Start fields.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="DurationPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of property names used to find a value for the Job.Duration field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FrequencyPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of property names used to find a value for the Job.Frequency field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="StartPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of property names used to find a value for the Job.Start field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of  zero or more Name elements.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PropertyExclusionsType">
+		<xs:annotation>
+			<xs:documentation>This type includes settings for excluding or including properties in the COBie Attribute spreadsheet.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ExcludePropertiesOnNameEqValue">
+				<xs:annotation>
+					<xs:documentation>Indicates whether or not an IfcProperty should be exported if its value is the same as its name.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="NameEqValueExceptions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will be excepted if ExcludePropertiesOnNameEqValue=true.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ValueExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If an IfcProperty has a value in this list then it will be excluded from the Attribute worksheet.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="GlobalPropertySetNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property set name exclusions used for candidate Attributes with any Attribute.SheetName value. (i.e. Attributes attached to any COBie entity).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="GlobalPropertyNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property name exclusions used for candidate Attributes with any Attribute.SheetName value. (i.e. Attributes attached to any COBie entity).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FacilityPropertySetNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property set name exclusions used for candidate Attributes where Attribute.SheetName=Facility.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FacilityPropertyNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property name exclusions used for candidate Attributes where Attribute.SheetName=Facility. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FloorPropertySetNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property set name exclusions used for candidate Attributes where Attribute.SheetName=Floor.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FloorPropertyNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property name exclusions used for candidate Attributes where Attribute.SheetName=Floor. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SpacePropertySetNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property set name exclusions used for candidate Attributes where Attribute.SheetName=Space.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SpacePropertyNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property name exclusions used for candidate Attributes where Attribute.SheetName=Space. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="TypePropertySetNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property set name exclusions used for candidate Attributes where Attribute.SheetName=Type.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="TypePropertyNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property name exclusions used for candidate Attributes where Attribute.SheetName=Type. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ComponentPropertySetNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property set name exclusions used for candidate Attributes where Attribute.SheetName=Component.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ComponentPropertyNameExclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A list of property name exclusions used for candidate Attributes where Attribute.SheetName=Component. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PropertyExclusionType">
+		<xs:annotation>
+			<xs:documentation>This is a wrapped text type that includes two additional attributes used for determining exclusions:  comparison type and ignore case (not yet supported...the transformation always ignores case currently)</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="comparison" type="ComparisonType" use="required" form="unqualified">
+					<xs:annotation>
+						<xs:documentation>The type of text comparison to use:  startswith, contains, equals, or endswith</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ignorecase" type="xs:boolean" default="true" form="unqualified">
+					<xs:annotation>
+						<xs:documentation>Whether or not to ignore case in the text comparison (not yet supported...currently the transformation always ignores case).</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="SettingsType">
+		<xs:annotation>
+			<xs:documentation>
+				This type defines the elements in the root element of an IFC-COBie transformation configuration and includes settings for Facility, Floor, Type, Component, Spare, Job, and Attribute COBie sheets.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="FacilitySettings">
+				<xs:annotation>
+					<xs:documentation>Settings for the IfcBuilding to COBie Facility transformation in the COBie Serializers include the default project and site names that are used if the model does not include names for (or does not include) an IfcProject and IfcSite.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FloorSettings">
+				<xs:annotation>
+					<xs:documentation>The settings for the IfcBuildingStorey to COBie Floor transformation in the COBie Serializers includes a list of property names that are used to search for the Floor.Height field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="TypeSettings">
+				<xs:annotation>
+					<xs:documentation>The settings used to determine which IfcProperty values to use to assign to the extensive set of COBie Type fields.  Type settings also include the list of IfcTypeObject entities that are ignored in the COBie transformation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ComponentSettings">
+				<xs:annotation>
+					<xs:documentation>Settings for the IfcProduct to COBie Component transformation in the COBie Serializers include a list of Ifc entity types (IfcProductExclusions) that will not be included in the resulting output.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SpareSettings">
+				<xs:annotation>
+					<xs:documentation>The settings for the IfcConstructionProductResource to COBie Spare transformation include lists of property names that are used to find the Spare.SetNumber, Spare.PartNumber, and Spare.Supplier field values.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="JobSettings">
+				<xs:annotation>
+					<xs:documentation>Settings for the IfcTask to COBie Job transformation in the COBie Plugins include a lists of property names used to find the Job.Duration, Job.Frequency, and Job.Start fields.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AttributeSettings">
+				<xs:annotation>
+					<xs:documentation>Settings for the various IfcProperty to COBie Attribute transformations include settings for the default count unit (e.g. "each"), Facility Attributes, Floor Attributes, Space Attributes, Type Attributes, and Component Attributes.  There are also settings for the Category value assigned per COBie sheet.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SpareSettingsType">
+		<xs:annotation>
+			<xs:documentation>The settings for the IfcConstructionProductResource to COBie Spare transformation include lists of property names that are used to find the Spare.SetNumber, Spare.PartNumber, and Spare.Supplier field values.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="SetNumberPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of property names that are used to fill the Spare.SetNumber value.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="PartNumberPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of property names that are used to fill the Spare.PartNumber value.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SupplierPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of property names that are used to fill the Spare.Supplier value.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TypeSettingsType">
+		<xs:annotation>
+			<xs:documentation>The settings used to determine which IfcProperty values to use to assign to the extensive set of COBie Type fields.  Type settings also include the list of IfcTypeObject entities that are ignored in the COBie transformation.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="IfcTypeExclusions">
+				<xs:annotation>
+					<xs:documentation>The list of IfcTypeObject entities that are ignored and excluded from the serialized COBie model.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AssetTypePropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.AssetType field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ManufacturerPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.Manufacturer field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ModelNumberPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.ModelNumber field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="WarrantyGuarantorPartsPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.WarrantyGuarantorParts field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="WarrantyDurationPartsPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.WarrantyDurationParts field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="WarrantyGuarantorLaborPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.WarrantyGuarantorLabor field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="WarrantyDurationLaborPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.WarrantyDurationLabor field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ReplacementCostPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.ReplacementCost field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ExpectedLifePropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.ExpectedLife field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="WarrantyDescriptionPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.WarrantyDescription field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="NominalLengthPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.NominalLength field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="NominalWidthPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.NominalWidth field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="NominalHeightPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.NominalHeight field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ModelReferencePropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.ModelReference field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ShapePropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.ShapeProperty field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SizePropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.Size field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ColorPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.Color field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FinishPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.Finish field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="GradePropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.Grade field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="MaterialPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.Material field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="ConstituentsPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.Constituents field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="FeaturesPropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.Features field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="AccessibilityPerformancePropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.AccessibilityPerformance field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="CodePerformancePropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.CodePerformance field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="SustainabilityPerformancePropertyNames">
+				<xs:annotation>
+					<xs:documentation>A list of IfcProperty names that will fill the Type.SustainabilityPerformance field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="DefaultWarrantyDurationUnit">
+				<xs:annotation>
+					<xs:documentation>The default value used for the Type.WarrantyDurationUnit if a value cannot be derived from the model.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of Exclude elements that represent lists of properties that will be excluded from the serialized model.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Exclude" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ComparisonType">
+		<xs:annotation>
+			<xs:documentation>A type of text comparison used to find a match: equals, startswith, endswith, or contains</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="equals"/>
+			<xs:enumeration value="startswith"/>
+			<xs:enumeration value="endswith"/>
+			<xs:enumeration value="contains"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Complex Type Element Instances -->
+	<xs:element name="AccessibilityPerformancePropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.AccessibilityPerformance field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="AssetTypePropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.AssetType field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="AttributeSettings" type="AttributeSettingsType">
+		<xs:annotation>
+			<xs:documentation>Settings for the various IfcProperty to COBie Attribute transformations include settings for the default count unit (e.g. "each"), Facility Attributes, Floor Attributes, Space Attributes, Type Attributes, and Component Attributes.  There are also settings for the Category value assigned per COBie sheet.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CodePerformancePropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.CodePerformance field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ColorPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.Color field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ComponentPropertyNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property name exclusions used for candidate Attributes where Attribute.SheetName=Component. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ComponentPropertySetNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property set name exclusions used for candidate Attributes where Attribute.SheetName=Component.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ComponentSettings" type="ComponentSettingsType">
+		<xs:annotation>
+			<xs:documentation>Settings for the IfcProduct to COBie Component transformation in the COBie Serializers include a list of Ifc entity types (IfcProductExclusions) that will not be included in the resulting output.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ConstituentsPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.Constituents field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DurationPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property names used to find a value for the Job.Duration field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Exclude" type="PropertyExclusionType">
+		<xs:annotation>
+			<xs:documentation>A text element that represents an Attribute name that should be excluded from the COBie export based on the values of the comparison (starts with, ends with, contains, equals)  and ignore case attributes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ExpectedLifePropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.ExpectedLife field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FacilityPropertyNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property name exclusions used for candidate Attributes where Attribute.SheetName=Facility. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FacilityPropertySetNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property set name exclusions used for candidate Attributes where Attribute.SheetName=Facility.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FacilitySettings" type="FacilitySettingsType">
+		<xs:annotation>
+			<xs:documentation>Settings for the IfcBuilding to COBie Facility transformation in the COBie Serializers include the default project and site names that are used if the model does not include names for (or does not include) an IfcProject and IfcSite.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FeaturesPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.Features field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FinishPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.Finish field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FloorHeightPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property names used to search IfcBuildingStorey property sets for the Floor.Height field. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FloorPropertyNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property name exclusions used for candidate Attributes where Attribute.SheetName=Floor. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FloorPropertySetNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property set name exclusions used for candidate Attributes where Attribute.SheetName=Floor.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FloorSettings" type="FloorSettingsType">
+		<xs:annotation>
+			<xs:documentation>The settings for the IfcBuildingStorey to COBie Floor transformation in the COBie Serializers includes a list of property names that are used to search for the Floor.Height field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FrequencyPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property names used to find a value for the Job.Frequency field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="GlobalPropertyNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property name exclusions used for candidate Attributes with any Attribute.SheetName value. (i.e. Attributes attached to any COBie entity).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="GlobalPropertySetNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property set name exclusions used for candidate Attributes with any Attribute.SheetName value. (i.e. Attributes attached to any COBie entity).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="GradePropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.Grade field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IfcProductExclusions" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IFC entity types (for example, IfcSlab) that will be ignored and not included in the serialized output. Each entity type name is encapsulated by a "Name" tag.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IfcTypeExclusions" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>The list of IfcTypeObject entities that are ignored and excluded from the serialized COBie model.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="JobSettings" type="JobSettingsType">
+		<xs:annotation>
+			<xs:documentation>Settings for the IfcTask to COBie Job transformation in the COBie Plugins include a lists of property names used to find the Job.Duration, Job.Frequency, and Job.Start fields.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ManufacturerPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.Manufacturer field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="MaterialPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.Material field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ModelNumberPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.ModelNumber field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ModelReferencePropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.ModelReference field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="NameEqValueExceptions" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will be excepted if ExcludePropertiesOnNameEqValue=true.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="NominalHeightPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.NominalHeight field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="NominalLengthPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.NominalLength field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="NominalWidthPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.NominalWidth field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="PartNumberPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property names that are used to fill the Spare.PartNumber value.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="PropertyExclusions" type="PropertyExclusionsType">
+		<xs:annotation>
+			<xs:documentation>Various settings for determining which IfcProperty values will appear as rows in the COBie Attribute worksheet.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ReplacementCostPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.ReplacementCost field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SetNumberPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property names that are used to fill the Spare.SetNumber value.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Settings" type="SettingsType">
+		<xs:annotation>
+			<xs:documentation>This is the root element of an IFC to COBie settings document.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ShapePropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.ShapeProperty field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SizePropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.Size field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SpacePropertyNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property name exclusions used for candidate Attributes where Attribute.SheetName=Space. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SpacePropertySetNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property set name exclusions used for candidate Attributes where Attribute.SheetName=Space.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SpareSettings" type="SpareSettingsType">
+		<xs:annotation>
+			<xs:documentation>The settings for the IfcConstructionProductResource to COBie Spare transformation include lists of property names that are used to find the Spare.SetNumber, Spare.PartNumber, and Spare.Supplier field values.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="StartPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property names used to find a value for the Job.Start field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SupplierPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property names that are used to fill the Spare.Supplier value.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SustainabilityPerformancePropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.SustainabilityPerformance field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TypePropertyNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property name exclusions used for candidate Attributes where Attribute.SheetName=Type. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TypePropertySetNameExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of property set name exclusions used for candidate Attributes where Attribute.SheetName=Type.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TypeSettings" type="TypeSettingsType">
+		<xs:annotation>
+			<xs:documentation>The settings used to determine which IfcProperty values to use to assign to the extensive set of COBie Type fields.  Type settings also include the list of IfcTypeObject entities that are ignored in the COBie transformation.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ValueExclusions" type="ValueExclusionCollectionType">
+		<xs:annotation>
+			<xs:documentation>If an IfcProperty has a value in this list then it will be excluded from the Attribute worksheet of the corresponding Worksheet(s) represented by the parent of this element.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WarrantyDescriptionPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.WarrantyDescription field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WarrantyDurationLaborPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.WarrantyDurationLabor field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WarrantyDurationPartsPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.WarrantyDurationParts field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WarrantyGuarantorLaborPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.WarrantyGuarantorLabor field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WarrantyGuarantorPartsPropertyNames" type="NameCollectionType">
+		<xs:annotation>
+			<xs:documentation>A list of IfcProperty names that will fill the Type.WarrantyGuarantorParts field.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--Simple Elements -->
+	<xs:element name="AttributeCountDefaultUnit" type="xs:string" default="each">
+		<xs:annotation>
+			<xs:documentation>The default Attribute.Unit value to use for IfcQuantityCount property values.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ComponentAttributeCategory" type="xs:string" default="Requirement">
+		<xs:annotation>
+			<xs:documentation>The value to assign to Attribute.Category when SheetName=Component</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="DefaultWarrantyDurationUnit" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>The default value used for the Type.WarrantyDurationUnit if a value cannot be derived from the model.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ExcludePropertiesOnNameEqValue" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicates whether or not an IfcProperty should be exported if its value is the same as its name.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FacilityAttributeCategory" type="xs:string" default="Requirement">
+		<xs:annotation>
+			<xs:documentation>The value to assign to Attribute.Category when SheetName=Facility</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FacilityDefaultProjectName" type="xs:string" default="Default Project">
+		<xs:annotation>
+			<xs:documentation>The default name assigned to Facility.ProjectName field if the Ifc model does not include an IfcProject or the IfcProject does not have a specified name.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FacilitySiteDefaultName" type="xs:string" default="Default Site">
+		<xs:annotation>
+			<xs:documentation>The default name assigned to Facility.SiteName field if the Ifc model does not include an IfcSite or the IfcSite does not have a specified name.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="FloorAttributeCategory" type="xs:string" default="Requirement">
+		<xs:annotation>
+			<xs:documentation>The value to assign to Attribute.Category when SheetName=Floor</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Name" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>A text value that represents a property name or entity name.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SpaceAttributeCategory" type="xs:string" default="Requirement">
+		<xs:annotation>
+			<xs:documentation>The value to assign to Attribute.Category when SheetName=Space</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TypeAttributeCategory" type="xs:string" default="Requirement">
+		<xs:annotation>
+			<xs:documentation>The value to assign to Attribute.Category when SheetName=Type</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

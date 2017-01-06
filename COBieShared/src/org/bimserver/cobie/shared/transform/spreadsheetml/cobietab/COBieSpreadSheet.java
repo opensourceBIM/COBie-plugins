@@ -431,7 +431,8 @@ public class COBieSpreadSheet
             {
                 if (cellMap.containsKey(i))
                 {
-                    if ((cellMap.get(i).getData$() != null) && (cellMap.get(i).getData$().length() > 0))
+                    if ((cellMap.get(i).getData$() != null) && 
+                    		(cellMap.get(i).getData$().trim().length() > 0))
                     {
                         isPopulated = true;
                     }

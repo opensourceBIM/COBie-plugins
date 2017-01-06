@@ -29,12 +29,14 @@ import nl.fountain.xelem.XFactory;
 import nl.fountain.xelem.excel.Workbook;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.bimserver.cobie.shared.COBieException;
 import org.bimserver.cobie.shared.cobietab.COBieTabProducable;
 import org.bimserver.cobie.shared.deserialization.cobietab.COBieIfcModel;
 import org.bimserver.cobie.shared.deserialization.cobietab.FromCOBieToIfc;
 import org.bimserver.cobie.shared.transform.spreadsheetml.cobietab.SpreadsheetParser;
 import org.bimserver.cobie.shared.transform.xslx.spreadsheetml.XLSXToSpreadsheetMLMapper;
+import org.bimserver.cobie.shared.utility.COBieStringHandler;
 import org.bimserver.cobie.shared.utility.POIUtils;
 import org.bimserver.cobie.shared.utility.StreamUtils;
 import org.bimserver.emf.IfcModelInterface;
@@ -49,6 +51,8 @@ import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import com.prairiesky.transform.template.CobieXLSXToCobieTabTransform;
+
 public class COBieDeserializer extends EmfDeserializer implements
 		COBieTabProducable
 {
@@ -56,10 +60,47 @@ public class COBieDeserializer extends EmfDeserializer implements
 			.getLogger(COBieDeserializer.class);
 	private String templateFilePath;
 	private Workbook xlWorkbook = null;
-	private COBIEDocument COBie;
+	private COBIEDocument cobieDocument;
+
+	public String getTemplateFilePath()
+	{
+		return templateFilePath;
+	}
+
+	public void setTemplateFilePath(String templateFilePath)
+	{
+		this.templateFilePath = templateFilePath;
+	}
+
+	public Workbook getXlWorkbook()
+	{
+		return xlWorkbook;
+	}
+
+	public void setXlWorkbook(Workbook xlWorkbook)
+	{
+		this.xlWorkbook = xlWorkbook;
+	}
+
+	public File getConfigurationFile()
+	{
+		return configurationFile;
+	}
+
+	public COBIEDocument getCobieDocument()
+	{
+		return cobieDocument;
+	}
+
+	public void setCobieDocument(COBIEDocument cobieDocument)
+	{
+		this.cobieDocument = cobieDocument;
+	}
+
 	private final File configurationFile;
 	private static final String LOGGER_STATUS_SPREADSHEET_BEGIN_MSG = "Deserializing COBie SpreadsheetML to COBie Sheet XML Data.";
 	private static final String LOGGER_STATUS_SPREADSHEET_END_MSG = "COBie SpreadsheetML converted to COBie Sheet XML Data.";
+
 	public COBieDeserializer(File configurationFile, PackageMetaData packageMetadata)
 	{
 		this.configurationFile = configurationFile;
@@ -68,13 +109,13 @@ public class COBieDeserializer extends EmfDeserializer implements
 	private COBIEType GetCobie()
 	{
 		COBIEType cType;
-		if (COBie.getCOBIE() == null)
+		if (getCobieDocument().getCOBIE() == null)
 		{
-			cType = COBie.addNewCOBIE();
+			cType = getCobieDocument().addNewCOBIE();
 		}
 		else
 		{
-			cType = COBie.getCOBIE();
+			cType = getCobieDocument().getCOBIE();
 		}
 		return cType;
 	}
@@ -92,10 +133,7 @@ public class COBieDeserializer extends EmfDeserializer implements
 		Workbook cobieWorkBook = null;
 		try 
 		{	
-			cachedInput = File.createTempFile(UUID.randomUUID().toString(), "");
-			IOUtils.copy(in, new FileOutputStream(cachedInput));	
-			InputSource inSrc = new InputSource(new FileInputStream(cachedInput));
-			cobieWorkBook = spreadsheetMLWorkbookFromInputSource(inSrc);
+			cobieWorkBook = spreadsheetMLWorkbookFromInputSource(new InputSource(in));
 		} 
 		catch (IOException | SAXException | ParserConfigurationException e) 
 		{
@@ -107,7 +145,7 @@ public class COBieDeserializer extends EmfDeserializer implements
 			} 
 			catch (Exception e1) 
 			{
-				e1.printStackTrace();
+			//	e1.printStackTrace();
 				throw new DeserializeException(e1);
 			}
 		}
@@ -132,12 +170,12 @@ public class COBieDeserializer extends EmfDeserializer implements
 	}
 
 	// general initialize function that any of the constructors will call
-	private void initCOBie(InputStream in) throws DeserializeException
+	private void initCOBie(InputStream in, COBieStringHandler handler) throws DeserializeException
 	{
 
 		try
 		{
-			spreadsheetToCOBie(in);
+			spreadsheetToCOBie(in, handler);
 		}
 		catch (Exception ex)
 		{
@@ -155,11 +193,11 @@ public class COBieDeserializer extends EmfDeserializer implements
 	 * names 2: Check to make sure data is being written to the right column 3:
 	 * Parallelize this function
 	 */
-	private void populateCobieDocument()
+	private void populateCobieDocument(COBieStringHandler handler)
 	{
 		LOGGER.info(LOGGER_STATUS_SPREADSHEET_BEGIN_MSG);
 
-		SpreadsheetParser parser = new SpreadsheetParser(xlWorkbook, GetCobie());
+		SpreadsheetParser parser = new SpreadsheetParser(getXlWorkbook(), GetCobie(), handler);
 		parser.parse();
 
 		LOGGER.info(LOGGER_STATUS_SPREADSHEET_END_MSG);
@@ -172,7 +210,7 @@ public class COBieDeserializer extends EmfDeserializer implements
 		COBieIfcModel cobieModel = null;
 		try
 		{
-			initCOBie(in);
+			initCOBie(in, new COBieStringHandler());
 			FromCOBieToIfc cobieTransform;
 			cobieTransform = new FromCOBieToIfc(GetCobie(), getPackageMetaData());
 			cobieModel = cobieTransform.getModelFromCOBie();
@@ -186,19 +224,46 @@ public class COBieDeserializer extends EmfDeserializer implements
 
 	}
 
-	private void spreadsheetToCOBie(InputStream in)
+	private void spreadsheetToCOBie(InputStream in, COBieStringHandler handler)
 			throws Exception
 	{
-		toCOBieSheetXMLData(getWorkBookFromInputStream(in));
+		File cachedInput = File.createTempFile(UUID.randomUUID().toString(), "");
+		IOUtils.copy(in, new FileOutputStream(cachedInput));	
+		InputStream firstStream = new FileInputStream(cachedInput);
+		try
+		{
+			toCOBieSheetXMLData(getWorkBookFromInputStream(firstStream), handler);
+		}
+		catch(Exception e)
+		{
+			try
+			{
+				org.apache.poi.ss.usermodel.Workbook workbook =
+						WorkbookFactory.create(cachedInput);
+				setCobieDocument(COBIEDocument.Factory.newInstance());
+				CobieXLSXToCobieTabTransform transform =
+						new CobieXLSXToCobieTabTransform(workbook, getCobieDocument());
+				transform.transform();
+			}
+			catch(Exception e2)
+			{
+				throw e;
+			}
+		}
+		finally
+		{
+			cachedInput.deleteOnExit();
+		}
+		
 	}
 
 	@Override
-	public COBIEDocument toCOBieSheetXMLData(File incomingFile)
+	public COBIEDocument toCOBieSheetXMLData(File incomingFile, COBieStringHandler handler)
 			throws Exception
 	{
 		try
 		{
-			return toCOBieSheetXMLData(new FileInputStream(incomingFile));
+			return toCOBieSheetXMLData(new FileInputStream(incomingFile), handler);
 		}
 		catch (Exception ex)
 		{
@@ -206,35 +271,36 @@ public class COBieDeserializer extends EmfDeserializer implements
 		}
 	}
 	
-	public COBIEDocument toCOBieSheetXMLData(InputStream inputStream) throws Exception
+	
+	public COBIEDocument toCOBieSheetXMLData(InputStream inputStream, COBieStringHandler handler) throws Exception
 	{
 		try
 		{
-			initCOBie(inputStream);
+			initCOBie(inputStream, handler);
 		}
 		catch (Exception ex)
 		{
 			throw ex;
 		}
-		return COBie;
+		return getCobieDocument();
 	}
 	
-	public COBIEDocument toCOBieSheetXMLData(Workbook workbook) throws Exception
+	public COBIEDocument toCOBieSheetXMLData(Workbook workbook, COBieStringHandler handler) throws Exception
 	{
-		COBie = COBIEDocument.Factory.newInstance();
-		templateFilePath = configurationFile.getAbsolutePath();
-		XFactory.setConfigurationFileName(templateFilePath);
-		this.xlWorkbook = workbook;
-		if ((xlWorkbook != null) || xlWorkbook.hasExcelWorkbook())
+		setCobieDocument(COBIEDocument.Factory.newInstance());
+		setTemplateFilePath(getConfigurationFile().getAbsolutePath());
+		XFactory.setConfigurationFileName(getTemplateFilePath());
+		setXlWorkbook(workbook);
+		if ((getXlWorkbook() != null) || getXlWorkbook().hasExcelWorkbook())
 		{
-			populateCobieDocument();
+			populateCobieDocument(handler);
 		}
 		else
 		{
 			throw new DeserializeException(
 					"Input stream not a valid spreadsheetml file.");
 		}
-		return COBie;
+		return getCobieDocument();
 	}
 
 }

@@ -1,18 +1,18 @@
 package com.prairiesky.transform.ifc.cobie;
 
+import org.bimserver.cobie.shared.serialization.util.IfcBuildingFacilitySerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcBuildingStoreyFloorSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcConstructionEquipmentResourceSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcConstructionProductResourceSpareSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcDocumentInformationDocumentSerializer;
 import org.bimserver.cobie.shared.serialization.util.IfcPersonOrganizationContactsSerializer;
 import org.bimserver.cobie.shared.serialization.util.IfcProductToComponentsSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcRelConnectsSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcRootAttributeSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcSpaceSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcSystemSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcTaskJobSerializer;
 import org.bimserver.cobie.shared.serialization.util.IfcToAssembly;
-import org.bimserver.cobie.shared.serialization.util.IfcToAttribute;
-import org.bimserver.cobie.shared.serialization.util.IfcToConnection;
-import org.bimserver.cobie.shared.serialization.util.IfcToDocument;
-import org.bimserver.cobie.shared.serialization.util.IfcToFacility;
-import org.bimserver.cobie.shared.serialization.util.IfcToFloor;
-import org.bimserver.cobie.shared.serialization.util.IfcToJob;
-import org.bimserver.cobie.shared.serialization.util.IfcToResource;
-import org.bimserver.cobie.shared.serialization.util.IfcToSpace;
-import org.bimserver.cobie.shared.serialization.util.IfcToSpare;
-import org.bimserver.cobie.shared.serialization.util.IfcToSystem;
 import org.bimserver.cobie.shared.serialization.util.IfcToZone;
 import org.bimserver.cobie.shared.serialization.util.IfcTypeToCOBieTypeSerializer;
 import org.bimserver.cobie.shared.transform.Transformer;
@@ -20,12 +20,17 @@ import org.bimserver.emf.IfcModelInterface;
 import org.nibs.cobie.tab.COBIEDocument;
 import org.nibs.cobie.tab.COBIEType;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocument>
 {
 
-	public IfcCobieTransform(IfcModelInterface source, COBIEDocument target)
+	private final SettingsType settings;
+	
+	public IfcCobieTransform(IfcModelInterface source, COBIEDocument target, SettingsType settings)
 	{
 		super(source, target);
+		this.settings = settings;
 	}
 
 	@Override
@@ -53,7 +58,14 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
     private void writeFacilities(IfcModelInterface model)
     {
         COBIEType cType = this.GetCobie();
-        cType = IfcToFacility.writeFacilitiesToCOBie(cType, model);
+        COBIEType.Facilities facilities = cType.getFacilities();
+        if(facilities == null)
+        {
+        	facilities = cType.addNewFacilities();
+        }
+        IfcBuildingFacilitySerializer serializer =
+        		new IfcBuildingFacilitySerializer(facilities, getSource(), getSettings());
+        serializer.serializeIfc();
     }
     
     /**
@@ -68,7 +80,7 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
         if(contacts==null)
             contacts = cType.addNewContacts();
         IfcPersonOrganizationContactsSerializer contactSerializer =
-                new IfcPersonOrganizationContactsSerializer(contacts, model);
+                new IfcPersonOrganizationContactsSerializer(contacts, model, getSettings());
         contactSerializer.serializeIfc();
     }
     
@@ -85,15 +97,31 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
      */
     private void writeFloors(IfcModelInterface model)
     {
-       IfcToFloor.writeFloorsToCOBie(this.GetCobie(), model);
+    	COBIEType.Floors floors =
+    			GetCobie().getFloors();
+    	if(floors == null)
+    	{
+    		floors = GetCobie().addNewFloors();
+    	}
+    	IfcBuildingStoreyFloorSerializer serializer =
+    			new IfcBuildingStoreyFloorSerializer(floors, getSource(), getSettings());
+    	serializer.serializeIfc();
     }
     
     /**
      * Parses IFC model and populates COBie Spaces
      */
     private void writeSpaces(IfcModelInterface model)
-    { 
-        IfcToSpace.writeSpacesToCOBie(this.GetCobie(), model);
+    {
+    	COBIEType.Spaces spaces =
+    			GetCobie().getSpaces();
+    	if(spaces == null)
+    	{
+    		spaces = GetCobie().addNewSpaces();
+    	}
+    	IfcSpaceSerializer serializer =
+    			new IfcSpaceSerializer(spaces, getSource(), getSettings());
+    	serializer.serializeIfc();
     }
     
     /**
@@ -110,7 +138,7 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
     private void writeTypes(IfcModelInterface model)
     {
         IfcTypeToCOBieTypeSerializer typeSerializer =
-                new IfcTypeToCOBieTypeSerializer(this.GetCobie().addNewTypes(), model, true);
+                new IfcTypeToCOBieTypeSerializer(this.GetCobie().addNewTypes(), model, getSettings());
         typeSerializer.serializeIfc();
     }
     
@@ -124,7 +152,7 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
         if(components==null)
             components = this.GetCobie().addNewComponents();
         IfcProductToComponentsSerializer componentSerializer =
-                new IfcProductToComponentsSerializer(this.GetCobie().getComponents(), model, true);
+                new IfcProductToComponentsSerializer(this.GetCobie().getComponents(), model, getSettings());
         componentSerializer.serializeIfc();
     }
     
@@ -133,7 +161,15 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
      */
     private void writeSystems(IfcModelInterface model)
     {
-        IfcToSystem.writeSystemsToCOBieComponentPerRow(this.GetCobie(), model);
+        COBIEType.Systems systems =
+        		GetCobie().getSystems();
+        if(systems == null)
+        {
+        	systems = GetCobie().addNewSystems();
+        }
+        IfcSystemSerializer serializer =
+        		new IfcSystemSerializer(systems, model, getSettings());
+        serializer.serializeIfc();
     }
     
     /**
@@ -141,7 +177,7 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
      */
     private void writeAssemblies(IfcModelInterface model)
     {
-        IfcToAssembly.writeAssembliesToCOBie(this.GetCobie(), model);
+        IfcToAssembly.writeAssembliesToCOBie(this.GetCobie(), model, getSettings());
     }
     
     /**
@@ -149,7 +185,15 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
      */
     private void writeConnections(IfcModelInterface model)
     {
-        IfcToConnection.writeConnections(this.GetCobie(), model);
+    	COBIEType.Connections connections =
+    			GetCobie().getConnections();
+    	if(connections == null)
+    	{
+    		connections = GetCobie().addNewConnections();
+    	}
+    	IfcRelConnectsSerializer serializer =
+    			new IfcRelConnectsSerializer(connections, model, getSettings());
+    	serializer.serializeIfc();
     }
     
     /**
@@ -157,7 +201,15 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
      */
     private void writeDocuments(IfcModelInterface model)
     {
-        IfcToDocument.writeDocument(this.GetCobie(), model);
+    	COBIEType.Documents documents =
+    			GetCobie().getDocuments();
+    	if(documents == null)
+    	{
+    		documents = GetCobie().addNewDocuments();
+    	}
+    	IfcDocumentInformationDocumentSerializer serializer =
+    			new IfcDocumentInformationDocumentSerializer(documents, getSource(), getSettings());
+       serializer.serializeIfc();
     }
     
     /**
@@ -165,7 +217,9 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
      */
     private void writeAttributes(IfcModelInterface model)
     {
-        IfcToAttribute.writeAttributes(this.GetCobie(), model);
+    	IfcRootAttributeSerializer attributeSerializer =
+    			new IfcRootAttributeSerializer(GetCobie().addNewAttributes(), model, GetCobie(), getSettings());
+    	attributeSerializer.serializeIfc();
     }
     
     /**
@@ -173,7 +227,15 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
      */
     private void writeSpares(IfcModelInterface model)
     {
-        IfcToSpare.writeSpares(this.GetCobie(), model);
+        COBIEType.Spares spares =
+        		GetCobie().getSpares();
+        if(spares == null)
+        {
+        	spares = GetCobie().addNewSpares();
+        }
+        IfcConstructionProductResourceSpareSerializer serializer =
+        		new IfcConstructionProductResourceSpareSerializer(spares, getSource(), getSettings());
+        serializer.serializeIfc();
     }
     
     /**
@@ -181,7 +243,15 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
      */
     private void writeResources(IfcModelInterface model)
     {
-        IfcToResource.writeResources(this.GetCobie(), model);
+    	COBIEType.Resources resources =
+    			GetCobie().getResources();
+    	if(resources == null)
+    	{
+    		resources = GetCobie().addNewResources();
+    	}
+        IfcConstructionEquipmentResourceSerializer serializer =
+        		new IfcConstructionEquipmentResourceSerializer(resources, getSource(), getSettings());
+        serializer.serializeIfc();
     }
     
     /**
@@ -189,7 +259,18 @@ public class IfcCobieTransform extends Transformer<IfcModelInterface, COBIEDocum
      */
     private void writeJobs(IfcModelInterface model)
     {
-        IfcToJob.writeJobs(this.GetCobie(), model);
+        COBIEType.Jobs jobs = GetCobie().getJobs();
+        if(jobs == null)
+        {
+        	jobs = GetCobie().addNewJobs();
+        }
+        IfcTaskJobSerializer serializer =
+        		new IfcTaskJobSerializer(jobs, getSource(), getSettings());
+        serializer.serializeIfc();
     }
+
+	public SettingsType getSettings() {
+		return settings;
+	}
 
 }

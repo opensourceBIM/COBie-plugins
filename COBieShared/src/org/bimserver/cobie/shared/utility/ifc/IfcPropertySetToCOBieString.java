@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bimserver.cobie.shared.serialization.util.IfcPropertyToCOBieString;
+import org.bimserver.cobie.shared.serialization.util.IfcPropertyStringTransformer;
 import org.bimserver.models.ifc2x3tc1.IfcElementQuantity;
 import org.bimserver.models.ifc2x3tc1.IfcPhysicalQuantity;
 import org.bimserver.models.ifc2x3tc1.IfcProperty;
@@ -14,9 +14,9 @@ import org.bimserver.models.ifc2x3tc1.IfcPropertySetDefinition;
 public class IfcPropertySetToCOBieString
 {
 
-    static private Map<String, IfcPropertyToCOBieString> clonePsetStringMap(Map<String, IfcPropertyToCOBieString> propertyMap)
+    static private Map<String, IfcPropertyStringTransformer> clonePsetStringMap(Map<String, IfcPropertyStringTransformer> propertyMap)
     {
-        Map<String, IfcPropertyToCOBieString> clone = new HashMap<String, IfcPropertyToCOBieString>();
+        Map<String, IfcPropertyStringTransformer> clone = new HashMap<String, IfcPropertyStringTransformer>();
         for (String key : propertyMap.keySet())
         {
             clone.put(key, propertyMap.get(key));
@@ -24,13 +24,13 @@ public class IfcPropertySetToCOBieString
         return clone;
     }
 
-    static public Map<String, IfcPropertyToCOBieString> mergePsetStrings(
-            Map<String, IfcPropertyToCOBieString> tmpPropertyMap,
-            Map<String, IfcPropertyToCOBieString> propertyMap)
+    static public Map<String, IfcPropertyStringTransformer> mergePsetStrings(
+            Map<String, IfcPropertyStringTransformer> tmpPropertyMap,
+            Map<String, IfcPropertyStringTransformer> propertyMap)
     {
-        Map<String, IfcPropertyToCOBieString> clonePMap = clonePsetStringMap(propertyMap);
-        IfcPropertyToCOBieString tmpVal1;
-        IfcPropertyToCOBieString tmpVal2;
+        Map<String, IfcPropertyStringTransformer> clonePMap = clonePsetStringMap(propertyMap);
+        IfcPropertyStringTransformer tmpVal1;
+        IfcPropertyStringTransformer tmpVal2;
         int idx = 2;
         if (!tmpPropertyMap.isEmpty())
         {
@@ -55,13 +55,13 @@ public class IfcPropertySetToCOBieString
         return clonePMap;
     }
 
-    static public Map<String, IfcPropertyToCOBieString> mergePsetStringsAllowNA(
-            Map<String, IfcPropertyToCOBieString> tmpPropertyMap,
-            Map<String, IfcPropertyToCOBieString> propertyMap)
+    static public Map<String, IfcPropertyStringTransformer> mergePsetStringsAllowNA(
+            Map<String, IfcPropertyStringTransformer> tmpPropertyMap,
+            Map<String, IfcPropertyStringTransformer> propertyMap)
     {
-        Map<String, IfcPropertyToCOBieString> clonePMap = clonePsetStringMap(propertyMap);
-        IfcPropertyToCOBieString tmpVal1;
-        IfcPropertyToCOBieString tmpVal2;
+        Map<String, IfcPropertyStringTransformer> clonePMap = clonePsetStringMap(propertyMap);
+        IfcPropertyStringTransformer tmpVal1;
+        IfcPropertyStringTransformer tmpVal2;
         int idx = 2;
         if (!tmpPropertyMap.isEmpty())
         {
@@ -96,8 +96,8 @@ public class IfcPropertySetToCOBieString
             IfcPropertySet pSet = (IfcPropertySet)pSetDef;
             for (IfcProperty property : pSet.getHasProperties())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.propertyStringsFromProperty(property, copyPNames);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                tmpPropertyMap = IfcPropertyStringTransformer.propertyStringsFromProperty(property, copyPNames);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
 
             }
         } else if (pSetDef instanceof IfcElementQuantity)
@@ -105,8 +105,8 @@ public class IfcPropertySetToCOBieString
             IfcElementQuantity elQ = (IfcElementQuantity)pSetDef;
             for (IfcPhysicalQuantity quantity : elQ.getQuantities())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.propertyStringsFromPhysicalQuantity(quantity, copyPNames);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                tmpPropertyMap = IfcPropertyStringTransformer.propertyStringsFromPhysicalQuantity(quantity, copyPNames);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
             }
 
         }
@@ -128,8 +128,8 @@ public class IfcPropertySetToCOBieString
             IfcPropertySet pSet = (IfcPropertySet)pSetDef;
             for (IfcProperty property : pSet.getHasProperties())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.propertyStringsFromProperty(property, copyPNames, exclusive);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                tmpPropertyMap = IfcPropertyStringTransformer.propertyStringsFromProperty(property, copyPNames, exclusive);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
 
             }
         } else if (pSetDef instanceof IfcElementQuantity)
@@ -137,8 +137,8 @@ public class IfcPropertySetToCOBieString
             IfcElementQuantity elQ = (IfcElementQuantity)pSetDef;
             for (IfcPhysicalQuantity quantity : elQ.getQuantities())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.propertyStringsFromPhysicalQuantity(quantity, copyPNames, exclusive);
-                propertyMap = IfcPropertyToCOBieString.mergePropertyStrings(tmpPropertyMap, propertyMap);
+                tmpPropertyMap = IfcPropertyStringTransformer.propertyStringsFromPhysicalQuantity(quantity, copyPNames, exclusive);
+                propertyMap = IfcPropertyStringTransformer.mergePropertyStrings(tmpPropertyMap, propertyMap);
             }
 
         }
@@ -146,13 +146,13 @@ public class IfcPropertySetToCOBieString
         return propertyMap;
     }
 
-    static Map<String, IfcPropertyToCOBieString> psetStringsFromPropertySetDefinition(
+    static Map<String, IfcPropertyStringTransformer> psetStringsFromPropertySetDefinition(
             IfcPropertySetDefinition pSetDef,
             ArrayList<String> propertyNames,
             boolean exclusive)
     {
-        Map<String, IfcPropertyToCOBieString> propertyMap = new HashMap<String, IfcPropertyToCOBieString>();
-        Map<String, IfcPropertyToCOBieString> tmpPropertyMap = new HashMap<String, IfcPropertyToCOBieString>();
+        Map<String, IfcPropertyStringTransformer> propertyMap = new HashMap<String, IfcPropertyStringTransformer>();
+        Map<String, IfcPropertyStringTransformer> tmpPropertyMap = new HashMap<String, IfcPropertyStringTransformer>();
         @SuppressWarnings("unchecked")
         ArrayList<String> copyPNames = (ArrayList<String>)propertyNames.clone();
         if (IfcPropertySet.class.isInstance(pSetDef))
@@ -160,7 +160,7 @@ public class IfcPropertySetToCOBieString
             IfcPropertySet pSet = (IfcPropertySet)pSetDef;
             for (IfcProperty property : pSet.getHasProperties())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.psetStringsFromProperty(property, copyPNames, exclusive);
+                tmpPropertyMap = IfcPropertyStringTransformer.psetStringsFromProperty(property, copyPNames, exclusive);
                 propertyMap = IfcPropertySetToCOBieString.mergePsetStrings(tmpPropertyMap, propertyMap);
 
             }
@@ -169,7 +169,7 @@ public class IfcPropertySetToCOBieString
             IfcElementQuantity elQ = (IfcElementQuantity)pSetDef;
             for (IfcPhysicalQuantity quantity : elQ.getQuantities())
             {
-                tmpPropertyMap = IfcPropertyToCOBieString.psetStringsFromPhysicalQuantity(quantity, copyPNames, exclusive);
+                tmpPropertyMap = IfcPropertyStringTransformer.psetStringsFromPhysicalQuantity(quantity, copyPNames, exclusive);
                 propertyMap = IfcPropertySetToCOBieString.mergePsetStrings(tmpPropertyMap, propertyMap);
             }
 
@@ -178,16 +178,16 @@ public class IfcPropertySetToCOBieString
         return propertyMap;
     }
 
-    static protected Map<String, IfcPropertyToCOBieString> setPropertySetDataToPset(
-            Map<String, IfcPropertyToCOBieString> psetStrings,
+    static protected Map<String, IfcPropertyStringTransformer> setPropertySetDataToPset(
+            Map<String, IfcPropertyStringTransformer> psetStrings,
             IfcPropertySetDefinition pSetDef)
     {
-        Map<String, IfcPropertyToCOBieString> clonePsetStrings = IfcPropertySetToCOBieString.clonePsetStringMap(psetStrings);
+        Map<String, IfcPropertyStringTransformer> clonePsetStrings = IfcPropertySetToCOBieString.clonePsetStringMap(psetStrings);
         String pSetName = pSetDef.getName();
         String guid = pSetDef.getGlobalId();
         for (String key : clonePsetStrings.keySet())
         {
-            IfcPropertyToCOBieString tmpPsetStr = clonePsetStrings.get(key);
+            IfcPropertyStringTransformer tmpPsetStr = clonePsetStrings.get(key);
             tmpPsetStr.setPropertySetString(pSetName);
             tmpPsetStr.setPropertySetGlobalIDString(guid);
             tmpPsetStr.setAttachedOwnerHistory(pSetDef.getOwnerHistory());

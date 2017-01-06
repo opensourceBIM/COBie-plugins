@@ -1,7 +1,12 @@
-2/10/2016
+1/5/2017
 
 WHAT’S NEW?
+
 NEW FEATURES
-•	Bug fixes for Issues 17 and 20
-•	Various refactoring
-•	Some new classes to support other XLSX COBie bindings
+•	Ifc to COBie transformation settings
+•	Design and Construction XLSX Exports
+•	Some QC Report Updates
+
+BUG FIXES
+•	Bug fixes for Issues 26 - 32	
+

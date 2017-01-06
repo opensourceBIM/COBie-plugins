@@ -18,14 +18,20 @@ package org.bimserver.cobie.plugin.deserializers;
  *****************************************************************************/
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Set;
 
 import org.bimserver.cobie.shared.deserialization.COBieDeserializer;
 import org.bimserver.cobie.shared.deserialization.COBieDeserializerPluginName;
 import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper;
+import org.bimserver.cobie.shared.utility.PluginRuntimeFileHelper.Persistence;
 import org.bimserver.emf.PackageMetaData;
 import org.bimserver.emf.Schema;
 import org.bimserver.models.store.ObjectDefinition;
+import org.bimserver.plugins.Plugin;
 import org.bimserver.plugins.PluginConfiguration;
 import org.bimserver.plugins.PluginException;
 import org.bimserver.plugins.PluginManager;
@@ -38,7 +44,8 @@ public class COBieDeserializerPlugin implements DeserializerPlugin
 	private static String localConfigFilePath = "lib/COBieExcelTemplate.xml";
 	private boolean initialized = false;
 	private PackageMetaData packageMetadata;
-	protected File configurationFile;
+	protected Path configurationFilePath;
+	protected File configFile;
 
 	@Override
 	public boolean canHandleExtension(String extension)
@@ -51,7 +58,7 @@ public class COBieDeserializerPlugin implements DeserializerPlugin
 	public Deserializer createDeserializer(
 			PluginConfiguration pluginConfiguration)
 	{
-		return new COBieDeserializer(configurationFile, getPackageMetadata());
+		return new COBieDeserializer(configFile, getPackageMetadata());
 	}
 
 	@Override
@@ -82,18 +89,16 @@ public class COBieDeserializerPlugin implements DeserializerPlugin
 	public void init(PluginManager pluginManager) throws SchemaException,
 			PluginException
 	{
-		try
+		configurationFilePath = pluginManager.getPluginContext(this).getRootPath().resolve(localConfigFilePath);
+		try 
 		{
-			configurationFile = PluginRuntimeFileHelper
-					.prepareSerializerConfigFile(pluginManager,
-							"COBieDeserializer", this, localConfigFilePath);
-			setPackageMetadata(pluginManager.getMetaDataManager().getPackageMetaData(Schema.IFC2X3TC1.name().toLowerCase()));
-		}
-		catch (FileNotFoundException e)
+			configFile = PluginRuntimeFileHelper.prepareSerializerResource(pluginManager, 
+					getClass().getSimpleName(), this, configurationFilePath.toString(), Persistence.TEMP);
+		} catch (IOException e1) 
 		{
-			e.printStackTrace();
-			throw new PluginException("Could not find configuration files");
+			throw new PluginException(e1);
 		}
+		setPackageMetadata(pluginManager.getMetaDataManager().getPackageMetaData(Schema.IFC2X3TC1.name().toLowerCase()));
 		initialized = true;
 	}
 

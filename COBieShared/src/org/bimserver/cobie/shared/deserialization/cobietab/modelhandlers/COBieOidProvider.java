@@ -20,7 +20,7 @@ import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.emf.OidProvider;
 import org.eclipse.emf.ecore.EClass;
 
-public class COBieOidProvider implements OidProvider<Long>
+public class COBieOidProvider implements OidProvider
 {
 
     IfcModelInterface model;
@@ -33,7 +33,6 @@ public class COBieOidProvider implements OidProvider<Long>
     @Override
     public Long newOid(EClass eClass)
     {
-        // TODO Auto-generated method stub
         return new Long(model.size() + 1);
     }
 

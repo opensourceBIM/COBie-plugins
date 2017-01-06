@@ -18,10 +18,11 @@ package org.bimserver.cobie.shared.serialization;
  *****************************************************************************/
 import java.io.OutputStream;
 
-import org.bimserver.plugins.serializers.ProgressReporter;
 import org.bimserver.plugins.serializers.SerializerException;
 import org.nibs.cobie.tab.COBIEDocument;
 import org.slf4j.LoggerFactory;
+
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
 
 /**
  * @author chrisbogen This serializer class generates a flattened XML data view
@@ -37,14 +38,14 @@ public class COBieTabXMLSerializer extends
 		logger = LoggerFactory.getLogger(COBieTabXMLSerializer.class);
 	}
 
-	public COBieTabXMLSerializer()
+	public COBieTabXMLSerializer(SettingsType settings)
 	{
-		this(null);
+		this(null, settings);
 	}
 
-	public COBieTabXMLSerializer(COBIEDocument cobie)
+	public COBieTabXMLSerializer(COBIEDocument cobie, SettingsType settings)
 	{
-		super(cobie);
+		super(cobie, settings);
 		LoggerFactory.getLogger(COBieTabXMLSerializer.class);
 	}
 

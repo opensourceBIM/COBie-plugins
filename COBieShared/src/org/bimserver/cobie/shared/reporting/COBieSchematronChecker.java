@@ -10,8 +10,8 @@ import java.util.UUID;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 
-import org.nibs.cobie.tab.COBIEDocument;
 import org.jdom.input.SAXBuilder;
+import org.nibs.cobie.tab.COBIEDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,16 +56,16 @@ public class COBieSchematronChecker
     {
         LOGGER.info(MSG_SCHEMATRON_XSLT_BEGIN);
 
-        File ruleFile = new File(getschematronRulePath());
+        File ruleFile = getSchematronRuleFile();
         try
         {
-            saxBuilder.build(new File(getPreProcessorPath()));
+            saxBuilder.build(getPreProcessorFile());
         } catch (Exception e)
         {
             LOGGER.error(MSG_SCHEMATRON_XSLT_ERROR + e.getMessage());
             throw e;
         }
-        File preProcessor = new File(getPreProcessorPath());
+        File preProcessor = getPreProcessorFile();
         XSLTransform transformer =
                 new XSLTransform(new StreamSource(ruleFile), new StreamSource(preProcessor),
                 transformerFactory);
@@ -106,14 +106,14 @@ public class COBieSchematronChecker
     
     private File getTempFile(String extension)
     {
-        File ruleDirectory = new File(getschematronRulePath()).getParentFile();
+        File ruleDirectory = getSchematronRuleFile().getParentFile();
         return new File(ruleDirectory, UUID.randomUUID().toString() +"."+extension);
     }
 
     private void transformSVRLtoHTML(OutputStream outputStream) throws Exception
     {
         LOGGER.info(MSG_HTML_XSLT_BEGIN);
-        File svrlHTMLFile = new File(getSVRLHtmlPath());
+        File svrlHTMLFile = getSVRLHtmlFile();
 
         try
         {
@@ -139,9 +139,13 @@ public class COBieSchematronChecker
         {
         	COBie.save(new File("incoming.xml"));
             this.ruleTransformResult = getTempFile("xsl");
-            transformSchematronRules(new FileOutputStream(this.ruleTransformResult));
+            FileOutputStream rOut = new FileOutputStream(this.ruleTransformResult);
+            transformSchematronRules(rOut);
+            rOut = null;
             this.cobieTransformResult = getTempFile("xml");
-            transformCOBietoSVRL(new FileOutputStream(this.cobieTransformResult));
+            FileOutputStream tOut = new FileOutputStream(this.cobieTransformResult);
+            transformCOBietoSVRL(tOut);
+            tOut = null;
             transformSVRLtoHTML(outputStream);
 
         } 
@@ -152,8 +156,16 @@ public class COBieSchematronChecker
         }
         finally
         {
-            this.cobieTransformResult.delete();
-            this.ruleTransformResult.delete();
+        	try
+        	{
+	        	System.gc();
+	            this.cobieTransformResult.delete();
+	            this.ruleTransformResult.delete();
+        	}
+        	catch(Exception e)
+        	{
+        		
+        	}
         }
 
     }
@@ -184,18 +196,18 @@ public class COBieSchematronChecker
         this.settings = settings;
     }
     
-    private String getschematronRulePath()
+    private File getSchematronRuleFile()
     {
-        return settings.getSchematronRulePath();
+        return settings.getSchematronRuleFile();
     }
     
-    private String getPreProcessorPath()
+    private File getPreProcessorFile()
     {
-        return settings.getPreProcessorPath();
+        return settings.getPreProcessorFile();
     }
     
-    private String getSVRLHtmlPath()
+    private File getSVRLHtmlFile()
     {
-        return settings.getSvrlHTMLPath();
+        return settings.getSvrlHTMLFile();
     }
 }

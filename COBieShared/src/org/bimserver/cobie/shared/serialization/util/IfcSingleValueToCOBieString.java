@@ -20,7 +20,7 @@ package org.bimserver.cobie.shared.serialization.util;
 import org.bimserver.cobie.shared.utility.ifc.IfcUnitToCOBieString;
 import org.bimserver.models.ifc2x3tc1.IfcPropertySingleValue;
 
-public class IfcSingleValueToCOBieString extends IfcPropertyToCOBieString
+public class IfcSingleValueToCOBieString extends IfcPropertyStringTransformer
 {
     private String unitString;
 

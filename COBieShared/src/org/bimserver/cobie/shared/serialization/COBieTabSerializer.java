@@ -1,19 +1,19 @@
 package org.bimserver.cobie.shared.serialization;
 
 import org.bimserver.cobie.shared.LoggerUser;
+import org.bimserver.cobie.shared.serialization.util.IfcBuildingFacilitySerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcBuildingStoreyFloorSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcConstructionEquipmentResourceSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcConstructionProductResourceSpareSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcDocumentInformationDocumentSerializer;
 import org.bimserver.cobie.shared.serialization.util.IfcPersonOrganizationContactsSerializer;
 import org.bimserver.cobie.shared.serialization.util.IfcProductToComponentsSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcRelConnectsSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcRootAttributeSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcSpaceSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcSystemSerializer;
+import org.bimserver.cobie.shared.serialization.util.IfcTaskJobSerializer;
 import org.bimserver.cobie.shared.serialization.util.IfcToAssembly;
-import org.bimserver.cobie.shared.serialization.util.IfcToAttribute;
-import org.bimserver.cobie.shared.serialization.util.IfcToConnection;
-import org.bimserver.cobie.shared.serialization.util.IfcToDocument;
-import org.bimserver.cobie.shared.serialization.util.IfcToFacility;
-import org.bimserver.cobie.shared.serialization.util.IfcToFloor;
-import org.bimserver.cobie.shared.serialization.util.IfcToJob;
-import org.bimserver.cobie.shared.serialization.util.IfcToResource;
-import org.bimserver.cobie.shared.serialization.util.IfcToSpace;
-import org.bimserver.cobie.shared.serialization.util.IfcToSpare;
-import org.bimserver.cobie.shared.serialization.util.IfcToSystem;
 import org.bimserver.cobie.shared.serialization.util.IfcToZone;
 import org.bimserver.cobie.shared.serialization.util.IfcTypeToCOBieTypeSerializer;
 import org.bimserver.emf.IfcModelInterface;
@@ -22,25 +22,23 @@ import org.nibs.cobie.tab.COBIEType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 public class COBieTabSerializer implements LoggerUser
 {
+	private final SettingsType settings;
     private static final String BEGIN_MESSAGE = "Transforming IFC to COBie.";
     private static final String END_MESSAGE = "Transform Complete.";
     private COBIEDocument cobieDocument;
     ///TODO: Create settings for serializer plugin so that user can pick export
-    private boolean ignoreNonAssets = true;
     Logger LOGGER = LoggerFactory.getLogger(COBieTabSerializer.class);
     
-    public COBieTabSerializer()
+    public COBieTabSerializer(SettingsType settings)
     {
         newDocument();
+        this.settings = settings;
     }
-    
-    public COBieTabSerializer(boolean ignoreNonAssets)
-    {
-    	this();
-    	this.ignoreNonAssets = ignoreNonAssets;
-    }
+
     private void newDocument()
     {
         cobieDocument = COBIEDocument.Factory.newInstance();
@@ -80,7 +78,15 @@ public class COBieTabSerializer implements LoggerUser
     private void writeFacilities(IfcModelInterface model)
     {
         COBIEType cType = this.GetCobie();
-        cType = IfcToFacility.writeFacilitiesToCOBie(cType, model);
+        COBIEType.Facilities facilities =
+        		cType.getFacilities();
+        if(facilities == null)
+        {
+        	facilities = cType.addNewFacilities();
+        }
+        IfcBuildingFacilitySerializer serializer =
+        		new IfcBuildingFacilitySerializer(facilities, model, getSettings());
+        serializer.serializeIfc();
     }
     
     /**
@@ -95,7 +101,7 @@ public class COBieTabSerializer implements LoggerUser
         if(contacts==null)
             contacts = cType.addNewContacts();
         IfcPersonOrganizationContactsSerializer contactSerializer =
-                new IfcPersonOrganizationContactsSerializer(contacts, model);
+                new IfcPersonOrganizationContactsSerializer(contacts, model, getSettings());
         contactSerializer.serializeIfc();
     }
     
@@ -112,7 +118,16 @@ public class COBieTabSerializer implements LoggerUser
      */
     private void writeFloors(IfcModelInterface model)
     {
-       IfcToFloor.writeFloorsToCOBie(this.GetCobie(), model);
+    	COBIEType cobie = GetCobie();
+    	COBIEType.Floors floors =
+    			cobie.getFloors();
+    	if(floors == null)
+    	{
+    		floors = cobie.addNewFloors();
+    	}
+    	IfcBuildingStoreyFloorSerializer serializer =
+    			new IfcBuildingStoreyFloorSerializer(floors, model, getSettings());
+       serializer.serializeIfc();
     }
     
     /**
@@ -120,7 +135,15 @@ public class COBieTabSerializer implements LoggerUser
      */
     private void writeSpaces(IfcModelInterface model)
     { 
-        IfcToSpace.writeSpacesToCOBie(this.GetCobie(), model);
+    	COBIEType.Spaces spaces =
+    			GetCobie().getSpaces();
+    	if(spaces == null)
+    	{
+    		spaces = GetCobie().addNewSpaces();
+    	}
+    	IfcSpaceSerializer serializer =
+    			new IfcSpaceSerializer(spaces, model, getSettings());
+    	serializer.serializeIfc();
     }
     
     /**
@@ -137,7 +160,7 @@ public class COBieTabSerializer implements LoggerUser
     private void writeTypes(IfcModelInterface model)
     {
         IfcTypeToCOBieTypeSerializer typeSerializer =
-                new IfcTypeToCOBieTypeSerializer(this.GetCobie().addNewTypes(), model, ignoreNonAssets);
+                new IfcTypeToCOBieTypeSerializer(this.GetCobie().addNewTypes(), model,  getSettings());
         typeSerializer.serializeIfc();
     }
     
@@ -151,7 +174,7 @@ public class COBieTabSerializer implements LoggerUser
         if(components==null)
             components = this.GetCobie().addNewComponents();
         IfcProductToComponentsSerializer componentSerializer =
-                new IfcProductToComponentsSerializer(this.GetCobie().getComponents(), model, ignoreNonAssets);
+                new IfcProductToComponentsSerializer(this.GetCobie().getComponents(), model, getSettings());
         componentSerializer.serializeIfc();
     }
     
@@ -160,7 +183,15 @@ public class COBieTabSerializer implements LoggerUser
      */
     private void writeSystems(IfcModelInterface model)
     {
-        IfcToSystem.writeSystemsToCOBieComponentPerRow(this.GetCobie(), model);
+        COBIEType.Systems systems =
+        		GetCobie().getSystems();
+        if(systems == null)
+        {
+        	systems = GetCobie().addNewSystems();
+        }
+        IfcSystemSerializer serializer =
+        		new IfcSystemSerializer(systems, model, getSettings());
+        serializer.serializeIfc();
     }
     
     /**
@@ -168,7 +199,7 @@ public class COBieTabSerializer implements LoggerUser
      */
     private void writeAssemblies(IfcModelInterface model)
     {
-        IfcToAssembly.writeAssembliesToCOBie(this.GetCobie(), model);
+        IfcToAssembly.writeAssembliesToCOBie(this.GetCobie(), model, getSettings());
     }
     
     /**
@@ -176,7 +207,15 @@ public class COBieTabSerializer implements LoggerUser
      */
     private void writeConnections(IfcModelInterface model)
     {
-        IfcToConnection.writeConnections(this.GetCobie(), model);
+    	COBIEType.Connections connections =
+    			GetCobie().getConnections();
+    	if(connections == null)
+    	{
+    		connections = GetCobie().addNewConnections();
+    	}
+    	IfcRelConnectsSerializer serializer =
+    			new IfcRelConnectsSerializer(connections, model, getSettings());
+    	serializer.serializeIfc();
     }
     
     /**
@@ -184,7 +223,15 @@ public class COBieTabSerializer implements LoggerUser
      */
     private void writeDocuments(IfcModelInterface model)
     {
-        IfcToDocument.writeDocument(this.GetCobie(), model);
+    	COBIEType.Documents documents =
+    			GetCobie().getDocuments();
+    	if(documents == null)
+    	{
+    		documents = GetCobie().addNewDocuments();
+    	}
+    	IfcDocumentInformationDocumentSerializer serializer =
+    			new IfcDocumentInformationDocumentSerializer(documents, model, getSettings());
+       serializer.serializeIfc();
     }
     
     /**
@@ -192,7 +239,10 @@ public class COBieTabSerializer implements LoggerUser
      */
     private void writeAttributes(IfcModelInterface model)
     {
-        IfcToAttribute.writeAttributes(this.GetCobie(), model);
+    	IfcRootAttributeSerializer attributeSerializer =
+    			new IfcRootAttributeSerializer(this.GetCobie().addNewAttributes(), model, this.GetCobie(), getSettings());
+    	attributeSerializer.serializeIfc();
+     //   IfcToAttribute.writeAttributes(this.GetCobie(), model);
     }
     
     /**
@@ -200,7 +250,15 @@ public class COBieTabSerializer implements LoggerUser
      */
     private void writeSpares(IfcModelInterface model)
     {
-        IfcToSpare.writeSpares(this.GetCobie(), model);
+        COBIEType.Spares spares =
+        		GetCobie().getSpares();
+        if(spares == null)
+        {
+        	spares = GetCobie().addNewSpares();
+        }
+        IfcConstructionProductResourceSpareSerializer serializer =
+        		new IfcConstructionProductResourceSpareSerializer(spares, model, getSettings());
+        serializer.serializeIfc();
     }
     
     /**
@@ -208,7 +266,15 @@ public class COBieTabSerializer implements LoggerUser
      */
     private void writeResources(IfcModelInterface model)
     {
-        IfcToResource.writeResources(this.GetCobie(), model);
+    	COBIEType.Resources resources =
+    			GetCobie().getResources();
+    	if(resources == null)
+    	{
+    		resources = GetCobie().addNewResources();
+    	}
+        IfcConstructionEquipmentResourceSerializer serializer =
+        		new IfcConstructionEquipmentResourceSerializer(resources, model, getSettings());
+        serializer.serializeIfc();
     }
     
     /**
@@ -216,7 +282,14 @@ public class COBieTabSerializer implements LoggerUser
      */
     private void writeJobs(IfcModelInterface model)
     {
-        IfcToJob.writeJobs(this.GetCobie(), model);
+        COBIEType.Jobs jobs = GetCobie().getJobs();
+        if(jobs == null)
+        {
+        	jobs = GetCobie().addNewJobs();
+        }
+        IfcTaskJobSerializer serializer =
+        		new IfcTaskJobSerializer(jobs, model, getSettings());
+        serializer.serializeIfc();
     }
     
 //    private void writeSpaceCoordinates(IfcModelInterface model)
@@ -252,5 +325,9 @@ public class COBieTabSerializer implements LoggerUser
     {
         return LOGGER;
     }
+
+	public SettingsType getSettings() {
+		return settings;
+	}
     
 }

@@ -16,7 +16,7 @@ package org.bimserver.cobie.shared.deserialization.cobietab.propertysets;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
-import org.bimserver.cobie.shared.serialization.util.IfcPropertyToCOBieString;
+import org.bimserver.cobie.shared.serialization.util.IfcPropertyStringTransformer;
 import org.bimserver.cobie.shared.utility.COBieUtility;
 import org.bimserver.models.ifc2x3tc1.IfcCalendarDate;
 import org.bimserver.models.ifc2x3tc1.IfcNamedUnit;
@@ -43,7 +43,7 @@ public class PropertySetUtility
                 if (property instanceof IfcSimpleProperty)
                 {
                     IfcSimpleProperty simpleProp = (IfcSimpleProperty)property;
-                    IfcPropertyToCOBieString cobieString = new IfcPropertyToCOBieString(simpleProp);
+                    IfcPropertyStringTransformer cobieString = new IfcPropertyStringTransformer(simpleProp);
                     value = cobieString.getValueString();
                 }
 

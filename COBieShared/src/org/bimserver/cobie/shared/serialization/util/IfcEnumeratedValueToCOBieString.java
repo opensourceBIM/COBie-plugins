@@ -25,7 +25,7 @@ import org.bimserver.models.ifc2x3tc1.IfcPropertyEnumeration;
 import org.bimserver.models.ifc2x3tc1.IfcValue;
 import org.eclipse.emf.common.util.EList;
 
-public class IfcEnumeratedValueToCOBieString extends IfcPropertyToCOBieString
+public class IfcEnumeratedValueToCOBieString extends IfcPropertyStringTransformer
 {
     private String unitString;
     private ArrayList<String> enumeratedValuesStrings;
@@ -86,7 +86,7 @@ public class IfcEnumeratedValueToCOBieString extends IfcPropertyToCOBieString
     {
         for (IfcValue val : values)
         {
-            enumeratedValuesStrings.add(IfcPropertyToCOBieString.getValueStringFromValue(val));
+            enumeratedValuesStrings.add(IfcPropertyStringTransformer.getValueStringFromValue(val));
         }
     }
 
@@ -99,7 +99,7 @@ public class IfcEnumeratedValueToCOBieString extends IfcPropertyToCOBieString
 
                 try
                 {
-                    String valStr = IfcPropertyToCOBieString.getValueStringFromValue(val);
+                    String valStr = IfcPropertyStringTransformer.getValueStringFromValue(val);
                     enumerationReferenceStrings.add(valStr);
                 } catch (Exception e)
                 {

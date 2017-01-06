@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import org.bimserver.cobie.shared.serialization.IfcCOBieSerializer;
+import org.bimserver.cobie.shared.serialization.IfcCobieSerializer;
 import org.bimserver.cobie.shared.utility.COBieIfcUtility;
 import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.models.ifc2x3tc1.IfcOrganization;
@@ -16,12 +16,14 @@ import org.nibs.cobie.tab.COBIEType;
 import org.nibs.cobie.tab.COBIEType.Contacts;
 import org.nibs.cobie.tab.ContactType;
 
-public class IfcPersonOrganizationToContacts extends IfcCOBieSerializer<ContactType, COBIEType.Contacts, IfcPersonAndOrganization>
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
+public class IfcPersonOrganizationToContacts extends IfcCobieSerializer<ContactType, COBIEType.Contacts, IfcPersonAndOrganization>
 {
 
-    public IfcPersonOrganizationToContacts(Contacts cobieSection, IfcModelInterface model)
+    public IfcPersonOrganizationToContacts(Contacts cobieSection, IfcModelInterface model, SettingsType settings)
     {
-        super(cobieSection, model);
+        super(cobieSection, model, settings);
     }
 
     @Override

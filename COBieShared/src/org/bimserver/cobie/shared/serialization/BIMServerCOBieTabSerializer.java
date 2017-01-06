@@ -16,6 +16,8 @@ import org.bimserver.plugins.serializers.SerializerException;
 import org.nibs.cobie.tab.COBIEDocument;
 import org.slf4j.Logger;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 public abstract class BIMServerCOBieTabSerializer extends EmfSerializer implements COBieSheetXMLDataSerializable
 {
     private COBIEDocument cobieDocument;
@@ -24,15 +26,15 @@ public abstract class BIMServerCOBieTabSerializer extends EmfSerializer implemen
     
     protected static Logger logger;
 
-    protected BIMServerCOBieTabSerializer()
+    protected BIMServerCOBieTabSerializer(SettingsType settings)
     {
-        this(COBIEDocument.Factory.newInstance());
+        this(COBIEDocument.Factory.newInstance(), settings);
     }
 
-    protected BIMServerCOBieTabSerializer(COBIEDocument cobie)
+    protected BIMServerCOBieTabSerializer(COBIEDocument cobie, SettingsType settings)
     {
         super();
-        cobieFactory = new COBieTabSerializer();
+        cobieFactory = new COBieTabSerializer(settings);
         setCOBie(cobie);
     }
 

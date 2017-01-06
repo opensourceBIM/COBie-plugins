@@ -1,11 +1,12 @@
 package org.bimserver.cobie.shared.utility;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -19,36 +20,55 @@ import org.slf4j.LoggerFactory;
 
 public class PluginRuntimeFileHelper
 {
-	private static final char PATH_DELIM = '/';
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(PluginRuntimeFileHelper.class);
 
+	public enum Persistence { PERMANENT, TEMP}
+	
 
-    public static File prepareSerializerConfigFile(PluginManager pluginManager,
-            String name, Plugin plugin, String configPath) throws FileNotFoundException
+    public static File prepareSerializerResource(PluginManager pluginManager,
+            String name, Plugin plugin, String configPath, Persistence persistence) throws IOException
     {
         PluginContext pluginContext = pluginManager.getPluginContext(plugin);
-        InputStream inputStream = pluginContext
-                .getResourceAsInputStream(configPath);
-        String tempFileName = "";
-        tempFileName = getFileName(configPath, pluginContext);
+        Path config = pluginContext.getRootPath().resolve(configPath);
+        InputStream inputStream = Files.newInputStream(config);
+        String tempFileName = config.getFileName().toString();
         File configurationFile=null;
         if (inputStream != null)
         {
             // File tmpFolder = new
             // File(pluginManager.getTempDir(),TEMP_DIRECTORY_NAME);
-            File tmpFolder = pluginManager.getTempDir();
-            File tempChildFolder = new File(tmpFolder, name);
+        	File folder = getParentFolder(pluginManager, plugin, persistence);
+            File tempChildFolder = new File(folder, name);
             try
             {
-                if (tempChildFolder.exists())
+                if (tempChildFolder.exists() && persistence == Persistence.TEMP)
                 {
                     FileUtils.forceDelete(tempChildFolder);
+                    
                 }
-                FileUtils.forceMkdir(tempChildFolder);
+                if(!tempChildFolder.exists())
+                {
+                	FileUtils.forceMkdir(tempChildFolder);
+                }
+                
                 configurationFile = new File(tempChildFolder, tempFileName);
-                IOUtils.copy(inputStream, new FileOutputStream(
-                        configurationFile));
+                if(!configurationFile.exists() || persistence == Persistence.TEMP)
+                {
+                    IOUtils.copy(inputStream, new FileOutputStream(
+                            configurationFile));
+                }
+                else if (configurationFile.exists())
+                {
+                	//keep the newest file
+                	FileTime fileToCopy = Files.getLastModifiedTime(config);
+                	if(fileToCopy.toMillis() > configurationFile.lastModified())
+                	{
+                        IOUtils.copy(inputStream, new FileOutputStream(
+                                configurationFile));
+                	}
+                }
+
             }
             catch (IOException e)
             {
@@ -58,61 +78,46 @@ public class PluginRuntimeFileHelper
         return configurationFile;
     }
 
-    private static String getFileName(String configPath,
-            PluginContext pluginContext)
-    {
-        String tempFileName;
-        try
-        {
-            URL url = pluginContext.getResourceAsUrl(configPath);
-            String urlStr = url.toString();
-            tempFileName = urlStr.substring(urlStr.lastIndexOf(PATH_DELIM) + 1,
-                    urlStr.length());
-        }
-        catch(Exception ex)
-        {
-            tempFileName =
-                    configPath.substring(configPath.lastIndexOf(PATH_DELIM) + 1,
-                    configPath.length());
-        }
-        return tempFileName;
-    }
+	private static File getParentFolder(PluginManager pluginManager,
+			Plugin plugin, Persistence persistence) 
+	{
+		File folder;
+		switch(persistence)
+		{
+			case PERMANENT:
+				folder = new File(pluginManager.getTempDir().getParent().toString());
+				break;
+			case TEMP:
+				folder = new File(pluginManager.getTempDir().toString());
+				break;
+			default:
+				folder = new File(pluginManager.getTempDir().toString());
+				break;
+		}
+		return folder;
+	}
 
-    public static File getDirectory(PluginManager pluginManager,
-            String directoryName)
-    {
-        File directory = new File(pluginManager.getTempDir(), directoryName);
-        if (!directory.exists())
-            try
-            {
-                FileUtils.forceMkdir(directory);
-            }
-            catch (IOException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-        return directory;
-    }
-
-    public static HashMap<String, File> prepareSerializerConfigFiles(
+    public static HashMap<String, File> prepareSerializerResource(
             PluginManager pluginManager, String name, Plugin plugin,
-            ArrayList<String> configPaths) throws FileNotFoundException
+            ArrayList<String> configPaths, Persistence persistence) throws IOException
     {
         PluginContext pluginContext = pluginManager.getPluginContext(plugin);
         // File tmpFolder = new File(pluginManager.getTempDir(),
         // TEMP_DIRECTORY_NAME);
-        File tmpFolder = pluginManager.getTempDir();
-        File tempChildFolder = new File(tmpFolder, name);
+        File folder = getParentFolder(pluginManager, plugin, persistence);
+        File tempChildFolder = new File(folder, name);
         HashMap<String, File> configFiles = new HashMap<String, File>();
         try
         {
-            if (tempChildFolder.exists())
+            if (tempChildFolder.exists() && persistence == Persistence.TEMP)
             {
                 FileUtils.forceDelete(tempChildFolder);
             }
-            FileUtils.forceMkdir(tempChildFolder);
+            if (!tempChildFolder.exists())
+            {
+            	FileUtils.forceMkdir(tempChildFolder);
+            }
+            
         }
         catch (IOException e)
         {
@@ -121,19 +126,22 @@ public class PluginRuntimeFileHelper
 
         for (String configPath : configPaths)
         {
-            InputStream inputStream = pluginContext
-                    .getResourceAsInputStream(configPath);
+        	Path config = pluginContext
+                    .getRootPath().resolve(configPath);
+            InputStream inputStream = Files.newInputStream(config);
 
-            String tempFileName = getFileName(configPath, pluginContext);
+            String tempFileName = config.getFileName().toString();
             File configurationFile = new File(tempChildFolder, tempFileName);
 
             try
             {
                 if (inputStream != null)
                 {
-
-                    IOUtils.copy(inputStream, new FileOutputStream(
-                            configurationFile));
+                	if(!configurationFile.exists() || persistence == Persistence.TEMP)
+                	{
+                        IOUtils.copy(inputStream, new FileOutputStream(
+                                configurationFile));
+                	}
                     configFiles.put(configPath, configurationFile);
                 }
                 else

@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.bimserver.cobie.shared.serialization.util.IfcPropertyToCOBieString;
+import org.bimserver.cobie.shared.serialization.util.IfcPropertyStringTransformer;
 import org.bimserver.cobie.shared.serialization.util.IfcSingleValueToCOBieString;
-import org.bimserver.cobie.shared.utility.ifc.IfcRelationshipsToCOBie;
+import org.bimserver.cobie.shared.utility.ifc.IfcRelationshipUtility;
 import org.bimserver.cobie.shared.utility.ifc.IfcUnitToCOBieString;
 import org.bimserver.emf.IfcModelInterface;
 import org.bimserver.models.ifc2x3tc1.Ifc2x3tc1Factory;
@@ -110,12 +110,12 @@ public class COBieIfcUtility
 	    return COBieUtility.getCOBieString(classification);
 	}
 
-	public static IfcPropertyToCOBieString cobiePsetStringFromStringMap(
-	        Map<String, IfcPropertyToCOBieString> valMap,
+	public static IfcPropertyStringTransformer cobiePsetStringFromStringMap(
+	        Map<String, IfcPropertyStringTransformer> valMap,
 	        ArrayList<String> prioritizedPropertyNames)
 	{
-	    IfcPropertyToCOBieString cString = null;
-	    IfcPropertyToCOBieString tmpVal = null;
+	    IfcPropertyStringTransformer cString = null;
+	    IfcPropertyStringTransformer tmpVal = null;
 	    for (String prioritizedPropertyName : prioritizedPropertyNames)
 	    {
 	        if (valMap.keySet().contains(prioritizedPropertyName))
@@ -130,12 +130,12 @@ public class COBieIfcUtility
 	    return cString;
 	}
 
-	public static IfcPropertyToCOBieString cobiePsetStringFromStringMapAllowNA(
-	        Map<String, IfcPropertyToCOBieString> valMap,
+	public static IfcPropertyStringTransformer cobiePsetStringFromStringMapAllowNA(
+	        Map<String, IfcPropertyStringTransformer> valMap,
 	        ArrayList<String> prioritizedPropertyNames)
 	{
-	    IfcPropertyToCOBieString cString = null;
-	    IfcPropertyToCOBieString tmpVal = null;
+	    IfcPropertyStringTransformer cString = null;
+	    IfcPropertyStringTransformer tmpVal = null;
 	    for (String prioritizedPropertyName : prioritizedPropertyNames)
 	    {
 	        if (valMap.keySet().contains(prioritizedPropertyName))
@@ -150,7 +150,7 @@ public class COBieIfcUtility
 	    return cString;
 	}
 
-	public static int cobiePsetStringRankingFromStringMap(Map<String, IfcPropertyToCOBieString> valMap, ArrayList<String> prioritizedPropertyNames)
+	public static int cobiePsetStringRankingFromStringMap(Map<String, IfcPropertyStringTransformer> valMap, ArrayList<String> prioritizedPropertyNames)
 	{
 	    int rank = -1;
 	
@@ -464,7 +464,7 @@ public class COBieIfcUtility
 	        IfcObject obj = (IfcObject)ifcObj;
 	        for (IfcRelDefines def : obj.getIsDefinedBy())
 	        {
-	            Map<String, String> tmpValueMap = IfcRelationshipsToCOBie.propertyStringsFromRelDefines(def, classificationNames);
+	            Map<String, String> tmpValueMap = IfcRelationshipUtility.propertyStringsFromRelDefines(def, classificationNames);
 	            if (!tmpValueMap.isEmpty())
 	            {
 	                for (String key : tmpValueMap.keySet())
@@ -481,7 +481,7 @@ public class COBieIfcUtility
 	    {
 	        Map<String, String> masterMap = new HashMap<String, String>();
 	        IfcTypeObject obj = (IfcTypeObject)ifcObj;
-	        masterMap = IfcRelationshipsToCOBie.propertyStringsFromTypeObject(obj, classificationNames);
+	        masterMap = IfcRelationshipUtility.propertyStringsFromTypeObject(obj, classificationNames);
 	        classification = COBieUtility.categoryStringFromPropertyNameValueMap(masterMap, classificationTuples);
 	    }
 	    return COBieUtility.getCOBieString(classification);
@@ -541,7 +541,7 @@ public class COBieIfcUtility
 	    Map<String, String> classificationTuples = COBieUtility.getClassificationTuples();
 	    ArrayList<String> classificationNames = COBieUtility.getClassificationPropertyNames();
 	
-	    Map<String, String> tmpValueMap = IfcRelationshipsToCOBie.propertyStringsFromRelDefines(relDefType, classificationNames);
+	    Map<String, String> tmpValueMap = IfcRelationshipUtility.propertyStringsFromRelDefines(relDefType, classificationNames);
 	    if (!tmpValueMap.isEmpty())
 	    {
 	        for (String key : tmpValueMap.keySet())
@@ -589,9 +589,9 @@ public class COBieIfcUtility
 	    return associations;
 	}
 
-	public static Map<String, IfcPropertyToCOBieString> psetStringsFromAttributes(EObject root, ArrayList<String> attributeNames, boolean exclusive)
+	public static Map<String, IfcPropertyStringTransformer> psetStringsFromAttributes(EObject root, ArrayList<String> attributeNames, boolean exclusive)
 	{
-	    Map<String, IfcPropertyToCOBieString> attributeVals = new HashMap<String, IfcPropertyToCOBieString>();
+	    Map<String, IfcPropertyStringTransformer> attributeVals = new HashMap<String, IfcPropertyStringTransformer>();
 	    String attributeVal = null;
 	    if (exclusive)
 	    {
@@ -639,7 +639,7 @@ public class COBieIfcUtility
 	        IfcObject obj = (IfcObject)ifcObj;
 	        for (IfcRelDefines def : obj.getIsDefinedBy())
 	        {
-	            Map<String, String> tmpValueMap = IfcRelationshipsToCOBie.propertyStringsFromRelDefines(def, classificationNames);
+	            Map<String, String> tmpValueMap = IfcRelationshipUtility.propertyStringsFromRelDefines(def, classificationNames);
 	            if (!tmpValueMap.isEmpty())
 	            {
 	                for (String key : tmpValueMap.keySet())
@@ -656,7 +656,7 @@ public class COBieIfcUtility
 	    {
 	        Map<String, String> masterMap = new HashMap<String, String>();
 	        IfcTypeObject obj = (IfcTypeObject)ifcObj;
-	        masterMap = IfcRelationshipsToCOBie.propertyStringsFromTypeObject(obj, classificationNames);
+	        masterMap = IfcRelationshipUtility.propertyStringsFromTypeObject(obj, classificationNames);
 	        classification = COBieUtility.categoryStringFromPropertyNameValueMap(masterMap, classificationTuples);
 	    }
 	    return classification;

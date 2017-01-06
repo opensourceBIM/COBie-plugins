@@ -14,9 +14,17 @@ import org.nibs.cobie.tab.COBIEDocument;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 public class COBieLiteSerializer extends COBieTabXMLSerializer implements
 		COBieTabTransformable
 {
+	public COBieLiteSerializer(SettingsType settings) 
+	{
+		super(settings);
+	}
+
+
 	private static final String LOGGER_MESSAGE_END_SUFFIX = "End Serializing COBieLite";
 
 	private static final String LOGGER_MESSAGE_BEGIN_SUFFIX = "Begin Serializing COBieLite";

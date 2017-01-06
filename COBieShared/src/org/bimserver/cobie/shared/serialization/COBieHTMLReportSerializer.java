@@ -16,6 +16,8 @@ import org.bimserver.plugins.serializers.SerializerException;
 import org.nibs.cobie.tab.COBIEDocument;
 import org.slf4j.LoggerFactory;
 
+import com.prairiesky.transform.cobieifc.settings.SettingsType;
+
 public class COBieHTMLReportSerializer extends COBieTabXMLSerializer
 		implements COBieTabTransformable
 {
@@ -36,14 +38,16 @@ public class COBieHTMLReportSerializer extends COBieTabXMLSerializer
 	}
 	private SaxonTransformer reportSerializer;
 
-	public COBieHTMLReportSerializer(String reportXSLTPath)
+	public COBieHTMLReportSerializer(String reportXSLTPath, SettingsType settings)
 	{
+		super(settings);
 		setReportSerializer(new SaxonTransformer(reportXSLTPath));
 		this.reportXSLTPath = reportXSLTPath;
 	}
 
-	public COBieHTMLReportSerializer(String reportXSLTPath, String cssPath)
+	public COBieHTMLReportSerializer(String reportXSLTPath, String cssPath, SettingsType settings)
 	{
+		super(settings);
 		setReportSerializer(new SaxonTransformer(reportXSLTPath, cssPath));
 		this.reportXSLTPath = reportXSLTPath;
 	}
