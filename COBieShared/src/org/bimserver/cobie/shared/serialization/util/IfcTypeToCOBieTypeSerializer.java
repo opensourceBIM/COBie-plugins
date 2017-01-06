@@ -173,7 +173,6 @@ public class IfcTypeToCOBieTypeSerializer extends IfcCobieSerializer<TypeType, C
 
         tryToAssignEmptyWarrantyFields(WarrantyType.PARTS, psetWarranties, newType);
         tryToAssignEmptyWarrantyFields(WarrantyType.LABOR, psetWarranties, newType);
-
     }
 
     private void assignWarrantyInformationByPropertyNames(IfcTypeObject type, TypeType newType, boolean assignOnlyOnNulls)
@@ -199,7 +198,8 @@ public class IfcTypeToCOBieTypeSerializer extends IfcCobieSerializer<TypeType, C
             }
             if (COBieUtility.isNA(newType.getWarrantyDurationUnit()))
             {
-                newType.setWarrantyDurationUnit(warrantyDurationUnitsFromTypeObject(type, model));
+            	newType.setWarrantyDurationUnit(warrantyDurationUnitsFromTypeObject(type, model));
+
             }
             if (COBieUtility.isNA(newType.getWarrantyDescription()))
             {
@@ -371,6 +371,11 @@ public class IfcTypeToCOBieTypeSerializer extends IfcCobieSerializer<TypeType, C
             assignWarrantyInformation(psetWarranties, newType);
             assignWarrantyInformationByPropertyNames(type, newType, true);
         }
+        if (COBieUtility.isNA(newType.getWarrantyDurationParts()) && COBieUtility.isNA(newType.getWarrantyDurationLabor()))
+        {
+        	newType.setWarrantyDurationUnit(COBieUtility.COBieNA);
+        }
+        		
     }
 
     @Override
@@ -553,7 +558,9 @@ public class IfcTypeToCOBieTypeSerializer extends IfcCobieSerializer<TypeType, C
         }
         if (COBieUtility.isNA(durationUnit))
         {
-            durationUnit = COBieIfcUtility.getFirstNamedUnitStringInProjectContext(model, IfcUnitEnum.TIMEUNIT);
+        	// 1/5/2017 - This is incorrect per COBiePlugins Issue #26 - https://github.com/opensourceBIM/COBie-plugins/issues/26
+        	// Commenting this out for now
+        	durationUnit = COBieIfcUtility.getFirstNamedUnitStringInProjectContext(model, IfcUnitEnum.TIMEUNIT);
         }
         return COBieUtility.getCOBieString(durationUnit);
     }

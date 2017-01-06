@@ -152,7 +152,8 @@ Get rid of "lite" keys.  Add category to Attribute key.
 	<iso:pattern id="Construction.COBieValidation.Errors">
 		<iso:title>COBie Checking Rules</iso:title>
 		<iso:rule abstract="true" id="COBie.Abstract.Name" role="WorksheetErrors">
-			<iso:report id="Common.Name.Check" test="true()" flag="Name">Name.NotNotNull, Name.Unique<xsl:element name="location">
+			<iso:report id="Common.Name.Check" test="true()" flag="Name">Name.NotNotNull, Name.Unique, Name.Picklist
+			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
@@ -168,13 +169,20 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Common.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.)" flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 		</iso:rule>
 		<iso:rule abstract="true" id="COBie.Abstract.Created" role="WorksheetErrors">
-			<iso:report id="Common.CreatedBy.Check" test="true()" flag="CreatedBy">CreatedBy.CrossReference (ToContact), CreatedBy.NotNull<xsl:element name="location">
+			<iso:report id="Common.CreatedBy.Check" test="true()" flag="CreatedBy">CreatedBy.CrossReference (ToContact), CreatedBy.NotNull, CreatedBy.Picklist
+			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Common.CreatedBy.CrossReference" test="key('ContactKey',CreatedBy)" flag="CreatedBy">
+			<iso:assert id="Common.CreatedBy.CrossReference" test="key('ContactKey',normalize-space(lower-case(CreatedBy)))" flag="CreatedBy">
 				<value-of select="cfn:foreignKeyMessage(.,'CreatedBy','Contact','Email')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -186,7 +194,14 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Common.CreatedOn.Check" test="true()" flag="CreatedOn">CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime)<xsl:element name="location">
+			<iso:assert id="Common.CreatedBy.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CreatedBy',CreatedBy,.)" flag="CreatedBy">
+				<value-of select="cfn:picklistMessage(.,'CreatedBy')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Common.CreatedOn.Check" test="true()" flag="CreatedOn">CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime), CreatedOn.Picklist
+			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
@@ -202,9 +217,16 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Common.CreatedOn.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CreatedOn',CreatedOn,.)" flag="CreatedOn">
+				<value-of select="cfn:picklistMessage(.,'CreatedOn')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 		</iso:rule>
 		<iso:rule abstract="true" id="COBie.Abstract.External" role="WorksheetErrors">
-			<iso:report id="Common.ExternalSystem.Check" test="true()" flag="ExtSystem">ExternalSystem.NotEmpty<xsl:element name="location">
+			<iso:report id="Common.ExternalSystem.Check" test="true()" flag="ExtSystem">ExternalSystem.NotEmpty, ExternalSystem.Picklist
+			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
@@ -214,7 +236,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Common.ExternalObject.Check" test="true()" flag="ExtObject">ExternalObject.NotEmpty
+			<iso:assert id="Common.ExternalSystem.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExtSystem',ExtSystem,.)" flag="ExtSystem">
+				<value-of select="cfn:picklistMessage(.,'ExtSystem')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Common.ExternalObject.Check" test="true()" flag="ExtObject">ExternalObject.NotEmpty, ExternalObject.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -225,7 +253,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Common.ExternalIdentifier.Check" test="true()" flag="ExtIdentifier">ExtIdentifier.NotEmpty
+			<iso:assert id="Common.ExtObject.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExtObject',ExtObject,.)" flag="ExtObject">
+				<value-of select="cfn:picklistMessage(.,'ExtObject')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Common.ExternalIdentifier.Check" test="true()" flag="ExtIdentifier">ExtIdentifier.NotEmpty, ExtIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -236,9 +270,15 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Common.ExtIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExtIdentifier',ExtIdentifier,.)" flag="ExtIdentifier">
+				<value-of select="cfn:picklistMessage(.,'ExtIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 		</iso:rule>
 		<iso:rule abstract="true" id="COBie.Abstract.Category" role="WorksheetErrors">
-			<iso:report id="Common.Category.Check" test="true()" flag="Category">Category.NotNull
+			<iso:report id="Common.Category.Check" test="true()" flag="Category">Category.NotNull, Category.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -249,15 +289,27 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Common.Category.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Category',Category,.)" flag="Category">
+				<value-of select="cfn:picklistMessage(.,'Category')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 		</iso:rule>
 		<iso:rule abstract="true" id="COBie.Abstract.Description" role="WorksheetErrors">
-			<iso:report id="Common.Description.Check" test="true()" flag="Description">Description.NotEmpty
+			<iso:report id="Common.Description.Check" test="true()" flag="Description">Description.NotEmpty, Description.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Common.Description.NotEmpty" test="cfn:validStringOrNA(Description)" flag="Description">
 				<value-of select="cfn:notEmptyMessage(.,'Description')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Common.Description.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Description',Description,.)" flag="Description">
+				<value-of select="cfn:picklistMessage(.,'Description')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -278,7 +330,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			</iso:assert>
 		</iso:rule>
 		<iso:rule context="//Contacts/Contact" id="COBie.Contacts.Contact" role="WorksheetErrors">
-			<iso:report id="Contact.Email.Check" test="true()" flag="Email">Email.Unique, Email.NotNull, Email.Format
+			<iso:report id="Contact.Email.Check" test="true()" flag="Email">Email.Unique, Email.NotNull, Email.Format, Email.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -301,12 +353,18 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.CreatedBy.Check" test="true()" flag="CreatedBy">CreatedBy.CrossReference, CreatedBy.NotNull
+			<iso:assert id="Contact.Email.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Email',Email,.)" flag="Email">
+				<value-of select="cfn:picklistMessage(.,'Email')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.CreatedBy.Check" test="true()" flag="CreatedBy">CreatedBy.CrossReference, CreatedBy.NotNull, CreatedBy.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Contact.CreatedBy.CrossReference" test="key('ContactKey',CreatedBy)" flag="CreatedBy">
+			<iso:assert id="Contact.CreatedBy.CrossReference" test="key('ContactKey',normalize-space(lower-case(CreatedBy)))" flag="CreatedBy">
 				<value-of select="cfn:foreignKeyMessage(.,'CreatedBy','Contact','Email')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -318,7 +376,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.CreatedOn.Check" test="true()" flag="CreatedOn">CreatedOn.NotNull, CreatedOn.Valid (ISO DateTime)
+			<iso:assert id="Contact.CreatedBy.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CreatedBy',CreatedBy,.)" flag="CreatedBy">
+				<value-of select="cfn:picklistMessage(.,'CreatedBy')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.CreatedOn.Check" test="true()" flag="CreatedOn">CreatedOn.NotNull,CreatedOn.Valid (ISO DateTime), CreatedOn.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -335,18 +399,30 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.ExternalSystem.Check" test="true()" flag="ExternalSystem">ExternalSystem.NotEmpty
+			<iso:assert id="Contact.CreatedOn.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CreatedOn',CreatedOn,.)" flag="CreatedOn">
+				<value-of select="cfn:picklistMessage(.,'CreatedOn')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.ExternalSystem.Check" test="true()" flag="ExternalSystem">ExternalSystem.NotEmpty, ExternalSystem.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="ExternalSystem.NotEmpty" test="cfn:validStringOrNA(ExternalSystem) or cfn:validStringOrNA(ExtSystem)" flag="ExternalSystem">
+			<iso:assert id="Contact.ExternalSystem.NotEmpty" test="cfn:validStringOrNA(ExternalSystem) or cfn:validStringOrNA(ExtSystem)" flag="ExternalSystem">
 				<value-of select="cfn:notEmptyMessage(.,'ExternalSystem')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.ExternalObject.Check" test="true()" flag="ExternalObject">ExternalObject.NotEmpty
+			<iso:assert id="Contact.ExternalSystem.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalSystem',ExternalSystem,.) " flag="ExternalSystem">
+				<value-of select="cfn:picklistMessage(.,'ExternalSystem')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.ExternalObject.Check" test="true()" flag="ExternalObject">ExternalObject.NotEmpty, ExternalObject.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -357,7 +433,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.ExternalIdentifier.Check" test="true()" flag="ExternalIdentifier">ExternalIdentifier.NotEmpty
+			<iso:assert id="Contact.ExternalObject.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalObject',ExternalObject,.)" flag="ExternalObject">
+				<value-of select="cfn:picklistMessage(.,'ExternalObject')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.ExternalIdentifier.Check" test="true()" flag="ExternalIdentifier">ExternalIdentifier.NotEmpty, ExternalIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -368,7 +450,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Category.Check" test="true()" flag="Category">Category.NotNull
+			<iso:assert id="Contact.ExternalIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalIdentifier',ExternalIdentifier,.) " flag="ExternalIdentifier">
+				<value-of select="cfn:picklistMessage(.,'ExternalIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Category.Check" test="true()" flag="Category">Category.NotNull, Category.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -379,7 +467,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Company.Check" test="true()" flag="Company">Company.NotNull
+			<iso:assert id="Contact.Category.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Category',Category,.) " flag="Category">
+				<value-of select="cfn:picklistMessage(.,'Category')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Company.Check" test="true()" flag="Company">Company.NotNull, Company.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -389,7 +483,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Phone.Check" test="true()" flag="Phone">Phone.NotNull
+			<iso:assert id="Contact.Company.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Company',Company,.) " flag="Company">
+				<value-of select="cfn:picklistMessage(.,'Company')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Phone.Check" test="true()" flag="Phone">Phone.NotNull, Phone.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -400,7 +500,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Department.Check" test="true()" flag="Department">Department.NotEmpty
+			<iso:assert id="Contact.Phone.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Phone',Phone,.) " flag="Phone">
+				<value-of select="cfn:picklistMessage(.,'Phone')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Department.Check" test="true()" flag="Department">Department.NotEmpty, Department.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -411,7 +517,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.OrganizationCode.Check" test="true()" flag="OrganizationCode">OrganizationCode.NotEmpty
+			<iso:assert id="Contact.Department.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Department',Department,.) " flag="Department">
+				<value-of select="cfn:picklistMessage(.,'Department')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.OrganizationCode.Check" test="true()" flag="OrganizationCode">OrganizationCode.NotEmpty, OrganizationCode.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -422,7 +534,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.GivenName.Check" test="true()" flag="GivenName">GivenName.NotEmpty
+			<iso:assert id="Contact.OrganizationCode.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'OrganizationCode',OrganizationCode,.) " flag="OrganizationCode">
+				<value-of select="cfn:picklistMessage(.,'OrganizationCode')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.GivenName.Check" test="true()" flag="GivenName">GivenName.NotEmpty, GivenName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -433,7 +551,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.FamilyName.Check" test="true()" flag="FamilyName">FamilyName.NotEmpty
+			<iso:assert id="Contact.GivenName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'GivenName',GivenName,.) " flag="GivenName">
+				<value-of select="cfn:picklistMessage(.,'GivenName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.FamilyName.Check" test="true()" flag="FamilyName">FamilyName.NotEmpty, FamilyName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -444,7 +568,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Street.Check" test="true()" flag="Street">Street.NotEmpty
+			<iso:assert id="Contact.FamilyName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'FamilyName',FamilyName,.) " flag="FamilyName">
+				<value-of select="cfn:picklistMessage(.,'FamilyName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Street.Check" test="true()" flag="Street">Street.NotEmpty, Street.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -455,7 +585,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.PostalBox.Check" test="true()" flag="PostalBox">PostalBox.NotEmpty
+			<iso:assert id="Contact.Street.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Street',Street,.) " flag="Street">
+				<value-of select="cfn:picklistMessage(.,'Street')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.PostalBox.Check" test="true()" flag="PostalBox">PostalBox.NotEmpty, PostalBox.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -466,7 +602,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Town.Check" test="true()" flag="Town">Town.NotEmpty
+			<iso:assert id="Contact.PostalBox.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'PostalBox',PostalBox,.) " flag="PostalBox">
+				<value-of select="cfn:picklistMessage(.,'PostalBox')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Town.Check" test="true()" flag="Town">Town.NotEmpty, Town.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -477,7 +619,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.StateRegion.Check" test="true()" flag="StateRegion">StateRegion.NotEmpty
+			<iso:assert id="Contact.Town.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Town',Town,.) " flag="Town">
+				<value-of select="cfn:picklistMessage(.,'Town')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.StateRegion.Check" test="true()" flag="StateRegion">StateRegion.NotEmpty, StateRegion.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -488,7 +636,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.PostalCode.Check" test="true()" flag="PostalCode">PostalCode.NotEmpty
+			<iso:assert id="Contact.StateRegion.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'StateRegion',StateRegion,.) " flag="StateRegion">
+				<value-of select="cfn:picklistMessage(.,'StateRegion')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.PostalCode.Check" test="true()" flag="PostalCode">PostalCode.NotEmpty, PostalCode.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -499,13 +653,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Country.Check" test="true()" flag="Country">Country.NotEmpty
+			<iso:assert id="Contact.PostalCode.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'PostalCode',PostalCode,.) " flag="PostalCode">
+				<value-of select="cfn:picklistMessage(.,'PostalCode')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Country.Check" test="true()" flag="Country">Country.NotEmpty, Country.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Contact.Country.NotEmpty" test="cfn:validStringOrNA(Country)" flag="Country">
 				<value-of select="cfn:notEmptyMessage(.,'Country')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Contact.Country.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Country',Country,.) " flag="Country">
+				<value-of select="cfn:picklistMessage(.,'Country')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -530,7 +696,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.Created"/>
 			<iso:extends rule="COBie.Abstract.Category"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
-			<iso:report id="Facility.ProjectName.Check" test="true()" flag="ProjectName">ProjectName.NotNull
+			<iso:report id="Facility.ProjectName.Check" test="true()" flag="ProjectName">ProjectName.NotNull, ProjectName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -541,7 +707,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.SiteName.Check" test="true()" flag="SiteName">SiteName.NotNull
+			<iso:assert id="Facility.ProjectName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ProjectName',ProjectName,.) " flag="ProjectName">
+				<value-of select="cfn:picklistMessage(.,'ProjectName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.SiteName.Check" test="true()" flag="SiteName">SiteName.NotNull, SiteName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -552,7 +724,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.LinearUnits.Check" test="true()" flag="LinearUnits">LinearUnits.NotNull
+			<iso:assert id="Facility.SiteName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'SiteName',SiteName,.) " flag="SiteName">
+				<value-of select="cfn:picklistMessage(.,'SiteName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.LinearUnits.Check" test="true()" flag="LinearUnits">LinearUnits.NotNull, LinearUnits.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -563,8 +741,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<!-- TODO Insert LinearUnits Picklist assert -->
-			<iso:report id="Facility.AreaUnits.Check" test="true()" flag="AreaUnits">AreaUnits.NotNull
+			<iso:assert id="Facility.LinearUnits.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'LinearUnits',LinearUnits,.) " flag="LinearUnits">
+				<value-of select="cfn:picklistMessage(.,'LinearUnits')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.AreaUnits.Check" test="true()" flag="AreaUnits">AreaUnits.NotNull, AreaUnits.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -575,8 +758,14 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Facility.AreaUnits.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AreaUnits',AreaUnits,.) " flag="AreaUnits">
+				<value-of select="cfn:picklistMessage(.,'AreaUnits')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 			<!--TODO Insert AreaUnits Picklist assert -->
-			<iso:report id="Facility.VolumeUnits.Check" test="true()" flag="VolumeUnits">VolumeUnits.NotNull
+			<iso:report id="Facility.VolumeUnits.Check" test="true()" flag="VolumeUnits">VolumeUnits.NotNull, VolumeUnits.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -587,8 +776,14 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Facility.VolumeUnits.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'VolumeUnits',VolumeUnits,.) " flag="VolumeUnits">
+				<value-of select="cfn:picklistMessage(.,'VolumeUnits')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 			<!-- TODO Insert VolumeUnits Picklist assert -->
-			<iso:report id="Facility.CurrencyUnit.Check" test="true()" flag="CurrencyUnit">Currency.NotNull
+			<iso:report id="Facility.CurrencyUnit.Check" test="true()" flag="CurrencyUnit">Currency.NotNull, Currency.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -599,8 +794,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<!-- TODO Currency Unit Picklist -->
-			<iso:report id="Facility.AreaMeasurement.Check" test="true()" flag="AreaMeasurement">AreaMeasurement.NotNull
+			<iso:assert id="Facility.CurrencyUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CurrencyUnit',CurrencyUnit,.) " flag="CurrencyUnit">
+				<value-of select="cfn:picklistMessage(.,'CurrencyUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.AreaMeasurement.Check" test="true()" flag="AreaMeasurement">AreaMeasurement.NotNull, AreaMeasurement.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -611,7 +811,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalSystem.Check" test="true()" flag="ExternalSystem">ExternalSystem.NotEmpty
+			<iso:assert id="Facility.AreaMeasurement.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AreaMeasurement',AreaMeasurement,.) " flag="AreaMeasurement">
+				<value-of select="cfn:picklistMessage(.,'AreaMeasurement')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalSystem.Check" test="true()" flag="ExternalSystem">ExternalSystem.NotEmpty, ExternalSystem.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -622,7 +828,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalProjectObject.Check" test="true()" flag="ExternalProjectObject">ExternalProjectObject.NotEmpty
+			<iso:assert id="Facility.ExternalSystem.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalSystem',ExternalSystem,.) " flag="ExternalSystem">
+				<value-of select="cfn:picklistMessage(.,'ExternalSystem')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalProjectObject.Check" test="true()" flag="ExternalProjectObject">ExternalProjectObject.NotEmpty, ExternalProjectObject.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -633,7 +845,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalProjectIdentifier.Check" test="true()" flag="ExternalProjectIdentifier">ExternalProjectIdentifier.NotEmpty
+			<iso:assert id="Facility.ExternalProjectObject.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalProjectObject',ExternalProjectObject,.) " flag="ExternalProjectObject">
+				<value-of select="cfn:picklistMessage(.,'ExternalProjectObject')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalProjectIdentifier.Check" test="true()" flag="ExternalProjectIdentifier">ExternalProjectIdentifier.NotEmpty, ExternalProjectIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -644,7 +862,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalSiteObject.Check" test="true()" flag="ExternalSiteObject">ExternalSiteObject.NotEmpty
+			<iso:assert id="Facility.ExternalProjectIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalProjectIdentifier',ExternalProjectIdentifier,.) " flag="ExternalProjectIdentifier">
+				<value-of select="cfn:picklistMessage(.,'ExternalProjectIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalSiteObject.Check" test="true()" flag="ExternalSiteObject">ExternalSiteObject.NotEmpty, ExternalSiteObject.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -655,7 +879,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalSiteIdentifier.Check" test="true()" flag="ExternalSiteIdentifier">ExternalSiteIdentifier.NotEmpty
+			<iso:assert id="Facility.ExternalSiteObject.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalSiteObject',ExternalSiteObject,.) " flag="ExternalSiteObject">
+				<value-of select="cfn:picklistMessage(.,'ExternalSiteObject')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalSiteIdentifier.Check" test="true()" flag="ExternalSiteIdentifier">ExternalSiteIdentifier.NotEmpty, ExternalSiteIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -666,7 +896,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalFacilityObject.Check" test="true()" flag="ExternalFacilityObject">ExternalFacilityObject.NotEmpty
+			<iso:assert id="Facility.ExternalSiteIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalSiteIdentifier',ExternalSiteIdentifier,.) " flag="ExternalSiteIdentifier">
+				<value-of select="cfn:picklistMessage(.,'ExternalSiteIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalFacilityObject.Check" test="true()" flag="ExternalFacilityObject">ExternalFacilityObject.NotEmpty, ExternalFacilityObject.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -677,13 +913,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalFacilityIdentifier.Check" test="true()" flag="ExternalFacilityIdentifier">ExternalFacilityIdentifier.NotEmpty
+			<iso:assert id="Facility.ExternalFacilityObject.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalFacilityObject',ExternalFacilityObject,.) " flag="ExternalFacilityObject">
+				<value-of select="cfn:picklistMessage(.,'ExternalFacilityObject')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalFacilityIdentifier.Check" test="true()" flag="ExternalFacilityIdentifier">ExternalFacilityIdentifier.NotEmpty, ExternalFacilityIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Facility.ExternalFacilityIdentifier.NotEmpty" test="cfn:validStringOrNA(ExternalFacilityIdentifier)" flag="ExternalFacilityIdentifier">
 				<value-of select="cfn:notEmptyMessage(.,'ExternalFacilityIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Facility.ExternalFacilityIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalFacilityIdentifier',ExternalFacilityIdentifier,.) " flag="ExternalFacilityIdentifier">
+				<value-of select="cfn:picklistMessage(.,'ExternalFacilityIdentifier')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -708,7 +956,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.Created"/>
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Category"/>
-			<iso:report id="Floor.Elevation.Check" test="true()" flag="Elevation">Floor.Elevation.ValidNumberOrNA
+			<iso:report id="Floor.Elevation.Check" test="true()" flag="Elevation">Floor.Elevation.ValidNumberOrNA,Floor.Elevation.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -719,13 +967,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Floor.Height.Check" test="true()" flag="Height">Floor.Height.ZeroOrGreaterOrNA
+			<iso:assert id="Floor.Elevation.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Elevation',Elevation,.) " flag="Elevation">
+				<value-of select="cfn:picklistMessage(.,'Elevation')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Floor.Height.Check" test="true()" flag="Height">Floor.Height.ZeroOrGreaterOrNA, Floor.Height.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Floor.Height.ZeroOrGreaterOrNA" test="cfn:validNumberZeroOrGreater(Height)" flag="Height">
 				<value-of select="cfn:notEmptyNumberMessage(.,'Height')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Floor.Height.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Height',Height,.) " flag="Height">
+				<value-of select="cfn:picklistMessage(.,'Height')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -749,7 +1009,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.Created"/>
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Category"/>
-			<iso:report id="Space.FloorName.Check" test="true()" flag="FloorName">FloorName.NotNull, FloorName.CrossReference
+			<iso:report id="Space.FloorName.Check" test="true()" flag="FloorName">FloorName.NotNull, FloorName.CrossReference, FloorName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -760,13 +1020,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Space.FloorName.CrossReference" test="key('FloorKey',FloorName)" flag="FloorName">
+			<iso:assert id="Space.FloorName.CrossReference" test="key('FloorKey',normalize-space(lower-case(FloorName)))" flag="FloorName">
 				<value-of select="cfn:foreignKeyMessage(.,'FloorName','Floor','Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Space.Description.Check" test="true()" flag="Description">Description.NotNull
+			<iso:assert id="Space.FloorName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'FloorName',FloorName,.) " flag="FloorName">
+				<value-of select="cfn:picklistMessage(.,'FloorName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Space.Description.Check" test="true()" flag="Description">Description.NotNull, Description.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -777,7 +1043,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Space.RoomTag.Check" test="true()" flag="RoomTag">RoomTag.NotEmpty
+			<iso:assert id="Space.Description.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Description',Description,.) " flag="Description">
+				<value-of select="cfn:picklistMessage(.,'Description')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Space.RoomTag.Check" test="true()" flag="RoomTag">RoomTag.NotEmpty, RoomTag.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -788,7 +1060,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Space.UsableHeight.Check" test="true()" flag="UsableHeight">UsableHeight.ZeroOrGreaterOrNA
+			<iso:assert id="Space.RoomTag.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'RoomTag',RoomTag,.) " flag="RoomTag">
+				<value-of select="cfn:picklistMessage(.,'RoomTag')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Space.UsableHeight.Check" test="true()" flag="UsableHeight">UsableHeight.ZeroOrGreaterOrNA, UsableHeight.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -799,7 +1077,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Space.GrossArea.Check" test="true()" flag="GrossArea">GrossArea.ZeroOrGreaterOrNA
+			<iso:assert id="Space.UsableHeight.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'UsableHeight',UsableHeight,.) " flag="UsableHeight">
+				<value-of select="cfn:picklistMessage(.,'UsableHeight')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Space.GrossArea.Check" test="true()" flag="GrossArea">GrossArea.ZeroOrGreaterOrNA, GrossArea.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -810,13 +1094,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Space.NetArea.Check" test="true()" flag="NetArea">NetArea.ZeroOrGreaterOrNA
+			<iso:assert id="Space.GrossArea.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'GrossArea',GrossArea,.) " flag="GrossArea">
+				<value-of select="cfn:picklistMessage(.,'GrossArea')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Space.NetArea.Check" test="true()" flag="NetArea">NetArea.ZeroOrGreaterOrNA, NetArea.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Space.NetArea.ZeroOrGreaterOrNA" test="cfn:validNumberZeroOrGreater(NetArea)" flag="NetArea">
 				<value-of select="cfn:notEmptyNumberMessage(.,'NetArea')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Space.NetArea.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'NetArea',NetArea,.) " flag="NetArea">
+				<value-of select="cfn:picklistMessage(.,'NetArea')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -830,13 +1126,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.Category"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
 			<iso:extends rule="COBie.Abstract.External"/>
-			<iso:report id="Zone.Name.Check" test="true()" flag="Name">Name.NotNull
+			<iso:report id="Zone.Name.Check" test="true()" flag="Name">Name.NotNull, Name.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Zone.Name.NotNull" test="cfn:validString(@Name)" flag="Name">
 				<value-of select="cfn:notNullMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Zone.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.) " flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -893,13 +1195,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Type.Component.AComponentForEachType" test="some $comp in ../../Components/Component satisfies ($comp/TypeName=@Name)" flag="Name">
+			<iso:assert id="Type.Component.AComponentForEachType" test="some $comp in ../../Components/Component satisfies (normalize-space($comp/TypeName)=normalize-space(@Name))" flag="Name">
 				<name/>.<value-of select="@Name"/>: All Types must have at least one associated Component
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.AssetType.Check" test="true()" flag="AssetType">AssetType.NotNull
+			<iso:report id="Type.AssetType.Check" test="true()" flag="AssetType">AssetType.NotNull, AssetType.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -910,7 +1212,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Manufacturer.Check" test="true()" flag="Manufacturer">Manufacturer.NotNull, Manufacturer.CrossReference (Contact Sheet)
+			<iso:assert id="Type.AssetType.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AssetType',AssetType,.) " flag="AssetType">
+				<value-of select="cfn:picklistMessage(.,'AssetType')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Manufacturer.Check" test="true()" flag="Manufacturer">Manufacturer.NotNull, Manufacturer.CrossReference (Contact Sheet), Manufacturer.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -921,13 +1229,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Type.Manufacturer.CrossReference" test="key('ContactKey',Manufacturer)" flag="Manufacturer">
+			<iso:assert id="Type.Manufacturer.CrossReference" test="key('ContactKey',normalize-space(lower-case(Manufacturer)))" flag="Manufacturer">
 				<value-of select="cfn:foreignKeyMessage(.,'Manufacturer','Contact','Email')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.ModelNumber.Check" test="true()" flag="ModelNumber">ModelNumber.NotNull
+			<iso:assert id="Type.Manufacturer.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Manufacturer',Manufacturer,.) " flag="Manufacturer">
+				<value-of select="cfn:picklistMessage(.,'Manufacturer')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.ModelNumber.Check" test="true()" flag="ModelNumber">ModelNumber.NotNull, ModelNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -938,7 +1252,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyGuarantorParts.Check" test="true()" flag="WarrantyGuarantorParts">WarrantyGuarantorParts.NotNull, WarrantyGuarantorParts.CrossReference (Contact Sheet)
+			<iso:assert id="Type.ModelNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ModelNumber',ModelNumber,.) " flag="ModelNumber">
+				<value-of select="cfn:picklistMessage(.,'ModelNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyGuarantorParts.Check" test="true()" flag="WarrantyGuarantorParts">WarrantyGuarantorParts.NotNull, WarrantyGuarantorParts.CrossReference (Contact Sheet), WarrantyGuarantorParts.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -949,13 +1269,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Type.WarrantyGuarantorParts.CrossReference" test="key('ContactKey',WarrantyGuarantorParts)" flag="WarrantyGuarantorParts">
+			<iso:assert id="Type.WarrantyGuarantorParts.CrossReference" test="key('ContactKey',normalize-space(lower-case(WarrantyGuarantorParts)))" flag="WarrantyGuarantorParts">
 				<value-of select="cfn:foreignKeyMessage(.,'WarrantyGuarantorParts','Contact','Email')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyDurationParts.Check" test="true()" flag="WarrantyDurationParts">WarrantyDurationParts.validNumberZeroOrGreaterOrNA
+			<iso:assert id="Type.WarrantyGuarantorParts.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyGuarantorParts',WarrantyGuarantorParts,.) " flag="WarrantyGuarantorParts">
+				<value-of select="cfn:picklistMessage(.,'WarrantyGuarantorParts')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyDurationParts.Check" test="true()" flag="WarrantyDurationParts">WarrantyDurationParts.validNumberZeroOrGreaterOrNA, WarrantyDurationParts.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -966,7 +1292,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyGuarantorLabor.Check" test="true()" flag="WarrantyGuarantorLabor">WarrantyGuarantorLabor.NotNull, WarrantyGuarantorLabor.CrossReference (Contact Sheet)
+			<iso:assert id="Type.WarrantyDurationParts.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyDurationParts',WarrantyDurationParts,.) " flag="WarrantyDurationParts">
+				<value-of select="cfn:picklistMessage(.,'WarrantyDurationParts')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyGuarantorLabor.Check" test="true()" flag="WarrantyGuarantorLabor">WarrantyGuarantorLabor.NotNull, WarrantyGuarantorLabor.CrossReference (Contact Sheet), WarrantyGuarantorLabor.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -977,13 +1309,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Type.WarrantyGuarantorLabor.CrossReference" test="key('ContactKey',WarrantyGuarantorLabor)" flag="WarrantyGuarantorLabor">
+			<iso:assert id="Type.WarrantyGuarantorLabor.CrossReference" test="key('ContactKey',normalize-space(lower-case(WarrantyGuarantorLabor)))" flag="WarrantyGuarantorLabor">
 				<value-of select="cfn:foreignKeyMessage(.,'WarrantyGuarantorLabor,','Contact','Email')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyDurationLabor.Check" test="true()" flag="WarrantyDurationLabor">WarrantyDurationLabor.ZeroOrGreaterOrNA
+			<iso:assert id="Type.WarrantyGuarantorLabor.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyGuarantorLabor',WarrantyGuarantorLabor,.) " flag="WarrantyGuarantorLabor">
+				<value-of select="cfn:picklistMessage(.,'WarrantyGuarantorLabor')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyDurationLabor.Check" test="true()" flag="WarrantyDurationLabor">WarrantyDurationLabor.ZeroOrGreaterOrNA, WarrantyDurationLabor.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -994,7 +1332,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyDurationUnit.Check" test="true()" flag="WarrantyDurationUnit">WarrantyDurationUnit.NotNull
+			<iso:assert id="Type.WarrantyDurationLabor.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyDurationLabor',WarrantyDurationLabor,.) " flag="WarrantyDurationLabor">
+				<value-of select="cfn:picklistMessage(.,'WarrantyDurationLabor')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyDurationUnit.Check" test="true()" flag="WarrantyDurationUnit">WarrantyDurationUnit.NotNull, WarrantyDurationUnit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1005,7 +1349,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.ReplacementCost.Check" test="true()" flag="ReplacementCost">ReplacementCost.ZeroOrGreaterOrNA
+			<iso:assert id="Type.WarrantyDurationUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyDurationUnit',WarrantyDurationUnit,.) " flag="WarrantyDurationUnit">
+				<value-of select="cfn:picklistMessage(.,'WarrantyDurationUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.ReplacementCost.Check" test="true()" flag="ReplacementCost">ReplacementCost.ZeroOrGreaterOrNA, ReplacementCost.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1016,7 +1366,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.ExpectedLife.Check" test="true()" flag="ExpectedLife">ExpectedLife.ZeroOrGreaterOrNA
+			<iso:assert id="Type.ReplacementCost.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ReplacementCost',ReplacementCost,.) " flag="ReplacementCost">
+				<value-of select="cfn:picklistMessage(.,'ReplacementCost')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.ExpectedLife.Check" test="true()" flag="ExpectedLife">ExpectedLife.ZeroOrGreaterOrNA, ExpectedLife.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1027,7 +1383,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.DurationUnit.Check" test="true()" flag="DurationUnit">DurationUnit.NotNull
+			<iso:assert id="Type.ExpectedLife.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExpectedLife',ExpectedLife,.) " flag="ExpectedLife">
+				<value-of select="cfn:picklistMessage(.,'ExpectedLife')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.DurationUnit.Check" test="true()" flag="DurationUnit">DurationUnit.NotNull, DurationUnit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1038,7 +1400,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyDescription.Check" test="true()" flag="WarrantyDescription">WarrantyDescription.NotEmpty
+			<iso:assert id="Type.DurationUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'DurationUnit',DurationUnit,.) " flag="DurationUnit">
+				<value-of select="cfn:picklistMessage(.,'DurationUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyDescription.Check" test="true()" flag="WarrantyDescription">WarrantyDescription.NotEmpty, WarrantyDescription.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1049,7 +1417,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.NominalLength.Check" test="true()" flag="NominalLength">NominalLength.ZeroOrGreaterOrNA
+			<iso:assert id="Type.WarrantyDescription.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyDescription',WarrantyDescription,.) " flag="WarrantyDescription">
+				<value-of select="cfn:picklistMessage(.,'WarrantyDescription')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.NominalLength.Check" test="true()" flag="NominalLength">NominalLength.ZeroOrGreaterOrNA, NominalLength.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1060,7 +1434,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.NominalWidth.Check" test="true()" flag="NominalWidth">NominalWidth.ZeroOrGreaterOrNA
+			<iso:assert id="Type.NominalLength.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'NominalLength',NominalLength,.) " flag="NominalLength">
+				<value-of select="cfn:picklistMessage(.,'NominalLength')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.NominalWidth.Check" test="true()" flag="NominalWidth">NominalWidth.ZeroOrGreaterOrNA, NominalWidth.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1071,7 +1451,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.NominalHeight.Check" test="true()" flag="NominalHeight">NominalHeight.ZeroOrGreater
+			<iso:assert id="Type.NominalWidth.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'NominalWidth',NominalWidth,.) " flag="NominalWidth">
+				<value-of select="cfn:picklistMessage(.,'NominalWidth')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.NominalHeight.Check" test="true()" flag="NominalHeight">NominalHeight.ZeroOrGreater, NominalHeight.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1082,7 +1468,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.ModelReference.Check" test="true()" flag="ModelReference">ModelReference.NotEmpty
+			<iso:assert id="Type.NominalHeight.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'NominalHeight',NominalHeight,.) " flag="NominalHeight">
+				<value-of select="cfn:picklistMessage(.,'NominalHeight')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.ModelReference.Check" test="true()" flag="ModelReference">ModelReference.NotEmpty, ModelReference.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1093,7 +1485,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Shape.Check" test="true()" flag="Shape">Shape.NotEmpty
+			<iso:assert id="Type.ModelReference.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ModelReference',ModelReference,.) " flag="ModelReference">
+				<value-of select="cfn:picklistMessage(.,'ModelReference')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Shape.Check" test="true()" flag="Shape">Shape.NotEmpty, Shape.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1104,7 +1502,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Size.Check" test="true()" flag="Size">Size.NotEmpty
+			<iso:assert id="Type.Shape.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Shape',Shape,.) " flag="Shape">
+				<value-of select="cfn:picklistMessage(.,'Shape')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Size.Check" test="true()" flag="Size">Size.NotEmpty, Size.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1115,7 +1519,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Color.Check" test="true()" flag="Color">Color.NotEmpty
+			<iso:assert id="Type.Size.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Size',Size,.) " flag="Size">
+				<value-of select="cfn:picklistMessage(.,'Size')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Color.Check" test="true()" flag="Color">Color.NotEmpty, Color.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1126,7 +1536,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Finish.Check" test="true()" flag="Finish">Finish.NotEmpty
+			<iso:assert id="Type.Color.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Color',Color,.) " flag="Color">
+				<value-of select="cfn:picklistMessage(.,'Color')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Finish.Check" test="true()" flag="Finish">Finish.NotEmpty, Finish.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1137,7 +1553,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Grade.Check" test="true()" flag="Grade">Grade.NotEmpty
+			<iso:assert id="Type.Finish.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Finish',Finish,.) " flag="Finish">
+				<value-of select="cfn:picklistMessage(.,'Finish')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Grade.Check" test="true()" flag="Grade">Grade.NotEmpty, Grade.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1148,7 +1570,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Material.Check" test="true()" flag="Material">Material.NotEmpty
+			<iso:assert id="Type.Grade.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Grade',Grade,.) " flag="Grade">
+				<value-of select="cfn:picklistMessage(.,'Grade')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Material.Check" test="true()" flag="Material">Material.NotEmpty, Material.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1159,7 +1587,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Constituents.Check" test="true()" flag="Constituents">Constituents.NotEmpty
+			<iso:assert id="Type.Material.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Material',Material,.) " flag="Material">
+				<value-of select="cfn:picklistMessage(.,'Material')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Constituents.Check" test="true()" flag="Constituents">Constituents.NotEmpty, Constituents.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1170,7 +1604,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Features.Check" test="true()" flag="Features">Features.NotEmpty
+			<iso:assert id="Type.Constituents.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Constituents',Constituents,.) " flag="Constituents">
+				<value-of select="cfn:picklistMessage(.,'Constituents')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Features.Check" test="true()" flag="Features">Features.NotEmpty, Features.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1181,7 +1621,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.AccessibilityPerformance.Check" test="true()" flag="AccessibilityPerformance">AccessibilityPerformance.NotEmpty
+			<iso:assert id="Type.Features.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Features',Features,.) " flag="Features">
+				<value-of select="cfn:picklistMessage(.,'Features')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.AccessibilityPerformance.Check" test="true()" flag="AccessibilityPerformance">AccessibilityPerformance.NotEmpty, AccessibilityPerformance.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1192,7 +1638,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.CodePerformance.Check" test="true()" flag="CodePerformance">CodePerformance.NotEmpty
+			<iso:assert id="Type.AccessibilityPerformance.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AccessibilityPerformance',AccessibilityPerformance,.) " flag="AccessibilityPerformance">
+				<value-of select="cfn:picklistMessage(.,'AccessibilityPerformance')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.CodePerformance.Check" test="true()" flag="CodePerformance">CodePerformance.NotEmpty, CodePerformance.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1203,13 +1655,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.SustainabilityPerformance.Check" test="true()" flag="SustainabilityPerformance">SustainabilityPerformance.NotEmpty
+			<iso:assert id="Type.CodePerformance.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CodePerformance',CodePerformance,.) " flag="CodePerformance">
+				<value-of select="cfn:picklistMessage(.,'CodePerformance')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.SustainabilityPerformance.Check" test="true()" flag="SustainabilityPerformance">SustainabilityPerformance.NotEmpty, SustainabilityPerformance.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Type.SustainabilityPerformance.NotEmpty" test="cfn:validStringOrNA(SustainabilityPerformance)" flag="SustainabilityPerformance">
 				<value-of select="cfn:notEmptyMessage(.,'SustainabilityPerformance')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Type.SustainabilityPerformance.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'SustainabilityPerformance',SustainabilityPerformance,.) " flag="SustainabilityPerformance">
+				<value-of select="cfn:picklistMessage(.,'SustainabilityPerformance')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1232,7 +1696,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.Name"/>
 			<iso:extends rule="COBie.Abstract.Created"/>
 			<iso:extends rule="COBie.Abstract.External"/>
-			<iso:report id="Component.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference (Type Worksheet)
+			<iso:report id="Component.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull,TypeName.CrossReference (Type Worksheet), TypeName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1243,13 +1707,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Component.TypeName.CrossReference" test="key('TypeKey',TypeName)" flag="TypeName">
+			<iso:assert id="Component.TypeName.CrossReference" test="key('TypeKey',normalize-space(lower-case(TypeName)))" flag="TypeName">
 				<value-of select="cfn:foreignKeyMessage(.,'TypeName','Type','Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.Space.Check" test="true()" flag="Space">Space.NotNull, Space.CrossReference (Component Worksheet)
+			<iso:assert id="Component.TypeName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TypeName',TypeName,.) " flag="TypeName">
+				<value-of select="cfn:picklistMessage(.,'TypeName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.Space.Check" test="true()" flag="Space">Space.NotNull, Space.CrossReference (Component Worksheet), Space.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1266,7 +1736,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.Description.Check" test="true()" flag="Description">Description.NotNull
+			<iso:assert id="Component.Space.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Space',Space,.) " flag="Space">
+				<value-of select="cfn:picklistMessage(.,'Space')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.Description.Check" test="true()" flag="Description">Description.NotNull, Description.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1277,7 +1753,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.SerialNumber.Check" test="true()" flag="SerialNumber">SerialNumber.NotEmpty
+			<iso:assert id="Component.Description.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Description',Description,.) " flag="Description">
+				<value-of select="cfn:picklistMessage(.,'Description')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.SerialNumber.Check" test="true()" flag="SerialNumber">SerialNumber.NotEmpty, SerialNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1288,7 +1770,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.InstallationDate.Check" test="true()" flag="InstallationDate">InstallationDate.NotNull
+			<iso:assert id="Component.SerialNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'SerialNumber',SerialNumber,.) " flag="SerialNumber">
+				<value-of select="cfn:picklistMessage(.,'SerialNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.InstallationDate.Check" test="true()" flag="InstallationDate">InstallationDate.NotNull, InstallationDate.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1299,7 +1787,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.WarrantyStartDate.Check" test="true()" flag="WarrantyStartDate">WarrantyStartDate.NotNull
+			<iso:assert id="Component.InstallationDate.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'InstallationDate',InstallationDate,.) " flag="InstallationDate">
+				<value-of select="cfn:picklistMessage(.,'InstallationDate')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.WarrantyStartDate.Check" test="true()" flag="WarrantyStartDate">WarrantyStartDate.NotNull, WarrantyStartDate.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1310,7 +1804,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.TagNumber.Check" test="true()" flag="TagNumber">TagNumber.NotEmpty
+			<iso:assert id="Component.WarrantyStartDate.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyStartDate',WarrantyStartDate,.) " flag="WarrantyStartDate">
+				<value-of select="cfn:picklistMessage(.,'WarrantyStartDate')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.TagNumber.Check" test="true()" flag="TagNumber">TagNumber.NotEmpty, TagNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1321,7 +1821,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.BarCode.Check" test="true()" flag="BarCode">BarCode.NotEmpty
+			<iso:assert id="Component.TagNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TagNumber',TagNumber,.) " flag="TagNumber">
+				<value-of select="cfn:picklistMessage(.,'TagNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.BarCode.Check" test="true()" flag="BarCode">BarCode.NotEmpty, BarCode.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1332,13 +1838,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.AssetIdentifier.Check" test="true()" flag="AssetIdentifier">AssetIdentifier.NotEmpty
+			<iso:assert id="Component.BarCode.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'BarCode',BarCode,.) " flag="BarCode">
+				<value-of select="cfn:picklistMessage(.,'BarCode')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.AssetIdentifier.Check" test="true()" flag="AssetIdentifier">AssetIdentifier.NotEmpty, AssetIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Component.AssetIdentifier.NotEmpty" test="cfn:validStringOrNA(AssetIdentifier)" flag="AssetIdentifier">
 				<value-of select="cfn:notEmptyMessage(.,'AssetIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Component.AssetIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AssetIdentifier',AssetIdentifier,.) " flag="AssetIdentifier">
+				<value-of select="cfn:picklistMessage(.,'AssetIdentifier')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1352,7 +1870,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.Category"/>
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
-			<iso:report id="System.Name.Check" test="true()" flag="PrimaryKey">PrimaryKey.Unique (Name, Category, ComponentNames), Name.NotNull
+			<iso:report id="System.Name.Check" test="true()" flag="PrimaryKey">PrimaryKey.Unique (Name, Category, ComponentNames), Name.NotNull, Name.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1369,7 +1887,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="System.ComponentNames.Check" test="true()" flag="ComponentNames">ComponentNames.NotNull, ComponentNames.CrossReference
+			<iso:assert id="System.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.) " flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="System.ComponentNames.Check" test="true()" flag="ComponentNames">ComponentNames.NotNull, ComponentNames.CrossReference, ComponentNames.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1382,6 +1906,12 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			</iso:assert>
 			<iso:assert id="System.ComponentNames.CrossReference" test="cfn:delimListInKeys(ComponentNames,'Component',/)" flag="ComponentNames">
 				<value-of select="cfn:foreignKeyMessage(.,'ComponentNames','Component','Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="System.ComponentNames.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ComponentNames',ComponentNames,.) " flag="ComponentNames">
+				<value-of select="cfn:picklistMessage(.,'ComponentNames')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1412,7 +1942,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Assembly.ParentName.Check" test="true()" flag="ParentName">ParentName.NotNull, ParentName.CrossReference
+			<iso:report id="Assembly.ParentName.Check" test="true()" flag="ParentName">ParentName.NotNull, ParentName.CrossReference, ParentName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1429,7 +1959,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Assembly.ChildNames.Check" test="true()" flag="ChildNames">ChildNames.NotNull, ChildNames.CrossReference
+			<iso:assert id="Assembly.ParentName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ParentName',ParentName,.) " flag="ParentName">
+				<value-of select="cfn:picklistMessage(.,'ParentName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Assembly.ChildNames.Check" test="true()" flag="ChildNames">ChildNames.NotNull, ChildNames.CrossReference, ChildNames.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1446,13 +1982,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Assembly.AssemblyType.Check" test="true()" flag="AssemblyType">AssemblyType.NotNull
+			<iso:assert id="Assembly.ChildNames.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ChildNames',ChildNames,.) " flag="ChildNames">
+				<value-of select="cfn:picklistMessage(.,'ChildNames')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Assembly.AssemblyType.Check" test="true()" flag="AssemblyType">AssemblyType.NotNull, AssemblyType.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Assembly.AssemblyType.NotNull" test="cfn:validString(AssemblyType)" flag="AssemblyType">
 				<value-of select="cfn:notNullMessage(.,'AssemblyType')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Assembly.AssemblyType.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AssemblyType',AssemblyType,.) " flag="AssemblyType">
+				<value-of select="cfn:picklistMessage(.,'AssemblyType')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1466,13 +2014,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
 			<iso:extends rule="COBie.Abstract.Name"/>
-			<iso:report id="Connection.ConnectionType.Check" test="true()" flag="ConnectionType">ConnectionType.NotNull
+			<iso:report id="Connection.ConnectionType.Check" test="true()" flag="ConnectionType">ConnectionType.NotNull, ConnectionType.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Connection.ConnectionType.NotNull" test="cfn:validString(ConnectionType)" flag="ConnectionType">
 				<value-of select="cfn:notNullMessage(.,'ConnectionType')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Connection.ConnectionType.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ConnectionType',ConnectionType,.) " flag="ConnectionType">
+				<value-of select="cfn:picklistMessage(.,'ConnectionType')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1527,7 +2081,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Connection.RealizingElement.Check" test="true()" flag="RealizingElement">RealizingElement.NotEmpty, RealizingElement.CrossReference
+			<iso:report id="Connection.RealizingElement.Check" test="true()" flag="RealizingElement">RealizingElement.NotEmpty, RealizingElement.CrossReference, RealizingElement.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1544,7 +2098,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Connection.PortName1.Check" test="true()" flag="PortName1">PortName1.NotNull
+			<iso:assert id="Connection.RealizingElement.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'RealizingElement',RealizingElement,.) " flag="RealizingElement">
+				<value-of select="cfn:picklistMessage(.,'RealizingElement')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Connection.PortName1.Check" test="true()" flag="PortName1">PortName1.NotNull, PortName1.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1555,13 +2115,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Connection.PortName2.Check" test="true()" flag="PortName2">PortName2.NotNull
+			<iso:assert id="Connection.PortName1.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'PortName1',PortName1,.) " flag="PortName1">
+				<value-of select="cfn:picklistMessage(.,'PortName1')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Connection.PortName2.Check" test="true()" flag="PortName2">PortName2.NotNull, PortName2.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Connection.PortName2.NotNull" test="cfn:validString(PortName2)" flag="PortName2">
 				<value-of select="cfn:notNullMessage(.,'PortName2')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Connection.PortName2.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'PortName2',PortName2,.) " flag="PortName2">
+				<value-of select="cfn:picklistMessage(.,'PortName2')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1575,12 +2147,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
 			<iso:extends rule="COBie.Abstract.Category"/>
-			<iso:report id="Spare.Name.Check" test="true()" flag="Name">Name.NotNull<xsl:element name="location">
+			<iso:report id="Spare.Name.Check" test="true()" flag="Name">Name.NotNull, Name.Picklist
+			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Spare.Name.NotNull" test="cfn:validString(@Name)" flag="Name">
 				<value-of select="cfn:notNullMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Spare.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.) " flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1596,7 +2175,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Spare.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference
+			<iso:report id="Spare.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference, TypeName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1607,13 +2186,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Spare.TypeName.CrossReference" test="key('TypeKey',TypeName)" flag="TypeName">
+			<iso:assert id="Spare.TypeName.CrossReference" test="key('TypeKey',normalize-space(lower-case(TypeName)))" flag="TypeName">
 				<value-of select="cfn:foreignKeyMessage(.,'TypeName','Type','Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Spare.Suppliers.Check" test="true()" flag="Suppliers">Suppliers.NotNull, Suppliers.CrossReference (Contact Sheet)
+			<iso:assert id="Spare.TypeName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TypeName',TypeName,.) " flag="TypeName">
+				<value-of select="cfn:picklistMessage(.,'TypeName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Spare.Suppliers.Check" test="true()" flag="Suppliers">Suppliers.NotNull, Suppliers.CrossReference (Contact Sheet), Suppliers.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1630,7 +2215,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Spare.SetNumber.Check" test="true()" flag="SetNumber">SetNumber.NotEmpty
+			<iso:assert id="Spare.Suppliers.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Suppliers',Suppliers,.) " flag="Suppliers">
+				<value-of select="cfn:picklistMessage(.,'Suppliers')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Spare.SetNumber.Check" test="true()" flag="SetNumber">SetNumber.NotEmpty, SetNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1641,13 +2232,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Spare.PartNumber.Check" test="true()" flag="PartNumber">PartNumber.NotEmpty
+			<iso:assert id="Spare.SetNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'SetNumber',SetNumber,.) " flag="SetNumber">
+				<value-of select="cfn:picklistMessage(.,'SetNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Spare.PartNumber.Check" test="true()" flag="PartNumber">PartNumber.NotEmpty, PartNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Spare.PartNumber.NotEmpty" test="cfn:validStringOrNA(PartNumber)" flag="PartNumber">
 				<value-of select="cfn:notEmptyMessage(.,'PartNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Spare.PartNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'PartNumber',PartNumber,.) " flag="PartNumber">
+				<value-of select="cfn:picklistMessage(.,'PartNumber')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1671,13 +2274,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
 			<iso:extends rule="COBie.Abstract.Category"/>
-			<iso:report id="Job.Name.Check" test="true()" flag="Name">Name.NotNull
+			<iso:report id="Job.Name.Check" test="true()" flag="Name">Name.NotNull, Name.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Job.Name.NotNull" test="cfn:validString(@Name)" flag="Name">
 				<value-of select="cfn:notNullMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Job.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.) " flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1693,7 +2302,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.Status.Check" test="true()" flag="Status">Status.NotNull
+			<iso:report id="Job.Status.Check" test="true()" flag="Status">Status.NotNull, Status.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1704,7 +2313,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference
+			<iso:assert id="Job.Status.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Status',Status,.) " flag="Status">
+				<value-of select="cfn:picklistMessage(.,'Status')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference, TypeName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1715,13 +2330,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Job.TypeName.CrossReference" test="key('TypeKey',TypeName)" flag="TypeName">
+			<iso:assert id="Job.TypeName.CrossReference" test="key('TypeKey',normalize-space(lower-case(TypeName)))" flag="TypeName">
 				<value-of select="cfn:foreignKeyMessage(.,'TypeName','Type','Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.Duration.Check" test="true()" flag="Duration">Duration.NotEmpty
+			<iso:assert id="Job.TypeName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TypeName',TypeName,.) " flag="TypeName">
+				<value-of select="cfn:picklistMessage(.,'TypeName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.Duration.Check" test="true()" flag="Duration">Duration.NotEmpty, Duration.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1732,7 +2353,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.DurationUnit.Check" test="true()" flag="DurationUnit">DurationUnit.NotEmpty
+			<iso:assert id="Job.Duration.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Duration',Duration,.) " flag="Duration">
+				<value-of select="cfn:picklistMessage(.,'Duration')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.DurationUnit.Check" test="true()" flag="DurationUnit">DurationUnit.NotEmpty, DurationUnit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1743,7 +2370,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.Start.Check" test="true()" flag="Start">Start.NotEmpty
+			<iso:assert id="Job.DurationUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'DurationUnit',DurationUnit,.) " flag="DurationUnit">
+				<value-of select="cfn:picklistMessage(.,'DurationUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.Start.Check" test="true()" flag="Start">Start.NotEmpty, Start.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1754,7 +2387,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.TaskStartUnit.Check" test="true()" flag="TaskStartUnit">TaskStartUnit.NotEmpty
+			<iso:assert id="Job.Start.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Start',Start,.) " flag="Start">
+				<value-of select="cfn:picklistMessage(.,'Start')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.TaskStartUnit.Check" test="true()" flag="TaskStartUnit">TaskStartUnit.NotEmpty, TaskStartUnit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1765,7 +2404,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.Frequency.Check" test="true()" flag="Frequency">Frequency.NotEmpty
+			<iso:assert id="Job.TaskStartUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TaskStartUnit',TaskStartUnit,.) " flag="TaskStartUnit">
+				<value-of select="cfn:picklistMessage(.,'TaskStartUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.Frequency.Check" test="true()" flag="Frequency">Frequency.NotEmpty, Frequency.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1776,7 +2421,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.FrequencyUnit.Check" test="true()" flag="FrequencyUnit">FrequencyUnit.NotEmpty
+			<iso:assert id="Job.Frequency.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Frequency',Frequency,.) " flag="Frequency">
+				<value-of select="cfn:picklistMessage(.,'Frequency')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.FrequencyUnit.Check" test="true()" flag="FrequencyUnit">FrequencyUnit.NotEmpty, FrequencyUnit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1787,7 +2438,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.TaskNumber.Check" test="true()" flag="TaskNumber">TaskNumber.NotEmpty
+			<iso:assert id="Job.FrequencyUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'FrequencyUnit',FrequencyUnit,.) " flag="FrequencyUnit">
+				<value-of select="cfn:picklistMessage(.,'FrequencyUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.TaskNumber.Check" test="true()" flag="TaskNumber">TaskNumber.NotEmpty, TaskNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1798,7 +2455,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.Priors.Check" test="true()" flag="Priors">Priors.NotEmpty
+			<iso:assert id="Job.TaskNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TaskNumber',TaskNumber,.) " flag="TaskNumber">
+				<value-of select="cfn:picklistMessage(.,'TaskNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.Priors.Check" test="true()" flag="Priors">Priors.NotEmpty, Priors.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1809,7 +2472,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.ResourceNames.Check" test="true()" flag="ResourceNames">ResourceNames.NotEmpty, ResourceNames.CrossReference
+			<iso:assert id="Job.Priors.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Priors',Priors,.) " flag="Priors">
+				<value-of select="cfn:picklistMessage(.,'Priors')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.ResourceNames.Check" test="true()" flag="ResourceNames">ResourceNames.NotEmpty, ResourceNames.CrossReference, ResourceNames.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1822,6 +2491,12 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			</iso:assert>
 			<iso:assert id="Job.ResourceNames.CrossReference" test="ResourceNames='n/a' or cfn:delimListInKeys(ResourceNames,'Resource',/)" flag="ResourceNames">
 				<value-of select="cfn:foreignKeyMessage(.,'ResourceNames','Resource','Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Job.ResourceNames.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ResourceNames',ResourceNames,.) " flag="ResourceNames">
+				<value-of select="cfn:picklistMessage(.,'ResourceNames')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1846,7 +2521,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.Name.Check" test="true()" flag="Name">Name.NotNull
+			<iso:report id="Document.Name.Check" test="true()" flag="Name">Name.NotNull, Name.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1857,7 +2532,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.ApprovalBy.Check" test="true()" flag="ApprovalBy">ApprovalBy.NotEmpty
+			<iso:assert id="Document.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.) " flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Document.ApprovalBy.Check" test="true()" flag="ApprovalBy">ApprovalBy.NotEmpty, ApprovalBy.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1868,13 +2549,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.Stage.Check" test="true()" flag="Stage">Stage.NotNull
+			<iso:assert id="Document.ApprovalBy.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ApprovalBy',ApprovalBy,.) " flag="ApprovalBy">
+				<value-of select="cfn:picklistMessage(.,'ApprovalBy')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Document.Stage.Check" test="true()" flag="Stage">Stage.NotNull, Stage.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Document.Stage.NotNull" test="cfn:validString(Stage)" flag="Stage">
 				<value-of select="cfn:notNullMessage(.,'Stage')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Document.Stage.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Stage',Stage,.) " flag="Stage">
+				<value-of select="cfn:picklistMessage(.,'Stage')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1907,7 +2600,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.Directory.Check" test="true()" flag="Directory">Directory.NotNull
+			<iso:report id="Document.Directory.Check" test="true()" flag="Directory">Directory.NotNull, Directory.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1918,7 +2611,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.File.Check" test="true()" flag="File">File.NotNull
+			<iso:assert id="Document.Directory.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Directory',Directory,.) " flag="Directory">
+				<value-of select="cfn:picklistMessage(.,'Directory')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Document.File.Check" test="true()" flag="File">File.NotNull, File.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1929,13 +2628,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.Reference.Check" test="true()" flag="Reference">Reference.NotEmpty
+			<iso:assert id="Document.File.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'File',File,.) " flag="File">
+				<value-of select="cfn:picklistMessage(.,'File')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Document.Reference.Check" test="true()" flag="Reference">Reference.NotEmpty, Reference.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Document.Reference.NotEmpty" test="cfn:validStringOrNA(Reference)" flag="Reference">
 				<value-of select="cfn:notEmptyMessage(.,'Reference')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Document.Reference.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Reference',Reference,.) " flag="Reference">
+				<value-of select="cfn:picklistMessage(.,'Reference')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1965,13 +2676,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Attribute.Name.Check" test="true()" flag="Name">Name.NotNull
+			<iso:report id="Attribute.Name.Check" test="true()" flag="Name">Name.NotNull, Name.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Attribute.Name.NotNull" test="cfn:validString(@Name)" flag="Name">
 				<value-of select="cfn:notNullMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Attribute.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.) " flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1987,7 +2704,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Attribute.Value.Check" test="true()" flag="Value">Value.NotEmpty
+			<iso:report id="Attribute.Value.Check" test="true()" flag="Value">Value.NotEmpty, Value.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -1998,7 +2715,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Attribute.Unit.Check" test="true()" flag="Unit">Unit.NotEmpty
+			<iso:assert id="Attribute.Value.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Value',Value,.) " flag="Value">
+				<value-of select="cfn:picklistMessage(.,'Value')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Attribute.Unit.Check" test="true()" flag="Unit">Unit.NotEmpty, Unit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2009,7 +2732,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Attribute.AllowedValues.Check" test="true()" flag="AllowedValues">AllowedValues.NotEmpty
+			<iso:assert id="Attribute.Unit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Unit',Unit,.) " flag="Unit">
+				<value-of select="cfn:picklistMessage(.,'Unit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Attribute.AllowedValues.Check" test="true()" flag="AllowedValues">AllowedValues.NotEmpty, AllowedValues.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2020,12 +2749,18 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Attribute.AllowedValues.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AllowedValues',AllowedValues,.) " flag="AllowedValues">
+				<value-of select="cfn:picklistMessage(.,'AllowedValues')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 		</iso:rule>
 	</iso:pattern>
 	<iso:pattern id="Design.COBieValidation.Errors">
 		<iso:title>COBie Checking Rules</iso:title>
 		<iso:rule abstract="true" id="COBie.Abstract.Name" role="WorksheetErrors">
-			<iso:report id="Common.Name.Check" test="true()" flag="Name">Name.NotNotNull, Name.Unique<xsl:element name="location">
+			<iso:report id="Common.Name.Check" test="true()" flag="Name">Name.NotNotNull, Name.Unique, Name.Picklist<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
@@ -2041,13 +2776,20 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Common.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.) " flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 		</iso:rule>
 		<iso:rule abstract="true" id="COBie.Abstract.Created" role="WorksheetErrors">
-			<iso:report id="Common.CreatedBy.Check" test="true()" flag="CreatedBy">CreatedBy.CrossReference (ToContact), CreatedBy.NotNull<xsl:element name="location">
+			<iso:report id="Common.CreatedBy.Check" test="true()" flag="CreatedBy">CreatedBy.CrossReference (ToContact), CreatedBy.NotNull, CreatedBy.Picklist
+			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Common.CreatedBy.CrossReference" test="key('ContactKey',CreatedBy)" flag="CreatedBy">
+			<iso:assert id="Common.CreatedBy.CrossReference" test="key('ContactKey',normalize-space(lower-case(CreatedBy)))" flag="CreatedBy">
 				<value-of select="cfn:foreignKeyMessage(.,'CreatedBy','Contact','Email')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -2059,7 +2801,14 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Common.CreatedOn.Check" test="true()" flag="CreatedOn">CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime)<xsl:element name="location">
+			<iso:assert id="Common.CreatedBy.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CreatedBy',CreatedBy,.) " flag="CreatedBy">
+				<value-of select="cfn:picklistMessage(.,'CreatedBy')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Common.CreatedOn.Check" test="true()" flag="CreatedOn">CreatedOn.NotNull, CreatedOn.Valid (Valid ISO DateTime), CreatedOn.Picklist
+			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
@@ -2075,9 +2824,16 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Common.CreatedOn.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CreatedOn',CreatedOn,.) " flag="CreatedOn">
+				<value-of select="cfn:picklistMessage(.,'CreatedOn')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 		</iso:rule>
 		<iso:rule abstract="true" id="COBie.Abstract.External" role="WorksheetErrors">
-			<iso:report id="Common.ExternalSystem.Check" test="true()" flag="ExtSystem">ExternalSystem.NotEmpty<xsl:element name="location">
+			<iso:report id="Common.ExternalSystem.Check" test="true()" flag="ExtSystem">ExternalSystem.NotEmpty, ExternalSystem.Picklist
+			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
@@ -2087,7 +2843,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Common.ExternalObject.Check" test="true()" flag="ExtObject">ExternalObject.NotEmpty
+			<iso:assert id="Common.ExternalSystem.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalSystem',ExternalSystem,.) " flag="ExternalSystem">
+				<value-of select="cfn:picklistMessage(.,'ExternalSystem')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Common.ExternalObject.Check" test="true()" flag="ExtObject">ExternalObject.NotEmpty, ExternalObject.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2098,7 +2860,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Common.ExternalIdentifier.Check" test="true()" flag="ExtIdentifier">ExtIdentifier.NotEmpty
+			<iso:assert id="Common.ExternalObject.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalObject',ExtObject,.) " flag="ExternalObject">
+				<value-of select="cfn:picklistMessage(.,'ExternalObject')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Common.ExternalIdentifier.Check" test="true()" flag="ExtIdentifier">ExtIdentifier.NotEmpty, ExtIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2109,9 +2877,15 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Common.ExtIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExtIdentifier',ExtIdentifier,.) " flag="ExtIdentifier">
+				<value-of select="cfn:picklistMessage(.,'ExtIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 		</iso:rule>
 		<iso:rule abstract="true" id="COBie.Abstract.Category" role="WorksheetErrors">
-			<iso:report id="Common.Category.Check" test="true()" flag="Category">Category.NotNull
+			<iso:report id="Common.Category.Check" test="true()" flag="Category">Category.NotNull, Category.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2122,15 +2896,27 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Common.Category.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Category',Category,.)" flag="Category">
+				<value-of select="cfn:picklistMessage(.,'Category')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 		</iso:rule>
 		<iso:rule abstract="true" id="COBie.Abstract.Description" role="WorksheetErrors">
-			<iso:report id="Common.Description.Check" test="true()" flag="Description">Description.NotEmpty
+			<iso:report id="Common.Description.Check" test="true()" flag="Description">Description.NotEmpty, Description.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Common.Description.NotEmpty" test="cfn:validStringOrNA(Description)" flag="Description">
 				<value-of select="cfn:notEmptyMessage(.,'Description')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Common.Description.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Description',Description,.) " flag="Description">
+				<value-of select="cfn:picklistMessage(.,'Description')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2151,7 +2937,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			</iso:assert>
 		</iso:rule>
 		<iso:rule context="//Contacts/Contact" id="COBie.Contacts.Contact" role="WorksheetErrors">
-			<iso:report id="Contact.Email.Check" test="true()" flag="Email">Email.Unique, Email.NotNull, Email.Format
+			<iso:report id="Contact.Email.Check" test="true()" flag="Email">Email.Unique, Email.NotNull, Email.Format, Email.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2174,12 +2960,18 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.CreatedBy.Check" test="true()" flag="CreatedBy">CreatedBy.CrossReference, CreatedBy.NotNull
+			<iso:assert id="Contact.Email.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Email',Email,.) " flag="Email">
+				<value-of select="cfn:picklistMessage(.,'Email')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.CreatedBy.Check" test="true()" flag="CreatedBy">CreatedBy.CrossReference, CreatedBy.NotNull, CreatedBy.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Contact.CreatedBy.CrossReference" test="key('ContactKey',CreatedBy)" flag="CreatedBy">
+			<iso:assert id="Contact.CreatedBy.CrossReference" test="key('ContactKey',normalize-space(lower-case(CreatedBy)))" flag="CreatedBy">
 				<value-of select="cfn:foreignKeyMessage(.,'CreatedBy','Contact','Email')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
@@ -2191,7 +2983,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.CreatedOn.Check" test="true()" flag="CreatedOn">CreatedOn.NotNull, CreatedOn.Valid (ISO DateTime)
+			<iso:assert id="Contact.CreatedBy.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CreatedBy',CreatedBy,.) " flag="CreatedBy">
+				<value-of select="cfn:picklistMessage(.,'CreatedBy')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.CreatedOn.Check" test="true()" flag="CreatedOn">CreatedOn.NotNull, CreatedOn.Valid (ISO DateTime), CreatedOn.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2208,7 +3006,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.ExternalSystem.Check" test="true()" flag="ExternalSystem">ExternalSystem.NotEmpty
+			<iso:assert id="Contact.CreatedOn.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CreatedOn',CreatedOn,.) " flag="CreatedOn">
+				<value-of select="cfn:picklistMessage(.,'CreatedOn')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.ExternalSystem.Check" test="true()" flag="ExternalSystem">ExternalSystem.NotEmpty, ExternalSystem.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2219,7 +3023,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.ExternalObject.Check" test="true()" flag="ExternalObject">ExternalObject.NotEmpty
+			<iso:assert id="Contact.ExternalSystem.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalSystem',ExternalSystem,.)" flag="ExternalSystem">
+				<value-of select="cfn:picklistMessage(.,'ExternalSystem')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.ExternalObject.Check" test="true()" flag="ExternalObject">ExternalObject.NotEmpty, ExternalObject.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2230,7 +3040,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.ExternalIdentifier.Check" test="true()" flag="ExternalIdentifier">ExternalIdentifier.NotEmpty
+			<iso:assert id="Contact.ExternalObject.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExtObject',ExtObject,.)" flag="ExternalObject">
+				<value-of select="cfn:picklistMessage(.,'ExternalObject')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.ExternalIdentifier.Check" test="true()" flag="ExternalIdentifier">ExternalIdentifier.NotEmpty, ExternalIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2241,7 +3057,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Category.Check" test="true()" flag="Category">Category.NotNull
+			<iso:assert id="Contact.ExternalIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalIdentifier',ExternalIdentifier,.)" flag="ExternalIdentifier">
+				<value-of select="cfn:picklistMessage(.,'ExternalIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Category.Check" test="true()" flag="Category">Category.NotNull, Category.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2252,7 +3074,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Company.Check" test="true()" flag="Company">Company.NotNull
+			<iso:assert id="Contact.Category.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Category',Category,.)" flag="Category">
+				<value-of select="cfn:picklistMessage(.,'Category')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Company.Check" test="true()" flag="Company">Company.NotNull, Company.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2262,7 +3090,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Phone.Check" test="true()" flag="Phone">Phone.NotNull
+			<iso:assert id="Contact.Company.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Company',Company,.)" flag="Company">
+				<value-of select="cfn:picklistMessage(.,'Company')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Phone.Check" test="true()" flag="Phone">Phone.NotNull, Phone.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2273,7 +3107,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Department.Check" test="true()" flag="Department">Department.NotEmpty
+			<iso:assert id="Contact.Phone.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Phone',Phone,.)" flag="Phone">
+				<value-of select="cfn:picklistMessage(.,'Phone')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Department.Check" test="true()" flag="Department">Department.NotEmpty, Department.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2284,7 +3124,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.OrganizationCode.Check" test="true()" flag="OrganizationCode">OrganizationCode.NotEmpty
+			<iso:assert id="Contact.Department.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Department',Department,.)" flag="Department">
+				<value-of select="cfn:picklistMessage(.,'Department')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.OrganizationCode.Check" test="true()" flag="OrganizationCode">OrganizationCode.NotEmpty, OrganizationCode.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2295,7 +3141,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.GivenName.Check" test="true()" flag="GivenName">GivenName.NotEmpty
+			<iso:assert id="Contact.OrganizationCode.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'OrganizationCode',OrganizationCode,.)" flag="OrganizationCode">
+				<value-of select="cfn:picklistMessage(.,'OrganizationCode')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.GivenName.Check" test="true()" flag="GivenName">GivenName.NotEmpty, GivenName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2306,7 +3158,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.FamilyName.Check" test="true()" flag="FamilyName">FamilyName.NotEmpty
+			<iso:assert id="Contact.GivenName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'GivenName',GivenName,.)" flag="GivenName">
+				<value-of select="cfn:picklistMessage(.,'GivenName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.FamilyName.Check" test="true()" flag="FamilyName">FamilyName.NotEmpty, FamilyName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2317,7 +3175,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Street.Check" test="true()" flag="Street">Street.NotEmpty
+			<iso:assert id="Contact.FamilyName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'FamilyName',FamilyName,.)" flag="FamilyName">
+				<value-of select="cfn:picklistMessage(.,'FamilyName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Street.Check" test="true()" flag="Street">Street.NotEmpty, Street.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2328,7 +3192,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.PostalBox.Check" test="true()" flag="PostalBox">PostalBox.NotEmpty
+			<iso:assert id="Contact.Street.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Street',Street,.)" flag="Street">
+				<value-of select="cfn:picklistMessage(.,'Street')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.PostalBox.Check" test="true()" flag="PostalBox">PostalBox.NotEmpty, PostalBox.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2339,7 +3209,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Town.Check" test="true()" flag="Town">Town.NotEmpty
+			<iso:assert id="Contact.PostalBox.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'PostalBox',PostalBox,.)" flag="PostalBox">
+				<value-of select="cfn:picklistMessage(.,'PostalBox')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Town.Check" test="true()" flag="Town">Town.NotEmpty, Town.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2350,7 +3226,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.StateRegion.Check" test="true()" flag="StateRegion">StateRegion.NotEmpty
+			<iso:assert id="Contact.Town.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Town',Town,.)" flag="Town">
+				<value-of select="cfn:picklistMessage(.,'Town')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.StateRegion.Check" test="true()" flag="StateRegion">StateRegion.NotEmpty, StateRegion.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2361,7 +3243,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.PostalCode.Check" test="true()" flag="PostalCode">PostalCode.NotEmpty
+			<iso:assert id="Contact.StateRegion.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'StateRegion',StateRegion,.)" flag="StateRegion">
+				<value-of select="cfn:picklistMessage(.,'StateRegion')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.PostalCode.Check" test="true()" flag="PostalCode">PostalCode.NotEmpty, PostalCode.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2372,13 +3260,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Contact.Country.Check" test="true()" flag="Country">Country.NotEmpty
+			<iso:assert id="Contact.PostalCode.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'PostalCode',PostalCode,.)" flag="PostalCode">
+				<value-of select="cfn:picklistMessage(.,'PostalCode')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Contact.Country.Check" test="true()" flag="Country">Country.NotEmpty, Country.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Contact.Country.NotEmpty" test="cfn:validStringOrNA(Country)" flag="Country">
 				<value-of select="cfn:notEmptyMessage(.,'Country')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Contact.Country.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Country',Country,.)" flag="Country">
+				<value-of select="cfn:picklistMessage(.,'Country')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2403,7 +3303,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.Created"/>
 			<iso:extends rule="COBie.Abstract.Category"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
-			<iso:report id="Facility.ProjectName.Check" test="true()" flag="ProjectName">ProjectName.NotNull
+			<iso:report id="Facility.ProjectName.Check" test="true()" flag="ProjectName">ProjectName.NotNull, ProjectName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2414,7 +3314,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.SiteName.Check" test="true()" flag="SiteName">SiteName.NotNull
+			<iso:assert id="Facility.ProjectName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ProjectName',ProjectName,.)" flag="ProjectName">
+				<value-of select="cfn:picklistMessage(.,'ProjectName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.SiteName.Check" test="true()" flag="SiteName">SiteName.NotNull, SiteName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2425,7 +3331,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.LinearUnits.Check" test="true()" flag="LinearUnits">LinearUnits.NotNull
+			<iso:assert id="Facility.SiteName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'SiteName',SiteName,.)" flag="SiteName">
+				<value-of select="cfn:picklistMessage(.,'SiteName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.LinearUnits.Check" test="true()" flag="LinearUnits">LinearUnits.NotNull, LinearUnits.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2436,8 +3348,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<!-- TODO Insert LinearUnits Picklist assert -->
-			<iso:report id="Facility.AreaUnits.Check" test="true()" flag="AreaUnits">AreaUnits.NotNull
+			<iso:assert id="Facility.LinearUnits.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'LinearUnits',LinearUnits,.)" flag="LinearUnits">
+				<value-of select="cfn:picklistMessage(.,'LinearUnits')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.AreaUnits.Check" test="true()" flag="AreaUnits">AreaUnits.NotNull, AreaUnits.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2448,8 +3365,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<!--TODO Insert AreaUnits Picklist assert -->
-			<iso:report id="Facility.VolumeUnits.Check" test="true()" flag="VolumeUnits">VolumeUnits.NotNull
+			<iso:assert id="Facility.AreaUnits.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AreaUnits',AreaUnits,.)" flag="AreaUnits">
+				<value-of select="cfn:picklistMessage(.,'AreaUnits')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.VolumeUnits.Check" test="true()" flag="VolumeUnits">VolumeUnits.NotNull, VolumeUnits.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2460,8 +3382,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<!-- TODO Insert VolumeUnits Picklist assert -->
-			<iso:report id="Facility.CurrencyUnit.Check" test="true()" flag="CurrencyUnit">Currency.NotNull
+			<iso:assert id="Facility.VolumeUnits.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'VolumeUnits',VolumeUnits,.)" flag="VolumeUnits">
+				<value-of select="cfn:picklistMessage(.,'VolumeUnits')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.CurrencyUnit.Check" test="true()" flag="CurrencyUnit">Currency.NotNull, Currency.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2472,8 +3399,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<!-- TODO Currency Unit Picklist -->
-			<iso:report id="Facility.AreaMeasurement.Check" test="true()" flag="AreaMeasurement">AreaMeasurement.NotNull
+			<iso:assert id="Facility.CurrencyUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CurrencyUnit',CurrencyUnit,.)" flag="CurrencyUnit">
+				<value-of select="cfn:picklistMessage(.,'CurrencyUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.AreaMeasurement.Check" test="true()" flag="AreaMeasurement">AreaMeasurement.NotNull, AreaMeasurement.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2484,7 +3416,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalSystem.Check" test="true()" flag="ExternalSystem">ExternalSystem.NotEmpty
+			<iso:assert id="Facility.AreaMeasurement.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AreaMeasurement',AreaMeasurement,.)" flag="AreaMeasurement">
+				<value-of select="cfn:picklistMessage(.,'AreaMeasurement')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalSystem.Check" test="true()" flag="ExternalSystem">ExternalSystem.NotEmpty, ExternalSystem.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2495,7 +3433,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalProjectObject.Check" test="true()" flag="ExternalProjectObject">ExternalProjectObject.NotEmpty
+			<iso:assert id="Facility.ExternalSystem.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalSystem',ExternalSystem,.)" flag="ExternalSystem">
+				<value-of select="cfn:picklistMessage(.,'ExternalSystem')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalProjectObject.Check" test="true()" flag="ExternalProjectObject">ExternalProjectObject.NotEmpty, ExternalProjectObject.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2506,7 +3450,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalProjectIdentifier.Check" test="true()" flag="ExternalProjectIdentifier">ExternalProjectIdentifier.NotEmpty
+			<iso:assert id="Facility.ExternalProjectObject.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalProjectObject',ExternalProjectObject,.)" flag="ExternalProjectObject">
+				<value-of select="cfn:picklistMessage(.,'ExternalProjectObject')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalProjectIdentifier.Check" test="true()" flag="ExternalProjectIdentifier">ExternalProjectIdentifier.NotEmpty, ExternalProjectIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2517,7 +3467,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalSiteObject.Check" test="true()" flag="ExternalSiteObject">ExternalSiteObject.NotEmpty
+			<iso:assert id="Facility.ExternalProjectIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalProjectIdentifier',ExternalProjectIdentifier,.)" flag="ExternalProjectIdentifier">
+				<value-of select="cfn:picklistMessage(.,'ExternalProjectIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalSiteObject.Check" test="true()" flag="ExternalSiteObject">ExternalSiteObject.NotEmpty, ExternalSiteObject.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2528,7 +3484,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalSiteIdentifier.Check" test="true()" flag="ExternalSiteIdentifier">ExternalSiteIdentifier.NotEmpty
+			<iso:assert id="Facility.ExternalSiteObject.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalSiteObject',ExternalSiteObject,.)" flag="ExternalSiteObject">
+				<value-of select="cfn:picklistMessage(.,'ExternalSiteObject')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalSiteIdentifier.Check" test="true()" flag="ExternalSiteIdentifier">ExternalSiteIdentifier.NotEmpty, ExternalSiteIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2539,7 +3501,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalFacilityObject.Check" test="true()" flag="ExternalFacilityObject">ExternalFacilityObject.NotEmpty
+			<iso:assert id="Facility.ExternalSiteIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalSiteIdentifier',ExternalSiteIdentifier,.)" flag="ExternalSiteIdentifier">
+				<value-of select="cfn:picklistMessage(.,'ExternalSiteIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalFacilityObject.Check" test="true()" flag="ExternalFacilityObject">ExternalFacilityObject.NotEmpty, ExternalFacilityObject.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2550,13 +3518,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Facility.ExternalFacilityIdentifier.Check" test="true()" flag="ExternalFacilityIdentifier">ExternalFacilityIdentifier.NotEmpty
+			<iso:assert id="Facility.ExternalFacilityObject.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalFacilityObject',ExternalFacilityObject,.)" flag="ExternalFacilityObject">
+				<value-of select="cfn:picklistMessage(.,'ExternalFacilityObject')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Facility.ExternalFacilityIdentifier.Check" test="true()" flag="ExternalFacilityIdentifier">ExternalFacilityIdentifier.NotEmpty, ExternalFacilityIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Facility.ExternalFacilityIdentifier.NotEmpty" test="cfn:validStringOrNA(ExternalFacilityIdentifier)" flag="ExternalFacilityIdentifier">
 				<value-of select="cfn:notEmptyMessage(.,'ExternalFacilityIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Facility.ExternalFacilityIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExternalFacilityIdentifier',ExternalFacilityIdentifier,.)" flag="ExternalFacilityIdentifier">
+				<value-of select="cfn:picklistMessage(.,'ExternalFacilityIdentifier')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2581,7 +3561,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.Created"/>
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Category"/>
-			<iso:report id="Floor.Elevation.Check" test="true()" flag="Elevation">Floor.Elevation.ValidNumberOrNA
+			<iso:report id="Floor.Elevation.Check" test="true()" flag="Elevation">Floor.Elevation.ValidNumberOrNA, Floor.Elevation.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2592,13 +3572,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Floor.Height.Check" test="true()" flag="Height">Floor.Height.ZeroOrGreaterOrNA
+			<iso:assert id="Floor.Elevation.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Elevation',Elevation,.)" flag="Elevation">
+				<value-of select="cfn:picklistMessage(.,'Elevation')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Floor.Height.Check" test="true()" flag="Height">Floor.Height.ZeroOrGreaterOrNA, Floor.Height.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Floor.Height.ZeroOrGreaterOrNA" test="cfn:validNumberZeroOrGreater(Height)" flag="Height">
 				<value-of select="cfn:notEmptyNumberMessage(.,'Height')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Floor.Height.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Height',Height,.)" flag="Height">
+				<value-of select="cfn:picklistMessage(.,'Height')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2622,7 +3614,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Category"/>
 			<iso:extends rule="COBie.Abstract.Name"/>
-			<iso:report id="Space.FloorName.Check" test="true()" flag="FloorName">FloorName.NotNull, FloorName.CrossReference
+			<iso:report id="Space.FloorName.Check" test="true()" flag="FloorName">FloorName.NotNull, FloorName.CrossReference, FloorName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2633,13 +3625,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Space.FloorName.CrossReference" test="key('FloorKey',FloorName)" flag="FloorName">
+			<iso:assert id="Space.FloorName.CrossReference" test="key('FloorKey',normalize-space(lower-case(FloorName)))" flag="FloorName">
 				<value-of select="cfn:foreignKeyMessage(.,'FloorName','Floor','Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Space.Description.Check" test="true()" flag="Description">Description.NotNull
+			<iso:assert id="Space.FloorName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'FloorName',FloorName,.)" flag="FloorName">
+				<value-of select="cfn:picklistMessage(.,'FloorName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Space.Description.Check" test="true()" flag="Description">Description.NotNull, Description.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2650,7 +3648,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Space.RoomTag.Check" test="true()" flag="RoomTag">RoomTag.NotEmpty
+			<iso:assert id="Space.Description.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Description',Description,.)" flag="Description">
+				<value-of select="cfn:picklistMessage(.,'Description')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Space.RoomTag.Check" test="true()" flag="RoomTag">RoomTag.NotEmpty, RoomTag.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2661,7 +3665,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Space.UsableHeight.Check" test="true()" flag="UsableHeight">UsableHeight.ZeroOrGreaterOrNA
+			<iso:assert id="Space.RoomTag.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'RoomTag',RoomTag,.)" flag="RoomTag">
+				<value-of select="cfn:picklistMessage(.,'RoomTag')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Space.UsableHeight.Check" test="true()" flag="UsableHeight">UsableHeight.ZeroOrGreaterOrNA, UsableHeight.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2672,7 +3682,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Space.GrossArea.Check" test="true()" flag="GrossArea">GrossArea.ZeroOrGreaterOrNA
+			<iso:assert id="Space.UsableHeight.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'UsableHeight',UsableHeight,.)" flag="UsableHeight">
+				<value-of select="cfn:picklistMessage(.,'UsableHeight')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Space.GrossArea.Check" test="true()" flag="GrossArea">GrossArea.ZeroOrGreaterOrNA, GrossArea.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2683,13 +3699,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Space.NetArea.Check" test="true()" flag="NetArea">NetArea.ZeroOrGreaterOrNA
+			<iso:assert id="Space.GrossArea.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'GrossArea',GrossArea,.)" flag="GrossArea">
+				<value-of select="cfn:picklistMessage(.,'GrossArea')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Space.NetArea.Check" test="true()" flag="NetArea">NetArea.ZeroOrGreaterOrNA, NetArea.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Space.NetArea.ZeroOrGreaterOrNA" test="cfn:validNumberZeroOrGreater(NetArea)" flag="NetArea">
 				<value-of select="cfn:notEmptyNumberMessage(.,'NetArea')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Space.NetArea.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'NetArea',NetArea,.)" flag="NetArea">
+				<value-of select="cfn:picklistMessage(.,'NetArea')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2703,13 +3731,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.Category"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
 			<iso:extends rule="COBie.Abstract.External"/>
-			<iso:report id="Zone.Name.Check" test="true()" flag="Name">Name.NotNull
+			<iso:report id="Zone.Name.Check" test="true()" flag="Name">Name.NotNull, Name.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Zone.Name.NotNull" test="cfn:validString(@Name)" flag="Name">
 				<value-of select="cfn:notNullMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Zone.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.)" flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2725,7 +3759,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Zone.SpaceNames.Check" test="true()" flag="SpaceNames">SpaceNames.NotNull, SpaceNames.CrossReference
+			<iso:report id="Zone.SpaceNames.Check" test="true()" flag="SpaceNames">SpaceNames.NotNull, SpaceNames.CrossReference, SpaceNames.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2738,6 +3772,12 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			</iso:assert>
 			<iso:assert id="Zone.SpaceNames.CrossReference" test="cfn:delimListInKeys(SpaceNames,'Space',/)" flag="SpaceNames">
 				<value-of select="cfn:foreignKeysMessage(.,'SpaceNames','Space','Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Zone.SpaceNames.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'SpaceNames',SpaceNames,.)" flag="SpaceNames">
+				<value-of select="cfn:picklistMessage(.,'SpaceNames')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2766,13 +3806,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Type.Component.AComponentForEachType" test="some $comp in ../../Components/Component satisfies ($comp/TypeName=@Name)" flag="Name">
+			<iso:assert id="Type.Component.AComponentForEachType" test="some $comp in ../../Components/Component satisfies (normalize-space($comp/TypeName)=normalize-space(@Name))" flag="Name">
 				<name/>.<value-of select="@Name"/>: All Types must have at least one associated Component
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.AssetType.Check" test="true()" flag="AssetType">AssetType.NotNull
+			<iso:report id="Type.AssetType.Check" test="true()" flag="AssetType">AssetType.NotNull, AssetType.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2783,18 +3823,30 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Manufacturer.Check" test="true()" flag="Manufacturer">Manufacturer.CrossReferenceOrNA(Contact Sheet)
+			<iso:assert id="Type.AssetType.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AssetType',AssetType,.)" flag="AssetType">
+				<value-of select="cfn:picklistMessage(.,'AssetType')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Manufacturer.Check" test="true()" flag="Manufacturer">Manufacturer.CrossReferenceOrNA(Contact Sheet), Manufacturer.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Type.Manufacturer.CrossReferenceOrNA" test="key('ContactKey',Manufacturer) or Manufacturer='n/a'" flag="Manufacturer">
+			<iso:assert id="Type.Manufacturer.CrossReferenceOrNA" test="key('ContactKey',normalize-space(lower-case(Manufacturer))) or Manufacturer='n/a'" flag="Manufacturer">
 				<value-of select="cfn:foreignKeyMessage(.,'Manufacturer','Contact','Email')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.ModelNumber.Check" test="true()" flag="ModelNumber">ModelNumber.NotEmpty
+			<iso:assert id="Type.Manufacturer.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Manufacturer',Manufacturer,.)" flag="Manufacturer">
+				<value-of select="cfn:picklistMessage(.,'Manufacturer')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.ModelNumber.Check" test="true()" flag="ModelNumber">ModelNumber.NotEmpty, ModelNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2805,18 +3857,30 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyGuarantorParts.Check" test="true()" flag="WarrantyGuarantorParts">WarrantyGuarantorParts.CrossReferenceOrNA (Contact Sheet)
+			<iso:assert id="Type.ModelNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ModelNumber',ModelNumber,.)" flag="ModelNumber">
+				<value-of select="cfn:picklistMessage(.,'ModelNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyGuarantorParts.Check" test="true()" flag="WarrantyGuarantorParts">WarrantyGuarantorParts.CrossReferenceOrNA (Contact Sheet), WarrantyGuarantorParts.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Type.WarrantyGuarantorParts.CrossReferenceOrNA" test="key('ContactKey',WarrantyGuarantorParts) or WarrantyGuarantorParts='n/a'" flag="WarrantyGuarantorParts">
+			<iso:assert id="Type.WarrantyGuarantorParts.CrossReferenceOrNA" test="key('ContactKey',normalize-space(lower-case(WarrantyGuarantorParts))) or WarrantyGuarantorParts='n/a'" flag="WarrantyGuarantorParts">
 				<value-of select="cfn:foreignKeyMessage(.,'WarrantyGuarantorParts','Contact','Email')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyDurationParts.Check" test="true()" flag="WarrantyDurationParts">WarrantyDurationParts.validNumberZeroOrGreaterOrNA
+			<iso:assert id="Type.WarrantyGuarantorParts.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyGuarantorParts',WarrantyGuarantorParts,.)" flag="WarrantyGuarantorParts">
+				<value-of select="cfn:picklistMessage(.,'WarrantyGuarantorParts')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyDurationParts.Check" test="true()" flag="WarrantyDurationParts">WarrantyDurationParts.validNumberZeroOrGreaterOrNA, WarrantyDurationParts.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2827,18 +3891,30 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyGuarantorLabor.Check" test="true()" flag="WarrantyGuarantorLabor">WarrantyGuarantorLabor.CrossReferenceOrNA (Contact Sheet)
+			<iso:assert id="Type.WarrantyDurationParts.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyDurationParts',WarrantyDurationParts,.)" flag="WarrantyDurationParts">
+				<value-of select="cfn:picklistMessage(.,'WarrantyDurationParts')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyGuarantorLabor.Check" test="true()" flag="WarrantyGuarantorLabor">WarrantyGuarantorLabor.CrossReferenceOrNA (Contact Sheet), WarrantyGuarantorLabor.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
-			<iso:assert id="Type.WarrantyGuarantorLabor.CrossReferenceOrNA" test="key('ContactKey',WarrantyGuarantorLabor) or WarrantyGuarantorLabor='n/a'" flag="WarrantyGuarantorLabor">
+			<iso:assert id="Type.WarrantyGuarantorLabor.CrossReferenceOrNA" test="key('ContactKey',normalize-space(lower-case(WarrantyGuarantorLabor))) or WarrantyGuarantorLabor='n/a'" flag="WarrantyGuarantorLabor">
 				<value-of select="cfn:foreignKeyMessage(.,'WarrantyGuarantorLabor,','Contact','Email')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyDurationLabor.Check" test="true()" flag="WarrantyDurationLabor">WarrantyDurationLabor.ZeroOrGreaterOrNA
+			<iso:assert id="Type.WarrantyGuarantorLabor.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyGuarantorLabor',WarrantyGuarantorLabor,.)" flag="WarrantyGuarantorLabor">
+				<value-of select="cfn:picklistMessage(.,'WarrantyGuarantorLabor')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyDurationLabor.Check" test="true()" flag="WarrantyDurationLabor">WarrantyDurationLabor.ZeroOrGreaterOrNA, WarrantyDurationLabor.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2849,7 +3925,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyDurationUnit.Check" test="true()" flag="WarrantyDurationUnit">WarrantyDurationUnit.NotEmpty
+			<iso:assert id="Type.WarrantyDurationLabor.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyDurationLabor',WarrantyDurationLabor,.)" flag="WarrantyDurationLabor">
+				<value-of select="cfn:picklistMessage(.,'WarrantyDurationLabor')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyDurationUnit.Check" test="true()" flag="WarrantyDurationUnit">WarrantyDurationUnit.NotEmpty, WarrantyDurationUnit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2860,7 +3942,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.ReplacementCost.Check" test="true()" flag="ReplacementCost">ReplacementCost.ZeroOrGreaterOrNAr
+			<iso:assert id="Type.WarrantyDurationUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyDurationUnit',WarrantyDurationUnit,.)" flag="WarrantyDurationUnit">
+				<value-of select="cfn:picklistMessage(.,'WarrantyDurationUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.ReplacementCost.Check" test="true()" flag="ReplacementCost">ReplacementCost.ZeroOrGreaterOrNA, ReplacementCost.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2871,7 +3959,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.ExpectedLife.Check" test="true()" flag="ExpectedLife">ExpectedLife.ZeroOrGreaterOrNA
+			<iso:assert id="Type.ReplacementCost.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ReplacementCost',ReplacementCost,.)" flag="ReplacementCost">
+				<value-of select="cfn:picklistMessage(.,'ReplacementCost')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.ExpectedLife.Check" test="true()" flag="ExpectedLife">ExpectedLife.ZeroOrGreaterOrNA, ExpectedLife.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2882,7 +3976,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.DurationUnit.Check" test="true()" flag="DurationUnit">DurationUnit.NotNull
+			<iso:assert id="Type.ExpectedLife.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ExpectedLife',ExpectedLife,.)" flag="ExpectedLife">
+				<value-of select="cfn:picklistMessage(.,'ExpectedLife')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.DurationUnit.Check" test="true()" flag="DurationUnit">DurationUnit.NotNull, DurationUnit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2893,7 +3993,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.WarrantyDescription.Check" test="true()" flag="WarrantyDescription">WarrantyDescription.NotEmpty
+			<iso:assert id="Type.DurationUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'DurationUnit',DurationUnit,.)" flag="DurationUnit">
+				<value-of select="cfn:picklistMessage(.,'DurationUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.WarrantyDescription.Check" test="true()" flag="WarrantyDescription">WarrantyDescription.NotEmpty, WarrantyDescription.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2904,7 +4010,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.NominalLength.Check" test="true()" flag="NominalLength">NominalLength.ZeroOrGreaterOrNA
+			<iso:assert id="Type.WarrantyDescription.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyDescription',WarrantyDescription,.)" flag="WarrantyDescription">
+				<value-of select="cfn:picklistMessage(.,'WarrantyDescription')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.NominalLength.Check" test="true()" flag="NominalLength">NominalLength.ZeroOrGreaterOrNA, NominalLength.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2915,7 +4027,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.NominalWidth.Check" test="true()" flag="NominalWidth">NominalWidth.ZeroOrGreaterOrNA"
+			<iso:assert id="Type.NominalLength.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'NominalLength',NominalLength,.)" flag="NominalLength">
+				<value-of select="cfn:picklistMessage(.,'NominalLength')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.NominalWidth.Check" test="true()" flag="NominalWidth">NominalWidth.ZeroOrGreaterOrNA, NominalWidth.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2926,7 +4044,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.NominalHeight.Check" test="true()" flag="NominalHeight">NominalHeight.ZeroOrGreater
+			<iso:assert id="Type.NominalWidth.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'NominalWidth',NominalWidth,.)" flag="NominalWidth">
+				<value-of select="cfn:picklistMessage(.,'NominalWidth')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.NominalHeight.Check" test="true()" flag="NominalHeight">NominalHeight.ZeroOrGreater, NominalHeight.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2937,7 +4061,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.ModelReference.Check" test="true()" flag="ModelReference">ModelReference.NotEmpty
+			<iso:assert id="Type.NominalHeight.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'NominalHeight',NominalHeight,.)" flag="NominalHeight">
+				<value-of select="cfn:picklistMessage(.,'NominalHeight')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.ModelReference.Check" test="true()" flag="ModelReference">ModelReference.NotEmpty, ModelReference.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2948,7 +4078,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Shape.Check" test="true()" flag="Shape">Shape.NotEmpty
+			<iso:assert id="Type.ModelReference.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ModelReference',ModelReference,.)" flag="ModelReference">
+				<value-of select="cfn:picklistMessage(.,'ModelReference')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Shape.Check" test="true()" flag="Shape">Shape.NotEmpty, Shape.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2959,7 +4095,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Size.Check" test="true()" flag="Size">Size.NotEmpty
+			<iso:assert id="Type.Shape.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Shape',Shape,.)" flag="Shape">
+				<value-of select="cfn:picklistMessage(.,'Shape')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Size.Check" test="true()" flag="Size">Size.NotEmpty, Size.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2970,7 +4112,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Color.Check" test="true()" flag="Color">Color.NotEmpty
+			<iso:assert id="Type.Size.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Size',Size,.)" flag="Size">
+				<value-of select="cfn:picklistMessage(.,'Size')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Color.Check" test="true()" flag="Color">Color.NotEmpty, Color.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2981,7 +4129,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Finish.Check" test="true()" flag="Finish">Finish.NotEmpty
+			<iso:assert id="Type.Color.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Color',Color,.)" flag="Color">
+				<value-of select="cfn:picklistMessage(.,'Color')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Finish.Check" test="true()" flag="Finish">Finish.NotEmpty, Finish.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -2992,7 +4146,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Grade.Check" test="true()" flag="Grade">Grade.NotEmpty
+			<iso:assert id="Type.Finish.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Finish',Finish,.)" flag="Finish">
+				<value-of select="cfn:picklistMessage(.,'Finish')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Grade.Check" test="true()" flag="Grade">Grade.NotEmpty, Grade.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3003,7 +4163,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Material.Check" test="true()" flag="Material">Material.NotEmpty
+			<iso:assert id="Type.Grade.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Grade',Grade,.)" flag="Grade">
+				<value-of select="cfn:picklistMessage(.,'Grade')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Material.Check" test="true()" flag="Material">Material.NotEmpty, Material.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3014,7 +4180,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Constituents.Check" test="true()" flag="Constituents">Constituents.NotEmpty
+			<iso:assert id="Type.Material.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Material',Material,.)" flag="Material">
+				<value-of select="cfn:picklistMessage(.,'Material')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Constituents.Check" test="true()" flag="Constituents">Constituents.NotEmpty, Constituents.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3025,7 +4197,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.Features.Check" test="true()" flag="Features">Features.NotEmpty
+			<iso:assert id="Type.Constituents.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Constituents',Constituents,.)" flag="Constituents">
+				<value-of select="cfn:picklistMessage(.,'Constituents')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.Features.Check" test="true()" flag="Features">Features.NotEmpty, Features.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3036,7 +4214,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.AccessibilityPerformance.Check" test="true()" flag="AccessibilityPerformance">AccessibilityPerformance.NotEmpty
+			<iso:assert id="Type.Features.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Features',Features,.)" flag="Features">
+				<value-of select="cfn:picklistMessage(.,'Features')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.AccessibilityPerformance.Check" test="true()" flag="AccessibilityPerformance">AccessibilityPerformance.NotEmpty, AccessibilityPerformance.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3047,7 +4231,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.CodePerformance.Check" test="true()" flag="CodePerformance">CodePerformance.NotEmpty
+			<iso:assert id="Type.AccessibilityPerformance.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AccessibilityPerformance',AccessibilityPerformance,.)" flag="AccessibilityPerformance">
+				<value-of select="cfn:picklistMessage(.,'AccessibilityPerformance')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.CodePerformance.Check" test="true()" flag="CodePerformance">CodePerformance.NotEmpty, CodePerformance.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3058,13 +4248,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Type.SustainabilityPerformance.Check" test="true()" flag="SustainabilityPerformance">SustainabilityPerformance.NotEmpty
+			<iso:assert id="Type.CodePerformance.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'CodePerformance',CodePerformance,.)" flag="CodePerformance">
+				<value-of select="cfn:picklistMessage(.,'CodePerformance')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Type.SustainabilityPerformance.Check" test="true()" flag="SustainabilityPerformance">SustainabilityPerformance.NotEmpty, SustainabilityPerformance.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Type.SustainabilityPerformance.NotEmpty" test="cfn:validStringOrNA(SustainabilityPerformance)" flag="SustainabilityPerformance">
 				<value-of select="cfn:notEmptyMessage(.,'SustainabilityPerformance')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Type.SustainabilityPerformance.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'SustainabilityPerformance',SustainabilityPerformance,.)" flag="SustainabilityPerformance">
+				<value-of select="cfn:picklistMessage(.,'SustainabilityPerformance')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3087,7 +4289,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.Created"/>
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Name"/>
-			<iso:report id="Component.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference (Type Worksheet)
+			<iso:report id="Component.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference (Type Worksheet), TypeName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3098,13 +4300,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Component.TypeName.CrossReference" test="key('TypeKey',TypeName)" flag="TypeName">
+			<iso:assert id="Component.TypeName.CrossReference" test="key('TypeKey',normalize-space(lower-case(TypeName)))" flag="TypeName">
 				<value-of select="cfn:foreignKeyMessage(.,'TypeName','Type','Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.Space.Check" test="true()" flag="Space">Space.NotNull, Space.CrossReference (Component Worksheet)
+			<iso:assert id="Component.TypeName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TypeName',TypeName,.)" flag="TypeName">
+				<value-of select="cfn:picklistMessage(.,'TypeName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.Space.Check" test="true()" flag="Space">Space.NotNull, Space.CrossReference (Component Worksheet), Space.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3121,7 +4329,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.Description.Check" test="true()" flag="Description">Description.NotNull
+			<iso:assert id="Component.Space.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Space',Space,.)" flag="Space">
+				<value-of select="cfn:picklistMessage(.,'Space')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.Description.Check" test="true()" flag="Description">Description.NotNull, Description.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3132,7 +4346,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.SerialNumber.Check" test="true()" flag="SerialNumber">SerialNumber.NotEmpty
+			<iso:assert id="Component.Description.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Description',Description,.)" flag="Description">
+				<value-of select="cfn:picklistMessage(.,'Description')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.SerialNumber.Check" test="true()" flag="SerialNumber">SerialNumber.NotEmpty, SerialNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3143,7 +4363,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.InstallationDate.Check" test="true()" flag="InstallationDate">InstallationDate.NotEmpty
+			<iso:assert id="Component.SerialNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'SerialNumber',SerialNumber,.)" flag="SerialNumber">
+				<value-of select="cfn:picklistMessage(.,'SerialNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.InstallationDate.Check" test="true()" flag="InstallationDate">InstallationDate.NotEmpty, InstallationDate.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3154,7 +4380,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.WarrantyStartDate.Check" test="true()" flag="WarrantyStartDate">WarrantyStartDate.NotEmpty
+			<iso:assert id="Component.InstallationDate.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'InstallationDate',InstallationDate,.)" flag="InstallationDate">
+				<value-of select="cfn:picklistMessage(.,'InstallationDate')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.WarrantyStartDate.Check" test="true()" flag="WarrantyStartDate">WarrantyStartDate.NotEmpty, WarrantyStartDate.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3165,7 +4397,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.TagNumber.Check" test="true()" flag="TagNumber">TagNumber.NotEmpty
+			<iso:assert id="Component.WarrantyStartDate.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'WarrantyStartDate',WarrantyStartDate,.)" flag="WarrantyStartDate">
+				<value-of select="cfn:picklistMessage(.,'WarrantyStartDate')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.TagNumber.Check" test="true()" flag="TagNumber">TagNumber.NotEmpty, TagNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3176,7 +4414,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.BarCode.Check" test="true()" flag="BarCode">BarCode.NotEmpty
+			<iso:assert id="Component.TagNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TagNumber',TagNumber,.)" flag="TagNumber">
+				<value-of select="cfn:picklistMessage(.,'TagNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.BarCode.Check" test="true()" flag="BarCode">BarCode.NotEmpty, BarCode.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3187,13 +4431,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Component.AssetIdentifier.Check" test="true()" flag="AssetIdentifier">AssetIdentifier.NotEmpty
+			<iso:assert id="Component.BarCode.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'BarCode',BarCode,.)" flag="BarCode">
+				<value-of select="cfn:picklistMessage(.,'BarCode')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Component.AssetIdentifier.Check" test="true()" flag="AssetIdentifier">AssetIdentifier.NotEmpty, AssetIdentifier.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Component.AssetIdentifier.NotEmpty" test="cfn:validStringOrNA(AssetIdentifier)" flag="AssetIdentifier">
 				<value-of select="cfn:notEmptyMessage(.,'AssetIdentifier')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Component.AssetIdentifier.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AssetIdentifier',AssetIdentifier,.)" flag="AssetIdentifier">
+				<value-of select="cfn:picklistMessage(.,'AssetIdentifier')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3218,7 +4474,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="System.Name.Check" test="true()" flag="Name"> Name.NotNull
+			<iso:report id="System.Name.Check" test="true()" flag="Name"> Name.NotNull, Name.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3229,7 +4485,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="System.ComponentNames.Check" test="true()" flag="ComponentNames">ComponentNames.NotNull, ComponentNames.CrossReference
+			<iso:assert id="System.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.)" flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="System.ComponentNames.Check" test="true()" flag="ComponentNames">ComponentNames.NotNull, ComponentNames.CrossReference, ComponentNames.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3242,6 +4504,12 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			</iso:assert>
 			<iso:assert id="System.ComponentNames.CrossReference" test="cfn:delimListInKeys(ComponentNames,'Component',/)" flag="ComponentNames">
 				<value-of select="cfn:foreignKeyMessage(.,'ComponentNames','Component','Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="System.ComponentNames.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ComponentNames',ComponentNames,.)" flag="ComponentNames">
+				<value-of select="cfn:picklistMessage(.,'ComponentNames')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3272,7 +4540,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Assembly.ParentName.Check" test="true()" flag="ParentName">ParentName.NotNull, ParentName.CrossReference
+			<iso:report id="Assembly.ParentName.Check" test="true()" flag="ParentName">ParentName.NotNull, ParentName.CrossReference, ParentName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3283,13 +4551,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
+			<iso:assert id="Assembly.ParentName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ParentName',ParentName,.)" flag="ParentName">
+				<value-of select="cfn:picklistMessage(.,'ParentName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
 			<iso:assert id="Assembly.ParentName.Reference" test="cfn:keyMatch(SheetName,ParentName,/)" flag="ParentName">
 				<value-of select="cfn:foreignKeyMessage(.,'ParentName',SheetName,'Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Assembly.ChildNames.Check" test="true()" flag="ChildNames">ChildNames.NotNull, ChildNames.CrossReference
+			<iso:report id="Assembly.ChildNames.Check" test="true()" flag="ChildNames">ChildNames.NotNull, ChildNames.CrossReference, ChildNames.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3306,13 +4580,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Assembly.AssemblyType.Check" test="true()" flag="AssemblyType">AssemblyType.NotNull
+			<iso:assert id="Assembly.ChildNames.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ChildNames',ChildNames,.)" flag="ChildNames">
+				<value-of select="cfn:picklistMessage(.,'ChildNames')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Assembly.AssemblyType.Check" test="true()" flag="AssemblyType">AssemblyType.NotNull, AssemblyType.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Assembly.AssemblyType.NotNull" test="cfn:validString(AssemblyType)" flag="AssemblyType">
 				<value-of select="cfn:notNullMessage(.,'AssemblyType')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Assembly.AssemblyType.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AssemblyType',AssemblyType,.)" flag="AssemblyType">
+				<value-of select="cfn:picklistMessage(.,'AssemblyType')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3326,13 +4612,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
 			<iso:extends rule="COBie.Abstract.Name"/>
-			<iso:report id="Connection.ConnectionType.Check" test="true()" flag="ConnectionType">ConnectionType.NotNull
+			<iso:report id="Connection.ConnectionType.Check" test="true()" flag="ConnectionType">ConnectionType.NotNull, ConnectionType.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Connection.ConnectionType.NotNull" test="cfn:validString(ConnectionType)" flag="ConnectionType">
 				<value-of select="cfn:notNullMessage(.,'ConnectionType')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Connection.ConnectionType.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ConnectionType',ConnectionType,.)" flag="ConnectionType">
+				<value-of select="cfn:picklistMessage(.,'ConnectionType')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3353,7 +4645,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Connection.RowName1.Check" test="true()" flag="RowName1">RowName1.NotNull, RowName1.CrossReference
+			<iso:report id="Connection.RowName1.Check" test="true()" flag="RowName1">RowName1.NotNull, RowName1.CrossReference, RowName1.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3370,7 +4662,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Connection.RowName2.Check" test="true()" flag="RowName2">RowName2.NotNull, RowName2.CrossReference
+			<iso:assert id="Connection.RowName1.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'RowName1',RowName1,.)" flag="RowName1">
+				<value-of select="cfn:picklistMessage(.,'RowName1')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Connection.RowName2.Check" test="true()" flag="RowName2">RowName2.NotNull, RowName2.CrossReference, RowName2.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3387,7 +4685,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Connection.RealizingElement.Check" test="true()" flag="RealizingElement">RealizingElement.NotEmpty, RealizingElement.CrossReference
+			<iso:assert id="Connection.RowName2.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'RowName2',RowName2,.)" flag="RowName2">
+				<value-of select="cfn:picklistMessage(.,'RowName2')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Connection.RealizingElement.Check" test="true()" flag="RealizingElement">RealizingElement.NotEmpty, RealizingElement.CrossReference, RealizingElement.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3404,7 +4708,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Connection.PortName1.Check" test="true()" flag="PortName1">PortName1.NotNull
+			<iso:assert id="Connection.RealizingElement.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'RealizingElement',RealizingElement,.)" flag="RealizingElement">
+				<value-of select="cfn:picklistMessage(.,'RealizingElement')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Connection.PortName1.Check" test="true()" flag="PortName1">PortName1.NotNull, PortName1.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3415,13 +4725,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Connection.PortName2.Check" test="true()" flag="PortName2">PortName2.NotNull
+			<iso:assert id="Connection.PortName1.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'PortName1',PortName1,.)" flag="PortName1">
+				<value-of select="cfn:picklistMessage(.,'PortName1')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Connection.PortName2.Check" test="true()" flag="PortName2">PortName2.NotNull, PortName2.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Connection.PortName2.NotNull" test="cfn:validString(PortName2)" flag="PortName2">
 				<value-of select="cfn:notNullMessage(.,'PortName2')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Connection.PortName2.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'PortName2',PortName2,.)" flag="PortName2">
+				<value-of select="cfn:picklistMessage(.,'PortName2')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3435,12 +4757,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
 			<iso:extends rule="COBie.Abstract.Category"/>
-			<iso:report id="Spare.Name.Check" test="true()" flag="Name">Name.NotNull<xsl:element name="location">
+			<iso:report id="Spare.Name.Check" test="true()" flag="Name">Name.NotNull, Name.Picklist
+			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Spare.Name.NotNull" test="cfn:validString(@Name)" flag="Name">
 				<value-of select="cfn:notNullMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Spare.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.)" flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3456,7 +4785,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Spare.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference
+			<iso:report id="Spare.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference, TypeName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3467,13 +4796,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Spare.TypeName.CrossReference" test="key('TypeKey',TypeName)" flag="TypeName">
+			<iso:assert id="Spare.TypeName.CrossReference" test="key('TypeKey',normalize-space(lower-case(TypeName)))" flag="TypeName">
 				<value-of select="cfn:foreignKeyMessage(.,'TypeName','Type','Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Spare.Suppliers.Check" test="true()" flag="Suppliers">Suppliers.NotNull, Suppliers.CrossReference (Contact Sheet)
+			<iso:assert id="Spare.TypeName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TypeName',TypeName,.)" flag="TypeName">
+				<value-of select="cfn:picklistMessage(.,'TypeName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Spare.Suppliers.Check" test="true()" flag="Suppliers">Suppliers.NotNull, Suppliers.CrossReference (Contact Sheet), Suppliers.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3490,7 +4825,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Spare.SetNumber.Check" test="true()" flag="SetNumber">SetNumber.NotEmpty
+			<iso:assert id="Spare.Suppliers.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Suppliers',Suppliers,.)" flag="Suppliers">
+				<value-of select="cfn:picklistMessage(.,'Suppliers')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Spare.SetNumber.Check" test="true()" flag="SetNumber">SetNumber.NotEmpty, SetNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3501,13 +4842,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Spare.PartNumber.Check" test="true()" flag="PartNumber">PartNumber.NotEmpty
+			<iso:assert id="Spare.SetNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'SetNumber',SetNumber,.)" flag="SetNumber">
+				<value-of select="cfn:picklistMessage(.,'SetNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Spare.PartNumber.Check" test="true()" flag="PartNumber">PartNumber.NotEmpty, PartNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Spare.PartNumber.NotEmpty" test="cfn:validStringOrNA(PartNumber)" flag="PartNumber">
 				<value-of select="cfn:notEmptyMessage(.,'PartNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Spare.PartNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'PartNumber',PartNumber,.)" flag="PartNumber">
+				<value-of select="cfn:picklistMessage(.,'PartNumber')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3531,13 +4884,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			<iso:extends rule="COBie.Abstract.External"/>
 			<iso:extends rule="COBie.Abstract.Description"/>
 			<iso:extends rule="COBie.Abstract.Category"/>
-			<iso:report id="Job.Name.Check" test="true()" flag="Name">Name.NotNull
+			<iso:report id="Job.Name.Check" test="true()" flag="Name">Name.NotNull, Name.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Job.Name.NotNull" test="cfn:validString(@Name)" flag="Name">
 				<value-of select="cfn:notNullMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Job.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.)" flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3553,7 +4912,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.Status.Check" test="true()" flag="Status">Status.NotNull
+			<iso:report id="Job.Status.Check" test="true()" flag="Status">Status.NotNull, Status.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3564,7 +4923,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference
+			<iso:assert id="Job.Status.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Status',Status,.)" flag="Status">
+				<value-of select="cfn:picklistMessage(.,'Status')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.TypeName.Check" test="true()" flag="TypeName">TypeName.NotNull, TypeName.CrossReference, TypeName.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3575,13 +4940,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:assert id="Job.TypeName.CrossReference" test="key('TypeKey',TypeName)" flag="TypeName">
+			<iso:assert id="Job.TypeName.CrossReference" test="key('TypeKey',normalize-space(lower-case(TypeName)))" flag="TypeName">
 				<value-of select="cfn:foreignKeyMessage(.,'TypeName','Type','Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.Duration.Check" test="true()" flag="Duration">Duration.NotEmpty
+			<iso:assert id="Job.TypeName.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TypeName',TypeName,.)" flag="TypeName">
+				<value-of select="cfn:picklistMessage(.,'TypeName')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.Duration.Check" test="true()" flag="Duration">Duration.NotEmpty, Duration.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3592,7 +4963,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.DurationUnit.Check" test="true()" flag="DurationUnit">DurationUnit.NotEmpty
+			<iso:assert id="Job.Duration.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Duration',Duration,.)" flag="Duration">
+				<value-of select="cfn:picklistMessage(.,'Duration')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.DurationUnit.Check" test="true()" flag="DurationUnit">DurationUnit.NotEmpty, DurationUnit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3603,7 +4980,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.Start.Check" test="true()" flag="Start">Start.NotEmpty
+			<iso:assert id="Job.DurationUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'DurationUnit',DurationUnit,.)" flag="DurationUnit">
+				<value-of select="cfn:picklistMessage(.,'DurationUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.Start.Check" test="true()" flag="Start">Start.NotEmpty, Start.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3614,7 +4997,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.TaskStartUnit.Check" test="true()" flag="TaskStartUnit">TaskStartUnit.NotEmpty
+			<iso:assert id="Job.Start.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Start',Start,.)" flag="Start">
+				<value-of select="cfn:picklistMessage(.,'Start')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.TaskStartUnit.Check" test="true()" flag="TaskStartUnit">TaskStartUnit.NotEmpty, TaskStartUnit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3625,7 +5014,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.Frequency.Check" test="true()" flag="Frequency">Frequency.NotEmpty
+			<iso:assert id="Job.TaskStartUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TaskStartUnit',TaskStartUnit,.)" flag="TaskStartUnit">
+				<value-of select="cfn:picklistMessage(.,'TaskStartUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.Frequency.Check" test="true()" flag="Frequency">Frequency.NotEmpty, Frequency.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3636,7 +5031,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.FrequencyUnit.Check" test="true()" flag="FrequencyUnit">FrequencyUnit.NotEmpty
+			<iso:assert id="Job.Frequency.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Frequency',Frequency,.)" flag="Frequency">
+				<value-of select="cfn:picklistMessage(.,'Frequency')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.FrequencyUnit.Check" test="true()" flag="FrequencyUnit">FrequencyUnit.NotEmpty, FrequencyUnit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3647,7 +5048,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.TaskNumber.Check" test="true()" flag="TaskNumber">TaskNumber.NotEmpty
+			<iso:assert id="Job.FrequencyUnit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'FrequencyUnit',FrequencyUnit,.)" flag="FrequencyUnit">
+				<value-of select="cfn:picklistMessage(.,'FrequencyUnit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.TaskNumber.Check" test="true()" flag="TaskNumber">TaskNumber.NotEmpty, TaskNumber.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3658,7 +5065,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.Priors.Check" test="true()" flag="Priors">Priors.NotEmpty
+			<iso:assert id="Job.TaskNumber.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'TaskNumber',TaskNumber,.)" flag="TaskNumber">
+				<value-of select="cfn:picklistMessage(.,'TaskNumber')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.Priors.Check" test="true()" flag="Priors">Priors.NotEmpty, Priors.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3669,7 +5082,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Job.ResourceNames.Check" test="true()" flag="ResourceNames">ResourceNames.NotEmpty, ResourceNames.CrossReference
+			<iso:assert id="Job.Priors.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Priors',Priors,.)" flag="Priors">
+				<value-of select="cfn:picklistMessage(.,'Priors')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Job.ResourceNames.Check" test="true()" flag="ResourceNames">ResourceNames.NotEmpty, ResourceNames.CrossReference, ResourceNames.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3682,6 +5101,12 @@ Get rid of "lite" keys.  Add category to Attribute key.
 			</iso:assert>
 			<iso:assert id="Job.ResourceNames.CrossReference" test="ResourceNames='n/a' or cfn:delimListInKeys(ResourceNames,'Resource',/)" flag="ResourceNames">
 				<value-of select="cfn:foreignKeyMessage(.,'ResourceNames','Resource','Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Job.ResourceNames.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ResourceNames',ResourceNames,.)" flag="ResourceNames">
+				<value-of select="cfn:picklistMessage(.,'ResourceNames')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3706,7 +5131,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.Name.Check" test="true()" flag="Name">Name.NotNull
+			<iso:report id="Document.Name.Check" test="true()" flag="Name">Name.NotNull, Name.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3717,7 +5142,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.ApprovalBy.Check" test="true()" flag="ApprovalBy">ApprovalBy.NotEmpty
+			<iso:assert id="Document.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.)" flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Document.ApprovalBy.Check" test="true()" flag="ApprovalBy">ApprovalBy.NotEmpty, ApprovalBy.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3728,13 +5159,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.Stage.Check" test="true()" flag="Stage">Stage.NotNull
+			<iso:assert id="Document.ApprovalBy.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'ApprovalBy',ApprovalBy,.)" flag="ApprovalBy">
+				<value-of select="cfn:picklistMessage(.,'ApprovalBy')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Document.Stage.Check" test="true()" flag="Stage">Stage.NotNull, Stage.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Document.Stage.NotNull" test="cfn:validString(Stage)" flag="Stage">
 				<value-of select="cfn:notNullMessage(.,'Stage')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Document.Stage.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Stage',Stage,.)" flag="Stage">
+				<value-of select="cfn:picklistMessage(.,'Stage')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3767,7 +5210,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.Directory.Check" test="true()" flag="Directory">Directory.NotEmpty
+			<iso:report id="Document.Directory.Check" test="true()" flag="Directory">Directory.NotEmpty, Directory.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3778,7 +5221,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.File.Check" test="true()" flag="File">File.NotEmpty
+			<iso:assert id="Document.Directory.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Directory',Directory,.)" flag="Directory">
+				<value-of select="cfn:picklistMessage(.,'Directory')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Document.File.Check" test="true()" flag="File">File.NotEmpty, File.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3789,13 +5238,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Document.Reference.Check" test="true()" flag="Reference">Reference.NotEmpty
+			<iso:assert id="Document.File.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'File',File,.)" flag="File">
+				<value-of select="cfn:picklistMessage(.,'File')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Document.Reference.Check" test="true()" flag="Reference">Reference.NotEmpty, Reference.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Document.Reference.NotEmpty" test="cfn:validStringOrNA(Reference)" flag="Reference">
 				<value-of select="cfn:notEmptyMessage(.,'Reference')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Document.Reference.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Reference',Reference,.)" flag="Reference">
+				<value-of select="cfn:picklistMessage(.,'Reference')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3820,13 +5281,19 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Attribute.Name.Check" test="true()" flag="Name">Name.NotNull
+			<iso:report id="Attribute.Name.Check" test="true()" flag="Name">Name.NotNull, Name.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Attribute.Name.NotNull" test="cfn:validString(@Name)" flag="Name">
 				<value-of select="cfn:notNullMessage(.,'Name')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Attribute.Name.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Name',@Name,.)" flag="Name">
+				<value-of select="cfn:picklistMessage(.,'Name')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3842,7 +5309,7 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Attribute.Value.Check" test="true()" flag="Value">Value.NotEmpty
+			<iso:report id="Attribute.Value.Check" test="true()" flag="Value">Value.NotEmpty, Value.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3853,7 +5320,13 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Attribute.Unit.Check" test="true()" flag="Unit">Unit.NotEmpty
+			<iso:assert id="Attribute.Value.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Value',Value,.)" flag="Value">
+				<value-of select="cfn:picklistMessage(.,'Value')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Attribute.Unit.Check" test="true()" flag="Unit">Unit.NotEmpty, Unit.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
@@ -3864,13 +5337,25 @@ Get rid of "lite" keys.  Add category to Attribute key.
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:assert>
-			<iso:report id="Attribute.AllowedValues.Check" test="true()" flag="AllowedValues">AllowedValues.NotEmpty
+			<iso:assert id="Attribute.Unit.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'Unit',Unit,.)" flag="Unit">
+				<value-of select="cfn:picklistMessage(.,'Unit')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:report id="Attribute.AllowedValues.Check" test="true()" flag="AllowedValues">AllowedValues.NotEmpty, AllowedValues.Picklist
 			<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>
 			</iso:report>
 			<iso:assert id="Attribute.AllowedValues.NotEmpty" test="cfn:validStringOrNA(AllowedValues)" flag="AllowedValues">
 				<value-of select="cfn:notEmptyMessage(.,'AllowedValues')"/>
+				<xsl:element name="location">
+					<xsl:value-of select="cfn:getLocation(., position())"/>
+				</xsl:element>
+			</iso:assert>
+			<iso:assert id="Attribute.AllowedValues.Picklist" test="cfn:checkPicklist(cfn:WorksheetName(.),'AllowedValues',AllowedValues,.)" flag="AllowedValues">
+				<value-of select="cfn:picklistMessage(.,'AllowedValues')"/>
 				<xsl:element name="location">
 					<xsl:value-of select="cfn:getLocation(., position())"/>
 				</xsl:element>

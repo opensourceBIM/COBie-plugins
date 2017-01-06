@@ -145,7 +145,7 @@ public class COBieDeserializer extends EmfDeserializer implements
 			} 
 			catch (Exception e1) 
 			{
-				e1.printStackTrace();
+			//	e1.printStackTrace();
 				throw new DeserializeException(e1);
 			}
 		}

@@ -181,7 +181,7 @@ public class FacilityRow extends SpreadsheetTemplateRow
 		AreaMeasurement().set(facility.getAreaMeasurement());
 		AreaUnits().set(facility.getAreaUnits());
 		Category().set(facility.getCategory());
-		CreatedBy().set(facility.getCategory());
+		CreatedBy().set(facility.getCreatedBy());
 		CreatedOn().set(facility.getCreatedOn());
 		CurrencyUnit().set(facility.getCurrencyUnit());
 		Description().set(facility.getDescription());

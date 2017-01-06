@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -56,6 +57,16 @@ public class PluginRuntimeFileHelper
                 {
                     IOUtils.copy(inputStream, new FileOutputStream(
                             configurationFile));
+                }
+                else if (configurationFile.exists())
+                {
+                	//keep the newest file
+                	FileTime fileToCopy = Files.getLastModifiedTime(config);
+                	if(fileToCopy.toMillis() > configurationFile.lastModified())
+                	{
+                        IOUtils.copy(inputStream, new FileOutputStream(
+                                configurationFile));
+                	}
                 }
 
             }
