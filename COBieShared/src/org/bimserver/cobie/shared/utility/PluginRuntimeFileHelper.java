@@ -142,10 +142,21 @@ public class PluginRuntimeFileHelper
                         IOUtils.copy(inputStream, new FileOutputStream(
                                 configurationFile));
                 	}
+                	else if (configurationFile.exists())
+                	{
+                		FileTime fileToCopy = Files.getLastModifiedTime(config);
+                    	if(fileToCopy.toMillis() > configurationFile.lastModified())
+                    	{
+                            IOUtils.copy(inputStream, new FileOutputStream(
+                                    configurationFile));
+                    	}
+                	}
                     configFiles.put(configPath, configurationFile);
                 }
                 else
+                {
                     configFiles.put(configPath, null);
+                }
             }
             catch (IOException e)
             {
